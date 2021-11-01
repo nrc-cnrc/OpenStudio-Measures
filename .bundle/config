@@ -1,0 +1,5 @@
+---
+BUNDLE_RETRY: "3"
+BUNDLE_PATH: "/var/gems"
+BUNDLE_JOBS: "4"
+BUNDLE_WITHOUT: "native_ext"

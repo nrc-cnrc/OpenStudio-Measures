@@ -1,0 +1,14 @@
+# Files to ignore
+Gemfile.lock
+
+# Patterns to ignore.
+measures*/*/tests/output/
+measures*/*/tests/test*-output.json
+
+# Files and folders used in setting up the server.
+openstudio-server/.env
+openstudio-server/.gemfile
+
+# Files and folders from setting up tests.
+test/.env
+.gems
