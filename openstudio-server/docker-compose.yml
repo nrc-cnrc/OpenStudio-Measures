@@ -1,0 +1,69 @@
+# Docker Compose creates multiple containers on a single machine.
+# run `docker-compose up` to create and run/link the containers
+version: '3.4'
+services:
+  db:
+    image: mongo:3.4.10
+    ports:
+      - "27017:27017"
+    volumes:
+      - dbdata:/data/db
+  queue:
+    image: redis:4.0.6
+    ports:
+      - "6379:6379"
+  web:
+    image: ${OS_SERVER_IMAGE}
+    environment:
+      - OS_SERVER_NUMBER_OF_WORKERS=${OS_SERVER_WORKERS}
+      - QUEUES=analysis_wrappers
+    depends_on:
+      - db
+      - queue
+    ports:
+      - "8080:80"
+    volumes:
+      - osdata:/mnt/openstudio
+      - osgems:/var/gems
+      - ${OS_SERVER_PAT_SHARED_FOLDER}:/mnt/openstudio/server/assets/
+    command: /usr/local/bin/start-server
+  web-background:
+    image: ${OS_SERVER_IMAGE}
+    environment:
+      - OS_SERVER_NUMBER_OF_WORKERS=${OS_SERVER_WORKERS}
+      - QUEUES=background,analyses
+    depends_on:
+      - db
+      - queue
+      - web
+    volumes:
+      - osdata:/mnt/openstudio
+    command: /usr/local/bin/start-web-background
+  worker:
+    image: ${OS_SERVER_IMAGE}
+    environment:
+      - OS_SERVER_NUMBER_OF_WORKERS=${OS_SERVER_WORKERS}
+      - QUEUES=simulations
+      - COUNT=1
+    depends_on:
+      - web
+      - db
+      - queue
+      - rserve
+    volumes:
+      - osgems:/var/gems
+    command: /usr/local/bin/start-workers
+  rserve:
+    image: ${OS_RSERVE_IMAGE}
+    environment:
+      - OS_SERVER_NUMBER_OF_WORKERS=${OS_SERVER_WORKERS}
+    volumes:
+      - osdata:/mnt/openstudio
+    depends_on:
+      - web
+      - web-background
+      - db
+volumes:
+  osdata:
+  dbdata:
+  osgems:
