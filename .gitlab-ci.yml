@@ -1,0 +1,30 @@
+default:
+  image: nrel/openstudio:3.0.1
+
+variables:
+  GIT_CLONE_PATH: $CI_BUILDS_DIR/$CI_CONCURRENT_ID/os-measures
+
+before_script:
+  - source ./env.sh && download_gems
+  - pwd
+  - ls -a ..
+  - mkdir -p /var/gems
+  - cp -r ../.gems/* /var/gems
+  - echo '---'
+  - ls -l /var/gems
+  - bundle install
+  
+test:
+  tags:
+  - linux
+  - docker
+  - const-ibp
+  
+  script:
+  - cd test
+  - bundle exec ruby test_measures.rb
+  
+  cache:
+    key: "OSmeasures"
+    paths:
+      - vendor/bundle
