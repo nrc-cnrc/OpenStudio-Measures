@@ -13,11 +13,11 @@ This reporting measure generates an output report based on model information and
      It provides general summary and detailed information on the building. Output includes construction and envelope
      description and details. Also, includes both an annual summary and monthly detailed heat gains and losses tables.
      In addition, the report provides high level tables of thermal zones and HVAC air loops.
-     In this measure, windows areas will only be included in the calculations for fenestartation door wall ratio,
+     In this measure, windows areas will only be included in the calculations for fenestration door wall ratio,
      as there are no doors in the models.
-     The heat loss and gain section is modified from BCL (https://bcl.nrel.gov/node/84747) to use si units.
+     The heat loss and gain section is modified from BCL measure (https://bcl.nrel.gov/node/84747) to use si units.
      The HVAC detailed section is based on OpenStudio Results measure (https://bcl.nrel.gov/node/82918).
-     Also the End Use table is modified from OpenStudio Results measure, but modified to create tables instead of charts
+     The End Use table is modified from OpenStudio Results measure to create tables instead of charts
 
 ## Measure Type
 ReportingMeasure
@@ -78,7 +78,7 @@ ReportingMeasure
 
 ### Include heat_gains_section
 
-**Name:** heat_gains_detail_section,
+**Name:** heat_gains_section,
 **Type:** Boolean,
 **Units:** ,
 **Required:** true,
@@ -86,7 +86,7 @@ ReportingMeasure
 
 ### Include heat_losses_section
 
-**Name:** heat_losses_detail_section,
+**Name:** heat_losses_section,
 **Type:** Boolean,
 **Units:** ,
 **Required:** true,
@@ -159,22 +159,6 @@ ReportingMeasure
 ### Include hvac_zoneEquip_detailed_section1
 
 **Name:** hvac_zoneEquip_detailed_section1,
-**Type:** Boolean,
-**Units:** ,
-**Required:** true,
-**Model Dependent:** false
-
-### OsLib_Reporting.output_data_end_use_table(nil,nil,nil,true)[:title]
-
-**Name:** output_data_end_use_table,
-**Type:** Boolean,
-**Units:** ,
-**Required:** true,
-**Model Dependent:** false
-
-### OsLib_Reporting.serviceHotWater_summary_section(nil,nil,nil,true)[:title]
-
-**Name:** serviceHotWater_summary_section,
 **Type:** Boolean,
 **Units:** ,
 **Required:** true,

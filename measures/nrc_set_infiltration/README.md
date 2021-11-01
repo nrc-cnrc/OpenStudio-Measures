@@ -10,7 +10,7 @@ This measures allows setting the infiltration to a specific value.
 ## Modeler Description
 The measure sets space infiltration according to PCF 1414, section 8.4.2.9(2), page 7
             Infiltration_5Pa = C × I_75Pa × (S/A)
-            I_5Pa : Air leakage rate of the building envelope at 5 Pa, in L/(s·m2)
+            Infiltration_5Pa : Air leakage rate of the building envelope at 5 Pa, in L/(s·m2)
             C = (5 Pa / 75 Pa)n , where n = flow exponent
             I_75Pa : Normalized air leakage rate at 75 Pa, in L/(s·m2)
             S = total area of the building envelope (the lowest floor area + below-ground and above-ground walls area + roof area (including

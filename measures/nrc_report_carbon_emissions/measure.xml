@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_report_carbon_emissions</name>
   <uid>11a12238-d360-4ad9-8d85-58b56c67cf83</uid>
-  <version_id>5a37fcc1-de49-4fa5-bbf5-23b88b19dd0a</version_id>
-  <version_modified>20210923T145256Z</version_modified>
+  <version_id>c5bf246d-5e07-42a1-bb2b-32d8f9b49f37</version_id>
+  <version_modified>20211101T171340Z</version_modified>
   <xml_checksum>9BF1E6AC</xml_checksum>
   <class_name>NrcReportCarbonEmissions</class_name>
   <display_name>NrcReportCarbonEmissions</display_name>
@@ -18,7 +18,9 @@
     <argument>
       <name>location</name>
       <display_name>Location</display_name>
+      <description></description>
       <type>Choice</type>
+      <units></units>
       <required>true</required>
       <model_dependent>false</model_dependent>
       <default_value>Ontario</default_value>
@@ -80,11 +82,15 @@
           <display_name>Nunavut</display_name>
         </choice>
       </choices>
+      <min_value></min_value>
+      <max_value></max_value>
     </argument>
     <argument>
       <name>year</name>
       <display_name>Year</display_name>
+      <description></description>
       <type>Choice</type>
+      <units></units>
       <required>true</required>
       <model_dependent>false</model_dependent>
       <default_value>2018</default_value>
@@ -126,11 +132,15 @@
           <display_name>2018</display_name>
         </choice>
       </choices>
+      <min_value></min_value>
+      <max_value></max_value>
     </argument>
     <argument>
       <name>model_summary_section</name>
       <display_name>model_summary_section</display_name>
+      <description></description>
       <type>Boolean</type>
+      <units></units>
       <required>true</required>
       <model_dependent>false</model_dependent>
       <default_value>true</default_value>
@@ -144,11 +154,15 @@
           <display_name>false</display_name>
         </choice>
       </choices>
+      <min_value></min_value>
+      <max_value></max_value>
     </argument>
     <argument>
       <name>endUse_summary_section</name>
       <display_name>endUse_summary_section</display_name>
+      <description></description>
       <type>Boolean</type>
+      <units></units>
       <required>true</required>
       <model_dependent>false</model_dependent>
       <default_value>true</default_value>
@@ -162,6 +176,8 @@
           <display_name>false</display_name>
         </choice>
       </choices>
+      <min_value></min_value>
+      <max_value></max_value>
     </argument>
   </arguments>
   <outputs>
@@ -169,7 +185,9 @@
       <name>co_2_e</name>
       <display_name>co_2_e</display_name>
       <short_name>co_2_e</short_name>
+      <description></description>
       <type>Double</type>
+      <units></units>
       <model_dependent>false</model_dependent>
     </output>
   </outputs>
@@ -232,12 +250,6 @@
       <checksum>D3EA641F</checksum>
     </file>
     <file>
-      <filename>BTAPMeasureHelper.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>F05DC3DD</checksum>
-    </file>
-    <file>
       <filename>report.html.erb</filename>
       <filetype>erb</filetype>
       <usage_type>resource</usage_type>
@@ -248,12 +260,6 @@
       <filetype>json</filetype>
       <usage_type>resource</usage_type>
       <checksum>6EB508DC</checksum>
-    </file>
-    <file>
-      <filename>test.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>test</usage_type>
-      <checksum>668694D8</checksum>
     </file>
     <file>
       <filename>NRCMeasureHelper.rb</filename>
@@ -268,16 +274,22 @@
       <checksum>55314FBC</checksum>
     </file>
     <file>
-      <filename>README.md</filename>
-      <filetype>md</filetype>
-      <usage_type>readme</usage_type>
-      <checksum>E18F6B3F</checksum>
+      <filename>BTAPMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>3E54D765</checksum>
+    </file>
+    <file>
+      <filename>test.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>E013CFB5</checksum>
     </file>
     <file>
       <filename>os_lib_reporting.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>897923C2</checksum>
+      <checksum>5C954CDB</checksum>
     </file>
     <file>
       <version>
@@ -288,7 +300,44 @@
       <filename>measure.rb</filename>
       <filetype>rb</filetype>
       <usage_type>script</usage_type>
-      <checksum>AFE9E3C5</checksum>
+      <checksum>E236059D</checksum>
+    </file>
+    <file>
+      <filename>report_Ottawa.html</filename>
+      <filetype>html</filetype>
+      <usage_type>test</usage_type>
+      <checksum>D51ACB6C</checksum>
+    </file>
+    <file>
+      <filename>Electricity_2020 projectionEfs.xlsx</filename>
+      <filetype>xlsx</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>A3E1EBA5</checksum>
+    </file>
+    <file>
+      <filename>NG_EFs.xlsx</filename>
+      <filetype>xlsx</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>86297DE7</checksum>
+    </file>
+    <file>
+      <filename>~$Electricity_2020 projectionEfs.xlsx</filename>
+      <filetype>xlsx</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>06042E5B</checksum>
+    </file>
+    <file>
+      <filename>~$NG_EFs.xlsx</filename>
+      <filetype>xlsx</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>06042E5B</checksum>
+    </file>
+    <file>
+      <filename>README.md</filename>
+      <filetype>md</filetype>
+      <usage_type>readme</usage_type>
+      <checksum>9E8A9ECE</checksum>
     </file>
   </files>
 </measure>
+<error>cannot load such file -- roo</error>

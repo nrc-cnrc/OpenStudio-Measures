@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_report</name>
   <uid>d023501a-5089-4b1d-9a08-7a573820a7ef</uid>
-  <version_id>e1a5b67a-af4c-4111-aa40-64a38f023267</version_id>
-  <version_modified>20211013T163444Z</version_modified>
+  <version_id>cb7e7c0a-bd42-4509-b3ca-235d71bb3a87</version_id>
+  <version_modified>20211101T171339Z</version_modified>
   <xml_checksum>9BF1E6AC</xml_checksum>
   <class_name>NrcReport</class_name>
   <display_name>NrcReport</display_name>
@@ -14,11 +14,11 @@
      It provides general summary and detailed information on the building. Output includes construction and envelope
      description and details. Also, includes both an annual summary and monthly detailed heat gains and losses tables.
      In addition, the report provides high level tables of thermal zones and HVAC air loops.
-     In this measure, windows areas will only be included in the calculations for fenestartation door wall ratio,
+     In this measure, windows areas will only be included in the calculations for fenestration door wall ratio,
      as there are no doors in the models.
-     The heat loss and gain section is modified from BCL (https://bcl.nrel.gov/node/84747) to use si units.
+     The heat loss and gain section is modified from BCL measure (https://bcl.nrel.gov/node/84747) to use si units.
      The HVAC detailed section is based on OpenStudio Results measure (https://bcl.nrel.gov/node/82918).
-     Also the End Use table is modified from OpenStudio Results measure, but modified to create tables instead of charts</modeler_description>
+     The End Use table is modified from OpenStudio Results measure to create tables instead of charts</modeler_description>
   <arguments>
     <argument>
       <name>report_depth</name>
@@ -41,24 +41,6 @@
     <argument>
       <name>model_summary_section</name>
       <display_name>Include model_summary_section</display_name>
-      <type>Boolean</type>
-      <required>true</required>
-      <model_dependent>false</model_dependent>
-      <default_value>true</default_value>
-      <choices>
-        <choice>
-          <value>true</value>
-          <display_name>true</display_name>
-        </choice>
-        <choice>
-          <value>false</value>
-          <display_name>false</display_name>
-        </choice>
-      </choices>
-    </argument>
-    <argument>
-      <name>server_summary_section</name>
-      <display_name>OsLib_Reporting.server_summary_section(nil,nil,nil,true)[:title]</display_name>
       <type>Boolean</type>
       <required>true</required>
       <model_dependent>false</model_dependent>
@@ -329,42 +311,6 @@
     <argument>
       <name>hvac_zoneEquip_detailed_section1</name>
       <display_name>Include hvac_zoneEquip_detailed_section1</display_name>
-      <type>Boolean</type>
-      <required>true</required>
-      <model_dependent>false</model_dependent>
-      <default_value>true</default_value>
-      <choices>
-        <choice>
-          <value>true</value>
-          <display_name>true</display_name>
-        </choice>
-        <choice>
-          <value>false</value>
-          <display_name>false</display_name>
-        </choice>
-      </choices>
-    </argument>
-    <argument>
-      <name>output_data_end_use_table</name>
-      <display_name>OsLib_Reporting.output_data_end_use_table(nil,nil,nil,true)[:title]</display_name>
-      <type>Boolean</type>
-      <required>true</required>
-      <model_dependent>false</model_dependent>
-      <default_value>true</default_value>
-      <choices>
-        <choice>
-          <value>true</value>
-          <display_name>true</display_name>
-        </choice>
-        <choice>
-          <value>false</value>
-          <display_name>false</display_name>
-        </choice>
-      </choices>
-    </argument>
-    <argument>
-      <name>serviceHotWater_summary_section</name>
-      <display_name>OsLib_Reporting.serviceHotWater_summary_section(nil,nil,nil,true)[:title]</display_name>
       <type>Boolean</type>
       <required>true</required>
       <model_dependent>false</model_dependent>
@@ -1281,19 +1227,13 @@
       <filename>os_lib_reporting.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>09A98F0F</checksum>
+      <checksum>5BCD6684</checksum>
     </file>
     <file>
       <filename>MediumOffice.osm</filename>
       <filetype>osm</filetype>
       <usage_type>test</usage_type>
-      <checksum>4BDAFA74</checksum>
-    </file>
-    <file>
-      <filename>test.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>85C360F7</checksum>
+      <checksum>6F788ACD</checksum>
     </file>
     <file>
       <version>
@@ -1304,13 +1244,31 @@
       <filename>measure.rb</filename>
       <filetype>rb</filetype>
       <usage_type>script</usage_type>
-      <checksum>7062F534</checksum>
+      <checksum>46521D7C</checksum>
+    </file>
+    <file>
+      <filename>test.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>CE717BDA</checksum>
+    </file>
+    <file>
+      <filename>BTAPMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>B69DF022</checksum>
+    </file>
+    <file>
+      <filename>NRCReportingMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>F37D69BA</checksum>
     </file>
     <file>
       <filename>README.md</filename>
       <filetype>md</filetype>
       <usage_type>readme</usage_type>
-      <checksum>1E89F83B</checksum>
+      <checksum>2F2678F4</checksum>
     </file>
   </files>
 </measure>
