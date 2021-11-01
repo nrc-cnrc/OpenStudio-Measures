@@ -171,7 +171,7 @@ module TestCommon
 
       # Define the output folder for the model. (First delete the folder if it exists)
       model_output_folder = "#{@test_dir}/#{building_shape}-#{building_type}-#{template}-#{rotation}-#{city}"
-      puts "Output folder #{model_output_folder}".pink
+      puts "  Output folder #{model_output_folder}".pink
       if Dir.exist?(model_output_folder) then
         puts "WARNING: Removing existing output folder #{model_output_folder}".yellow
         FileUtils.remove_dir(model_output_folder, force = true)
@@ -190,7 +190,6 @@ module TestCommon
       # save the model to test output directory
       output_file_path = "#{model_output_folder}/output.osm"
       model.save(output_file_path, true)
-      puts "  Test output folder: #{@test_dir}".red
     end
   end
 end

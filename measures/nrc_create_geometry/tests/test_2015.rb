@@ -15,8 +15,8 @@ class NrcCreateGeometry_Test
     building_types = ["RetailStripmall", "QuickServiceRestaurant", "MediumOffice"]
     epw_files = ['CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw', 'CAN_ON_Windsor.Intl.AP.715380_CWEC2016.epw']
     building_shapes = ["Courtyard", "Rectangular", "U-Shape"]
-    rotation = [45.0]
     total_floor_area = [20000.0]
+    rotation = [45.0]
     above_grade_floors = [1, 3]
     aspect_ratio = [1.0]
 
