@@ -1,0 +1,961 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GHG Emissions</title>
+  <link href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/d3/3.4.8/d3.min.js"></script>
+  <script type="text/javascript" src="http://dimplejs.org/dist/dimple.v2.1.2.min.js"></script>
+  <style>
+      body {
+          position: relative;
+          height: 100%;
+      }
+
+      div.col-md-3 {
+          padding-left: 0;
+      }
+
+      #tocItems {
+          margin-top: 40px;
+          z-index: 1;
+      }
+
+      #tocItems > .nav > li > a {
+          padding-top: 4px;
+          padding-bottom: 4px;
+      }
+
+      .btn {
+          margin: 0 3px;
+      }
+
+      .bs-docs-sidebar.affix {
+          margin-left: 15px;
+          position: static;
+      }
+
+      .bs-docs-sidebar.well {
+          padding: 0;
+      }
+
+      /* sidebar */
+      .bs-docs-sidebar {
+          padding-left: 20px;
+          padding-bottom: 20px;
+      }
+
+      /* Show and affix the side nav when space allows it */
+      @media (min-width: 992px) {
+          .bs-docs-sidebar .nav > .active > ul {
+              display: block;
+          }
+
+          /* Widen the fixed sidebar */
+          .bs-docs-sidebar.affix,
+          .bs-docs-sidebar.affix-bottom {
+              width: 213px;
+          }
+
+          .bs-docs-sidebar.affix {
+              position: fixed; /* Undo the static from mobile first approach */
+          }
+
+          .bs-docs-sidebar.affix-bottom {
+              position: absolute; /* Undo the static from mobile first approach */
+          }
+      }
+
+      @media (min-width: 1200px) {
+          /* Widen the fixed sidebar again */
+          .bs-docs-sidebar.affix-bottom,
+          .bs-docs-sidebar.affix {
+              width: 263px;
+          }
+      }
+
+      /* make sidebar scrollable */
+      .bs-docs-sidebar > ul {
+          overflow-y: auto;
+          height: 85vh;
+          padding: 10px;
+      }
+
+      @media (max-width: 991px) {
+          #tocItems {
+              margin-top: 10px;
+          }
+
+          .bs-docs-sidebar > ul {
+              max-height: 300px;
+          }
+      }
+  </style>
+  <script type="text/javascript">
+      // This variable will be an array of graph data
+      var nine = null;
+  </script>
+</head>
+<body data-spy="scroll" data-target="#tocItems">
+<div id="content" class="container-fluid">
+  <div class="row">
+    <div class="col-md-3">
+      <div id="tocItems" class="bs-docs-sidebar hidden-print well affix" role="complementary">
+        <ul class="nav nav-pills nav-stacked" role="navigation">
+          
+              
+              <li><a href="#Model_Summary">Model Summary</a></li>
+          
+              
+              <li><a href="#Annual_End_Use_Summary_and_GHG_Emissions">Annual End Use Summary and GHG Emissions</a></li>
+          
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-9" role="main">
+      <h1>GHG Emissions</h1>
+      
+      
+
+          
+          <h2 id="Model_Summary">Model Summary</h2>
+
+          
+
+          
+              
+              <br>
+              <button class="btn btn-primary" type="button" data-toggle="collapse" data-target=#table_0 aria-expanded="false" aria-controls=table_0>
+                
+                
+                    Model Summary
+                    
+                
+              </button>
+              <div class="in" id=table_0>
+                <div class="well">
+                  
+                      <table class="table table-striped table-bordered table-condensed">
+                  
+                  <tr>
+                    
+                        
+                            <th>Parameter</th>
+                        
+                    
+                        
+                            <th>Value</th>
+                        
+                    
+                  </tr>
+                  
+                      <tr>
+                        
+                            
+                                
+                                    <td>Location</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>Ottawa=Macdonald-Cartier Intl AP</td>
+                                
+                            
+                        
+                      </tr>
+                  
+                      <tr>
+                        
+                            
+                                
+                                    <td>Standard building type</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>Warehouse</td>
+                                
+                            
+                        
+                      </tr>
+                  
+                  </table>
+                  
+                </div>
+              </div>
+              
+
+              
+
+          
+
+      
+
+          
+          <h2 id="Annual_End_Use_Summary_and_GHG_Emissions">Annual End Use Summary and GHG Emissions</h2>
+
+          
+
+          
+              
+              <br>
+              <button class="btn btn-primary" type="button" data-toggle="collapse" data-target=#table_1 aria-expanded="false" aria-controls=table_1>
+                
+                
+                    Annual End Use Summary and GHG Emissions
+                    
+                
+              </button>
+              <div class="in" id=table_1>
+                <div class="well">
+                  
+                      <table class="table table-striped table-bordered table-condensed">
+                  
+                  <tr>
+                    
+                        
+                            <th>End Use</th>
+                        
+                    
+                        
+                            <th>Electricity (GJ)</th>
+                        
+                    
+                        
+                            <th>Natural Gas (GJ)</th>
+                        
+                    
+                        
+                            <th>Additional Fuel (GJ)</th>
+                        
+                    
+                        
+                            <th>District Cooling (GJ)</th>
+                        
+                    
+                        
+                            <th>District Heating (GJ)</th>
+                        
+                    
+                        
+                            <th>Annual GHG Emissions (tCO2eq)</th>
+                        
+                    
+                  </tr>
+                  
+                      <tr>
+                        
+                            
+                                
+                                    <td>Heating</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>0.0</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>1017.79</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>0.0</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>0.0</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>0.0</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>51.23</td>
+                                
+                            
+                        
+                      </tr>
+                  
+                      <tr>
+                        
+                            
+                                
+                                    <td>Cooling</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>171.31</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>0.0</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>0.0</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>0.0</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>0.0</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>0.71</td>
+                                
+                            
+                        
+                      </tr>
+                  
+                      <tr>
+                        
+                            
+                                
+                                    <td>Interior Lighting</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>261.24</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>0.0</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>0.0</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>0.0</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>0.0</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>1.09</td>
+                                
+                            
+                        
+                      </tr>
+                  
+                      <tr>
+                        
+                            
+                                
+                                    <td>Exterior Lighting</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>0.0</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>0.0</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>0.0</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>0.0</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>0.0</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>0.0</td>
+                                
+                            
+                        
+                      </tr>
+                  
+                      <tr>
+                        
+                            
+                                
+                                    <td>Interior Equipment</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>84.99</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>0.0</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>0.0</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>0.0</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>0.0</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>0.35</td>
+                                
+                            
+                        
+                      </tr>
+                  
+                      <tr>
+                        
+                            
+                                
+                                    <td>Exterior Equipment</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>0.0</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>0.0</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>0.0</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>0.0</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>0.0</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>0.0</td>
+                                
+                            
+                        
+                      </tr>
+                  
+                      <tr>
+                        
+                            
+                                
+                                    <td>Fans</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>341.73</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>0.0</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>0.0</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>0.0</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>0.0</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>1.42</td>
+                                
+                            
+                        
+                      </tr>
+                  
+                      <tr>
+                        
+                            
+                                
+                                    <td>Pumps</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>14.48</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>0.0</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>0.0</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>0.0</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>0.0</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>0.06</td>
+                                
+                            
+                        
+                      </tr>
+                  
+                      <tr>
+                        
+                            
+                                
+                                    <td>Heat Rejection</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>0.0</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>0.0</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>0.0</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>0.0</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>0.0</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>0.0</td>
+                                
+                            
+                        
+                      </tr>
+                  
+                      <tr>
+                        
+                            
+                                
+                                    <td>Humidification</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>0.0</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>0.0</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>0.0</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>0.0</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>0.0</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>0.0</td>
+                                
+                            
+                        
+                      </tr>
+                  
+                      <tr>
+                        
+                            
+                                
+                                    <td>Heat Recovery</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>6.8</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>0.0</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>0.0</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>0.0</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>0.0</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>0.03</td>
+                                
+                            
+                        
+                      </tr>
+                  
+                      <tr>
+                        
+                            
+                                
+                                    <td>Water Systems</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>0.0</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>61.65</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>0.0</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>0.0</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>0.0</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>3.1</td>
+                                
+                            
+                        
+                      </tr>
+                  
+                      <tr>
+                        
+                            
+                                
+                                    <td>Refrigeration</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>0.0</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>0.0</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>0.0</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>0.0</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>0.0</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>0.0</td>
+                                
+                            
+                        
+                      </tr>
+                  
+                      <tr>
+                        
+                            
+                                
+                                    <td>Generators</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>0.0</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>0.0</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>0.0</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>0.0</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>0.0</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>0.0</td>
+                                
+                            
+                        
+                      </tr>
+                  
+                      <tr>
+                        
+                            
+                                
+                                    <td>Total</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>880.55</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>1079.44</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>0.0</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>0.0</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>0.0</td>
+                                
+                            
+                        
+                            
+                                
+                                    <td>57.99</td>
+                                
+                            
+                        
+                      </tr>
+                  
+                  </table>
+                  
+                </div>
+              </div>
+              
+
+              
+
+          
+
+      
+
+    </div>
+  </div>
+</div>
+</body>
+</html>

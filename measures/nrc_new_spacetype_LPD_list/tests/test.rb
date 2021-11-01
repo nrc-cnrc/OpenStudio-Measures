@@ -1,0 +1,88 @@
+# Standard openstudio requires for runnin test
+require 'openstudio'
+require 'openstudio/measure/ShowRunnerOutput'
+require 'openstudio-standards'
+require 'minitest/autorun'
+
+# Require the measure and test helper
+require_relative '../measure.rb'
+require_relative '../resources/NRCMeasureHelper.rb'
+
+# Specific requires for this test
+require 'fileutils'
+
+class NrcNewSpacetypeLPDList_Test < Minitest::Test
+  include(NRCMeasureTestHelper)
+
+  def setup()
+    @measure_interface_detailed = [
+        {
+            "name" => "skip",
+            "type" => "Double",
+            "display_name" => "skip?",
+            "default_value" => 1.0,
+            "max_double_value" => 9999,
+            "min_double_value" => 0.0,
+            "is_required" => false
+        }]
+    @good_input_arguments = {
+        "skip" => 1.0
+    }
+  end
+
+  def test_argument_values
+    # create an instance of the measure
+    measure = NrcNewSpacetypeLPDList.new
+
+    # load the test model
+    translator = OpenStudio::OSVersion::VersionTranslator.new
+    path = OpenStudio::Path.new(File.dirname(__FILE__) + "/warehouse_2017.osm")
+    model = translator.loadModel(path)
+    assert((not model.empty?))
+    model = model.get
+
+    # get arguments
+    arguments = measure.arguments(model)
+    input_arguments = {
+        "skip" => 1.0
+    }
+
+    boiler_eff = input_arguments['boiler_eff']
+
+    # test if the measure would grab the correct number and value of input argument.
+    assert_equal(1, arguments.size)
+    assert_equal(1.0, arguments[0].defaultValueAsDouble)
+
+    # Define the output folder.
+    test_dir = "#{File.dirname(__FILE__)}/output"
+    if !Dir.exists?(test_dir)
+      Dir.mkdir(test_dir)
+    end
+    NRCMeasureTestHelper.setOutputFolder("#{test_dir}")
+
+    # Run the measure and check output
+    runner = run_measure(input_arguments, model)
+    result = runner.result
+    show_output(result)
+    assert(result.value.valueName == 'Success')
+
+    lpd_hash = {}
+    lpd_hash['Space Function Warehouse storage area medium to bulky palletized items'] = 3.6
+    lpd_hash['Space Function Warehouse storage area small hand-carried items(4)'] = 7.4
+    lpd_hash['Space Function Office enclosed <= 25 m2'] = 8.0
+    #check lpd
+
+    model.getSpaceTypes.each do |space_type|
+      if space_type.lightingPowerPerFloorArea.is_initialized
+        lpd = space_type.lightingPowerPerFloorArea.get
+        name = space_type.name.to_s
+        real_lpd = lpd_hash[name]
+        assert((real_lpd - lpd) < 0.001)
+      end
+    end
+
+    # save the model to test output directory
+    output_file_path = "#{File.dirname(__FILE__)}//output/test_output.osm"
+    model.save(output_file_path, true)
+  end
+end
