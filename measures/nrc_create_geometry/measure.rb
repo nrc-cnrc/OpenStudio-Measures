@@ -231,7 +231,7 @@ class NrcCreateGeometry < OpenStudio::Measure::ModelMeasure
       # Generate the geometry
       # runner.registerInfo ("center_width = b/4 : #{b/4} , left_width = b/3 : #{b/3} , left_upper_end_offset = a/15: #{a/15} ")
       BTAP::Geometry::Wizards::create_shape_h(model,
-                                              len = Math::sqrt((9.0 / 7.0) * floor_area),
+                                              length = a,
                                               left_width = b,
                                               center_width = b / 3.0,
                                               right_width = b,
@@ -242,7 +242,7 @@ class NrcCreateGeometry < OpenStudio::Measure::ModelMeasure
                                               num_floors = above_grade_floors,
                                               floor_to_floor_height = floor_to_floor_height,
                                               plenum_height = plenum_height,
-                                              perimeter_zone_depth = 2.67)
+                                              perimeter_zone_depth = perimeter_depth)
 
       #" ******************* Creating T-Shape Shape ***********************************"
     elsif building_shape == 'T-Shape'
