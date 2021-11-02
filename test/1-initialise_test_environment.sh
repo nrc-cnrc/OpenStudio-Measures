@@ -12,7 +12,7 @@ testContainer=$1
 if [ -z $testContainer ]; then
   echo -e "${YELLOW}Using default container name ${BLUE}${default_container}${NC}."
   testContainer=$default_container
-  else
+else
   echo -e "${YELLOW}Using specified container name ${BLUE}${testContainer}${NC}."
 fi
 
@@ -58,25 +58,25 @@ fi
 echo -e "${GREEN}Starting the test environment container${NC}..."
 docker container start $testContainer
 
-# # Download, install gems and run bundle.
-# download_gems
+# Download, install gems and run bundle.
+download_gems
 
-# # Install gems.
-# echo -e "${GREEN}Installing gems in container: ${BLUE}$testContainer${NC}..."
-# docker exec $testContainer sh -c "mkdir -p $gemDir"
-# for ((iGem = 0; iGem < ${nGems}; iGem++)); do
-  # echo -e "  copying ${BLUE}${server_gems[($iGem * 3)]}${NC} to ${BLUE}$gemDir${NC} in container ${BLUE}$testContainer${NC}"
-  # docker cp ../.gems/${server_gems[($iGem * 3)]} $testContainer:$gemDir
-# done
-# echo -e "${GREEN}done${NC}."
+# Install gems.
+echo -e "${GREEN}Installing gems in container: ${BLUE}$testContainer${NC}..."
+docker exec $testContainer sh -c "mkdir -p $gemDir"
+for ((iGem = 0; iGem < ${nGems}; iGem++)); do
+  echo -e "  copying ${BLUE}${server_gems[($iGem * 3)]}${NC} to ${BLUE}$gemDir${NC} in container ${BLUE}$testContainer${NC}"
+  docker cp ../.gems/${server_gems[($iGem * 3)]} $testContainer:$gemDir
+done
+echo -e "${GREEN}done${NC}."
 
-# echo -e "${GREEN}Running bundle on installed gems in container: ${BLUE}$testContainer${NC}..."
-# echo -e "  ${GREEN}output in popup window${NC}"
-# mintty -s 144,32 -t "Container ${testContainer} bundle log" -h always /bin/bash -c \
-# "docker exec $testContainer sh -c \"cd /os_test; rm -f Gemfile.lock; bundle install; bundle list --paths; echo DONE. Press enter to close.\""
-# echo -e "${GREEN}done${NC}."
+echo -e "${GREEN}Running bundle on installed gems in container: ${BLUE}$testContainer${NC}..."
+echo -e "  ${GREEN}output in popup window${NC}"
+mintty -s 144,32 -t "Container ${testContainer} bundle log" -h always /bin/bash -c \
+"docker exec $testContainer sh -c \"cd /os_test; rm -f Gemfile.lock; bundle install; bundle list --paths; echo DONE. Press enter to close.\""
+echo -e "${GREEN}done${NC}."
 
-# echo -e "${GREEN}Stopping the test environment container${NC}..."
-# #docker container stop $testContainer
+echo -e "${GREEN}Stopping the test environment container${NC}..."
+#docker container stop $testContainer
 echo -e "...${GREEN}DONE${NC}."
 
