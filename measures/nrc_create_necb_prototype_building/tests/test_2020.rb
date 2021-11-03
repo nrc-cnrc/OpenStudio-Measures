@@ -5,6 +5,7 @@ include(TestCommon)
 class NrcCreateNECBPrototypeBuilding_Test
 
   def test_2020()
+
     # Delay the start of this test so that the 2011 case can initialise the output folder.
     sleep(40)
 
@@ -17,34 +18,20 @@ class NrcCreateNECBPrototypeBuilding_Test
                  'MB_Winnipeg-Richardson',
                  'NL_St.Johns']
 
-    # The forking sometimes fails. Add this logical so that it can be switched on/off easily.
-    dofork = false
+    # Multithreading is used to run the tests.
+    threads = []
+    $num_failed = 0
 
-    # Define all the cases in individual sub-processes using fork.
     building_types.each do |building_type|
       epw_files.each do |epw_file|
-        if dofork
-          fork do
-            run_test(necb_template: template, building_type_in: building_type, epw_file_in: epw_file)
-          end
-        else
+        threads << Thread.new {
+          puts "Creating new thread for #{building_type} and #{epw_file}".blue
           run_test(necb_template: template, building_type_in: building_type, epw_file_in: epw_file)
-
-        end
+        }
+        threads.each(&:join) # To ensure that all the processes are finished
       end
     end
 
-    # Now wait for the forked processes to all finish and figure out if there were any failures.
-    # Would be good if we could capture the minitest output from each process and output them here.
-    # This is a quick and dirty solution to identify something has failed.
-    if dofork
-      success = true
-      results = Process.waitall
-      results.each do |result|
-        success = success && result[1].success?
-      end
-      msg = "Failure in one or more models for test: #{__method__}"
-      assert(success, msg)
-    end
+    puts "Failure in #{$num_failed} models that are different from the ones in the regression models".blue
   end
 end
