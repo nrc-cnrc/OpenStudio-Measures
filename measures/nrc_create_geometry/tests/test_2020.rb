@@ -12,13 +12,14 @@ class NrcCreateGeometry_Test
     template = 'NECB2020'
     puts "Testing  model creation for #{template}".blue
 
+	# Options. Limit to 4 cases to keep run time down (as these models take time to simulate).
     building_types = ["LargeOffice", "HighriseApartment"]
-    epw_files = ['CAN_NT_Yellowknife.AP.719360_CWEC2016.epw', 'CAN_QC_Montreal-Trudeau.Intl.AP.716270_CWEC2016.epw']
+    epw_files = ['CAN_QC_Montreal-Trudeau.Intl.AP.716270_CWEC2016.epw']
     building_shapes = ["L-Shape", "Rectangular"]
     total_floor_area = [40000.0]
     rotation = [10.0]
-    above_grade_floors = [6, 12]
-    aspect_ratio = [1.0, 1.5]
+    above_grade_floors = [12]
+    aspect_ratio = [2.0]
 
     building_types.each do |type|
       building_shapes.each do |shape|

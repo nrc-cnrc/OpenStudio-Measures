@@ -12,7 +12,8 @@ class NrcCreateGeometry_Test
     template = 'NECB2011'
     puts "Testing  model creation for #{template}".blue
 	
-    building_types = ["RetailStandalone", "RetailStripmall", "SmallOffice"]
+	# Options. Limit to 16 cases to keep run time down.
+    building_types = ["RetailStandalone", "SmallOffice"]
     epw_files = ['CAN_NT_Yellowknife.AP.719360_CWEC2016.epw', 'CAN_QC_Montreal-Trudeau.Intl.AP.716270_CWEC2016.epw']
     building_shapes = ["Courtyard", "H-Shape"]
     total_floor_area = [20000.0, 1500.0]

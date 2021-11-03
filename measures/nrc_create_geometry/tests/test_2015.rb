@@ -12,12 +12,13 @@ class NrcCreateGeometry_Test
     template = 'NECB2015'
     puts "Testing  model creation for #{template}".blue
 
-    building_types = ["RetailStripmall", "QuickServiceRestaurant", "MediumOffice"]
+	# Options. Limit to 16 cases to keep run time down.
+    building_types = ["RetailStripmall", "QuickServiceRestaurant"]
     epw_files = ['CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw', 'CAN_ON_Windsor.Intl.AP.715380_CWEC2016.epw']
     building_shapes = ["Courtyard", "Rectangular", "U-Shape"]
     total_floor_area = [20000.0]
-    rotation = [45.0]
-    above_grade_floors = [1, 3]
+    rotation = [10.0]
+    above_grade_floors = [1]
     aspect_ratio = [1.0]
 
     building_types.each do |type|
