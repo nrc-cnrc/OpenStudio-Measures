@@ -237,6 +237,10 @@ class NrcReportUtilityCosts < OpenStudio::Measure::ReportingMeasure
 	
   def calcNS2021Costs
   
+    # Define output strings (html table content).
+	rate_summary = ""
+	cost_table = ""
+	
 	# Get monthly consumption and peak results from SQL database.
 	months = ["January", "Feburary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 	monthly_elec = Hash.new
@@ -246,14 +250,14 @@ class NrcReportUtilityCosts < OpenStudio::Measure::ReportingMeasure
 	monthly_peak_elec = 0.1
 	(1..12).each do |month|
 	  elec_total = getMonthlyEnergyConsumptionFromSQL(10, month)/3.6e+6 # return value in J, convert to kWh
-	  gas_total = getMonthlyEnergyConsumptionFromSQL(952, month)/3.6e+6 # return value in J, convert to kWh
-	  elec_peak = getMonthlyPeakEnergyFromSQL(9, month)/3600.0 # return value in J, convert to W (averaged over the hour)
-	  gas_peak = getMonthlyPeakEnergyFromSQL(951, month)/3600.0 # return value in J, convert to W (averaged over the hour)
+	  gas_total = getMonthlyEnergyConsumptionFromSQL(952, month)/1.0e+9 # return value in J, convert to GJ
+	  elec_peak = getMonthlyPeakEnergyFromSQL(9, month)/3600000.0 # return value in J, convert to kW (averaged over the hour)
+	  gas_peak = getMonthlyPeakEnergyFromSQL(951, month)/3600000.0 # return value in J, convert to kW (averaged over the hour)
 	  monthly_elec[months[month-1]] = {total: elec_total, peak: elec_peak}
 	  monthly_gas[months[month-1]] = {total: gas_total, peak: gas_peak}
 	  annual_elec += elec_total
 	  annual_gas += gas_total
-	  monthly_peak_elec = max(monthly_peak_elec, elec_peak)
+	  monthly_peak_elec = [monthly_peak_elec, elec_peak].max
 	end
 	
 	puts "Elec monthly: #{monthly_elec}".red
@@ -265,13 +269,88 @@ class NrcReportUtilityCosts < OpenStudio::Measure::ReportingMeasure
 	# https://www.nspower.ca/about-us/electricity/rates-tariffs
 	if annual_elec < 32000
 	  puts "Small General Tarrif".pink
+	  rate_summary << "<tr><td>Electricity</td>
+	                      <td>Small General Tarrif
+						  <br>Base charge $12.65 per month
+						  <br>16.416 c/kWh for first 200 kWh per month
+						  <br>14.602 c/kWh for additional kWh</td></tr>"
+	  
+	  # Calculate cost
+	  base_cost = 12.65 * 12.0
+	  total_cost = 0.0
+	  months.each do |month|
+	    use = monthly_elec[month][:total]
+		puts "#{month}: #{use}".green
+		use_cost = 0
+		if use > 200
+		  use_cost = 16.416 * 200.0 / 100.0 # Convert to $
+		  use_cost += (14.602 * (use-200.0) / 100.0)
+		else
+		  use_cost = 16.416 * use / 100.0 # Convert to $
+		end
+		total_cost += use_cost
+	  end
+	  total_cost += base_cost
+	  cost_table << "<tr><td>Electricity</td><td>#{annual_elec.signif}</td><td>kWh</td><td>#{(total_cost).round(2)}</td></tr>"
 	elsif monthly_peak_elec < 1800
 	  puts "Commercial tarrif".pink
+	  rate_summary << "<tr><td>Electricity</td>
+	                      <td>Base charge $10.497 per kW of maximum demand
+						  <br>12.545 c/kWh for first 200 kWh per month
+						  <br>9.266 c/kWh for additional kWh</td></tr>"
+	  
+	  # Calculate cost
+	  total_cost = 0.0
+	  months.each do |month|
+	    use = monthly_elec[month][:total]
+	    peak = monthly_elec[month][:peak]
+		peak_cost = peak * 10.497
+		use_cost = 0
+		if use > 200
+		  use_cost = 12.545 * 200.0 / 100.0 # Convert to $
+		  use_cost += (9.266 * (use-200.0) / 100.0)
+		else
+		  use_cost = 12.545 * use / 100.0 # Convert to $
+		end
+		total_cost += (peak_cost + use_cost)
+	  end
+	  cost_table << "<tr><td>Electricity</td><td>#{annual_elec.signif}</td><td>kWh</td><td>#{(total_cost).round(2)}</td></tr>"
 	else 
 	  puts "Large Commercial tarrif".pink
+	  rate_summary << "<tr><td>Electricity</td>
+	                      <td>Demand charge $13.345 per kVA of maximum demand this month or previous Dec/Jan/Feb (calculated as kW current month only)
+						  <br>9.526 c/kWh</td></tr>"
+	  
+	  # Calculate cost
+	  total_cost = 0.0
+	  months.each do |month|
+	    use = monthly_elec[month][:total]
+	    peak = monthly_elec[month][:peak]
+		peak_cost = peak * 13.345
+		use_cost = 0
+		use_cost = 9.526 * use / 100.0 # Convert to $
+		total_cost += (peak_cost + use_cost)
+	  end
+	  cost_table << "<tr><td>Electricity</td><td>#{annual_elec.signif}</td><td>kWh</td><td>#{(total_cost).round(2)}</td></tr>"
 	end
 	
-	  
+	# Figure out what tarrif to use for natural gas.
+	# https://www.heritagegas.com/for-business/rates/
+	# https://www.heritagegas.com/wp-content/uploads/2021/11/HGL-Rate-Table-November-2021-FINAL.pdf
+	if annual_gas < 500
+	  puts "Rate class 1".light_blue
+	
+	elsif annual_gas < 5000
+	  puts "Rate class 1a".light_blue
+	elsif annual_gas < 50000
+	  puts "Rate class 2".light_blue
+	else
+	  puts "Rate class 3".light_blue
+	end
+	
+
+    puts "****** #{cost_table}".yellow
+	
     return rate_summary, cost_table
   end
 	
