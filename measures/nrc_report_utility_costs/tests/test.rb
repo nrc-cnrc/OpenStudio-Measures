@@ -11,7 +11,7 @@ require_relative '../resources/NRCReportingMeasureHelper.rb'
 # Specific requires for this test
 require 'fileutils'
 
-class NrcReportingMeasure_Test < Minitest::Test
+class NrcReportUtilityCosts_Test < Minitest::Test
 
   # Brings in helper methods to simplify argument testing of json and standard argument methods.
   include(NRCReportingMeasureTestHelper)
@@ -30,67 +30,38 @@ class NrcReportingMeasure_Test < Minitest::Test
     @use_json_package = false
     @use_string_double = true
     @measure_interface_detailed = [
-
         {
-            "name" => "a_string_argument",
-            "type" => "String",
-            "display_name" => "A String Argument (string)",
-            "default_value" => "The Default Value",
-            "is_required" => false
-        },
-        {
-            "name" => "a_double_argument",
-            "type" => "Double",
-            "display_name" => "A Double numeric Argument (double)",
-            "default_value" => 0,
-            "max_double_value" => 100.0,
-            "min_double_value" => 0.0,
-            "is_required" => false
-        },
-        {
-            "name" => "an_integer_argument",
-            "type" => "Integer",
-            "display_name" => "An Integer numeric Argument (integer)",
-            "default_value" => 1,
-            "max_double_value" => 20,
-            "min_double_value" => 0,
-            "is_required" => true
-        },
-        {
-            "name" => "a_string_double_argument",
-            "type" => "StringDouble",
-            "display_name" => "A String Double numeric Argument (double)",
-            "default_value" => 23.0,
-            "max_double_value" => 100.0,
-            "min_double_value" => 0.0,
-            "valid_strings" => ["NA"],
-            "is_required" => false
-        },
-        {
-            "name" => "a_choice_argument",
+            "name" => "calc_choice",
             "type" => "Choice",
-            "display_name" => "A Choice String Argument ",
-            "default_value" => "choice_1",
-            "choices" => ["choice_1", "choice_2"],
+            "display_name" => "Utility cost choice",
+            "default_value" => "Use rates below",
+            "choices" => ["Use rates below", "Nova Scotia rates 2021"],
+            "is_required" => true
+        },
+        {
+            "name" => "electricity_cost",
+            "type" => "Double",
+            "display_name" => "Electricity rate ($/kWh)",
+            "default_value" => 0.10,
+            "max_double_value" => 100.0,
+            "min_double_value" => 0.0,
             "is_required" => false
         },
         {
-            "name" => "a_bool_argument",
-            "type" => "Bool",
-            "display_name" => "A Boolean Argument ",
-            "default_value" => false,
-            "is_required" => true
+            "name" => "gas_cost",
+            "type" => "Double",
+            "display_name" => "Natural gas rate ($/m3)",
+            "default_value" => 0.20,
+            "max_double_value" => 100.0,
+            "min_double_value" => 0.0,
+            "is_required" => false
         }
-
     ]
 
     @good_input_arguments = {
-        "a_string_argument" => "MyString",
-        "a_double_argument" => 50.0,
-        "an_integer_argument" => 5,
-        "a_string_double_argument" => "50.0",
-        "a_choice_argument" => "choice_1",
-        "a_bool_argument" => true
+        "calc_choice" => "Nova Scotia rates 2021",
+        "electricity_cost" => 20.0,
+        "gas_cost" => 30.0,
     }
 
   end
@@ -115,8 +86,9 @@ class NrcReportingMeasure_Test < Minitest::Test
     OpenStudio::Model::WeatherFile::setWeatherFile(model, epw)
 	
     # Set input args. In this case the std matches the one used to create the test model.
-    input_arguments = {
-    }
+    input_arguments = @good_input_arguments
+	#{
+    #}
     
     # Create an instance of the measure
 	runner = run_measure(input_arguments, model)

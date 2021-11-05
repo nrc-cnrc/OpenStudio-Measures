@@ -3,7 +3,7 @@ require_relative 'resources/NRCReportingMeasureHelper'
 require 'erb'
 
 # start the measure
-class NrcReportingMeasure < OpenStudio::Measure::ReportingMeasure
+class NrcReportUtilityCosts < OpenStudio::Measure::ReportingMeasure
 
   attr_accessor :use_json_package, :use_string_double
   
@@ -12,41 +12,48 @@ class NrcReportingMeasure < OpenStudio::Measure::ReportingMeasure
   
   # Human readable name
   def name
-    return "NrcTemplateReportingMeasure"
+    return "NRC Report Utility Costs"
   end
 
   # Human readable description
   def description
-    return "This template reporting measure is used to ensure consistency in detailed BTAP measures using the NRC modificatoins."
+    return "This measure calculates utility costs for Canadian locations. By default a simple $/kWh tarrif can be applied but for 
+	    several locations more complex rules are enabled.
+		Peak values are reported averaged over the hour (the default LEED table produced by E+ reports the PEAK timestep value)."
   end
 
   # Human readable description of modeling approach
   def modeler_description
-    return "This template reporting measure is used to ensure consistency in BTAP measures using the NRC modificatoins."
+    return "The measure creates a simple csv file and html output. The annual costs are available as output metrics for PAT."
   end
   
-  # Define the outputs that the measure will create ??? Can this be folded into the initialise method?
+  # Define the outputs that the measure will create.
   def outputs
     outs = OpenStudio::Measure::OSOutputVector.new
+    outs << OpenStudio::Measure::OSOutput.makeDoubleOutput('annual electricity ($)')
+    outs << OpenStudio::Measure::OSOutput.makeDoubleOutput('annual natural gas ($)')
     return outs
   end
 
-  # return a vector of IdfObject's to request EnergyPlus objects needed by the run method
+  # Return a vector of IdfObject's to request EnergyPlus objects needed by the run method
   # Warning: Do not change the name of this method to be snake_case. The method must be lowerCamelCase.
   def energyPlusOutputRequests(runner, user_arguments)
     super(runner, user_arguments)
 
-    result = OpenStudio::IdfObjectVector.new
+    request = OpenStudio::IdfObjectVector.new
 
-    # use the built-in error checking
+    # Use the built-in error checking
     if !runner.validateUserArguments(arguments, user_arguments)
-      return result
+      return request
     end
 
-    request = OpenStudio::IdfObject.load('Output:Variable,,Site Outdoor Air Drybulb Temperature,Hourly;').get
-    result << request
+    # List outputs required.
+	# No need ofr these as OpenStudio outputs the data required already. If this changes the CI testing will 
+	# catch the change.
+    #request << OpenStudio::IdfObject.load('Output:Meter,Gas:Facility,Monthly;').get
+    #request << OpenStudio::IdfObject.load('Output:Meter,Electricity:Facility,Monthly;').get
 
-    return result
+    return request
   end
   
   # Use the constructor to set global variables
@@ -64,54 +71,30 @@ class NrcReportingMeasure < OpenStudio::Measure::ReportingMeasure
     # you run 'arguments = validate_and_get_arguments_in_hash(model, runner, user_arguments)'
     @measure_interface_detailed = [
         {
-            "name" => "a_string_argument",
-            "type" => "String",
-            "display_name" => "A String Argument (string)",
-            "default_value" => "The Default Value",
-            "is_required" => true
-        },
-        {
-            "name" => "a_double_argument",
-            "type" => "Double",
-            "display_name" => "A Double numeric Argument (double)",
-            "default_value" => 0,
-            "max_double_value" => 100.0,
-            "min_double_value" => 0.0,
-            "is_required" => true
-        },
-        {
-            "name" => "an_integer_argument",
-            "type" => "Integer",
-            "display_name" => "An Integer numeric Argument (integer)",
-            "default_value" => 1,
-            "max_double_value" => 20,
-            "min_double_value" => 0,
-            "is_required" => true
-        },
-        {
-            "name" => "a_string_double_argument",
-            "type" => "StringDouble",
-            "display_name" => "A String Double numeric Argument (double)",
-            "default_value" => 23.0,
-            "max_double_value" => 100.0,
-            "min_double_value" => 0.0,
-            "valid_strings" => ["Baseline", "NA"],
-            "is_required" => true
-        },
-        {
-            "name" => "a_choice_argument",
+            "name" => "calc_choice",
             "type" => "Choice",
-            "display_name" => "A Choice String Argument ",
-            "default_value" => "choice_1",
-            "choices" => ["choice_1", "choice_2"],
+            "display_name" => "Utility cost choice",
+            "default_value" => "Use rates below",
+            "choices" => ["Use rates below", "Nova Scotia rates 2021"],
             "is_required" => true
         },
         {
-            "name" => "a_bool_argument",
-            "type" => "Bool",
-            "display_name" => "A Boolean Argument ",
-            "default_value" => false,
-            "is_required" => true
+            "name" => "electricity_cost",
+            "type" => "Double",
+            "display_name" => "Electricity rate ($/kWh)",
+            "default_value" => 0.10,
+            "max_double_value" => 100.0,
+            "min_double_value" => 0.0,
+            "is_required" => false
+        },
+        {
+            "name" => "gas_cost",
+            "type" => "Double",
+            "display_name" => "Natural gas rate ($/m3)",
+            "default_value" => 0.20,
+            "max_double_value" => 100.0,
+            "min_double_value" => 0.0,
+            "is_required" => false
         }
     ]
   end
@@ -132,38 +115,48 @@ class NrcReportingMeasure < OpenStudio::Measure::ReportingMeasure
     # get the last model and sql file
     model = runner.lastOpenStudioModel
     if model.empty?
-      runner.registerError('Cannot find last model.')
+      runner.registerError("Cannot find last model.")
       return false
     end
     model = model.get
 
-    sql_file = runner.lastEnergyPlusSqlFile
-    if sql_file.empty?
-      runner.registerError('Cannot find last sql file.')
+    @sql_file = runner.lastEnergyPlusSqlFile
+    if @sql_file.empty?
+      runner.registerError("Cannot find last sql file.")
       return false
     end
-    sql_file = sql_file.get
-    model.setSqlFile(sql_file)
-
-    # Put data into the local variable 'output', all local variables are available for erb to use when configuring the input html file
-
-    output =  'Measure Name = ' << name << '<br>'
-    output << 'Building Name = ' << model.getBuilding.name.get << '<br>' # optional variable
-    output << 'Floor Area = ' << model.getBuilding.floorArea.to_s << '<br>' # double variable
-    output << 'Floor to Floor Height = ' << model.getBuilding.nominalFloortoFloorHeight.to_s << ' (m)<br>' # double variable
-    output << 'Net Site Energy = ' << sql_file.netSiteEnergy.to_s << ' (GJ)<br>' # double variable
+    @sql_file = @sql_file.get
+    model.setSqlFile(@sql_file)
 
     # Read in template
     html_in_path = "#{File.dirname(__FILE__)}/resources/report.html.in"
-    html_in = ''
-    File.open(html_in_path, 'r') do |file|
+    html_in = ""
+    File.open(html_in_path, "r") do |file|
       html_in = file.read
     end
-
-    # get the weather file run period (as opposed to design day run period)
+	
+	# Recover arguments and set local variables
+    ruleset = arguments['calc_choice']
+    elec_rate = arguments['electricity_cost']
+    gas_rate = arguments['gas_cost']
+	
+    # Put data into the local variable 'summary', all local variables are available for erb to use when configuring the input html file.
+    summary =  "<h1>#{name}</h1>"
+    summary << "Building Name: #{model.getBuilding.name.get}<br>" # optional variable
+	
+	# Rate summary and costs sections.
+	rate_summary = "Rule set used: #{ruleset}"
+	puts "Ruleset: #{ruleset}".yellow
+	if ruleset == "Use rates below"
+	  rate_summary, cost_table = calcSimpleCosts(elec_rate, gas_rate)
+	elsif ruleset == "Nova Scotia rates 2021"
+	  rate_summary, cost_table = calcNS2021Costs
+	end
+	
+    # Get the weather file run period (as opposed to design day run period)
     ann_env_pd = nil
-    sql_file.availableEnvPeriods.each do |env_pd|
-      env_type = sql_file.environmentType(env_pd)
+    @sql_file.availableEnvPeriods.each do |env_pd|
+      env_type = @sql_file.environmentType(env_pd)
       if env_type.is_initialized
         if env_type.get == OpenStudio::EnvironmentType.new('WeatherRunPeriod')
           ann_env_pd = env_pd
@@ -172,14 +165,14 @@ class NrcReportingMeasure < OpenStudio::Measure::ReportingMeasure
       end
     end
 
-    # only try to get the annual timeseries if an annual simulation was run
+    # Only try to get the annual timeseries if an annual simulation was run
     if ann_env_pd
 
-      # get desired variable
+      # Get desired variable
       key_value = 'Environment'
       time_step = 'Hourly' # "Zone Timestep", "Hourly", "HVAC System Timestep"
       variable_name = 'Site Outdoor Air Drybulb Temperature'
-      output_timeseries = sql_file.timeSeries(ann_env_pd, time_step, variable_name, key_value) # key value would go at the end if we used it.
+      output_timeseries = @sql_file.timeSeries(ann_env_pd, time_step, variable_name, key_value) # key value would go at the end if we used it.
 
       if output_timeseries.empty?
         runner.registerWarning('Timeseries not found.')
@@ -190,11 +183,11 @@ class NrcReportingMeasure < OpenStudio::Measure::ReportingMeasure
       runner.registerWarning('No annual environment period found.')
     end
 
-    # configure template with variable values
+    # Configure template with variable values
     renderer = ERB.new(html_in)
     html_out = renderer.result(binding)
 
-    # write html file
+    # Write html file
     html_out_path = './report.html'
     File.open(html_out_path, 'w') do |file|
       file << html_out
@@ -207,11 +200,146 @@ class NrcReportingMeasure < OpenStudio::Measure::ReportingMeasure
     end
 
     # close the sql file
-    sql_file.close
+    @sql_file.close
 	
     return true
+	
+  end
+  
+  # Specific costing methods
+  def calcSimpleCosts(elec_rate, gas_rate)
+  
+	# Create table content for rate summary.
+    rate_summary = "<tr><td>Electricity</td><td>#{elec_rate} $/kWh</td></tr>"
+    rate_summary << "<tr><td>Natural gas</td><td>#{gas_rate} $/m<sup>3</sup></td></tr>"
+	
+	# Get annual results from SQL database.
+	annual_elec = getValueFromSQL(report = 'EnergyMeters', 
+                                   scope = 'Entire Facility', 
+                                   table = 'Annual and Peak Values - Electricity', 
+                                   row = 'ElectricityNet:Facility', 
+								   column = 'Electricity Annual Value', 
+								   units = 'GJ')
+	annual_gas = getValueFromSQL(report = 'EnergyMeters', 
+                                   scope = 'Entire Facility', 
+                                   table = 'Annual and Peak Values - Gas', 
+                                   row = 'Gas:Facility', 
+								   column = 'Gas Annual Value', 
+								   units = 'GJ')
+
+	# Calculate costs. Note signif defaults to three sig figs.
+	# *** Need to convert fuel use from GJ to units required for costing.
+    # Fuel; Consumption; Unit; Cost"
+    cost_table = "<tr><td>Electricity</td><td>#{annual_elec.signif}</td><td>GJ</td><td>#{(annual_elec*elec_rate).round(2)}</td></tr>"
+    cost_table << "<tr><td>Natural gas</td><td>#{annual_gas.signif}</td><td>GJ</td><td>#{(annual_gas*gas_rate).round(2)}</td></tr>"
+    return rate_summary, cost_table
+  end
+	
+  def calcNS2021Costs
+  
+	# Get monthly consumption and peak results from SQL database.
+	months = ["January", "Feburary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+	monthly_elec = Hash.new
+	monthly_gas = Hash.new
+	annual_elec = 0.0
+	annual_gas = 0.0
+	monthly_peak_elec = 0.1
+	(1..12).each do |month|
+	  elec_total = getMonthlyEnergyConsumptionFromSQL(10, month)/3.6e+6 # return value in J, convert to kWh
+	  gas_total = getMonthlyEnergyConsumptionFromSQL(952, month)/3.6e+6 # return value in J, convert to kWh
+	  elec_peak = getMonthlyPeakEnergyFromSQL(9, month)/3600.0 # return value in J, convert to W (averaged over the hour)
+	  gas_peak = getMonthlyPeakEnergyFromSQL(951, month)/3600.0 # return value in J, convert to W (averaged over the hour)
+	  monthly_elec[months[month-1]] = {total: elec_total, peak: elec_peak}
+	  monthly_gas[months[month-1]] = {total: gas_total, peak: gas_peak}
+	  annual_elec += elec_total
+	  annual_gas += gas_total
+	  monthly_peak_elec = max(monthly_peak_elec, elec_peak)
+	end
+	
+	puts "Elec monthly: #{monthly_elec}".red
+	puts "Gas monthly: #{monthly_gas}".light_blue
+	puts "Elec annual: #{annual_elec}".red
+	puts "Gas annual: #{annual_gas}".light_blue
+	
+	# Figure out what tarrif to use for electricity.
+	# https://www.nspower.ca/about-us/electricity/rates-tariffs
+	if annual_elec < 32000
+	  puts "Small General Tarrif".pink
+	elsif monthly_peak_elec < 1800
+	  puts "Commercial tarrif".pink
+	else 
+	  puts "Large Commercial tarrif".pink
+	end
+	
+	  
+    return rate_summary, cost_table
+  end
+	
+  # SQL queries
+  # Recover data from TabularDataWithStrings
+  def getValueFromSQL(report, scope, table, row, column, units)
+
+	# Generate the SQL query
+	query = "SELECT Value 
+          FROM TabularDataWithStrings
+          WHERE ReportName='#{report}'
+          AND ReportForString='#{scope}'
+          AND TableName='#{table}'
+		  AND RowName='#{row}'
+          AND ColumnName='#{column}'
+          AND Units='#{units}'" 
+		  
+    # Execute the query and check the return value.
+	val = @sql_file.execAndReturnFirstDouble(query)
+	if val.is_initialized then 
+	  val = val.get 
+	else 
+	  puts "ERROR: SQL read failed to find a value with query\n#{query}".red		 
+	  val = 0.0 
+	end
+	return val
+  end
+  
+  
+  def getMonthlyEnergyConsumptionFromSQL(report, month)
+
+	# Generate the SQL query
+	query = "SELECT SUM(Value) 
+          FROM ReportVariableWithTime
+          WHERE ReportDataDictionaryIndex='#{report}'
+		  AND Month='#{month}'
+		  AND EnvironmentPeriodIndex = 3" # Ths is the simulation period, not design days.
+		  
+    # Execute the query and check the return value.
+	val = @sql_file.execAndReturnFirstDouble(query)
+	if val.is_initialized then 
+	  val = val.get 
+	else 
+	  puts "ERROR: SQL read failed to find a value with query\n#{query}".red		 
+	  val = 0.0
+	end
+	return val
+  end
+  def getMonthlyPeakEnergyFromSQL(report, month)
+
+	# Generate the SQL query
+	query = "SELECT MAX(Value) 
+          FROM ReportVariableWithTime
+          WHERE ReportDataDictionaryIndex='#{report}'
+		  AND Month='#{month}'
+		  AND EnvironmentPeriodIndex = 3" # Ths is the simulation period, not design days.
+		  
+    # Execute the query and check the return value.
+	val = @sql_file.execAndReturnFirstDouble(query)
+	if val.is_initialized then 
+	  val = val.get 
+	else 
+	  puts "ERROR: SQL read failed to find a value with query\n#{query}".red		 
+	  val = 0.0
+	end
+	return val
   end
 end
 
 # register the measure to be used by the application
-NrcReportingMeasure.new.registerWithApplication
+NrcReportUtilityCosts.new.registerWithApplication

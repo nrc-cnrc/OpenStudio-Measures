@@ -149,7 +149,7 @@ end
 
 # Add significant digits capability to float class.
 class Float
-  def signif(digits)
+  def signif(digits=3)
     return 0 if self.zero?
     self.round(-(Math.log10(self).ceil - digits))
   end
