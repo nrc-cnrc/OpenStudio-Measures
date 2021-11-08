@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_report_utility_costs</name>
   <uid>224561f4-8ccc-4f60-8118-34b85359d6f1</uid>
-  <version_id>2c501ba3-bd29-4b64-8451-376f914b85db</version_id>
-  <version_modified>20211108T183546Z</version_modified>
+  <version_id>f7c96258-dd63-4d1a-9a19-ad2eadbb11d1</version_id>
+  <version_modified>20211108T192418Z</version_modified>
   <xml_checksum>9BF1E6AC</xml_checksum>
   <class_name>NrcReportUtilityCosts</class_name>
   <display_name>Report Utility Costs</display_name>
@@ -99,12 +99,6 @@
       <checksum>6674950F</checksum>
     </file>
     <file>
-      <filename>test.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>test</usage_type>
-      <checksum>0F69572C</checksum>
-    </file>
-    <file>
       <filename>NRCReportingMeasureHelper.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
@@ -138,6 +132,12 @@
       <filetype>rb</filetype>
       <usage_type>script</usage_type>
       <checksum>F31933D9</checksum>
+    </file>
+    <file>
+      <filename>test.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>E5DFBBAB</checksum>
     </file>
   </files>
 </measure>
