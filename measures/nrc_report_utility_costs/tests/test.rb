@@ -93,14 +93,19 @@ class NrcReportUtilityCosts_Test < Minitest::Test
     # Create an instance of the measure
 	runner = run_measure(input_arguments, model)
 	
-	# Rename output file.
-    #output_file = "report_no_diffs.html"
-    #File.rename("#{NRCReportingMeasureTestHelper.outputFolder}/report.html", "#{NRCReportingMeasureTestHelper.outputFolder}/#{output_file}")
+	# Check it ran successfully.
+    assert(runner.result.value.valueName == 'Success')
+	
+	# Check output values.
+	outputs = runner.result.stepValues
+	outputs.each do |output|
+	  puts "Checking output #{output.name}".light_blue
+	  if output.name == 'annual_electricity'
+        assert_in_delta(6399.54, output.valueAsDouble, 0.001, 'Annual electricity cost')
+	  elsif output.name == 'annual_natural_gas'
+        assert_in_delta(1327.84, output.valueAsDouble, 0.001, 'Annual natural gas cost')
+	  end
+	end
 
-    # Check for differences between the current output and the regression report. Need to write regression file without CRTF endiings.
-	#regression_file = IO.read("#{File.dirname(__FILE__)}/regression_reports/#{output_file}").gsub(/\r\n?/,"\n")
-	#IO.write("#{NRCReportingMeasureTestHelper.outputFolder}/#{output_file}.reg", regression_file)
-	#diffs = FileUtils.compare_file("#{NRCReportingMeasureTestHelper.outputFolder}/#{output_file}","#{NRCReportingMeasureTestHelper.outputFolder}/#{output_file}.reg")
-	#assert(diffs, "There were differences to the regression files:\n")
   end
 end
