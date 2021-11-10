@@ -9,7 +9,7 @@ trap '[ "$?" -eq 0 ] || read -p "$? Looks like something went wrong in step ´$S
 
 echo -e "${GREEN}Recovering worker IDs from docker${NC}..."
 STEP="${GREEN}Recovering worker IDs from docker${NC}"
-workerIDs=$(docker ps -q -f name=${PWD##*/}"_worker_")
+workerIDs=$(docker ps -q -f name=${PWD##*/}"-worker-")
 echo -e "${BLUE}Worker IDs:${NC}\n$workerIDs"
 
 # Recover current list of analyses from the server (this is a massive json string).
@@ -54,6 +54,6 @@ do
   done
 done
 echo -e "${BLUE}Final disk space:${NC}"
-docker exec ${PWD##*/}"_worker_1" sh -c 'df -h .'
+docker exec ${PWD##*/}"-worker-1" sh -c 'df -h .'
 
 echo -e "${GREEN}DONE.${NC}"
