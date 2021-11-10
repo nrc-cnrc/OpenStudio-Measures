@@ -170,7 +170,6 @@ module TestCommon
     def run_test(necb_template:, building_type_in:, epw_file_in:)
       puts "Testing  model creation for #{building_type_in}-#{necb_template}-#{File.basename(epw_file_in, '.epw')}".blue
       puts "Test dir: #{@test_dir}".blue
-      failed = false
       # Make an empty model
       model = OpenStudio::Model::Model.new
 
@@ -188,7 +187,7 @@ module TestCommon
         puts "WARNING: Removing existing output folder #{model_name}".yellow
         FileUtils.remove_dir(model_name, force = true)
       end
-      outputFolder=NRCMeasureTestHelper.setOutputFolder("#{@test_dir}/#{model_name}")
+      outputFolder = NRCMeasureTestHelper.setOutputFolder("#{@test_dir}/#{model_name}")
       # Run the measure and check output.
       runner = run_measure(input_arguments, model)
       assert(runner.result.value.valueName == 'Success')
@@ -231,14 +230,12 @@ module TestCommon
       diff_file = "#{outputFolder}/#{model_name}_diffs.json"
       FileUtils.rm(diff_file) if File.exists?(diff_file)
       if diffs.size > 0
-        #failed = true
         $num_failed += 1
         File.write(diff_file, JSON.pretty_generate(diffs))
       end
 
       # Check for no errors.
       puts "There were #{diffs.size} differences/errors in #{building_type_in} #{necb_template} #{epw_file_in}".yellow
-
       return true
     end
   end
