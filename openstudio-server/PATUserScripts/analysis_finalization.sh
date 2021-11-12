@@ -18,7 +18,7 @@ for file in $(ls -1)
 i=0
 while [ $i -lt $num_scripts ]
  do
-  echo "Starting acript number $i : ${arr_scripts[$i]}"
+  echo "Starting script number $i : ${arr_scripts[$i]}"
   
   # An OR statement is added to catch any errors that causes the script to terminate and doesn't run the following script in the Server folder
   bundle exec ruby ${arr_scripts[$i]} -a $ANALYSIS_ID || echo "An error occured in $i script : ${arr_scripts[$i]}, will skip to the following script"
