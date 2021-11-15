@@ -44,7 +44,7 @@ echo -e "${GREEN}Analysis UUIDs to delete:${NC} $toDelete"
 echo -e "${GREEN}Deleting selected analyses${NC}..."
 STEP="${GREEN}Deleting selected analyses${NC}"
 echo -e "${BLUE}Existing disk space:${NC}"
-docker exec ${PWD##*/}"_worker_1" sh -c 'df -h .'
+docker exec ${PWD##*/}"-worker-1" sh -c 'df -h .'
 for worker in $workerIDs
 do
   for id in $toDelete
