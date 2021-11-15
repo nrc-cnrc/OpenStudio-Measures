@@ -6,18 +6,25 @@ echo -e "${GREEN}Copying optional finalization scripts to server${NC}..."
 cd /mnt/openstudio/scripts
 bundle install
 
+# Always run the re-name script first.
+arr_scripts=('re-name_simulations.rb')
+
 #Add all names of finalization scripts to an array 
 for file in $(ls -1)
- do
-  arr_scripts+=($file)
- done
+do
+  if [ $file != 're-name_simulations.rb' ]
+  then
+    arr_scripts+=($file)
+  fi
+done
  
- num_scripts=${#arr_scripts[@]}
- echo -e "${GREEN}There are $num_scripts scripts added to arr_script ${arr_scripts[@]} ${NC}."
-   
+num_scripts=${#arr_scripts[@]}
+echo -e "${GREEN}There are $num_scripts scripts added to arr_script ${arr_scripts[@]} ${NC}."
+
 i=0
 while [ $i -lt $num_scripts ]
  do
+  echo "----------------------------------------------"
   echo "Starting script number $i : ${arr_scripts[$i]}"
   
   # An OR statement is added to catch any errors that causes the script to terminate and doesn't run the following script in the Server folder
