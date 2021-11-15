@@ -15,7 +15,7 @@ require 'colored'
 #      Run the script with the -a option specifying the UUID
 #    For functions available to recover info from the server see:
 #      https://github.com/NREL/OpenStudio-server/blob/develop/server/config/routes.rb
-#      speciffically any method with a 'get:' infront of it (should hyperlink to the method)
+#      specifically any method with a 'get:' infront of it (should hyperlink to the method)
 
 # Gather the required files from the server for an analysis
 #
