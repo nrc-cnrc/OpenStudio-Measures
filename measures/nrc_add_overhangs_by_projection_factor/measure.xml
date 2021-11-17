@@ -53,50 +53,6 @@
       <min_value></min_value>
       <max_value></max_value>
     </argument>
-    <argument>
-      <name>remove_ext_space_shading</name>
-      <display_name>Remove Existing Space Shading Surfaces From the Model</display_name>
-      <description></description>
-      <type>Boolean</type>
-      <units></units>
-      <required>true</required>
-      <model_dependent>false</model_dependent>
-      <default_value>false</default_value>
-      <choices>
-        <choice>
-          <value>true</value>
-          <display_name>true</display_name>
-        </choice>
-        <choice>
-          <value>false</value>
-          <display_name>false</display_name>
-        </choice>
-      </choices>
-      <min_value></min_value>
-      <max_value></max_value>
-    </argument>
-    <argument>
-      <name>construction</name>
-      <display_name>Remove Existing Space Shading Surfaces From the Model</display_name>
-      <description></description>
-      <type>Boolean</type>
-      <units></units>
-      <required>true</required>
-      <model_dependent>false</model_dependent>
-      <default_value>false</default_value>
-      <choices>
-        <choice>
-          <value>true</value>
-          <display_name>true</display_name>
-        </choice>
-        <choice>
-          <value>false</value>
-          <display_name>false</display_name>
-        </choice>
-      </choices>
-      <min_value></min_value>
-      <max_value></max_value>
-    </argument>
   </arguments>
   <outputs />
   <provenances />

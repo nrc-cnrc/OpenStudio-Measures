@@ -15,15 +15,8 @@ class NrcAddOverhangsByProjectionFactor_Test < Minitest::Test
   include(NRCMeasureTestHelper)
 
   def setup()
-    # Define the output folder.
-    @test_dir = "#{File.dirname(__FILE__)}/output"
-
-    # Create if does not exist. Different logic from outher testing as there are multiple test scripts writing
-    # to this folder so it cannot be deleted.
-    if !Dir.exists?(@test_dir)
-      puts "Creating output folder: #{@test_dir}"
-      Dir.mkdir(@test_dir)
-    end
+    @use_json_package = false
+    @use_string_double = false
 
     @measure_interface_detailed = [
       {
@@ -58,18 +51,39 @@ class NrcAddOverhangsByProjectionFactor_Test < Minitest::Test
     }
   end
 
-  def test_NrcAddOverhangsByProjectionFactor_good
-    # create an instance of the measure
+  def checkFacade(absoluteAzimuth)
+    until absoluteAzimuth < 360.0
+      absoluteAzimuth = absoluteAzimuth - 360.0
+    end
+    if (absoluteAzimuth >= 315.0 || absoluteAzimuth < 45.0)
+      facade = "North"
+    elsif (absoluteAzimuth >= 45.0 && absoluteAzimuth < 135.0)
+      facade = "East"
+    elsif (absoluteAzimuth >= 135.0 && absoluteAzimuth < 225.0)
+      facade = "South"
+    elsif (absoluteAzimuth >= 225.0 && absoluteAzimuth < 315.0)
+      facade = "West"
+    end
+    return facade
+  end
+
+  def test_NrcAddOverhangsByProjectionFactor
+    puts "Testing Add Overhangs By Projection Factor".green
+
+    # Define the output folder for this test (optional - default is the method name).
+    output_file_path = NRCMeasureTestHelper.appendOutputFolder("test_AddOverhangsByProjectionFactor")
+
+    # Create an instance of the measure
     measure = NrcAddOverhangsByProjectionFactor.new
 
-    # make an empty model
+    # Make an empty model
     model = OpenStudio::Model::Model.new
 
-    # get arguments and test that they are what we are expecting
+    # Get arguments and test that they are what we are expecting
     arguments = measure.arguments(model)
     assert_equal(3, arguments.size)
 
-    # load the test model
+    # Load the test model
     translator = OpenStudio::OSVersion::VersionTranslator.new
     path = OpenStudio::Path.new(File.dirname(__FILE__) + "/warehouse_2017.osm")
     model = translator.loadModel(path)
@@ -81,48 +95,46 @@ class NrcAddOverhangsByProjectionFactor_Test < Minitest::Test
       "projection_factor" => 0.5,
       "remove_ext_space_shading" => false
     }
+    facade = input_arguments['facade']
 
-    # Define the output folder.
-    test_dir = "#{File.dirname(__FILE__)}/output"
-    if !Dir.exists?(test_dir)
-      Dir.mkdir(test_dir)
-    end
-    NRCMeasureTestHelper.setOutputFolder("#{test_dir}")
-
-    # Run the measure and check if the surfaces were renamed as expected
+    # Run the measure
     runner = run_measure(input_arguments, model)
-
     result = runner.result
     show_output(result)
-    assert(result.value.valueName == 'Success')
 
-    # loop through surfaces finding exterior walls with proper orientation
+    num_overHangsCreated = 0
+
+    # Loop through surfaces finding exterior walls with proper orientation
     sub_surfaces = model.getSubSurfaces
     sub_surfaces.each do |sub_surface|
+      absoluteAzimuth = OpenStudio::convert(sub_surface.azimuth, "rad", "deg").get + sub_surface.space.get.directionofRelativeNorth + model.getBuilding.northAxis
       next if sub_surface.outsideBoundaryCondition != 'Outdoors'
-      next if sub_surface.subSurfaceType == 'Skylight'
-      next if sub_surface.subSurfaceType == 'Door'
-      next if sub_surface.subSurfaceType == 'GlassDoor'
-      next if sub_surface.subSurfaceType == 'OverheadDoor'
-      next if sub_surface.subSurfaceType == 'TubularDaylightDome'
-      next if sub_surface.subSurfaceType == 'TubularDaylightDiffuser'
-
-      # Check if measure has created overhangs
-      shading_groups = model.getShadingSurfaceGroups
-      shading_groups.each do |shading_group|
-        shading_s = shading_group.shadingSurfaces
-        shading_s.each do |shading_surface|
-          if shading_surface.name.to_s == "#{sub_surface.name} - Overhang"
-            runner.registerInfo("There exists window overhangs named '#{shading_surface.name}'.")
-          else
-            runner.registerWarning("No overhangs were created.")
+      if sub_surface.name.to_s.include? "Window"
+        # Check if measure has created overhangs
+        shading_groups = model.getShadingSurfaceGroups
+        shading_groups.each do |shading_group|
+          shading_s = shading_group.shadingSurfaces
+          shading_s.each do |shading_surface|
+            if shading_surface.name.to_s == "#{sub_surface.name} - Overhang"
+              # The 'checkFacade' function returns the facade of subsurface that the measure created an overhang to
+              testFacade = checkFacade(absoluteAzimuth)
+              #Test if overhangs are created in correct facade selected by user
+              assert(testFacade == facade)
+              num_overHangsCreated += 1
+            end
           end
         end
       end
     end
-    # save the model to test output directory
-    output_file_path = "#{@test_dir}/OverHangsOutput.osm"
-    puts "  Saving: #{output_file_path}".yellow
-    model.save(output_file_path, true)
+
+    # Test that there are overhangs created by the measure
+    assert(num_overHangsCreated > 0)
+    puts "There are".green + " #{num_overHangsCreated}".light_blue + " over hangs created.".green
+
+    # Save the model to test output directory
+    output_path = "#{output_file_path}/test_output.osm"
+    model.save(output_path, true)
+    puts "Runner output #{show_output(runner.result)}".green
+    assert(runner.result.value.valueName == 'Success')
   end
 end
