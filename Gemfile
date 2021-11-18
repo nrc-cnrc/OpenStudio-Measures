@@ -15,6 +15,6 @@ gem 'minitest'
 gem 'aws-sdk-s3'
 gem 'git-revision'
 
-# Additional gems required for measures.
 gem 'diffy'
-gem 'roo', '~> 2.8'  #Roo implements read access for all excel and spreadsheets
+# Additional gems required for measures.
+#gem 'roo', '~> 2.8'

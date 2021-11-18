@@ -107,10 +107,10 @@ then
   addgems="FALSE"
   while read -r line
   do
-    echo -e "${YELLOW}$line${NC}"
+    #echo -e "${YELLOW}$line${NC}"
 	if [ "$addgems" = "TRUE" ]
 	then
-	  echo -e "${GREEN}   adding ${BLUE}${line}${NC} to .gemfile${NC}"
+	  echo -e "${GREEN}   adding ${BLUE}${line}${GREEN} to .gemfile${NC}"
 	  echo $line >> .gemfile
 	fi
     if [[ "$line" =~ "Additional" ]]
