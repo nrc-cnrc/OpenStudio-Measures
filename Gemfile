@@ -17,4 +17,4 @@ gem 'git-revision'
 
 gem 'diffy'
 # Additional gems required for measures.
-#gem 'roo', '~> 2.8'
+gem 'roo', '~> 2.7.1'
