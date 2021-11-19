@@ -7,6 +7,7 @@ measures/nrc_add_drain_water_heat_recovery/tests/test.rb
 measures/nrc_alter_shgc/tests/test.rb
 measures/nrc_change_cav_to_vav/tests/test.rb
 measures/nrc_change_heat_recovery_efficiency/tests/test.rb
+measures/nrc_change_SWH_heater_to_ASHPWH/tests/test.rb
 #measures/nrc_create_geometry/tests/test_2011.rb
 #measures/nrc_create_geometry/tests/test_2015.rb
 #measures/nrc_create_geometry/tests/test_2017.rb
