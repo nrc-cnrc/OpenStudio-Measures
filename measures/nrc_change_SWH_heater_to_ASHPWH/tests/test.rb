@@ -1,7 +1,4 @@
-# Require the measure and test helper
-require_relative '../measure.rb'
-require_relative '../resources/NRCMeasureHelper.rb'
-# Standard openstudio requires for runnin test
+# Standard openstudio requires for running test
 require 'openstudio'
 require 'openstudio/measure/ShowRunnerOutput'
 require 'openstudio-standards'
