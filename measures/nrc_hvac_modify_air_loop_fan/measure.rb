@@ -92,9 +92,9 @@ class NrcHvacModifyAirLoopFan < OpenStudio::Measure::ModelMeasure
     new_pressure_rise = arguments['pressure_rise']
     new_fan_efficiency = arguments['fan_efficiency'] / 100.0
     new_motor_efficiency = arguments['motor_efficiency'] / 100.0
-    puts "new_pressure_rise #{new_pressure_rise}".yellow
-    puts "new_fan_efficiency #{new_fan_efficiency}".yellow
-    puts "new_motor_efficiency #{new_motor_efficiency}".yellow
+    puts "new_pressure_rise".green + " #{new_pressure_rise}".light_blue
+    puts "new_fan_efficiency".green + " #{new_fan_efficiency}".light_blue
+    puts "new_motor_efficiency".green + " #{new_motor_efficiency}".light_blue
 
     # Track if the modifications are successful.
     success_pressure_rise = true
@@ -103,7 +103,7 @@ class NrcHvacModifyAirLoopFan < OpenStudio::Measure::ModelMeasure
 
     # Loop through the model and make changes.
     model.getLoops.each do |loop|
-      puts "Air loop name: #{loop.name}".light_blue
+      puts "Air loop name: ".green + "#{loop.name}".light_blue
       loop.supplyComponents.each do |comp|
         if comp.iddObject.name.include? "OS:Fan:ConstantVolume"
           puts "CAV Fan name: #{comp.name}".green

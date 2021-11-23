@@ -16,7 +16,7 @@ measures/nrc_create_necb_prototype_building/tests/test_2015.rb
 measures/nrc_create_necb_prototype_building/tests/test_2017.rb
 #measures/nrc_create_necb_prototype_building/tests/test_2020.rb
 measures/nrc_doas_vrf/tests/test.rb
-#measures/nrc_hvac_modify_air_loop_fan/tests/test.rb
+measures/nrc_hvac_modify_air_loop_fan/tests/test.rb
 measures/nrc_hvac_modify_air_loop_gas_heating_coil/tests/test.rb
 measures/nrc_hvac_modify_dx_single_stage_cooling_coil/tests/test.rb
 measures/nrc_hvac_modify_plant_loop_pump/tests/test.rb

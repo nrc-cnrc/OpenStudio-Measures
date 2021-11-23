@@ -16,17 +16,7 @@ class NrcHvacModifyAirLoopFan_Test < Minitest::Test
   # Brings in helper methods to simplify argument testing of json and standard argument methods.
   include(NRCMeasureTestHelper)
 
-  # Define the output folder.
-  @@test_dir = "#{File.expand_path(__dir__)}/output"
-  # Remove if existing found. This should only be done once.
-  if Dir.exists?(@@test_dir)
-    FileUtils.rm_rf(@@test_dir)
-    sleep 10
-  end
-  Dir.mkdir(@@test_dir)
-
   def setup()
-
     @use_json_package = false
     @use_string_double = true
     @measure_interface_detailed = [
@@ -75,11 +65,10 @@ class NrcHvacModifyAirLoopFan_Test < Minitest::Test
 
   # Test
   def test_modify_fan()
-    puts "Testing modification of fan".blue
+    puts "Testing modification of fan".green
 
-    ####### Create a test model ######
-    # Set output folder. This should be unique to avoid other tests writing to the same location.
-    NRCMeasureTestHelper.setOutputFolder("#{@@test_dir}")
+    # Define the output folder for this test (optional - default is the method name).
+    output_file_path = NRCMeasureTestHelper.appendOutputFolder("test_modify_fan")
 
     # Set standard to use.
     standard = Standard.build("NECB2017")
@@ -88,7 +77,7 @@ class NrcHvacModifyAirLoopFan_Test < Minitest::Test
     model = standard.model_create_prototype_model(template: "NECB2017",
                                                   building_type: "RetailStripmall",
                                                   epw_file: "CAN_AB_Banff.CS.711220_CWEC2016.epw",
-                                                  sizing_run_dir: NRCMeasureTestHelper.outputFolder)
+                                                  sizing_run_dir: output_file_path)
 
     # Create an instance of the measure
     runner = run_measure(@good_input_arguments, model)
@@ -102,26 +91,37 @@ class NrcHvacModifyAirLoopFan_Test < Minitest::Test
 
     # Now check that the burner efficiency has been properly changed.
     model.getLoops.each do |loop|
-      puts "Air loop name: #{loop.name}".light_blue
+      puts "Air loop name:".green + " #{loop.name}".light_blue
       loop.supplyComponents.each do |comp|
         if comp.iddObject.name.include? "OS:Fan:ConstantVolume"
           fan = comp.to_FanConstantVolume.get
           value = fan.pressureRise
-          assert_in_delta(new_pressure_rise, value, delta = 1, msg = 'Pressure rise (Pa)')
+          msg = "Pressure rise (Pa) was supposed to be equal #{new_pressure_rise} but got #{value} instead".red
+          assert_in_delta(new_pressure_rise, value, delta = 1, msg)
           value = fan.fanTotalEfficiency * 100.0
-          assert_in_delta(new_fan_efficiency, value, delta = 0.01, msg = 'Fan total efficiency (%)')
+          msg = "Fan total efficiency (%) was supposed to be equal #{new_fan_efficiency} but got #{value} instead".red
+          assert_in_delta(new_fan_efficiency, value, delta = 0.01, msg)
           value = fan.motorEfficiency * 100.0
-          assert_in_delta(new_motor_efficiency, value, delta = 0.01, msg = 'Fan motor efficiency (%)')
+          msg = "Fan motor efficiency (%) was supposed to be equal #{new_motor_efficiency} but got #{value} instead".red
+          assert_in_delta(new_motor_efficiency, value, delta = 0.01, msg)
         elsif comp.iddObject.name.include? "OS:Fan:VariableVolume"
           fan = comp.to_FanVariableVolume.get
           value = fan.pressureRise
-          assert_in_delta(new_pressure_rise, value, delta = 1, msg = 'Pressure rise (Pa)')
+          msg = "Pressure rise (Pa) was supposed to be equal #{new_pressure_rise} but got #{value} instead".red
+          assert_in_delta(new_pressure_rise, value, delta = 1, msg)
           value = fan.fanTotalEfficiency * 100.0
-          assert_in_delta(new_fan_efficiency, value, delta = 0.01, msg = 'Fan total efficiency (%)')
+          msg = "Fan total efficiency (%) was supposed to be equal #{new_fan_efficiency} but got #{value} instead".red
+          assert_in_delta(new_fan_efficiency, value, delta = 0.01, msg)
           value = fan.motorEfficiency * 100.0
-          assert_in_delta(new_motor_efficiency, value, delta = 0.01, msg = 'Fan motor efficiency (%)')
+          msg = "Fan motor efficiency (%) was supposed to be equal #{new_motor_efficiency} but got #{value} instead".red
+          assert_in_delta(new_motor_efficiency, value, delta = 0.01, msg)
         end
       end
     end
+    # save the model to test output directory
+    output_path = "#{output_file_path}/test_output.osm"
+    model.save(output_path, true)
+    puts "Runner output #{show_output(runner.result)}".green
+    assert(runner.result.value.valueName == 'Success')
   end
 end
