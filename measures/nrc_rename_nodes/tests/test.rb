@@ -14,15 +14,9 @@ require 'fileutils'
 class NrcRenameNodes_Test < Minitest::Test
   include(NRCMeasureTestHelper)
 
-  # Define the output folder.
-  @@test_dir = "#{File.dirname(__FILE__)}/output"
-  # Remove if existing found. This should only be done once.
-  if Dir.exists?(@@test_dir)
-    FileUtils.rm_rf(@@test_dir)
-  end
-  Dir.mkdir(@@test_dir)
-
   def setup()
+    @use_json_package = false
+    @use_string_double = true
     @measure_interface_detailed = [
       {
         "name" => "rename_nodes",
@@ -39,6 +33,11 @@ class NrcRenameNodes_Test < Minitest::Test
 
   def test_number_of_arguments_and_argument_names
 
+    puts "Testing HVAC nodes renaming".green
+
+    # Define the output folder for this test (optional - default is the method name).
+    output_file_path = NRCMeasureTestHelper.appendOutputFolder("test_rename_nodes")
+
     # load the test model
     translator = OpenStudio::OSVersion::VersionTranslator.new
     path = OpenStudio::Path.new(File.dirname(__FILE__) + "/resources/Warehouse-NECB2017-ON_Ottawa.osm")
@@ -53,19 +52,11 @@ class NrcRenameNodes_Test < Minitest::Test
     arguments = measure.arguments(model)
     assert_equal(1, arguments.size)
 
-    # Define the output folder for this test.
-    NRCMeasureTestHelper.setOutputFolder("#{@@test_dir}")
-
-    # get arguments
-    arguments = measure.arguments(model)
-    input_arguments = {
-      "rename_nodes" => true
-    }
-
+    input_arguments = @good_input_arguments
     # Run the measure and check if the nodes were renamed as expected
     runner = run_measure(input_arguments, model)
-	
-    # Check whether the names of nodes of the supply side in plant loops have been changed correctly
+
+    puts "Checking whether the names of nodes of the supply side in plant loops have been changed correctly".green
     model.getPlantLoops.sort.each do |plant_loop|
       plant_loop.supplyComponents.each do |component|
         plant_loop_name = plant_loop.name.get
@@ -82,11 +73,12 @@ class NrcRenameNodes_Test < Minitest::Test
           expected_name = "#{plant_loop_name.to_s}-Supply-#{component1.to_s}-Leaving_node"
           name = component.name()
         end
-        assert(name.to_s.include?(expected_name.to_s), "Plant loop node names did not change correctly")
+        msg = "Plant loop node names did not change correctly, was supposed to be #{expected_name} but instead got #{name} "
+        assert(name.to_s.include?(expected_name.to_s), msg)
       end
     end
 
-    # Check whether the names of outdoor nodes of the air loops have been changed correctly
+    puts "Checking whether the names of outdoor nodes of the air loops have been changed correctly".green
     model.getAirLoopHVACs.sort.each do |air_loop|
       outdoorAirSystem = air_loop.airLoopHVACOutdoorAirSystem
       outdoorAirSystem_name = outdoorAirSystem.get.name
@@ -100,7 +92,8 @@ class NrcRenameNodes_Test < Minitest::Test
             component1 = "#{node.inletModelObject.get.name.get}" # find the component just before the node
             expected_name = "#{outdoorAirSystem_name}-Supply-#{component1.to_s}-Leaving_node"
             name = outdoorAirComponent.name()
-            assert(name.to_s.include?(expected_name.to_s), "Air Loop HVAC Outdoor Air System node names did not change correctly")
+            msg = "Air Loop HVAC Outdoor Air System node names did not change correctly, was supposed to be #{expected_name} but instead got #{name} "
+            assert(name.to_s.include?(expected_name.to_s), msg)
           end
         end
 
@@ -113,13 +106,14 @@ class NrcRenameNodes_Test < Minitest::Test
             component1 = "#{node.inletModelObject.get.name.get}" # find the component just before the node
             expected_name = "#{outdoorAirSystem_name}-Supply-#{component1.to_s}-Leaving_node"
             name = reliefComponent.name()
-            assert(name.to_s.include?(expected_name.to_s), "Air Loop HVAC Outdoor Air System node names did not change correctly")
+            msg = "Air Loop HVAC Outdoor Air System relief node name did not change correctly, was supposed to be #{expected_name} but instead got #{name} "
+            assert(name.to_s.include?(expected_name.to_s), "Air Loop HVAC Outdoor Air System relief node names did not change correctly")
           end
         end
       end
     end
 
-    # Check whether the names of nodes of the supply side in air loops have been changed correctly
+    puts "Checkinh whether the names of nodes of the supply side in air loops have been changed correctly".green
     model.getAirLoopHVACs.sort.each do |air_loop|
       air_loop_name = air_loop.name.get
 
@@ -148,7 +142,8 @@ class NrcRenameNodes_Test < Minitest::Test
           name = component.name()
         end
       end
-      assert(name.to_s.include?(expected_name.to_s), "Air loop node names did not change correctly")
+      msg = "Air loop node names did not change correctly, was supposed to be #{expected_name} but instead got #{name} "
+      assert(name.to_s.include?(expected_name.to_s), msg)
     end
 
     result = runner.result
@@ -156,8 +151,9 @@ class NrcRenameNodes_Test < Minitest::Test
     assert(result.value.valueName == 'Success')
 
     # save the model to test output directory
-    output_file_path = "#{NRCMeasureTestHelper.outputFolder}/test_output.osm"
-    model.save(output_file_path, true)
-
+    output_path = "#{output_file_path}/test_output.osm"
+    model.save(output_path, true)
+    puts "Runner output #{show_output(runner.result)}".green
+    assert(runner.result.value.valueName == 'Success')
   end
 end
