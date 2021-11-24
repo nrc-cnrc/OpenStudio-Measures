@@ -136,12 +136,12 @@ class NrcRenameSurfaces < OpenStudio::Measure::ModelMeasure
           end
           subsurf.setName(new_subSurface_name)
         end
-        runner.registerInfo("Surface '#{name1}' is renamed to : #{new_surface_name}".blue)
-        runner.registerInfo("Sub surface '#{subSurface_name}' is renamed to : #{new_subSurface_name}".light_blue)
+        runner.registerInfo("Surface".green + " #{name1}".light_blue + " is renamed to :".green + " #{new_surface_name}".light_blue)
+        runner.registerInfo("Sub surface".green + " #{subSurface_name}".light_blue + " is renamed to : #{new_subSurface_name}".light_blue)
       end
 
     else # if the user selected false as the measure argument
-      runner.registerInfo("You have selected 'false', so the measure won't change the names of any surfaces. Please select 'true' to change the surfaces' names.")
+      runner.registerInfo("You have selected 'false', so the measure won't change the names of any surfaces. Please select 'true' to change the surfaces' names.").red
     end
     return true
   end

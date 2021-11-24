@@ -16,21 +16,30 @@ class NrcRenameSurfaces_Test < Minitest::Test
   include(FindOrientation)
 
   def setup()
+    @use_json_package = false
+    @use_string_double = true
+
     @measure_interface_detailed = [
-        {
-            "name" => "rename_all_surfaces",
-            "type" => "Bool",
-            "display_name" => "Rename all surfaces and sub surfaces of the model.",
-            "default_value" => true,
-            "is_required" => true
-        }
+      {
+        "name" => "rename_all_surfaces",
+        "type" => "Bool",
+        "display_name" => "Rename all surfaces and sub surfaces of the model.",
+        "default_value" => true,
+        "is_required" => true
+      }
     ]
     @good_input_arguments = {
-        "rename_all_surfaces" => true
+      "rename_all_surfaces" => true
     }
   end
 
-  def test_number_of_arguments_and_argument_names
+  def test_rename_surfaces
+
+    puts "Testing surfaces renaming".green
+
+    # Define the output folder for this test (optional - default is the method name).
+    output_file_path = NRCMeasureTestHelper.appendOutputFolder("test_renameSurfaces")
+
     # create an instance of the measure
     measure = NrcRenameSurfaces.new
 
@@ -47,21 +56,9 @@ class NrcRenameSurfaces_Test < Minitest::Test
     model = translator.loadModel(path)
     assert((not model.empty?))
     model = model.get
+    input_arguments = @good_input_arguments
 
-    # get arguments
-    arguments = measure.arguments(model)
-    input_arguments = {
-        "rename_all_surfaces" => true
-    }
-
-    # Define the output folder.
-    test_dir = "#{File.dirname(__FILE__)}/output"
-    if !Dir.exists?(test_dir)
-      Dir.mkdir(test_dir)
-    end
-    NRCMeasureTestHelper.setOutputFolder("#{test_dir}")
-
-    # Run the measure and check if the surfaces were renamed as expected
+    puts "Test if the surfaces were renamed as expected"
     runner = run_measure(input_arguments, model)
     model.getSurfaces.each do |surface|
       new_name = (surface.name).to_s
@@ -73,13 +70,10 @@ class NrcRenameSurfaces_Test < Minitest::Test
           next if (surface.adjacentSurface.empty? || surface.adjacentSurface.get.space.empty?)
           adj_space = surface.adjacentSurface.get.space.get.name.to_s
           expected_name = ("Int" + expected_name + "-" + adj_space).to_s
-          assert(new_name.include? "#{expected_name}")
         elsif (outsideBoundaryCondition == "Outdoors")
           expected_name = "Ext" + expected_name + "-" + facade
-          assert(new_name.include? "#{expected_name}")
         elsif (outsideBoundaryCondition == "Ground")
           expected_name = "BasementWall" + "-" + facade
-          assert(new_name.include? "#{expected_name}")
         end
 
       elsif (surface.surfaceType.to_s.include? "RoofCeiling")
@@ -88,10 +82,8 @@ class NrcRenameSurfaces_Test < Minitest::Test
           next if (surface.adjacentSurface.empty? || surface.adjacentSurface.get.space.empty?)
           adj_space = surface.adjacentSurface.get.space.get.name.to_s
           expected_name = "Ceiling" + "-" + adj_space
-          assert(new_name.include? "#{expected_name}")
         elsif (outsideBoundaryCondition == "Outdoors")
           expected_name = "Roof"
-          assert(new_name.include? "#{expected_name}")
         end
 
       elsif (surface.surfaceType.to_s.include? "Floor")
@@ -99,12 +91,12 @@ class NrcRenameSurfaces_Test < Minitest::Test
           next if (surface.adjacentSurface.empty? || surface.adjacentSurface.get.space.empty?)
           adj_space = surface.adjacentSurface.get.space.get.name.to_s
           expected_name = "Floor" + "-" + adj_space
-          assert(new_name.include? "#{expected_name}")
         elsif (outsideBoundaryCondition == "Ground")
           expected_name = "GroundFloor"
-          assert(new_name.include? "#{expected_name}")
         end
       end
+      msg = "Surface name did not change correctly, was supposed to be #{expected_name} but instead got #{new_name} ".red
+      assert(new_name.include?(expected_name), msg)
 
       surface.subSurfaces.each do |subsurf|
         new_subSurface_name = (subsurf.name).to_s
@@ -114,14 +106,21 @@ class NrcRenameSurfaces_Test < Minitest::Test
           assert(new_subSurface_name.include? "#{expected_subSurface_name}")
         elsif (subsurf.subSurfaceType.to_s.include? "Skylight")
           expected_subSurface_name = "ExtSkylight"
-          assert(new_subSurface_name.include? "#{expected_subSurface_name}")
         end
+        msg = "Subsurface name did not change correctly, was supposed to be #{expected_subSurface_name} but instead got #{new_subSurface_name} ".red
+        assert(new_subSurface_name.include?(expected_subSurface_name), msg)
       end
     end
 
     result = runner.result
     show_output(result)
     assert(result.value.valueName == 'Success')
+
+    # save the model to test output directory
+    output_path = "#{output_file_path}/test_output.osm"
+    model.save(output_path, true)
+    puts "Runner output #{show_output(runner.result)}".green
+    assert(runner.result.value.valueName == 'Success')
 
   end
 end
