@@ -18,7 +18,7 @@ fi
 
 # Function to create new test container.
 create_newContainer() {
-  echo -e "${GREEN}Creating docker container${NC}..."
+  echo -e "${GREEN}Creating new docker test container${NC}..."
   echo -e "${YELLOW}If you get an error here check the folder mounted in the -v option must be a sharable resource - see the docker interface to enable${NC}"
 
   echo "Creating testing container with command:"
@@ -26,16 +26,16 @@ create_newContainer() {
   MSYS_NO_PATHCONV=1 docker create -ti -P -v $shared_win_folder:/os_test --name $testContainer $image
 }
 
-# Select one of 4 options: 1) Create a new container if it doesn't exist, 2) Recreate from scratch if it exists, 3) Just update the gems, or 4) Exit.
 # The docker ps will return the container ID if it exists, nothing if not.
-echo -e "${YELLOW}Do you want to...?${NC}"
-select yn in "Container does not exist,create it" "Container exists but recreate everything from scratch" "Reinstall gems" "Cancel"; do
+ if [ ! $(docker ps -aq -f name=$testContainer) ]; then
+  echo -e "${GREEN}Container ${BLUE}$testContainer ${GREEN}doesn't exist.${NC}"
+	create_newContainer
+ else
+  echo -e "${GREEN}Found existing container ${BLUE}$testContainer. ${GREEN}Do you want to...?${NC}"
+  # Select one of 3 options: 1) Recreate from scratch if it exists, 2) Just update the gems, or 3) Exit. 
+  select yn in "Recreate everything from scratch" "Reinstall gems" "Cancel"; do
   case $yn in
-  "Container does not exist,create it")
-    create_newContainer
-    break
-    ;;
-  "Container exists but recreate everything from scratch")
+  "Recreate everything from scratch")
     if [ ! $(docker ps -aq -f status=exited -f name=$testContainer) ] || [ $(docker ps -aq -f name=$testContainer) ]; then
       docker container stop $testContainer
     fi
@@ -52,7 +52,8 @@ select yn in "Container does not exist,create it" "Container exists but recreate
     ;;
   esac
 done
-
+fi
+ 
 # Run bundle install to update the new container (this will install gems in bundle/vendor).
 echo -e "${GREEN}Starting the test environment container${NC}..."
 docker container start $testContainer

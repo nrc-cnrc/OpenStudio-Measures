@@ -109,6 +109,7 @@ module NRCMeasureTestHelper
     return runner
   end
 
+
   #Fancy way of getting the measure object automatically. Added check for NRC in measure name.
   def get_measure_object()
     measure_class_name = self.class.name.to_s.match((/(NRC.*)(\_Test)/i) || ((/(BTAP.*)(\_Test)/i))).captures[0]
