@@ -30,6 +30,7 @@ measures/nrc_pricing/tests/test.rb
 measures/nrc_report/tests/test_diffy.rb
 measures/nrc_report_carbon_emissions/tests/test.rb
 #measures/nrc_report_model_diffs_from_code/tests/test.rb
+measures/nrc_report_setpointdiff/tests/test.rb
 #measures/nrc_resize_existing_windows_to_match_a_given_wwr/tests/test.rb
 measures/nrc_set_boiler_efficiency/tests/test.rb
 measures/nrc_set_fan_efficiency/tests/test.rb

@@ -30,7 +30,6 @@ module OsLib_Reporting
     end
     sqlFile = sqlFile.get
     model.setSqlFile(sqlFile)
-
     # populate hash to pass to measure
     results[:model] = model
     results[:sqlFile] = sqlFile
@@ -57,7 +56,7 @@ module OsLib_Reporting
     return html_out_path
   end
 
-  # clean up unkown strings used for runner.registerValue names
+  # clean up unknown strings used for runner.registerValue names
   def self.reg_val_string_prep(string)
     # replace non alpha-numberic characters with an underscore
     string = string.gsub(/[^0-9a-z]/i, '_')
@@ -105,12 +104,11 @@ module OsLib_Reporting
     return @model_summary_table_section
   end
 
-  # create table air loop summary
+  # Create hourly temperatures table at setpoint manager nodes
   def self.temperature_detailed_section(model, sqlFile, runner, name_only = false)
     is_ip_units = false
     # array to hold tables
     temp_diff_detail_tables = []
-
     # gather data for section
     @temp_diff_data_section = {}
     @temp_diff_data_section[:title] = "Hourly Temperatures at Setpoint Manager Nodes"
@@ -137,6 +135,7 @@ module OsLib_Reporting
     end
 
     variable_names = sqlFile.availableVariableNames(ann_env_pd, reporting_frequency)
+
     # Create an array with all the setpoint managers nodes
     @detail_arr = []
     node_names = []
@@ -160,6 +159,7 @@ module OsLib_Reporting
       output_timeseries = {}
       variable_names.each do |variable_name|
         timeseries = sqlFile.timeSeries(ann_env_pd, reporting_frequency, variable_name.to_s, key_value.to_s)
+
         if !timeseries.empty?
           timeseries = timeseries.get
           units = timeseries.units
@@ -171,7 +171,6 @@ module OsLib_Reporting
       end
 
       final_array = []
-
       date_times = output_timeseries[output_timeseries.keys[0]].dateTimes
       values = {}
       for key in output_timeseries.keys
@@ -185,7 +184,7 @@ module OsLib_Reporting
 
         for key in headers
           key_index = headers.find_index(key)
-          runner.registerInfo("#{key}: #{values[key_index][i]} & Next: #{values[key_index][i + 1]}") if i == 0
+          puts "#{key}: #{values[key_index][i]}".light_blue + " & Next:".green + " #{values[key_index][i + 1]}".light_blue if i == 0
 
           value = values[key_index][i].round(2)
           if key_index == 0
@@ -193,7 +192,6 @@ module OsLib_Reporting
           end
           row << value
         end
-
         final_array << row
       end
       # Calculate Diff between actual and setpoint temperature
@@ -219,7 +217,6 @@ module OsLib_Reporting
           @detail_arr << arr
         end
       end
-
       # populate tables for section
       temp_diff_detail_tables << output_data_air_loops
 

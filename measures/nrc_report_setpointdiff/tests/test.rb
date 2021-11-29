@@ -12,21 +12,57 @@ require_relative '../resources/NRCReportingMeasureHelper.rb'
 require 'fileutils'
 
 class NrcReportSetPointDiff_Test < Minitest::Test
-
   # Brings in helper methods to simplify argument testing of json and standard argument methods.
   include(NRCReportingMeasureTestHelper)
+  @use_json_package = false
+  @use_string_double = true
 
-  # Define the output folder.
-  @@test_dir = "#{File.expand_path(__dir__)}/output"
-  # Remove if existing found. This should only be done once.
-  if Dir.exists?(@@test_dir)
-    FileUtils.rm_rf(@@test_dir)
-    sleep 10
+  def setup()
+    @use_json_package = false
+    @use_string_double = true
+    @measure_interface_detailed = [
+      {
+        "name" => "timeStep",
+        "type" => "Choice",
+        "display_name" => "Time Step",
+        "default_value" => "Hourly",
+        "choices" => ["Hourly", "Daily", "Zone Timestep"],
+        "is_required" => true
+      },
+      {
+        "name" => "detail",
+        "type" => "Choice",
+        "display_name" => "Create detailed hourly Excel files?",
+        "default_value" => "Yes",
+        "choices" => ["Yes", "No"],
+        "is_required" => true
+      }
+    ]
+    possible_sections.each do |method_name|
+      @measure_interface_detailed << {
+        "name" => method_name,
+        "type" => "Bool",
+        "display_name" => "OsLib_Reporting.#{method_name}(nil,nil,nil,true)[:title]",
+        "default_value" => true,
+        "is_required" => true
+      }
+    end
   end
-  Dir.mkdir(@@test_dir)
+
+  def possible_sections
+    result = []
+    # methods for sections in order that they will appear in report
+    result << 'model_summary_section'
+    result << 'temperature_detailed_section'
+    result << 'temp_diff_summary_section'
+    result
+  end
 
   def test_report()
-    puts "Testing report on warehouse model"
+    puts "Testing report on warehouse model".green
+
+    # Define the output folder for this test (optional - default is the method name).
+    test_dir = NRCReportingMeasureTestHelper.appendOutputFolder("test_report")
 
     # create an instance of the measure
     measure = NrcReportSetPointDiff.new
@@ -43,13 +79,6 @@ class NrcReportSetPointDiff_Test < Minitest::Test
 
     detail = arguments[1].clone
     argument_map['detail'] = detail
-
-    # Define the output folder.
-    test_dir = "#{File.dirname(__FILE__)}/output"
-    if !Dir.exists?(test_dir)
-      Dir.mkdir(test_dir)
-    end
-    NRCReportingMeasureTestHelper.setOutputFolder("#{test_dir}")
 
     ################### Create warehouse
     template = 'NECB2017'

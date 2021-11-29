@@ -5,6 +5,7 @@ require 'openstudio-standards'
 require "#{File.dirname(__FILE__)}/resources/os_lib_reporting"
 require "#{File.dirname(__FILE__)}/resources/os_lib_schedules"
 require "#{File.dirname(__FILE__)}/resources/os_lib_helper_methods"
+require_relative 'resources/NRCReportingMeasureHelper'
 
 require 'erb'
 require 'json'
@@ -15,6 +16,8 @@ require 'base64'
 
 # start the measure
 class NrcReportSetPointDiff < OpenStudio::Measure::ReportingMeasure
+  attr_accessor :use_json_package, :use_string_double
+  include(NRCReportingMeasureHelper)
 
   def name
     return "NrcReportSetPointDiff"
@@ -31,36 +34,40 @@ class NrcReportSetPointDiff < OpenStudio::Measure::ReportingMeasure
 	The measure then calculates, on an hourly basis, deviations from the set point."
   end
 
-  # define the arguments that the user will input
-  def arguments(model = nil)
-    args = OpenStudio::Measure::OSArgumentVector.new
-
-    chs = OpenStudio::StringVector.new
-    chs << "Hourly"
-    chs << "Timestep"
-    timeStep = OpenStudio::Measure::OSArgument::makeChoiceArgument('timeStep', chs, true)
-    timeStep.setDisplayName("Time Step")
-    timeStep.setDefaultValue("Hourly")
-    args << timeStep
-
-    options = OpenStudio::StringVector.new
-    options << "Yes"
-    options << "No"
-    detail = OpenStudio::Measure::OSArgument::makeChoiceArgument('detail', options, true)
-    detail.setDisplayName("Create detailed hourly excel files")
-    detail.setDefaultValue("No")
-    args << detail
-
-    # populate arguments
+  def initialize()
+    super()
+    #Set to true if you want to package the arguments as json.
+    @use_json_package = false
+    #Set to true if you want to want to allow strings and doubles in stringdouble types. Set to false to force to use doubles. The latter is used for certain
+    # continuous optimization algorithms. You may have to re-examine your input in PAT as this fundamentally changes the measure.
+    @use_string_double = false
+    @measure_interface_detailed = [
+      {
+        "name" => "timeStep",
+        "type" => "Choice",
+        "display_name" => "Time Step",
+        "default_value" => "Hourly",
+        "choices" => ["Hourly", "Daily", "Zone Timestep"],
+        "is_required" => true
+      },
+      {
+        "name" => "detail",
+        "type" => "Choice",
+        "display_name" => "Create detailed hourly Excel files?",
+        "default_value" => "Yes",
+        "choices" => ["Yes", "No"],
+        "is_required" => true
+      }
+    ]
     possible_sections.each do |method_name|
-      # get display name
-      arg = OpenStudio::Measure::OSArgument.makeBoolArgument(method_name, true)
-      display_name = "OsLib_Reporting.#{method_name}(nil,nil,nil,true)[:title]"
-      arg.setDisplayName(display_name)
-      arg.setDefaultValue(true)
-      args << arg
+      @measure_interface_detailed << {
+        "name" => method_name,
+        "type" => "Bool",
+        "display_name" => "OsLib_Reporting.#{method_name}(nil,nil,nil,true)[:title]",
+        "default_value" => true,
+        "is_required" => true
+      }
     end
-    args
   end
 
   def possible_sections
@@ -131,13 +138,13 @@ class NrcReportSetPointDiff < OpenStudio::Measure::ReportingMeasure
     end
     model = model.get
 
-    sql_file = runner.lastEnergyPlusSqlFile
-    if sql_file.empty?
+    sqlFile = runner.lastEnergyPlusSqlFile
+    if sqlFile.empty?
       runner.registerError('Cannot find last sql file.').yellow
       return false
     end
-    sql_file = sql_file.get
-    model.setSqlFile(sql_file)
+    sqlFile = sqlFile.get
+    model.setSqlFile(sqlFile)
 
     # assign the user inputs to variables
     args = OsLib_HelperMethods.createRunVariables(runner, model, user_arguments, arguments)
@@ -150,14 +157,13 @@ class NrcReportSetPointDiff < OpenStudio::Measure::ReportingMeasure
     # create a array of sections to loop through in erb file
     @sections = []
     ordered_section = []
-
     # generate data for requested sections
     sections_made = 0
     possible_sections.each do |method_name|
       begin
         #next unless args[method_name]
         section = false
-        eval("section = OsLib_Reporting.#{method_name}(model,sql_file,runner,false)")
+        eval("section = OsLib_Reporting.#{method_name}(model,sqlFile,runner,false)")
         display_name = eval("OsLib_Reporting.#{method_name}(nil,nil,nil,true)[:title]")
         if section
           ordered_section << section
@@ -223,7 +229,7 @@ class NrcReportSetPointDiff < OpenStudio::Measure::ReportingMeasure
     end
 
     # close the sql file
-    sql_file.close
+    sqlFile.close
     return true
   end
 end
