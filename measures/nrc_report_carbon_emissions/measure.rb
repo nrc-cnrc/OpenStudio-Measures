@@ -1,7 +1,7 @@
 # see the URL below for information on how to write OpenStudio measures
 # http://nrel.github.io/OpenStudio-user-documentation/reference/measure_writing_guide/
 require 'openstudio-standards'
-require_relative 'resources/NRCMeasureHelper'
+require_relative 'resources/NRCReportingMeasureHelper'
 require "#{File.dirname(__FILE__)}/resources/os_lib_reporting"
 require "#{File.dirname(__FILE__)}/resources/os_lib_helper_methods"
 
@@ -9,7 +9,6 @@ require 'erb'
 require 'json'
 require 'zlib'
 require 'base64'
-require 'roo'
 
 # Keep track of the total CO2e value. This is a hack with a global variable.
 $co_total = 0.0
@@ -167,44 +166,31 @@ class NrcReportCarbonEmissions < OpenStudio::Measure::ReportingMeasure
     year = year.to_i
 
     #Convert variables to global variables to use them in the report
-    $year=year
-    $location=location
-    #Get the natural gas EF from the Excel file (NG_EFs.xlsx)
-    path_naturalGasEFs = File.expand_path('../resources/NG_EFs.xlsx', __FILE__)
-    data_ng = Roo::Spreadsheet.open("#{path_naturalGasEFs}") # open spreadsheet
-    headers_ng = data_ng.row(1) # get header row
-    data_ng.each_with_index do |row, index|
-      next if index == 0 # skip header
-      # create hash from headers and cells
-      ng_efs = Hash[[headers_ng, row].transpose]
-      if row[0] == location
-        $naturalGas_EF = row[1].round(2)
+    $year = year
+    $location = location
+
+    # Get the natural gas EF from the JSON file 'NG_EFs.json'
+    ng_path = File.expand_path('../resources/NG_EFs.json', __FILE__)
+    ng_emissionFactorsFile = File.read(ng_path)
+    ng_data_hash = JSON.parse(ng_emissionFactorsFile)
+    ng_data_hash.each do |k, v|
+      k.each do |k1, v1|
+        if k1 == location
+          $naturalGas_EF = v1['kg CO2e/GJ']
+          break
+        end
       end
     end
 
-    path_electrictyEFs = File.expand_path('../resources/Electricity_2020 projectionEfs.xlsx', __FILE__)
-    data = Roo::Spreadsheet.open("#{path_electrictyEFs}") # open spreadsheet
-    if (year > 2018 && year < 2050)
-      headers = data.row(1) # get header row
-      data.each_with_index do |row, index|
-        next if index == 0 # skip header
-        # create hash from headers and cells
-        efs = Hash[[headers, row].transpose]
-        if row[0] == location
-          i = headers.index(year)
-          $electricity_EF = row[i].round(2)
-        end
-      end
-    elsif (year >= 1990 && year < 2019)
-      path = File.expand_path('../resources/EmissionFactors.json', __FILE__)
-      allEmissionFactorsFile = File.read(path)
-      data_hash = JSON.parse(allEmissionFactorsFile)
-      data_hash.each do |k, v|
-        # all locations
-        k.each do |k1, v1|
-          if k1 == location
-            $electricity_EF = v1[year]
-          end
+    # Find the electricity EF from the JSON file 'EmissionFactors.json'
+    path = File.expand_path('../resources/EmissionFactors.json', __FILE__)
+    allEmissionFactorsFile = File.read(path)
+    data_hash = JSON.parse(allEmissionFactorsFile)
+    data_hash.each do |k, v|
+      # all locations
+      k.each do |k1, v1|
+        if k1 == location
+          $electricity_EF = v1[year.to_s]
         end
       end
     end
