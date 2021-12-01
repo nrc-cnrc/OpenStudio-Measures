@@ -1,4 +1,4 @@
-# Standard openstudio requires for runnin test
+# Standard openstudio requires for running test
 require 'openstudio'
 require 'openstudio/measure/ShowRunnerOutput'
 require 'openstudio-standards'
@@ -14,28 +14,9 @@ require 'fileutils'
 class NrcSetFenestrationWallConductanceByNecbClimateZone_Test < Minitest::Test
   include(NRCMeasureTestHelper)
 
-  # Define the output folder.
-  @@test_dir = "#{File.dirname(__FILE__)}/output"
-  # Remove if existing found. This should only be done once.
-  if Dir.exists?(@@test_dir)
-    FileUtils.rm_rf(@@test_dir)
-  end
-  Dir.mkdir(@@test_dir)
-
   def setup()
-    #Set to true if you want to package the arguments as json.
     @use_json_package = false
-    #Set to true if you want to want to allow strings and doubles in stringdouble types. Set to false to force to use doubles. The latter is used for certain
-    # continuous optimization algorithms. You may have to re-examine your input in PAT as this fundamentally changes the measure.
-    @use_string_double = false
-
-    #Use percentages instead of values
-    @use_percentages = false
-
-    #Set to true if debugging measure.
-    @debug = true
-    #this is the 'do nothing value and most arguments should have. '
-    @baseline = 0.0
+    @use_string_double = true
 
     @measure_interface_detailed = [
       {
@@ -122,7 +103,7 @@ class NrcSetFenestrationWallConductanceByNecbClimateZone_Test < Minitest::Test
     sub_surfaces.each do |sub_surface|
       if sub_surface.outsideBoundaryCondition == "Outdoors" and (sub_surface.subSurfaceType == "FixedWindow" || sub_surface.subSurfaceType == "OperableWindow" || sub_surface.subSurfaceType == "Skylight" || sub_surface.subSurfaceType == "TubularDaylightDiffuser" || sub_surface.subSurfaceType == "TubularDaylightDome")
         surface_conductance = BTAP::Geometry::Surfaces.get_surface_construction_conductance(sub_surface)
-        msg = "Surface #{sub_surface.name.to_s}"
+        msg = "Conductance for Surface #{sub_surface.name.to_s} was supposed to be equal #{value} but instead got #{surface_conductance}".red
         assert_in_delta(value, surface_conductance, 0.005, msg)
       end
     end
@@ -130,36 +111,40 @@ class NrcSetFenestrationWallConductanceByNecbClimateZone_Test < Minitest::Test
 
   def test_Zone4_conductance
 
-    # Define the output folder for this test. 
-    NRCMeasureTestHelper.setOutputFolder("#{@@test_dir}/4")
+    puts "Testing Zone4 Conductance".green
+
+    # Define the output folder for this test (optional - default is the method name).
+    output_file_path = NRCMeasureTestHelper.appendOutputFolder("test_Zone4_conductance")
 
     # Create a default model.
     standard = Standard.build("NECB2017")
     model = standard.model_create_prototype_model(template: "NECB2015",
                                                   building_type: "SmallOffice",
                                                   epw_file: 'CAN_BC_Victoria.Intl.AP.717990_CWEC2016.epw',
-                                                  sizing_run_dir: NRCMeasureTestHelper.outputFolder)
+                                                  sizing_run_dir: output_file_path)
 
     # Set argument values to good values and run the measure on model with spaces
     runner = run_measure(@good_input_arguments, model)
     result = runner.result
     assert(result.value.valueName == 'Success')
 
-    # Test if the measure would grab the correct u value for the correct climate zone.
+    puts "Test if the measure would grab the correct u value for the correct climate zone.".green
     check_values(model, 1.9)
   end
 
   def test_Zone5_conductance
 
-    # Define the output folder for this test. 
-    NRCMeasureTestHelper.setOutputFolder("#{@@test_dir}/5")
+    puts "Testing Zone5 Conductance".green
+
+    # Define the output folder for this test (optional - default is the method name).
+    output_file_path = NRCMeasureTestHelper.appendOutputFolder("test_Zone5_conductance")
 
     # Create a default model.
     standard = Standard.build("NECB2017")
     model = standard.model_create_prototype_model(template: "NECB2015",
                                                   building_type: "SmallOffice",
                                                   epw_file: 'CAN_ON_Windsor.Intl.AP.715380_CWEC2016.epw',
-                                                  sizing_run_dir: NRCMeasureTestHelper.outputFolder)
+                                                  sizing_run_dir: output_file_path)
 
     # Set argument values to good values and run the measure on model with spaces
     runner = run_measure(@good_input_arguments, model)
@@ -172,15 +157,17 @@ class NrcSetFenestrationWallConductanceByNecbClimateZone_Test < Minitest::Test
 
   def test_Zone6_conductance
 
-    # Define the output folder for this test. 
-    NRCMeasureTestHelper.setOutputFolder("#{@@test_dir}/6")
+    puts "Testing Zone6 Conductance".green
+
+    # Define the output folder for this test (optional - default is the method name).
+    output_file_path = NRCMeasureTestHelper.appendOutputFolder("test_Zone6_conductance")
 
     # Create a default model.
     standard = Standard.build("NECB2017")
     model = standard.model_create_prototype_model(template: "NECB2015",
                                                   building_type: "SmallOffice",
                                                   epw_file: 'CAN_QC_Montreal-Trudeau.Intl.AP.716270_CWEC2016.epw',
-                                                  sizing_run_dir: NRCMeasureTestHelper.outputFolder)
+                                                  sizing_run_dir: output_file_path)
 
     # Set argument values to good values and run the measure on model with spaces
     runner = run_measure(@good_input_arguments, model)
@@ -193,15 +180,17 @@ class NrcSetFenestrationWallConductanceByNecbClimateZone_Test < Minitest::Test
 
   def test_Zone7a_conductance
 
-    # Define the output folder for this test. 
-    NRCMeasureTestHelper.setOutputFolder("#{@@test_dir}/7a")
+    puts "Testing Zone7A Conductance".green
+
+    # Define the output folder for this test (optional - default is the method name).
+    output_file_path = NRCMeasureTestHelper.appendOutputFolder("test_Zone7a_conductance")
 
     # Create a default model.
     standard = Standard.build("NECB2017")
     model = standard.model_create_prototype_model(template: "NECB2015",
                                                   building_type: "SmallOffice",
                                                   epw_file: 'CAN_AB_Edmonton.Intl.AP.711230_CWEC2016.epw',
-                                                  sizing_run_dir: NRCMeasureTestHelper.outputFolder)
+                                                  sizing_run_dir: output_file_path)
 
     # Set argument values to good values and run the measure on model with spaces
     runner = run_measure(@good_input_arguments, model)
@@ -214,15 +203,17 @@ class NrcSetFenestrationWallConductanceByNecbClimateZone_Test < Minitest::Test
 
   def test_Zone7b_conductance
 
-    # Define the output folder for this test. 
-    NRCMeasureTestHelper.setOutputFolder("#{@@test_dir}/7b")
+    puts "Testing Zone7B Conductance".green
+
+    # Define the output folder for this test (optional - default is the method name).
+    output_file_path = NRCMeasureTestHelper.appendOutputFolder("test_Zone7b_conductance")
 
     # Create a default model.
     standard = Standard.build("NECB2017")
     model = standard.model_create_prototype_model(template: "NECB2015",
                                                   building_type: "SmallOffice",
                                                   epw_file: 'CAN_YT_Whitehorse.Intl.AP.719640_CWEC2016.epw',
-                                                  sizing_run_dir: NRCMeasureTestHelper.outputFolder)
+                                                  sizing_run_dir: output_file_path)
 
     # Set argument values to good values and run the measure on model with spaces
     runner = run_measure(@good_input_arguments, model)
@@ -235,15 +226,17 @@ class NrcSetFenestrationWallConductanceByNecbClimateZone_Test < Minitest::Test
 
   def test_Zone8_conductance
 
-    # Define the output folder for this test. 
-    NRCMeasureTestHelper.setOutputFolder("#{@@test_dir}/8")
+    puts "Testing Zone8 Conductance".green
+
+    # Define the output folder for this test (optional - default is the method name).
+    output_file_path = NRCMeasureTestHelper.appendOutputFolder("test_Zone8_conductance")
 
     # Create a default model.
     standard = Standard.build("NECB2017")
     model = standard.model_create_prototype_model(template: "NECB2015",
                                                   building_type: "SmallOffice",
                                                   epw_file: 'CAN_NT_Yellowknife.AP.719360_CWEC2016.epw',
-                                                  sizing_run_dir: NRCMeasureTestHelper.outputFolder)
+                                                  sizing_run_dir: output_file_path)
 
     # Set argument values to good values and run the measure on model with spaces
     runner = run_measure(@good_input_arguments, model)

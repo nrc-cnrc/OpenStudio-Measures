@@ -35,7 +35,7 @@ measures/nrc_set_boiler_efficiency/tests/test.rb
 measures/nrc_set_fan_efficiency/tests/test.rb
 measures/nrc_set_fdwr/tests/test.rb
 measures/nrc_set_fenestration_roof_conductance_by_necb_climate_zone/tests/test.rb
-#measures/nrc_set_fenestration_wall_conductance_by_necb_climate_zone/tests/test.rb
+measures/nrc_set_fenestration_wall_conductance_by_necb_climate_zone/tests/test.rb
 measures/nrc_set_infiltration/tests/test.rb
 measures/nrc_set_pump_efficiency/tests/test.rb
 measures/nrc_set_roof_conductance_by_necb_climate_zone/tests/test.rb

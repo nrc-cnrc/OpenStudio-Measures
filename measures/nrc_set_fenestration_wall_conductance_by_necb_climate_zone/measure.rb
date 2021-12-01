@@ -143,7 +143,7 @@ class NrcSetFenestrationWallConductanceByNecbClimateZone < OpenStudio::Measure::
     elsif (necb_hdd18 >= 7000) then
       u_value = zone8_u_value
     else
-      runner.registerInfo("Couldn't find a climate zone.")
+      runner.registerError("Couldn't find a climate zone.".red)
     end
 
     #use the built-in error checking
@@ -169,8 +169,8 @@ class NrcSetFenestrationWallConductanceByNecbClimateZone < OpenStudio::Measure::
         surface_conductance2 = BTAP::Geometry::Surfaces.get_surface_construction_conductance(sub_surface)
         u_value_rounded = sprintf "%.3f", u_value
         surface_conductance2_rounded = sprintf "%.3f", surface_conductance2
-        runner.registerInfo("Initial conductance for #{sub_surface.subSurfaceType} was : #{surface_conductance} , now it has been changed to #{surface_conductance2} ")
-        raise("U values for #{surface.surfaceType} was supposed to change to #{u_value_rounded}, but it is #{surface_conductance2_rounded}") if u_value_rounded != surface_conductance2_rounded
+        runner.registerInfo("Initial conductance for".green + " #{sub_surface.subSurfaceType}".light_blue + " was :".green + " #{surface_conductance}".light_blue + " , now it has been changed to".green + " #{surface_conductance2} ".light_blue)
+        raise("U values for #{surface.surfaceType} was supposed to change to #{u_value_rounded}, but it is #{surface_conductance2_rounded}".red) if u_value_rounded != surface_conductance2_rounded
       end
     end
     return true
