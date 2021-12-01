@@ -14,15 +14,9 @@ require 'fileutils'
 class NrcResizeExistingWindowsToMatchAGivenWWR_Test < Minitest::Test
   include(NRCMeasureTestHelper)
 
-  # Define the output folder.
-  @@test_dir = "#{File.dirname(__FILE__)}/output"
-  # Remove if existing found. This should only be done once.
-  if Dir.exists?(@@test_dir)
-    FileUtils.rm_rf(@@test_dir)
-  end
-  Dir.mkdir(@@test_dir)
-
   def setup()
+    @use_json_package = false
+    @use_string_double = true
     @measure_interface_detailed = [
       {
         "name" => "remove_skylight",
@@ -110,6 +104,11 @@ class NrcResizeExistingWindowsToMatchAGivenWWR_Test < Minitest::Test
   end
 
   def test_argument_values
+    puts "Testing window resizing".green
+
+    # Define the output folder for this test (optional - default is the method name).
+    output_file_path = NRCMeasureTestHelper.appendOutputFolder("test_windowResizing")
+
     measure = NrcResizeExistingWindowsToMatchAGivenWWR.new
 
     # load the test model
@@ -133,19 +132,66 @@ class NrcResizeExistingWindowsToMatchAGivenWWR_Test < Minitest::Test
       "check_outdoors" => true,
       "check_sunexposed" => true
     }
-    NRCMeasureTestHelper.setOutputFolder("#{@@test_dir}")
 
     # test if the measure would grab the correct number and value of input argument.
     assert_equal(10, arguments.size)
     # Run the measure and check output
     runner = run_measure(input_arguments, model)
+
+    # Test if the measure has set the correct WWR
+    # counters
+    total_gross_ext_wall_area = 0
+    total_ext_window_area = 0
+    spaces = model.getSpaces
+    spaces.each do |space|
+
+      #get surface area adjusting for zone multiplier
+      zone = space.thermalZone
+      if not zone.empty?
+        zone_multiplier = zone.get.multiplier
+        if zone_multiplier > 1
+        end
+      else
+        zone_multiplier = 1 #space is not in a thermal zone
+      end
+
+      puts "Testing space ".green + "#{space.name.get}".light_blue
+
+      space.surfaces.each do |surface|
+        next if not surface.surfaceType == "Wall"
+        next if not surface.outsideBoundaryCondition == "Outdoors"
+        # Surface has to be Sun Exposed!
+        next if not surface.sunExposure == "SunExposed"
+
+        puts "Surface name : ".green + "#{surface.name.get}".light_blue + " Surface Type : " + "#{surface.surfaceType}".light_blue + " Outside Boundary Condition: ".green + "#{surface.outsideBoundaryCondition}".light_blue + " Sun Exposure: ".green + "#{surface.sunExposure}"
+
+        surface_gross_area = surface.grossArea * zone_multiplier
+
+        #loop through sub surfaces and add area including multiplier
+        ext_window_area = 0
+        surface.subSurfaces.each do |subSurface|
+          ext_window_area = ext_window_area + subSurface.grossArea * subSurface.multiplier * zone_multiplier
+        end
+
+        total_gross_ext_wall_area += surface_gross_area
+        total_ext_window_area += ext_window_area
+      end #end of surfaces.each do
+    end # end of space.each do
+    wwr_result = total_ext_window_area / total_gross_ext_wall_area
+
+    puts " Testing if the measure has set the WWR to".green + " #{input_arguments['cz_6_fdwr']}".light_blue
+    msg = "The measure failed to set the WWR to #{input_arguments['cz_6_fdwr']}, instead the WWR is #{wwr_result}".red
+    assert(wwr_result.round(2) == input_arguments['cz_6_fdwr'].round(2), msg)
+
     # report final condition of model
     result = runner.result
     show_output(result)
     assert(result.value.valueName == 'Success')
 
     # save the model to test output directory
-    output_file_path = "#{File.dirname(__FILE__)}/#{@@test_dir}/test_output.osm"
-    model.save(output_file_path, true)
+    output_path = "#{output_file_path}/test_output.osm"
+    model.save(output_path, true)
+    puts "Runner output #{show_output(runner.result)}".green
+    assert(runner.result.value.valueName == 'Success')
   end
 end

@@ -22,7 +22,7 @@ If you aim to increase the area, please note that this could result in subsurfac
 
   # human readable description of modeling approach
   def modeler_description
-    return "This measure is measure was retrieved from - https://bcl.nrel.gov/node/83611 (original author Julien Marrec ) and was modified by the NRC.
+    return "This measure is measure was retrieved from - https://bcl.nrel.gov/ (original author Julien Marrec ) and was modified by the NRC.
 NRC modifications : cz_#_fdwr variables,remove_skylight variable,  set checkwall variable to default 'false', check model climate zone file before placing cz_#fdwr into variable 'wwr_after', loop to remove skylights
 Added test.rb
 The measure works in several steps:
@@ -145,17 +145,13 @@ This will compute the WWR by taking into account all of the surfaces that have a
         zone_multiplier = 1 #space is not in a thermal zone
       end
 
-      # puts "\n" + space.name.get
-
       space.surfaces.each do |s|
         next if not s.surfaceType == "Wall"
         next if not s.outsideBoundaryCondition == "Outdoors"
         # Surface has to be Sun Exposed!
         next if not s.sunExposure == "SunExposed"
 
-        # puts s.name.get + ": " + s.surfaceType + ', ' + s.outsideBoundaryCondition + ', ' + s.sunExposure
-
-        surface_gross_area = s.grossArea * zone_multiplier
+       surface_gross_area = s.grossArea * zone_multiplier
 
         #loop through sub surfaces and add area including multiplier
         ext_window_area = 0
@@ -218,7 +214,6 @@ This will compute the WWR by taking into account all of the surfaces that have a
     else
       runner.registerError("Couldn't find a climate zone to allocate FDWR")
     end
-    puts ">>>>>>>>>>> wwr_after #{wwr_after}"
     #check reasonableness of fraction
     if wwr_after <= 0 or wwr_after >= 1
       runner.registerError("Window to Wall Ratio must be greater than 0 and less than 1.")
@@ -226,10 +221,9 @@ This will compute the WWR by taking into account all of the surfaces that have a
     end
 
     wwr_before = getExteriorWindowToWallRatio(model.getSpaces)
-    puts "The initial WWR was #{OpenStudio::toNeatString(wwr_before * 100, 2, true)}%."
 
-    # report initial condition of model
-    runner.registerInitialCondition("The initial WWR was #{OpenStudio::toNeatString(wwr_before * 100, 2, true)}%.")
+     # report initial condition of model
+    runner.registerInitialCondition("The initial WWR was".green + " #{OpenStudio::toNeatString(wwr_before * 100, 2, true)}%.".light_blue)
 
     area_scale_factor = wwr_after / wwr_before
     scale_factor = area_scale_factor ** 0.5
@@ -248,10 +242,10 @@ This will compute the WWR by taking into account all of the surfaces that have a
 
     counter = 0
 
-    runner.registerInfo("Click on 'Advanced' for a CSV of each surface WWR before and after")
-    puts "\n=====================================================\n"
-    puts "RESIZING INFORMATION (CSV)"
-    puts "Surface Name, WWR_before, WWR_after"
+    runner.registerInfo("Click on 'Advanced' for a CSV of each surface WWR before and after".green)
+    puts "\n=====================================================\n".green
+    puts "RESIZING INFORMATION (CSV)".green
+    puts "Surface Name, WWR_before, WWR_after".green
 
     surfaces.each do |surface|
       next if (not surface.surfaceType == "Wall") & check_wall
@@ -262,7 +256,7 @@ This will compute the WWR by taking into account all of the surfaces that have a
 
       counter += 1
       # Write before
-      print surface.name.to_s + "," + surface.windowToWallRatio.to_s
+      print "#{surface.name.to_s}".light_blue + ",".green + "#{surface.windowToWallRatio.to_s}".light_blue
 
       # Loop on each subSurfaces
       surface.subSurfaces.each do |subsurface|
@@ -291,12 +285,12 @@ This will compute the WWR by taking into account all of the surfaces that have a
         subsurface.setVertices(vertices)
       end # End of loop on subsurfaces
       # Append the new windowToWallRatio
-      print "," + surface.windowToWallRatio.to_s + "\n"
+      print ",".green + "#{surface.windowToWallRatio.to_s}".light_blue + "\n"
     end # end of surfaces.each do |surface|
 
     # report final condition of model
     check_wwr_after = getExteriorWindowToWallRatio(model.getSpaces)
-    runner.registerFinalCondition("Checking final WWR #{OpenStudio::toNeatString(check_wwr_after * 100, 2, true)}%. #{counter} surfaces were resized")
+    runner.registerFinalCondition("Checking final WWR".green + " #{OpenStudio::toNeatString(check_wwr_after * 100, 2, true)}%".light_blue+ ".".green + "#{counter}".light_blue + " surfaces were resized".green)
     return true
   end
 end
