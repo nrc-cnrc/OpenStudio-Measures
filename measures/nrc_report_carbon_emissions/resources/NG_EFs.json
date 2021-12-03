@@ -1,0 +1,80 @@
+[
+{
+   "Alberta": {
+      "kg CO2e/GJ": 51.39,
+      "kg CO2e/kWh": 0.19
+      }
+},
+{
+   "British Columbia": {
+     "kg CO2e/GJ": 51.34, 
+	 "kg CO2e/kWh": 0.18
+   }
+   },
+   {
+   "Manitoba": {
+     "kg CO2e/GJ": 50.28,
+     "kg CO2e/kWh": 0.18
+   }
+   },
+   {
+   "New Brunswick": {
+     "kg CO2e/GJ": 50.68,
+     "kg CO2e/kWh": 0.18
+   }
+   },
+   {
+   "Newfoundland": {
+      "kg CO2e/GJ": 50.68,
+      "kg CO2e/kWh": 0.18
+   }
+   },
+   {
+   "Northwest Territories": {
+      "kg CO2e/GJ": 50.68,
+      "kg CO2e/kWh": 0.18
+   }
+   },
+   {
+   "Nova Scotia": {
+     "kg CO2e/GJ": 50.68,
+     "kg CO2e/kWh": 0.18
+   }
+   },
+   {
+   "Nunavut": {
+     "kg CO2e/GJ": 50.68,
+     "kg CO2e/kWh": 0.18
+   }
+   },
+   {
+   "Ontario": {
+     "kg CO2e/GJ": 50.33,
+     "kg CO2e/kWh": 0.18
+   }
+   },
+   {
+   "Prince Edward Island": {
+      "kg CO2e/GJ": 50.68,
+      "kg CO2e/kWh": 0.18
+   }
+   },
+   {
+   "Quebec": {
+      "kg CO2e/GJ": 50.3,
+      "kg CO2e/kWh": 0.18
+   }
+   },
+   {
+   "Saskatchewan": {
+     "kg CO2e/GJ": 48.77,
+     "kg CO2e/kWh": 0.18
+   }
+   },
+   {
+   "Yukon": {
+     "kg CO2e/GJ": 50.68,
+     "kg CO2e/kWh": 0.18
+   }
+   }
+]

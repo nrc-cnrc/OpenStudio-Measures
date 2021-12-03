@@ -17,6 +17,9 @@ class NrcCreateNECBPrototypeBuilding_Test
                  'MB_Winnipeg-Richardson',
                  'NL_St.Johns']
 
+    # A new variable to count the number of osm models that are different than the ones in the regression folder
+    $num_failed = 0
+
     # The forking sometimes fails. Add this logical so that it can be switched on/off easily.
     dofork = false
 
@@ -33,6 +36,7 @@ class NrcCreateNECBPrototypeBuilding_Test
         end
       end
     end
+    puts "Failure in #{$num_failed} models that are different from the ones in the regression models".red
 
     # Now wait for the forked processes to all finish and figure out if there were any failures.
     # Would be good if we could capture the minitest output from each process and output them here.

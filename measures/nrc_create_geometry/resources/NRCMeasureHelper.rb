@@ -11,12 +11,12 @@ module NRCMeasureTestHelper
   include BTAPMeasureTestHelper
 
   # Define the output folder
-  @@output_folder = Dir.pwd
+  @output_folder = Dir.pwd
   def self.setOutputFolder(folder)
-    @@output_folder = folder
+    @output_folder = folder
   end
   def self.outputFolder
-    @@output_folder
+    @output_folder.to_s
   end
 
   #Fancy way of getting the measure object automatically. Added check for NRC in measure name.
@@ -30,7 +30,7 @@ module NRCMeasureTestHelper
       if btap_measure.nil?
         puts "Measure class #{measure_class_name} is invalid. Please ensure the test class name is of the form 'BTAPMeasureName_Test' (Note: BTAP is case sensitive.) ".red
       elsif nrc_measure.nil?
-        puts "Measure class #{measure_class_name} is invalid. Please ensure the test class name is of the form 'NRCMeasureName_Test' (Note: Nrc is case sensitive.) ".red
+        puts "Measure class #{measure_class_name} is invalid. Please ensure the test class name is of the form 'NrcMeasureName_Test' (Note: Nrc is case sensitive.) ".red
       end
       return false
     end
@@ -44,7 +44,7 @@ end
 
 # Add significant digits capability to float class.
 class Float
-  def signif(digits=3)
+  def signif(digits)
     return 0 if self.zero?
     self.round(-(Math.log10(self).ceil - digits))
   end

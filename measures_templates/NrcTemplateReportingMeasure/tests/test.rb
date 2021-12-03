@@ -16,15 +16,6 @@ class NrcReportingMeasure_Test < Minitest::Test
   # Brings in helper methods to simplify argument testing of json and standard argument methods.
   include(NRCReportingMeasureTestHelper)
   
-  # Define the output folder.
-  @@test_dir = "#{File.expand_path(__dir__)}/output"
-  # Remove if existing found. This should only be done once.
-  if Dir.exists?(@@test_dir)
-    FileUtils.rm_rf(@@test_dir)
-	sleep 10
-  end
-  Dir.mkdir(@@test_dir)
-  
   def setup()
 
     @use_json_package = false
@@ -98,9 +89,8 @@ class NrcReportingMeasure_Test < Minitest::Test
   def test_report()
     puts "Testing report on small Office model".blue
 	
-    # Define the output folder for this test. 
-    NRCReportingMeasureTestHelper.setOutputFolder("#{@@test_dir}/smallOffice")
-    Dir.mkdir(NRCReportingMeasureTestHelper.outputFolder) unless Dir.exists?(NRCReportingMeasureTestHelper.outputFolder)
+    # Define the output folder for this test (optional - default is the method name). 
+    NRCReportingMeasureTestHelper.appendOutputFolder("smallOffice")
 	
     # Load osm file
     translator = OpenStudio::OSVersion::VersionTranslator.new
