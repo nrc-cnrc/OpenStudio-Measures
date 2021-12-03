@@ -15,15 +15,9 @@ class NrcSetSrr_Test < Minitest::Test
   # Brings in helper methods to simplify argument testing of json and standard argument methods.
   include(NRCMeasureTestHelper)
 
-  # Define the output folder.
-  @@test_dir = "#{File.dirname(__FILE__)}/output"
-  # Remove if existing found. This should only be done once.
-  if Dir.exists?(@@test_dir)
-    FileUtils.rm_rf(@@test_dir)
-  end
-  Dir.mkdir(@@test_dir)
-
   def setup()
+    @use_json_package = false
+    @use_string_double = true
     @measure_interface_detailed = [
       {
         "name" => "srr_options",
@@ -45,6 +39,8 @@ class NrcSetSrr_Test < Minitest::Test
 
   # Loop through all input arguments to test all possibilities
   def test_inputArguments
+    puts "Testing specific SRR".green
+
     translator = OpenStudio::OSVersion::VersionTranslator.new
     path = OpenStudio::Path.new(File.dirname(__FILE__) + "/resources/Warehouse-NECB2017-ON_Ottawa.osm")
     model = translator.loadModel(path)
@@ -65,19 +61,19 @@ class NrcSetSrr_Test < Minitest::Test
     all_srr_options = ["Remove the skylights", "Set skylights to match max SRR from NECB", "Don't change skylights", "Reduce existing skylight size to meet maximum NECB SRR limit", "Set specific SRR"]
     all_srr_options.each do |srr_options|
 
-      puts "################# Testing #{srr_options} #################".green
+      puts "################# Testing".green + " #{srr_options}".light_blue + " #################".green
 
       # get arguments
       input_arguments = {
         "srr_options" => srr_options,
-        "srr" => 0.6
+        "srr" => 0.0
       }
       srr = input_arguments['srr']
       srr_options = input_arguments['srr_options']
       srr_options_noSpaces = srr_options.gsub(/[[:space:]]/, '_') # Replace spaces by '_'
 
-      # Define the output folder for this test.
-      NRCMeasureTestHelper.setOutputFolder("#{@@test_dir}/#{srr_options_noSpaces}")
+      # Define the output folder for this test (optional - default is the method name).
+      output_file_path = NRCMeasureTestHelper.appendOutputFolder("test_specificSRR_#{srr_options_noSpaces}")
 
       # Set argument values to good values and run the measure on model with spaces
       runner = run_measure(input_arguments, model)
@@ -111,13 +107,15 @@ class NrcSetSrr_Test < Minitest::Test
 
       srr_calculated = calculateSRR(model)
       assert_equal(srr_calculated.round(3), expected_srr.round(3), "Skylights did not change correctly")
-      puts "SRR #{srr_calculated.round(3)}; expected SRR #{expected_srr.round(3)}".yellow
+      puts "SRR".green + " #{srr_calculated.round(3)}".light_blue + "; expected SRR ".green + "#{expected_srr.round(3)}".light_blue
       # test if the measure would grab the correct number and value of input argument.
       assert_equal(2, input_arguments.size)
 
       # save the model to test output directory
-      output_file_path = "#{NRCMeasureTestHelper.outputFolder}/test_output.osm"
-      model.save(output_file_path, true)
+      output_path = "#{output_file_path}/test_output.osm"
+      model.save(output_path, true)
+      puts "Runner output #{show_output(runner.result)}".green
+      assert(runner.result.value.valueName == 'Success')
     end
   end
 

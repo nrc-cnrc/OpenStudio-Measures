@@ -87,12 +87,13 @@ class NrcSetSrr < OpenStudio::Measure::ModelMeasure
       srr = arguments['srr']
       exp_surf_info = standard.find_exposed_conditioned_roof_surfaces(model)
       if (srr < 0.0 || srr > 1.0)
-        puts 'SRR must be greater than 0.0 and less than 1.0'.red
-        runner.registerError('srr must be greater or equal to 0.0 and less than 1.0')
+        runner.registerError('srr must be greater or equal to 0.0 and less than 1.0'.red)
         return false
+      elsif (srr == 0.0)
+        runner.registerInfo('srr must be greater or equal to 0.0 and less than 1.0'.green)
+        srr = -4.0 # Setting the option of srr = 0.0 is same as removing the skylights
       elsif exp_surf_info["exp_nonplenum_roof_area_m2"] < 0.1
-        puts "This building has no exposed ceilings adjacent to spaces that are not attics or plenums. No skylights will be added.".red
-        runner.registerError("This building has no exposed ceilings adjacent to spaces that are not attics or plenums.  No skylights will be added.")
+        runner.registerWarning("This building has no exposed ceilings adjacent to spaces that are not attics or plenums.  No skylights will be added.".yellow)
         return false
       end
     end
@@ -106,7 +107,7 @@ class NrcSetSrr < OpenStudio::Measure::ModelMeasure
       standardsTemplate = (model.getBuilding.standardsTemplate).to_s
       standard = Standard.build(standardsTemplate)
     else
-      puts "The measure wasn't able to determine the standards template from the model, a default value of 'NECB2017' will be used.".red
+      runner.registerWarning("The measure wasn't able to determine the standards template from the model, a default value of 'NECB2017' will be used.".yellow)
       standard = Standard.build('NECB2017')
     end
     return standard
