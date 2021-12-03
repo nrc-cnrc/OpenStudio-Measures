@@ -87,10 +87,10 @@ class NrcSetSrr < OpenStudio::Measure::ModelMeasure
       srr = arguments['srr']
       exp_surf_info = standard.find_exposed_conditioned_roof_surfaces(model)
       if (srr < 0.0 || srr > 1.0)
-        runner.registerError('srr must be greater or equal to 0.0 and less than 1.0'.red)
+        runner.registerError('SRR must be greater or equal to 0.0 and less than 1.0'.red)
         return false
       elsif (srr == 0.0)
-        runner.registerInfo('srr must be greater or equal to 0.0 and less than 1.0'.green)
+        runner.registerInfo('Removing the skylights as value set to zero'.green)
         srr = -4.0 # Setting the option of srr = 0.0 is same as removing the skylights
       elsif exp_surf_info["exp_nonplenum_roof_area_m2"] < 0.1
         runner.registerWarning("This building has no exposed ceilings adjacent to spaces that are not attics or plenums.  No skylights will be added.".yellow)
