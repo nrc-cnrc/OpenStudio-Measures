@@ -5,6 +5,7 @@ measures/nrc_add_ashpwh/tests/test.rb
 measures/nrc_add_hvac_availability_manager/tests/test.rb
 measures/nrc_add_doas_sys/tests/test.rb
 measures/nrc_add_drain_water_heat_recovery/tests/test.rb
+measures/nrc_add_overhangs_by_projection_factor/tests/test.rb
 measures/nrc_alter_shgc/tests/test.rb
 measures/nrc_change_cav_to_vav/tests/test.rb
 measures/nrc_change_heat_recovery_efficiency/tests/test.rb
