@@ -53,6 +53,9 @@ execute the necessary applications – follow the instructions in each folder to
 The measures are designed and maintained to be used with the OpenStudio tool PAT [https://www.openstudio.net/downloads] using the specific 
 version of openstudio-server created by the scripts in the server folder.
 
+### Install Docker and WSL2
+Follow the instructions [here](./install_Docker_WSL2.md)
+
 ### Support
 There is no explicit support for use of this repository. However, if you plan on using the repository please contact us and we will endeavour to 
 clarify/fix area of confusion.
@@ -80,6 +83,9 @@ ______________________
 - Comment ça marche?
 - Qui utilisera ce projet?
 - Quel est le but de ce projet?
+
+### Installer Docker et WSL2
+Suivez les instructions [ici](./install_Docker_WSL2.md)
 
 ### Comment contribuer
 
