@@ -24,7 +24,8 @@ mintty -s 188,32 -t "OpenStudio Server Log" -h always /bin/bash -c "win_user=$(w
 download_gems
 
 # Define a container name for checking if the server is running and getting current server gemfile from.
-container=${PWD##*/}"_web_1"
+
+container=${PWD##*/}"-web-1"
 
 # Loop until container is up and running. Use 'tries' to avoid sticking here forever
 echo -e "${GREEN}Checking server is up and running${NC}..."
@@ -66,7 +67,7 @@ then
 #  *** bundle config local.openstudio-standards /var/os-gems/openstudio-standards
   echo -e "${GREEN}Recovering worker IDs from docker${NC}..."
   STEP="${GREEN}Recovering worker IDs from docker${NC}"
-  workerIDs=($(docker ps -q -f name=${PWD##*/}"_worker_"))
+  workerIDs=($(docker ps -q -f name=${PWD##*/}"-worker-"))
   echo -e "${BLUE}Worker IDs:${NC}\n$workerIDs"
 
   # Update each of the worker nodes. Need to edit the Gemfiles on each.
@@ -76,6 +77,8 @@ then
   echo "Number of workers $nWorkers"
   echo "Number of gems $nGems"
   
+  # Loop through the gemfiles specified in the env.sh file and modify the local .gemfile
+  echo -e "${GREEN}... editing local .gemfile${NC}..."
   for (( iGem=0; iGem<${nGems}; iGem++ ))
   do
     OLD="gem '${server_gems[($iGem*3)+1]}'"
@@ -99,6 +102,26 @@ then
     #  docker exec ${workerIDs[$iWorker]} sh -c "cd /var/oscli; bundle config local.${server_gems[($iGem*3)+1]} /var/os-gems/${server_gems[($iGem*3)]}"
   done
   
+  # Parse the project Gemfile and add measure specific gems from there into the local .gemfile
+  echo -e "${GREEN}... adding measure specific gems to .gemfile${NC}..."
+  addgems="FALSE"
+  while read -r line
+  do
+    #echo -e "${YELLOW}$line${NC}"
+	if [ "$addgems" = "TRUE" ]
+	then
+	  echo -e "${GREEN}   adding ${BLUE}${line}${GREEN} to .gemfile${NC}"
+	  echo $line >> .gemfile
+	fi
+    if [[ "$line" =~ "Additional" ]]
+	then
+      echo -e "${GREEN}$line${NC}"
+	  addgems="TRUE"
+	fi
+  done < ../Gemfile
+	
+  
+  # Now copy the local gemfile to the workers.
   echo -e "${GREEN}Copying updated Gemfile to workers${NC}..."
   for (( iWorker=0; iWorker<${nWorkers}; iWorker++ ))
   do
@@ -121,8 +144,8 @@ then
   do
     echo -e "  ${GREEN}working on ${BLUE}$file${NC}"
     dos2unix $file
-    docker exec openstudio-server_web_1 sh -c 'mkdir -p /mnt/openstudio/scripts'
-    docker cp $file openstudio-server_web_1:/mnt/openstudio/scripts/$file
+    docker exec openstudio-server-web-1 sh -c 'mkdir -p /mnt/openstudio/scripts'
+    docker cp $file openstudio-server-web-1:/mnt/openstudio/scripts/$file
   done
   echo -e "${GREEN}done${NC}."
   cd ..

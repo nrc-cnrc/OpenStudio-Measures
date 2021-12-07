@@ -262,7 +262,7 @@
       <checksum>6EB508DC</checksum>
     </file>
     <file>
-      <filename>NRCMeasureHelper.rb</filename>
+      <filename>NRCReportingMeasureHelper.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
       <checksum>6BCFC7F5</checksum>

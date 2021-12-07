@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Utility Costs Report</title>
+</head>
+<body>
+<%= summary %>
+
+<h1>Rate summary</h1>
+<table>
+<tr><th>Fuel</th><th>Rate</th>
+<%= rate_summary %>
+</table>
+
+<h1>Utility costs</h1>
+<table>
+<tr><th>Fuel</th><th>Consumption</th><th>Unit</th><th>Cost</th>
+<%= cost_table %>
+</table>
+
+</body>
+</html>
