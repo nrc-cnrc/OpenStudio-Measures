@@ -96,6 +96,7 @@ class NrcAddOverhangsByProjectionFactor_Test < Minitest::Test
       "remove_ext_space_shading" => false
     }
     facade = input_arguments['facade']
+    projection_factor = input_arguments['projection_factor']
 
     # Run the measure
     runner = run_measure(input_arguments, model)
@@ -103,19 +104,70 @@ class NrcAddOverhangsByProjectionFactor_Test < Minitest::Test
     show_output(result)
 
     num_overHangsCreated = 0
-
     # Loop through surfaces finding exterior walls with proper orientation
     sub_surfaces = model.getSubSurfaces
     sub_surfaces.each do |sub_surface|
       absoluteAzimuth = OpenStudio::convert(sub_surface.azimuth, "rad", "deg").get + sub_surface.space.get.directionofRelativeNorth + model.getBuilding.northAxis
       next if sub_surface.outsideBoundaryCondition != 'Outdoors'
       if sub_surface.name.to_s.include? "Window"
-        # Check if measure has created overhangs
+
+        # Check if measure has created overhangs with the correct projection factor
+        # The overhang depth = Height of window * projection factor
+        # Inorder to test if the measure has set the projection factor correctly:
+        # 1- The overhang depth will be calculated by calculating the difference between maximum and minimum y vertices
+        # 2- The window height will be calculated by calculating the difference between maximum and minimum z vertices
+        # 3- The calculated projection factor = overhang depth / window height should be same as projection factor given by user.
+        puts "Testing if the measure has set the projection factor correctly for ".green + "#{sub_surface.name}".light_blue
         shading_groups = model.getShadingSurfaceGroups
         shading_groups.each do |shading_group|
           shading_s = shading_group.shadingSurfaces
           shading_s.each do |shading_surface|
             if shading_surface.name.to_s == "#{sub_surface.name} - Overhang"
+              # 1- Find the min and max y values to calculate the overhang depth
+              min_y_val = 999
+              max_y_val = -999
+              shading_surface_vertices = shading_surface.vertices
+              shading_surface_vertices.each do |vertex|
+                # Min y value
+                if vertex.y < min_y_val
+                  min_y_val = vertex.y
+                end
+                # Max y value
+                if vertex.y > max_y_val
+                  max_y_val = vertex.y
+                end
+              end
+
+              # Calculate the depth of shading_surface
+              shading_surface_depth = max_y_val - min_y_val
+              puts "Shading surface depth is  ".green + "#{shading_surface_depth}".light_blue
+
+              # 2- Find the min and max z values to calculate the height of the window
+              min_z_val = 999
+              max_z_val = -999
+              allVertices = sub_surface.vertices
+              allVertices.each do |vertex|
+                # Min z value
+                if vertex.z < min_z_val
+                  min_z_val = vertex.z
+                end
+                # Max z value
+                if vertex.z > max_z_val
+                  max_z_val = vertex.z
+                end
+              end
+
+              # Calculate the window height
+              window_height = max_z_val - min_z_val
+              puts "The height of widow is ".green + " #{window_height}".light_blue
+
+              # 3- Calculated projection factor = overhang depth / window height
+              calculated_projection_factor = shading_surface_depth / window_height
+
+              # Assert that the calculated projection factor = overhang depth / window height are same as projection factor given by user.
+              msg = "The projection factor was supposed to be equal #{projection_factor} but instead got #{calculated_projection_factor}".red
+              assert_equal(projection_factor.round(2), calculated_projection_factor.round(2), msg)
+
               # The 'checkFacade' function returns the facade of subsurface that the measure created an overhang to
               testFacade = checkFacade(absoluteAzimuth)
               #Test if overhangs are created in correct facade selected by user
