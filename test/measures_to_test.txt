@@ -45,6 +45,7 @@ measures/nrc_set_fenestration_wall_conductance_by_necb_climate_zone/tests/test.r
 measures/nrc_set_infiltration/tests/test.rb
 measures/nrc_set_pump_efficiency/tests/test.rb
 measures/nrc_set_roof_conductance_by_necb_climate_zone/tests/test.rb
+measures/nrc_set_srr/tests/test.rb
 measures/nrc_set_wall_conductance_by_necb_climate_zone/tests/test.rb
 measures/nrc_update_water_heater/tests/test.rb
 measures_templates/NrcTemplateMeasure/tests/test.rb
