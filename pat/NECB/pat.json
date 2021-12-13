@@ -1,0 +1,70 @@
+{
+  "projectName": "NECB",
+  "projectDir": "D:\\Files\\Devel\\openstudio-measures\\pat\\NECB",
+  "seed": null,
+  "weatherFile": null,
+  "analysis_type": "Manual",
+  "cliDebug": "",
+  "cliVerbose": "",
+  "downloadReports": true,
+  "downloadOSW": true,
+  "downloadOSM": true,
+  "downloadZIP": true,
+  "timeoutWorkflow": 28800,
+  "timeoutUploadResults": 28800,
+  "timeoutInitWorker": 28800,
+  "remoteSettings": {
+    "open": true,
+    "remoteType": "Amazon Cloud",
+    "remoteServerURL": null,
+    "aws": {
+      "connected": false,
+      "cluster_name": "",
+      "server_instance_type": "",
+      "worker_instance_type": "",
+      "user_id": "",
+      "worker_node_number": 0,
+      "aws_tags": [],
+      "openstudio_server_version": ""
+    },
+    "credentials": {
+      "yamlFilename": null,
+      "accessKey": null,
+      "region": "us-east-1"
+    }
+  },
+  "samplingMethod": {
+    "id": "baseline_perturbation",
+    "name": "analysis.type.baselinePerturbation",
+    "link": null
+  },
+  "algorithmSettings": [],
+  "rubyMD5": "",
+  "mongoMD5": "",
+  "openstudioServerMD5": "",
+  "openstudioCLIMD5": "",
+  "openstudioMD5": "",
+  "measures": [],
+  "filesToInclude": [],
+  "serverScripts": {
+    "server_initialization": {
+      "file": null,
+      "arguments": []
+    },
+    "server_finalization": {
+      "file": null,
+      "arguments": []
+    },
+    "worker_initialization": {
+      "file": null,
+      "arguments": []
+    },
+    "worker_finalization": {
+      "file": null,
+      "arguments": []
+    }
+  },
+  "designAlternatives": [],
+  "analysisID": "",
+  "datapoints": []
+}
