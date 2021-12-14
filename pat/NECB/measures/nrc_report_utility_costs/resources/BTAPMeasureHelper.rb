@@ -1,10 +1,10 @@
 module BTAPMeasureHelper
   ###################Helper functions
 
-  # define the arguments that the user will input
-  def arguments(model)
+  # define the arguments that the user will input  
+  def arguments(model = OpenStudio::Model::Model.new)
     args = OpenStudio::Measure::OSArgumentVector.new
-
+	
     if true == @use_json_package
       #Set up package version of input.
       json_default = {}
@@ -47,7 +47,6 @@ module BTAPMeasureHelper
           arg = OpenStudio::Measure::OSArgument.makeBoolArgument(argument['name'], argument['is_required'])
           arg.setDisplayName(argument['display_name'])
           arg.setDefaultValue(argument['default_value'])
-
 
         when "StringDouble"
           if @use_string_double == false
@@ -100,8 +99,8 @@ module BTAPMeasureHelper
     return values
   end
 
-  # boilerplate that validated ranges of inputs.
-  def validate_and_get_arguments_in_hash(model, runner, user_arguments)
+  # Boilerplate that validates ranges of inputs.
+  def validate_and_get_arguments_in_hash(model = OpenStudio::Model::Model.new, runner, user_arguments)
     return_value = true
     values = get_hash_of_arguments(user_arguments, runner)
     # use the built-in error checking
@@ -161,6 +160,7 @@ end
 module BTAPMeasureTestHelper
   ##### Helper methods Do notouch unless you know the consequences.
 
+
   #Boiler plate to default values and number of arguments against what is in your test's setup method.
   def test_arguments_and_defaults
     [true, false].each do |json_input|
@@ -183,7 +183,7 @@ module BTAPMeasureTestHelper
 
         #check number of arguments.
         if @use_json_package
-          assert_equal(@measure_interface_detailed.size, JSON.parse(arguments[0].defaultValueAsString).size, "The measure should have #{@measure_interface_detailed.size} but actually has #{arguments.size}. Here the the arguement expected #{JSON.pretty_generate(@measure_interface_detailed) } and this is the actual #{JSON.pretty_generate(arguments[0])}")
+          assert_equal(@measure_interface_detailed.size, JSON.parse(arguments[0].defaultValueAsString).size, "The measure should have #{@measure_interface_detailed.size} but actually has #{arguments.size}. Here the the arguement expected #{JSON.pretty_generate(@measure_interface_detailed) } \n and this is the actual \n  #{JSON.pretty_generate(arguments[0])}")
         else
           assert_equal(@measure_interface_detailed.size, arguments.size, "The measure should have #{@measure_interface_detailed.size} but actually has #{arguments.size}. Here the the arguement expected #{@measure_interface_detailed} and this is the actual #{arguments}")
           (@measure_interface_detailed).each_with_index do |argument_expected, index|
@@ -216,11 +216,9 @@ module BTAPMeasureTestHelper
         @use_json_package = json_input
         @use_string_double = string_double
         (@measure_interface_detailed).each_with_index do |argument|
-          ##########################
           if argument['type'] == 'Integer'
             puts "Testing range for #{argument['name']}".blue
             #Check over max
-
             # puts " argument[max_integer_value]: #{argument["max_integer_value"]} , min: #{argument["min_integer_value"]}   ====>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
             if not argument['max_integer_value'].nil?
               puts "Testing max limit"
@@ -229,7 +227,6 @@ module BTAPMeasureTestHelper
               input_arguments[argument['name']] = over_max_value
               puts "Testing argument #{argument['name']} max limit of #{argument['max_integer_value']}".light_blue
               input_arguments = {'json_input' => JSON.pretty_generate(input_arguments)} if @use_json_package
-              run_measure(input_arguments, model)
               runner = run_measure(input_arguments, model)
               assert(runner.result.value.valueName != 'Success', "Checks did not stop a lower than limit value of #{over_max_value} for #{argument['name']}")
               puts "Success: Testing argument #{argument['name']} max limit of #{argument['max_integer_value']}".green
@@ -246,13 +243,9 @@ module BTAPMeasureTestHelper
               assert(runner.result.value.valueName != 'Success', "Checks did not stop a lower than limit value of #{over_min_value} for #{argument['name']}")
               puts "Success:Testing argument #{argument['name']} min limit of #{argument['min_integer_value']}".green
             end
-
-          end
-
-          if argument['type'] == 'Double' or argument['type'] == 'StringDouble'
+          elsif argument['type'] == 'Double' or argument['type'] == 'StringDouble'
             puts "Testing range for #{argument['name']} ".blue
             #Check over max
-
             if not argument['max_double_value'].nil?
               puts "Testing max limit"
               input_arguments = @good_input_arguments.clone
@@ -261,7 +254,6 @@ module BTAPMeasureTestHelper
               input_arguments[argument['name']] = over_max_value
               puts "Testing argument #{argument['name']} max limit of #{argument['max_double_value']}".light_blue
               input_arguments = {'json_input' => JSON.pretty_generate(input_arguments)} if @use_json_package
-              run_measure(input_arguments, model)
               runner = run_measure(input_arguments, model)
               assert(runner.result.value.valueName != 'Success', "Checks did not stop a lower than limit value of #{over_max_value} for #{argument['name']}")
               puts "Success: Testing argument #{argument['name']} max limit of #{argument['max_double_value']}".green
@@ -281,7 +273,6 @@ module BTAPMeasureTestHelper
             end
 
           end
-
           if (argument['type'] == 'StringDouble') and (not argument["valid_strings"].nil?) and @use_string_double
             input_arguments = @good_input_arguments.clone
             input_arguments[argument['name']] = SecureRandom.uuid.to_s
@@ -295,22 +286,23 @@ module BTAPMeasureTestHelper
     end
   end
 
+
   # helper method to create necb archetype as a starting point for testing.
   def create_necb_protype_model(building_type, climate_zone, epw_file, template)
     osm_directory = "#{Dir.pwd}/output/#{building_type}-#{template}-#{epw_file}"
 
-    puts ">>>>> osm_directory #{osm_directory}"
     FileUtils.mkdir_p (osm_directory) unless Dir.exist?(osm_directory)
     #Get Weather climate zone from lookup
     weather = BTAP::Environment::WeatherFile.new(epw_file)
     #create model
     building_name = "#{template}_#{building_type}"
+
     prototype_creator = Standard.build(template)
     model = prototype_creator.model_create_prototype_model(
-        template: template,
         epw_file: epw_file,
-        debug: @debug,
         sizing_run_dir: osm_directory,
+        debug: @debug,
+        template: template,
         building_type: building_type)
 
     #set weather file to epw_file passed to model.
@@ -354,6 +346,8 @@ module BTAPMeasureTestHelper
     runner.result
     return runner
   end
+  
+
 
   #Fancy way of getting the measure object automatically.
   def get_measure_object()
@@ -361,7 +355,7 @@ module BTAPMeasureTestHelper
     measure = nil
     eval "measure = #{measure_class_name}.new"
     if measure.nil?
-      puts "Measure class #{measure_class_name} is invalid. Please ensure the test class name is of the form 'BTAPMeasureName_Test' (Note: BTAP is case sensitive.) ".red
+      puts "Measure class #{measure_class_name} is invalid. Please ensure the test class name is of the form 'MeasureName_Test' "
       return false
     end
     return measure

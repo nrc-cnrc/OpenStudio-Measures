@@ -10,10 +10,25 @@
         "objective_function_target": null,
         "objective_function_group": null,
         "scaling_factor": null,
-        "display_name": "co_2_e",
-        "display_name_short": "co_2_e",
+        "display_name": "annual_electricity",
+        "display_name_short": "annual_electricity",
         "metadata_id": null,
-        "name": "nrc_report_carbon_emissions.co_2_e",
+        "name": "nrc_report_utility_costs.annual_electricity",
+        "visualize": true,
+        "export": true,
+        "variable_type": "double"
+      },
+      {
+        "units": "",
+        "objective_function": false,
+        "objective_function_index": null,
+        "objective_function_target": null,
+        "objective_function_group": null,
+        "scaling_factor": null,
+        "display_name": "annual_natural_gas",
+        "display_name_short": "annual_natural_gas",
+        "metadata_id": null,
+        "name": "nrc_report_utility_costs.annual_natural_gas",
         "visualize": true,
         "export": true,
         "variable_type": "double"
@@ -164,15 +179,39 @@
                     "values_and_weights": [
                       {
                         "value": "Warehouse",
-                        "weight": 0.3333333333333333
+                        "weight": 0.1111111111111111
                       },
                       {
                         "value": "SmallOffice",
-                        "weight": 0.3333333333333333
+                        "weight": 0.1111111111111111
                       },
                       {
                         "value": "RetailStandalone",
-                        "weight": 0.3333333333333333
+                        "weight": 0.1111111111111111
+                      },
+                      {
+                        "value": "MediumOffice",
+                        "weight": 0.1111111111111111
+                      },
+                      {
+                        "value": "RetailStripmall",
+                        "weight": 0.1111111111111111
+                      },
+                      {
+                        "value": "FullServiceRestaurant",
+                        "weight": 0.1111111111111111
+                      },
+                      {
+                        "value": "MidriseApartment",
+                        "weight": 0.1111111111111111
+                      },
+                      {
+                        "value": "QuickServiceRestaurant",
+                        "weight": 0.1111111111111111
+                      },
+                      {
+                        "value": "LargeOffice",
+                        "weight": 0.1111111111111111
                       }
                     ]
                   },
@@ -298,19 +337,87 @@
                     "values_and_weights": [
                       {
                         "value": "AB_Calgary",
-                        "weight": 0.25
+                        "weight": 0.047619047619047616
                       },
                       {
                         "value": "AB_Edmonton.Stony.Plain",
-                        "weight": 0.25
+                        "weight": 0.047619047619047616
                       },
                       {
                         "value": "AB_Fort.McMurray",
-                        "weight": 0.25
+                        "weight": 0.047619047619047616
                       },
                       {
                         "value": "BC_Vancouver",
-                        "weight": 0.25
+                        "weight": 0.047619047619047616
+                      },
+                      {
+                        "value": "BC_Victoria",
+                        "weight": 0.047619047619047616
+                      },
+                      {
+                        "value": "MB_Winnipeg-Richardson",
+                        "weight": 0.047619047619047616
+                      },
+                      {
+                        "value": "NB_Fredericton",
+                        "weight": 0.047619047619047616
+                      },
+                      {
+                        "value": "NL_St.Johns",
+                        "weight": 0.047619047619047616
+                      },
+                      {
+                        "value": "NS_Halifax",
+                        "weight": 0.047619047619047616
+                      },
+                      {
+                        "value": "NS_Sydney-McCurdy",
+                        "weight": 0.047619047619047616
+                      },
+                      {
+                        "value": "NS_Yarmouth",
+                        "weight": 0.047619047619047616
+                      },
+                      {
+                        "value": "NT_Inuvik-Zubko",
+                        "weight": 0.047619047619047616
+                      },
+                      {
+                        "value": "NT_Yellowknife",
+                        "weight": 0.047619047619047616
+                      },
+                      {
+                        "value": "ON_Toronto",
+                        "weight": 0.047619047619047616
+                      },
+                      {
+                        "value": "ON_Windsor",
+                        "weight": 0.047619047619047616
+                      },
+                      {
+                        "value": "ON_Sault.Ste.Marie",
+                        "weight": 0.047619047619047616
+                      },
+                      {
+                        "value": "QC_Montreal-Trudeau",
+                        "weight": 0.047619047619047616
+                      },
+                      {
+                        "value": "QC_Quebec",
+                        "weight": 0.047619047619047616
+                      },
+                      {
+                        "value": "QC_Saguenay-Bagotville",
+                        "weight": 0.047619047619047616
+                      },
+                      {
+                        "value": "SK_Saskatoon",
+                        "weight": 0.047619047619047616
+                      },
+                      {
+                        "value": "YT_Whitehorse",
+                        "weight": 0.047619047619047616
                       }
                     ]
                   },
@@ -342,53 +449,45 @@
           "workflow_index": 0
         },
         {
-          "name": "nrc_report_carbon_emissions",
-          "display_name": "NrcReportCarbonEmissions",
+          "name": "nrc_report_utility_costs",
+          "display_name": "Report Utility Costs",
           "measure_type": "ReportingMeasure",
-          "measure_definition_class_name": "NrcReportCarbonEmissions",
-          "measure_definition_directory": "./measures/nrc_report_carbon_emissions",
-          "measure_definition_directory_local": "D:\\Files\\Devel\\openstudio-measures\\pat\\NECB\\measures\\nrc_report_carbon_emissions",
-          "measure_definition_display_name": "NrcReportCarbonEmissions",
-          "measure_definition_name": "nrc_report_carbon_emissions",
+          "measure_definition_class_name": "NrcReportUtilityCosts",
+          "measure_definition_directory": "./measures/nrc_report_utility_costs",
+          "measure_definition_directory_local": "D:\\Files\\Devel\\openstudio-measures\\pat\\NECB\\measures\\nrc_report_utility_costs",
+          "measure_definition_display_name": "Report Utility Costs",
+          "measure_definition_name": "nrc_report_utility_costs",
           "measure_definition_name_xml": null,
-          "measure_definition_uuid": "11a12238-d360-4ad9-8d85-58b56c67cf83",
-          "measure_definition_version_uuid": "c5bf246d-5e07-42a1-bb2b-32d8f9b49f37",
-          "uuid": "11a12238-d360-4ad9-8d85-58b56c67cf83",
-          "version_uuid": "c5bf246d-5e07-42a1-bb2b-32d8f9b49f37",
-          "description": "This reporting measure calculates the annual greenhouse gas emissions.",
+          "measure_definition_uuid": "224561f4-8ccc-4f60-8118-34b85359d6f1",
+          "measure_definition_version_uuid": "f7c96258-dd63-4d1a-9a19-ad2eadbb11d1",
+          "uuid": "224561f4-8ccc-4f60-8118-34b85359d6f1",
+          "version_uuid": "f7c96258-dd63-4d1a-9a19-ad2eadbb11d1",
+          "description": "This measure calculates utility costs for Canadian locations. By default a simple $/kWh tarrif can be applied but for \n\t    several locations more complex rules are enabled.\n\t\tPeak values are reported averaged over the hour (the default LEED table produced by E+ reports the PEAK timestep value).",
           "taxonomy": "Reporting.QAQC",
           "arguments": [
             {
-              "display_name": "Location",
-              "display_name_short": "location",
-              "name": "location",
+              "display_name": "Utility cost choice",
+              "display_name_short": "calc_choice",
+              "name": "calc_choice",
               "value_type": "string",
-              "default_value": "Ontario",
-              "value": "Canada"
+              "default_value": "Use rates below",
+              "value": "Use rates below"
             },
             {
-              "display_name": "Year",
-              "display_name_short": "year",
-              "name": "year",
-              "value_type": "string",
-              "default_value": "2018",
-              "value": "2018"
+              "display_name": "Electricity rate ($/kWh)",
+              "display_name_short": "electricity_cost",
+              "name": "electricity_cost",
+              "value_type": "double",
+              "default_value": 0.1,
+              "value": 0.1
             },
             {
-              "display_name": "model_summary_section",
-              "display_name_short": "model_summary_section",
-              "name": "model_summary_section",
-              "value_type": "boolean",
-              "default_value": true,
-              "value": true
-            },
-            {
-              "display_name": "endUse_summary_section",
-              "display_name_short": "endUse_summary_section",
-              "name": "endUse_summary_section",
-              "value_type": "boolean",
-              "default_value": true,
-              "value": true
+              "display_name": "Natural gas rate ($/m3)",
+              "display_name_short": "gas_cost",
+              "name": "gas_cost",
+              "value_type": "double",
+              "default_value": 0.2,
+              "value": 0.2
             }
           ],
           "variables": [],
@@ -421,6 +520,8 @@
     "run_workflow_timeout": 28800,
     "upload_results_timeout": 28800,
     "initialize_worker_timeout": 28800,
-    "server_scripts": {}
+    "server_scripts": {
+      "server_finalization": "./scripts/server_finalization/finalize.sh"
+    }
   }
 }
