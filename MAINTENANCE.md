@@ -34,12 +34,13 @@ Revert the env.sh file back to using the nrcan_nrc branch and run the tests agai
 differences we have in the nrcan_nrc branch do not cause issues).
 
 # NREL feature inclusion/openstudio-server update
-This is the more complex update and could include changes not described here. These steps are liekly a minimum 
+This is the more complex update and could include changes not described here. These steps are likely a minimum 
 to get the new version working.
 
 1) Edit the env.sh file to:
     a) use the nrcan branch of openstudio-standards
 	b) reference the new version of openstudio-server
 2) Launch the openstudio-server containers. If/when these fail look at the openstudio-server code for the tag being used (e.g. v3.2.1):
-    a) Check the docker-compose.yml file for updates and edit the local openstudio-server/docker-compose.yml file to match
-	b) Check the .env file for updates and edit the environmental variables section of env.sh (around line 60)
+    a) Check the docker-compose.yml file for updates and edit the local openstudio-server/docker-compose.yml file to match.
+	b) Check the version of ruby specified in the Gemfile, match this in the local Gemfile.
+	c) Check the server specific gems in server/Gemfile (specifically the versions of openstudio components).
