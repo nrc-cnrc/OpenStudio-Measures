@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_report_utility_costs</name>
   <uid>224561f4-8ccc-4f60-8118-34b85359d6f1</uid>
-  <version_id>f7c96258-dd63-4d1a-9a19-ad2eadbb11d1</version_id>
-  <version_modified>20211108T192418Z</version_modified>
+  <version_id>2a622f7d-e992-4935-a4cf-cf65256ef852</version_id>
+  <version_modified>20211215T173507Z</version_modified>
   <xml_checksum>9BF1E6AC</xml_checksum>
   <class_name>NrcReportUtilityCosts</class_name>
   <display_name>Report Utility Costs</display_name>
@@ -50,16 +50,30 @@
   </arguments>
   <outputs>
     <output>
-      <name>annual_electricity</name>
-      <display_name>annual_electricity</display_name>
-      <short_name>annual_electricity</short_name>
+      <name>annual_electricity_use</name>
+      <display_name>annual_electricity_use</display_name>
+      <short_name>annual_electricity_use</short_name>
       <type>Double</type>
       <model_dependent>false</model_dependent>
     </output>
     <output>
-      <name>annual_natural_gas</name>
-      <display_name>annual_natural_gas</display_name>
-      <short_name>annual_natural_gas</short_name>
+      <name>annual_natural_gas_use</name>
+      <display_name>annual_natural_gas_use</display_name>
+      <short_name>annual_natural_gas_use</short_name>
+      <type>Double</type>
+      <model_dependent>false</model_dependent>
+    </output>
+    <output>
+      <name>annual_electricity_cost</name>
+      <display_name>annual_electricity_cost</display_name>
+      <short_name>annual_electricity_cost</short_name>
+      <type>Double</type>
+      <model_dependent>false</model_dependent>
+    </output>
+    <output>
+      <name>annual_natural_gas_cost</name>
+      <display_name>annual_natural_gas_cost</display_name>
+      <short_name>annual_natural_gas_cost</short_name>
       <type>Double</type>
       <model_dependent>false</model_dependent>
     </output>
@@ -117,10 +131,16 @@
       <checksum>703C9964</checksum>
     </file>
     <file>
+      <filename>test.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>E5DFBBAB</checksum>
+    </file>
+    <file>
       <filename>README.md</filename>
       <filetype>md</filetype>
       <usage_type>readme</usage_type>
-      <checksum>9B7A7E35</checksum>
+      <checksum>95A81821</checksum>
     </file>
     <file>
       <version>
@@ -131,13 +151,7 @@
       <filename>measure.rb</filename>
       <filetype>rb</filetype>
       <usage_type>script</usage_type>
-      <checksum>F31933D9</checksum>
-    </file>
-    <file>
-      <filename>test.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>test</usage_type>
-      <checksum>E5DFBBAB</checksum>
+      <checksum>1C271041</checksum>
     </file>
   </files>
 </measure>

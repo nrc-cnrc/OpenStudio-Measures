@@ -56,4 +56,8 @@ ReportingMeasure
 
 
 
-annual_electricity, annual_natural_gas
+
+
+
+
+annual_electricity_use, annual_natural_gas_use, annual_electricity_cost, annual_natural_gas_cost

@@ -30,8 +30,10 @@ class NrcReportUtilityCosts < OpenStudio::Measure::ReportingMeasure
   # Define the outputs that the measure will create.
   def outputs
     outs = OpenStudio::Measure::OSOutputVector.new
-    outs << OpenStudio::Measure::OSOutput.makeDoubleOutput('annual_electricity')
-    outs << OpenStudio::Measure::OSOutput.makeDoubleOutput('annual_natural_gas')
+    outs << OpenStudio::Measure::OSOutput.makeDoubleOutput('annual_electricity_use')
+    outs << OpenStudio::Measure::OSOutput.makeDoubleOutput('annual_natural_gas_use')
+    outs << OpenStudio::Measure::OSOutput.makeDoubleOutput('annual_electricity_cost')
+    outs << OpenStudio::Measure::OSOutput.makeDoubleOutput('annual_natural_gas_cost')
     return outs
   end
 
@@ -50,9 +52,9 @@ class NrcReportUtilityCosts < OpenStudio::Measure::ReportingMeasure
     # List outputs required.
 	# No need ofr these as OpenStudio outputs the data required already. If this changes the CI testing will 
 	# catch the change.
-    request << OpenStudio::IdfObject.load('Output:Meter,Gas:Facility,Monthly;').get
+    request << OpenStudio::IdfObject.load('Output:Meter,NaturalGas:Facility,Monthly;').get
     request << OpenStudio::IdfObject.load('Output:Meter,Electricity:Facility,Monthly;').get
-    request << OpenStudio::IdfObject.load('Output:Meter,Gas:Facility,Hourly;').get
+    request << OpenStudio::IdfObject.load('Output:Meter,NaturalGas:Facility,Hourly;').get
     request << OpenStudio::IdfObject.load('Output:Meter,Electricity:Facility,Hourly;').get
 
     return request
@@ -192,9 +194,9 @@ class NrcReportUtilityCosts < OpenStudio::Measure::ReportingMeasure
 								   units = 'GJ')
 	annual_gas = getValueFromSQL(report = 'EnergyMeters', 
                                    scope = 'Entire Facility', 
-                                   table = 'Annual and Peak Values - Gas', 
-                                   row = 'Gas:Facility', 
-								   column = 'Gas Annual Value', 
+                                   table = 'Annual and Peak Values - Natural Gas', 
+                                   row = 'NaturalGas:Facility', 
+								   column = 'Natural Gas Annual Value', 
 								   units = 'GJ')
 
 	# Calculate costs. Note signif defaults to three sig figs.
@@ -204,8 +206,10 @@ class NrcReportUtilityCosts < OpenStudio::Measure::ReportingMeasure
     cost_table << "<tr><td>Natural gas</td><td>#{annual_gas.signif}</td><td>GJ</td><td>#{(annual_gas*gas_rate).round(2)}</td></tr>"
 	
 	# Populate outputs.
-    runner.registerValue('annual_electricity', (annual_elec*elec_rate).round(2), '$')
-    runner.registerValue('annual_natural_gas', (annual_gas*elec_rate).round(2), '$')
+    runner.registerValue('annual_electricity_use', annual_elec.signif, 'GJ-check')
+    runner.registerValue('annual_natural_gas_use', annual_gas.signif, 'GJ')
+    runner.registerValue('annual_electricity_cost', (annual_elec*elec_rate).round(2), '$')
+    runner.registerValue('annual_natural_gas_cost', (annual_gas*elec_rate).round(2), '$')
 	
     return rate_summary, cost_table
   end
@@ -225,9 +229,9 @@ class NrcReportUtilityCosts < OpenStudio::Measure::ReportingMeasure
 	monthly_peak_elec = 0.1
 	(1..12).each do |month|
 	  elec_total = getMonthlyEnergyConsumptionFromSQL('Electricity:Facility', month)/(3.6e+06) # return value in J, convert to kWh
-	  gas_total = getMonthlyEnergyConsumptionFromSQL('Gas:Facility', month)/(1.0e+09) # return value in J, convert to GJ
+	  gas_total = getMonthlyEnergyConsumptionFromSQL('NaturalGas:Facility', month)/(1.0e+09) # return value in J, convert to GJ
 	  elec_peak = getMonthlyPeakEnergyFromSQL('Electricity:Facility', month)/3600000.0 # return value in J, convert to kW (averaged over the hour)
-	  gas_peak = getMonthlyPeakEnergyFromSQL('Gas:Facility', month)/3600000.0 # return value in J, convert to kW (averaged over the hour)
+	  gas_peak = getMonthlyPeakEnergyFromSQL('NaturalGas:Facility', month)/3600000.0 # return value in J, convert to kW (averaged over the hour)
 	  monthly_elec[months[month-1]] = {total: elec_total, peak: elec_peak}
 	  monthly_gas[months[month-1]] = {total: gas_total, peak: gas_peak}
 	  annual_elec += elec_total
@@ -303,7 +307,8 @@ class NrcReportUtilityCosts < OpenStudio::Measure::ReportingMeasure
 	end
 	
 	# Populate outputs.
-    runner.registerValue('annual_electricity', (total_cost).round(2), '$')
+    runner.registerValue('annual_electricity_use', annual_elec.signif, 'kWh')
+    runner.registerValue('annual_electricity_cost', (total_cost).round(2), '$')
 	
 	# Figure out what tarrif to use for natural gas.
 	# https://www.heritagegas.com/for-business/rates/
@@ -344,7 +349,8 @@ class NrcReportUtilityCosts < OpenStudio::Measure::ReportingMeasure
 	cost_table << "<tr><td>Gas</td><td>#{annual_gas.signif}</td><td>GJ</td><td>#{(total_cost).round(2)}</td></tr>"
 	
 	# Populate outputs.
-    runner.registerValue('annual_natural_gas', (total_cost).round(2), '$')
+    runner.registerValue('annual_natural_gas_use', annual_gas.signif, 'GJ')
+    runner.registerValue('annual_natural_gas_cost', (total_cost).round(2), '$')
 	
     return rate_summary, cost_table
   end
