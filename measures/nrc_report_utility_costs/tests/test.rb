@@ -15,16 +15,7 @@ class NrcReportUtilityCosts_Test < Minitest::Test
 
   # Brings in helper methods to simplify argument testing of json and standard argument methods.
   include(NRCReportingMeasureTestHelper)
-  
-  # Define the output folder.
-  @@test_dir = "#{File.expand_path(__dir__)}/output"
-  # Remove if existing found. This should only be done once.
-  if Dir.exists?(@@test_dir)
-    FileUtils.rm_rf(@@test_dir)
-	sleep 10
-  end
-  Dir.mkdir(@@test_dir)
-  
+    
   def setup()
 
     @use_json_package = false
@@ -70,8 +61,7 @@ class NrcReportUtilityCosts_Test < Minitest::Test
     puts "Testing report on small Office model".blue
 	
     # Define the output folder for this test. 
-    NRCReportingMeasureTestHelper.setOutputFolder("#{@@test_dir}/smallOffice")
-    Dir.mkdir(NRCReportingMeasureTestHelper.outputFolder) unless Dir.exists?(NRCReportingMeasureTestHelper.outputFolder)
+    NRCReportingMeasureTestHelper.appendOutputFolder("smallOffice")
 	
     # Load osm file
     translator = OpenStudio::OSVersion::VersionTranslator.new
@@ -100,10 +90,18 @@ class NrcReportUtilityCosts_Test < Minitest::Test
 	outputs = runner.result.stepValues
 	outputs.each do |output|
 	  puts "Checking output #{output.name}".light_blue
-	  if output.name == 'annual_electricity'
-        assert_in_delta(6399.54, output.valueAsDouble, 0.001, 'Annual electricity cost')
-	  elsif output.name == 'annual_natural_gas'
-        assert_in_delta(1327.84, output.valueAsDouble, 0.001, 'Annual natural gas cost')
+	  if input_arguments.key?(output.name) then
+	    puts "Skipping input argument #{output.name}" # all the inputs are in the outputs so just skip these.
+	  elsif output.name == 'annual_electricity_use'
+        assert_in_delta(48000, output.valueAsDouble, 0.001, 'Annual electricity use')
+	  elsif output.name == 'annual_natural_gas_use'
+        assert_in_delta(62.7, output.valueAsDouble, 0.001, 'Annual natural gas use')
+	  elsif output.name == 'annual_electricity_cost'
+        assert_in_delta(6592.93, output.valueAsDouble, 0.001, 'Annual electricity cost')
+	  elsif output.name == 'annual_natural_gas_cost'
+        assert_in_delta(1279.27, output.valueAsDouble, 0.001, 'Annual natural gas cost')
+	  else
+	    assert(false, "Could not find output #{output.name}")
 	  end
 	end
 
