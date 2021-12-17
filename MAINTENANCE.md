@@ -41,6 +41,9 @@ to get the new version working.
     a) use the nrcan branch of openstudio-standards
 	b) reference the new version of openstudio-server
 2) Launch the openstudio-server containers. If/when these fail look at the openstudio-server code for the tag being used (e.g. v3.2.1):
-    a) Check the docker-compose.yml file for updates and edit the local openstudio-server/docker-compose.yml file to match.
-	b) Check the version of ruby specified in the Gemfile, match this in the local Gemfile.
+    a) Check the _docker-compose.yml_ file for updates and edit the local _openstudio-server/docker-compose.yml_ file to match.
+	b) Check the version of ruby specified in the _Gemfile_, match this in the local _Gemfile_.
 	c) Check the server specific gems in server/Gemfile (specifically the versions of openstudio components).
+3) Testing
+	a) Run the CI tests locally for the measures.
+	b) Update the OS version in the _gitlab-ci.yml_ file to match the new version.
