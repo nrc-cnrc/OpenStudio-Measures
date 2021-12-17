@@ -102,25 +102,6 @@ then
     #  docker exec ${workerIDs[$iWorker]} sh -c "cd /var/oscli; bundle config local.${server_gems[($iGem*3)+1]} /var/os-gems/${server_gems[($iGem*3)]}"
   done
   
-  # Parse the project Gemfile and add measure specific gems from there into the local .gemfile
-  echo -e "${GREEN}... adding measure specific gems to .gemfile${NC}..."
-  addgems="FALSE"
-  while read -r line
-  do
-    #echo -e "${YELLOW}$line${NC}"
-	if [ "$addgems" = "TRUE" ]
-	then
-	  echo -e "${GREEN}   adding ${BLUE}${line}${GREEN} to .gemfile${NC}"
-	  echo $line >> .gemfile
-	fi
-    if [[ "$line" =~ "Additional" ]]
-	then
-      echo -e "${GREEN}$line${NC}"
-	  addgems="TRUE"
-	fi
-  done < ../Gemfile
-	
-  
   # Now copy the local gemfile to the workers.
   echo -e "${GREEN}Copying updated Gemfile to workers${NC}..."
   for (( iWorker=0; iWorker<${nWorkers}; iWorker++ ))
