@@ -6,12 +6,12 @@ require "#{File.dirname(__FILE__)}/resources/os_lib_reporting"
 require "#{File.dirname(__FILE__)}/resources/os_lib_schedules"
 require "#{File.dirname(__FILE__)}/resources/os_lib_helper_methods"
 require "#{File.dirname(__FILE__)}/resources/Siz.Model"
+require_relative 'resources/NRCReportingMeasureHelper'
 
 require 'erb'
 require 'json'
 require 'zlib'
 require 'base64'
-require_relative 'resources/NRCReportingMeasureHelper'
 
 # start the measure
 class NrcReport < OpenStudio::Measure::ReportingMeasure
@@ -19,7 +19,7 @@ class NrcReport < OpenStudio::Measure::ReportingMeasure
   #Adds helper functions to make life a bit easier and consistent.
   attr_accessor :use_json_package, :use_string_double
   include(NRCReportingMeasureHelper)
-  
+
   # human readable name
   def name
     'NrcReport'
@@ -43,7 +43,7 @@ class NrcReport < OpenStudio::Measure::ReportingMeasure
      The HVAC detailed section is based on OpenStudio Results measure (https://bcl.nrel.gov/node/82918).
      The End Use table is modified from OpenStudio Results measure to create tables instead of charts'
   end
-  
+
   #Use the constructor to set global variables
   def initialize()
     super()
@@ -55,7 +55,7 @@ class NrcReport < OpenStudio::Measure::ReportingMeasure
     # continuous optimization algorithms. You may have to re-examine your input in PAT as this fundamentally changes the measure.
     #@use_string_double = true
     @use_string_double = false
-	
+
     @measure_interface_detailed = [
       {
         "name" => "report_depth",
@@ -65,40 +65,47 @@ class NrcReport < OpenStudio::Measure::ReportingMeasure
         "choices" => ["Summary", "Detailed"],
         "is_required" => true
       }
-	]
-	
-    # methods for sections in order that they will appear in report
-    possible_sections = []
-    possible_sections << 'model_summary_section'
-    possible_sections << 'building_construction_detailed_section'
-    possible_sections << 'construction_summary_section'
-    possible_sections << 'heat_gains_summary_section'
-    possible_sections << 'heat_loss_summary_section'
-    possible_sections << 'heat_gains_section'
-    possible_sections << 'heat_losses_section'
-    possible_sections << 'steadySate_conductionheat_losses_section'
-    possible_sections << 'thermal_zone_summary_section'
-    possible_sections << 'hvac_summary_section'
-    possible_sections << 'air_loops_detail_section'
-    possible_sections << 'plant_loops_detail_section'
-    possible_sections << 'zone_equipment_detail_section'
-    possible_sections << 'hvac_airloops_detailed_section1'
-    possible_sections << 'hvac_plantloops_detailed_section1'
-    possible_sections << 'hvac_zoneEquip_detailed_section1'
-	
-    # Possible sections to include
-    possible_sections.each do |section_name|
-	  arg = {
-        "name" => section_name,
+    ]
+    possible_sections.each do |method_name|
+      @measure_interface_detailed << {
+        "name" => method_name,
         "type" => "Bool",
-        "display_name" => "Include #{section_name}",
+        "display_name" => "OsLib_Reporting.#{method_name}(nil,nil,nil,true)[:title]",
         "default_value" => true,
         "is_required" => true
       }
-	  @measure_interface_detailed << arg
     end
   end
-	
+
+  def possible_sections
+    result = []
+    # methods for sections in order that they will appear in report
+    result << 'model_summary_section'
+    result << 'server_summary_section'
+    result << 'building_construction_detailed_section'
+    result << 'construction_summary_section'
+    result << 'heat_gains_summary_section'
+    result << 'heat_loss_summary_section'
+    result << 'heat_gains_detail_section'
+    result << 'heat_losses_detail_section'
+    result << 'steadySate_conductionheat_losses_section'
+    result << 'thermal_zone_summary_section'
+    result << 'hvac_summary_section'
+    result << 'air_loops_detail_section'
+    result << 'plant_loops_detail_section'
+    result << 'zone_equipment_detail_section'
+    result << 'hvac_airloops_detailed_section1'
+    result << 'hvac_plantloops_detailed_section1'
+    result << 'hvac_zoneEquip_detailed_section1'
+    result << 'output_data_end_use_table'
+    result << 'serviceHotWater_summary_section'
+    result << 'interior_lighting_summary_section'
+    result << 'interior_lighting_detail_section'
+    result << 'daylighting_summary_section'
+    result << 'exterior_light_section'
+    result << 'shading_summary_section'
+    result
+  end
 
   # return a vector of IdfObject's to request EnergyPlus objects needed by the run method
   # Warning: Do not change the name of this method to be snake_case. The method must be lowerCamelCase.
@@ -109,6 +116,7 @@ class NrcReport < OpenStudio::Measure::ReportingMeasure
     if !runner.validateUserArguments(arguments, user_arguments)
       return result
     end
+    model = runner.lastOpenStudioModel
 
     # monthly heat gain outputs
     result << OpenStudio::IdfObject.load('Output:Variable,,Electric Equipment Total Heating Energy,monthly;').get
@@ -152,13 +160,21 @@ class NrcReport < OpenStudio::Measure::ReportingMeasure
     #get arguments
     report_depth = runner.getStringArgumentValue("report_depth", user_arguments)
 
-    # get sql, model, and web assets
-    setup = OsLib_Reporting.setup(runner)
-    unless setup
+    # Get the last model and sql file.
+    model = runner.lastOpenStudioModel
+    if model.empty?
+      runner.registerError('Cannot find last model.')
       return false
     end
-    model = setup[:model]
-    sql_file = setup[:sqlFile]
+    model = model.get
+
+    sqlFile = runner.lastEnergyPlusSqlFile
+    if sqlFile.empty?
+      runner.registerError('Cannot find last sql file.').yellow
+      return false
+    end
+    sqlFile = sqlFile.get
+    model.setSqlFile(sqlFile)
 
     # assign the user inputs to variables
     args = OsLib_HelperMethods.createRunVariables(runner, model, user_arguments, arguments)
@@ -178,7 +194,7 @@ class NrcReport < OpenStudio::Measure::ReportingMeasure
       begin
         #next unless args[method_name]
         section = false
-        eval("section = OsLib_Reporting.#{method_name}(model,sql_file,runner,false)")
+        eval("section = OsLib_Reporting.#{method_name}(model,sqlFile,runner,false)")
         display_name = eval("OsLib_Reporting.#{method_name}(nil,nil,nil,true)[:title]")
         if section
           ordered_section << section
@@ -288,7 +304,7 @@ class NrcReport < OpenStudio::Measure::ReportingMeasure
       total_end_use = 0.0
       fuel_types.each do |fuel_type|
         query_fuel = "SELECT Value FROM tabulardatawithstrings WHERE ReportName='AnnualBuildingUtilityPerformanceSummary' and TableName='End Uses' and RowName= '#{end_use}' and ColumnName= '#{fuel_type}'"
-        results_fuel = sql_file.execAndReturnFirstDouble(query_fuel).get
+        results_fuel = sqlFile.execAndReturnFirstDouble(query_fuel).get
         total_end_use += results_fuel
         array_endUse << results_fuel
       end
@@ -342,11 +358,11 @@ class NrcReport < OpenStudio::Measure::ReportingMeasure
     gas_consumption_kWh = OpenStudio::convert(gas_consumption, "GJ", "kWh").get
     districtHeating_kWh = OpenStudio::convert(districtHeating, "GJ", "kWh").get
     districtCooling_kWh = OpenStudio::convert(districtCooling, "GJ", "kWh").get
-    totalSiteEnergy_kWh = OpenStudio.convert(sql_file.totalSiteEnergy.get, "GJ", "kWh").get
+    totalSiteEnergy_kWh = OpenStudio.convert(sqlFile.totalSiteEnergy.get, "GJ", "kWh").get
 
     #Calculate eui kWh/m2
     query_area = "SELECT Value FROM tabulardatawithstrings WHERE ReportName='AnnualBuildingUtilityPerformanceSummary' and TableName='Building Area' and RowName= 'Total Building Area' and ColumnName= 'Area' and Units='m2'"
-    area = sql_file.execAndReturnFirstDouble(query_area).get
+    area = sqlFile.execAndReturnFirstDouble(query_area).get
     eui_kWhPerm2 = totalSiteEnergy_kWh / area # kWh/m2
 
     runner.registerValue('heating', total_heating_kWh.round(2), 'kWh')
@@ -359,7 +375,7 @@ class NrcReport < OpenStudio::Measure::ReportingMeasure
     runner.registerValue('eui', eui_kWhPerm2.round(2), 'kW/m^2')
 
     # close the sql file
-    sql_file.close
+    sqlFile.close
     return true
   end
 end
