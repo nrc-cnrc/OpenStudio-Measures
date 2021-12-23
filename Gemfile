@@ -12,9 +12,9 @@ gem 'openstudio-standards', :path => '/var/gems'
 gem 'ruby-progressbar'
 gem 'parallel'
 gem 'minitest'
+
+# Additional gems required for measures.
 gem 'aws-sdk-s3'
 gem 'git-revision'
-
 gem 'diffy'
-# Additional gems required for measures.
-gem 'roo', '~> 2.7.1'
+gem 'roo', '~> 2.8'

@@ -102,18 +102,39 @@ then
     #  docker exec ${workerIDs[$iWorker]} sh -c "cd /var/oscli; bundle config local.${server_gems[($iGem*3)+1]} /var/os-gems/${server_gems[($iGem*3)]}"
   done
   
+  # Parse the project Gemfile and add measure specific gems from there into the local .gemfile
+  echo -e "${GREEN}... adding measure specific gems to .gemfile${NC}..."
+  addgems="FALSE"
+  while read -r line
+  do
+    #echo -e "${YELLOW}$line${NC}"
+	if [ "$addgems" = "TRUE" ]
+	then
+	  echo -e "${GREEN}   adding ${BLUE}${line}${GREEN} to .gemfile${NC}"
+	  echo $line >> .gemfile
+	fi
+    if [[ "$line" =~ "Additional" ]]
+	then
+      echo -e "${GREEN}$line${NC}"
+	  addgems="TRUE"
+	fi
+  done < ../Gemfile
+  
+  # Keep track of PIDs of spawned processes with popup windows.
+  child_pids=()
   # Now copy the local gemfile to the workers.
   echo -e "${GREEN}Copying updated Gemfile to workers${NC}..."
   for (( iWorker=0; iWorker<${nWorkers}; iWorker++ ))
   do
-    echo -e "${GREEN}$iWorker: Worker ref ${BLUE}${workerIDs[$iWorker]}${NC}"
+    echo -e "${GREEN}${iWorker}: Worker ref ${BLUE}${workerIDs[$iWorker]}${NC}"
     docker cp .gemfile ${workerIDs[$iWorker]}:/var/oscli/Gemfile
     sleep 5
     echo -e "${GREEN}Running bundle on installed gems in container: ${BLUE}${workerIDs[$iWorker]}${NC}..."
     echo -e "  ${GREEN}output in popup window(s)${NC}"
-    mintty -s 72,32 -t "Worker ${workerIDs[$iWorker]} Log <press enter to close>" -h always /bin/bash -c \
+    mintty -s 72,32 -t "Worker ${iWorker} Bundle Log (${workerIDs[$iWorker]}) <press enter to close>" -h always /bin/bash -c \
 	    "docker exec ${workerIDs[$iWorker]} sh -c \"cd /var/oscli; rm -f Gemfile.lock; bundle install; bundle list --paths; echo DONE. Press enter to close.\"" &
     #docker exec ${workerIDs[$iWorker]} sh -c "cd /var/oscli; rm -f Gemfile.lock; bundle install"
+	child_pids+=("$!" )
     echo -e "${GREEN}done${NC}"
   done
 
@@ -136,5 +157,7 @@ then
   echo -e "Feedback from the server is displayed in the ${BLUE}OpenStudio Server Log${NC} window."
   echo -e "Configure PAT to point to the server ${BLUE}http://${HOSTNAME}:8080${NC}"
   echo
+  
+  echo $child_pids
 fi
 
