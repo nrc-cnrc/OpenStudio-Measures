@@ -1,0 +1,372 @@
+# Logfile created on 2021-12-24 15:17:51 +0000 by logger.rb/61378
+[15:17:51.033632 INFO] Server host is http://web:80
+[15:17:51.033757 INFO] Analysis directory is /mnt/openstudio/analysis_d904aff1-dbdd-41a2-aced-0d4c12834994
+[15:17:51.033806 INFO] Simulation directory is /mnt/openstudio/analysis_d904aff1-dbdd-41a2-aced-0d4c12834994/data_point_33a76811-ab22-4716-a683-f0300fb16e61
+[15:17:51.033836 INFO] Run datapoint type/file is 
+[15:17:51.033871 INFO] Starting initialize_worker for datapoint 33a76811-ab22-4716-a683-f0300fb16e61
+[15:17:51.034413 INFO] Downloading analysis zip from http://web:80/analyses/d904aff1-dbdd-41a2-aced-0d4c12834994/download_analysis_zip
+[15:17:56.096170 INFO] Extracting analysis zip to /mnt/openstudio/analysis_d904aff1-dbdd-41a2-aced-0d4c12834994
+[15:17:56.104943 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/
+[15:17:56.105330 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/LICENSE.md
+[15:17:56.106324 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/README.md
+[15:17:56.106712 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/README.md.erb
+[15:17:56.107102 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/measure.rb
+[15:17:56.107689 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/measure.xml
+[15:17:56.108501 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/
+[15:17:56.108654 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.AirConditionerVariableRefrigerantFlow.rb
+[15:17:56.109238 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.AirLoopHVAC.rb
+[15:17:56.109700 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.AirLoopHVACUnitaryHeatCoolVAVChangeoverBypass.rb
+[15:17:56.110167 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.AirLoopHVACUnitaryHeatPumpAirToAir.rb
+[15:17:56.110612 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.AirLoopHVACUnitaryHeatPumpAirToAirMultiSpeed.rb
+[15:17:56.111087 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.AirLoopHVACUnitarySystem.rb
+[15:17:56.111532 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.AirTerminalDualDuctVAV.rb
+[15:17:56.111979 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.AirTerminalSingleDuctConstantVolumeCooledBeam.rb
+[15:17:56.112454 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.AirTerminalSingleDuctConstantVolumeFourPipeInduction.rb
+[15:17:56.112891 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.AirTerminalSingleDuctConstantVolumeReheat.rb
+[15:17:56.113396 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.AirTerminalSingleDuctParallelPIUReheat.rb
+[15:17:56.113827 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.AirTerminalSingleDuctSeriesPIUReheat.rb
+[15:17:56.114345 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.AirTerminalSingleDuctUncontrolled.rb
+[15:17:56.114769 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.AirTerminalSingleDuctVAVHeatAndCoolNoReheat.rb
+[15:17:56.115230 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.AirTerminalSingleDuctVAVHeatAndCoolReheat.rb
+[15:17:56.115660 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.AirTerminalSingleDuctVAVNoReheat.rb
+[15:17:56.116086 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.AirTerminalSingleDuctVAVReheat.rb
+[15:17:56.116533 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.BoilerHotWater.rb
+[15:17:56.116963 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.BoilerSteam.rb
+[15:17:56.117686 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.ChillerAbsorption.rb
+[15:17:56.118139 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.ChillerAbsorptionIndirect.rb
+[15:17:56.118613 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.ChillerElectricEIR.rb
+[15:17:56.119080 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.ChillerHeaterPerformanceElectricEIR.rb
+[15:17:56.123434 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.CoilCoolingDXMultiSpeed.rb
+[15:17:56.123786 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.CoilCoolingDXMultiSpeedStageData.rb
+[15:17:56.124179 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.CoilCoolingDXSingleSpeed.rb
+[15:17:56.124541 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.CoilCoolingDXTwoSpeed.rb
+[15:17:56.124889 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.CoilCoolingDXTwoStageWithHumidityControlMode.rb
+[15:17:56.125386 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.CoilCoolingDXVariableRefrigerantFlow.rb
+[15:17:56.125711 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.CoilCoolingDXVariableSpeed.rb
+[15:17:56.126098 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.CoilCoolingDXVariableSpeedSpeedData.rb
+[15:17:56.126451 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.CoilCoolingLowTempRadiantVarFlow.rb
+[15:17:56.126736 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.CoilCoolingWater.rb
+[15:17:56.127062 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.CoilCoolingWaterToAirHeatPumpEquationFit.rb
+[15:17:56.127399 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.CoilCoolingWaterToAirHeatPumpVariableSpeedEquationFit.rb
+[15:17:56.127697 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.CoilCoolingWaterToAirHeatPumpVariableSpeedEquationFitSpeedData.rb
+[15:17:56.128053 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.CoilHeatingDXMultiSpeed.rb
+[15:17:56.128391 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.CoilHeatingDXMultiSpeedStageData.rb
+[15:17:56.128686 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.CoilHeatingDXSingleSpeed.rb
+[15:17:56.129074 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.CoilHeatingDXVariableRefrigerantFlow.rb
+[15:17:56.129452 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.CoilHeatingDXVariableSpeed.rb
+[15:17:56.129776 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.CoilHeatingDXVariableSpeedSpeedData.rb
+[15:17:56.130131 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.CoilHeatingDesuperheater.rb
+[15:17:56.130481 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.CoilHeatingElectric.rb
+[15:17:56.130807 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.CoilHeatingGas.rb
+[15:17:56.131226 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.CoilHeatingGasMultiStage.rb
+[15:17:56.131615 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.CoilHeatingGasMultiStageStageData.rb
+[15:17:56.131948 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.CoilHeatingLowTempRadiantVarFlow.rb
+[15:17:56.132353 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.CoilHeatingWater.rb
+[15:17:56.132676 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.CoilHeatingWaterBaseboard.rb
+[15:17:56.132992 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.CoilHeatingWaterBaseboardRadiant.rb
+[15:17:56.133455 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.CoilHeatingWaterToAirHeatPumpEquationFit.rb
+[15:17:56.133778 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.CoilHeatingWaterToAirHeatPumpVariableSpeedEquationFit.rb
+[15:17:56.134146 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.CoilHeatingWaterToAirHeatPumpVariableSpeedEquationFitSpeedData.rb
+[15:17:56.134530 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.CoilPerformanceDXCooling.rb
+[15:17:56.134864 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.CoilSystemCoolingDXHeatExchangerAssisted.rb
+[15:17:56.135202 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.CoilSystemCoolingWaterHeatExchangerAssisted.rb
+[15:17:56.135582 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.CoilWaterHeatingAirToWaterHeatPump.rb
+[15:17:56.135910 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.CoilWaterHeatingAirToWaterHeatPumpWrapped.rb
+[15:17:56.136325 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.CoilWaterHeatingDesuperheater.rb
+[15:17:56.136666 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.ControllerOutdoorAir.rb
+[15:17:56.137152 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.CoolingTowerSingleSpeed.rb
+[15:17:56.137528 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.CoolingTowerTwoSpeed.rb
+[15:17:56.137859 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.CoolingTowerVariableSpeed.rb
+[15:17:56.138234 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.DistrictCooling.rb
+[15:17:56.138571 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.DistrictHeating.rb
+[15:17:56.138918 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.ElectricLoadCenterInverterLookUpTable.rb
+[15:17:56.139330 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.ElectricLoadCenterInverterSimple.rb
+[15:17:56.139652 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.ElectricLoadCenterStorageConverter.rb
+[15:17:56.139988 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.ElectricLoadCenterStorageSimple.rb
+[15:17:56.140388 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.EvaporativeCoolerDirectResearchSpecial.rb
+[15:17:56.140700 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.EvaporativeCoolerIndirectResearchSpecial.rb
+[15:17:56.140984 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.EvaporativeFluidCoolerSingleSpeed.rb
+[15:17:56.141442 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.EvaporativeFluidCoolerTwoSpeed.rb
+[15:17:56.141739 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.FanConstantVolume.rb
+[15:17:56.142107 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.FanOnOff.rb
+[15:17:56.142493 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.FanVariableVolume.rb
+[15:17:56.142821 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.FanZoneExhaust.rb
+[15:17:56.143225 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.FluidCoolerSingleSpeed.rb
+[15:17:56.143578 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.FluidCoolerTwoSpeed.rb
+[15:17:56.143911 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.GeneratorFuelCellElectricalStorage.rb
+[15:17:56.144317 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.GeneratorFuelCellInverter.rb
+[15:17:56.144667 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.GeneratorFuelCellPowerModule.rb
+[15:17:56.145085 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.GeneratorMicroTurbine.rb
+[15:17:56.145478 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.GeneratorMicroTurbineHeatRecovery.rb
+[15:17:56.145821 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.HVACComponent.rb
+[15:17:56.146220 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.HeaderedPumpsConstantSpeed.rb
+[15:17:56.146629 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.HeaderedPumpsVariableSpeed.rb
+[15:17:56.147078 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.HeatExchangerAirToAirSensibleAndLatent.rb
+[15:17:56.147551 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.HeatExchangerFluidToFluid.rb
+[15:17:56.147873 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.HeatPumpWaterToWaterEquationFitCooling.rb
+[15:17:56.148208 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.HeatPumpWaterToWaterEquationFitHeating.rb
+[15:17:56.148550 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.HumidifierSteamElectric.rb
+[15:17:56.148899 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.Model.rb
+[15:17:56.149393 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.ModelObject.rb
+[15:17:56.149717 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.PhotovoltaicPerformanceSimple.rb
+[15:17:56.150124 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.PlantComponentTemperatureSource.rb
+[15:17:56.150558 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.PlantLoop.rb
+[15:17:56.150923 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.PumpConstantSpeed.rb
+[15:17:56.151282 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.PumpVariableSpeed.rb
+[15:17:56.151633 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.RefrigerationSecondarySystem.rb
+[15:17:56.151939 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.RefrigerationSystem.rb
+[15:17:56.152278 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.RefrigerationTranscriticalSystem.rb
+[15:17:56.152649 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.SizingSystem.rb
+[15:17:56.152985 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.SolarCollectorFlatPlatePhotovoltaicThermal.rb
+[15:17:56.153434 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.SolarCollectorPerformancePhotovoltaicThermalSimple.rb
+[15:17:56.153744 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.ThermalStorageChilledWaterStratified.rb
+[15:17:56.154132 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.WaterHeaterHeatPump.rb
+[15:17:56.154505 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.WaterHeaterHeatPumpWrappedCondenser.rb
+[15:17:56.154835 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.WaterHeaterMixed.rb
+[15:17:56.155205 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.WaterHeaterStratified.rb
+[15:17:56.155610 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.ZoneHVACBaseboardConvectiveElectric.rb
+[15:17:56.155945 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.ZoneHVACBaseboardConvectiveWater.rb
+[15:17:56.156288 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.ZoneHVACBaseboardRadiantConvectiveElectric.rb
+[15:17:56.156696 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.ZoneHVACBaseboardRadiantConvectiveWater.rb
+[15:17:56.157080 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.ZoneHVACEnergyRecoveryVentilator.rb
+[15:17:56.157454 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.ZoneHVACFourPipeFanCoil.rb
+[15:17:56.157767 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.ZoneHVACHighTemperatureRadiant.rb
+[15:17:56.158105 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.ZoneHVACIdealLoadsAirSystem.rb
+[15:17:56.158460 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.ZoneHVACLowTempRadiantConstFlow.rb
+[15:17:56.158790 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.ZoneHVACLowTempRadiantVarFlow.rb
+[15:17:56.159160 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.ZoneHVACPackagedTerminalAirConditioner.rb
+[15:17:56.159559 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.ZoneHVACPackagedTerminalHeatPump.rb
+[15:17:56.159898 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.ZoneHVACTerminalUnitVariableRefrigerantFlow.rb
+[15:17:56.160897 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.ZoneHVACUnitHeater.rb
+[15:17:56.161444 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.ZoneHVACUnitVentilator.rb
+[15:17:56.161857 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.ZoneHVACWaterToAirHeatPump.rb
+[15:17:56.162362 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/Siz.ZoneVentilationDesignFlowRate.rb
+[15:17:56.162741 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/os_lib_reporting.rb
+[15:17:56.165333 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/resources/report.html.erb
+[15:17:56.166008 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/tests/
+[15:17:56.166153 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/tests/1004_SmallHotel_a.osm
+[15:17:56.191160 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/tests/EdgeCaseModel.osm
+[15:17:56.194963 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/tests/EmptyModel.osm
+[15:17:56.195672 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/tests/ExampleModel.osm
+[15:17:56.199562 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/tests/HeatingOnly.osm
+[15:17:56.204097 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/tests/NoRunPeriod.osm
+[15:17:56.204674 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/tests/OpenStudioResults_Test.rb
+[15:17:56.205315 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/tests/PeriodInConstName.osm
+[15:17:56.353597 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/tests/USA_CO_Golden-NREL.724666_TMY3.epw
+[15:17:56.365422 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/tests/add_tariff.osw
+[15:17:56.365944 INFO] Zip: Extracting measures/da737820-833d-4734-8131-f962d58ea8e2/tests/os_results.osw
+[15:17:56.366381 INFO] Zip: Extracting measures/nrc_create_necb_prototype_building/
+[15:17:56.366538 INFO] Zip: Extracting measures/nrc_create_necb_prototype_building/README.md
+[15:17:56.366823 INFO] Zip: Extracting measures/nrc_create_necb_prototype_building/README.md.erb
+[15:17:56.367153 INFO] Zip: Extracting measures/nrc_create_necb_prototype_building/measure.rb
+[15:17:56.367646 INFO] Zip: Extracting measures/nrc_create_necb_prototype_building/measure.xml
+[15:17:56.368128 INFO] Zip: Extracting measures/nrc_create_necb_prototype_building/resources/
+[15:17:56.368312 INFO] Zip: Extracting measures/nrc_create_necb_prototype_building/resources/BTAPMeasureHelper.rb
+[15:17:56.368741 INFO] Zip: Extracting measures/nrc_create_necb_prototype_building/resources/NRCMeasureHelper.rb
+[15:17:56.369071 INFO] Zip: Extracting measures/nrc_create_necb_prototype_building/resources/data_sideload/
+[15:17:56.369192 INFO] Zip: Extracting measures/nrc_create_necb_prototype_building/resources/data_sideload/test.txt
+[15:17:56.369528 INFO] Zip: Extracting measures/nrc_create_necb_prototype_building/tests/
+[15:17:56.369645 INFO] Zip: Extracting measures/nrc_create_necb_prototype_building/tests/common.rb
+[15:17:56.370104 INFO] Zip: Extracting measures/nrc_create_necb_prototype_building/tests/regression_models/
+[15:17:56.370266 INFO] Zip: Extracting measures/nrc_create_necb_prototype_building/tests/regression_models/FullServiceRestaurant-NECB2015-AB_Banff.osm
+[15:17:56.471822 INFO] Zip: Extracting measures/nrc_create_necb_prototype_building/tests/regression_models/FullServiceRestaurant-NECB2015-BC_Vancouver.osm
+[15:17:56.474241 INFO] Zip: Extracting measures/nrc_create_necb_prototype_building/tests/regression_models/FullServiceRestaurant-NECB2015-ON_Toronto.osm
+[15:17:56.476778 INFO] Zip: Extracting measures/nrc_create_necb_prototype_building/tests/regression_models/HighriseApartment-NECB2017-AB_Banff.osm
+[15:17:56.526733 INFO] Zip: Extracting measures/nrc_create_necb_prototype_building/tests/regression_models/HighriseApartment-NECB2017-NB_Fredericton.osm
+[15:17:56.554151 INFO] Zip: Extracting measures/nrc_create_necb_prototype_building/tests/regression_models/HighriseApartment-NECB2017-SK_Saskatoon.osm
+[15:17:56.597851 INFO] Zip: Extracting measures/nrc_create_necb_prototype_building/tests/regression_models/LargeOffice-NECB2015-AB_Banff.osm
+[15:17:56.610079 INFO] Zip: Extracting measures/nrc_create_necb_prototype_building/tests/regression_models/LargeOffice-NECB2015-BC_Vancouver.osm
+[15:17:56.710636 INFO] Zip: Extracting measures/nrc_create_necb_prototype_building/tests/regression_models/LargeOffice-NECB2015-ON_Toronto.osm
+[15:17:56.720389 INFO] Zip: Extracting measures/nrc_create_necb_prototype_building/tests/regression_models/MediumOffice-NECB2011-AB_Banff.osm
+[15:17:56.727070 INFO] Zip: Extracting measures/nrc_create_necb_prototype_building/tests/regression_models/MediumOffice-NECB2011-AB_Edmonton.Intl.osm
+[15:17:56.733525 INFO] Zip: Extracting measures/nrc_create_necb_prototype_building/tests/regression_models/MediumOffice-NECB2011-QC_Montreal-Trudeau.osm
+[15:17:56.836299 INFO] Zip: Extracting measures/nrc_create_necb_prototype_building/tests/regression_models/MidriseApartment-NECB2020-AB_Banff.osm
+[15:17:56.851525 INFO] Zip: Extracting measures/nrc_create_necb_prototype_building/tests/regression_models/MidriseApartment-NECB2020-MB_Winnipeg-Richardson.osm
+[15:17:56.889347 INFO] Zip: Extracting measures/nrc_create_necb_prototype_building/tests/regression_models/MidriseApartment-NECB2020-NL_St.Johns.osm
+[15:17:56.904228 INFO] Zip: Extracting measures/nrc_create_necb_prototype_building/tests/regression_models/Outpatient-NECB2015-AB_Banff.osm
+[15:17:56.953093 INFO] Zip: Extracting measures/nrc_create_necb_prototype_building/tests/regression_models/Outpatient-NECB2015-BC_Vancouver.osm
+[15:17:56.984296 INFO] Zip: Extracting measures/nrc_create_necb_prototype_building/tests/regression_models/Outpatient-NECB2015-ON_Toronto.osm
+[15:17:57.127267 INFO] Zip: Extracting measures/nrc_create_necb_prototype_building/tests/regression_models/PrimarySchool-NECB2011-AB_Banff.osm
+[15:17:57.136522 INFO] Zip: Extracting measures/nrc_create_necb_prototype_building/tests/regression_models/PrimarySchool-NECB2011-AB_Edmonton.Intl.osm
+[15:17:57.145607 INFO] Zip: Extracting measures/nrc_create_necb_prototype_building/tests/regression_models/PrimarySchool-NECB2011-QC_Montreal-Trudeau.osm
+[15:17:57.265641 INFO] Zip: Extracting measures/nrc_create_necb_prototype_building/tests/regression_models/QuickServiceRestaurant-NECB2017-AB_Banff.osm
+[15:17:57.268471 INFO] Zip: Extracting measures/nrc_create_necb_prototype_building/tests/regression_models/QuickServiceRestaurant-NECB2017-NB_Fredericton.osm
+[15:17:57.271165 INFO] Zip: Extracting measures/nrc_create_necb_prototype_building/tests/regression_models/QuickServiceRestaurant-NECB2017-SK_Saskatoon.osm
+[15:17:57.274035 INFO] Zip: Extracting measures/nrc_create_necb_prototype_building/tests/regression_models/RetailStandalone-NECB2020-AB_Banff.osm
+[15:17:57.278988 INFO] Zip: Extracting measures/nrc_create_necb_prototype_building/tests/regression_models/RetailStandalone-NECB2020-MB_Winnipeg-Richardson.osm
+[15:17:57.283785 INFO] Zip: Extracting measures/nrc_create_necb_prototype_building/tests/regression_models/RetailStandalone-NECB2020-NL_St.Johns.osm
+[15:17:57.288319 INFO] Zip: Extracting measures/nrc_create_necb_prototype_building/tests/regression_models/RetailStripmall-NECB2015-AB_Banff.osm
+[15:17:57.292473 INFO] Zip: Extracting measures/nrc_create_necb_prototype_building/tests/regression_models/RetailStripmall-NECB2015-BC_Vancouver.osm
+[15:17:57.295693 INFO] Zip: Extracting measures/nrc_create_necb_prototype_building/tests/regression_models/RetailStripmall-NECB2015-ON_Toronto.osm
+[15:17:57.299307 INFO] Zip: Extracting measures/nrc_create_necb_prototype_building/tests/regression_models/SecondarySchool-NECB2011-AB_Banff.osm
+[15:17:57.333612 INFO] Zip: Extracting measures/nrc_create_necb_prototype_building/tests/regression_models/SecondarySchool-NECB2011-AB_Edmonton.Intl.osm
+[15:17:57.349054 INFO] Zip: Extracting measures/nrc_create_necb_prototype_building/tests/regression_models/SecondarySchool-NECB2011-QC_Montreal-Trudeau.osm
+[15:17:57.365075 INFO] Zip: Extracting measures/nrc_create_necb_prototype_building/tests/regression_models/SmallHotel-NECB2011-AB_Banff.osm
+[15:17:57.407490 INFO] Zip: Extracting measures/nrc_create_necb_prototype_building/tests/regression_models/SmallHotel-NECB2011-AB_Edmonton.Intl.osm
+[15:17:57.436570 INFO] Zip: Extracting measures/nrc_create_necb_prototype_building/tests/regression_models/SmallHotel-NECB2011-QC_Montreal-Trudeau.osm
+[15:17:57.477926 INFO] Zip: Extracting measures/nrc_create_necb_prototype_building/tests/regression_models/SmallOffice-NECB2011-AB_Banff.osm
+[15:17:57.483100 INFO] Zip: Extracting measures/nrc_create_necb_prototype_building/tests/regression_models/SmallOffice-NECB2011-AB_Edmonton.Intl.osm
+[15:17:57.582287 INFO] Zip: Extracting measures/nrc_create_necb_prototype_building/tests/regression_models/SmallOffice-NECB2011-QC_Montreal-Trudeau.osm
+[15:17:57.585633 INFO] Zip: Extracting measures/nrc_create_necb_prototype_building/tests/regression_models/Warehouse-NECB2011-AB_Banff.osm
+[15:17:57.588569 INFO] Zip: Extracting measures/nrc_create_necb_prototype_building/tests/regression_models/Warehouse-NECB2011-AB_Edmonton.Intl.osm
+[15:17:57.591398 INFO] Zip: Extracting measures/nrc_create_necb_prototype_building/tests/regression_models/Warehouse-NECB2011-QC_Montreal-Trudeau.osm
+[15:17:57.593946 INFO] Zip: Extracting measures/nrc_create_necb_prototype_building/tests/regression_models/Warehouse-NECB2015-AB_Banff.osm
+[15:17:57.596882 INFO] Zip: Extracting measures/nrc_create_necb_prototype_building/tests/regression_models/Warehouse-NECB2015-BC_Vancouver.osm
+[15:17:57.599537 INFO] Zip: Extracting measures/nrc_create_necb_prototype_building/tests/regression_models/Warehouse-NECB2015-ON_Toronto.osm
+[15:17:57.602451 INFO] Zip: Extracting measures/nrc_create_necb_prototype_building/tests/regression_models/Warehouse-NECB2017-AB_Banff.osm
+[15:17:57.605488 INFO] Zip: Extracting measures/nrc_create_necb_prototype_building/tests/regression_models/Warehouse-NECB2017-NB_Fredericton.osm
+[15:17:57.608529 INFO] Zip: Extracting measures/nrc_create_necb_prototype_building/tests/regression_models/Warehouse-NECB2017-SK_Saskatoon.osm
+[15:17:57.614162 INFO] Zip: Extracting measures/nrc_create_necb_prototype_building/tests/regression_models/Warehouse-NECB2020-AB_Banff.osm
+[15:17:57.620633 INFO] Zip: Extracting measures/nrc_create_necb_prototype_building/tests/regression_models/Warehouse-NECB2020-MB_Winnipeg-Richardson.osm
+[15:17:57.623299 INFO] Zip: Extracting measures/nrc_create_necb_prototype_building/tests/regression_models/Warehouse-NECB2020-NL_St.Johns.osm
+[15:17:57.625981 INFO] Zip: Extracting measures/nrc_create_necb_prototype_building/tests/test_2011.rb
+[15:17:57.626350 INFO] Zip: Extracting measures/nrc_create_necb_prototype_building/tests/test_2015.rb
+[15:17:57.626675 INFO] Zip: Extracting measures/nrc_create_necb_prototype_building/tests/test_2017.rb
+[15:17:57.626959 INFO] Zip: Extracting measures/nrc_create_necb_prototype_building/tests/test_2020.rb
+[15:17:57.627310 INFO] Zip: Extracting measures/nrc_report_utility_costs/
+[15:17:57.627502 INFO] Zip: Extracting measures/nrc_report_utility_costs/README.md
+[15:17:57.627854 INFO] Zip: Extracting measures/nrc_report_utility_costs/README.md.erb
+[15:17:57.628207 INFO] Zip: Extracting measures/nrc_report_utility_costs/measure.rb
+[15:17:57.628592 INFO] Zip: Extracting measures/nrc_report_utility_costs/measure.xml
+[15:17:57.628974 INFO] Zip: Extracting measures/nrc_report_utility_costs/resources/
+[15:17:57.629109 INFO] Zip: Extracting measures/nrc_report_utility_costs/resources/BTAPMeasureHelper.rb
+[15:17:57.629573 INFO] Zip: Extracting measures/nrc_report_utility_costs/resources/NRCReportingMeasureHelper.rb
+[15:17:57.629981 INFO] Zip: Extracting measures/nrc_report_utility_costs/resources/report.html.in
+[15:17:57.630262 INFO] Zip: Extracting measures/nrc_report_utility_costs/tests/
+[15:17:57.630375 INFO] Zip: Extracting measures/nrc_report_utility_costs/tests/SmallOffice.osm
+[15:17:57.633934 INFO] Zip: Extracting measures/nrc_report_utility_costs/tests/test.rb
+[15:17:57.634338 INFO] Zip: Extracting measures/nrc_report_utility_costs/tests/weather_files/
+[15:17:57.634462 INFO] Zip: Extracting measures/nrc_report_utility_costs/tests/weather_files/CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw
+[15:17:57.646033 INFO] Zip: Extracting scripts/analysis/finalize.args
+[15:17:57.646720 INFO] Zip: Extracting scripts/analysis/finalize.sh
+[15:17:57.647185 INFO] Zip: Extracting scripts/data_point/initialize.args
+[15:17:57.647583 INFO] Zip: Extracting scripts/data_point/initialize.sh
+[15:17:57.647921 INFO] Zip: Extracting seeds/EmptyModel.osm
+[15:17:57.648329 INFO] Zip: Extracting weather/SeedWeather.epw
+[15:17:57.662327 INFO] Downloading analysis.json from http://web:80/analyses/d904aff1-dbdd-41a2-aced-0d4c12834994.json
+[15:17:57.686480 INFO] Checking for presence of args file at /mnt/openstudio/analysis_d904aff1-dbdd-41a2-aced-0d4c12834994/scripts/data_point/initialize.args
+[15:17:57.686581 INFO]  args loaded from file /mnt/openstudio/analysis_d904aff1-dbdd-41a2-aced-0d4c12834994/scripts/data_point/initialize.args: []
+[15:17:57.686600 INFO] Checking for presence of script file at /mnt/openstudio/analysis_d904aff1-dbdd-41a2-aced-0d4c12834994/scripts/data_point/initialize.sh
+[15:17:57.686721 DEBUG] updating permissions for /mnt/openstudio/analysis_d904aff1-dbdd-41a2-aced-0d4c12834994/scripts/data_point/initialize.sh
+[15:17:57.686755 DEBUG] removing DOS endings for /mnt/openstudio/analysis_d904aff1-dbdd-41a2-aced-0d4c12834994/scripts/data_point/initialize.sh
+[15:17:57.686982 DEBUG] running /mnt/openstudio/analysis_d904aff1-dbdd-41a2-aced-0d4c12834994/scripts/data_point/initialize.sh
+[15:17:58.278201 DEBUG] Script returned with exit code 0 of class Integer
+[15:17:58.278567 INFO] Finished worker initialization
+[15:17:58.278610 INFO] RestClient delete
+[15:17:58.278635 INFO] delete post_count = 1
+[15:17:58.288901 INFO] Downloading datapoint from http://web:80/data_points/33a76811-ab22-4716-a683-f0300fb16e61.json
+[15:17:58.288967 INFO] get url post_count = 1
+[15:17:58.302413 INFO] Creating Workflow Manager instance
+[15:17:58.302551 INFO] Directory is /mnt/openstudio/analysis_d904aff1-dbdd-41a2-aced-0d4c12834994/data_point_33a76811-ab22-4716-a683-f0300fb16e61
+[15:17:58.302608 INFO] Opening run.log file '/mnt/openstudio/analysis_d904aff1-dbdd-41a2-aced-0d4c12834994/data_point_33a76811-ab22-4716-a683-f0300fb16e61/run/run.log'
+[15:17:58.302769 WARN] Error finding Oscli: OPENSTUDIO_EXE_PATH not set
+[15:17:58.327430 WARN] Defaulting to fun Oscli via /usr/local/bin/openstudio
+[15:17:58.327601 INFO] Returning Oscli cmd: /usr/local/bin/openstudio --bundle /var/oscli/Gemfile --bundle_path /var/oscli/gems 
+[15:17:58.327777 INFO] Running workflow using cmd /usr/local/bin/openstudio --bundle /var/oscli/Gemfile --bundle_path /var/oscli/gems   run --workflow '/mnt/openstudio/analysis_d904aff1-dbdd-41a2-aced-0d4c12834994/data_point_33a76811-ab22-4716-a683-f0300fb16e61/data_point.osw'  and writing log to /mnt/openstudio/analysis_d904aff1-dbdd-41a2-aced-0d4c12834994/data_point_33a76811-ab22-4716-a683-f0300fb16e61/oscli_simulation.log
+[15:21:29.542145 INFO] Oscli output: E, [2021-12-24T15:18:01.097575 #3882] ERROR -- : Error activating gem :/ruby/2.5.0/specifications/public_suffix-4.0.5.gemspec
+E, [2021-12-24T15:18:01.097655 #3882] ERROR -- : Error activating gem :/ruby/2.5.0/specifications/addressable-2.7.0.gemspec
+E, [2021-12-24T15:18:01.097721 #3882] ERROR -- : Error activating gem :/ruby/2.5.0/specifications/ast-2.4.1.gemspec
+E, [2021-12-24T15:18:01.097910 #3882] ERROR -- : Error activating gem :/ruby/2.5.0/specifications/rubyzip-2.3.0.gemspec
+E, [2021-12-24T15:18:01.097971 #3882] ERROR -- : Error activating gem :/ruby/2.5.0/specifications/simplecov-html-0.12.2.gemspec
+E, [2021-12-24T15:18:01.098018 #3882] ERROR -- : Error activating gem :/ruby/2.5.0/specifications/docile-1.3.2.gemspec
+E, [2021-12-24T15:18:01.098084 #3882] ERROR -- : Error activating gem :/ruby/2.5.0/specifications/unicode-display_width-1.7.0.gemspec
+E, [2021-12-24T15:18:01.098118 #3882] ERROR -- : Error activating gem :/ruby/2.5.0/specifications/ruby-progressbar-1.10.1.gemspec
+E, [2021-12-24T15:18:01.098176 #3882] ERROR -- : Error activating gem :/ruby/2.5.0/specifications/powerpack-0.1.2.gemspec
+E, [2021-12-24T15:18:01.098242 #3882] ERROR -- : Error activating gem :/ruby/2.5.0/specifications/parser-2.7.1.4.gemspec
+E, [2021-12-24T15:18:01.098363 #3882] ERROR -- : Error activating gem :/ruby/2.5.0/specifications/rake-13.0.1.gemspec
+E, [2021-12-24T15:18:01.098423 #3882] ERROR -- : Error activating gem :/ruby/2.5.0/specifications/minitest-5.14.1.gemspec
+E, [2021-12-24T15:18:01.098461 #3882] ERROR -- : Error activating gem :/ruby/2.5.0/specifications/minitest-reporters-1.4.2.gemspec
+E, [2021-12-24T15:18:01.100435 #3882] ERROR -- : Error activating gem :/ruby/2.5.0/specifications/openstudio-standards-0.2.11.gemspec
+NECB2017
+Warehouse
+AB_Banff
+NECB2017
+Warehouse
+AB_Banff
+Creating NECB2017_LargeOffice
+INFO: apply_standard_construction_properties
+INFO:NECB HDD18 of 2850.0  at nearest city Sidney,BC, at a distance of %.2f % 2.0156338519978534km from epw location. Ref:necb_2015_table_c1
+INFO:NECB HDD18 of 2850.0  at nearest city Sidney,BC, at a distance of %.2f % 2.0156338519978534km from epw location. Ref:necb_2015_table_c1
+INFO: assign_interior_surface_construction_to_adiabatic_surfaces
+WARNING: The following adiabatic surfaces have been assigned the construction BTAP-Int-Wall : BTAP::Resources::Envelope
+INFO:  apply_standard_construction_properties was sucessful.
+INFO:NECB HDD18 of 2850.0  at nearest city Sidney,BC, at a distance of %.2f % 2.0156338519978534km from epw location. Ref:necb_2015_table_c1
+"/usr/local/openstudio-3.0.1/bin/openstudio-3.0.1" run -w "/mnt/openstudio/analysis_d904aff1-dbdd-41a2-aced-0d4c12834994/data_point_33a76811-ab22-4716-a683-f0300fb16e61/run/000_nrc_create_necb_prototype_building/autozone/in.osw"
+"/usr/local/openstudio-3.0.1/bin/openstudio-3.0.1" run -w "/mnt/openstudio/analysis_d904aff1-dbdd-41a2-aced-0d4c12834994/data_point_33a76811-ab22-4716-a683-f0300fb16e61/run/000_nrc_create_necb_prototype_building/autozone_systems/in.osw"
+"/usr/local/openstudio-3.0.1/bin/openstudio-3.0.1" run -w "/mnt/openstudio/analysis_d904aff1-dbdd-41a2-aced-0d4c12834994/data_point_33a76811-ab22-4716-a683-f0300fb16e61/run/000_nrc_create_necb_prototype_building/plant_loops/in.osw"
+economizer_required = true for sys_4|mixed|shr>none|sc>dx|sh>c-e|ssf>cv|zh>b-e|zc>none|srf>none| because total_cooling_capacity_btu_per_hr(75839.48494633945) >= 68243
+economizer_required = true for sys_6|mixed|shr>none|sh>c-e|sc>c-chw|ssf>vv|zh>b-e|zc>none|srf>vv| 1 because dsafr_l_per_s(8354.994878953317) > 1500
+economizer_required = true for sys_6|mixed|shr>none|sh>c-e|sc>c-chw|ssf>vv|zh>b-e|zc>none|srf>vv| 1 because total_cooling_capacity_btu_per_hr(477299.11797950906) >= 68243
+economizer_required = true for sys_6|mixed|shr>none|sh>c-e|sc>c-chw|ssf>vv|zh>b-e|zc>none|srf>vv| 2 because dsafr_l_per_s(102401.2277086223) > 1500
+economizer_required = true for sys_6|mixed|shr>none|sh>c-e|sc>c-chw|ssf>vv|zh>b-e|zc>none|srf>vv| 2 because total_cooling_capacity_btu_per_hr(5794259.026768017) >= 68243
+economizer_required = true for sys_6|mixed|shr>none|sh>c-e|sc>c-chw|ssf>vv|zh>b-e|zc>none|srf>vv| 3 because dsafr_l_per_s(10458.15556833235) > 1500
+economizer_required = true for sys_6|mixed|shr>none|sh>c-e|sc>c-chw|ssf>vv|zh>b-e|zc>none|srf>vv| 3 because total_cooling_capacity_btu_per_hr(587569.9554793489) >= 68243
+"/usr/local/openstudio-3.0.1/bin/openstudio-3.0.1" run -w "/mnt/openstudio/analysis_d904aff1-dbdd-41a2-aced-0d4c12834994/data_point_33a76811-ab22-4716-a683-f0300fb16e61/run/000_nrc_create_necb_prototype_building/SR2/in.osw"
+INFO: Model name is now LargeOffice.
+[15:19:05.838336 WARN] [openstudio.EpwFile] Successive data points (2011-Jan-31 to 2008-Feb-01, ending on line 753) are greater than 1 day apart in EPW file '/var/gems/openstudio-standards/data/weather/CAN_BC_Victoria.Intl.AP.717990_CWEC2016.epw'. Data will be treated as typical (TMY)
+[15:19:05.838444 WARN] [openstudio.weather.Model] Could not find ground temperatures in stat file; will use standards lookup.
+[15:19:05.838461 WARN] [openstudio.weather.Model] Could not find ground temperatures in standards lookup; will use generic temperatures, which will skew results.
+[15:19:05.839087 WARN] [openstudio.EpwFile] Successive data points (2011-Jan-31 to 2008-Feb-01, ending on line 753) are greater than 1 day apart in EPW file '/var/gems/openstudio-standards/data/weather/CAN_BC_Victoria.Intl.AP.717990_CWEC2016.epw'. Data will be treated as typical (TMY)
+[15:19:05.839122 WARN] [openstudio.EpwFile] Successive data points (2011-Jan-31 to 2008-Feb-01, ending on line 753) are greater than 1 day apart in EPW file '/var/gems/openstudio-standards/data/weather/CAN_BC_Victoria.Intl.AP.717990_CWEC2016.epw'. Data will be treated as typical (TMY)
+[15:19:05.839194 WARN] [openstudio.EpwFile] Successive data points (2011-Jan-31 to 2008-Feb-01, ending on line 753) are greater than 1 day apart in EPW file '/var/gems/openstudio-standards/data/weather/CAN_BC_Victoria.Intl.AP.717990_CWEC2016.epw'. Data will be treated as typical (TMY)
+[15:19:05.839418 WARN] [openstudio.EpwFile] Successive data points (2011-Jan-31 to 2008-Feb-01, ending on line 753) are greater than 1 day apart in EPW file '/var/gems/openstudio-standards/data/weather/CAN_BC_Victoria.Intl.AP.717990_CWEC2016.epw'. Data will be treated as typical (TMY)
+[15:19:05.839431 WARN] [openstudio.model.ChillerElectricEIR] Cannot set condenserType to 'WaterCooled', chiller 'Chiller Electric EIR 1' is not connected to a secondaryPlantLoop
+[15:19:05.839504 WARN] [openstudio.model.ChillerElectricEIR] Cannot set condenserType to 'WaterCooled', chiller 'Chiller Electric EIR 2' is not connected to a secondaryPlantLoop
+[15:19:05.839581 WARN] [openstudio.standards.Fan] For Fan Constant Volume 1, there is no greater nominal HP.  Use the efficiency of the largest motor category.
+[15:19:05.839691 WARN] [openstudio.standards.Fan] For Sys6 Return Fan, there is no greater nominal HP.  Use the efficiency of the largest motor category.
+[15:19:05.839709 WARN] [openstudio.standards.Fan] For Sys6 Return Fan 1, there is no greater nominal HP.  Use the efficiency of the largest motor category.
+[15:19:05.839726 WARN] [openstudio.standards.Fan] For Sys6 Return Fan 2, there is no greater nominal HP.  Use the efficiency of the largest motor category.
+[15:19:05.839743 WARN] [openstudio.standards.Fan] For Sys6 Return Fan 3, there is no greater nominal HP.  Use the efficiency of the largest motor category.
+[15:19:05.839760 WARN] [openstudio.standards.Fan] For Sys6 Supply Fan, there is no greater nominal HP.  Use the efficiency of the largest motor category.
+[15:19:05.839776 WARN] [openstudio.standards.Fan] For Sys6 Supply Fan 1, there is no greater nominal HP.  Use the efficiency of the largest motor category.
+[15:19:05.839794 WARN] [openstudio.standards.Fan] For Sys6 Supply Fan 2, there is no greater nominal HP.  Use the efficiency of the largest motor category.
+[15:19:05.839810 WARN] [openstudio.standards.Fan] For Sys6 Supply Fan 3, there is no greater nominal HP.  Use the efficiency of the largest motor category.
+[15:19:05.839940 WARN] [openstudio.EpwFile] Successive data points (2011-Jan-31 to 2008-Feb-01, ending on line 753) are greater than 1 day apart in EPW file '/var/gems/openstudio-standards/data/weather/CAN_BC_Victoria.Intl.AP.717990_CWEC2016.epw'. Data will be treated as typical (TMY)
+[15:19:05.840043 WARN] [openstudio.EpwFile] Successive data points (2011-Jan-31 to 2008-Feb-01, ending on line 753) are greater than 1 day apart in EPW file '/var/gems/openstudio-standards/data/weather/CAN_BC_Victoria.Intl.AP.717990_CWEC2016.epw'. Data will be treated as typical (TMY)
+[15:19:05.840121 WARN] [openstudio.EpwFile] Successive data points (2011-Jan-31 to 2008-Feb-01, ending on line 753) are greater than 1 day apart in EPW file '/var/gems/openstudio-standards/data/weather/CAN_BC_Victoria.Intl.AP.717990_CWEC2016.epw'. Data will be treated as typical (TMY)
+[15:19:05.840247 WARN] [openstudio.EpwFile] Successive data points (2011-Jan-31 to 2008-Feb-01, ending on line 753) are greater than 1 day apart in EPW file '/var/gems/openstudio-standards/data/weather/CAN_BC_Victoria.Intl.AP.717990_CWEC2016.epw'. Data will be treated as typical (TMY)
+[15:19:05.840425 WARN] [openstudio.EpwFile] Successive data points (2011-Jan-31 to 2008-Feb-01, ending on line 753) are greater than 1 day apart in EPW file '/var/gems/openstudio-standards/data/weather/CAN_BC_Victoria.Intl.AP.717990_CWEC2016.epw'. Data will be treated as typical (TMY)
+[15:19:05.840484 WARN] [openstudio.standards.Fan] For Sys6 Return Fan, there is no greater nominal HP.  Use the efficiency of the largest motor category.
+[15:19:05.840545 WARN] [openstudio.standards.Fan] For Sys6 Return Fan 1, there is no greater nominal HP.  Use the efficiency of the largest motor category.
+[15:19:05.840564 WARN] [openstudio.standards.Fan] For Sys6 Return Fan 2, there is no greater nominal HP.  Use the efficiency of the largest motor category.
+[15:19:05.840580 WARN] [openstudio.standards.Fan] For Sys6 Return Fan 3, there is no greater nominal HP.  Use the efficiency of the largest motor category.
+[15:19:05.840597 WARN] [openstudio.standards.Fan] For Sys6 Supply Fan, there is no greater nominal HP.  Use the efficiency of the largest motor category.
+[15:19:05.840677 WARN] [openstudio.standards.Fan] For Sys6 Supply Fan 1, there is no greater nominal HP.  Use the efficiency of the largest motor category.
+[15:19:05.840695 WARN] [openstudio.standards.Fan] For Sys6 Supply Fan 2, there is no greater nominal HP.  Use the efficiency of the largest motor category.
+[15:19:05.840712 WARN] [openstudio.standards.Fan] For Sys6 Supply Fan 3, there is no greater nominal HP.  Use the efficiency of the largest motor category.
+[15:19:05.840728 WARN] [openstudio.standards.Fan] For Fan Constant Volume 1, there is no greater nominal HP.  Use the efficiency of the largest motor category.
+[15:19:05.840827 WARN] [openstudio.standards.CoolingTower] For Cooling Tower Single Speed 1, cannot find heat rejection properties, cannot apply standard efficiencies or curves.
+Use rates below
+Use rates below
+Use rates below
+Use rates below
+[31mERROR: SQL read failed to find a value with query
+SELECT Value 
+          FROM TabularDataWithStrings
+          WHERE ReportName='EnergyMeters'
+          AND ReportForString='Entire Facility'
+          AND TableName='Annual and Peak Values - Natural Gas'
+		  AND RowName='NaturalGas:Facility'
+          AND ColumnName='Natural Gas Annual Value'
+          AND Units='GJ'[0m
+
+[15:21:29.550098 INFO] Saving files/reports back to the server
+[15:21:29.550187 INFO] downloading reports/*.{html,json,csv}
+[15:21:29.550448 INFO] Saving report /mnt/openstudio/analysis_d904aff1-dbdd-41a2-aced-0d4c12834994/data_point_33a76811-ab22-4716-a683-f0300fb16e61/reports/openstudio_results_report.html to http://web:80/data_points/33a76811-ab22-4716-a683-f0300fb16e61/upload_file
+[15:21:29.735929 INFO] Saving report responded with {"id":"61c5e579c49b2500db5341c3","data_point_id":"33a76811-ab22-4716-a683-f0300fb16e61","display_name":"openstudio_results_report","type":"Report","created_at":"2021-12-24T15:21:29.614Z","updated_at":"2021-12-24T15:21:29.614Z"}
+[15:21:29.736160 INFO] Saving report /mnt/openstudio/analysis_d904aff1-dbdd-41a2-aced-0d4c12834994/data_point_33a76811-ab22-4716-a683-f0300fb16e61/reports/nrc_report_utility_costs_report.html to http://web:80/data_points/33a76811-ab22-4716-a683-f0300fb16e61/upload_file
+[15:21:29.960576 INFO] Saving report responded with {"id":"61c5e579c49b2500db5341c4","data_point_id":"33a76811-ab22-4716-a683-f0300fb16e61","display_name":"nrc_report_utility_costs_report","type":"Report","created_at":"2021-12-24T15:21:29.746Z","updated_at":"2021-12-24T15:21:29.746Z"}
+[15:21:29.960843 INFO] Saving report /mnt/openstudio/analysis_d904aff1-dbdd-41a2-aced-0d4c12834994/data_point_33a76811-ab22-4716-a683-f0300fb16e61/reports/eplustbl.html to http://web:80/data_points/33a76811-ab22-4716-a683-f0300fb16e61/upload_file
+[15:21:30.100321 INFO] Saving report responded with {"id":"61c5e579c49b2500db5341c5","data_point_id":"33a76811-ab22-4716-a683-f0300fb16e61","display_name":"eplustbl","type":"Report","created_at":"2021-12-24T15:21:29.989Z","updated_at":"2021-12-24T15:21:29.989Z"}
+[15:21:30.100673 INFO] Saving report /mnt/openstudio/analysis_d904aff1-dbdd-41a2-aced-0d4c12834994/data_point_33a76811-ab22-4716-a683-f0300fb16e61/run/objectives.json to http://web:80/data_points/33a76811-ab22-4716-a683-f0300fb16e61/upload_file
+[15:21:30.213414 INFO] Saving report responded with {"id":"61c5e57ac49b2500db5341c6","data_point_id":"33a76811-ab22-4716-a683-f0300fb16e61","display_name":"objectives","type":"Report","created_at":"2021-12-24T15:21:30.109Z","updated_at":"2021-12-24T15:21:30.109Z"}
+[15:21:30.213961 INFO] downloading out.OSW
+[15:21:30.214093 INFO] Saving report /mnt/openstudio/analysis_d904aff1-dbdd-41a2-aced-0d4c12834994/data_point_33a76811-ab22-4716-a683-f0300fb16e61/out.osw to http://web:80/data_points/33a76811-ab22-4716-a683-f0300fb16e61/upload_file
+[15:21:30.290213 INFO] Saving report responded with {"id":"61c5e57ac49b2500db5341c7","data_point_id":"33a76811-ab22-4716-a683-f0300fb16e61","display_name":"Final OSW File","type":"Report","created_at":"2021-12-24T15:21:30.227Z","updated_at":"2021-12-24T15:21:30.227Z"}
+[15:21:30.290457 INFO] downloading in.OSM
+[15:21:30.290640 INFO] downloading datapoint.ZIP
+[15:21:30.290735 INFO] Saving report /mnt/openstudio/analysis_d904aff1-dbdd-41a2-aced-0d4c12834994/data_point_33a76811-ab22-4716-a683-f0300fb16e61/run/data_point.zip to http://web:80/data_points/33a76811-ab22-4716-a683-f0300fb16e61/upload_file
+[15:21:38.294939 INFO] Saving report responded with {"id":"61c5e57ac49b2500db5341c8","data_point_id":"33a76811-ab22-4716-a683-f0300fb16e61","display_name":"Zip File","type":"Data Point","created_at":"2021-12-24T15:21:30.897Z","updated_at":"2021-12-24T15:21:30.897Z"}
+[15:21:38.295352 INFO] Checking for presence of args file at /mnt/openstudio/analysis_d904aff1-dbdd-41a2-aced-0d4c12834994/scripts/data_point/finalize.args
+[15:21:38.295420 INFO] Checking for presence of script file at /mnt/openstudio/analysis_d904aff1-dbdd-41a2-aced-0d4c12834994/scripts/data_point/finalize.sh
+[15:21:38.301466 INFO] Finished /opt/openstudio/server/app/jobs/dj_jobs/run_simulate_data_point.rb
