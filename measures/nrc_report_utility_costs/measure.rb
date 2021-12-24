@@ -30,8 +30,9 @@ class NrcReportUtilityCosts < OpenStudio::Measure::ReportingMeasure
   # Define the outputs that the measure will create.
   def outputs
     outs = OpenStudio::Measure::OSOutputVector.new
-    outs << OpenStudio::Measure::OSOutput.makeDoubleOutput('annual_electricity_use')
-    outs << OpenStudio::Measure::OSOutput.makeDoubleOutput('annual_natural_gas_use')
+    outs << OpenStudio::Measure::OSOutput.makeDoubleOutput('total_site_energy_kWh')
+    outs << OpenStudio::Measure::OSOutput.makeDoubleOutput('annual_electricity_use_kWh')
+    outs << OpenStudio::Measure::OSOutput.makeDoubleOutput('annual_natural_gas_use_GJ')
     outs << OpenStudio::Measure::OSOutput.makeDoubleOutput('annual_electricity_cost')
     outs << OpenStudio::Measure::OSOutput.makeDoubleOutput('annual_natural_gas_cost')
     return outs
@@ -148,6 +149,10 @@ class NrcReportUtilityCosts < OpenStudio::Measure::ReportingMeasure
     summary =  "<h1>#{name}</h1>"
     summary << "Building Name: #{model.getBuilding.name.get}<br>" # optional variable
 	
+	# Always recover the EUI.
+    totalSiteEnergy_kWh = OpenStudio.convert(@sql_file.totalSiteEnergy.get, "GJ", "kWh").get
+    runner.registerValue('total_site_energy', totalSiteEnergy_kWh.signif(4), 'kWh')
+	
 	# Rate summary and costs sections.
 	rate_summary = "Rule set used: #{ruleset}"
 	if ruleset == "Use rates below"
@@ -199,15 +204,17 @@ class NrcReportUtilityCosts < OpenStudio::Measure::ReportingMeasure
 								   column = 'Natural Gas Annual Value', 
 								   units = 'GJ')
 
+    # Convert consumption to units used for costing.
+	annual_elec = annual_elec * 277.778 # Convert to kWh
+	#annual_gas = annual_gas * 26.137 # Convert to m3
 	# Calculate costs. Note signif defaults to three sig figs.
-	# *** Need to convert fuel use from GJ to units required for costing.
-    # Fuel; Consumption; Unit; Cost"
-    cost_table = "<tr><td>Electricity</td><td>#{annual_elec.signif}</td><td>GJ</td><td>#{(annual_elec*elec_rate).round(2)}</td></tr>"
-    cost_table << "<tr><td>Natural gas</td><td>#{annual_gas.signif}</td><td>GJ</td><td>#{(annual_gas*gas_rate).round(2)}</td></tr>"
+    # Fuel; Consumption; Unit; Cost
+    cost_table = "<tr><td>Electricity</td><td>#{annual_elec.signif}</td><td>kWh</td><td>#{(annual_elec*elec_rate).round(2)}</td></tr>"
+    cost_table << "<tr><td>Natural gas</td><td>#{annual_gas.signif}</td><td>GJ</sup></td><td>#{(annual_gas*gas_rate).round(2)}</td></tr>"
 	
 	# Populate outputs.
-    runner.registerValue('annual_electricity_use', annual_elec.signif, 'GJ-check')
-    runner.registerValue('annual_natural_gas_use', annual_gas.signif, 'GJ')
+    runner.registerValue('annual_electricity_use_kWh', annual_elec.signif, 'kWh')
+    runner.registerValue('annual_natural_gas_use_GJ', annual_gas.signif, 'GJ')
     runner.registerValue('annual_electricity_cost', (annual_elec*elec_rate).round(2), '$')
     runner.registerValue('annual_natural_gas_cost', (annual_gas*elec_rate).round(2), '$')
 	
@@ -307,7 +314,7 @@ class NrcReportUtilityCosts < OpenStudio::Measure::ReportingMeasure
 	end
 	
 	# Populate outputs.
-    runner.registerValue('annual_electricity_use', annual_elec.signif, 'kWh')
+    runner.registerValue('annual_electricity_use_kWh', annual_elec.signif, 'kWh')
     runner.registerValue('annual_electricity_cost', (total_cost).round(2), '$')
 	
 	# Figure out what tarrif to use for natural gas.
@@ -349,7 +356,7 @@ class NrcReportUtilityCosts < OpenStudio::Measure::ReportingMeasure
 	cost_table << "<tr><td>Gas</td><td>#{annual_gas.signif}</td><td>GJ</td><td>#{(total_cost).round(2)}</td></tr>"
 	
 	# Populate outputs.
-    runner.registerValue('annual_natural_gas_use', annual_gas.signif, 'GJ')
+    runner.registerValue('annual_natural_gas_use_GJ', annual_gas.signif, 'GJ')
     runner.registerValue('annual_natural_gas_cost', (total_cost).round(2), '$')
 	
     return rate_summary, cost_table
