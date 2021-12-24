@@ -58,6 +58,11 @@ class NrcSetSrr_Test < Minitest::Test
     end
     standard = Standard.build("NECB2017")
 
+    # Check if a 'README' file exists, then delete it
+    File.delete("README.html") if File.exist?("README.html")
+    $title_bool = true
+    $num = 1
+
     all_srr_options = ["Remove the skylights", "Set skylights to match max SRR from NECB", "Don't change skylights", "Reduce existing skylight size to meet maximum NECB SRR limit", "Set specific SRR"]
     all_srr_options.each do |srr_options|
 
@@ -71,9 +76,12 @@ class NrcSetSrr_Test < Minitest::Test
       srr = input_arguments['srr']
       srr_options = input_arguments['srr_options']
       srr_options_noSpaces = srr_options.gsub(/[[:space:]]/, '_') # Replace spaces by '_'
+      test_name = "#{srr_options_noSpaces}"
+
+      reportCase(test_name, input_arguments)
 
       # Define the output folder for this test (optional - default is the method name).
-      output_file_path = NRCMeasureTestHelper.appendOutputFolder("test_specificSRR_#{srr_options_noSpaces}")
+      output_file_path = NRCMeasureTestHelper.appendOutputFolder("#{test_name}")
 
       # Set argument values to good values and run the measure on model with spaces
       runner = run_measure(input_arguments, model)
@@ -132,4 +140,5 @@ class NrcSetSrr_Test < Minitest::Test
     srr_calculated = skylight_area_total / roof_area
     return srr_calculated
   end
+
 end
