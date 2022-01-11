@@ -2,6 +2,7 @@
 # only adds functionality where required.
 
 require_relative 'BTAPMeasureHelper'
+require 'erb'
 
 module NRCMeasureHelper
   include BTAPMeasureHelper
@@ -109,6 +110,44 @@ module NRCMeasureTestHelper
     return runner
   end
 
+  # Method to report case being tested
+  def reportCase(test_name, input_arguments)
+
+    measure = get_measure_object()
+    measure_name = measure.name
+    measure_name = measure_name.gsub("_", " ").upcase
+
+    #test_dir = Dir.pwd
+    out_file = File.new("README.html", "a")
+    # readme_out_path = File.join(test_dir, out_file)
+
+    test_name = test_name.gsub("_", " ")
+
+    # To prevent the html from adding the title each time a test is called.
+    !$title_bool ? title = " " : title = "Summary Of Test Cases for '#{measure_name}' Measure"
+
+    out_file.puts("<h3 style='color:Blue'><i>#{title}<i></h3>")
+    out_file.puts("<h4 style='color:DodgerBlue;'><i>#{$num}- #{test_name}<i></h4>")
+    out_file.puts("<table border=3>")
+    out_file.puts("<tr>")
+    out_file.puts("<th style='background-color:rgb(200, 200, 200);'>Test Argument</th>")
+    out_file.puts("<th style='background-color:rgb(200, 200, 200);'>Test Value</th>")
+    out_file.puts("</tr>")
+
+    input_arguments.each do |key, value|
+      out_file.puts("<tr>")
+      out_file.puts("<td style='background-color:rgb(240, 240, 240);'>#{key}</td>")
+      out_file.puts("<td style='background-color:rgb(240, 240, 240);'>#{value}</td>")
+      out_file.puts("</tr>")
+    end
+    out_file.puts("</table>")
+    out_file.puts("<br>")
+    out_file.puts("<br>")
+
+    $title_bool = false
+    $num += 1
+    out_file.close
+  end
 
   #Fancy way of getting the measure object automatically. Added check for NRC in measure name.
   def get_measure_object()
@@ -131,6 +170,7 @@ module NRCMeasureTestHelper
       return nrc_measure
     end
   end
+
 end
 
 # Add significant digits capability to float class.
