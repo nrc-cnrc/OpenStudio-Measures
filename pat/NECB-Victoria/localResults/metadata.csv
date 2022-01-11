@@ -1,4 +1,0 @@
-display_name,display_name_short,export,maximum,measure_id,metadata_id,minimum,name,objective_function,objective_function_group,objective_function_index,output,perturbable,pivot,static_value,units,value_type,visualize,measure_name,measure_display_name,type_of_variable
-Building Type,building_type,true,Warehouse,b9c9e40b-c77f-4794-9aec-6fd668186aeb,,Warehouse,nrc_create_necb_prototype_building.building_type,false,,,false,true,false,SmallOffice,,string,true,nrc_create_necb_prototype_building,NrcCreateNECBPrototypeBuilding,variable
-total_site_energy,total_site_energy,true,,16c745bb-5b73-4fd3-8c1d-9ae88967081d,,,nrc_report_utility_costs.total_site_energy,false,,,true,false,false,,,,true,nrc_report_utility_costs,Report Utility Costs,output
-eui,eui,true,,9cac3bd3-0cc2-4dba-bd54-8d3f47e582ca,,,openstudio_results.eui,false,,,true,false,false,,"",double,true,openstudio_results,OpenStudio Results,output

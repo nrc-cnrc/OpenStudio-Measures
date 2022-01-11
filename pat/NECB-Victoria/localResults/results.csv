@@ -1,4 +1,0 @@
-name,_id,run_start_time,run_end_time,status,status_message,nrc_create_necb_prototype_building.building_type,nrc_report_utility_costs.total_site_energy,openstudio_results.eui
-LargeOffice,33a76811-ab22-4716-a683-f0300fb16e61,2021-12-24T15:17:51.012Z,2021-12-24T15:21:38.301Z,completed,completed normal,LargeOffice,4479000.0,96.68692268932165
-SmallOffice,63a1b71a-130b-4070-8825-bf091b18d2f9,2021-12-24T15:17:15.209Z,2021-12-24T15:18:53.465Z,completed,completed normal,SmallOffice,56220.0,109.98947926720054
-MediumOffice,c566d152-4100-4e8e-b600-3d48eed90378,2021-12-24T15:17:42.991Z,2021-12-24T15:20:07.564Z,completed,completed normal,MediumOffice,610600.0,122.54985592012082
