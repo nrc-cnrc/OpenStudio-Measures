@@ -92,8 +92,10 @@ class NrcReportUtilityCosts_Test < Minitest::Test
 	  puts "Checking output #{output.name}".light_blue
 	  if input_arguments.key?(output.name) then
 	    puts "Skipping input argument #{output.name}" # all the inputs are in the outputs so just skip these.
+	  elsif output.name == 'total_site_energy'
+        assert_in_delta(65440, output.valueAsDouble, 1.0, 'Total site energy')
 	  elsif output.name == 'annual_electricity_use'
-        assert_in_delta(48000, output.valueAsDouble, 0.001, 'Annual electricity use')
+        assert_in_delta(48000, output.valueAsDouble, 1.0, 'Annual electricity use')
 	  elsif output.name == 'annual_natural_gas_use'
         assert_in_delta(62.7, output.valueAsDouble, 0.001, 'Annual natural gas use')
 	  elsif output.name == 'annual_electricity_cost'

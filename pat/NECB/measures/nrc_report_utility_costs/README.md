@@ -62,4 +62,4 @@ ReportingMeasure
 
 
 
-total_site_energy_kWh, annual_electricity_use_kWh, annual_natural_gas_use_GJ, annual_electricity_cost, annual_natural_gas_cost
+total_site_energy, annual_electricity_use, annual_natural_gas_use, annual_electricity_cost, annual_natural_gas_cost
