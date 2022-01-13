@@ -27,10 +27,10 @@ server_gems=()
 # Dependancies for 3.0.1
 #  - none
 # Dependancies for 3.2.1
-#server_gems+=("openstudio-workflow-gem" "openstudio-workflow" "v2.2.0") 
+#  - none 
 # Dependencies for NRC measures and testing
-server_gems=("openstudio-standards" "openstudio-standards" "nrcan")
-#server_gems+=("openstudio-standards" "openstudio-standards" "nrcan_nrc")
+#server_gems=("openstudio-standards" "openstudio-standards" "nrcan")
+server_gems+=("openstudio-standards" "openstudio-standards" "nrcan_nrc")
 
 # Set the number of gems to install
 nGems=$((${#server_gems[@]}/3))
