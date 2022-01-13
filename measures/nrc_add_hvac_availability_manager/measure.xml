@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<measure>
+  <schema_version>3.0</schema_version>
+  <name>nrc_add_hvac_availability_manager</name>
+  <uid>7e2d8cb0-7ec5-494a-9e1f-bbfbd00d003d</uid>
+  <version_id>a10e8bac-bbe6-4a14-b314-ad9ae7adf383</version_id>
+  <version_modified>20211115T164231Z</version_modified>
+  <xml_checksum>BF5240D4</xml_checksum>
+  <class_name>NrcAddHvacAvailabilityManager</class_name>
+  <display_name>Add HVAC Availability Manager</display_name>
+  <description>Adds the requested availability manager to the heating/cooling HVAC system.</description>
+  <modeler_description>Creates an availability manager and uses a outdoor air node as the sensed property.</modeler_description>
+  <arguments>
+    <argument>
+      <name>heatcool</name>
+      <display_name>Apply to</display_name>
+      <type>Choice</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>cooling</default_value>
+      <choices>
+        <choice>
+          <value>cooling</value>
+          <display_name>cooling</display_name>
+        </choice>
+        <choice>
+          <value>heating</value>
+          <display_name>heating</display_name>
+        </choice>
+      </choices>
+    </argument>
+    <argument>
+      <name>setPoint</name>
+      <display_name>Turn off setpoint</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>15</default_value>
+    </argument>
+  </arguments>
+  <outputs />
+  <provenances />
+  <tags>
+    <tag>undefined.</tag>
+  </tags>
+  <attributes>
+    <attribute>
+      <name>Measure Type</name>
+      <value>ModelMeasure</value>
+      <datatype>string</datatype>
+    </attribute>
+  </attributes>
+  <files>
+    <file>
+      <filename>README.md.erb</filename>
+      <filetype>erb</filetype>
+      <usage_type>readmeerb</usage_type>
+      <checksum>703C9964</checksum>
+    </file>
+    <file>
+      <filename>BTAPMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>A8052258</checksum>
+    </file>
+    <file>
+      <filename>README.md</filename>
+      <filetype>md</filetype>
+      <usage_type>readme</usage_type>
+      <checksum>D97C0A96</checksum>
+    </file>
+    <file>
+      <filename>NRCMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>4AE7F677</checksum>
+    </file>
+    <file>
+      <filename>test.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>67ADE0E7</checksum>
+    </file>
+    <file>
+      <version>
+        <software_program>OpenStudio</software_program>
+        <identifier>3.1.0</identifier>
+        <min_compatible>3.1.0</min_compatible>
+      </version>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>script</usage_type>
+      <checksum>6C1F76CF</checksum>
+    </file>
+  </files>
+</measure>

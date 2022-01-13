@@ -4,6 +4,7 @@ Gemfile.lock
 # Patterns to ignore.
 measures*/*/tests/output/
 measures*/*/tests/test*-output.json
+measures/nrc_report_carbon_emissions/resources/[~][$]*
 
 # Files and folders used in setting up the server.
 openstudio-server/.env
