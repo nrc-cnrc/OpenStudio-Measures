@@ -1,6 +1,6 @@
 # Default source for gems
 source 'http://rubygems.org'
-ruby "~> 2.5.1"
+ruby "~> 2.7.0"
 
 # Openstudio gems required to run the tests. Versions specified in the install scripts (for tests) and 
 # the specific versions downloaded into the .gems folder in this repo. They are then copied into the 

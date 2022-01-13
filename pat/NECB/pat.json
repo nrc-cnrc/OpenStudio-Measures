@@ -1,0 +1,1794 @@
+{
+  "projectName": "NECB",
+  "projectDir": "D:\\Files\\Devel\\openstudio-measures\\pat\\NECB",
+  "analysisName": "NECB parametric run",
+  "seed": "EmptyModel.osm",
+  "weatherFile": "SeedWeather.epw",
+  "analysis_type": "Algorithmic",
+  "cliDebug": "",
+  "cliVerbose": "",
+  "downloadReports": true,
+  "downloadOSW": true,
+  "downloadOSM": true,
+  "downloadZIP": true,
+  "timeoutWorkflow": 28800,
+  "timeoutUploadResults": 28800,
+  "timeoutInitWorker": 28800,
+  "remoteSettings": {
+    "open": true,
+    "remoteServerURL": "http://nrc-023251:8080",
+    "aws": {},
+    "credentials": {
+      "yamlFilename": null,
+      "accessKey": null,
+      "region": "us-east-1"
+    }
+  },
+  "samplingMethod": {
+    "id": "baseline_perturbation",
+    "name": "analysis.type.baselinePerturbation",
+    "link": null
+  },
+  "algorithmSettings": [
+    {
+      "name": "in_measure_combinations",
+      "displayName": "In Measure Combinations",
+      "description": "Options: 'true' or 'false'",
+      "defaultValue": "true",
+      "type": "string",
+      "value": "true",
+      "$$hashKey": "object:2358"
+    },
+    {
+      "name": "include_baseline_in_combinations",
+      "displayName": "Include Baseline in Combinations?",
+      "description": "Options: 'true' or 'false'",
+      "defaultValue": "true",
+      "type": "string",
+      "value": "true",
+      "$$hashKey": "object:2359"
+    },
+    {
+      "name": "seed",
+      "displayName": "Seed",
+      "description": "Integer seed for random number generator",
+      "defaultValue": null,
+      "type": "number",
+      "value": null,
+      "$$hashKey": "object:2360"
+    }
+  ],
+  "rubyMD5": "",
+  "mongoMD5": "",
+  "openstudioServerMD5": "",
+  "openstudioCLIMD5": "",
+  "openstudioMD5": "",
+  "measures": [
+    {
+      "measure_dir": "D:\\Files\\Devel\\openstudio-measures\\pat\\NECB\\measures\\nrc_create_necb_prototype_building",
+      "name": "nrc_create_necb_prototype_building",
+      "directory": "D:\\Files\\Devel\\openstudio-measures\\pat\\NECB\\measures\\nrc_create_necb_prototype_building",
+      "uid": "3e9acd53-8602-4749-a655-7cbbe48e8b30",
+      "uuid": "{3e9acd53-8602-4749-a655-7cbbe48e8b30}",
+      "version_id": "4f33ab2f-0b19-4860-8ada-ac0f5a5dcf17",
+      "version_uuid": "{4f33ab2f-0b19-4860-8ada-ac0f5a5dcf17}",
+      "version_modified": "20211224T141224Z",
+      "xml_checksum": "2C38F48B",
+      "display_name": "NrcCreateNECBPrototypeBuilding",
+      "class_name": "NrcCreateNECBPrototypeBuilding",
+      "description": "This measure creates an NECB prototype building from scratch and uses it as the base for an analysis.",
+      "modeler_description": "This will replace the model object with a brand new model. It effectively ignores the seed model. If there are \n\tupdated tables/formulas to those in the standard they can be sideloaded into the standard definition - this new data will\n\tthen be used to create the model.\n",
+      "tags": "Whole Building.Space Types",
+      "outputs": [],
+      "attributes": [
+        {
+          "name": "Measure Type",
+          "display_name": "Measure Type",
+          "value": "ModelMeasure"
+        }
+      ],
+      "arguments": [
+        {
+          "specialRowId": "optionDelete",
+          "$$hashKey": "uiGrid-00GC",
+          "inputs": {
+            "relationship": null,
+            "choiceDisplayNames": [],
+            "variableSetting": "Argument",
+            "distribution": "Uniform",
+            "discreteVariables": [],
+            "maximum": null,
+            "minimum": null,
+            "mean": null,
+            "deltaX": null,
+            "stdDev": null,
+            "default_value": null
+          }
+        },
+        {
+          "specialRowId": "optionName",
+          "type": "String",
+          "$$hashKey": "uiGrid-00GE",
+          "inputs": {
+            "relationship": null,
+            "choiceDisplayNames": [],
+            "variableSetting": "Argument",
+            "distribution": "Uniform",
+            "discreteVariables": [],
+            "maximum": "",
+            "minimum": "",
+            "mean": "",
+            "deltaX": "",
+            "stdDev": "",
+            "default_value": ""
+          }
+        },
+        {
+          "specialRowId": "optionDescription",
+          "type": "String",
+          "$$hashKey": "uiGrid-00GG",
+          "inputs": {
+            "relationship": null,
+            "choiceDisplayNames": [],
+            "variableSetting": "Argument",
+            "distribution": "Uniform",
+            "discreteVariables": [],
+            "maximum": "",
+            "minimum": "",
+            "mean": "",
+            "deltaX": "",
+            "stdDev": "",
+            "default_value": ""
+          }
+        },
+        {
+          "name": "template",
+          "display_name": "Template",
+          "description": "",
+          "type": "Choice",
+          "required": true,
+          "model_dependent": false,
+          "default_value": "NECB2017",
+          "choice_values": [
+            "NECB2011",
+            "NECB2015",
+            "NECB2017",
+            "NECB2020"
+          ],
+          "choice_display_names": [
+            "NECB2011",
+            "NECB2015",
+            "NECB2017",
+            "NECB2020"
+          ],
+          "$$hashKey": "uiGrid-00GI",
+          "display_name_short": "template",
+          "inputs": {
+            "relationship": null,
+            "choiceDisplayNames": [
+              "NECB2011",
+              "NECB2015",
+              "NECB2017",
+              "NECB2020"
+            ],
+            "variableSetting": "Discrete",
+            "distribution": "Uniform",
+            "discreteVariables": [
+              {
+                "value": "NECB2011",
+                "weight": "",
+                "$$hashKey": "object:2613"
+              },
+              {
+                "value": "NECB2015",
+                "weight": "",
+                "$$hashKey": "object:2624"
+              },
+              {
+                "value": "NECB2017",
+                "weight": "",
+                "$$hashKey": "object:2634"
+              },
+              {
+                "value": "NECB2020",
+                "weight": "",
+                "$$hashKey": "object:2644"
+              }
+            ],
+            "maximum": "NECB2017",
+            "minimum": "NECB2017",
+            "mean": "NECB2017",
+            "deltaX": "NECB2017",
+            "stdDev": "NECB2017",
+            "default_value": "NECB2011",
+            "showWarningIcon": false
+          }
+        },
+        {
+          "name": "building_type",
+          "display_name": "Building Type",
+          "description": "",
+          "type": "Choice",
+          "required": true,
+          "model_dependent": false,
+          "default_value": "Warehouse",
+          "choice_values": [
+            "SecondarySchool",
+            "PrimarySchool",
+            "SmallOffice",
+            "MediumOffice",
+            "LargeOffice",
+            "SmallHotel",
+            "LargeHotel",
+            "Warehouse",
+            "RetailStandalone",
+            "RetailStripmall",
+            "QuickServiceRestaurant",
+            "FullServiceRestaurant",
+            "MidriseApartment",
+            "HighriseApartment",
+            "Hospital",
+            "Outpatient"
+          ],
+          "choice_display_names": [
+            "SecondarySchool",
+            "PrimarySchool",
+            "SmallOffice",
+            "MediumOffice",
+            "LargeOffice",
+            "SmallHotel",
+            "LargeHotel",
+            "Warehouse",
+            "RetailStandalone",
+            "RetailStripmall",
+            "QuickServiceRestaurant",
+            "FullServiceRestaurant",
+            "MidriseApartment",
+            "HighriseApartment",
+            "Hospital",
+            "Outpatient"
+          ],
+          "$$hashKey": "uiGrid-00GK",
+          "display_name_short": "building_type",
+          "inputs": {
+            "relationship": null,
+            "choiceDisplayNames": [
+              "SecondarySchool",
+              "PrimarySchool",
+              "SmallOffice",
+              "MediumOffice",
+              "LargeOffice",
+              "SmallHotel",
+              "LargeHotel",
+              "Warehouse",
+              "RetailStandalone",
+              "RetailStripmall",
+              "QuickServiceRestaurant",
+              "FullServiceRestaurant",
+              "MidriseApartment",
+              "HighriseApartment",
+              "Hospital",
+              "Outpatient"
+            ],
+            "variableSetting": "Discrete",
+            "distribution": "Uniform",
+            "discreteVariables": [
+              {
+                "value": "Warehouse",
+                "weight": "",
+                "$$hashKey": "object:2664"
+              },
+              {
+                "value": "SmallOffice",
+                "weight": "",
+                "$$hashKey": "object:2675"
+              },
+              {
+                "value": "RetailStandalone",
+                "weight": "",
+                "$$hashKey": "object:2685"
+              },
+              {
+                "value": "MediumOffice",
+                "weight": "",
+                "$$hashKey": "object:25124"
+              },
+              {
+                "value": "RetailStripmall",
+                "weight": "",
+                "$$hashKey": "object:25134"
+              },
+              {
+                "value": "FullServiceRestaurant",
+                "weight": "",
+                "$$hashKey": "object:25144"
+              },
+              {
+                "value": "MidriseApartment",
+                "weight": "",
+                "$$hashKey": "object:25154"
+              },
+              {
+                "value": "QuickServiceRestaurant",
+                "weight": "",
+                "$$hashKey": "object:25164"
+              },
+              {
+                "value": "LargeOffice",
+                "weight": "",
+                "$$hashKey": "object:25174"
+              }
+            ],
+            "maximum": "Warehouse",
+            "minimum": "Warehouse",
+            "mean": "Warehouse",
+            "deltaX": "Warehouse",
+            "stdDev": "Warehouse",
+            "default_value": "Warehouse",
+            "showWarningIcon": false
+          }
+        },
+        {
+          "name": "epw_file",
+          "display_name": "Climate File",
+          "description": "",
+          "type": "Choice",
+          "required": true,
+          "model_dependent": false,
+          "default_value": "AB_Banff",
+          "choice_values": [
+            "AB_Banff",
+            "AB_Calgary",
+            "AB_Edmonton.Intl",
+            "AB_Edmonton.Stony.Plain",
+            "AB_Fort.McMurray",
+            "AB_Grande.Prairie",
+            "AB_Lethbridge",
+            "AB_Medicine.Hat",
+            "BC_Abbotsford",
+            "BC_Comox.Valley",
+            "BC_Crankbrook-Canadian.Rockies",
+            "BC_Fort.St.John-North.Peace",
+            "BC_Hope",
+            "BC_Kamloops",
+            "BC_Port.Hardy",
+            "BC_Prince.George",
+            "BC_Smithers",
+            "BC_Summerland",
+            "BC_Vancouver",
+            "BC_Victoria",
+            "MB_Brandon.Muni",
+            "MB_The.Pas",
+            "MB_Winnipeg-Richardson",
+            "NB_Fredericton",
+            "NB_Miramichi",
+            "NB_Saint.John",
+            "NL_Gander",
+            "NL_Goose.Bay",
+            "NL_St.Johns",
+            "NL_Stephenville",
+            "NS_CFB.Greenwood",
+            "NS_CFB.Shearwater",
+            "NS_Halifax",
+            "NS_Sable.Island.Natl.Park",
+            "NS_Sydney-McCurdy",
+            "NS_Truro",
+            "NS_Yarmouth",
+            "NT_Inuvik-Zubko",
+            "NT_Yellowknife",
+            "ON_Armstrong",
+            "ON_CFB.Trenton",
+            "ON_Dryden",
+            "ON_London",
+            "ON_Moosonee",
+            "ON_Mount.Forest",
+            "ON_North.Bay-Garland",
+            "ON_Ottawa",
+            "ON_Sault.Ste.Marie",
+            "ON_Timmins.Power",
+            "ON_Toronto",
+            "ON_Windsor",
+            "PE_Charlottetown",
+            "QC_Kuujjuaq",
+            "QC_Kuujuarapik",
+            "QC_Lac.Eon",
+            "QC_Mont-Joli",
+            "QC_Montreal-Mirabel",
+            "QC_Montreal-St-Hubert.Longueuil",
+            "QC_Montreal-Trudeau",
+            "QC_Quebec",
+            "QC_Riviere-du-Loup",
+            "QC_Roberval",
+            "QC_Saguenay-Bagotville",
+            "QC_Schefferville",
+            "QC_Sept-Iles",
+            "QC_Val-d-Or",
+            "SK_Estevan",
+            "SK_North.Battleford",
+            "SK_Saskatoon",
+            "YT_Whitehorse"
+          ],
+          "choice_display_names": [
+            "AB_Banff",
+            "AB_Calgary",
+            "AB_Edmonton.Intl",
+            "AB_Edmonton.Stony.Plain",
+            "AB_Fort.McMurray",
+            "AB_Grande.Prairie",
+            "AB_Lethbridge",
+            "AB_Medicine.Hat",
+            "BC_Abbotsford",
+            "BC_Comox.Valley",
+            "BC_Crankbrook-Canadian.Rockies",
+            "BC_Fort.St.John-North.Peace",
+            "BC_Hope",
+            "BC_Kamloops",
+            "BC_Port.Hardy",
+            "BC_Prince.George",
+            "BC_Smithers",
+            "BC_Summerland",
+            "BC_Vancouver",
+            "BC_Victoria",
+            "MB_Brandon.Muni",
+            "MB_The.Pas",
+            "MB_Winnipeg-Richardson",
+            "NB_Fredericton",
+            "NB_Miramichi",
+            "NB_Saint.John",
+            "NL_Gander",
+            "NL_Goose.Bay",
+            "NL_St.Johns",
+            "NL_Stephenville",
+            "NS_CFB.Greenwood",
+            "NS_CFB.Shearwater",
+            "NS_Halifax",
+            "NS_Sable.Island.Natl.Park",
+            "NS_Sydney-McCurdy",
+            "NS_Truro",
+            "NS_Yarmouth",
+            "NT_Inuvik-Zubko",
+            "NT_Yellowknife",
+            "ON_Armstrong",
+            "ON_CFB.Trenton",
+            "ON_Dryden",
+            "ON_London",
+            "ON_Moosonee",
+            "ON_Mount.Forest",
+            "ON_North.Bay-Garland",
+            "ON_Ottawa",
+            "ON_Sault.Ste.Marie",
+            "ON_Timmins.Power",
+            "ON_Toronto",
+            "ON_Windsor",
+            "PE_Charlottetown",
+            "QC_Kuujjuaq",
+            "QC_Kuujuarapik",
+            "QC_Lac.Eon",
+            "QC_Mont-Joli",
+            "QC_Montreal-Mirabel",
+            "QC_Montreal-St-Hubert.Longueuil",
+            "QC_Montreal-Trudeau",
+            "QC_Quebec",
+            "QC_Riviere-du-Loup",
+            "QC_Roberval",
+            "QC_Saguenay-Bagotville",
+            "QC_Schefferville",
+            "QC_Sept-Iles",
+            "QC_Val-d-Or",
+            "SK_Estevan",
+            "SK_North.Battleford",
+            "SK_Saskatoon",
+            "YT_Whitehorse"
+          ],
+          "$$hashKey": "uiGrid-00GM",
+          "display_name_short": "epw_file",
+          "inputs": {
+            "relationship": null,
+            "choiceDisplayNames": [
+              "AB_Banff",
+              "AB_Calgary",
+              "AB_Edmonton.Intl",
+              "AB_Edmonton.Stony.Plain",
+              "AB_Fort.McMurray",
+              "AB_Grande.Prairie",
+              "AB_Lethbridge",
+              "AB_Medicine.Hat",
+              "BC_Abbotsford",
+              "BC_Comox.Valley",
+              "BC_Crankbrook-Canadian.Rockies",
+              "BC_Fort.St.John-North.Peace",
+              "BC_Hope",
+              "BC_Kamloops",
+              "BC_Port.Hardy",
+              "BC_Prince.George",
+              "BC_Smithers",
+              "BC_Summerland",
+              "BC_Vancouver",
+              "BC_Victoria",
+              "MB_Brandon.Muni",
+              "MB_The.Pas",
+              "MB_Winnipeg-Richardson",
+              "NB_Fredericton",
+              "NB_Miramichi",
+              "NB_Saint.John",
+              "NL_Gander",
+              "NL_Goose.Bay",
+              "NL_St.Johns",
+              "NL_Stephenville",
+              "NS_CFB.Greenwood",
+              "NS_CFB.Shearwater",
+              "NS_Halifax",
+              "NS_Sable.Island.Natl.Park",
+              "NS_Sydney-McCurdy",
+              "NS_Truro",
+              "NS_Yarmouth",
+              "NT_Inuvik-Zubko",
+              "NT_Yellowknife",
+              "ON_Armstrong",
+              "ON_CFB.Trenton",
+              "ON_Dryden",
+              "ON_London",
+              "ON_Moosonee",
+              "ON_Mount.Forest",
+              "ON_North.Bay-Garland",
+              "ON_Ottawa",
+              "ON_Sault.Ste.Marie",
+              "ON_Timmins.Power",
+              "ON_Toronto",
+              "ON_Windsor",
+              "PE_Charlottetown",
+              "QC_Kuujjuaq",
+              "QC_Kuujuarapik",
+              "QC_Lac.Eon",
+              "QC_Mont-Joli",
+              "QC_Montreal-Mirabel",
+              "QC_Montreal-St-Hubert.Longueuil",
+              "QC_Montreal-Trudeau",
+              "QC_Quebec",
+              "QC_Riviere-du-Loup",
+              "QC_Roberval",
+              "QC_Saguenay-Bagotville",
+              "QC_Schefferville",
+              "QC_Sept-Iles",
+              "QC_Val-d-Or",
+              "SK_Estevan",
+              "SK_North.Battleford",
+              "SK_Saskatoon",
+              "YT_Whitehorse"
+            ],
+            "variableSetting": "Discrete",
+            "distribution": "Uniform",
+            "discreteVariables": [
+              {
+                "value": "AB_Calgary",
+                "weight": "",
+                "$$hashKey": "object:2705"
+              },
+              {
+                "value": "AB_Edmonton.Stony.Plain",
+                "weight": "",
+                "$$hashKey": "object:2716"
+              },
+              {
+                "value": "AB_Fort.McMurray",
+                "weight": "",
+                "$$hashKey": "object:2726"
+              },
+              {
+                "value": "BC_Vancouver",
+                "weight": "",
+                "$$hashKey": "object:2736"
+              },
+              {
+                "value": "BC_Victoria",
+                "weight": "",
+                "$$hashKey": "object:10936"
+              },
+              {
+                "value": "MB_Winnipeg-Richardson",
+                "weight": "",
+                "$$hashKey": "object:10946"
+              },
+              {
+                "value": "NB_Fredericton",
+                "weight": "",
+                "$$hashKey": "object:10956"
+              },
+              {
+                "value": "NL_St.Johns",
+                "weight": "",
+                "$$hashKey": "object:10966"
+              },
+              {
+                "value": "NS_Halifax",
+                "weight": "",
+                "$$hashKey": "object:10976"
+              },
+              {
+                "value": "NS_Sydney-McCurdy",
+                "weight": "",
+                "$$hashKey": "object:10986"
+              },
+              {
+                "value": "NS_Yarmouth",
+                "weight": "",
+                "$$hashKey": "object:10996"
+              },
+              {
+                "value": "NT_Inuvik-Zubko",
+                "weight": "",
+                "$$hashKey": "object:11006"
+              },
+              {
+                "value": "NT_Yellowknife",
+                "weight": "",
+                "$$hashKey": "object:11016"
+              },
+              {
+                "value": "ON_Toronto",
+                "weight": "",
+                "$$hashKey": "object:11026"
+              },
+              {
+                "value": "ON_Windsor",
+                "weight": "",
+                "$$hashKey": "object:11036"
+              },
+              {
+                "value": "ON_Sault.Ste.Marie",
+                "weight": "",
+                "$$hashKey": "object:11046"
+              },
+              {
+                "value": "QC_Montreal-Trudeau",
+                "weight": "",
+                "$$hashKey": "object:11056"
+              },
+              {
+                "value": "QC_Quebec",
+                "weight": "",
+                "$$hashKey": "object:11066"
+              },
+              {
+                "value": "QC_Saguenay-Bagotville",
+                "weight": "",
+                "$$hashKey": "object:11076"
+              },
+              {
+                "value": "SK_Saskatoon",
+                "weight": "",
+                "$$hashKey": "object:11086"
+              },
+              {
+                "value": "YT_Whitehorse",
+                "weight": "",
+                "$$hashKey": "object:11096"
+              }
+            ],
+            "maximum": "AB_Banff",
+            "minimum": "AB_Banff",
+            "mean": "AB_Banff",
+            "deltaX": "AB_Banff",
+            "stdDev": "AB_Banff",
+            "default_value": "AB_Calgary",
+            "showWarningIcon": false
+          }
+        },
+        {
+          "name": "sideload",
+          "display_name": "Check for sideload files (to overwrite standards info)?",
+          "description": "",
+          "type": "Boolean",
+          "required": true,
+          "model_dependent": false,
+          "default_value": false,
+          "$$hashKey": "uiGrid-00GO",
+          "display_name_short": "sideload",
+          "inputs": {
+            "relationship": null,
+            "choiceDisplayNames": [],
+            "variableSetting": "Argument",
+            "distribution": "Uniform",
+            "discreteVariables": [],
+            "maximum": false,
+            "minimum": false,
+            "mean": false,
+            "deltaX": false,
+            "stdDev": false,
+            "default_value": false
+          }
+        }
+      ],
+      "edit": "",
+      "status": "",
+      "bcl_update": false,
+      "location": "my",
+      "add": "",
+      "open": true,
+      "addedToProject": true,
+      "date": "12/24/2021",
+      "author": "",
+      "type": "ModelMeasure",
+      "seed": "EmptyModel.osm",
+      "workflow_index": 0,
+      "options": [],
+      "instanceId": 0.8648291573902707,
+      "numberOfOptions": 0,
+      "$$hashKey": "object:1988",
+      "skip": false,
+      "showWarningText": false,
+      "outputMeasure": false
+    },
+    {
+      "measure_dir": "D:\\Files\\Devel\\openstudio-measures\\pat\\NECB\\measures\\nrc_report_utility_costs",
+      "name": "nrc_report_utility_costs",
+      "directory": "D:\\Files\\Devel\\openstudio-measures\\pat\\NECB\\measures\\nrc_report_utility_costs",
+      "uid": "224561f4-8ccc-4f60-8118-34b85359d6f1",
+      "uuid": "{224561f4-8ccc-4f60-8118-34b85359d6f1}",
+      "version_id": "b963fc1a-a3fa-4d91-ba52-927e6ff0e7d2",
+      "version_uuid": "{b963fc1a-a3fa-4d91-ba52-927e6ff0e7d2}",
+      "version_modified": "20220112T135630Z",
+      "xml_checksum": "9BF1E6AC",
+      "display_name": "Report Utility Costs",
+      "class_name": "NrcReportUtilityCosts",
+      "description": "This measure calculates utility costs for Canadian locations. By default a simple $/kWh tarrif can be applied but for \n\t    several locations more complex rules are enabled.\n\t\tPeak values are reported averaged over the hour (the default LEED table produced by E+ reports the PEAK timestep value).",
+      "modeler_description": "The measure creates a simple csv file and html output. The annual costs are available as output metrics for PAT.",
+      "tags": "Reporting.QAQC",
+      "outputs": [
+        {
+          "name": "total_site_energy",
+          "display_name": "total_site_energy",
+          "short_name": "total_site_energy",
+          "description": "",
+          "type": "Double",
+          "units": "",
+          "model_dependent": false
+        },
+        {
+          "name": "annual_electricity_use",
+          "display_name": "annual_electricity_use",
+          "short_name": "annual_electricity_use",
+          "description": "",
+          "type": "Double",
+          "units": "",
+          "model_dependent": false
+        },
+        {
+          "name": "annual_natural_gas_use",
+          "display_name": "annual_natural_gas_use",
+          "short_name": "annual_natural_gas_use",
+          "description": "",
+          "type": "Double",
+          "units": "",
+          "model_dependent": false
+        },
+        {
+          "name": "annual_electricity_cost",
+          "display_name": "annual_electricity_cost",
+          "short_name": "annual_electricity_cost",
+          "description": "",
+          "type": "Double",
+          "units": "",
+          "model_dependent": false
+        },
+        {
+          "name": "annual_natural_gas_cost",
+          "display_name": "annual_natural_gas_cost",
+          "short_name": "annual_natural_gas_cost",
+          "description": "",
+          "type": "Double",
+          "units": "",
+          "model_dependent": false
+        }
+      ],
+      "attributes": [
+        {
+          "name": "Measure Type",
+          "display_name": "Measure Type",
+          "value": "ReportingMeasure"
+        },
+        {
+          "name": "Intended Software Tool",
+          "display_name": "Intended Software Tool",
+          "value": "OpenStudio Application"
+        },
+        {
+          "name": "Intended Software Tool",
+          "display_name": "Intended Software Tool",
+          "value": "Parametric Analysis Tool"
+        }
+      ],
+      "arguments": [
+        {
+          "name": "calc_choice",
+          "display_name": "Utility cost choice",
+          "description": "",
+          "type": "Choice",
+          "required": true,
+          "model_dependent": false,
+          "default_value": "Use rates below",
+          "choice_values": [
+            "Use rates below",
+            "Nova Scotia rates 2021"
+          ],
+          "choice_display_names": [
+            "Use rates below",
+            "Nova Scotia rates 2021"
+          ],
+          "display_name_short": "calc_choice",
+          "inputs": {
+            "relationship": null,
+            "choiceDisplayNames": [
+              "Use rates below",
+              "Nova Scotia rates 2021"
+            ],
+            "variableSetting": "Argument",
+            "distribution": "Uniform",
+            "discreteVariables": [],
+            "maximum": "Use rates below",
+            "minimum": "Use rates below",
+            "mean": "Use rates below",
+            "deltaX": "Use rates below",
+            "stdDev": "Use rates below",
+            "default_value": "Use rates below"
+          },
+          "$$hashKey": "object:3086"
+        },
+        {
+          "name": "electricity_cost",
+          "display_name": "Electricity rate ($/kWh)",
+          "description": "",
+          "type": "Double",
+          "required": false,
+          "model_dependent": false,
+          "default_value": 0.1,
+          "display_name_short": "electricity_cost",
+          "inputs": {
+            "relationship": null,
+            "choiceDisplayNames": [],
+            "variableSetting": "Argument",
+            "distribution": "Uniform",
+            "discreteVariables": [],
+            "maximum": 0.1,
+            "minimum": 0.1,
+            "mean": 0.1,
+            "deltaX": 0.1,
+            "stdDev": 0.1,
+            "default_value": 0.1
+          },
+          "$$hashKey": "object:3087"
+        },
+        {
+          "name": "gas_cost",
+          "display_name": "Natural gas rate ($/m3)",
+          "description": "",
+          "type": "Double",
+          "required": false,
+          "model_dependent": false,
+          "default_value": 0.2,
+          "display_name_short": "gas_cost",
+          "inputs": {
+            "relationship": null,
+            "choiceDisplayNames": [],
+            "variableSetting": "Argument",
+            "distribution": "Uniform",
+            "discreteVariables": [],
+            "maximum": 0.2,
+            "minimum": 0.2,
+            "mean": 0.2,
+            "deltaX": 0.2,
+            "stdDev": 0.2,
+            "default_value": 0.2
+          },
+          "$$hashKey": "object:3088"
+        }
+      ],
+      "edit": "",
+      "status": "",
+      "bcl_update": false,
+      "location": "my",
+      "add": "",
+      "open": true,
+      "addedToProject": true,
+      "date": "1/12/2022",
+      "author": "",
+      "type": "ReportingMeasure",
+      "seed": "EmptyModel.osm",
+      "workflow_index": 1,
+      "options": [],
+      "instanceId": 0.19164802378782775,
+      "skip": false,
+      "$$hashKey": "object:3048",
+      "outputMeasure": true,
+      "userDefinedOutputs": [
+        {
+          "name": "nrc_report_utility_costs.total_site_energy",
+          "userDefined": true,
+          "newOut": false,
+          "$$hashKey": "object:17880",
+          "display_name": "total_site_energy",
+          "short_name": "total_site_energy",
+          "visualize": "true",
+          "measure_name": "nrc_report_utility_costs",
+          "measure_class_name": "NrcReportUtilityCosts",
+          "measure_uid": "224561f4-8ccc-4f60-8118-34b85359d6f1"
+        }
+      ],
+      "analysisOutputs": [
+        {
+          "name": "nrc_report_utility_costs.total_site_energy",
+          "userDefined": true,
+          "newOut": false,
+          "$$hashKey": "object:17880",
+          "display_name": "total_site_energy",
+          "short_name": "total_site_energy",
+          "visualize": "true",
+          "measure_name": "nrc_report_utility_costs",
+          "measure_class_name": "NrcReportUtilityCosts",
+          "measure_uid": "224561f4-8ccc-4f60-8118-34b85359d6f1"
+        }
+      ]
+    },
+    {
+      "measure_dir": "D:\\Files\\Devel\\openstudio-measures\\pat\\NECB\\measures\\da737820-833d-4734-8131-f962d58ea8e2",
+      "name": "openstudio_results",
+      "directory": "D:\\Files\\Devel\\openstudio-measures\\pat\\NECB\\measures\\da737820-833d-4734-8131-f962d58ea8e2",
+      "uid": "a25386cd-60e4-46bc-8b11-c755f379d916",
+      "uuid": "{a25386cd-60e4-46bc-8b11-c755f379d916}",
+      "version_id": "da737820-833d-4734-8131-f962d58ea8e2",
+      "version_uuid": "{da737820-833d-4734-8131-f962d58ea8e2}",
+      "version_modified": "20210423T144543Z",
+      "xml_checksum": "557BF06F",
+      "display_name": "OpenStudio Results",
+      "class_name": "OpenStudioResults",
+      "description": "This measure creates high level tables and charts pulling both from model inputs and EnergyPlus results. It has building level information as well as detail on space types, thermal zones, HVAC systems, envelope characteristics, and economics. Click the heading above a chart to view a table of the chart data.",
+      "modeler_description": "For the most part consumption data comes from the tabular EnergyPlus results, however there are a few requests added for time series results. Space type and loop details come from the OpenStudio model. The code for this is modular, making it easy to use as a template for your own custom reports. The structure of the report uses bootstrap, and the graphs use dimple js. The new measure warning section will show warnings generated by upstream measures. It will not show forward translation warnings, EnergyPlus warnings, or warnings that might be reported by this measure.",
+      "tags": "Reporting.QAQC",
+      "outputs": [
+        {
+          "name": "electricity_ip",
+          "display_name": "electricity_ip",
+          "short_name": "electricity_ip",
+          "description": "",
+          "type": "Double",
+          "units": "",
+          "model_dependent": false,
+          "$$hashKey": "object:17658"
+        },
+        {
+          "name": "natural_gas_ip",
+          "display_name": "natural_gas_ip",
+          "short_name": "natural_gas_ip",
+          "description": "",
+          "type": "Double",
+          "units": "",
+          "model_dependent": false,
+          "$$hashKey": "object:17659"
+        },
+        {
+          "name": "additional_fuel_ip",
+          "display_name": "additional_fuel_ip",
+          "short_name": "additional_fuel_ip",
+          "description": "",
+          "type": "Double",
+          "units": "",
+          "model_dependent": false,
+          "$$hashKey": "object:17660"
+        },
+        {
+          "name": "district_heating_ip",
+          "display_name": "district_heating_ip",
+          "short_name": "district_heating_ip",
+          "description": "",
+          "type": "Double",
+          "units": "",
+          "model_dependent": false,
+          "$$hashKey": "object:17661"
+        },
+        {
+          "name": "district_cooling_ip",
+          "display_name": "district_cooling_ip",
+          "short_name": "district_cooling_ip",
+          "description": "",
+          "type": "Double",
+          "units": "",
+          "model_dependent": false,
+          "$$hashKey": "object:17662"
+        },
+        {
+          "name": "total_site_eui",
+          "display_name": "total_site_eui",
+          "short_name": "total_site_eui",
+          "description": "",
+          "type": "Double",
+          "units": "",
+          "model_dependent": false,
+          "$$hashKey": "object:17663"
+        },
+        {
+          "name": "eui",
+          "display_name": "eui",
+          "short_name": "eui",
+          "description": "",
+          "type": "Double",
+          "units": "",
+          "model_dependent": false,
+          "$$hashKey": "object:17664",
+          "checked": true,
+          "visualize": "true",
+          "measure_name": "openstudio_results",
+          "measure_class_name": "OpenStudioResults",
+          "measure_uid": "a25386cd-60e4-46bc-8b11-c755f379d916"
+        },
+        {
+          "name": "net_site_energy",
+          "display_name": "net_site_energy",
+          "short_name": "net_site_energy",
+          "description": "",
+          "type": "Double",
+          "units": "",
+          "model_dependent": false,
+          "$$hashKey": "object:17665"
+        },
+        {
+          "name": "annual_peak_electric_demand",
+          "display_name": "annual_peak_electric_demand",
+          "short_name": "annual_peak_electric_demand",
+          "description": "",
+          "type": "Double",
+          "units": "",
+          "model_dependent": false,
+          "$$hashKey": "object:17666"
+        },
+        {
+          "name": "unmet_hours_during_occupied_cooling",
+          "display_name": "unmet_hours_during_occupied_cooling",
+          "short_name": "unmet_hours_during_occupied_cooling",
+          "description": "",
+          "type": "Double",
+          "units": "",
+          "model_dependent": false,
+          "$$hashKey": "object:17667"
+        },
+        {
+          "name": "unmet_hours_during_occupied_heating",
+          "display_name": "unmet_hours_during_occupied_heating",
+          "short_name": "unmet_hours_during_occupied_heating",
+          "description": "",
+          "type": "Double",
+          "units": "",
+          "model_dependent": false,
+          "$$hashKey": "object:17668"
+        },
+        {
+          "name": "first_year_capital_cost",
+          "display_name": "first_year_capital_cost",
+          "short_name": "first_year_capital_cost",
+          "description": "",
+          "type": "Double",
+          "units": "",
+          "model_dependent": false,
+          "$$hashKey": "object:17669"
+        },
+        {
+          "name": "annual_utility_cost",
+          "display_name": "annual_utility_cost",
+          "short_name": "annual_utility_cost",
+          "description": "",
+          "type": "Double",
+          "units": "",
+          "model_dependent": false,
+          "$$hashKey": "object:17670"
+        },
+        {
+          "name": "total_lifecycle_cost",
+          "display_name": "total_lifecycle_cost",
+          "short_name": "total_lifecycle_cost",
+          "description": "",
+          "type": "Double",
+          "units": "",
+          "model_dependent": false,
+          "$$hashKey": "object:17671"
+        },
+        {
+          "name": "number_of_measures_with_warnings",
+          "display_name": "number_of_measures_with_warnings",
+          "short_name": "number_of_measures_with_warnings",
+          "description": "",
+          "type": "Double",
+          "units": "",
+          "model_dependent": false,
+          "$$hashKey": "object:17672"
+        },
+        {
+          "name": "number_warnings",
+          "display_name": "number_warnings",
+          "short_name": "number_warnings",
+          "description": "",
+          "type": "Double",
+          "units": "",
+          "model_dependent": false,
+          "$$hashKey": "object:17673"
+        }
+      ],
+      "attributes": [
+        {
+          "name": "Uses SketchUp API",
+          "display_name": "Uses SketchUp API",
+          "value": false
+        },
+        {
+          "name": "Measure Type",
+          "display_name": "Measure Type",
+          "value": "ReportingMeasure"
+        },
+        {
+          "name": "Intended Software Tool",
+          "display_name": "Intended Software Tool",
+          "value": "OpenStudio Application"
+        },
+        {
+          "name": "Intended Software Tool",
+          "display_name": "Intended Software Tool",
+          "value": "Parametric Analysis Tool"
+        },
+        {
+          "name": "Intended Software Tool",
+          "display_name": "Intended Software Tool",
+          "value": "Analysis Spreadsheet"
+        },
+        {
+          "name": "Intended Use Case",
+          "display_name": "Intended Use Case",
+          "value": "Automatic Report Generation"
+        }
+      ],
+      "arguments": [
+        {
+          "name": "units",
+          "display_name": "Which Unit System do you want to use?",
+          "description": "",
+          "type": "Choice",
+          "required": true,
+          "model_dependent": false,
+          "default_value": "IP",
+          "choice_values": [
+            "IP",
+            "SI"
+          ],
+          "choice_display_names": [
+            "IP",
+            "SI"
+          ],
+          "display_name_short": "units",
+          "inputs": {
+            "relationship": null,
+            "choiceDisplayNames": [
+              "IP",
+              "SI"
+            ],
+            "variableSetting": "Argument",
+            "distribution": "Uniform",
+            "discreteVariables": [],
+            "maximum": "IP",
+            "minimum": "IP",
+            "mean": "IP",
+            "deltaX": "IP",
+            "stdDev": "IP",
+            "default_value": "SI"
+          },
+          "$$hashKey": "object:16243"
+        },
+        {
+          "name": "building_summary_section",
+          "display_name": "Model Summary",
+          "description": "",
+          "type": "Boolean",
+          "required": true,
+          "model_dependent": false,
+          "default_value": true,
+          "display_name_short": "building_summary_section",
+          "inputs": {
+            "relationship": null,
+            "choiceDisplayNames": [],
+            "variableSetting": "Argument",
+            "distribution": "Uniform",
+            "discreteVariables": [],
+            "maximum": true,
+            "minimum": true,
+            "mean": true,
+            "deltaX": true,
+            "stdDev": true,
+            "default_value": true
+          },
+          "$$hashKey": "object:16244"
+        },
+        {
+          "name": "annual_overview_section",
+          "display_name": "Annual Overview",
+          "description": "",
+          "type": "Boolean",
+          "required": true,
+          "model_dependent": false,
+          "default_value": true,
+          "display_name_short": "annual_overview_section",
+          "inputs": {
+            "relationship": null,
+            "choiceDisplayNames": [],
+            "variableSetting": "Argument",
+            "distribution": "Uniform",
+            "discreteVariables": [],
+            "maximum": true,
+            "minimum": true,
+            "mean": true,
+            "deltaX": true,
+            "stdDev": true,
+            "default_value": true
+          },
+          "$$hashKey": "object:16245"
+        },
+        {
+          "name": "monthly_overview_section",
+          "display_name": "Monthly Overview",
+          "description": "",
+          "type": "Boolean",
+          "required": true,
+          "model_dependent": false,
+          "default_value": true,
+          "display_name_short": "monthly_overview_section",
+          "inputs": {
+            "relationship": null,
+            "choiceDisplayNames": [],
+            "variableSetting": "Argument",
+            "distribution": "Uniform",
+            "discreteVariables": [],
+            "maximum": true,
+            "minimum": true,
+            "mean": true,
+            "deltaX": true,
+            "stdDev": true,
+            "default_value": true
+          },
+          "$$hashKey": "object:16246"
+        },
+        {
+          "name": "utility_bills_rates_section",
+          "display_name": "Utility Bills/Rates",
+          "description": "",
+          "type": "Boolean",
+          "required": true,
+          "model_dependent": false,
+          "default_value": true,
+          "display_name_short": "utility_bills_rates_section",
+          "inputs": {
+            "relationship": null,
+            "choiceDisplayNames": [],
+            "variableSetting": "Argument",
+            "distribution": "Uniform",
+            "discreteVariables": [],
+            "maximum": true,
+            "minimum": true,
+            "mean": true,
+            "deltaX": true,
+            "stdDev": true,
+            "default_value": true
+          },
+          "$$hashKey": "object:16247"
+        },
+        {
+          "name": "envelope_section_section",
+          "display_name": "Envelope Summary",
+          "description": "",
+          "type": "Boolean",
+          "required": true,
+          "model_dependent": false,
+          "default_value": true,
+          "display_name_short": "envelope_section_section",
+          "inputs": {
+            "relationship": null,
+            "choiceDisplayNames": [],
+            "variableSetting": "Argument",
+            "distribution": "Uniform",
+            "discreteVariables": [],
+            "maximum": true,
+            "minimum": true,
+            "mean": true,
+            "deltaX": true,
+            "stdDev": true,
+            "default_value": true
+          },
+          "$$hashKey": "object:16248"
+        },
+        {
+          "name": "space_type_breakdown_section",
+          "display_name": "Space Type Breakdown",
+          "description": "",
+          "type": "Boolean",
+          "required": true,
+          "model_dependent": false,
+          "default_value": true,
+          "display_name_short": "space_type_breakdown_section",
+          "inputs": {
+            "relationship": null,
+            "choiceDisplayNames": [],
+            "variableSetting": "Argument",
+            "distribution": "Uniform",
+            "discreteVariables": [],
+            "maximum": true,
+            "minimum": true,
+            "mean": true,
+            "deltaX": true,
+            "stdDev": true,
+            "default_value": true
+          },
+          "$$hashKey": "object:16249"
+        },
+        {
+          "name": "space_type_details_section",
+          "display_name": "Space Type Summary",
+          "description": "",
+          "type": "Boolean",
+          "required": true,
+          "model_dependent": false,
+          "default_value": true,
+          "display_name_short": "space_type_details_section",
+          "inputs": {
+            "relationship": null,
+            "choiceDisplayNames": [],
+            "variableSetting": "Argument",
+            "distribution": "Uniform",
+            "discreteVariables": [],
+            "maximum": true,
+            "minimum": true,
+            "mean": true,
+            "deltaX": true,
+            "stdDev": true,
+            "default_value": true
+          },
+          "$$hashKey": "object:16250"
+        },
+        {
+          "name": "interior_lighting_section",
+          "display_name": "Interior Lighting Summary",
+          "description": "",
+          "type": "Boolean",
+          "required": true,
+          "model_dependent": false,
+          "default_value": true,
+          "display_name_short": "interior_lighting_section",
+          "inputs": {
+            "relationship": null,
+            "choiceDisplayNames": [],
+            "variableSetting": "Argument",
+            "distribution": "Uniform",
+            "discreteVariables": [],
+            "maximum": true,
+            "minimum": true,
+            "mean": true,
+            "deltaX": true,
+            "stdDev": true,
+            "default_value": true
+          },
+          "$$hashKey": "object:16251"
+        },
+        {
+          "name": "plug_loads_section",
+          "display_name": "Plug Loads Summary",
+          "description": "",
+          "type": "Boolean",
+          "required": true,
+          "model_dependent": false,
+          "default_value": true,
+          "display_name_short": "plug_loads_section",
+          "inputs": {
+            "relationship": null,
+            "choiceDisplayNames": [],
+            "variableSetting": "Argument",
+            "distribution": "Uniform",
+            "discreteVariables": [],
+            "maximum": true,
+            "minimum": true,
+            "mean": true,
+            "deltaX": true,
+            "stdDev": true,
+            "default_value": true
+          },
+          "$$hashKey": "object:16252"
+        },
+        {
+          "name": "exterior_light_section",
+          "display_name": "Exterior Lighting",
+          "description": "",
+          "type": "Boolean",
+          "required": true,
+          "model_dependent": false,
+          "default_value": true,
+          "display_name_short": "exterior_light_section",
+          "inputs": {
+            "relationship": null,
+            "choiceDisplayNames": [],
+            "variableSetting": "Argument",
+            "distribution": "Uniform",
+            "discreteVariables": [],
+            "maximum": true,
+            "minimum": true,
+            "mean": true,
+            "deltaX": true,
+            "stdDev": true,
+            "default_value": true
+          },
+          "$$hashKey": "object:16253"
+        },
+        {
+          "name": "water_use_section",
+          "display_name": "Water Use Equipment",
+          "description": "",
+          "type": "Boolean",
+          "required": true,
+          "model_dependent": false,
+          "default_value": true,
+          "display_name_short": "water_use_section",
+          "inputs": {
+            "relationship": null,
+            "choiceDisplayNames": [],
+            "variableSetting": "Argument",
+            "distribution": "Uniform",
+            "discreteVariables": [],
+            "maximum": true,
+            "minimum": true,
+            "mean": true,
+            "deltaX": true,
+            "stdDev": true,
+            "default_value": true
+          },
+          "$$hashKey": "object:16254"
+        },
+        {
+          "name": "hvac_load_profile",
+          "display_name": "HVAC Load Profiles",
+          "description": "",
+          "type": "Boolean",
+          "required": true,
+          "model_dependent": false,
+          "default_value": true,
+          "display_name_short": "hvac_load_profile",
+          "inputs": {
+            "relationship": null,
+            "choiceDisplayNames": [],
+            "variableSetting": "Argument",
+            "distribution": "Uniform",
+            "discreteVariables": [],
+            "maximum": true,
+            "minimum": true,
+            "mean": true,
+            "deltaX": true,
+            "stdDev": true,
+            "default_value": true
+          },
+          "$$hashKey": "object:16255"
+        },
+        {
+          "name": "zone_condition_section",
+          "display_name": "Zone Conditions",
+          "description": "",
+          "type": "Boolean",
+          "required": true,
+          "model_dependent": false,
+          "default_value": true,
+          "display_name_short": "zone_condition_section",
+          "inputs": {
+            "relationship": null,
+            "choiceDisplayNames": [],
+            "variableSetting": "Argument",
+            "distribution": "Uniform",
+            "discreteVariables": [],
+            "maximum": true,
+            "minimum": true,
+            "mean": true,
+            "deltaX": true,
+            "stdDev": true,
+            "default_value": true
+          },
+          "$$hashKey": "object:16256"
+        },
+        {
+          "name": "zone_summary_section",
+          "display_name": "Zone Overview",
+          "description": "",
+          "type": "Boolean",
+          "required": true,
+          "model_dependent": false,
+          "default_value": true,
+          "display_name_short": "zone_summary_section",
+          "inputs": {
+            "relationship": null,
+            "choiceDisplayNames": [],
+            "variableSetting": "Argument",
+            "distribution": "Uniform",
+            "discreteVariables": [],
+            "maximum": true,
+            "minimum": true,
+            "mean": true,
+            "deltaX": true,
+            "stdDev": true,
+            "default_value": true
+          },
+          "$$hashKey": "object:16257"
+        },
+        {
+          "name": "zone_equipment_detail_section",
+          "display_name": "Zone Equipment Detail",
+          "description": "",
+          "type": "Boolean",
+          "required": true,
+          "model_dependent": false,
+          "default_value": true,
+          "display_name_short": "zone_equipment_detail_section",
+          "inputs": {
+            "relationship": null,
+            "choiceDisplayNames": [],
+            "variableSetting": "Argument",
+            "distribution": "Uniform",
+            "discreteVariables": [],
+            "maximum": true,
+            "minimum": true,
+            "mean": true,
+            "deltaX": true,
+            "stdDev": true,
+            "default_value": true
+          },
+          "$$hashKey": "object:16258"
+        },
+        {
+          "name": "air_loops_detail_section",
+          "display_name": "Air Loops Detail",
+          "description": "",
+          "type": "Boolean",
+          "required": true,
+          "model_dependent": false,
+          "default_value": true,
+          "display_name_short": "air_loops_detail_section",
+          "inputs": {
+            "relationship": null,
+            "choiceDisplayNames": [],
+            "variableSetting": "Argument",
+            "distribution": "Uniform",
+            "discreteVariables": [],
+            "maximum": true,
+            "minimum": true,
+            "mean": true,
+            "deltaX": true,
+            "stdDev": true,
+            "default_value": true
+          },
+          "$$hashKey": "object:16259"
+        },
+        {
+          "name": "plant_loops_detail_section",
+          "display_name": "Plant Loops Detail",
+          "description": "",
+          "type": "Boolean",
+          "required": true,
+          "model_dependent": false,
+          "default_value": true,
+          "display_name_short": "plant_loops_detail_section",
+          "inputs": {
+            "relationship": null,
+            "choiceDisplayNames": [],
+            "variableSetting": "Argument",
+            "distribution": "Uniform",
+            "discreteVariables": [],
+            "maximum": true,
+            "minimum": true,
+            "mean": true,
+            "deltaX": true,
+            "stdDev": true,
+            "default_value": true
+          },
+          "$$hashKey": "object:16260"
+        },
+        {
+          "name": "outdoor_air_section",
+          "display_name": "Outdoor Air",
+          "description": "",
+          "type": "Boolean",
+          "required": true,
+          "model_dependent": false,
+          "default_value": true,
+          "display_name_short": "outdoor_air_section",
+          "inputs": {
+            "relationship": null,
+            "choiceDisplayNames": [],
+            "variableSetting": "Argument",
+            "distribution": "Uniform",
+            "discreteVariables": [],
+            "maximum": true,
+            "minimum": true,
+            "mean": true,
+            "deltaX": true,
+            "stdDev": true,
+            "default_value": true
+          },
+          "$$hashKey": "object:16261"
+        },
+        {
+          "name": "cost_summary_section",
+          "display_name": "Cash Flow",
+          "description": "",
+          "type": "Boolean",
+          "required": true,
+          "model_dependent": false,
+          "default_value": true,
+          "display_name_short": "cost_summary_section",
+          "inputs": {
+            "relationship": null,
+            "choiceDisplayNames": [],
+            "variableSetting": "Argument",
+            "distribution": "Uniform",
+            "discreteVariables": [],
+            "maximum": true,
+            "minimum": true,
+            "mean": true,
+            "deltaX": true,
+            "stdDev": true,
+            "default_value": true
+          },
+          "$$hashKey": "object:16262"
+        },
+        {
+          "name": "source_energy_section",
+          "display_name": "Site and Source Summary",
+          "description": "",
+          "type": "Boolean",
+          "required": true,
+          "model_dependent": false,
+          "default_value": true,
+          "display_name_short": "source_energy_section",
+          "inputs": {
+            "relationship": null,
+            "choiceDisplayNames": [],
+            "variableSetting": "Argument",
+            "distribution": "Uniform",
+            "discreteVariables": [],
+            "maximum": true,
+            "minimum": true,
+            "mean": true,
+            "deltaX": true,
+            "stdDev": true,
+            "default_value": true
+          },
+          "$$hashKey": "object:16263"
+        },
+        {
+          "name": "schedules_overview_section",
+          "display_name": "Schedule Overview",
+          "description": "",
+          "type": "Boolean",
+          "required": true,
+          "model_dependent": false,
+          "default_value": true,
+          "display_name_short": "schedules_overview_section",
+          "inputs": {
+            "relationship": null,
+            "choiceDisplayNames": [],
+            "variableSetting": "Argument",
+            "distribution": "Uniform",
+            "discreteVariables": [],
+            "maximum": true,
+            "minimum": true,
+            "mean": true,
+            "deltaX": true,
+            "stdDev": true,
+            "default_value": true
+          },
+          "$$hashKey": "object:16264"
+        },
+        {
+          "name": "measure_warning_section",
+          "display_name": "Measure Warnings",
+          "description": "",
+          "type": "Boolean",
+          "required": true,
+          "model_dependent": false,
+          "default_value": true,
+          "display_name_short": "measure_warning_section",
+          "inputs": {
+            "relationship": null,
+            "choiceDisplayNames": [],
+            "variableSetting": "Argument",
+            "distribution": "Uniform",
+            "discreteVariables": [],
+            "maximum": true,
+            "minimum": true,
+            "mean": true,
+            "deltaX": true,
+            "stdDev": true,
+            "default_value": true
+          },
+          "$$hashKey": "object:16265"
+        },
+        {
+          "name": "reg_monthly_details",
+          "display_name": "Report monthly fuel and enduse breakdown to registerValue",
+          "description": "This argument does not effect HTML file, instead it makes data from individal cells of monthly tables avaiable for machine readable values in the resulting OpenStudio Workflow file.",
+          "type": "Boolean",
+          "required": true,
+          "model_dependent": false,
+          "default_value": false,
+          "display_name_short": "reg_monthly_details",
+          "inputs": {
+            "relationship": null,
+            "choiceDisplayNames": [],
+            "variableSetting": "Argument",
+            "distribution": "Uniform",
+            "discreteVariables": [],
+            "maximum": false,
+            "minimum": false,
+            "mean": false,
+            "deltaX": false,
+            "stdDev": false,
+            "default_value": false
+          },
+          "$$hashKey": "object:16266"
+        }
+      ],
+      "edit": "",
+      "status": "",
+      "bcl_update": false,
+      "location": "local",
+      "add": "",
+      "open": true,
+      "addedToProject": true,
+      "date": "4/23/2021",
+      "author": "",
+      "type": "ReportingMeasure",
+      "seed": "EmptyModel.osm",
+      "workflow_index": 2,
+      "options": [],
+      "instanceId": 0.0018060753967830134,
+      "skip": false,
+      "$$hashKey": "object:16199",
+      "outputMeasure": true,
+      "userDefinedOutputs": [],
+      "analysisOutputs": [
+        {
+          "name": "eui",
+          "display_name": "eui",
+          "short_name": "eui",
+          "description": "",
+          "type": "Double",
+          "units": "",
+          "model_dependent": false,
+          "$$hashKey": "object:17664",
+          "checked": true,
+          "visualize": "true",
+          "measure_name": "openstudio_results",
+          "measure_class_name": "OpenStudioResults",
+          "measure_uid": "a25386cd-60e4-46bc-8b11-c755f379d916"
+        }
+      ]
+    }
+  ],
+  "filesToInclude": [],
+  "serverScripts": {
+    "server_initialization": {
+      "file": null,
+      "arguments": []
+    },
+    "server_finalization": {
+      "file": "finalize.sh",
+      "arguments": []
+    },
+    "worker_initialization": {
+      "file": "initialize.sh",
+      "arguments": []
+    },
+    "worker_finalization": {
+      "file": null,
+      "arguments": []
+    }
+  },
+  "designAlternatives": [],
+  "analysisID": "2e7f0210-a118-4927-8dd8-ee976b967563\r",
+  "datapoints": []
+}

@@ -15,7 +15,7 @@ echo -e "${GREEN}Setting OpenStudio environment${NC}..."
 # The os_version number should be the only thing that needs updated.
 # It has to be consistent with the nrcan_nrc branch of openstudio-standards being used
 # elsewhere (e.g. in the version of openstudio-server that is used for PAT).
-os_version="3.0.1"
+os_version="3.2.1"
 image=nrel/openstudio:$os_version
 
 # OpenStudio server and supporting gems (these need to be kept in sync when updating os_version).
@@ -26,10 +26,10 @@ rserve_image=nrel/openstudio-rserve:$os_version
 server_gems=() 
 # Dependancies for 3.0.1
 #  - none
-# Dependancies for 3.2.0
-#server_gems+=("openstudio-workflow-gem" "openstudio-workflow" "v2.1.0") 
+# Dependancies for 3.2.1
+#  - none 
 # Dependencies for NRC measures and testing
-#server_gems=("openstudio-standards" "openstudio-standards" "nrcan_nrc")
+#server_gems=("openstudio-standards" "openstudio-standards" "nrcan")
 server_gems+=("openstudio-standards" "openstudio-standards" "nrcan_nrc")
 
 # Set the number of gems to install
