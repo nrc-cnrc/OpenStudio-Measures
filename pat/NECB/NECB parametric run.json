@@ -453,7 +453,7 @@
           "measure_type": "ReportingMeasure",
           "measure_definition_class_name": "NrcReportUtilityCosts",
           "measure_definition_directory": "./measures/nrc_report_utility_costs",
-          "measure_definition_directory_local": "D:/Files/Devel/openstudio-measures/measures/nrc_report_utility_costs",
+          "measure_definition_directory_local": "D:\\Files\\Devel\\openstudio-measures\\pat\\NECB\\measures\\nrc_report_utility_costs",
           "measure_definition_display_name": "Report Utility Costs",
           "measure_definition_name": "nrc_report_utility_costs",
           "measure_definition_name_xml": null,
