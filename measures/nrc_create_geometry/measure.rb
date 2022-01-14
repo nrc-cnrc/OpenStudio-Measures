@@ -167,10 +167,6 @@ class NrcCreateGeometry < OpenStudio::Measure::ModelMeasure
     stds_spc_type = ''
     runner.registerInitialCondition("The building started with #{starting_spaceTypes.size} space types.")
 
-    standard = Standard.build(template)
-    skylight_to_roof_ratio_max_value = standard.standards_data["constants"]["skylight_to_roof_ratio_max_value"]["value"]
-    runner.registerInitialCondition("The initial value of SRR in Standards is  ".green + "#{skylight_to_roof_ratio_max_value}.".light_blue)
-
     #" ******************* Creating Courtyard Shape ***********************************"
     if building_shape == 'Courtyard'
       # Figure out dimensions from inputs
@@ -297,6 +293,7 @@ class NrcCreateGeometry < OpenStudio::Measure::ModelMeasure
 
     #Rotate model.
     building = model.getBuilding
+
     runner.registerInitialCondition("The building's initial rotation was #{building.northAxis} degrees.".light_blue)
     final_rotation = building.northAxis + rotation
     building.setNorthAxis(final_rotation)
@@ -376,21 +373,18 @@ class NrcCreateGeometry < OpenStudio::Measure::ModelMeasure
                                   epw_file: epw_file,
                                   sizing_run_dir: NRCMeasureTestHelper.outputFolder)
 
-    ########################################################################
-    # Added this section to compare the skylights before and after running the 'json_sideload' method, will delete it later
-    m_path = "#{File.dirname(__FILE__)}/InputOutputModel"
-    # save the model to test output directory
-    output_file_path1 = "#{m_path}/inputModel.osm"
-    model.save(output_file_path1, true)
+    # Compare skylight to roof ratio before and after running the 'json_sideload' method
+    srr_lim = standard.get_standards_constant('skylight_to_roof_ratio_max_value')
+    runner.registerInitialCondition("The building's SRR was".green + " #{srr_lim}.".light_blue)
 
     # Side load json files into standard.
-    json_sideload(standard)
+    new_standard = json_sideload(standard)
 
-    # save the model to test output directory
-    output_file_path1 = "#{m_path}/outputModel.osm"
-    model.save(output_file_path1, true)
+    # Set new SRR
+    srr_lim = new_standard.get_standards_constant('skylight_to_roof_ratio_max_value')
+    new_standard.apply_standard_skylight_to_roof_ratio(model: model, srr_set: srr_lim)
+    runner.registerFinalCondition("The building's SRR is changed to ".green + " #{srr_lim}.".light_blue)
 
-    #######################################################################
     finishing_spaceTypes = model.getSpaceTypes
     num_thermalZones = model.getThermalZones.size
     finishing_constructionSets = model.getDefaultConstructionSets
@@ -414,7 +408,6 @@ class NrcCreateGeometry < OpenStudio::Measure::ModelMeasure
     files = Dir.glob("#{path}/*.json").select { |e| File.file? e }
     files.each do |file|
       @runner.registerInfo("Reading side load file: ".green + "#{file}".light_blue)
-      puts "Reading side load file : ".green + " #{file}".light_blue
       data = JSON.parse(File.read(file))
       if not data["tables"].nil?
         data['tables'].keys.each do |table|
@@ -445,7 +438,6 @@ class NrcCreateGeometry < OpenStudio::Measure::ModelMeasure
           @runner.registerInfo("Updating standard constants value: ".green + "#{value}".light_blue)
           @runner.registerInfo("Existing constants data   : ".green + "#{standard.get_standards_constant(value)}".light_blue)
           @runner.registerInfo("Replacement constants data: ".green + "#{data['constants'][value]['value']}".light_blue)
-          puts "Updating standard constants value: #{value}".green
         end
         standard.standards_data["constants"] = [*standard.standards_data["constants"], *data["constants"]].to_h
         standard.corrupt_standards_database
