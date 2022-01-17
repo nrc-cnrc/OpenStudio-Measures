@@ -298,9 +298,16 @@ class NrcCreateGeometry < OpenStudio::Measure::ModelMeasure
     final_rotation = building.northAxis + rotation
     building.setNorthAxis(final_rotation)
     runner.registerInfo("The building has been rotated by #{building.northAxis} degrees.")
-    # Geometry is now complete. Need to add space types and then run through prototype creation methods.
+
     # Define version of NECB to use
     standard = Standard.build(template)
+
+    # Compare skylight to roof ratio before and after running the 'json_sideload' method
+    srr_lim = standard.get_standards_constant('skylight_to_roof_ratio_max_value')
+    runner.registerInitialCondition("The building's SRR was".green + " #{srr_lim}.".light_blue)
+
+    # Side load json files into standard.
+    standard = json_sideload(standard)
 
     # Need to set building level info
     building = model.getBuilding
@@ -373,16 +380,8 @@ class NrcCreateGeometry < OpenStudio::Measure::ModelMeasure
                                   epw_file: epw_file,
                                   sizing_run_dir: NRCMeasureTestHelper.outputFolder)
 
-    # Compare skylight to roof ratio before and after running the 'json_sideload' method
+    # Check if new SRR was set properly
     srr_lim = standard.get_standards_constant('skylight_to_roof_ratio_max_value')
-    runner.registerInitialCondition("The building's SRR was".green + " #{srr_lim}.".light_blue)
-
-    # Side load json files into standard.
-    new_standard = json_sideload(standard)
-
-    # Set new SRR
-    srr_lim = new_standard.get_standards_constant('skylight_to_roof_ratio_max_value')
-    new_standard.apply_standard_skylight_to_roof_ratio(model: model, srr_set: srr_lim)
     runner.registerFinalCondition("The building's SRR is changed to ".green + " #{srr_lim}.".light_blue)
 
     finishing_spaceTypes = model.getSpaceTypes
@@ -452,7 +451,6 @@ class NrcCreateGeometry < OpenStudio::Measure::ModelMeasure
     end
     return standard
   end
-
 end
 
 # register the measure to be used by the application

@@ -9,7 +9,8 @@
         "NBC2015_Table 9.36.2.8.-B",
         "Outdoors_RoofCeiling : Ceilings below attics",
 		"Ground_Walls  : Foundation walls 9.36.2.8.-B",
-		"Ground_Floors : Slabs-on-grade with an integral footing 9.36.2.8.-B"
+		"Ground_Floors : Slabs-on-grade with an integral footing 9.36.2.8.-B",
+		"Ground_RoofCeiling : Left as NECB default"
       ],
       "units": "W_per_m2_K",
       "table": [
@@ -42,6 +43,11 @@
           "boundary_condition": "Ground",
           "surface": "Wall",
 		  "formula": "( hdd < 3000) ? 0.503 : 0.335" 
+        },
+		{
+          "boundary_condition": "Ground",
+          "surface": "RoofCeiling",
+          "formula": "( hdd < 3000) ? 0.568 : ( hdd < 4000) ? 0.379 : ( hdd < 7000) ? 0.284 : 0.210"
         },
         {
           "boundary_condition": "Ground",
