@@ -6,6 +6,7 @@
       "refs": [
         "NBC2015_Table 9.36.2.6.-B",
         "NBC2015_Table 9.36.2.7.-A",
+		"NBC2015_Table 9.36.2.7.-B",
         "NBC2015_Table 9.36.2.8.-B",
         "Outdoors_RoofCeiling : Ceilings below attics",
 		"Ground_Walls  : Foundation walls 9.36.2.8.-B",
@@ -33,6 +34,10 @@
           "boundary_condition": "Outdoors",
           "surface": "Window",
           "formula": "( hdd < 4000) ? 1.8 : ( hdd < 6000) ? 1.6 : 1.4"        
+        },    {
+          "boundary_condition": "Outdoors",
+          "surface": "Skylight",
+          "formula": "( hdd < 4000) ? 2.90 : ( hdd < 6000) ? 2.7 : 2.4"
         },
         {
           "boundary_condition": "Outdoors",
