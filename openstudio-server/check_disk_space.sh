@@ -1,6 +1,6 @@
 #!/bin/bash
 echo "WORKER"
-docker exec ${PWD##*/}"-worker-1" sh -c 'df -h .'
+docker exec ${PWD##*/}"_worker_1" sh -c 'df -h .'
 #echo "WORKER /mnt/openstudio"
 #docker exec ${PWD##*/}"_worker_1" sh -c 'du -sh /mnt/openstudio/*'
 #echo "WORKER /var/os-gems"
