@@ -122,9 +122,16 @@ class NrcCreateGeometry < OpenStudio::Measure::ModelMeasure
         "name" => "plenum_height",
         "type" => "Double",
         "display_name" => "Plenum height (m), or Enter '0.0' for No Plenum",
-        "default_value" => 1.0,
+        "default_value" => 0.0,
         "max_double_value" => 2.0,
         "is_required" => false
+      },
+      {
+        "name" => "sideload",
+        "type" => "Bool",
+        "display_name" => "Check for sideload files (to overwrite standards info)?",
+        "default_value" => false,
+        "is_required" => true
       }
     ]
   end
@@ -156,6 +163,7 @@ class NrcCreateGeometry < OpenStudio::Measure::ModelMeasure
     plenum_height = arguments['plenum_height']
     floor_area = total_floor_area / above_grade_floors
     climate_zone = 'NECB HDD Method'
+    sideload = arguments['sideload']
 
     if plenum_height <= 0
       plenum_height = 0.0
@@ -307,7 +315,9 @@ class NrcCreateGeometry < OpenStudio::Measure::ModelMeasure
     runner.registerInitialCondition("The building's SRR was".green + " #{srr_lim}.".light_blue)
 
     # Side load json files into standard.
-    standard = json_sideload(standard)
+    if sideload then
+      standard = json_sideload(standard)
+    end
 
     # Need to set building level info
     building = model.getBuilding

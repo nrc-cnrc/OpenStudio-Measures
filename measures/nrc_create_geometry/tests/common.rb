@@ -106,9 +106,16 @@ module TestCommon
             "name" => "plenum_height",
             "type" => "Double",
             "display_name" => "Plenum height (m), or Enter '0.0' for No Plenum",
-            "default_value" => 1.0,
+            "default_value" => 0.0,
             "max_double_value" => 2.0,
             "is_required" => false
+          },
+          {
+            "name" => "sideload",
+            "type" => "Bool",
+            "display_name" => "Check for sideload files (to overwrite standards info)?",
+            "default_value" => false,
+            "is_required" => true
           }
         ]
 
@@ -122,7 +129,8 @@ module TestCommon
         "rotation" => 30.0,
         "above_grade_floors" => 2,
         "floor_to_floor_height" => 3.2,
-        "plenum_height" => 1.0
+        "plenum_height" => 1.0,
+		"sideload" => false
       }
     end
 
@@ -153,7 +161,8 @@ module TestCommon
         "rotation" => rotation,
         "above_grade_floors" => above_grade_floors,
         "floor_to_floor_height" => 3.2,
-        "plenum_height" => 0.0
+        "plenum_height" => 0.0,
+		"sideload" => false
       }
 
       # Get the city name from the weather file
