@@ -12,7 +12,7 @@ class NrcCreateGeometry_Test
     template = 'NECB2017'
     puts "Testing  model creation for #{template}".blue
 
-	# Options. Limit to 16 cases to keep run time down.
+    # Options. Limit to 16 cases to keep run time down.
     building_types = ["PrimarySchool", "MediumOffice"]
     epw_files = ['CAN_YT_Whitehorse.Intl.AP.719640_CWEC2016.epw', 'CAN_BC_Vancouver.Intl.AP.718920_CWEC2016.epw']
     building_shapes = ["U-Shape"]
