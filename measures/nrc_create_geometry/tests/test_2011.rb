@@ -6,7 +6,7 @@ class NrcCreateGeometry_Test
 
   def test_2011()
   
-  
+    sleep(20)
   
     # Set the version of NECB to use in this test
     template = 'NECB2011'
