@@ -219,67 +219,67 @@ module BTAPMeasureTestHelper
         @use_string_double = string_double
         (@measure_interface_detailed).each_with_index do |argument|
           if argument['type'] == 'Integer'
-            puts "Testing range for #{argument['name']}".blue
+            puts "Testing range for ".green + " #{argument['name']}".light_blue
             #Check over max
             # puts " argument[max_integer_value]: #{argument["max_integer_value"]} , min: #{argument["min_integer_value"]}   ====>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
             if not argument['max_integer_value'].nil?
-              puts "Testing max limit"
+              puts "Testing max limit".light_blue
               input_arguments = @good_input_arguments.clone
               over_max_value = argument['max_integer_value'].to_i + 1
               input_arguments[argument['name']] = over_max_value
-              puts "Testing argument #{argument['name']} max limit of #{argument['max_integer_value']}".light_blue
+              puts "Testing argument ".green + " #{argument['name']}".light_blue + " max limit of ".green + " #{argument['max_integer_value']}".light_blue
               input_arguments = {'json_input' => JSON.pretty_generate(input_arguments)} if @use_json_package
               run_measure(input_arguments, model)
               runner = run_measure(input_arguments, model)
               assert(runner.result.value.valueName != 'Success', "Checks did not stop a lower than limit value of #{over_max_value} for #{argument['name']}")
-              puts "Success: Testing argument #{argument['name']} max limit of #{argument['max_integer_value']}".green
+              puts "Success: Testing argument ".green + " #{argument['name']}".light_blue + " max limit of".green + " #{argument['max_integer_value']}".light_blue
             end
             #Check over max
             if not argument['min_integer_value'].nil?
-              puts "Testing min limit"
+              puts "Testing min limit".green
               input_arguments = @good_input_arguments.clone
               over_min_value = argument['min_integer_value'].to_i - 1
               input_arguments[argument['name']] = over_min_value
-              puts "Testing argument #{argument['name']} min limit of #{argument['min_integer_value']}".light_blue
+              puts "Testing argument ".green + " #{argument['name']}".light_blue + " min limit of".green + " #{argument['min_integer_value']}".light_blue
               input_arguments = {'json_input' => JSON.pretty_generate(input_arguments)} if @use_json_package
               runner = run_measure(input_arguments, model)
               assert(runner.result.value.valueName != 'Success', "Checks did not stop a lower than limit value of #{over_min_value} for #{argument['name']}")
-              puts "Success:Testing argument #{argument['name']} min limit of #{argument['min_integer_value']}".green
+              puts "Success:Testing argument ".green + " #{argument['name']}".light_blue + " min limit of".green + " #{argument['min_integer_value']}".light_blue
             end
           elsif argument['type'] == 'Double' or argument['type'] == 'StringDouble'
-            puts "Testing range for #{argument['name']} ".blue
+            puts "Testing range for ".green + " #{argument['name']} ".light_blue
             #Check over max
             if not argument['max_double_value'].nil?
-              puts "Testing max limit"
+              puts "Testing max limit".green
               input_arguments = @good_input_arguments.clone
               over_max_value = argument['max_double_value'].to_f + 1.0
               over_max_value = over_max_value.to_s if argument['type'].downcase == "StringDouble".downcase
               input_arguments[argument['name']] = over_max_value
-              puts "Testing argument #{argument['name']} max limit of #{argument['max_double_value']}".light_blue
+              puts "Testing argument ".green + " #{argument['name']}".light_blue + " max limit of".green + "  #{argument['max_double_value']}".light_blue
               input_arguments = {'json_input' => JSON.pretty_generate(input_arguments)} if @use_json_package
               runner = run_measure(input_arguments, model)
               assert(runner.result.value.valueName != 'Success', "Checks did not stop a lower than limit value of #{over_max_value} for #{argument['name']}")
-              puts "Success: Testing argument #{argument['name']} max limit of #{argument['max_double_value']}".green
+              puts "Success: Testing argument ".green + " #{argument['name']}".light_blue + " max limit of".green + " #{argument['max_double_value']}".light_blue
             end
             #Check over max
             if not argument['min_double_value'].nil?
-              puts "Testing min limit"
+              puts "Testing min limit".green
               input_arguments = @good_input_arguments.clone
               over_min_value = argument['min_double_value'].to_f - 1.0
               over_min_value = over_max_value.to_s if argument['type'].downcase == "StringDouble".downcase
               input_arguments[argument['name']] = over_min_value
-              puts "Testing argument #{argument['name']} min limit of #{argument['min_double_value']}".light_blue
+              puts "Testing argument ".green + " #{argument['name']}".light_blue + " min limit of".green + " #{argument['min_double_value']}".light_blue
               input_arguments = {'json_input' => JSON.pretty_generate(input_arguments)} if @use_json_package
               runner = run_measure(input_arguments, model)
               assert(runner.result.value.valueName != 'Success', "Checks did not stop a lower than limit value of #{over_min_value} for #{argument['name']}")
-              puts "Success:Testing argument #{argument['name']} min limit of #{argument['min_double_value']}".green
+              puts "Success:Testing argument ".green + " #{argument['name']}".light_blue + " min limit of".green + " #{argument['min_double_value']}".light_blue
             end
 
           end
           if (argument['type'] == 'StringDouble') and (not argument["valid_strings"].nil?) and @use_string_double
             input_arguments = @good_input_arguments.clone
             input_arguments[argument['name']] = SecureRandom.uuid.to_s
-            puts "Testing argument #{argument['name']} min limit of #{argument['min_double_value']}".light_blue
+            puts "Testing argument ".green + " #{argument['name']}".light_blue + " min limit of".green + " #{argument['min_double_value']}".light_blue
             input_arguments = {'json_input' => JSON.pretty_generate(input_arguments)} if @use_json_package
             runner = run_measure(input_arguments, model)
             assert(runner.result.value.valueName != 'Success', "Checks did not stop a lower than limit value of #{over_min_value} for #{argument['name']}")
@@ -357,7 +357,7 @@ module BTAPMeasureTestHelper
     measure = nil
     eval "measure = #{measure_class_name}.new"
     if measure.nil?
-      puts "Measure class #{measure_class_name} is invalid. Please ensure the test class name is of the form 'MeasureName_Test' "
+      puts "Measure class #{measure_class_name} is invalid. Please ensure the test class name is of the form 'MeasureName_Test' ".red
       return false
     end
     return measure

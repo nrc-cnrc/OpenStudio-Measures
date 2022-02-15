@@ -6,7 +6,7 @@
   <version_id>4d2e025e-e312-4121-8e17-ba73dd4f32a8</version_id>
   <version_modified>20201203T162250Z</version_modified>
   <xml_checksum>A8B8B5E3</xml_checksum>
-  <class_name>NRCResizeExistingWindowsToMatchAGivenWWR</class_name>
+  <class_name>nrc_resize_existing_windows_to_match_a_given_wwr</class_name>
   <display_name>Resize existing windows to match a given WWR</display_name>
   <description>This measure aims to resize all of the existing windows in order to produce a specified, user-input, window to wall ratio.
 The windows will be resized around their centroid.

@@ -61,12 +61,8 @@ class NrcUpdateWaterHeater_Test < Minitest::Test
       heaterThermalEfficiency = water_heater_mixed.heaterThermalEfficiency.get
     end
 
-    # Define the output folder.
-    test_dir = "#{File.dirname(__FILE__)}/output"
-    if !Dir.exists?(test_dir)
-      Dir.mkdir(test_dir)
-    end
-    NRCMeasureTestHelper.setOutputFolder("#{test_dir}")
+    # Define the output folder for this test (optional - default is the method name).
+    output_file_path = NRCMeasureTestHelper.appendOutputFolder("OutputTestFolder")
 
     # Run the measure and check output
     runner = run_measure(input_arguments, model)
@@ -85,9 +81,9 @@ class NrcUpdateWaterHeater_Test < Minitest::Test
       assert onCycleLossCoefficienttoAmbientTemperature != new_OnCycleLossCoefficienttoAmbientTemperature, "water heater onCycleLossCoefficienttoAmbientTemperature did not change"
     end
 
-    # save the model to test output directory
-    output_file_path = "#{File.dirname(__FILE__)}//#{test_dir}/test_output.osm"
-    model.save(output_file_path, true)
+    # Save the model to test output directory.
+    output_path = "#{output_file_path}/test_output.osm"
+    model.save(output_path, true)
   end
 
 end

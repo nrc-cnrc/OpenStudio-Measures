@@ -3,12 +3,14 @@
 
 require_relative 'BTAPMeasureHelper'
 require 'erb'
+require 'json'
 
 module NRCMeasureHelper
   include BTAPMeasureHelper
 end
 
 module NRCMeasureTestHelper
+
   include BTAPMeasureTestHelper
 
   # Define the output path. Set defaults and remove any existing outputs.
@@ -58,6 +60,38 @@ module NRCMeasureTestHelper
     @output_path.to_s
   end
 
+  #
+  # Define the folder containing the test file for the test case summary output file.
+  @measure_path = File.expand_path("#{File.expand_path(__dir__)}/../tests")
+  @test_summary_mdfile = @measure_path + "/" + "README.md"
+  FileUtils.rm_rf(@test_summary_mdfile)
+
+  # Create initial file with title.
+  @testSummaryTitleRequired = true
+
+  def self.testSummaryTitleRequired
+    return @testSummaryTitleRequired
+  end
+
+  def self.setTestSummaryTitle(required)
+    @testSummaryTitleRequired = required
+  end
+
+  def self.testSummaryMDfile
+    @test_summary_mdfile.to_s
+  end
+
+  # Test count
+  @testSummaryCount = 1
+   def self.incrementTestSummaryCount
+    @testSummaryCount += 1
+  end
+
+  def self.testSummaryCount
+    return @testSummaryCount
+  end
+
+  #
   # Custom way to run a measure in the test. Overwrites run_measure definition in BTAPMeasureHelper.
   def run_measure(input_arguments, model)
     # Provide feedback as to what is being done to teh terminal.
@@ -65,11 +99,11 @@ module NRCMeasureTestHelper
     puts "  with input arguments".green + " #{input_arguments}".light_blue
     puts "  on model with".green + " #{model.modelObjects.count}".light_blue + " objects".green
     puts "  from method".green + " #{caller_locations(1, 1)[0].label.split.last}".light_blue
-
     # Set the output folder. This should be unique (check done in validateOutputFolder). Create if does not exist.
     output_folder = NRCMeasureTestHelper.outputFolder
     output_folder = NRCMeasureTestHelper.validateOutputFolder(output_folder)
     Dir.mkdir(output_folder) unless Dir.exists?(output_folder)
+
     # This will create a instance of the measure you wish to test. It does this based on the test class name.
     measure = get_measure_object()
     measure.use_json_package = @use_json_package
@@ -101,52 +135,59 @@ module NRCMeasureTestHelper
       end
     end
 
-    #run the measure
+    # Run the measure
     measure.run(model, runner, argument_map)
     runner.result
+
     # Reset the output path to the root folder.
     NRCMeasureTestHelper.resetOutputFolder
 
+    # Add summary of test to README file
+    measure_name = measure.name.gsub("_", " ").upcase
+    reportCase(measure_name, output_folder.split('/').last, input_arguments)
     return runner
   end
 
   # Method to report case being tested
-  def reportCase(test_name, input_arguments)
+  def reportCase(measure_name, test_name, input_arguments)
 
-    measure = get_measure_object()
-    measure_name = measure.name
-    measure_name = measure_name.gsub("_", " ").upcase
+    # File name defined above. Open for appending.
+    out_file = File.new("#{NRCMeasureTestHelper.testSummaryMDfile}", "a")
 
-    #test_dir = Dir.pwd
-    out_file = File.new("README.html", "a")
-    # readme_out_path = File.join(test_dir, out_file)
-
-    test_name = test_name.gsub("_", " ")
-
-    # To prevent the html from adding the title each time a test is called.
-    !$title_bool ? title = " " : title = "Summary Of Test Cases for '#{measure_name}' Measure"
-
-    out_file.puts("<h3 style='color:Blue'><i>#{title}<i></h3>")
-    out_file.puts("<h4 style='color:DodgerBlue;'><i>#{$num}- #{test_name}<i></h4>")
-    out_file.puts("<table border=3>")
-    out_file.puts("<tr>")
-    out_file.puts("<th style='background-color:rgb(200, 200, 200);'>Test Argument</th>")
-    out_file.puts("<th style='background-color:rgb(200, 200, 200);'>Test Value</th>")
-    out_file.puts("</tr>")
-
-    input_arguments.each do |key, value|
-      out_file.puts("<tr>")
-      out_file.puts("<td style='background-color:rgb(240, 240, 240);'>#{key}</td>")
-      out_file.puts("<td style='background-color:rgb(240, 240, 240);'>#{value}</td>")
-      out_file.puts("</tr>")
+    # Only add the page title once
+    if NRCMeasureTestHelper.testSummaryTitleRequired
+      title = "# Summary Of Test Cases for '#{measure_name}' Measure"
+      out_file.puts("#{title}")
+      out_file.puts(" ")
     end
-    out_file.puts("</table>")
-    out_file.puts("<br>")
-    out_file.puts("<br>")
 
-    $title_bool = false
-    $num += 1
+    # Current test name.
+    test_name = test_name.gsub("_", " ")
+    out_file.puts("## #{NRCMeasureTestHelper.testSummaryCount} - #{test_name}")
+
+    # Create a table describing the case tested. Table header first.
+    out_file.puts("| Test Argument | Test Value |")
+    out_file.puts("| ------------- | ---------- |")
+
+    # Table contents.
+    input_arguments.each do |key, value|
+
+      if key.include? "json_input"
+        # Value is a string, has to be parsed and converted into hash
+        value1=JSON.parse(value)
+        value1.each do |key, value|
+          out_file.puts("| #{key} |#{value} |")
+        end
+      else
+        out_file.puts("| #{key} |#{value} |")
+      end
+    end
+    out_file.puts(" ")
     out_file.close
+
+    # Update logical and counters
+    NRCMeasureTestHelper.setTestSummaryTitle(false)
+    NRCMeasureTestHelper.incrementTestSummaryCount
   end
 
   #Fancy way of getting the measure object automatically. Added check for NRC in measure name.

@@ -15,14 +15,6 @@ class NrcSetInfiltration_Test < Minitest::Test
   # Brings in helper methods to simplify argument testing of json and standard argument methods.
   include(NRCMeasureTestHelper)
 
-  # Define the output folder.
-  @@test_dir = "#{File.dirname(__FILE__)}/output"
-  # Remove if existing found. This should only be done once.
-  if Dir.exists?(@@test_dir)
-    FileUtils.rm_rf(@@test_dir)
-  end
-  Dir.mkdir(@@test_dir)
-
   def setup()
     @measure_interface_detailed = [
       {
@@ -63,8 +55,7 @@ class NrcSetInfiltration_Test < Minitest::Test
   end
 
   def test_office
-  
-    NRCMeasureTestHelper.setOutputFolder("#{@@test_dir}")
+
     # create an instance of the measure
     measure = NrcSetInfiltration.new
     # load the test model
@@ -82,8 +73,8 @@ class NrcSetInfiltration_Test < Minitest::Test
       "above_grade_wall_surface_area" => 0.0
     }
 
-    # Define the output folder for this test.
-    NRCMeasureTestHelper.setOutputFolder("#{@@test_dir}/infiltration")
+    # Define the output folder for this test (optional - default is the method name).
+    output_file_path = NRCMeasureTestHelper.appendOutputFolder("OutputTestFolder")
 
     # Run the measure and check output
     runner = run_measure(input_arguments, model)
@@ -97,9 +88,9 @@ class NrcSetInfiltration_Test < Minitest::Test
       assert_equal($infiltration_5Pa.to_f.round(6), (space_infiltration_object.flowperExteriorSurfaceArea).to_f.round(6))
     end
 
-    # save the model to test output directory
-    output_file_path = "#{NRCMeasureTestHelper.outputFolder}/test_output.osm"
-    model.save(output_file_path, true)
+    # Save the model to test output directory.
+    output_path = "#{output_file_path}/test_output.osm"
+    model.save(output_path, true)
   end
   
 end
