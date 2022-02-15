@@ -3,20 +3,22 @@
   <schema_version>3.0</schema_version>
   <name>nrc_set_srr</name>
   <uid>5b955a02-309e-406a-93d7-ff4ce5540e08</uid>
-  <version_id>158baa3e-1f0f-464d-9201-358cd8513333</version_id>
-  <version_modified>20210505T225648Z</version_modified>
+  <version_id>4d75ebd4-618d-477a-bcd8-be54e26eaabf</version_id>
+  <version_modified>20220215T143627Z</version_modified>
   <xml_checksum>FC9586A7</xml_checksum>
   <class_name>NrcSetSrr</class_name>
   <display_name>nrc_set_srr</display_name>
-  <description>This measure sets the SRR according to the selected action.</description>
+  <description>This measure sets the Skylight to Roof Ratio (SRR) according to the selected action.</description>
   <modeler_description>The measure has a dropdown list to select specific pre-defined options. The options are :
     •	Remove the skylights
     •	Set skylights to match max SRR from NECB
     •	Don't change skylights
     •	Reduce existing skylight size to meet maximum NECB SRR limit
     •	Set specific SRR
-    Specific SRR is only used if the 'Set specific SRR' option is selected.
+    The Specific SRR argument is only used if the 'Set specific SRR' option is selected.
+	
     This measure sets the SRR according to the NECB rules.
+	
     The measure will detect the version of NECB automatically (default is NECB 2017).</modeler_description>
   <arguments>
     <argument>
@@ -90,25 +92,19 @@
       <filename>README.md.erb</filename>
       <filetype>erb</filetype>
       <usage_type>readmeerb</usage_type>
-      <checksum>703C9964</checksum>
-    </file>
-    <file>
-      <filename>.gitkeep</filename>
-      <filetype>gitkeep</filetype>
-      <usage_type>doc</usage_type>
-      <checksum>00000000</checksum>
+      <checksum>877DD729</checksum>
     </file>
     <file>
       <filename>BTAPMeasureHelper.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>F05DC3DD</checksum>
+      <checksum>F45B04B6</checksum>
     </file>
     <file>
       <filename>NRCMeasureHelper.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>2EBA603D</checksum>
+      <checksum>4001603A</checksum>
     </file>
     <file>
       <version>
@@ -119,19 +115,19 @@
       <filename>measure.rb</filename>
       <filetype>rb</filetype>
       <usage_type>script</usage_type>
-      <checksum>5447EACB</checksum>
+      <checksum>417865DA</checksum>
     </file>
     <file>
       <filename>test.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
-      <checksum>07D255C1</checksum>
+      <checksum>FDFD9765</checksum>
     </file>
     <file>
       <filename>README.md</filename>
       <filetype>md</filetype>
       <usage_type>readme</usage_type>
-      <checksum>3E8AF7F2</checksum>
+      <checksum>37908868</checksum>
     </file>
   </files>
 </measure>

@@ -2,16 +2,20 @@
 
 ###### (Automatically generated documentation)
 
-# 
+# NrcReportCarbonEmissions
 
 ## Description
-
+This reporting measure calculates the annual greenhouse gas emissions.
 
 ## Modeler Description
-
+This measure calculates the GHG emissions expressed in tonnes CO2eq. Annual electricity intensity factors before year 2019 are defined in 'NATIONAL INVENTORY REPORT 1990 2018: GREENHOUSE GAS SOURCES AND SINKS IN CANADA CANADA’S SUBMISSION TO
+            THE UNITED NATIONS FRAMEWORK CONVENTION ON CLIMATE CHANGE(http://publications.gc.ca/collections/collection_2020/eccc/En81-4-2018-3-eng.pdf)'.
+            Whereas annual electricity intensity factors after year 2019 and also future GHG factors till 2050 are created by Environment and Climate Change Canada.
+            There are no electricity emission factors for Nunavut for the following years : 1990, 2000, and 2005.
+            The natural gas emission factors for each province are calculated by Environment and Climate Change Canada.
 
 ## Measure Type
-ModelMeasure
+ReportingMeasure
 
 ## Taxonomy
 
@@ -19,9 +23,39 @@ ModelMeasure
 ## Arguments
 
 
+### Location
+
+**Name:** location,
+**Type:** Choice,
+**Units:** ,
+**Required:** true,
+**Model Dependent:** false
+
+### Year
+
+**Name:** year,
+**Type:** Choice,
+**Units:** ,
+**Required:** true,
+**Model Dependent:** false
+
+### model_summary_section
+
+**Name:** model_summary_section,
+**Type:** Boolean,
+**Units:** ,
+**Required:** true,
+**Model Dependent:** false
+
+### endUse_summary_section
+
+**Name:** endUse_summary_section,
+**Type:** Boolean,
+**Units:** ,
+**Required:** true,
+**Model Dependent:** false
 
 
-This measure does not have any user arguments
 
 
 

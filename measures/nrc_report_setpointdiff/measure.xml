@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_report_set_point_diff</name>
   <uid>d023501a-5089-4b1d-9a08-7a573820a7ef</uid>
-  <version_id>a930e229-7e10-45aa-af0f-a38538c7dfa9</version_id>
-  <version_modified>20210924T125917Z</version_modified>
+  <version_id>262e416a-328e-4d80-8da1-b3b689c9b96f</version_id>
+  <version_modified>20220215T143436Z</version_modified>
   <xml_checksum>9BF1E6AC</xml_checksum>
   <class_name>NrcReportSetPointDiff</class_name>
   <display_name>NrcReportSetPointDiff</display_name>
@@ -25,18 +25,22 @@
           <display_name>Hourly</display_name>
         </choice>
         <choice>
-          <value>Timestep</value>
-          <display_name>Timestep</display_name>
+          <value>Daily</value>
+          <display_name>Daily</display_name>
+        </choice>
+        <choice>
+          <value>Zone Timestep</value>
+          <display_name>Zone Timestep</display_name>
         </choice>
       </choices>
     </argument>
     <argument>
       <name>detail</name>
-      <display_name>Create detailed hourly excel files</display_name>
+      <display_name>Create detailed hourly Excel files?</display_name>
       <type>Choice</type>
       <required>true</required>
       <model_dependent>false</model_dependent>
-      <default_value>No</default_value>
+      <default_value>Yes</default_value>
       <choices>
         <choice>
           <value>Yes</value>
@@ -163,40 +167,34 @@
       <checksum>D7CFF32E</checksum>
     </file>
     <file>
-      <filename>BTAPMeasureHelper.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>B69DF022</checksum>
-    </file>
-    <file>
-      <filename>NRCReportingMeasureHelper.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>FC219177</checksum>
-    </file>
-    <file>
       <filename>.gitkeep</filename>
       <filetype>gitkeep</filetype>
       <usage_type>doc</usage_type>
       <checksum>00000000</checksum>
     </file>
     <file>
-      <filename>README.md</filename>
-      <filetype>md</filetype>
-      <usage_type>readme</usage_type>
-      <checksum>F1C6CC91</checksum>
+      <filename>BTAPMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>3D18CB9A</checksum>
+    </file>
+    <file>
+      <filename>NRCReportingMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>984E9ECA</checksum>
     </file>
     <file>
       <filename>os_lib_reporting.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>E35210D2</checksum>
+      <checksum>A964A633</checksum>
     </file>
     <file>
       <filename>test.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
-      <checksum>F7F241EC</checksum>
+      <checksum>3CFE3F9C</checksum>
     </file>
     <file>
       <version>
@@ -207,7 +205,13 @@
       <filename>measure.rb</filename>
       <filetype>rb</filetype>
       <usage_type>script</usage_type>
-      <checksum>A41CE360</checksum>
+      <checksum>E6B07788</checksum>
+    </file>
+    <file>
+      <filename>README.md</filename>
+      <filetype>md</filetype>
+      <usage_type>readme</usage_type>
+      <checksum>B92F4B90</checksum>
     </file>
   </files>
 </measure>

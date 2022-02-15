@@ -2,13 +2,14 @@
 
 ###### (Automatically generated documentation)
 
-# 
+# NrcAddOverhangsByProjectionFactor
 
 ## Description
-
+Add overhangs by projection factor to specified windows. The projection factor is the overhang depth divided by the window height. This can be applied to windows by the closest cardinal direction. If baseline model contains overhangs made by this measure, they will be replaced. Optionally the measure can delete any pre-existing space shading surfaces.
 
 ## Modeler Description
-
+This measure was obtained from https://bcl.nrel.gov/. The measure arguments have been updated to use 'NRCMeasureHelper', and also the test.rb has been updated.
+    If requested then delete existing space shading surfaces. Then loop through exterior windows. If the requested cardinal direction is the closest to the window, then add the overhang. Name the shading surface the same as the window but append with '-Overhang'.  If a space shading surface of that name already exists, then delete it before making the new one. This measure has no life cycle cost arguments. You can see the economic impact of the measure by costing the construction used for the overhangs.
 
 ## Measure Type
 ModelMeasure
@@ -19,8 +20,34 @@ ModelMeasure
 ## Arguments
 
 
+### Cardinal Direction
+
+**Name:** facade,
+**Type:** Choice,
+**Units:** ,
+**Required:** true,
+**Model Dependent:** false
+
+### Projection Factor.
+
+**Name:** projection_factor,
+**Type:** Double,
+**Units:** ,
+**Required:** true,
+**Model Dependent:** false
+
+### Remove Existing Space Shading Surfaces From the Model.
+
+**Name:** remove_ext_space_shading,
+**Type:** Boolean,
+**Units:** ,
+**Required:** true,
+**Model Dependent:** false
 
 
-This measure does not have any user arguments
 
 
+
+
+## Automated Testing
+A summary of the arguments and values used in the automated testing of this measure is [here](./tests/README.md).

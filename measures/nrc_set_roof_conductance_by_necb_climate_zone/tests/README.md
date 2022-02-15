@@ -1,6 +1,6 @@
 # Summary Of Test Cases for 'NRCSETROOFCONDUCTANCEBYNECBCLIMATEZONE' Measure
  
-## 1 - OutputTestFolder zone7b--1
+## 1 - OutputTestFolder zone4--1
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | necb_template |NECB2017 |
@@ -11,7 +11,7 @@
 | zone7B_u_value |0.117 |
 | zone8_u_value |0.11 |
  
-## 2 - OutputTestFolder zone6--1
+## 2 - OutputTestFolder zone7a--1
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | necb_template |NECB2017 |
@@ -22,7 +22,7 @@
 | zone7B_u_value |0.117 |
 | zone8_u_value |0.11 |
  
-## 3 - OutputTestFolder zone8--1
+## 3 - OutputTestFolder zone6--1
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | necb_template |NECB2017 |
@@ -33,7 +33,7 @@
 | zone7B_u_value |0.117 |
 | zone8_u_value |0.11 |
  
-## 4 - OutputTestFolder zone5--1
+## 4 - OutputTestFolder zone8--1
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | necb_template |NECB2017 |
@@ -572,7 +572,7 @@
 | zone7B_u_value |0.117 |
 | zone8_u_value |-1.0 |
  
-## 53 - OutputTestFolder zone7a--1
+## 53 - OutputTestFolder zone5--1
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | necb_template |NECB2017 |
@@ -583,7 +583,7 @@
 | zone7B_u_value |0.117 |
 | zone8_u_value |0.11 |
  
-## 54 - OutputTestFolder zone4--1
+## 54 - OutputTestFolder zone7b--1
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | necb_template |NECB2017 |

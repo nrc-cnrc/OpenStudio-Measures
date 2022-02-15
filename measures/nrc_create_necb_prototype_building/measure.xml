@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_create_necb_prototype_building</name>
   <uid>3e9acd53-8602-4749-a655-7cbbe48e8b30</uid>
-  <version_id>4f33ab2f-0b19-4860-8ada-ac0f5a5dcf17</version_id>
-  <version_modified>20211224T141224Z</version_modified>
+  <version_id>50289728-7006-4141-83c1-3aa659624023</version_id>
+  <version_modified>20220215T143305Z</version_modified>
   <xml_checksum>2C38F48B</xml_checksum>
   <class_name>NrcCreateNECBPrototypeBuilding</class_name>
   <display_name>NrcCreateNECBPrototypeBuilding</display_name>
@@ -437,46 +437,10 @@
   </attributes>
   <files>
     <file>
-      <filename>README.md.erb</filename>
-      <filetype>erb</filetype>
-      <usage_type>readmeerb</usage_type>
-      <checksum>703C9964</checksum>
-    </file>
-    <file>
-      <filename>BTAPMeasureHelper.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>051A9548</checksum>
-    </file>
-    <file>
-      <filename>NRCMeasureHelper.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>A42E5E34</checksum>
-    </file>
-    <file>
-      <filename>README.md</filename>
-      <filetype>md</filetype>
-      <usage_type>readme</usage_type>
-      <checksum>996AC6FC</checksum>
-    </file>
-    <file>
       <filename>test_2011.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
       <checksum>6D49D30D</checksum>
-    </file>
-    <file>
-      <filename>test_2017.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>test</usage_type>
-      <checksum>82711769</checksum>
-    </file>
-    <file>
-      <filename>common.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>test</usage_type>
-      <checksum>63353C0D</checksum>
     </file>
     <file>
       <filename>test_2015.rb</filename>
@@ -502,316 +466,352 @@
       <checksum>EDA2C93A</checksum>
     </file>
     <file>
-      <filename>regression_models/FullServiceRestaurant-NECB2015-AB_Banff.osm</filename>
+      <filename>FullServiceRestaurant-NECB2015-AB_Banff.osm</filename>
       <filetype>osm</filetype>
       <usage_type>test</usage_type>
       <checksum>A1444031</checksum>
     </file>
     <file>
-      <filename>regression_models/FullServiceRestaurant-NECB2015-BC_Vancouver.osm</filename>
+      <filename>FullServiceRestaurant-NECB2015-BC_Vancouver.osm</filename>
       <filetype>osm</filetype>
       <usage_type>test</usage_type>
       <checksum>3D2F7532</checksum>
     </file>
     <file>
-      <filename>regression_models/FullServiceRestaurant-NECB2015-ON_Toronto.osm</filename>
+      <filename>FullServiceRestaurant-NECB2015-ON_Toronto.osm</filename>
       <filetype>osm</filetype>
       <usage_type>test</usage_type>
       <checksum>F1F75187</checksum>
     </file>
     <file>
-      <filename>regression_models/HighriseApartment-NECB2017-AB_Banff.osm</filename>
+      <filename>HighriseApartment-NECB2017-AB_Banff.osm</filename>
       <filetype>osm</filetype>
       <usage_type>test</usage_type>
       <checksum>50052805</checksum>
     </file>
     <file>
-      <filename>regression_models/HighriseApartment-NECB2017-NB_Fredericton.osm</filename>
+      <filename>HighriseApartment-NECB2017-NB_Fredericton.osm</filename>
       <filetype>osm</filetype>
       <usage_type>test</usage_type>
       <checksum>7610A596</checksum>
     </file>
     <file>
-      <filename>regression_models/HighriseApartment-NECB2017-SK_Saskatoon.osm</filename>
+      <filename>HighriseApartment-NECB2017-SK_Saskatoon.osm</filename>
       <filetype>osm</filetype>
       <usage_type>test</usage_type>
       <checksum>D51F1D56</checksum>
     </file>
     <file>
-      <filename>regression_models/LargeOffice-NECB2015-AB_Banff.osm</filename>
+      <filename>LargeOffice-NECB2015-AB_Banff.osm</filename>
       <filetype>osm</filetype>
       <usage_type>test</usage_type>
       <checksum>DF9B00A2</checksum>
     </file>
     <file>
-      <filename>regression_models/LargeOffice-NECB2015-BC_Vancouver.osm</filename>
+      <filename>LargeOffice-NECB2015-BC_Vancouver.osm</filename>
       <filetype>osm</filetype>
       <usage_type>test</usage_type>
       <checksum>5FA6D0C5</checksum>
     </file>
     <file>
-      <filename>regression_models/LargeOffice-NECB2015-ON_Toronto.osm</filename>
+      <filename>LargeOffice-NECB2015-ON_Toronto.osm</filename>
       <filetype>osm</filetype>
       <usage_type>test</usage_type>
       <checksum>A3939CC4</checksum>
     </file>
     <file>
-      <filename>regression_models/MediumOffice-NECB2011-AB_Banff.osm</filename>
+      <filename>MediumOffice-NECB2011-AB_Banff.osm</filename>
       <filetype>osm</filetype>
       <usage_type>test</usage_type>
       <checksum>F45BD6D7</checksum>
     </file>
     <file>
-      <filename>regression_models/MediumOffice-NECB2011-AB_Edmonton.Intl.osm</filename>
+      <filename>MediumOffice-NECB2011-AB_Edmonton.Intl.osm</filename>
       <filetype>osm</filetype>
       <usage_type>test</usage_type>
       <checksum>267EDB88</checksum>
     </file>
     <file>
-      <filename>regression_models/MediumOffice-NECB2011-QC_Montreal-Trudeau.osm</filename>
+      <filename>MediumOffice-NECB2011-QC_Montreal-Trudeau.osm</filename>
       <filetype>osm</filetype>
       <usage_type>test</usage_type>
       <checksum>92211DED</checksum>
     </file>
     <file>
-      <filename>regression_models/MidriseApartment-NECB2020-AB_Banff.osm</filename>
+      <filename>MidriseApartment-NECB2020-AB_Banff.osm</filename>
       <filetype>osm</filetype>
       <usage_type>test</usage_type>
       <checksum>CB019A25</checksum>
     </file>
     <file>
-      <filename>regression_models/MidriseApartment-NECB2020-MB_Winnipeg-Richardson.osm</filename>
+      <filename>MidriseApartment-NECB2020-MB_Winnipeg-Richardson.osm</filename>
       <filetype>osm</filetype>
       <usage_type>test</usage_type>
       <checksum>73D8E5FD</checksum>
     </file>
     <file>
-      <filename>regression_models/MidriseApartment-NECB2020-NL_St.Johns.osm</filename>
+      <filename>MidriseApartment-NECB2020-NL_St.Johns.osm</filename>
       <filetype>osm</filetype>
       <usage_type>test</usage_type>
       <checksum>EC0097E5</checksum>
     </file>
     <file>
-      <filename>regression_models/Outpatient-NECB2015-AB_Banff.osm</filename>
+      <filename>Outpatient-NECB2015-AB_Banff.osm</filename>
       <filetype>osm</filetype>
       <usage_type>test</usage_type>
       <checksum>46C4B8C1</checksum>
     </file>
     <file>
-      <filename>regression_models/Outpatient-NECB2015-BC_Vancouver.osm</filename>
+      <filename>Outpatient-NECB2015-BC_Vancouver.osm</filename>
       <filetype>osm</filetype>
       <usage_type>test</usage_type>
       <checksum>20622044</checksum>
     </file>
     <file>
-      <filename>regression_models/Outpatient-NECB2015-ON_Toronto.osm</filename>
+      <filename>Outpatient-NECB2015-ON_Toronto.osm</filename>
       <filetype>osm</filetype>
       <usage_type>test</usage_type>
       <checksum>2BF4183E</checksum>
     </file>
     <file>
-      <filename>regression_models/PrimarySchool-NECB2011-AB_Banff.osm</filename>
+      <filename>PrimarySchool-NECB2011-AB_Banff.osm</filename>
       <filetype>osm</filetype>
       <usage_type>test</usage_type>
       <checksum>0FFAD9E9</checksum>
     </file>
     <file>
-      <filename>regression_models/PrimarySchool-NECB2011-AB_Edmonton.Intl.osm</filename>
+      <filename>PrimarySchool-NECB2011-AB_Edmonton.Intl.osm</filename>
       <filetype>osm</filetype>
       <usage_type>test</usage_type>
       <checksum>2CBC8A19</checksum>
     </file>
     <file>
-      <filename>regression_models/PrimarySchool-NECB2011-QC_Montreal-Trudeau.osm</filename>
+      <filename>PrimarySchool-NECB2011-QC_Montreal-Trudeau.osm</filename>
       <filetype>osm</filetype>
       <usage_type>test</usage_type>
       <checksum>D5273837</checksum>
     </file>
     <file>
-      <filename>regression_models/QuickServiceRestaurant-NECB2017-AB_Banff.osm</filename>
+      <filename>QuickServiceRestaurant-NECB2017-AB_Banff.osm</filename>
       <filetype>osm</filetype>
       <usage_type>test</usage_type>
       <checksum>284FB2D3</checksum>
     </file>
     <file>
-      <filename>regression_models/QuickServiceRestaurant-NECB2017-NB_Fredericton.osm</filename>
+      <filename>QuickServiceRestaurant-NECB2017-NB_Fredericton.osm</filename>
       <filetype>osm</filetype>
       <usage_type>test</usage_type>
       <checksum>49A91B89</checksum>
     </file>
     <file>
-      <filename>regression_models/QuickServiceRestaurant-NECB2017-SK_Saskatoon.osm</filename>
+      <filename>QuickServiceRestaurant-NECB2017-SK_Saskatoon.osm</filename>
       <filetype>osm</filetype>
       <usage_type>test</usage_type>
       <checksum>6F190E36</checksum>
     </file>
     <file>
-      <filename>regression_models/RetailStandalone-NECB2020-AB_Banff.osm</filename>
+      <filename>RetailStandalone-NECB2020-AB_Banff.osm</filename>
       <filetype>osm</filetype>
       <usage_type>test</usage_type>
       <checksum>60CA10E1</checksum>
     </file>
     <file>
-      <filename>regression_models/RetailStandalone-NECB2020-MB_Winnipeg-Richardson.osm</filename>
+      <filename>RetailStandalone-NECB2020-MB_Winnipeg-Richardson.osm</filename>
       <filetype>osm</filetype>
       <usage_type>test</usage_type>
       <checksum>E6503012</checksum>
     </file>
     <file>
-      <filename>regression_models/RetailStandalone-NECB2020-NL_St.Johns.osm</filename>
+      <filename>RetailStandalone-NECB2020-NL_St.Johns.osm</filename>
       <filetype>osm</filetype>
       <usage_type>test</usage_type>
       <checksum>97150736</checksum>
     </file>
     <file>
-      <filename>regression_models/RetailStripmall-NECB2015-AB_Banff.osm</filename>
+      <filename>RetailStripmall-NECB2015-AB_Banff.osm</filename>
       <filetype>osm</filetype>
       <usage_type>test</usage_type>
       <checksum>D75942B1</checksum>
     </file>
     <file>
-      <filename>regression_models/RetailStripmall-NECB2015-BC_Vancouver.osm</filename>
+      <filename>RetailStripmall-NECB2015-BC_Vancouver.osm</filename>
       <filetype>osm</filetype>
       <usage_type>test</usage_type>
       <checksum>77283A60</checksum>
     </file>
     <file>
-      <filename>regression_models/RetailStripmall-NECB2015-ON_Toronto.osm</filename>
+      <filename>RetailStripmall-NECB2015-ON_Toronto.osm</filename>
       <filetype>osm</filetype>
       <usage_type>test</usage_type>
       <checksum>1B301DBF</checksum>
     </file>
     <file>
-      <filename>regression_models/SecondarySchool-NECB2011-AB_Banff.osm</filename>
+      <filename>SecondarySchool-NECB2011-AB_Banff.osm</filename>
       <filetype>osm</filetype>
       <usage_type>test</usage_type>
       <checksum>B3B33A80</checksum>
     </file>
     <file>
-      <filename>regression_models/SecondarySchool-NECB2011-AB_Edmonton.Intl.osm</filename>
+      <filename>SecondarySchool-NECB2011-AB_Edmonton.Intl.osm</filename>
       <filetype>osm</filetype>
       <usage_type>test</usage_type>
       <checksum>75BADE9F</checksum>
     </file>
     <file>
-      <filename>regression_models/SecondarySchool-NECB2011-QC_Montreal-Trudeau.osm</filename>
+      <filename>SecondarySchool-NECB2011-QC_Montreal-Trudeau.osm</filename>
       <filetype>osm</filetype>
       <usage_type>test</usage_type>
       <checksum>BB14F27A</checksum>
     </file>
     <file>
-      <filename>regression_models/SmallHotel-NECB2011-AB_Banff.osm</filename>
+      <filename>SmallHotel-NECB2011-AB_Banff.osm</filename>
       <filetype>osm</filetype>
       <usage_type>test</usage_type>
       <checksum>DE8A561B</checksum>
     </file>
     <file>
-      <filename>regression_models/SmallHotel-NECB2011-AB_Edmonton.Intl.osm</filename>
+      <filename>SmallHotel-NECB2011-AB_Edmonton.Intl.osm</filename>
       <filetype>osm</filetype>
       <usage_type>test</usage_type>
       <checksum>9CA2E7F4</checksum>
     </file>
     <file>
-      <filename>regression_models/SmallHotel-NECB2011-QC_Montreal-Trudeau.osm</filename>
+      <filename>SmallHotel-NECB2011-QC_Montreal-Trudeau.osm</filename>
       <filetype>osm</filetype>
       <usage_type>test</usage_type>
       <checksum>0FC7FFF1</checksum>
     </file>
     <file>
-      <filename>regression_models/SmallOffice-NECB2011-AB_Banff.osm</filename>
+      <filename>SmallOffice-NECB2011-AB_Banff.osm</filename>
       <filetype>osm</filetype>
       <usage_type>test</usage_type>
       <checksum>09F84FB9</checksum>
     </file>
     <file>
-      <filename>regression_models/SmallOffice-NECB2011-AB_Edmonton.Intl.osm</filename>
+      <filename>SmallOffice-NECB2011-AB_Edmonton.Intl.osm</filename>
       <filetype>osm</filetype>
       <usage_type>test</usage_type>
       <checksum>B2B95F34</checksum>
     </file>
     <file>
-      <filename>regression_models/SmallOffice-NECB2011-QC_Montreal-Trudeau.osm</filename>
+      <filename>SmallOffice-NECB2011-QC_Montreal-Trudeau.osm</filename>
       <filetype>osm</filetype>
       <usage_type>test</usage_type>
       <checksum>AAF25F0D</checksum>
     </file>
     <file>
-      <filename>regression_models/Warehouse-NECB2011-AB_Banff.osm</filename>
+      <filename>Warehouse-NECB2011-AB_Banff.osm</filename>
       <filetype>osm</filetype>
       <usage_type>test</usage_type>
       <checksum>CE4F631B</checksum>
     </file>
     <file>
-      <filename>regression_models/Warehouse-NECB2011-AB_Edmonton.Intl.osm</filename>
+      <filename>Warehouse-NECB2011-AB_Edmonton.Intl.osm</filename>
       <filetype>osm</filetype>
       <usage_type>test</usage_type>
       <checksum>966897C8</checksum>
     </file>
     <file>
-      <filename>regression_models/Warehouse-NECB2011-QC_Montreal-Trudeau.osm</filename>
+      <filename>Warehouse-NECB2011-QC_Montreal-Trudeau.osm</filename>
       <filetype>osm</filetype>
       <usage_type>test</usage_type>
       <checksum>690A6399</checksum>
     </file>
     <file>
-      <filename>regression_models/Warehouse-NECB2015-AB_Banff.osm</filename>
+      <filename>Warehouse-NECB2015-AB_Banff.osm</filename>
       <filetype>osm</filetype>
       <usage_type>test</usage_type>
       <checksum>089AE190</checksum>
     </file>
     <file>
-      <filename>regression_models/Warehouse-NECB2015-BC_Vancouver.osm</filename>
+      <filename>Warehouse-NECB2015-BC_Vancouver.osm</filename>
       <filetype>osm</filetype>
       <usage_type>test</usage_type>
       <checksum>F1919DBB</checksum>
     </file>
     <file>
-      <filename>regression_models/Warehouse-NECB2015-ON_Toronto.osm</filename>
+      <filename>Warehouse-NECB2015-ON_Toronto.osm</filename>
       <filetype>osm</filetype>
       <usage_type>test</usage_type>
       <checksum>C914AFDF</checksum>
     </file>
     <file>
-      <filename>regression_models/Warehouse-NECB2017-AB_Banff.osm</filename>
+      <filename>Warehouse-NECB2017-AB_Banff.osm</filename>
       <filetype>osm</filetype>
       <usage_type>test</usage_type>
       <checksum>819B771B</checksum>
     </file>
     <file>
-      <filename>regression_models/Warehouse-NECB2017-NB_Fredericton.osm</filename>
+      <filename>Warehouse-NECB2017-NB_Fredericton.osm</filename>
       <filetype>osm</filetype>
       <usage_type>test</usage_type>
       <checksum>13773433</checksum>
     </file>
     <file>
-      <filename>regression_models/Warehouse-NECB2017-SK_Saskatoon.osm</filename>
+      <filename>Warehouse-NECB2017-SK_Saskatoon.osm</filename>
       <filetype>osm</filetype>
       <usage_type>test</usage_type>
       <checksum>4B281FC6</checksum>
     </file>
     <file>
-      <filename>regression_models/Warehouse-NECB2020-AB_Banff.osm</filename>
+      <filename>Warehouse-NECB2020-AB_Banff.osm</filename>
       <filetype>osm</filetype>
       <usage_type>test</usage_type>
       <checksum>7A05BF64</checksum>
     </file>
     <file>
-      <filename>regression_models/Warehouse-NECB2020-MB_Winnipeg-Richardson.osm</filename>
+      <filename>Warehouse-NECB2020-MB_Winnipeg-Richardson.osm</filename>
       <filetype>osm</filetype>
       <usage_type>test</usage_type>
       <checksum>33527303</checksum>
     </file>
     <file>
-      <filename>regression_models/Warehouse-NECB2020-NL_St.Johns.osm</filename>
+      <filename>Warehouse-NECB2020-NL_St.Johns.osm</filename>
       <filetype>osm</filetype>
       <usage_type>test</usage_type>
       <checksum>0D7DA1CD</checksum>
     </file>
     <file>
-      <filename>data_sideload/test.txt</filename>
+      <filename>test.txt</filename>
       <filetype>txt</filetype>
       <usage_type>resource</usage_type>
       <checksum>D3368658</checksum>
+    </file>
+    <file>
+      <filename>README.md.erb</filename>
+      <filetype>erb</filetype>
+      <usage_type>readmeerb</usage_type>
+      <checksum>A1A5426B</checksum>
+    </file>
+    <file>
+      <filename>BTAPMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>F45B04B6</checksum>
+    </file>
+    <file>
+      <filename>NRCMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>4001603A</checksum>
+    </file>
+    <file>
+      <filename>test_2017.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>41312D6A</checksum>
+    </file>
+    <file>
+      <filename>common.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>BBE03EA8</checksum>
+    </file>
+    <file>
+      <filename>README.md</filename>
+      <filetype>md</filetype>
+      <usage_type>readme</usage_type>
+      <checksum>1C1AD430</checksum>
     </file>
   </files>
 </measure>

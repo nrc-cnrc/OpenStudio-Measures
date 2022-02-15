@@ -3,24 +3,22 @@
   <schema_version>3.0</schema_version>
   <name>nrc_report_carbon_emissions</name>
   <uid>11a12238-d360-4ad9-8d85-58b56c67cf83</uid>
-  <version_id>c5bf246d-5e07-42a1-bb2b-32d8f9b49f37</version_id>
-  <version_modified>20211101T171340Z</version_modified>
+  <version_id>b5761bb0-4d3b-458b-9033-3b9604139b84</version_id>
+  <version_modified>20220215T143433Z</version_modified>
   <xml_checksum>9BF1E6AC</xml_checksum>
   <class_name>NrcReportCarbonEmissions</class_name>
   <display_name>NrcReportCarbonEmissions</display_name>
   <description>This reporting measure calculates the annual greenhouse gas emissions.</description>
-  <modeler_description>This measure calculates the GHG emissions expressed in tonnes CO2eq. Annual electricity intensity factors used in this reporting measure
-             are defined in 'NATIONAL INVENTORY REPORT 1990 2018: GREENHOUSE GAS SOURCES AND SINKS IN CANADA CANADA’S SUBMISSION TO
-            THE UNITED NATIONS FRAMEWORK CONVENTION ON CLIMATE CHANGE(http://publications.gc.ca/collections/collection_2020/eccc/En81-4-2018-3-eng.pdf)'
-            A default value of 47.1 g CO2eq/MJ is used as defined in: https://unfccc.int/sites/default/files/resource/br4_final_en.pdf page #145.
-            There are no electricity emission factors for Nunavut for the following years : 1990, 2000, and 2005.</modeler_description>
+  <modeler_description>This measure calculates the GHG emissions expressed in tonnes CO2eq. Annual electricity intensity factors before year 2019 are defined in 'NATIONAL INVENTORY REPORT 1990 2018: GREENHOUSE GAS SOURCES AND SINKS IN CANADA CANADA’S SUBMISSION TO
+            THE UNITED NATIONS FRAMEWORK CONVENTION ON CLIMATE CHANGE(http://publications.gc.ca/collections/collection_2020/eccc/En81-4-2018-3-eng.pdf)'.
+            Whereas annual electricity intensity factors after year 2019 and also future GHG factors till 2050 are created by Environment and Climate Change Canada.
+            There are no electricity emission factors for Nunavut for the following years : 1990, 2000, and 2005.
+            The natural gas emission factors for each province are calculated by Environment and Climate Change Canada.</modeler_description>
   <arguments>
     <argument>
       <name>location</name>
       <display_name>Location</display_name>
-      <description></description>
       <type>Choice</type>
-      <units></units>
       <required>true</required>
       <model_dependent>false</model_dependent>
       <default_value>Ontario</default_value>
@@ -82,18 +80,14 @@
           <display_name>Nunavut</display_name>
         </choice>
       </choices>
-      <min_value></min_value>
-      <max_value></max_value>
     </argument>
     <argument>
       <name>year</name>
       <display_name>Year</display_name>
-      <description></description>
       <type>Choice</type>
-      <units></units>
       <required>true</required>
       <model_dependent>false</model_dependent>
-      <default_value>2018</default_value>
+      <default_value>2037</default_value>
       <choices>
         <choice>
           <value>1990</value>
@@ -131,16 +125,140 @@
           <value>2018</value>
           <display_name>2018</display_name>
         </choice>
+        <choice>
+          <value>2019</value>
+          <display_name>2019</display_name>
+        </choice>
+        <choice>
+          <value>2020</value>
+          <display_name>2020</display_name>
+        </choice>
+        <choice>
+          <value>2021</value>
+          <display_name>2021</display_name>
+        </choice>
+        <choice>
+          <value>2022</value>
+          <display_name>2022</display_name>
+        </choice>
+        <choice>
+          <value>2023</value>
+          <display_name>2023</display_name>
+        </choice>
+        <choice>
+          <value>2024</value>
+          <display_name>2024</display_name>
+        </choice>
+        <choice>
+          <value>2025</value>
+          <display_name>2025</display_name>
+        </choice>
+        <choice>
+          <value>2026</value>
+          <display_name>2026</display_name>
+        </choice>
+        <choice>
+          <value>2027</value>
+          <display_name>2027</display_name>
+        </choice>
+        <choice>
+          <value>2028</value>
+          <display_name>2028</display_name>
+        </choice>
+        <choice>
+          <value>2029</value>
+          <display_name>2029</display_name>
+        </choice>
+        <choice>
+          <value>2030</value>
+          <display_name>2030</display_name>
+        </choice>
+        <choice>
+          <value>2031</value>
+          <display_name>2031</display_name>
+        </choice>
+        <choice>
+          <value>2032</value>
+          <display_name>2032</display_name>
+        </choice>
+        <choice>
+          <value>2033</value>
+          <display_name>2033</display_name>
+        </choice>
+        <choice>
+          <value>2034</value>
+          <display_name>2034</display_name>
+        </choice>
+        <choice>
+          <value>2035</value>
+          <display_name>2035</display_name>
+        </choice>
+        <choice>
+          <value>2036</value>
+          <display_name>2036</display_name>
+        </choice>
+        <choice>
+          <value>2037</value>
+          <display_name>2037</display_name>
+        </choice>
+        <choice>
+          <value>2038</value>
+          <display_name>2038</display_name>
+        </choice>
+        <choice>
+          <value>2099</value>
+          <display_name>2099</display_name>
+        </choice>
+        <choice>
+          <value>2040</value>
+          <display_name>2040</display_name>
+        </choice>
+        <choice>
+          <value>2041</value>
+          <display_name>2041</display_name>
+        </choice>
+        <choice>
+          <value>2042</value>
+          <display_name>2042</display_name>
+        </choice>
+        <choice>
+          <value>2043</value>
+          <display_name>2043</display_name>
+        </choice>
+        <choice>
+          <value>2044</value>
+          <display_name>2044</display_name>
+        </choice>
+        <choice>
+          <value>2045</value>
+          <display_name>2045</display_name>
+        </choice>
+        <choice>
+          <value>2046</value>
+          <display_name>2046</display_name>
+        </choice>
+        <choice>
+          <value>2047</value>
+          <display_name>2047</display_name>
+        </choice>
+        <choice>
+          <value>2048</value>
+          <display_name>2048</display_name>
+        </choice>
+        <choice>
+          <value>2049</value>
+          <display_name>2049</display_name>
+        </choice>
+        <choice>
+          <value>2050</value>
+          <display_name>2050</display_name>
+        </choice>
       </choices>
-      <min_value></min_value>
-      <max_value></max_value>
     </argument>
     <argument>
       <name>model_summary_section</name>
       <display_name>model_summary_section</display_name>
-      <description></description>
       <type>Boolean</type>
-      <units></units>
       <required>true</required>
       <model_dependent>false</model_dependent>
       <default_value>true</default_value>
@@ -154,15 +272,11 @@
           <display_name>false</display_name>
         </choice>
       </choices>
-      <min_value></min_value>
-      <max_value></max_value>
     </argument>
     <argument>
       <name>endUse_summary_section</name>
       <display_name>endUse_summary_section</display_name>
-      <description></description>
       <type>Boolean</type>
-      <units></units>
       <required>true</required>
       <model_dependent>false</model_dependent>
       <default_value>true</default_value>
@@ -176,8 +290,6 @@
           <display_name>false</display_name>
         </choice>
       </choices>
-      <min_value></min_value>
-      <max_value></max_value>
     </argument>
   </arguments>
   <outputs>
@@ -185,9 +297,7 @@
       <name>co_2_e</name>
       <display_name>co_2_e</display_name>
       <short_name>co_2_e</short_name>
-      <description></description>
       <type>Double</type>
-      <units></units>
       <model_dependent>false</model_dependent>
     </output>
   </outputs>
@@ -256,18 +366,6 @@
       <checksum>416FFB42</checksum>
     </file>
     <file>
-      <filename>EmissionFactors.json</filename>
-      <filetype>json</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>6EB508DC</checksum>
-    </file>
-    <file>
-      <filename>NRCReportingMeasureHelper.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>6BCFC7F5</checksum>
-    </file>
-    <file>
       <filename>os_lib_helper_methods.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
@@ -292,17 +390,6 @@
       <checksum>5C954CDB</checksum>
     </file>
     <file>
-      <version>
-        <software_program>OpenStudio</software_program>
-        <identifier>3.1.0</identifier>
-        <min_compatible>3.1.0</min_compatible>
-      </version>
-      <filename>measure.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>script</usage_type>
-      <checksum>E236059D</checksum>
-    </file>
-    <file>
       <filename>report_Ottawa.html</filename>
       <filetype>html</filetype>
       <usage_type>test</usage_type>
@@ -321,23 +408,39 @@
       <checksum>86297DE7</checksum>
     </file>
     <file>
-      <filename>~$Electricity_2020 projectionEfs.xlsx</filename>
-      <filetype>xlsx</filetype>
+      <filename>EmissionFactors.json</filename>
+      <filetype>json</filetype>
       <usage_type>resource</usage_type>
-      <checksum>06042E5B</checksum>
+      <checksum>44AE4166</checksum>
     </file>
     <file>
-      <filename>~$NG_EFs.xlsx</filename>
-      <filetype>xlsx</filetype>
+      <filename>NRCReportingMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>06042E5B</checksum>
+      <checksum>F37D69BA</checksum>
+    </file>
+    <file>
+      <version>
+        <software_program>OpenStudio</software_program>
+        <identifier>3.1.0</identifier>
+        <min_compatible>3.1.0</min_compatible>
+      </version>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>script</usage_type>
+      <checksum>E6341B51</checksum>
+    </file>
+    <file>
+      <filename>NG_EFs.json</filename>
+      <filetype>json</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>A0490339</checksum>
     </file>
     <file>
       <filename>README.md</filename>
       <filetype>md</filetype>
       <usage_type>readme</usage_type>
-      <checksum>9E8A9ECE</checksum>
+      <checksum>044E012D</checksum>
     </file>
   </files>
 </measure>
-<error>cannot load such file -- roo</error>
