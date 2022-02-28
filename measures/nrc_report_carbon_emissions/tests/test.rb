@@ -6,152 +6,109 @@ require 'minitest/autorun'
 
 # Require the measure and test helper
 require_relative '../measure.rb'
+require_relative '../resources/NRCReportingMeasureHelper.rb'
 
 # Specific requires for this test
 require 'fileutils'
 
-class NrcReportCarbonEmissions_Test < Minitest::Test
-  def model_in_path
-    return "#{File.dirname(__FILE__)}/MidriseApartment.osm"
-  end
+# Core functionality for the tests. Individual test files speed up the testing.
+module TestCommon
 
-  def epw_path
-    # make sure we have a weather data location
-    epw = File.expand_path("#{File.dirname(__FILE__)}/CAN_AB_Edmonton.711230_CWEC.epw")
-    assert(File.exist?(epw.to_s))
-    return epw.to_s
-  end
+  class NrcReportCarbonEmissions_Test < Minitest::Test
+    include(NRCReportingMeasureTestHelper)
+    def setup()
+      @use_json_package = false
+      @use_string_double = true
 
-  def workspace_path(test_name)
-    "#{run_dir(test_name)}/run/in.idf"
-  end
-
-  # create test files if they do not exist when the test first runs
-  def setup_test(test_name, idf_output_requests, building, epw_filename, template)
-    output_folder = "#{File.dirname(__FILE__)}/output/#{test_name}"
-    output_folder = "#{File.dirname(__FILE__)}/output/test_name"
-
-    unless File.exist?(run_dir(test_name))
-      FileUtils.mkdir_p(run_dir(test_name))
-    end
-    assert(File.exist?(run_dir(test_name)))
-    if File.exist?(model_out_path(test_name))
-      FileUtils.rm(model_out_path(test_name))
-    end
-
-    prototype_creator = Standard.build(template)
-
-    model = prototype_creator.model_create_prototype_model(
-      template: template,
-      epw_file: epw_filename,
-      sizing_run_dir: output_folder,
-      debug: @debug,
-      building_type: building)
-
-    epw_file = OpenStudio::EpwFile.new(OpenStudio::Path.new(epw_path))
-    prototype_creator.model_run_simulation_and_log_errors(model, run_dir(test_name))
-    model.save(model_out_path(test_name), true)
-
-    # convert output requests to OSM for testing, OS App and PAT will add these to the E+ Idf
-    workspace = OpenStudio::Workspace.new("Draft".to_StrictnessLevel, "EnergyPlus".to_IddFileType)
-    #workspace.addObjects(idf_output_requests)
-    rt = OpenStudio::EnergyPlus::ReverseTranslator.new
-    request_model = rt.translateWorkspace(workspace)
-
-    translator = OpenStudio::OSVersion::VersionTranslator.new
-    model.addObjects(request_model.objects)
-  end
-
-  def run_dir(test_name)
-    # always generate test output in specially named 'output' directory so result files are not made part of the measure
-    return "#{File.dirname(__FILE__)}/output/#{test_name}"
-  end
-
-  def model_out_path(test_name)
-    return "#{run_dir(test_name)}/example_model.osm"
-  end
-
-  def sql_path(test_name)
-    return "#{run_dir(test_name)}/run/eplusout.sql"
-  end
-
-  def report_path(test_name)
-    return "#{run_dir(test_name)}/report.html"
-  end
-
-  def test_sample()
-    puts "Testing  model reporting"
-
-    # create an instance of the measure
-    measure = NrcReportCarbonEmissions.new
-
-    # create an instance of a runner
-    runner = OpenStudio::Measure::OSRunner.new(OpenStudio::WorkflowJSON.new)
-
-    # get arguments
-    arguments = measure.arguments()
-    argument_map = OpenStudio::Measure.convertOSArgumentVectorToMap(arguments)
-
-    # create hash of argument values
-    args_hash = {}
-
-    # populate argument with specified hash value if specified
-    arguments.each do |arg|
-      temp_arg_var = arg.clone
-      if args_hash[arg.name]
-        assert(temp_arg_var.setValue(args_hash[arg.name]))
+      @measure_interface_detailed = [
+        {
+          "name" => "location",
+          "type" => "Choice",
+          "display_name" => "Location",
+          "default_value" => 'Get From the Model',
+          "choices" => ['Get From the Model','Canada', 'Newfoundland and Labrador', 'Prince Edward Island', 'Nova Scotia', 'New Brunswick', 'Quebec', 'Ontario', 'Manitoba',
+                        'Saskatchewan', 'Alberta', 'British Columbia', 'Yukon', 'Northwest Territories', 'Nunavut'],
+          "is_required" => true
+        },
+        {
+          "name" => "year",
+          "type" => "Choice",
+          "display_name" => "Year",
+          "default_value" => '2022',
+          "choices" => ['1990', '2000', '2005', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025', '2026', '2027', '2028', '2029', '2030', '2031', '2032', '2033', '2034', '2035', '2036', '2037', '2038', '2099',
+                        '2040', '2041', '2042', '2043', '2044', '2045', '2046', '2047', '2048', '2049', '2050'],
+          "is_required" => true
+        }
+      ]
+      possible_sections.each do |method_name|
+        @measure_interface_detailed << {
+          "name" => method_name,
+          "type" => "Bool",
+          "display_name" => "OsLib_Reporting.#{method_name}(nil,nil,nil,true)[:title]",
+          "default_value" => true,
+          "is_required" => true
+        }
       end
-      argument_map[arg.name] = temp_arg_var
     end
 
-    idf_output_requests = measure.energyPlusOutputRequests(runner, argument_map)
-    building_type = 'Warehouse'
-    template = 'NECB2017'
-    epw_file = 'CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw'
-    test_name = "#{template}_#{building_type}-#{epw_file}"
-    # mimic the process of running this measure in OS App or PAT
-    FileUtils.mkdir_p(run_dir(test_name))
-    setup_test(test_name, idf_output_requests, building_type, epw_file, template)
-    if !File.exist?(sql_path(test_name))
-      osw_path = File.join(run_dir(test_name), 'in.osw')
-      osw_path = File.absolute_path(osw_path)
-
-      workflow = OpenStudio::WorkflowJSON.new
-      workflow.setSeedFile(File.absolute_path(model_out_path(test_name)))
-      workflow.setWeatherFile(File.absolute_path(epw_path))
-      workflow.saveAs(osw_path)
-
-      cli_path = OpenStudio.getOpenStudioCLI
-      cmd = "\"#{cli_path}\" run -w \"#{osw_path}\""
-      puts cmd
-      system(cmd)
+    def possible_sections
+      result = []
+      # methods for sections in order that they will appear in report
+      result << 'ghg_NIR_summary_section'
+      result << 'ghg_energyStar_summary_section'
+      result << 'model_summary_section'
+      result << 'emissionFactors_summary_section'
+      result
     end
 
-    assert(File.exist?(model_out_path(test_name)), "Could not find osm at this path:#{model_out_path(test_name)}")
-    assert(File.exist?(sql_path(test_name)), "Could not find sql at this path:#{sql_path(test_name)}")
+    def test_report(building_type: "Warehouse")
+      puts "Testing  model creation for".green + " #{building_type}".light_blue
+      # Define the output folder for this test (optional - default is the method name).
+      test_dir = NRCReportingMeasureTestHelper.appendOutputFolder("test_report/#{building_type}")
+      puts "Testing directory: ".green + " #{test_dir}".light_blue
+      # create an instance of the measure
+      measure = NrcReportCarbonEmissions.new
+      # create an instance of a runner
+      runner = OpenStudio::Measure::OSRunner.new(OpenStudio::WorkflowJSON.new)
 
-    # set up runner, this will happen automatically when measure is run in PAT or OpenStudio
-    runner.setLastOpenStudioModelPath(OpenStudio::Path.new(model_out_path(test_name)))
-    runner.setLastEnergyPlusWorkspacePath(OpenStudio::Path.new(workspace_path(test_name)))
-    runner.setLastEnergyPlusSqlFilePath(OpenStudio::Path.new(sql_path(test_name)))
+      # get arguments
+      arguments = measure.arguments()
 
-    # delete the output if it exists
-    if File.exist?(report_path(test_name))
-      FileUtils.rm(report_path(test_name))
-    end
-    assert(!File.exist?(report_path(test_name)))
+      argument_map = OpenStudio::Measure.convertOSArgumentVectorToMap(arguments)
 
-    # temporarily change directory to the run directory and run the measure
-    start_dir = Dir.pwd
-    begin
-      Dir.chdir(run_dir(test_name))
+      location = arguments[0].clone
+      argument_map['location'] = location
 
-      # run the measure
-      measure.run(runner, argument_map)
-      result = runner.result
-      assert(result.value.valueName == 'Success')
-    ensure
-      Dir.chdir(start_dir)
+      year = arguments[1].clone
+      argument_map['year'] = year
+
+      template = "NECB2017"
+      prototype_creator = Standard.build(template)
+      model = prototype_creator.model_create_prototype_model(
+        template: template,
+        epw_file: 'CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw',
+        sizing_run_dir: test_dir,
+        debug: @debug,
+        building_type: building_type)
+
+      # Set input args. In this case the std matches the one used to create the test model.
+      input_arguments = {
+        "location" => "Ontario",
+        "year" => "2045",
+      }
+
+      # Create an instance of the measure
+      run_measure(input_arguments, model)
+
+      # Rename output file.
+      #output_file = "report_no_diffs.html"
+      #File.rename("#{NRCReportingMeasureTestHelper.outputFolder}/report.html", "#{NRCReportingMeasureTestHelper.outputFolder}/#{output_file}")
+
+      # Check for differences between the current output and the regression report. Need to write regression file without CRTF endiings.
+      #regression_file = IO.read("#{File.dirname(__FILE__)}/regression_reports/#{output_file}").gsub(/\r\n?/,"\n")
+      #IO.write("#{NRCReportingMeasureTestHelper.outputFolder}/#{output_file}.reg", regression_file)
+      #diffs = FileUtils.compare_file("#{NRCReportingMeasureTestHelper.outputFolder}/#{output_file}","#{NRCReportingMeasureTestHelper.outputFolder}/#{output_file}.reg")
+      #assert(diffs, "There were differences to the regression files:\n")
     end
   end
 end

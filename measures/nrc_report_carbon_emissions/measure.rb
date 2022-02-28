@@ -18,6 +18,10 @@ $naturalGas_EF = 0.0
 # start the measure
 class NrcReportCarbonEmissions < OpenStudio::Measure::ReportingMeasure
 
+  #Adds helper functions to make life a bit easier and consistent.
+  attr_accessor :use_json_package, :use_string_double
+  include(NRCReportingMeasureHelper)
+
   # human readable name
   def name
     # Measure name should be the title case of the class name.
@@ -31,103 +35,68 @@ class NrcReportCarbonEmissions < OpenStudio::Measure::ReportingMeasure
 
   # human readable description of modeling approach
   def modeler_description
-    return "This measure calculates the GHG emissions expressed in tonnes CO2eq. Annual electricity intensity factors before year 2019 are defined in 'NATIONAL INVENTORY REPORT 1990 2018: GREENHOUSE GAS SOURCES AND SINKS IN CANADA CANADA’S SUBMISSION TO
+    return "This measure calculates the GHG emissions expressed in tonnes CO2eq based on Emission Factors from NIR report and Energy Star Portfolio Manager. Regarding the emission factors from NIR report, the annual electricity intensity factors before year 2019 are defined in 'NATIONAL INVENTORY REPORT 1990 2018: GREENHOUSE GAS SOURCES AND SINKS IN CANADA CANADA’S SUBMISSION TO
             THE UNITED NATIONS FRAMEWORK CONVENTION ON CLIMATE CHANGE(http://publications.gc.ca/collections/collection_2020/eccc/En81-4-2018-3-eng.pdf)'.
             Whereas annual electricity intensity factors after year 2019 and also future GHG factors till 2050 are created by Environment and Climate Change Canada.
             There are no electricity emission factors for Nunavut for the following years : 1990, 2000, and 2005.
             The natural gas emission factors for each province are calculated by Environment and Climate Change Canada."
   end
 
-  # define the arguments that the user will input
-  def arguments(model = nil)
-    args = OpenStudio::Measure::OSArgumentVector.new
+  #################################
+  #Use the constructor to set global variables
+  def initialize()
+    super()
 
-    # make choice argument for location
-    choices = OpenStudio::StringVector.new
-    choices << 'Canada'
-    choices << 'Newfoundland and Labrador'
-    choices << 'Prince Edward Island'
-    choices << 'Nova Scotia'
-    choices << 'New Brunswick'
-    choices << 'Quebec'
-    choices << 'Ontario'
-    choices << 'Manitoba'
-    choices << 'Saskatchewan'
-    choices << 'Alberta'
-    choices << 'British Columbia'
-    choices << 'Yukon'
-    choices << 'Northwest Territories'
-    choices << 'Nunavut'
-    location = OpenStudio::Measure::OSArgument.makeChoiceArgument('location', choices)
-    location.setDisplayName('Location')
-    location.setDefaultValue('Ontario')
-    args << location
+    #Set to true if you want to package the arguments as json.
+    @use_json_package = false
 
-    # make choice argument for year
-    choices = OpenStudio::StringVector.new
-    choices << '1990'
-    choices << '2000'
-    choices << '2005'
-    choices << '2013'
-    choices << '2014'
-    choices << '2015'
-    choices << '2016'
-    choices << '2017'
-    choices << '2018'
-    choices << '2019'
-    choices << '2020'
-    choices << '2021'
-    choices << '2022'
-    choices << '2023'
-    choices << '2024'
-    choices << '2025'
-    choices << '2026'
-    choices << '2027'
-    choices << '2028'
-    choices << '2029'
-    choices << '2030'
-    choices << '2031'
-    choices << '2032'
-    choices << '2033'
-    choices << '2034'
-    choices << '2035'
-    choices << '2036'
-    choices << '2037'
-    choices << '2038'
-    choices << '2099'
-    choices << '2040'
-    choices << '2041'
-    choices << '2042'
-    choices << '2043'
-    choices << '2044'
-    choices << '2045'
-    choices << '2046'
-    choices << '2047'
-    choices << '2048'
-    choices << '2049'
-    choices << '2050'
-    year = OpenStudio::Measure::OSArgument.makeChoiceArgument('year', choices)
-    year.setDisplayName('Year')
-    year.setDefaultValue('2037')
-    args << year
+    #Set to true if you want to want to allow strings and doubles in stringdouble types. Set to false to force to use doubles. The latter is used for certain
+    # continuous optimization algorithms. You may have to re-examine your input in PAT as this fundamentally changes the measure.
+    #@use_string_double = true
+    @use_string_double = false
 
-    # populate arguments
+    # Put in this array of hashes all the input variables that you need in your measure. Your choice of types are Sting, Double,
+    # StringDouble, and Choice. Optional fields are valid strings, max_double_value, and min_double_value. This will
+    # create all the variables, validate the ranges and types you need,  and make them available in the 'run' method as a hash after
+    # you run 'arguments = validate_and_get_arguments_in_hash(model, runner, user_arguments)'
+    @measure_interface_detailed = [
+      {
+        "name" => "location",
+        "type" => "Choice",
+        "display_name" => "Location",
+        "default_value" => 'Get From the Model',
+        "choices" => ['Get From the Model', 'Canada', 'Newfoundland and Labrador', 'Prince Edward Island', 'Nova Scotia', 'New Brunswick', 'Quebec', 'Ontario', 'Manitoba',
+                      'Saskatchewan', 'Alberta', 'British Columbia', 'Yukon', 'Northwest Territories', 'Nunavut'],
+        "is_required" => true
+      },
+      {
+        "name" => "year",
+        "type" => "Choice",
+        "display_name" => "Year",
+        "default_value" => '2022',
+        "choices" => ['1990', '2000', '2005', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025', '2026', '2027', '2028', '2029', '2030', '2031', '2032', '2033', '2034', '2035', '2036', '2037', '2038', '2099',
+                      '2040', '2041', '2042', '2043', '2044', '2045', '2046', '2047', '2048', '2049', '2050'],
+        "is_required" => true
+      }
+    ]
     possible_sections.each do |method_name|
-      # get display name
-      arg = OpenStudio::Measure::OSArgument.makeBoolArgument(method_name, true)
-      display_name = "#{method_name}"
-      arg.setDisplayName(display_name)
-      arg.setDefaultValue(true)
-      args << arg
+      @measure_interface_detailed << {
+        "name" => method_name,
+        "type" => "Bool",
+        "display_name" => "OsLib_Reporting.#{method_name}(nil,nil,nil,true)[:title]",
+        "default_value" => true,
+        "is_required" => true
+      }
     end
-    args
   end
 
   def possible_sections
     result = []
     # methods for sections in order that they will appear in report
+    result << 'ghg_NIR_summary_section'
+    result << 'ghg_energyStar_summary_section'
     result << 'model_summary_section'
-    result << 'endUse_summary_section'
+    result << 'emissionFactors_summary_section'
     result
   end
 
@@ -144,12 +113,44 @@ class NrcReportCarbonEmissions < OpenStudio::Measure::ReportingMeasure
     super(runner, user_arguments)
 
     result = OpenStudio::IdfObjectVector.new
+
     # use the built-in error checking
     if !runner.validateUserArguments(arguments, user_arguments)
       return result
     end
-
+    model = runner.lastOpenStudioModel
     return result
+  end
+
+  def findProvince(loc)
+    if loc == 'AB'
+      province = 'Alberta'
+    elsif loc == 'BC'
+      province = 'British Columbia'
+    elsif loc == 'MB'
+      province = 'Manitoba'
+    elsif loc == 'NB'
+      province = 'New Brunswick'
+    elsif loc == 'NL'
+      province = 'Newfoundland and Labrador'
+    elsif loc == 'NT'
+      province = 'Northwest Territories'
+    elsif loc == 'NS'
+      province = 'Nova Scotia'
+    elsif loc == 'NU'
+      province = 'Nunavut'
+    elsif loc == 'ON'
+      province = 'Ontario'
+    elsif loc == 'PE'
+      province = 'Prince Edward Island'
+    elsif loc == 'QC'
+      province = 'Quebec'
+    elsif loc == 'SK'
+      province = 'Saskatchewan'
+    elsif loc == 'YT'
+      province = 'Yukon'
+    end
+    return province
   end
 
   # define what happens when the measure is run
@@ -160,6 +161,27 @@ class NrcReportCarbonEmissions < OpenStudio::Measure::ReportingMeasure
     if !runner.validateUserArguments(arguments, user_arguments)
       return false
     end
+
+    #get arguments
+    location = runner.getStringArgumentValue("location", user_arguments)
+    year = runner.getStringArgumentValue("year", user_arguments)
+
+    # Get the last model and sql file.
+    model = runner.lastOpenStudioModel
+    if model.empty?
+      runner.registerError('Cannot find last model.')
+      return false
+    end
+    model = model.get
+
+    sqlFile = runner.lastEnergyPlusSqlFile
+    if sqlFile.empty?
+      runner.registerError('Cannot find last sql file.').yellow
+      return false
+    end
+    sqlFile = sqlFile.get
+    model.setSqlFile(sqlFile)
+
     # assign the user inputs to variables
     location = runner.getStringArgumentValue('location', user_arguments)
     year = runner.getStringArgumentValue('year', user_arguments)
@@ -167,8 +189,11 @@ class NrcReportCarbonEmissions < OpenStudio::Measure::ReportingMeasure
 
     #Convert variables to global variables to use them in the report
     $year = year
+    if location.include? "Get From the Model"
+      loc = model.getWeatherFile.stateProvinceRegion
+      location = findProvince(loc)
+    end
     $location = location
-
     # Get the natural gas EF from the JSON file 'NG_EFs.json'
     ng_path = File.expand_path('../resources/NG_EFs.json', __FILE__)
     ng_emissionFactorsFile = File.read(ng_path)
@@ -195,16 +220,6 @@ class NrcReportCarbonEmissions < OpenStudio::Measure::ReportingMeasure
       end
     end
 
-    # get sql, model, and web assets
-    setup = OsLib_Reporting.setup(runner)
-    unless setup
-      return false
-    end
-    model = setup[:model]
-    # workspace = setup[:workspace]
-    sql_file = setup[:sqlFile]
-    web_asset_path = setup[:web_asset_path]
-
     # assign the user inputs to variables
     args = OsLib_HelperMethods.createRunVariables(runner, model, user_arguments, arguments)
     unless args
@@ -222,7 +237,7 @@ class NrcReportCarbonEmissions < OpenStudio::Measure::ReportingMeasure
       begin
         #next unless args[method_name]
         section = false
-        eval("section = OsLib_Reporting.#{method_name}(model,sql_file,runner,false)")
+        eval("section = OsLib_Reporting.#{method_name}(model,sqlFile,runner,false)")
         display_name = eval("OsLib_Reporting.#{method_name}(nil,nil,nil,true)[:title]")
         if section
           ordered_section << section
@@ -259,9 +274,10 @@ class NrcReportCarbonEmissions < OpenStudio::Measure::ReportingMeasure
         ordered_section << section
       end
     end
+    @sections << ordered_section[2]
+    @sections << ordered_section[3]
     @sections << ordered_section[0]
     @sections << ordered_section[1]
-
     html_in_path = "#{File.dirname(__FILE__)}/resources/report.html.erb"
 
     if File.exist?(html_in_path)
@@ -289,7 +305,7 @@ class NrcReportCarbonEmissions < OpenStudio::Measure::ReportingMeasure
       end
     end
     # close the sql file
-    sql_file.close
+    sqlFile.close
 
     # Finally update the output variables
     runner.registerValue('co_2_e', $co_total.round(2), 'tCO2eq')
