@@ -238,17 +238,19 @@ module OsLib_Reporting
     @totals[0] = 'Total'
     endUse_summary_data_table[:data] << @totals
     # Create a csv file
-    @test_dir = "#{File.dirname(__FILE__)}/EmissionReport"
     # Create if does not exist. Different logic from other testing as there are multiple test scripts writing
     # to this folder so it cannot be deleted.
+    @test_dir = NRCReportingMeasureTestHelper.appendOutputFolder("EmissionReport")
     if !Dir.exists?(@test_dir)
       puts "Creating output folder: #{@test_dir}"
       Dir.mkdir(@test_dir)
     end
-    testing_report = "#{@test_dir}/ghgEmissions.csv"
-
+    testing_report = "#{@test_dir}/NIR_ghgEmissions.csv"
     File.open(testing_report, 'a') do |file|
-      file.puts "Location, Standard building type,  Electricity_EndUse (GJ),Elec_EF (gCO2eq/kWh), NaturalGas_EndUse (GJ), NaturalGas_EF (gCO2eq/MJ), total_emissions (tCO2eq)}"
+      # Add the header only once
+      if file.tell() == 0
+        file.puts "Location, Standard building type,  Electricity_EndUse (GJ),Elec_EF (gCO2eq/kWh), NaturalGas_EndUse (GJ), NaturalGas_EF (gCO2eq/MJ), total_emissions (tCO2eq)}"
+      end
       file.puts "#{model.getWeatherFile.city} , #{model.getBuilding.standardsBuildingType.get.to_s}, #{@totals[1]}, #{$electricity_EF} , #{@totals[2]} , #{$naturalGas_EF}, #{@totals[3]} "
     end
 
@@ -345,10 +347,14 @@ module OsLib_Reporting
     @totals[0] = 'Total'
     energyStar_summary_data_table[:data] << @totals
     # Create a csv file
-    testing_report = "#{@test_dir}/ghgEmissions.csv"
+    testing_report = "#{@test_dir}/EnergyStar_ghgEmissions.csv"
 
+    column_header = ["Location, Standard building type,  Electricity_EndUse (GJ),EnergyStar_electricity_emission_factor (kg CO2eq/GJ), NaturalGas_EndUse (GJ), NaturalGas_EF (kg CO2eq/GJ), total_emissions (tCO2eq)}"]
     File.open(testing_report, 'a') do |file|
-      file.puts "Location, Standard building type,  Electricity_EndUse (GJ),EnergyStar_electricity_emission_factor (kg CO2eq/GJ), NaturalGas_EndUse (GJ), NaturalGas_EF (kg CO2eq/GJ), total_emissions (tCO2eq)}"
+      # Add the header only once
+      if file.tell() == 0
+        file.puts "Location, Standard building type,  Electricity_EndUse (GJ),EnergyStar_electricity_emission_factor (kg CO2eq/GJ), NaturalGas_EndUse (GJ), NaturalGas_EF (kg CO2eq/GJ), total_emissions (tCO2eq)}"
+      end
       file.puts "#{model.getWeatherFile.city} , #{model.getBuilding.standardsBuildingType.get.to_s}, #{@totals[1]}, #{@energyStar_electricity_emission_factor} , #{@totals[2]} , #{@gas_emission_factor}, #{@totals[5]} "
     end
 
@@ -414,6 +420,4 @@ module OsLib_Reporting
 
     return @emissionFactors_summary_table_section
   end
-
-
 end
