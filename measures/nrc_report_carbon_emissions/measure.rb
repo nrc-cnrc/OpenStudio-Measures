@@ -35,10 +35,11 @@ class NrcReportCarbonEmissions < OpenStudio::Measure::ReportingMeasure
 
   # human readable description of modeling approach
   def modeler_description
-    return "This measure calculates the GHG emissions expressed in tonnes CO2eq based on Emission Factors from NIR report and Energy Star Portfolio Manager. Regarding the emission factors from NIR report, the annual electricity intensity factors before year 2019 are defined in 'NATIONAL INVENTORY REPORT 1990 2018: GREENHOUSE GAS SOURCES AND SINKS IN CANADA CANADA’S SUBMISSION TO
-            THE UNITED NATIONS FRAMEWORK CONVENTION ON CLIMATE CHANGE(http://publications.gc.ca/collections/collection_2020/eccc/En81-4-2018-3-eng.pdf)'.
-            Whereas annual electricity intensity factors after year 2019 and also future GHG factors till 2050 are created by Environment and Climate Change Canada.
-            There are no electricity emission factors for Nunavut for the following years : 1990, 2000, and 2005.
+    return "This measure calculates the GHG emissions expressed in tonnes CO2eq based on Emission Factors from NIR reports and Energy Star Portfolio Manager. User can select emission factors before year 2019 from one of 3 NIR reports (2019, 2020 and 2021).
+            Emission Factors from 2019 NIR reports are till 2017, Emission Factors from 2020 NIR reports are till 2018, and Emission Factors from 2019 NIR reports are till 2020.
+            If the input argument 'Year' was selected equals to '2018' or '2019', and input argument 'NIR Report Year' was selected '2019' or '2020', Emission
+            Factors will be calculated based on NIR Report '2021'
+            Future GHG factors till 2050 are created by Environment and Climate Change Canada.
             The natural gas emission factors for each province are calculated by Environment and Climate Change Canada."
   end
 
@@ -73,9 +74,17 @@ class NrcReportCarbonEmissions < OpenStudio::Measure::ReportingMeasure
         "name" => "year",
         "type" => "Choice",
         "display_name" => "Year",
-        "default_value" => '2022',
+        "default_value" => '1990',
         "choices" => ['1990', '2000', '2005', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025', '2026', '2027', '2028', '2029', '2030', '2031', '2032', '2033', '2034', '2035', '2036', '2037', '2038', '2099',
                       '2040', '2041', '2042', '2043', '2044', '2045', '2046', '2047', '2048', '2049', '2050'],
+        "is_required" => true
+      },
+      {
+        "name" => "nir_report_year",
+        "type" => "Choice",
+        "display_name" => "NIR Report Year",
+        "default_value" => '2019',
+        "choices" => ['2019', '2020', '2021'],
         "is_required" => true
       }
     ]
@@ -165,6 +174,7 @@ class NrcReportCarbonEmissions < OpenStudio::Measure::ReportingMeasure
     #get arguments
     location = runner.getStringArgumentValue("location", user_arguments)
     year = runner.getStringArgumentValue("year", user_arguments)
+    nir_report_year = runner.getStringArgumentValue("nir_report_year", user_arguments)
 
     # Get the last model and sql file.
     model = runner.lastOpenStudioModel
@@ -186,9 +196,10 @@ class NrcReportCarbonEmissions < OpenStudio::Measure::ReportingMeasure
     location = runner.getStringArgumentValue('location', user_arguments)
     year = runner.getStringArgumentValue('year', user_arguments)
     year = year.to_i
+    nir_report_year = nir_report_year.to_i
 
     #Convert variables to global variables to use them in the report
-    $year = year
+    #$year = year
     if location.include? "Get From the Model"
       loc = model.getWeatherFile.stateProvinceRegion
       location = findProvince(loc)
@@ -208,7 +219,27 @@ class NrcReportCarbonEmissions < OpenStudio::Measure::ReportingMeasure
     end
 
     # Find the electricity EF from the JSON file 'EmissionFactors.json'
-    path = File.expand_path('../resources/EmissionFactors.json', __FILE__)
+    path = ''
+    if nir_report_year == 2019
+      path = File.expand_path('../resources/EmissionFactors_NIR2019.json', __FILE__)
+    elsif nir_report_year == 2020
+      path = File.expand_path('../resources/EmissionFactors_NIR2020.json', __FILE__)
+    elsif nir_report_year == 2021
+      path = File.expand_path('../resources/EmissionFactors_NIR2021.json', __FILE__)
+    end
+
+    # NIR 2019 has EFs till 2017 only, so if year 2018 or 2019 is selected, the EF will be determined from NIR 2021
+    if ((year == 2018) && (nir_report_year == 2019))
+      path = File.expand_path('../resources/EmissionFactors_NIR2021.json', __FILE__)
+    elsif ((year == 2019) && (nir_report_year == 2019))
+      path = File.expand_path('../resources/EmissionFactors_NIR2021.json', __FILE__)
+      # NIR 2020 has EFs till 2018 only, so if year 2019 is selected, the EF will be determined from NIR 2021
+    elsif ((year == 2019) && (nir_report_year == 2020))
+      path = File.expand_path('../resources/EmissionFactors_NIR2021.json', __FILE__)
+    elsif year > 2019
+      path = File.expand_path('../resources/ProjectionFactors.json', __FILE__)
+    end
+
     allEmissionFactorsFile = File.read(path)
     data_hash = JSON.parse(allEmissionFactorsFile)
     data_hash.each do |k, v|
@@ -219,6 +250,9 @@ class NrcReportCarbonEmissions < OpenStudio::Measure::ReportingMeasure
         end
       end
     end
+
+    $year = year
+    $nir_report_year = nir_report_year
 
     # assign the user inputs to variables
     args = OsLib_HelperMethods.createRunVariables(runner, model, user_arguments, arguments)

@@ -408,8 +408,9 @@ module OsLib_Reporting
       return @emissionFactors_summary_table_section
     end
 
+    emissionFactors_summary_data_table[:data] << ["NIR Report Year", $nir_report_year]
     emissionFactors_summary_data_table[:data] << ["NIR Report Electricity Emission Factor (g CO2eq/kWh)", $electricity_EF.round(2)]
-    emissionFactors_summary_data_table[:data] << ["NIR Report Natural Gas Emission Factor (kg CO2eq/GJ)", $naturalGas_EF.round(2)]
+    emissionFactors_summary_data_table[:data] << ["ECCC Natural Gas Emission Factor (kg CO2eq/GJ)", $naturalGas_EF.round(2)]
     emissionFactors_summary_data_table[:data] << ["Energy Star Electricity Emission Factor (kg CO2eq/GJ)", @energyStar_electricity_emission_factor.round(2)]
     emissionFactors_summary_data_table[:data] << ["Energy Star Natural Gas Emission Factor (kg CO2eq/GJ)", @gas_emission_factor.round(2)]
     emissionFactors_summary_data_table[:data] << ["Energy Star FuelOilNo2 Emission Factor (kg CO2eq/GJ)", @fuelOilNo2_emission_factor.round(2)]
@@ -420,4 +421,5 @@ module OsLib_Reporting
 
     return @emissionFactors_summary_table_section
   end
+
 end
