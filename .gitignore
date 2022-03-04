@@ -2,7 +2,6 @@
 
 # Standard ruby files created by our scripts.
 Gemfile.lock
-.bundle
 
 # Patterns to ignore.
 measures*/*/tests/output/
