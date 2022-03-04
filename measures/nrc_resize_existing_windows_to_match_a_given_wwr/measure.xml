@@ -1,10 +1,11 @@
 <?xml version="1.0"?>
 <measure>
   <schema_version>3.0</schema_version>
+  <error>undefined method `empty?' for NrcResizeExistingWindowsToMatchAGivenWWR:Class</error>
   <name>nrc_resize_existing_windows_to_match_a_given_wwr</name>
   <uid>b1c8aae7-db36-4461-88f8-d6ac57ec11d5</uid>
-  <version_id>4d2e025e-e312-4121-8e17-ba73dd4f32a8</version_id>
-  <version_modified>20201203T162250Z</version_modified>
+  <version_id>dd35c0ee-ea1d-4440-b9db-2ff8f7f210f1</version_id>
+  <version_modified>20220118T162736Z</version_modified>
   <xml_checksum>A8B8B5E3</xml_checksum>
   <class_name>NRCResizeExistingWindowsToMatchAGivenWWR</class_name>
   <display_name>Resize existing windows to match a given WWR</display_name>
@@ -230,18 +231,6 @@ This will compute the WWR by taking into account all of the surfaces that have a
       <checksum>703C9964</checksum>
     </file>
     <file>
-      <filename>example_model.osm</filename>
-      <filetype>osm</filetype>
-      <usage_type>test</usage_type>
-      <checksum>53D14E69</checksum>
-    </file>
-    <file>
-      <filename>warehouse_2017.osm</filename>
-      <filetype>osm</filetype>
-      <usage_type>test</usage_type>
-      <checksum>D3EA641F</checksum>
-    </file>
-    <file>
       <filename>README.md</filename>
       <filetype>md</filetype>
       <usage_type>readme</usage_type>
@@ -251,19 +240,19 @@ This will compute the WWR by taking into account all of the surfaces that have a
       <filename>BTAPMeasureHelper.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>F05DC3DD</checksum>
+      <checksum>F45B04B6</checksum>
     </file>
     <file>
       <filename>NRCMeasureHelper.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>2EBA603D</checksum>
+      <checksum>2FE92E0F</checksum>
     </file>
     <file>
       <filename>test.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
-      <checksum>CA6D57CC</checksum>
+      <checksum>2B873930</checksum>
     </file>
     <file>
       <version>
@@ -274,14 +263,13 @@ This will compute the WWR by taking into account all of the surfaces that have a
       <filename>measure.rb</filename>
       <filetype>rb</filetype>
       <usage_type>script</usage_type>
-      <checksum>BFB084B1</checksum>
+      <checksum>A3E57DFD</checksum>
     </file>
     <file>
-      <filename>FullServiceRestaurant_Edmonton.osm</filename>
+      <filename>Warehouse-NECB2017-ON_Ottawa.osm</filename>
       <filetype>osm</filetype>
       <usage_type>test</usage_type>
-      <checksum>2F3ABF34</checksum>
+      <checksum>C55B436A</checksum>
     </file>
   </files>
 </measure>
-<error>undefined method `empty?' for NrcResizeExistingWindowsToMatchAGivenWWR:Class</error>

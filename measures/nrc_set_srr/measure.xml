@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_set_srr</name>
   <uid>5b955a02-309e-406a-93d7-ff4ce5540e08</uid>
-  <version_id>158baa3e-1f0f-464d-9201-358cd8513333</version_id>
-  <version_modified>20210505T225648Z</version_modified>
+  <version_id>de4f7955-8220-4005-b86c-51f42869bc1b</version_id>
+  <version_modified>20220202T205712Z</version_modified>
   <xml_checksum>FC9586A7</xml_checksum>
   <class_name>NrcSetSrr</class_name>
   <display_name>nrc_set_srr</display_name>
@@ -87,28 +87,46 @@
   </attributes>
   <files>
     <file>
+      <filename>BTAPMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>F45B04B6</checksum>
+    </file>
+    <file>
+      <filename>resources/CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.ddy</filename>
+      <filetype>ddy</filetype>
+      <usage_type>test</usage_type>
+      <checksum>D3C6A158</checksum>
+    </file>
+    <file>
+      <filename>resources/CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw</filename>
+      <filetype>epw</filetype>
+      <usage_type>test</usage_type>
+      <checksum>E21FC0AC</checksum>
+    </file>
+    <file>
+      <filename>resources/CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.stat</filename>
+      <filetype>stat</filetype>
+      <usage_type>test</usage_type>
+      <checksum>BAFC0770</checksum>
+    </file>
+    <file>
+      <filename>resources/Warehouse-NECB2017-ON_Ottawa.osm</filename>
+      <filetype>osm</filetype>
+      <usage_type>test</usage_type>
+      <checksum>C55B436A</checksum>
+    </file>
+    <file>
       <filename>README.md.erb</filename>
       <filetype>erb</filetype>
       <usage_type>readmeerb</usage_type>
       <checksum>703C9964</checksum>
     </file>
     <file>
-      <filename>.gitkeep</filename>
-      <filetype>gitkeep</filetype>
-      <usage_type>doc</usage_type>
-      <checksum>00000000</checksum>
-    </file>
-    <file>
-      <filename>BTAPMeasureHelper.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>F05DC3DD</checksum>
-    </file>
-    <file>
       <filename>NRCMeasureHelper.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>2EBA603D</checksum>
+      <checksum>68156AC0</checksum>
     </file>
     <file>
       <version>
@@ -119,13 +137,25 @@
       <filename>measure.rb</filename>
       <filetype>rb</filetype>
       <usage_type>script</usage_type>
-      <checksum>5447EACB</checksum>
+      <checksum>581476FA</checksum>
     </file>
     <file>
       <filename>test.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
-      <checksum>07D255C1</checksum>
+      <checksum>8D715750</checksum>
+    </file>
+    <file>
+      <filename>.gitkeep</filename>
+      <filetype>gitkeep</filetype>
+      <usage_type>doc</usage_type>
+      <checksum>00000000</checksum>
+    </file>
+    <file>
+      <filename>README.html</filename>
+      <filetype>html</filetype>
+      <usage_type>test</usage_type>
+      <checksum>0144A82F</checksum>
     </file>
     <file>
       <filename>README.md</filename>

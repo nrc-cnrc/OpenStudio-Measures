@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_set_fdwr</name>
   <uid>5b955a02-309e-406a-93d7-ff4ce5540e08</uid>
-  <version_id>82482c24-f99f-4748-b73b-73ddb149acf2</version_id>
-  <version_modified>20211101T171340Z</version_modified>
+  <version_id>5d9d01e8-edc7-4357-bb04-8474e1fd5296</version_id>
+  <version_modified>20211224T141234Z</version_modified>
   <xml_checksum>FC9586A7</xml_checksum>
   <class_name>NrcSetFdwr</class_name>
   <display_name>nrc_set_fdwr</display_name>
@@ -132,6 +132,30 @@
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
       <checksum>8A13C5C6</checksum>
+    </file>
+    <file>
+      <filename>resources/CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.ddy</filename>
+      <filetype>ddy</filetype>
+      <usage_type>test</usage_type>
+      <checksum>D3C6A158</checksum>
+    </file>
+    <file>
+      <filename>resources/CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw</filename>
+      <filetype>epw</filetype>
+      <usage_type>test</usage_type>
+      <checksum>E21FC0AC</checksum>
+    </file>
+    <file>
+      <filename>resources/CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.stat</filename>
+      <filetype>stat</filetype>
+      <usage_type>test</usage_type>
+      <checksum>BAFC0770</checksum>
+    </file>
+    <file>
+      <filename>resources/Warehouse-NECB2017-ON_Ottawa.osm</filename>
+      <filetype>osm</filetype>
+      <usage_type>test</usage_type>
+      <checksum>C55B436A</checksum>
     </file>
   </files>
 </measure>
