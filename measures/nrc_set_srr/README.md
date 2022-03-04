@@ -43,8 +43,6 @@ ModelMeasure
 **Required:** false,
 **Model Dependent:** false
 
-## Summary of test cases
-Summary of test arguments and values are [here](./tests/README.html)
 
 
 

@@ -36,7 +36,7 @@ ReportingMeasure
 **Required:** true,
 **Model Dependent:** false
 
-### Include model_summary_section
+### OsLib_Reporting.model_summary_section(nil,nil,nil,true)[:title]
 
 **Name:** model_summary_section,
 **Type:** Boolean,
@@ -44,7 +44,15 @@ ReportingMeasure
 **Required:** true,
 **Model Dependent:** false
 
-### Include building_construction_detailed_section
+### OsLib_Reporting.server_summary_section(nil,nil,nil,true)[:title]
+
+**Name:** server_summary_section,
+**Type:** Boolean,
+**Units:** ,
+**Required:** true,
+**Model Dependent:** false
+
+### OsLib_Reporting.building_construction_detailed_section(nil,nil,nil,true)[:title]
 
 **Name:** building_construction_detailed_section,
 **Type:** Boolean,
@@ -52,7 +60,7 @@ ReportingMeasure
 **Required:** true,
 **Model Dependent:** false
 
-### Include construction_summary_section
+### OsLib_Reporting.construction_summary_section(nil,nil,nil,true)[:title]
 
 **Name:** construction_summary_section,
 **Type:** Boolean,
@@ -60,7 +68,7 @@ ReportingMeasure
 **Required:** true,
 **Model Dependent:** false
 
-### Include heat_gains_summary_section
+### OsLib_Reporting.heat_gains_summary_section(nil,nil,nil,true)[:title]
 
 **Name:** heat_gains_summary_section,
 **Type:** Boolean,
@@ -68,7 +76,7 @@ ReportingMeasure
 **Required:** true,
 **Model Dependent:** false
 
-### Include heat_loss_summary_section
+### OsLib_Reporting.heat_loss_summary_section(nil,nil,nil,true)[:title]
 
 **Name:** heat_loss_summary_section,
 **Type:** Boolean,
@@ -76,23 +84,23 @@ ReportingMeasure
 **Required:** true,
 **Model Dependent:** false
 
-### Include heat_gains_section
+### OsLib_Reporting.heat_gains_detail_section(nil,nil,nil,true)[:title]
 
-**Name:** heat_gains_section,
+**Name:** heat_gains_detail_section,
 **Type:** Boolean,
 **Units:** ,
 **Required:** true,
 **Model Dependent:** false
 
-### Include heat_losses_section
+### OsLib_Reporting.heat_losses_detail_section(nil,nil,nil,true)[:title]
 
-**Name:** heat_losses_section,
+**Name:** heat_losses_detail_section,
 **Type:** Boolean,
 **Units:** ,
 **Required:** true,
 **Model Dependent:** false
 
-### Include steadySate_conductionheat_losses_section
+### OsLib_Reporting.steadySate_conductionheat_losses_section(nil,nil,nil,true)[:title]
 
 **Name:** steadySate_conductionheat_losses_section,
 **Type:** Boolean,
@@ -100,7 +108,7 @@ ReportingMeasure
 **Required:** true,
 **Model Dependent:** false
 
-### Include thermal_zone_summary_section
+### OsLib_Reporting.thermal_zone_summary_section(nil,nil,nil,true)[:title]
 
 **Name:** thermal_zone_summary_section,
 **Type:** Boolean,
@@ -108,7 +116,7 @@ ReportingMeasure
 **Required:** true,
 **Model Dependent:** false
 
-### Include hvac_summary_section
+### OsLib_Reporting.hvac_summary_section(nil,nil,nil,true)[:title]
 
 **Name:** hvac_summary_section,
 **Type:** Boolean,
@@ -116,7 +124,7 @@ ReportingMeasure
 **Required:** true,
 **Model Dependent:** false
 
-### Include air_loops_detail_section
+### OsLib_Reporting.air_loops_detail_section(nil,nil,nil,true)[:title]
 
 **Name:** air_loops_detail_section,
 **Type:** Boolean,
@@ -124,7 +132,7 @@ ReportingMeasure
 **Required:** true,
 **Model Dependent:** false
 
-### Include plant_loops_detail_section
+### OsLib_Reporting.plant_loops_detail_section(nil,nil,nil,true)[:title]
 
 **Name:** plant_loops_detail_section,
 **Type:** Boolean,
@@ -132,7 +140,7 @@ ReportingMeasure
 **Required:** true,
 **Model Dependent:** false
 
-### Include zone_equipment_detail_section
+### OsLib_Reporting.zone_equipment_detail_section(nil,nil,nil,true)[:title]
 
 **Name:** zone_equipment_detail_section,
 **Type:** Boolean,
@@ -140,7 +148,7 @@ ReportingMeasure
 **Required:** true,
 **Model Dependent:** false
 
-### Include hvac_airloops_detailed_section1
+### OsLib_Reporting.hvac_airloops_detailed_section1(nil,nil,nil,true)[:title]
 
 **Name:** hvac_airloops_detailed_section1,
 **Type:** Boolean,
@@ -148,7 +156,7 @@ ReportingMeasure
 **Required:** true,
 **Model Dependent:** false
 
-### Include hvac_plantloops_detailed_section1
+### OsLib_Reporting.hvac_plantloops_detailed_section1(nil,nil,nil,true)[:title]
 
 **Name:** hvac_plantloops_detailed_section1,
 **Type:** Boolean,
@@ -156,9 +164,65 @@ ReportingMeasure
 **Required:** true,
 **Model Dependent:** false
 
-### Include hvac_zoneEquip_detailed_section1
+### OsLib_Reporting.hvac_zoneEquip_detailed_section1(nil,nil,nil,true)[:title]
 
 **Name:** hvac_zoneEquip_detailed_section1,
+**Type:** Boolean,
+**Units:** ,
+**Required:** true,
+**Model Dependent:** false
+
+### OsLib_Reporting.output_data_end_use_table(nil,nil,nil,true)[:title]
+
+**Name:** output_data_end_use_table,
+**Type:** Boolean,
+**Units:** ,
+**Required:** true,
+**Model Dependent:** false
+
+### OsLib_Reporting.serviceHotWater_summary_section(nil,nil,nil,true)[:title]
+
+**Name:** serviceHotWater_summary_section,
+**Type:** Boolean,
+**Units:** ,
+**Required:** true,
+**Model Dependent:** false
+
+### OsLib_Reporting.interior_lighting_summary_section(nil,nil,nil,true)[:title]
+
+**Name:** interior_lighting_summary_section,
+**Type:** Boolean,
+**Units:** ,
+**Required:** true,
+**Model Dependent:** false
+
+### OsLib_Reporting.interior_lighting_detail_section(nil,nil,nil,true)[:title]
+
+**Name:** interior_lighting_detail_section,
+**Type:** Boolean,
+**Units:** ,
+**Required:** true,
+**Model Dependent:** false
+
+### OsLib_Reporting.daylighting_summary_section(nil,nil,nil,true)[:title]
+
+**Name:** daylighting_summary_section,
+**Type:** Boolean,
+**Units:** ,
+**Required:** true,
+**Model Dependent:** false
+
+### OsLib_Reporting.exterior_light_section(nil,nil,nil,true)[:title]
+
+**Name:** exterior_light_section,
+**Type:** Boolean,
+**Units:** ,
+**Required:** true,
+**Model Dependent:** false
+
+### OsLib_Reporting.shading_summary_section(nil,nil,nil,true)[:title]
+
+**Name:** shading_summary_section,
 **Type:** Boolean,
 **Units:** ,
 **Required:** true,
@@ -187,4 +251,6 @@ ReportingMeasure
 
 
 
-heating, cooling, electricity_consumption, natural_gas_consumption, district_heating, district_cooling, total_site_eui, eui
+
+
+Heating End Use, heating, cooling, electricity_consumption, natural_gas_consumption, district_heating, district_cooling, total_site_eui, eui

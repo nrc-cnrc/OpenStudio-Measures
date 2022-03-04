@@ -28,7 +28,7 @@ ReportingMeasure
 **Required:** true,
 **Model Dependent:** false
 
-### Create detailed hourly excel files
+### Create detailed hourly Excel files?
 
 **Name:** detail,
 **Type:** Choice,
