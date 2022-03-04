@@ -1,12 +1,15 @@
 # Files to ignore
+
+# Standard ruby files created by our scripts.
 Gemfile.lock
+.bundle
 
 # Patterns to ignore.
 measures*/*/tests/output/
 measures*/*/tests/test*-output.json
 measures/nrc_report_carbon_emissions/resources/[~][$]*
 
-# Files and folders used in setting up the server.
+# Files and folders used in setting up the server. These are created by the scripts so no need to save.
 openstudio-server/.env
 openstudio-server/.gemfile
 
