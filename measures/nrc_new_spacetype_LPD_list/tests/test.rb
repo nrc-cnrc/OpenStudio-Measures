@@ -53,12 +53,8 @@ class NrcNewSpacetypeLPDList_Test < Minitest::Test
     assert_equal(1, arguments.size)
     assert_equal(1.0, arguments[0].defaultValueAsDouble)
 
-    # Define the output folder.
-    test_dir = "#{File.dirname(__FILE__)}/output"
-    if !Dir.exists?(test_dir)
-      Dir.mkdir(test_dir)
-    end
-    NRCMeasureTestHelper.setOutputFolder("#{test_dir}")
+    # Define the output folder for this test (optional - default is the method name).
+    output_file_path = NRCMeasureTestHelper.appendOutputFolder("OutputTestFolder")
 
     # Run the measure and check output
     runner = run_measure(input_arguments, model)
@@ -81,8 +77,8 @@ class NrcNewSpacetypeLPDList_Test < Minitest::Test
       end
     end
 
-    # save the model to test output directory
-    output_file_path = "#{File.dirname(__FILE__)}//output/test_output.osm"
-    model.save(output_file_path, true)
+    # Save the model to test output directory.
+    output_path = "#{output_file_path}/test_output.osm"
+    model.save(output_path, true)
   end
 end

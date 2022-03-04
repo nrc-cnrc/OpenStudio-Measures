@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_report</name>
   <uid>d023501a-5089-4b1d-9a08-7a573820a7ef</uid>
-  <version_id>cb7e7c0a-bd42-4509-b3ca-235d71bb3a87</version_id>
-  <version_modified>20211101T171339Z</version_modified>
+  <version_id>346aa480-b2d5-4d56-baf7-edb261184b5b</version_id>
+  <version_modified>20220215T143425Z</version_modified>
   <xml_checksum>9BF1E6AC</xml_checksum>
   <class_name>NrcReport</class_name>
   <display_name>NrcReport</display_name>
@@ -40,7 +40,25 @@
     </argument>
     <argument>
       <name>model_summary_section</name>
-      <display_name>Include model_summary_section</display_name>
+      <display_name>OsLib_Reporting.model_summary_section(nil,nil,nil,true)[:title]</display_name>
+      <type>Boolean</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>true</default_value>
+      <choices>
+        <choice>
+          <value>true</value>
+          <display_name>true</display_name>
+        </choice>
+        <choice>
+          <value>false</value>
+          <display_name>false</display_name>
+        </choice>
+      </choices>
+    </argument>
+    <argument>
+      <name>server_summary_section</name>
+      <display_name>OsLib_Reporting.server_summary_section(nil,nil,nil,true)[:title]</display_name>
       <type>Boolean</type>
       <required>true</required>
       <model_dependent>false</model_dependent>
@@ -58,7 +76,7 @@
     </argument>
     <argument>
       <name>building_construction_detailed_section</name>
-      <display_name>Include building_construction_detailed_section</display_name>
+      <display_name>OsLib_Reporting.building_construction_detailed_section(nil,nil,nil,true)[:title]</display_name>
       <type>Boolean</type>
       <required>true</required>
       <model_dependent>false</model_dependent>
@@ -76,7 +94,7 @@
     </argument>
     <argument>
       <name>construction_summary_section</name>
-      <display_name>Include construction_summary_section</display_name>
+      <display_name>OsLib_Reporting.construction_summary_section(nil,nil,nil,true)[:title]</display_name>
       <type>Boolean</type>
       <required>true</required>
       <model_dependent>false</model_dependent>
@@ -94,7 +112,7 @@
     </argument>
     <argument>
       <name>heat_gains_summary_section</name>
-      <display_name>Include heat_gains_summary_section</display_name>
+      <display_name>OsLib_Reporting.heat_gains_summary_section(nil,nil,nil,true)[:title]</display_name>
       <type>Boolean</type>
       <required>true</required>
       <model_dependent>false</model_dependent>
@@ -112,7 +130,7 @@
     </argument>
     <argument>
       <name>heat_loss_summary_section</name>
-      <display_name>Include heat_loss_summary_section</display_name>
+      <display_name>OsLib_Reporting.heat_loss_summary_section(nil,nil,nil,true)[:title]</display_name>
       <type>Boolean</type>
       <required>true</required>
       <model_dependent>false</model_dependent>
@@ -129,8 +147,8 @@
       </choices>
     </argument>
     <argument>
-      <name>heat_gains_section</name>
-      <display_name>Include heat_gains_section</display_name>
+      <name>heat_gains_detail_section</name>
+      <display_name>OsLib_Reporting.heat_gains_detail_section(nil,nil,nil,true)[:title]</display_name>
       <type>Boolean</type>
       <required>true</required>
       <model_dependent>false</model_dependent>
@@ -147,8 +165,8 @@
       </choices>
     </argument>
     <argument>
-      <name>heat_losses_section</name>
-      <display_name>Include heat_losses_section</display_name>
+      <name>heat_losses_detail_section</name>
+      <display_name>OsLib_Reporting.heat_losses_detail_section(nil,nil,nil,true)[:title]</display_name>
       <type>Boolean</type>
       <required>true</required>
       <model_dependent>false</model_dependent>
@@ -166,7 +184,7 @@
     </argument>
     <argument>
       <name>steadySate_conductionheat_losses_section</name>
-      <display_name>Include steadySate_conductionheat_losses_section</display_name>
+      <display_name>OsLib_Reporting.steadySate_conductionheat_losses_section(nil,nil,nil,true)[:title]</display_name>
       <type>Boolean</type>
       <required>true</required>
       <model_dependent>false</model_dependent>
@@ -184,7 +202,7 @@
     </argument>
     <argument>
       <name>thermal_zone_summary_section</name>
-      <display_name>Include thermal_zone_summary_section</display_name>
+      <display_name>OsLib_Reporting.thermal_zone_summary_section(nil,nil,nil,true)[:title]</display_name>
       <type>Boolean</type>
       <required>true</required>
       <model_dependent>false</model_dependent>
@@ -202,7 +220,7 @@
     </argument>
     <argument>
       <name>hvac_summary_section</name>
-      <display_name>Include hvac_summary_section</display_name>
+      <display_name>OsLib_Reporting.hvac_summary_section(nil,nil,nil,true)[:title]</display_name>
       <type>Boolean</type>
       <required>true</required>
       <model_dependent>false</model_dependent>
@@ -220,7 +238,7 @@
     </argument>
     <argument>
       <name>air_loops_detail_section</name>
-      <display_name>Include air_loops_detail_section</display_name>
+      <display_name>OsLib_Reporting.air_loops_detail_section(nil,nil,nil,true)[:title]</display_name>
       <type>Boolean</type>
       <required>true</required>
       <model_dependent>false</model_dependent>
@@ -238,7 +256,7 @@
     </argument>
     <argument>
       <name>plant_loops_detail_section</name>
-      <display_name>Include plant_loops_detail_section</display_name>
+      <display_name>OsLib_Reporting.plant_loops_detail_section(nil,nil,nil,true)[:title]</display_name>
       <type>Boolean</type>
       <required>true</required>
       <model_dependent>false</model_dependent>
@@ -256,7 +274,7 @@
     </argument>
     <argument>
       <name>zone_equipment_detail_section</name>
-      <display_name>Include zone_equipment_detail_section</display_name>
+      <display_name>OsLib_Reporting.zone_equipment_detail_section(nil,nil,nil,true)[:title]</display_name>
       <type>Boolean</type>
       <required>true</required>
       <model_dependent>false</model_dependent>
@@ -274,7 +292,7 @@
     </argument>
     <argument>
       <name>hvac_airloops_detailed_section1</name>
-      <display_name>Include hvac_airloops_detailed_section1</display_name>
+      <display_name>OsLib_Reporting.hvac_airloops_detailed_section1(nil,nil,nil,true)[:title]</display_name>
       <type>Boolean</type>
       <required>true</required>
       <model_dependent>false</model_dependent>
@@ -292,7 +310,7 @@
     </argument>
     <argument>
       <name>hvac_plantloops_detailed_section1</name>
-      <display_name>Include hvac_plantloops_detailed_section1</display_name>
+      <display_name>OsLib_Reporting.hvac_plantloops_detailed_section1(nil,nil,nil,true)[:title]</display_name>
       <type>Boolean</type>
       <required>true</required>
       <model_dependent>false</model_dependent>
@@ -310,7 +328,133 @@
     </argument>
     <argument>
       <name>hvac_zoneEquip_detailed_section1</name>
-      <display_name>Include hvac_zoneEquip_detailed_section1</display_name>
+      <display_name>OsLib_Reporting.hvac_zoneEquip_detailed_section1(nil,nil,nil,true)[:title]</display_name>
+      <type>Boolean</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>true</default_value>
+      <choices>
+        <choice>
+          <value>true</value>
+          <display_name>true</display_name>
+        </choice>
+        <choice>
+          <value>false</value>
+          <display_name>false</display_name>
+        </choice>
+      </choices>
+    </argument>
+    <argument>
+      <name>output_data_end_use_table</name>
+      <display_name>OsLib_Reporting.output_data_end_use_table(nil,nil,nil,true)[:title]</display_name>
+      <type>Boolean</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>true</default_value>
+      <choices>
+        <choice>
+          <value>true</value>
+          <display_name>true</display_name>
+        </choice>
+        <choice>
+          <value>false</value>
+          <display_name>false</display_name>
+        </choice>
+      </choices>
+    </argument>
+    <argument>
+      <name>serviceHotWater_summary_section</name>
+      <display_name>OsLib_Reporting.serviceHotWater_summary_section(nil,nil,nil,true)[:title]</display_name>
+      <type>Boolean</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>true</default_value>
+      <choices>
+        <choice>
+          <value>true</value>
+          <display_name>true</display_name>
+        </choice>
+        <choice>
+          <value>false</value>
+          <display_name>false</display_name>
+        </choice>
+      </choices>
+    </argument>
+    <argument>
+      <name>interior_lighting_summary_section</name>
+      <display_name>OsLib_Reporting.interior_lighting_summary_section(nil,nil,nil,true)[:title]</display_name>
+      <type>Boolean</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>true</default_value>
+      <choices>
+        <choice>
+          <value>true</value>
+          <display_name>true</display_name>
+        </choice>
+        <choice>
+          <value>false</value>
+          <display_name>false</display_name>
+        </choice>
+      </choices>
+    </argument>
+    <argument>
+      <name>interior_lighting_detail_section</name>
+      <display_name>OsLib_Reporting.interior_lighting_detail_section(nil,nil,nil,true)[:title]</display_name>
+      <type>Boolean</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>true</default_value>
+      <choices>
+        <choice>
+          <value>true</value>
+          <display_name>true</display_name>
+        </choice>
+        <choice>
+          <value>false</value>
+          <display_name>false</display_name>
+        </choice>
+      </choices>
+    </argument>
+    <argument>
+      <name>daylighting_summary_section</name>
+      <display_name>OsLib_Reporting.daylighting_summary_section(nil,nil,nil,true)[:title]</display_name>
+      <type>Boolean</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>true</default_value>
+      <choices>
+        <choice>
+          <value>true</value>
+          <display_name>true</display_name>
+        </choice>
+        <choice>
+          <value>false</value>
+          <display_name>false</display_name>
+        </choice>
+      </choices>
+    </argument>
+    <argument>
+      <name>exterior_light_section</name>
+      <display_name>OsLib_Reporting.exterior_light_section(nil,nil,nil,true)[:title]</display_name>
+      <type>Boolean</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>true</default_value>
+      <choices>
+        <choice>
+          <value>true</value>
+          <display_name>true</display_name>
+        </choice>
+        <choice>
+          <value>false</value>
+          <display_name>false</display_name>
+        </choice>
+      </choices>
+    </argument>
+    <argument>
+      <name>shading_summary_section</name>
+      <display_name>OsLib_Reporting.shading_summary_section(nil,nil,nil,true)[:title]</display_name>
       <type>Boolean</type>
       <required>true</required>
       <model_dependent>false</model_dependent>
@@ -1244,31 +1388,49 @@
       <filename>measure.rb</filename>
       <filetype>rb</filetype>
       <usage_type>script</usage_type>
-      <checksum>46521D7C</checksum>
+      <checksum>BE1C5C1C</checksum>
     </file>
     <file>
       <filename>test.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
-      <checksum>CE717BDA</checksum>
+      <checksum>FC09C0F1</checksum>
     </file>
     <file>
       <filename>BTAPMeasureHelper.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>B69DF022</checksum>
+      <checksum>DF8E208E</checksum>
     </file>
     <file>
       <filename>NRCReportingMeasureHelper.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>F37D69BA</checksum>
+      <checksum>984E9ECA</checksum>
+    </file>
+    <file>
+      <filename>test_gr1.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>2C62B17D</checksum>
+    </file>
+    <file>
+      <filename>test_gr2.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>5B358AC2</checksum>
+    </file>
+    <file>
+      <filename>test_gr3.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>8F4A52E5</checksum>
     </file>
     <file>
       <filename>README.md</filename>
       <filetype>md</filetype>
       <usage_type>readme</usage_type>
-      <checksum>2F2678F4</checksum>
+      <checksum>BA0F5624</checksum>
     </file>
   </files>
 </measure>

@@ -5,7 +5,7 @@
 # nrc_set_srr
 
 ## Description
-This measure sets the SRR according to the selected action.
+This measure sets the Skylight to Roof Ratio (SRR) according to the selected action.
 
 ## Modeler Description
 The measure has a dropdown list to select specific pre-defined options. The options are :
@@ -14,8 +14,10 @@ The measure has a dropdown list to select specific pre-defined options. The opti
     •	Don't change skylights
     •	Reduce existing skylight size to meet maximum NECB SRR limit
     •	Set specific SRR
-    Specific SRR is only used if the 'Set specific SRR' option is selected.
+    The Specific SRR argument is only used if the 'Set specific SRR' option is selected.
+	
     This measure sets the SRR according to the NECB rules.
+	
     The measure will detect the version of NECB automatically (default is NECB 2017).
 
 ## Measure Type
@@ -43,8 +45,10 @@ ModelMeasure
 **Required:** false,
 **Model Dependent:** false
 
-## Summary of test cases
-Summary of test arguments and values are [here](./tests/README.html)
 
 
 
+
+
+## Automated Testing
+A summary of the arguments and values used in the automated testing of this measure is [here](./tests/README.md). 

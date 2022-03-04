@@ -9,7 +9,7 @@ class NrcResizeExistingWindowsToMatchAGivenWWR < OpenStudio::Measure::ModelMeasu
   include(NRCMeasureHelper)
   # human readable name
   def name
-    return NrcResizeExistingWindowsToMatchAGivenWWR
+    return 'Nrc Resize Existing Windows To Match A Given WWR'
   end
 
   # human readable description

@@ -150,7 +150,7 @@ class NrcRenameNodes_Test < Minitest::Test
     show_output(result)
     assert(result.value.valueName == 'Success')
 
-    # save the model to test output directory
+    # Save the model to test output directory.
     output_path = "#{output_file_path}/test_output.osm"
     model.save(output_path, true)
     puts "Runner output #{show_output(runner.result)}".green

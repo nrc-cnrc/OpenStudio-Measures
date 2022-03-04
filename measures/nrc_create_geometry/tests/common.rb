@@ -130,7 +130,7 @@ module TestCommon
         "above_grade_floors" => 2,
         "floor_to_floor_height" => 3.2,
         "plenum_height" => 1.0,
-		"sideload" => false
+        "sideload" => false
       }
     end
 
@@ -162,7 +162,7 @@ module TestCommon
         "above_grade_floors" => above_grade_floors,
         "floor_to_floor_height" => 3.2,
         "plenum_height" => 0.0,
-		"sideload" => false
+        "sideload" => false
       }
 
       # Get the city name from the weather file

@@ -5,6 +5,8 @@ include(TestCommon)
 class NrcCreateNECBPrototypeBuilding_Test
 
   def test_2011()
+    sleep(20)
+   
     template = 'NECB2011'
 
     building_types = ['Warehouse',

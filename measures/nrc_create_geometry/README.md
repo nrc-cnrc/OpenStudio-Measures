@@ -91,7 +91,7 @@ ModelMeasure
 **Required:** false,
 **Model Dependent:** false
 
-### Plenum height (m)
+### Plenum height (m), or Enter '0.0' for No Plenum
 
 **Name:** plenum_height,
 **Type:** Double,
@@ -99,6 +99,18 @@ ModelMeasure
 **Required:** false,
 **Model Dependent:** false
 
+### Check for sideload files (to overwrite standards info)?
+
+**Name:** sideload,
+**Type:** Boolean,
+**Units:** ,
+**Required:** true,
+**Model Dependent:** false
 
 
 
+
+
+
+## Automated Testing
+A summary of the arguments and values used in the automated testing of this measure is [here](./tests/README.md).

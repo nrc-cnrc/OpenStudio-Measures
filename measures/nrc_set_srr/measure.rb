@@ -15,7 +15,7 @@ class NrcSetSrr < OpenStudio::Measure::ModelMeasure
 
   # human readable description
   def description
-    return 'This measure sets the SRR according to the selected action.'
+    return 'This measure sets the Skylight to Roof Ratio (SRR) according to the selected action.'
   end
 
   def modeler_description
@@ -25,8 +25,10 @@ class NrcSetSrr < OpenStudio::Measure::ModelMeasure
     •	Don't change skylights
     •	Reduce existing skylight size to meet maximum NECB SRR limit
     •	Set specific SRR
-    Specific SRR is only used if the 'Set specific SRR' option is selected.
+    The Specific SRR argument is only used if the 'Set specific SRR' option is selected.
+	
     This measure sets the SRR according to the NECB rules.
+	
     The measure will detect the version of NECB automatically (default is NECB 2017)."
   end
 

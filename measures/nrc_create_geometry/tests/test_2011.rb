@@ -7,6 +7,7 @@ class NrcCreateGeometry_Test
   def test_2011()
   
     sleep(20)
+  
     # Set the version of NECB to use in this test
     template = 'NECB2011'
     puts "Testing  model creation for #{template}".blue
@@ -26,8 +27,8 @@ class NrcCreateGeometry_Test
           above_grade_floors.each do |floors|
             rotation.each do |rotat|
               epw_files.each do|epw_file|
-                  aspect_ratio.each do |aspect|
-                  run_test(template: template, building_type: type, building_shape: shape, total_floor_area: area, above_grade_floors: floors, rotation: rotat, epw_file: epw_file, aspect_ratio: aspect)
+                aspect_ratio.each do |aspect|
+                  run_test(template: template, building_type: type, building_shape: shape, total_floor_area: area, above_grade_floors: floors, rotation: rotat,epw_file: epw_file, aspect_ratio: aspect)
                 end
               end
             end

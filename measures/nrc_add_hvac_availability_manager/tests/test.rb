@@ -39,19 +39,17 @@ class NrcAddHvacAvailabilityManager_Test < Minitest::Test
         "is_required" => true
       }
     ]
-
-    @good_input_arguments = {
+    @good_input_arguments= {
       "heatcool" => "cooling",
       "setPoint" => 12.0,
     }
-
   end
 
   def test_availabilityManager()
     puts "Testing  cooling availability manager".green
 
     # Define the output folder for this test (optional - default is the method name).
-    output_file_path = NRCMeasureTestHelper.appendOutputFolder("test_availabilityManager")
+    output_file_path = NRCMeasureTestHelper.appendOutputFolder("OutputTestFolder")
 
     # Set standard to use.
     standard = Standard.build("NECB2017")
@@ -63,7 +61,7 @@ class NrcAddHvacAvailabilityManager_Test < Minitest::Test
                                                   sizing_run_dir: output_file_path)
 
     # Set up your argument list to test.
-    input_arguments = @good_input_arguments
+   input_arguments = @good_input_arguments
 
     # Create an instance of the measure
     runner = run_measure(input_arguments, model)
@@ -95,8 +93,7 @@ class NrcAddHvacAvailabilityManager_Test < Minitest::Test
         end
       end
     end
-
-    # save the model to test output directory
+    # Save the model to test output directory.
     output_path = "#{output_file_path}/test_output.osm"
     model.save(output_path, true)
     puts "Runner output #{show_output(runner.result)}".green

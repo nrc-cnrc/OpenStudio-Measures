@@ -129,8 +129,8 @@ class NrcChangeSWHtoASHPWH_Test < Minitest::Test
         assert(ashpwh_created, msg)
       end
 
-      # save the model to test output directory
-      output_path = "#{output_file_path}/after_test_output.osm"
+      # Save the model to test output directory.
+      output_path = "#{output_file_path}/test_output.osm"
       model.save(output_path, true)
       assert(runner.result.value.valueName == 'Success')
     }

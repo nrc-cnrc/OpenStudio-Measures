@@ -15,16 +15,7 @@ class NrcHvacModifyPlantLoopPump_Test < Minitest::Test
 
   # Brings in helper methods to simplify argument testing of json and standard argument methods.
   include(NRCMeasureTestHelper)
-  
-  # Define the output folder.
-  @@test_dir = "#{File.expand_path(__dir__)}/output"
-  # Remove if existing found. This should only be done once.
-  if Dir.exists?(@@test_dir)
-    FileUtils.rm_rf(@@test_dir)
-	sleep 10
-  end
-  Dir.mkdir(@@test_dir)
-  
+
   def setup()
 
     @use_json_package = false
@@ -60,9 +51,9 @@ class NrcHvacModifyPlantLoopPump_Test < Minitest::Test
     puts "Testing modification of single stage DX cooling coil".blue
 	
     ####### Create a test model ######
-	# Set output folder. This should be unique to avoid other tests writing to the same location.
-    NRCMeasureTestHelper.setOutputFolder("#{@@test_dir}/test_sample_2")
-	
+    # Define the output folder for this test (optional - default is the method name).
+    output_file_path = NRCMeasureTestHelper.appendOutputFolder("OutputTestFolder")
+
     # Set standard to use.
     standard = Standard.build("NECB2017")
 
@@ -94,6 +85,9 @@ class NrcHvacModifyPlantLoopPump_Test < Minitest::Test
 		  assert_in_delta(new_motor_efficiency, value, delta = 0.01, msg = 'Motor efficiency (%)')
 		end
 	  end
-	end
+    end
+    # Save the model to test output directory.
+    output_path = "#{output_file_path}/test_output.osm"
+    model.save(output_path, true)
   end
 end
