@@ -21,7 +21,7 @@ Note the output from the tests. If a test fails read the output messages to dete
 When running all the tests the _measure.xml_ and teh _README.md_ (in the measure folder) files will all be updated. To easily add these files 
 to the repo the git command is:
 
->git add -- \*measure.xml
+>git add -- \\*measure.xml
 
 these changes should then be committed with the message:
 
