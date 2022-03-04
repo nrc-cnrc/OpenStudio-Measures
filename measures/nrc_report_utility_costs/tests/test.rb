@@ -72,7 +72,8 @@ class NrcReportUtilityCosts_Test < Minitest::Test
     model = model.get
 
     # Assign the local weather file (have to provide a full path to EpwFile).
-    epw = OpenStudio::EpwFile.new("#{File.dirname(__FILE__)}/weather_files/CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw")
+	epw_path = File.expand_path("#{File.dirname(__FILE__)}/weather_files/CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw")
+    epw = OpenStudio::EpwFile.new(epw_path)
     OpenStudio::Model::WeatherFile::setWeatherFile(model, epw)
 	
     # Set input args. In this case the std matches the one used to create the test model.
