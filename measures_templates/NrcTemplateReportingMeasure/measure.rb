@@ -25,9 +25,14 @@ class NrcReportingMeasure < OpenStudio::Measure::ReportingMeasure
     return "This template reporting measure is used to ensure consistency in BTAP measures using the NRC modificatoins."
   end
   
-  # Define the outputs that the measure will create ??? Can this be folded into the initialise method?
+  # Define the outputs that the measure will create. Examples provided.
   def outputs
     outs = OpenStudio::Measure::OSOutputVector.new
+    outs << OpenStudio::Measure::OSOutput.makeDoubleOutput('total_site_energy') # kWh; 4 significant figs
+    outs << OpenStudio::Measure::OSOutput.makeDoubleOutput('annual_electricity_use') # kWh; 3 significant figs
+    outs << OpenStudio::Measure::OSOutput.makeDoubleOutput('annual_natural_gas_use') # GJ; 3 significant figs
+    outs << OpenStudio::Measure::OSOutput.makeDoubleOutput('annual_electricity_cost') # $; 2 decimal places
+    outs << OpenStudio::Measure::OSOutput.makeDoubleOutput('annual_natural_gas_cost') # $; 2 decimal places
     return outs
   end
 
@@ -36,17 +41,22 @@ class NrcReportingMeasure < OpenStudio::Measure::ReportingMeasure
   def energyPlusOutputRequests(runner, user_arguments)
     super(runner, user_arguments)
 
-    result = OpenStudio::IdfObjectVector.new
+    request = OpenStudio::IdfObjectVector.new
 
     # use the built-in error checking
     if !runner.validateUserArguments(arguments, user_arguments)
-      return result
+      return request
     end
 
-    request = OpenStudio::IdfObject.load('Output:Variable,,Site Outdoor Air Drybulb Temperature,Hourly;').get
-    result << request
+    # List outputs required.
+	# Examples:
+    request << OpenStudio::IdfObject.load('Output:Variable,,Site Outdoor Air Drybulb Temperature,Hourly;').get
+    request << OpenStudio::IdfObject.load('Output:Meter,NaturalGas:Facility,Monthly;').get
+    request << OpenStudio::IdfObject.load('Output:Meter,Electricity:Facility,Monthly;').get
+    request << OpenStudio::IdfObject.load('Output:Meter,NaturalGas:Facility,Hourly;').get
+    request << OpenStudio::IdfObject.load('Output:Meter,Electricity:Facility,Hourly;').get
 
-    return result
+    return request
   end
   
   # Use the constructor to set global variables
@@ -129,7 +139,7 @@ class NrcReportingMeasure < OpenStudio::Measure::ReportingMeasure
     #puts JSON.pretty_generate(arguments)
     return false if false == arguments
 	
-    # get the last model and sql file
+    # Get the last model and sql file.
     model = runner.lastOpenStudioModel
     if model.empty?
       runner.registerError('Cannot find last model.')
@@ -160,7 +170,7 @@ class NrcReportingMeasure < OpenStudio::Measure::ReportingMeasure
       html_in = file.read
     end
 
-    # get the weather file run period (as opposed to design day run period)
+    # Get the weather file run period (as opposed to design day run period)
     ann_env_pd = nil
     sql_file.availableEnvPeriods.each do |env_pd|
       env_type = sql_file.environmentType(env_pd)
@@ -172,10 +182,10 @@ class NrcReportingMeasure < OpenStudio::Measure::ReportingMeasure
       end
     end
 
-    # only try to get the annual timeseries if an annual simulation was run
+    # Only try to get the annual timeseries if an annual simulation was run
     if ann_env_pd
 
-      # get desired variable
+      # Get desired variable
       key_value = 'Environment'
       time_step = 'Hourly' # "Zone Timestep", "Hourly", "HVAC System Timestep"
       variable_name = 'Site Outdoor Air Drybulb Temperature'
@@ -190,11 +200,11 @@ class NrcReportingMeasure < OpenStudio::Measure::ReportingMeasure
       runner.registerWarning('No annual environment period found.')
     end
 
-    # configure template with variable values
+    # Configure template with variable values
     renderer = ERB.new(html_in)
     html_out = renderer.result(binding)
 
-    # write html file
+    # Write html file
     html_out_path = './report.html'
     File.open(html_out_path, 'w') do |file|
       file << html_out
@@ -205,6 +215,14 @@ class NrcReportingMeasure < OpenStudio::Measure::ReportingMeasure
         file.flush
       end
     end
+	
+	# Recover the EUI (set as an output above). Examples based on above requests.
+    totalSiteEnergy_kWh = OpenStudio.convert(@sql_file.totalSiteEnergy.get, "GJ", "kWh").get
+    runner.registerValue('total_site_energy', totalSiteEnergy_kWh.signif(4), 'kWh')
+    #runner.registerValue('annual_electricity_use', annual_elec.signif, 'kWh')
+    #runner.registerValue('annual_natural_gas_use', annual_gas.signif, 'GJ')
+    #runner.registerValue('annual_electricity_cost', (annual_elec*elec_rate).round(2), '$')
+    #runner.registerValue('annual_natural_gas_cost', (annual_gas*elec_rate).round(2), '$')
 
     # close the sql file
     sql_file.close
