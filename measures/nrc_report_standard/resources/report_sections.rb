@@ -17,17 +17,9 @@ class NrcReportingMeasureStandard < OpenStudio::Measure::ReportingMeasure
     end
 	def to_json(*args)
 	  {
-	     JSON.create_id => self.class.name,
-		 'content' => content
+	     :class => self.class.name,
+		 :content => content
 	  }.to_json(*args)
-	end
-	def self.json_create(object)
-      obj = new
-      for key, value in object
-        next if key == JSON.create_id
-        instance_variable_set "@#{key}", value
-      end
-      obj
 	end
   end
 
@@ -45,17 +37,9 @@ class NrcReportingMeasureStandard < OpenStudio::Measure::ReportingMeasure
 	end
 	def to_json(*args)
 	  {
-	     JSON.create_id => self.class.name,
-		 'content' => content
+	     :class => self.class.name,
+		 :content => content
 	  }.to_json(*args)
-	end
-	def self.json_create(object)
-      obj = new
-      for key, value in object
-        next if key == JSON.create_id
-        instance_variable_set "@#{key}", value
-      end
-      obj
 	end
   end
 
