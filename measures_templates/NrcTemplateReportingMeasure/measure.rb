@@ -217,7 +217,7 @@ class NrcReportingMeasure < OpenStudio::Measure::ReportingMeasure
     end
 	
 	# Recover the EUI (set as an output above). Examples based on above requests.
-    totalSiteEnergy_kWh = OpenStudio.convert(@sql_file.totalSiteEnergy.get, "GJ", "kWh").get
+    totalSiteEnergy_kWh = OpenStudio.convert(sql_file.totalSiteEnergy.get, "GJ", "kWh").get
     runner.registerValue('total_site_energy', totalSiteEnergy_kWh.signif(4), 'kWh')
     #runner.registerValue('annual_electricity_use', annual_elec.signif, 'kWh')
     #runner.registerValue('annual_natural_gas_use', annual_gas.signif, 'GJ')
