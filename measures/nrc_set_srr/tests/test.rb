@@ -39,16 +39,17 @@ class NrcSetSrr_Test < Minitest::Test
 
   # Loop through all input arguments to test all possibilities
   def test_inputArguments
-    puts "Testing specific SRR".green
+    puts "Testing measure dropdown options".green
 
     translator = OpenStudio::OSVersion::VersionTranslator.new
     path = OpenStudio::Path.new(File.dirname(__FILE__) + "/resources/Warehouse-NECB2017-ON_Ottawa.osm")
     model = translator.loadModel(path)
     assert((not model.empty?))
     model = model.get
-
+    standard = Standard.build("NECB2017") # Need this for the checks below, must match the model.
+	
+    # Loop through all surfaces used in the model to get the initial srr before running the measure.
     initial_srr = 0.0
-    #loop through all surfaces used in the model to get the initial srr before running the measure
     model.getSpaces.sort.each do |space|
       space.surfaces.sort.each do |surface|
         if surface.outsideBoundaryCondition == "Outdoors" and surface.surfaceType == "RoofCeiling"
@@ -56,16 +57,10 @@ class NrcSetSrr_Test < Minitest::Test
         end
       end
     end
-    standard = Standard.build("NECB2017")
-
-    # Check if a 'README' file exists, then delete it
-    File.delete("README.html") if File.exist?("README.html")
-    $title_bool = true
-    $num = 1
-
+	
+	# Test the dropdown options.
     all_srr_options = ["Remove the skylights", "Set skylights to match max SRR from NECB", "Don't change skylights", "Reduce existing skylight size to meet maximum NECB SRR limit", "Set specific SRR"]
     all_srr_options.each do |srr_options|
-
       puts "################# Testing".green + " #{srr_options}".light_blue + " #################".green
 
       # get arguments
@@ -78,12 +73,10 @@ class NrcSetSrr_Test < Minitest::Test
       srr_options_noSpaces = srr_options.gsub(/[[:space:]]/, '_') # Replace spaces by '_'
       test_name = "#{srr_options_noSpaces}"
 
-      reportCase(test_name, input_arguments)
-
       # Define the output folder for this test (optional - default is the method name).
       output_file_path = NRCMeasureTestHelper.appendOutputFolder("#{test_name}")
 
-      # Set argument values to good values and run the measure on model with spaces
+      # Set argument values to good values and run the measure on model with spaces.
       runner = run_measure(input_arguments, model)
       result = runner.result
       assert(result.value.valueName == 'Success')
@@ -103,8 +96,9 @@ class NrcSetSrr_Test < Minitest::Test
       elsif (srr_options == "Set specific SRR")
         expected_srr = srr
       end
-      # A test to check if the measure has successfully set the required srr.
-      # The test will loop through all subsurfaces and calculate the srr
+      
+	  # A test to check if the measure has successfully set the required srr.
+      # The test will loop through all subsurfaces and calculate the srr.
       skylight_area_total = 0.0
       model.getBuilding.roofs.each do |surface|
         surface.subSurfaces.each do |subsurf|
@@ -116,10 +110,82 @@ class NrcSetSrr_Test < Minitest::Test
       srr_calculated = calculateSRR(model)
       assert_equal(srr_calculated.round(3), expected_srr.round(3), "Skylights did not change correctly")
       puts "SRR".green + " #{srr_calculated.round(3)}".light_blue + "; expected SRR ".green + "#{expected_srr.round(3)}".light_blue
-      # test if the measure would grab the correct number and value of input argument.
+      
+	  # Test if the measure would grab the correct number and value of input argument.
       assert_equal(2, input_arguments.size)
 
-      # save the model to test output directory
+      # Save the model to test output directory.
+      output_path = "#{output_file_path}/test_output.osm"
+      model.save(output_path, true)
+      puts "Runner output #{show_output(runner.result)}".green
+      assert(runner.result.value.valueName == 'Success')
+    end
+  end
+  
+  
+  # Loop through various SRR values
+  def test_specificSRRvalues
+    puts "Testing specific SRR values".green
+
+    translator = OpenStudio::OSVersion::VersionTranslator.new
+    path = OpenStudio::Path.new(File.dirname(__FILE__) + "/resources/Warehouse-NECB2017-ON_Ottawa.osm")
+    model = translator.loadModel(path)
+    assert((not model.empty?))
+    model = model.get
+
+    # Loop through all surfaces used in the model to get the initial srr before running the measure.
+    initial_srr = 0.0
+    model.getSpaces.sort.each do |space|
+      space.surfaces.sort.each do |surface|
+        if surface.outsideBoundaryCondition == "Outdoors" and surface.surfaceType == "RoofCeiling"
+          initial_srr = surface.skylightToRoofRatio.round(2)
+        end
+      end
+    end
+
+
+    all_srr_options = [0.15, 0.20, 0.22, 0.35, 0.60]
+    all_srr_options.each do |srr_options|
+
+      puts "################# Testing".green + " #{srr_options}".light_blue + " #################".green
+
+      # get arguments
+      input_arguments = {
+        "srr_options" => "Set specific SRR",
+        "srr" => srr_options
+      }
+      srr = input_arguments['srr']
+      srr_options = input_arguments['srr_options']
+      srr_options_noSpaces = srr_options.gsub(/[[:space:]]/, '_') # Replace spaces by '_'
+      test_name = "#{srr_options_noSpaces}"
+
+
+      # Define the output folder for this test (optional - default is the method name).
+      output_file_path = NRCMeasureTestHelper.appendOutputFolder("#{test_name}")
+
+      # Set argument values to good values and run the measure on model with spaces.
+      runner = run_measure(input_arguments, model)
+      result = runner.result
+      assert(result.value.valueName == 'Success')
+
+      # A test to check if the measure has successfully set the required srr.
+      # The test will loop through all subsurfaces and calculate the srr
+      skylight_area_total = 0.0
+      model.getBuilding.roofs.each do |surface|
+        surface.subSurfaces.each do |subsurf|
+          area = subsurf.netArea
+          skylight_area_total += area
+        end
+      end
+
+      srr_calculated = calculateSRR(model)
+      assert_equal(srr_calculated.round(3), srr.round(3), "Skylights did not change correctly")
+      puts "SRR".green + " #{srr_calculated.round(3)}".light_blue + "; expected SRR ".green + "#{srr.round(3)}".light_blue
+      
+	  # Test if the measure would grab the correct number and value of input argument.
+      assert_equal(2, input_arguments.size)
+
+      # Save the model to test output directory
       output_path = "#{output_file_path}/test_output.osm"
       model.save(output_path, true)
       puts "Runner output #{show_output(runner.result)}".green

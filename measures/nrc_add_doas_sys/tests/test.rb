@@ -50,12 +50,8 @@ class NrcAddDOASSys_Test < Minitest::Test
     # test if the measure would grab the correct number and value of input argument.
     assert_equal(1, arguments.size)
 
-    # Define the output folder.
-    test_dir = "#{File.dirname(__FILE__)}/output"
-    if !Dir.exists?(test_dir)
-      Dir.mkdir(test_dir)
-    end
-    NRCMeasureTestHelper.setOutputFolder("#{test_dir}")
+    # Define the output folder for this test (optional - default is the method name).
+    output_file_path = NRCMeasureTestHelper.appendOutputFolder("OutputTestFolder")
 
     # Run the measure and check output
     runner = run_measure(input_arguments, model)
@@ -86,9 +82,9 @@ class NrcAddDOASSys_Test < Minitest::Test
       assert (0.001 > outdoor_flow)
     end
 
-    # save the model to test output directory
-    output_file_path = "#{File.dirname(__FILE__)}//#{test_dir}/test_output.osm"
-    model.save(output_file_path, true)
+    # Save the model to test output directory.
+    output_path = "#{output_file_path}/test_output.osm"
+    model.save(output_path, true)
 
   end
 end

@@ -20,15 +20,6 @@ module TestCommon
     include(NRCMeasureTestHelper)
 
     def setup()
-      # Define the output folder.
-      @test_dir = "#{File.dirname(__FILE__)}/output"
-      # Create if does not exist. Different logic from outher testing as there are multiple test scripts writing
-      # to this folder so it cannot be deleted.
-      if !Dir.exists?(@test_dir)
-        puts "Creating output folder: #{@test_dir}".blue
-        Dir.mkdir(@test_dir)
-      end
-
       # Copied from measure.
       @use_json_package = false
       @use_string_double = true
@@ -168,8 +159,7 @@ module TestCommon
     end
 
     def run_test(necb_template:, building_type_in:, epw_file_in:)
-      puts "Testing  model creation for #{building_type_in}-#{necb_template}-#{File.basename(epw_file_in, '.epw')}".blue
-      puts "Test dir: #{@test_dir}".blue
+      puts "Testing  model creation for ".green + "#{building_type_in}-#{necb_template}-#{File.basename(epw_file_in, '.epw')}".light_blue
       # Make an empty model
       model = OpenStudio::Model::Model.new
 
@@ -182,17 +172,19 @@ module TestCommon
 
       # Define specific output folder for this test.
       model_name = "#{building_type_in}-#{necb_template}-#{File.basename(epw_file_in, '.epw')}"
-      puts "Model name #{model_name}".pink
+      puts "Model name ". green + "#{model_name}".light_blue
       if Dir.exist?(model_name) then
         puts "WARNING: Removing existing output folder #{model_name}".yellow
         FileUtils.remove_dir(model_name, force = true)
       end
-      outputFolder = NRCMeasureTestHelper.setOutputFolder("#{@test_dir}/#{model_name}")
+
+      output_file_path = NRCMeasureTestHelper.appendOutputFolder("OutputTestFolder")
+
       # Run the measure and check output.
       runner = run_measure(input_arguments, model)
       assert(runner.result.value.valueName == 'Success')
       # save the model to test output directory
-      output_file_path = "#{outputFolder}/#{model_name}.osm"
+      outputFolder = "#{output_file_path}/#{model_name}.osm"
       model.save(output_file_path, true)
 
       begin
@@ -227,7 +219,7 @@ module TestCommon
       end
 
       # Write out diff or error message (make sure an old file does not exist).
-      diff_file = "#{outputFolder}/#{model_name}_diffs.json"
+      diff_file = "#{output_file_path}/#{model_name}_diffs.json"
       FileUtils.rm(diff_file) if File.exists?(diff_file)
       if diffs.size > 0
         $num_failed += 1

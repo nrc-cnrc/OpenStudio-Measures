@@ -121,11 +121,17 @@ class NrcCreateGeometry < OpenStudio::Measure::ModelMeasure
       {
         "name" => "plenum_height",
         "type" => "Double",
-        "display_name" => "Plenum height (m)",
-        "default_value" => 1.0,
+        "display_name" => "Plenum height (m), or Enter '0.0' for No Plenum",
+        "default_value" => 0.0,
         "max_double_value" => 2.0,
-        "min_double_value" => 0.1,
         "is_required" => false
+      },
+      {
+        "name" => "sideload",
+        "type" => "Bool",
+        "display_name" => "Check for sideload files (to overwrite standards info)?",
+        "default_value" => false,
+        "is_required" => true
       }
     ]
   end
@@ -136,6 +142,7 @@ class NrcCreateGeometry < OpenStudio::Measure::ModelMeasure
     #Runs parent run method.
     super(model, runner, user_arguments)
 
+    @runner = runner
     # Gets arguments from interfaced and puts them in a hash with there display name. This also does a check on ranges to
     # ensure that the values inputted are valid based on your @measure_interface array of hashes.
     arguments = validate_and_get_arguments_in_hash(model, runner, user_arguments)
@@ -156,6 +163,11 @@ class NrcCreateGeometry < OpenStudio::Measure::ModelMeasure
     plenum_height = arguments['plenum_height']
     floor_area = total_floor_area / above_grade_floors
     climate_zone = 'NECB HDD Method'
+    sideload = arguments['sideload']
+
+    if plenum_height <= 0
+      plenum_height = 0.0
+    end
 
     # reporting initial condition of model
     starting_spaceTypes = model.getSpaceTypes
@@ -289,13 +301,23 @@ class NrcCreateGeometry < OpenStudio::Measure::ModelMeasure
 
     #Rotate model.
     building = model.getBuilding
+
     runner.registerInitialCondition("The building's initial rotation was #{building.northAxis} degrees.".light_blue)
     final_rotation = building.northAxis + rotation
     building.setNorthAxis(final_rotation)
     runner.registerInfo("The building has been rotated by #{building.northAxis} degrees.")
-    # Geometry is now complete. Need to add space types and then run through prototype creation methods.
+
     # Define version of NECB to use
     standard = Standard.build(template)
+
+    # Compare skylight to roof ratio before and after running the 'json_sideload' method
+    srr_lim = standard.get_standards_constant('skylight_to_roof_ratio_max_value')
+    runner.registerInitialCondition("The building's SRR was".green + " #{srr_lim}.".light_blue)
+
+    # Side load json files into standard.
+    if sideload then
+      standard = json_sideload(standard)
+    end
 
     # Need to set building level info
     building = model.getBuilding
@@ -368,12 +390,16 @@ class NrcCreateGeometry < OpenStudio::Measure::ModelMeasure
                                   epw_file: epw_file,
                                   sizing_run_dir: NRCMeasureTestHelper.outputFolder)
 
+    # Check if new SRR was set properly
+    srr_lim = standard.get_standards_constant('skylight_to_roof_ratio_max_value')
+    runner.registerFinalCondition("The building's SRR is changed to ".green + " #{srr_lim}.".light_blue)
+
     finishing_spaceTypes = model.getSpaceTypes
     num_thermalZones = model.getThermalZones.size
     finishing_constructionSets = model.getDefaultConstructionSets
     runner.registerInfo("The building finished with #{finishing_spaceTypes.size} space type.")
 
-    # Map building type to a building evel space usage in NECB
+    # Map building type to a building level space usage in NECB
     if building_type == "School/university"
       building_type = "School"
     elsif building_type == "Hotel/Motel"
@@ -381,8 +407,59 @@ class NrcCreateGeometry < OpenStudio::Measure::ModelMeasure
     elsif building_type == "Dining - cafeteria/fast food"
       building_type = "Dining - cafeteria"
     end
-
     return true
+  end
+
+  # Check for sideload files and update standards tables etc.
+  def json_sideload(standard)
+    path = "#{File.dirname(__FILE__)}/resources/data_sideload"
+    raise ("Could not find data_sideload folder".red) unless Dir.exist?(path)
+    files = Dir.glob("#{path}/*.json").select { |e| File.file? e }
+    files.each do |file|
+      @runner.registerInfo("Reading side load file: ".green + "#{file}".light_blue)
+      data = JSON.parse(File.read(file))
+      if not data["tables"].nil?
+        data['tables'].keys.each do |table|
+          @runner.registerInfo("Updating standard table: ".green + " #{table}".light_blue)
+          @runner.registerInfo("Existing data: ".green + " #{standard.standards_data[table]}".light_blue)
+          @runner.registerInfo("Replacement data: ".green + " #{data['tables'][table]}".light_blue)
+        end
+        standard.standards_data["tables"] = [*standard.standards_data["tables"], *data["tables"]].to_h
+        standard.corrupt_standards_database
+        data['tables'].keys.each do |table|
+          @runner.registerInfo("Table: ".green + " #{table}".light_blue)
+          @runner.registerInfo("Updated data: ".green + " #{standard.standards_data[table]}".light_blue)
+        end
+      elsif not data["formulas"].nil?
+        data['formulas'].keys.each do |formula|
+          @runner.registerInfo("Updating standard formula: ".green + " #{formula}".light_blue)
+          @runner.registerInfo("Existing data   : ".green + " #{standard.get_standards_formula(formula)}".light_blue)
+          @runner.registerInfo("Replacement data: ".green + " #{data['formulas'][formula]['value']}".light_blue)
+        end
+        standard.standards_data["formulas"] = [*standard.standards_data["formulas"], *data["formulas"]].to_h
+        standard.corrupt_standards_database
+        data['formulas'].keys.each do |formula|
+          @runner.registerInfo("Formula: ".green + " #{formula}".light_blue)
+          @runner.registerInfo("Updated data    : ".green + " #{standard.get_standards_formula(formula)}".light_blue)
+        end
+      elsif not data["constants"].nil?
+        data['constants'].keys.each do |value|
+          @runner.registerInfo("Updating standard constants value: ".green + "#{value}".light_blue)
+          @runner.registerInfo("Existing constants data   : ".green + "#{standard.get_standards_constant(value)}".light_blue)
+          @runner.registerInfo("Replacement constants data: ".green + "#{data['constants'][value]['value']}".light_blue)
+        end
+        standard.standards_data["constants"] = [*standard.standards_data["constants"], *data["constants"]].to_h
+        standard.corrupt_standards_database
+        data['constants'].keys.each do |value|
+          @runner.registerInfo("Constants value: ".green + "#{value}".light_blue)
+          @runner.registerInfo("Updated constants data  :".green + " #{standard.get_standards_constant(value)}".light_blue)
+        end
+      else
+        #standard.standards_data[data.keys.first] = data[data.keys.first]
+      end
+      @runner.registerWarning("Replaced default standard data with contents in #{file}".yellow)
+    end
+    return standard
   end
 end
 

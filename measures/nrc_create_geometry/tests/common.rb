@@ -20,16 +20,6 @@ module TestCommon
     include(NRCMeasureTestHelper)
 
     def setup()
-      # Define the output folder.
-      @test_dir = "#{File.dirname(__FILE__)}/output"
-
-      # Create if does not exist. Different logic from outher testing as there are multiple test scripts writing 
-      # to this folder so it cannot be deleted.
-      if !Dir.exists?(@test_dir)
-        puts "Creating output folder: #{@test_dir}"
-        Dir.mkdir(@test_dir)
-      end
-
       # Copied from measure.
       @use_json_package = false
       @use_string_double = true
@@ -115,11 +105,17 @@ module TestCommon
           {
             "name" => "plenum_height",
             "type" => "Double",
-            "display_name" => "Plenum height (m)",
-            "default_value" => 1.0,
+            "display_name" => "Plenum height (m), or Enter '0.0' for No Plenum",
+            "default_value" => 0.0,
             "max_double_value" => 2.0,
-            "min_double_value" => 0.1,
             "is_required" => false
+          },
+          {
+            "name" => "sideload",
+            "type" => "Bool",
+            "display_name" => "Check for sideload files (to overwrite standards info)?",
+            "default_value" => false,
+            "is_required" => true
           }
         ]
 
@@ -133,21 +129,24 @@ module TestCommon
         "rotation" => 30.0,
         "above_grade_floors" => 2,
         "floor_to_floor_height" => 3.2,
-        "plenum_height" => 1.0
+        "plenum_height" => 1.0,
+        "sideload" => false
       }
     end
 
-   def run_test(template: 'NECB2011', building_type: 'Warehouse', building_shape: 'Rectangular', total_floor_area: 20000, above_grade_floors: 3, rotation: 0,epw_file: 'CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw', aspect_ratio: 1)
+    def run_test(template: 'NECB2011', building_type: 'Warehouse', building_shape: 'Rectangular', total_floor_area: 20000, above_grade_floors: 3, rotation: 0, epw_file: 'CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw', aspect_ratio: 1)
+      # Define the output folder for this test (optional - default is the method name).
+      output_file_path = NRCMeasureTestHelper.appendOutputFolder("test_geometry")
 
       ####### Test Model Creation ######
-      puts "  Testing for arguments:".light_blue
-      puts "  Building type: #{building_type}".light_blue
-      puts "  Building shape: #{building_shape}".light_blue
-      puts "  Code version: #{template}".light_blue
-      puts "  Total floor area: #{total_floor_area}".light_blue
-      puts "  Above grade floors: #{above_grade_floors}".light_blue
-      puts "  Rotation: #{rotation}".light_blue
-      puts "  Aspect_ratio: #{aspect_ratio}".light_blue
+      puts "  Testing for arguments:".green
+      puts "  Building type: ".green + " #{building_type}".light_blue
+      puts "  Building shape: ".green + " #{building_shape}".light_blue
+      puts "  Code version: ".green + " #{template}".light_blue
+      puts "  Total floor area:".green + " #{total_floor_area}".light_blue
+      puts "  Above grade floors: ".green + " #{above_grade_floors}".light_blue
+      puts "  Rotation: ".green + " #{rotation}".light_blue
+      puts "  Aspect_ratio: ".green + " #{aspect_ratio}".light_blue
 
       # Make an empty model
       model = OpenStudio::Model::Model.new
@@ -162,7 +161,8 @@ module TestCommon
         "rotation" => rotation,
         "above_grade_floors" => above_grade_floors,
         "floor_to_floor_height" => 3.2,
-        "plenum_height" => 1.0
+        "plenum_height" => 0.0,
+        "sideload" => false
       }
 
       # Get the city name from the weather file
@@ -170,13 +170,12 @@ module TestCommon
       city = city1[2].split(".").first
 
       # Define the output folder for the model. (First delete the folder if it exists)
-      model_output_folder = "#{@test_dir}/#{building_shape}-#{building_type}-#{template}-#{rotation}-#{city}"
-      puts "  Output folder #{model_output_folder}".pink
+      model_output_folder = "#{output_file_path}/#{building_shape}-#{building_type}-#{template}-#{rotation.to_int}-#{city}-#{above_grade_floors}-#{total_floor_area.to_int}-#{aspect_ratio}"
+      puts "  Output folder ".green + " #{model_output_folder}".light_blue
       if Dir.exist?(model_output_folder) then
         puts "WARNING: Removing existing output folder #{model_output_folder}".yellow
         FileUtils.remove_dir(model_output_folder, force = true)
       end
-      NRCMeasureTestHelper.setOutputFolder(model_output_folder)
 
       # Create an instance of the measure with good values
       runner = run_measure(input_arguments, model)
@@ -188,8 +187,8 @@ module TestCommon
       assert(runner.result.value.valueName == 'Success')
 
       # save the model to test output directory
-      output_file_path = "#{model_output_folder}/output.osm"
-      model.save(output_file_path, true)
+      output_file_path1 = "#{model_output_folder}/output.osm"
+      model.save(output_file_path1, true)
     end
   end
 end

@@ -15,14 +15,6 @@ class NrcSetFdwr_Test < Minitest::Test
   # Brings in helper methods to simplify argument testing of json and standard argument methods.
   include(NRCMeasureTestHelper)
 
-  # Define the output folder.
-  @@test_dir = "#{File.dirname(__FILE__)}/output"
-  # Remove if existing found. This should only be done once.
-  if Dir.exists?(@@test_dir)
-    FileUtils.rm_rf(@@test_dir)
-  end
-  Dir.mkdir(@@test_dir)
-
   def setup()
     @measure_interface_detailed = [
       {
@@ -76,8 +68,9 @@ class NrcSetFdwr_Test < Minitest::Test
       fdwr_options = input_arguments['fdwr_options']
       fdwr_options_noSpaces = fdwr_options.gsub(/[[:space:]]/, '_') # Replace spaces by '_'
       hdd = standard.get_necb_hdd18(model)
-      # Define the output folder for this test.
-      NRCMeasureTestHelper.setOutputFolder("#{@@test_dir}/#{fdwr_options_noSpaces}")
+
+      # Define the output folder for this test (optional - default is the method name).
+      output_file_path = NRCMeasureTestHelper.appendOutputFolder("#{fdwr_options_noSpaces}")
 
       # Set argument values to good values and run the measure on model with spaces
       runner = run_measure(input_arguments, model)
@@ -105,9 +98,9 @@ class NrcSetFdwr_Test < Minitest::Test
       # test if the measure would grab the correct number and value of input argument.
       assert_equal(2, input_arguments.size)
 
-      # save the model to test output directory
-      output_file_path = "#{NRCMeasureTestHelper.outputFolder}/test_output.osm"
-      model.save(output_file_path, true)
+      # Save the model to test output directory.
+      output_path = "#{output_file_path}/test_output.osm"
+      model.save(output_path, true)
     end
   end
 

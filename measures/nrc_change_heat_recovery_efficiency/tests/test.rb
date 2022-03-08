@@ -121,12 +121,8 @@ class NrcChangeEnergyRecoveryEfficiency_Test < Minitest::Test
     assert_equal('sensible_eff_at_75_cooling', arguments[6].name)
     assert_equal('latent_eff_at_75_cooling', arguments[7].name)
 
-    # Define the output folder.
-    test_dir = "#{File.dirname(__FILE__)}/output"
-    if !Dir.exists?(test_dir)
-      Dir.mkdir(test_dir)
-    end
-    NRCMeasureTestHelper.setOutputFolder("#{test_dir}")
+    # Define the output folder for this test (optional - default is the method name).
+    output_file_path = NRCMeasureTestHelper.appendOutputFolder("OutputTestFolder")
 
     # Run the measure and check output
     runner = run_measure(input_arguments, model)
@@ -153,8 +149,8 @@ class NrcChangeEnergyRecoveryEfficiency_Test < Minitest::Test
       end
     end
 
-    # save the model to test output directory
-    output_file_path = "#{File.dirname(__FILE__)}//#{test_dir}/test_output.osm"
-    model.save(output_file_path, true)
+    # Save the model to test output directory.
+    output_path = "#{output_file_path}/test_output.osm"
+    model.save(output_path, true)
   end
 end

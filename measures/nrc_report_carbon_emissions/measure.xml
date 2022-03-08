@@ -3,16 +3,17 @@
   <schema_version>3.0</schema_version>
   <name>nrc_report_carbon_emissions</name>
   <uid>11a12238-d360-4ad9-8d85-58b56c67cf83</uid>
-  <version_id>f5dbd2d9-c95c-410a-8e5e-c031f56b8515</version_id>
-  <version_modified>20220202T211610Z</version_modified>
+  <version_id>a949faff-076e-41f4-afb0-bd3c37fda8d5</version_id>
+  <version_modified>20220303T165551Z</version_modified>
   <xml_checksum>9BF1E6AC</xml_checksum>
   <class_name>NrcReportCarbonEmissions</class_name>
   <display_name>NrcReportCarbonEmissions</display_name>
   <description>This reporting measure calculates the annual greenhouse gas emissions.</description>
-  <modeler_description>This measure calculates the GHG emissions expressed in tonnes CO2eq. Annual electricity intensity factors before year 2019 are defined in 'NATIONAL INVENTORY REPORT 1990 2018: GREENHOUSE GAS SOURCES AND SINKS IN CANADA CANADA’S SUBMISSION TO
-            THE UNITED NATIONS FRAMEWORK CONVENTION ON CLIMATE CHANGE(http://publications.gc.ca/collections/collection_2020/eccc/En81-4-2018-3-eng.pdf)'.
-            Whereas annual electricity intensity factors after year 2019 and also future GHG factors till 2050 are created by Environment and Climate Change Canada.
-            There are no electricity emission factors for Nunavut for the following years : 1990, 2000, and 2005.
+  <modeler_description>This measure calculates the GHG emissions expressed in tonnes CO2eq based on Emission Factors from NIR reports and Energy Star Portfolio Manager. User can select emission factors before year 2019 from one of 3 NIR reports (2019, 2020 and 2021).
+            Emission Factors from 2019 NIR reports are till 2017, Emission Factors from 2020 NIR reports are till 2018, and Emission Factors from 2019 NIR reports are till 2020.
+            If the input argument 'Year' was selected equals to '2018' or '2019', and input argument 'NIR Report Year' was selected '2019' or '2020', Emission
+            Factors will be calculated based on NIR Report '2021'
+            Future GHG factors till 2050 are created by Environment and Climate Change Canada.
             The natural gas emission factors for each province are calculated by Environment and Climate Change Canada.</modeler_description>
   <arguments>
     <argument>
@@ -21,8 +22,12 @@
       <type>Choice</type>
       <required>true</required>
       <model_dependent>false</model_dependent>
-      <default_value>Ontario</default_value>
+      <default_value>Get From the Model</default_value>
       <choices>
+        <choice>
+          <value>Get From the Model</value>
+          <display_name>Get From the Model</display_name>
+        </choice>
         <choice>
           <value>Canada</value>
           <display_name>Canada</display_name>
@@ -87,7 +92,7 @@
       <type>Choice</type>
       <required>true</required>
       <model_dependent>false</model_dependent>
-      <default_value>2037</default_value>
+      <default_value>1990</default_value>
       <choices>
         <choice>
           <value>1990</value>
@@ -256,8 +261,30 @@
       </choices>
     </argument>
     <argument>
-      <name>model_summary_section</name>
-      <display_name>model_summary_section</display_name>
+      <name>nir_report_year</name>
+      <display_name>NIR Report Year</display_name>
+      <type>Choice</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>2019</default_value>
+      <choices>
+        <choice>
+          <value>2019</value>
+          <display_name>2019</display_name>
+        </choice>
+        <choice>
+          <value>2020</value>
+          <display_name>2020</display_name>
+        </choice>
+        <choice>
+          <value>2021</value>
+          <display_name>2021</display_name>
+        </choice>
+      </choices>
+    </argument>
+    <argument>
+      <name>ghg_NIR_summary_section</name>
+      <display_name>OsLib_Reporting.ghg_NIR_summary_section(nil,nil,nil,true)[:title]</display_name>
       <type>Boolean</type>
       <required>true</required>
       <model_dependent>false</model_dependent>
@@ -274,8 +301,44 @@
       </choices>
     </argument>
     <argument>
-      <name>endUse_summary_section</name>
-      <display_name>endUse_summary_section</display_name>
+      <name>ghg_energyStar_summary_section</name>
+      <display_name>OsLib_Reporting.ghg_energyStar_summary_section(nil,nil,nil,true)[:title]</display_name>
+      <type>Boolean</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>true</default_value>
+      <choices>
+        <choice>
+          <value>true</value>
+          <display_name>true</display_name>
+        </choice>
+        <choice>
+          <value>false</value>
+          <display_name>false</display_name>
+        </choice>
+      </choices>
+    </argument>
+    <argument>
+      <name>model_summary_section</name>
+      <display_name>OsLib_Reporting.model_summary_section(nil,nil,nil,true)[:title]</display_name>
+      <type>Boolean</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>true</default_value>
+      <choices>
+        <choice>
+          <value>true</value>
+          <display_name>true</display_name>
+        </choice>
+        <choice>
+          <value>false</value>
+          <display_name>false</display_name>
+        </choice>
+      </choices>
+    </argument>
+    <argument>
+      <name>emissionFactors_summary_section</name>
+      <display_name>OsLib_Reporting.emissionFactors_summary_section(nil,nil,nil,true)[:title]</display_name>
       <type>Boolean</type>
       <required>true</required>
       <model_dependent>false</model_dependent>
@@ -372,30 +435,6 @@
       <checksum>55314FBC</checksum>
     </file>
     <file>
-      <filename>BTAPMeasureHelper.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>3E54D765</checksum>
-    </file>
-    <file>
-      <filename>test.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>test</usage_type>
-      <checksum>E013CFB5</checksum>
-    </file>
-    <file>
-      <filename>os_lib_reporting.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>5C954CDB</checksum>
-    </file>
-    <file>
-      <filename>report_Ottawa.html</filename>
-      <filetype>html</filetype>
-      <usage_type>test</usage_type>
-      <checksum>D51ACB6C</checksum>
-    </file>
-    <file>
       <filename>Electricity_2020 projectionEfs.xlsx</filename>
       <filetype>xlsx</filetype>
       <usage_type>resource</usage_type>
@@ -408,16 +447,76 @@
       <checksum>86297DE7</checksum>
     </file>
     <file>
-      <filename>EmissionFactors.json</filename>
-      <filetype>json</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>44AE4166</checksum>
-    </file>
-    <file>
       <filename>NRCReportingMeasureHelper.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>F37D69BA</checksum>
+      <checksum>984E9ECA</checksum>
+    </file>
+    <file>
+      <filename>BTAPMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>DF8E208E</checksum>
+    </file>
+    <file>
+      <filename>test_gr2.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>E53CEE97</checksum>
+    </file>
+    <file>
+      <filename>test_gr3.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>BF08CD37</checksum>
+    </file>
+    <file>
+      <filename>NG_EFs.json</filename>
+      <filetype>json</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>A0490339</checksum>
+    </file>
+    <file>
+      <filename>test_gr1.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>FAA5BCA3</checksum>
+    </file>
+    <file>
+      <filename>EmissionFactors_NIR2019.json</filename>
+      <filetype>json</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>6676E1D2</checksum>
+    </file>
+    <file>
+      <filename>EmissionFactors_NIR2020.json</filename>
+      <filetype>json</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>EF778EF6</checksum>
+    </file>
+    <file>
+      <filename>EmissionFactors_NIR2021.json</filename>
+      <filetype>json</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>3AB03472</checksum>
+    </file>
+    <file>
+      <filename>ProjectionFactors.json</filename>
+      <filetype>json</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>0108350E</checksum>
+    </file>
+    <file>
+      <filename>README.md</filename>
+      <filetype>md</filetype>
+      <usage_type>readme</usage_type>
+      <checksum>C40415FB</checksum>
+    </file>
+    <file>
+      <filename>os_lib_reporting.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>438E4971</checksum>
     </file>
     <file>
       <version>
@@ -428,49 +527,13 @@
       <filename>measure.rb</filename>
       <filetype>rb</filetype>
       <usage_type>script</usage_type>
-      <checksum>E6341B51</checksum>
+      <checksum>44EA4F19</checksum>
     </file>
     <file>
-      <filename>NG_EFs.json</filename>
-      <filetype>json</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>A0490339</checksum>
-    </file>
-    <file>
-      <filename>README.md</filename>
-      <filetype>md</filetype>
-      <usage_type>readme</usage_type>
-      <checksum>044E012D</checksum>
-    </file>
-    <file>
-      <filename>docs/br4_final_en.pdf</filename>
-      <filetype>pdf</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>186743AE</checksum>
-    </file>
-    <file>
-      <filename>docs/En81-4-2018-3-eng.pdf</filename>
-      <filetype>pdf</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>9B14BEFF</checksum>
-    </file>
-    <file>
-      <filename>docs/GGS_LifeCycleCostCalculator.xlsx</filename>
-      <filetype>xlsx</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>9EFBCADB</checksum>
-    </file>
-    <file>
-      <filename>docs/GHG_EF.xlsx</filename>
-      <filetype>xlsx</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>030E5D8A</checksum>
-    </file>
-    <file>
-      <filename>EmissionReport/ghgEmissions.csv</filename>
-      <filetype>csv</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>1C088746</checksum>
+      <filename>test.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>EAC3BAE0</checksum>
     </file>
   </files>
 </measure>

@@ -10,7 +10,6 @@ class NrcCreateNECBPrototypeBuilding_Test
     sleep(30)
 
     template = 'NECB2017'
-
     building_types = ['Warehouse',
                       'QuickServiceRestaurant',
                       'HighriseApartment']

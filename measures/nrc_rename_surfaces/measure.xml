@@ -77,12 +77,6 @@
       <checksum>CD7F5672</checksum>
     </file>
     <file>
-      <filename>README.md.erb</filename>
-      <filetype>erb</filetype>
-      <usage_type>readmeerb</usage_type>
-      <checksum>703C9964</checksum>
-    </file>
-    <file>
       <filename>.gitkeep</filename>
       <filetype>gitkeep</filetype>
       <usage_type>doc</usage_type>

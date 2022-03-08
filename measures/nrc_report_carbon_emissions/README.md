@@ -8,10 +8,11 @@
 This reporting measure calculates the annual greenhouse gas emissions.
 
 ## Modeler Description
-This measure calculates the GHG emissions expressed in tonnes CO2eq. Annual electricity intensity factors before year 2019 are defined in 'NATIONAL INVENTORY REPORT 1990 2018: GREENHOUSE GAS SOURCES AND SINKS IN CANADA CANADA’S SUBMISSION TO
-            THE UNITED NATIONS FRAMEWORK CONVENTION ON CLIMATE CHANGE(http://publications.gc.ca/collections/collection_2020/eccc/En81-4-2018-3-eng.pdf)'.
-            Whereas annual electricity intensity factors after year 2019 and also future GHG factors till 2050 are created by Environment and Climate Change Canada.
-            There are no electricity emission factors for Nunavut for the following years : 1990, 2000, and 2005.
+This measure calculates the GHG emissions expressed in tonnes CO2eq based on Emission Factors from NIR reports and Energy Star Portfolio Manager. User can select emission factors before year 2019 from one of 3 NIR reports (2019, 2020 and 2021).
+            Emission Factors from 2019 NIR reports are till 2017, Emission Factors from 2020 NIR reports are till 2018, and Emission Factors from 2019 NIR reports are till 2020.
+            If the input argument 'Year' was selected equals to '2018' or '2019', and input argument 'NIR Report Year' was selected '2019' or '2020', Emission
+            Factors will be calculated based on NIR Report '2021'
+            Future GHG factors till 2050 are created by Environment and Climate Change Canada.
             The natural gas emission factors for each province are calculated by Environment and Climate Change Canada.
 
 ## Measure Type
@@ -39,7 +40,31 @@ ReportingMeasure
 **Required:** true,
 **Model Dependent:** false
 
-### model_summary_section
+### NIR Report Year
+
+**Name:** nir_report_year,
+**Type:** Choice,
+**Units:** ,
+**Required:** true,
+**Model Dependent:** false
+
+### OsLib_Reporting.ghg_NIR_summary_section(nil,nil,nil,true)[:title]
+
+**Name:** ghg_NIR_summary_section,
+**Type:** Boolean,
+**Units:** ,
+**Required:** true,
+**Model Dependent:** false
+
+### OsLib_Reporting.ghg_energyStar_summary_section(nil,nil,nil,true)[:title]
+
+**Name:** ghg_energyStar_summary_section,
+**Type:** Boolean,
+**Units:** ,
+**Required:** true,
+**Model Dependent:** false
+
+### OsLib_Reporting.model_summary_section(nil,nil,nil,true)[:title]
 
 **Name:** model_summary_section,
 **Type:** Boolean,
@@ -47,9 +72,9 @@ ReportingMeasure
 **Required:** true,
 **Model Dependent:** false
 
-### endUse_summary_section
+### OsLib_Reporting.emissionFactors_summary_section(nil,nil,nil,true)[:title]
 
-**Name:** endUse_summary_section,
+**Name:** emissionFactors_summary_section,
 **Type:** Boolean,
 **Units:** ,
 **Required:** true,

@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_add_doas_sys</name>
   <uid>14f47c70-84f9-4435-9155-5bd3f2d87c4c</uid>
-  <version_id>c4699d7e-fbf7-4751-960c-7fcf0507f280</version_id>
-  <version_modified>20201125T172720Z</version_modified>
+  <version_id>d34223a9-b738-4d67-b63a-a599ea989fe0</version_id>
+  <version_modified>20220215T143134Z</version_modified>
   <xml_checksum>4435983D</xml_checksum>
   <class_name>NrcAddDOASSys</class_name>
   <display_name>NrcAddDOASSys</display_name>
@@ -46,12 +46,6 @@
       <checksum>9640B6CB</checksum>
     </file>
     <file>
-      <filename>README.md.erb</filename>
-      <filetype>erb</filetype>
-      <usage_type>readmeerb</usage_type>
-      <checksum>703C9964</checksum>
-    </file>
-    <file>
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>2.0.0</identifier>
@@ -69,28 +63,34 @@
       <checksum>D3EA641F</checksum>
     </file>
     <file>
-      <filename>README.md</filename>
-      <filetype>md</filetype>
-      <usage_type>readme</usage_type>
-      <checksum>E1DFC600</checksum>
+      <filename>README.md.erb</filename>
+      <filetype>erb</filetype>
+      <usage_type>readmeerb</usage_type>
+      <checksum>A1A5426B</checksum>
     </file>
     <file>
       <filename>BTAPMeasureHelper.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>F05DC3DD</checksum>
+      <checksum>F45B04B6</checksum>
     </file>
     <file>
       <filename>NRCMeasureHelper.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>2EBA603D</checksum>
+      <checksum>4001603A</checksum>
     </file>
     <file>
       <filename>test.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
-      <checksum>D43C9E58</checksum>
+      <checksum>73FFF81E</checksum>
+    </file>
+    <file>
+      <filename>README.md</filename>
+      <filetype>md</filetype>
+      <usage_type>readme</usage_type>
+      <checksum>2B19031A</checksum>
     </file>
   </files>
 </measure>

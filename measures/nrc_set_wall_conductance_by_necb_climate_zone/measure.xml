@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_set_wall_conductance_by_necb_climate_zone</name>
   <uid>ef481d8e-a30e-4f0a-9ccf-a2ed35d2170c</uid>
-  <version_id>cccba188-9a28-499c-becc-db0e004d9c56</version_id>
-  <version_modified>20210609T193250Z</version_modified>
+  <version_id>90daac6d-5183-4c45-bb74-89f0d8996331</version_id>
+  <version_modified>20220215T143649Z</version_modified>
   <xml_checksum>A51D361F</xml_checksum>
   <class_name>NrcSetWallConductanceByNecbClimateZone</class_name>
   <display_name>NrcSetWallConductanceByNecbClimateZone</display_name>
@@ -111,24 +111,6 @@
   </attributes>
   <files>
     <file>
-      <filename>README.md.erb</filename>
-      <filetype>erb</filetype>
-      <usage_type>readmeerb</usage_type>
-      <checksum>703C9964</checksum>
-    </file>
-    <file>
-      <filename>README.md</filename>
-      <filetype>md</filetype>
-      <usage_type>readme</usage_type>
-      <checksum>26875914</checksum>
-    </file>
-    <file>
-      <filename>BTAPMeasureHelper.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>F05DC3DD</checksum>
-    </file>
-    <file>
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>0.11.5</identifier>
@@ -140,16 +122,34 @@
       <checksum>D731C9FE</checksum>
     </file>
     <file>
+      <filename>README.md.erb</filename>
+      <filetype>erb</filetype>
+      <usage_type>readmeerb</usage_type>
+      <checksum>A1A5426B</checksum>
+    </file>
+    <file>
+      <filename>BTAPMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>F45B04B6</checksum>
+    </file>
+    <file>
       <filename>test.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
-      <checksum>E1DC55B5</checksum>
+      <checksum>C92C3A99</checksum>
     </file>
     <file>
       <filename>NRCMeasureHelper.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>DFE0C0FE</checksum>
+      <checksum>4001603A</checksum>
+    </file>
+    <file>
+      <filename>README.md</filename>
+      <filetype>md</filetype>
+      <usage_type>readme</usage_type>
+      <checksum>C7112729</checksum>
     </file>
   </files>
 </measure>

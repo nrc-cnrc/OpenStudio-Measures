@@ -7,13 +7,16 @@
   <version_id>dd35c0ee-ea1d-4440-b9db-2ff8f7f210f1</version_id>
   <version_modified>20220118T162736Z</version_modified>
   <xml_checksum>A8B8B5E3</xml_checksum>
-  <class_name>NRCResizeExistingWindowsToMatchAGivenWWR</class_name>
-  <display_name>Resize existing windows to match a given WWR</display_name>
+  <class_name>NrcResizeExistingWindowsToMatchAGivenWWR</class_name>
+  <display_name>Nrc Resize Existing Windows To Match A Given WWR</display_name>
   <description>This measure aims to resize all of the existing windows in order to produce a specified, user-input, window to wall ratio.
 The windows will be resized around their centroid.
 It should be noted that this measure should work in all cases when DOWNSIZING the windows (which is often the need given the 40% WWR imposed as baseline by ASHRAE Appendix G).
 If you aim to increase the area, please note that this could result in subsurfaces being larger than their parent surface</description>
-  <modeler_description>The measure works in several steps:
+  <modeler_description>This measure is measure was retrieved from - https://bcl.nrel.gov/ (original author Julien Marrec ) and was modified by the NRC.
+NRC modifications : cz_#_fdwr variables,remove_skylight variable,  set checkwall variable to default 'false', check model climate zone file before placing cz_#fdwr into variable 'wwr_after', loop to remove skylights
+Added test.rb
+The measure works in several steps:
 
 1. Find the current Window to Wall Ratio (WWR).
 This will compute the WWR by taking into account all of the surfaces that have all of the following characteristics:
@@ -22,16 +25,13 @@ This will compute the WWR by taking into account all of the surfaces that have a
 - They are SunExposed (could be removed...)
 
 2. Resize all of the existing windows by re-setting the vertices: scaled centered on centroid.
-
 </modeler_description>
   <arguments>
     <argument>
       <name>remove_skylight</name>
       <display_name>Remove skylights?</display_name>
-      <description></description>
       <type>Boolean</type>
-      <units></units>
-      <required>false</required>
+      <required>true</required>
       <model_dependent>false</model_dependent>
       <default_value>false</default_value>
       <choices>
@@ -44,87 +44,59 @@ This will compute the WWR by taking into account all of the surfaces that have a
           <display_name>false</display_name>
         </choice>
       </choices>
-      <min_value></min_value>
-      <max_value></max_value>
     </argument>
     <argument>
       <name>cz_4_fdwr</name>
       <display_name>Climate zone 4 FDWR</display_name>
-      <description></description>
       <type>Double</type>
-      <units></units>
       <required>true</required>
       <model_dependent>false</model_dependent>
-      <default_value>0</default_value>
-      <min_value></min_value>
-      <max_value></max_value>
+      <default_value>0.2</default_value>
     </argument>
     <argument>
       <name>cz_5_fdwr</name>
       <display_name>Climate zone 5 FDWR</display_name>
-      <description></description>
       <type>Double</type>
-      <units></units>
       <required>true</required>
       <model_dependent>false</model_dependent>
-      <default_value>0</default_value>
-      <min_value></min_value>
-      <max_value></max_value>
+      <default_value>0.2</default_value>
     </argument>
     <argument>
       <name>cz_6_fdwr</name>
       <display_name>Climate zone 6 FDWR</display_name>
-      <description></description>
       <type>Double</type>
-      <units></units>
       <required>true</required>
       <model_dependent>false</model_dependent>
-      <default_value>0</default_value>
-      <min_value></min_value>
-      <max_value></max_value>
+      <default_value>0.2</default_value>
     </argument>
     <argument>
       <name>cz_7A_fdwr</name>
       <display_name>Climate zone 7A FDWR</display_name>
-      <description></description>
       <type>Double</type>
-      <units></units>
       <required>true</required>
       <model_dependent>false</model_dependent>
-      <default_value>0</default_value>
-      <min_value></min_value>
-      <max_value></max_value>
+      <default_value>0.2</default_value>
     </argument>
     <argument>
       <name>cz_7B_fdwr</name>
       <display_name>Climate zone 7B FDWR</display_name>
-      <description></description>
       <type>Double</type>
-      <units></units>
       <required>true</required>
       <model_dependent>false</model_dependent>
-      <default_value>0</default_value>
-      <min_value></min_value>
-      <max_value></max_value>
+      <default_value>0.2</default_value>
     </argument>
     <argument>
       <name>cz_8_fdwr</name>
       <display_name>Climate zone 8 FDWR</display_name>
-      <description></description>
       <type>Double</type>
-      <units></units>
       <required>true</required>
       <model_dependent>false</model_dependent>
-      <default_value>0</default_value>
-      <min_value></min_value>
-      <max_value></max_value>
+      <default_value>0.2</default_value>
     </argument>
     <argument>
       <name>check_wall</name>
-      <display_name>Only affect surfaces that are "walls"?</display_name>
-      <description></description>
+      <display_name>Only affect surfaces that are 'walls'?</display_name>
       <type>Boolean</type>
-      <units></units>
       <required>false</required>
       <model_dependent>false</model_dependent>
       <default_value>false</default_value>
@@ -138,15 +110,11 @@ This will compute the WWR by taking into account all of the surfaces that have a
           <display_name>false</display_name>
         </choice>
       </choices>
-      <min_value></min_value>
-      <max_value></max_value>
     </argument>
     <argument>
       <name>check_outdoors</name>
       <display_name>Only affect surfaces that have boundary condition = "Outdoor"?</display_name>
-      <description></description>
       <type>Boolean</type>
-      <units></units>
       <required>false</required>
       <model_dependent>false</model_dependent>
       <default_value>true</default_value>
@@ -160,15 +128,11 @@ This will compute the WWR by taking into account all of the surfaces that have a
           <display_name>false</display_name>
         </choice>
       </choices>
-      <min_value></min_value>
-      <max_value></max_value>
     </argument>
     <argument>
       <name>check_sunexposed</name>
       <display_name>Only affect surfaces that are "SunExposed"?</display_name>
-      <description></description>
       <type>Boolean</type>
-      <units></units>
       <required>false</required>
       <model_dependent>false</model_dependent>
       <default_value>true</default_value>
@@ -182,8 +146,6 @@ This will compute the WWR by taking into account all of the surfaces that have a
           <display_name>false</display_name>
         </choice>
       </choices>
-      <min_value></min_value>
-      <max_value></max_value>
     </argument>
   </arguments>
   <outputs />
