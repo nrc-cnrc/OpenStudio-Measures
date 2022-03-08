@@ -31,6 +31,7 @@ class NrcReportUtilityCosts < OpenStudio::Measure::ReportingMeasure
   def outputs
     outs = OpenStudio::Measure::OSOutputVector.new
     outs << OpenStudio::Measure::OSOutput.makeDoubleOutput('total_site_energy') # kWh; 4 significant figs
+    outs << OpenStudio::Measure::OSOutput.makeDoubleOutput('total_site_energy_normalized') # kWh/m2; 4 significant figs
     outs << OpenStudio::Measure::OSOutput.makeDoubleOutput('annual_electricity_use') # kWh; 3 significant figs
     outs << OpenStudio::Measure::OSOutput.makeDoubleOutput('annual_natural_gas_use') # GJ; 3 significant figs
     outs << OpenStudio::Measure::OSOutput.makeDoubleOutput('annual_electricity_cost') # $; 2 decimal places
@@ -152,6 +153,8 @@ class NrcReportUtilityCosts < OpenStudio::Measure::ReportingMeasure
 	# Always recover the EUI.
     totalSiteEnergy_kWh = OpenStudio.convert(@sql_file.totalSiteEnergy.get, "GJ", "kWh").get
     runner.registerValue('total_site_energy', totalSiteEnergy_kWh.signif(4), 'kWh')
+	floor_area = model.getBuilding.floorArea
+    runner.registerValue('total_site_energy_normalized', (totalSiteEnergy_kWh/floor_area).signif(4), 'kWh')
 	
 	# Rate summary and costs sections.
 	rate_summary = "Rule set used: #{ruleset}"

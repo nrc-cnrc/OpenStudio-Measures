@@ -1,0 +1,14 @@
+# Default source for gems
+source 'http://rubygems.org'
+ruby "~> 2.7.0"
+
+# Gems used in finilization scripts. This decouples us from the restrictions
+# imposed by openstudio_cli
+gem 'rest-client'
+gem 'optparse'
+gem 'json'
+gem 'colored'
+gem 'caracal'
+gem 'base64'
+gem 'csv'
+gem 'parallel'

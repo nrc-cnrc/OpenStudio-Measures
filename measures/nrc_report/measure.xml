@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_report</name>
   <uid>d023501a-5089-4b1d-9a08-7a573820a7ef</uid>
-  <version_id>346aa480-b2d5-4d56-baf7-edb261184b5b</version_id>
-  <version_modified>20220215T143425Z</version_modified>
+  <version_id>5982e205-16e2-411c-ba81-59a7d6e2977b</version_id>
+  <version_modified>20220124T175106Z</version_modified>
   <xml_checksum>9BF1E6AC</xml_checksum>
   <class_name>NrcReport</class_name>
   <display_name>NrcReport</display_name>
@@ -472,6 +472,15 @@
     </argument>
   </arguments>
   <outputs>
+    <output>
+      <name>heat</name>
+      <display_name>Heating End Use</display_name>
+      <short_name>h</short_name>
+      <description>Total heating energy for the simulation period</description>
+      <type>Double</type>
+      <units>kWh</units>
+      <model_dependent>false</model_dependent>
+    </output>
     <output>
       <name>heating</name>
       <display_name>heating</display_name>
@@ -1380,23 +1389,6 @@
       <checksum>6F788ACD</checksum>
     </file>
     <file>
-      <version>
-        <software_program>OpenStudio</software_program>
-        <identifier>2.8.1</identifier>
-        <min_compatible>2.8.1</min_compatible>
-      </version>
-      <filename>measure.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>script</usage_type>
-      <checksum>BE1C5C1C</checksum>
-    </file>
-    <file>
-      <filename>test.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>test</usage_type>
-      <checksum>FC09C0F1</checksum>
-    </file>
-    <file>
       <filename>BTAPMeasureHelper.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
@@ -1427,10 +1419,39 @@
       <checksum>8F4A52E5</checksum>
     </file>
     <file>
+      <version>
+        <software_program>OpenStudio</software_program>
+        <identifier>2.8.1</identifier>
+        <min_compatible>2.8.1</min_compatible>
+      </version>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>script</usage_type>
+      <checksum>49286638</checksum>
+    </file>
+    <file>
+      <filename>test.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>174BFF24</checksum>
+    </file>
+    <file>
+      <filename>regression_files/diff.html</filename>
+      <filetype>html</filetype>
+      <usage_type>test</usage_type>
+      <checksum>D8949774</checksum>
+    </file>
+    <file>
+      <filename>weather_files/CAN_AB_Edmonton.Intl.AP.711230_CWEC2016.epw</filename>
+      <filetype>epw</filetype>
+      <usage_type>test</usage_type>
+      <checksum>59FE78BA</checksum>
+    </file>
+    <file>
       <filename>README.md</filename>
       <filetype>md</filetype>
       <usage_type>readme</usage_type>
-      <checksum>BA0F5624</checksum>
+      <checksum>99B9525E</checksum>
     </file>
   </files>
 </measure>

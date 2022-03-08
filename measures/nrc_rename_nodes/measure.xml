@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_rename_nodes</name>
   <uid>07e104f4-7175-4a8e-8c1a-b9fafb28b3ce</uid>
-  <version_id>5b1bee19-28ae-4f72-ab9b-597bad4aaedc</version_id>
-  <version_modified>20220215T143353Z</version_modified>
+  <version_id>5be50131-8c2a-4c8c-a1a3-ee1028512741</version_id>
+  <version_modified>20220124T175055Z</version_modified>
   <xml_checksum>FC9586A7</xml_checksum>
   <class_name>NrcRenameNodes</class_name>
   <display_name>NrcRenameNodes</display_name>
@@ -61,34 +61,34 @@
   </attributes>
   <files>
     <file>
-      <filename>.gitkeep</filename>
-      <filetype>gitkeep</filetype>
-      <usage_type>doc</usage_type>
-      <checksum>00000000</checksum>
-    </file>
-    <file>
       <filename>README.md.erb</filename>
       <filetype>erb</filetype>
       <usage_type>readmeerb</usage_type>
       <checksum>A1A5426B</checksum>
     </file>
     <file>
+      <filename>README.md</filename>
+      <filetype>md</filetype>
+      <usage_type>readme</usage_type>
+      <checksum>77246F89</checksum>
+    </file>
+    <file>
       <filename>BTAPMeasureHelper.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>F45B04B6</checksum>
+      <checksum>F2F6F193</checksum>
     </file>
     <file>
       <filename>NRCMeasureHelper.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>4001603A</checksum>
+      <checksum>2FE92E0F</checksum>
     </file>
     <file>
       <filename>test.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
-      <checksum>39169594</checksum>
+      <checksum>BDFEB9E9</checksum>
     </file>
     <file>
       <version>
@@ -102,10 +102,28 @@
       <checksum>BA46DA0D</checksum>
     </file>
     <file>
-      <filename>README.md</filename>
-      <filetype>md</filetype>
-      <usage_type>readme</usage_type>
-      <checksum>5FCDA75D</checksum>
+      <filename>resources/CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.ddy</filename>
+      <filetype>ddy</filetype>
+      <usage_type>test</usage_type>
+      <checksum>D3C6A158</checksum>
+    </file>
+    <file>
+      <filename>resources/CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw</filename>
+      <filetype>epw</filetype>
+      <usage_type>test</usage_type>
+      <checksum>E21FC0AC</checksum>
+    </file>
+    <file>
+      <filename>resources/CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.stat</filename>
+      <filetype>stat</filetype>
+      <usage_type>test</usage_type>
+      <checksum>BAFC0770</checksum>
+    </file>
+    <file>
+      <filename>resources/Warehouse-NECB2017-ON_Ottawa.osm</filename>
+      <filetype>osm</filetype>
+      <usage_type>test</usage_type>
+      <checksum>C55B436A</checksum>
     </file>
   </files>
 </measure>

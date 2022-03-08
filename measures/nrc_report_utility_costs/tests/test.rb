@@ -72,7 +72,8 @@ class NrcReportUtilityCosts_Test < Minitest::Test
     model = model.get
 
     # Assign the local weather file (have to provide a full path to EpwFile).
-    epw = OpenStudio::EpwFile.new("#{File.dirname(__FILE__)}/weather_files/CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw")
+	epw_path = File.expand_path("#{File.dirname(__FILE__)}/weather_files/CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw")
+    epw = OpenStudio::EpwFile.new(epw_path)
     OpenStudio::Model::WeatherFile::setWeatherFile(model, epw)
 	
     # Set input args. In this case the std matches the one used to create the test model.
@@ -94,6 +95,8 @@ class NrcReportUtilityCosts_Test < Minitest::Test
 	    puts "Skipping input argument #{output.name}" # all the inputs are in the outputs so just skip these.
 	  elsif output.name == 'total_site_energy'
         assert_in_delta(65440, output.valueAsDouble, 1.0, 'Total site energy')
+	  elsif output.name == 'total_site_energy_normalized'
+        assert_in_delta(128, output.valueAsDouble, 0.1, 'Total site energy normalized')
 	  elsif output.name == 'annual_electricity_use'
         assert_in_delta(48000, output.valueAsDouble, 1.0, 'Annual electricity use')
 	  elsif output.name == 'annual_natural_gas_use'

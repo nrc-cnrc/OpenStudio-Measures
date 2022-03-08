@@ -13,6 +13,7 @@ gem 'ruby-progressbar'
 gem 'parallel'
 gem 'minitest'
 
+# Cannot have any gems here that have pre-compiled components. e.g. nokogiri
 # Additional gems required for measures.
 gem 'aws-sdk-s3'
 gem 'git-revision'
