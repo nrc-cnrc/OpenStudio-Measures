@@ -196,7 +196,7 @@ module NRCReportingMeasureTestHelper
   end
 end
 
-# Add significant digits capability to float class.
+# Add significant digits capability to float amd integer class.
 class Float
   def signif(digits=3)
     return 0 if self.zero?
