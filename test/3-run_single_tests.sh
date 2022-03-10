@@ -65,6 +65,7 @@ fi
 # Start container
 echo -e "${GREEN}Starting the test environment container${NC}..."
 docker container start $container
+
 # Run the tests (update gems and measure first)
 echo -e "${GREEN}Starting ${test} for measure ${measure}${NC}..."
 if [ -z $fast ] 
