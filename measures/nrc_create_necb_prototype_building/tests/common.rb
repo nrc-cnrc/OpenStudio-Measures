@@ -171,21 +171,16 @@ module TestCommon
       }
 
       # Define specific output folder for this test.
+      output_file_path = NRCMeasureTestHelper.appendOutputFolder("#{necb_template}")
+      puts "Output folder ". green + "#{output_file_path}".light_blue
       model_name = "#{building_type_in}-#{necb_template}-#{File.basename(epw_file_in, '.epw')}"
-      puts "Model name ". green + "#{model_name}".light_blue
-      if Dir.exist?(model_name) then
-        puts "WARNING: Removing existing output folder #{model_name}".yellow
-        FileUtils.remove_dir(model_name, force = true)
-      end
-
-      output_file_path = NRCMeasureTestHelper.appendOutputFolder("OutputTestFolder")
 
       # Run the measure and check output.
       runner = run_measure(input_arguments, model)
       assert(runner.result.value.valueName == 'Success')
       # save the model to test output directory
-      outputFolder = "#{output_file_path}/#{model_name}.osm"
-      model.save(output_file_path, true)
+      output_file = "#{output_file_path}/#{model_name}.osm"
+      model.save(output_file, true)
 
       begin
         diffs = []

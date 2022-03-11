@@ -17,11 +17,21 @@ module NRCMeasureTestHelper
   @output_root_path = File.expand_path("#{File.expand_path(__dir__)}/../tests/output")
   Dir.mkdir @output_root_path unless Dir.exists?(@output_root_path)
   @output_path = @output_root_path
-  existing_folders = Dir.entries(@output_root_path) - ['.', '..'] # Remove current folder above from list before deleting!
-  existing_folders.each do |entry|
-    folder_to_remove = File.expand_path("#{@output_root_path}/#{entry}")
-    puts "Removing existing output folder: #{folder_to_remove}".yellow
-    FileUtils.rm_rf(folder_to_remove)
+
+  # Remove the existing test results. Need to control when this is done as multiple test scripts could be
+  #  accessing the same path.
+  def self.removeOldOutputs(before: Time.now)
+    existing_folders = Dir.entries(@output_path) - ['.', '..'] # Remove current folder above from list before deleting!
+    existing_folders.each do |entry|
+      folder_to_remove = File.expand_path("#{@output_path}/#{entry}")
+      puts "Checking existing output folder: #{folder_to_remove}".green
+	  if File.mtime(folder_to_remove) < before
+        puts "Removing existing output folder: #{folder_to_remove}".yellow
+        FileUtils.rm_rf(folder_to_remove)
+	  else
+        puts "Skipping existing output folder: #{folder_to_remove}".light_blue
+	  end
+    end
   end
 
   # Define methods to manage output folders.
