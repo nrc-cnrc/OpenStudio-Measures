@@ -11,6 +11,16 @@ require_relative '../resources/NRCMeasureHelper.rb'
 # Specific requires for this test
 require 'fileutils'
 
+# Check to see if an overall start time was passed (it should be if using one of the test scripts in the test folder). 
+#  If so then use it to determine what old results are (if not use now)
+start_time=Time.now
+if ARGV.length == 1
+
+  # We have a time. It will be in seconds since the epoch. Update our start_time.
+  start_time=Time.at(ARGV[0].to_i)
+end
+NRCMeasureTestHelper::removeOldOutputs(before: start_time)
+
 class NrcAlterSHGC_Test < Minitest::Test
   # Brings in helper methods to simplify argument testing of json and standard argument methods.
   include(NRCMeasureTestHelper)
@@ -20,51 +30,44 @@ class NrcAlterSHGC_Test < Minitest::Test
         {
             "name" => "new_shgc",
             "type" => "Double",
-            "display_name" => 'Set SHGC',
+            "display_name" => "SHGC",
             "default_value" => 0.3,
+			"min_double_value" => 0.0,
+			"max_double_value" => 1.0,
             "is_required" => true
         }]
     @good_input_arguments = {
-        "new_shgc" => 0.3
+        "new_shgc" => 0.35
     }
   end
 
   def test_argument_values
-    # create an instance of the measure
-    measure = NrcAlterSHGC.new
-
-    # load the test model
-    translator = OpenStudio::OSVersion::VersionTranslator.new
-    path = OpenStudio::Path.new(File.dirname(__FILE__) + "/warehouse_2017.osm")
-    model = translator.loadModel(path)
-    assert((not model.empty?))
-    model = model.get
-
-    # get arguments
-    arguments = measure.arguments(model)
-    input_arguments = {
-        "new_shgc" => 0.3
-    }
 
     # Define the output folder for this test (optional - default is the method name).
-    output_file_path = NRCMeasureTestHelper.appendOutputFolder("OutputTestFolder")
+    output_file_path = NRCMeasureTestHelper.appendOutputFolder("Modified_SHGC_test")
+	
+    # load the test model
+	model = load_test_osm(File.dirname(__FILE__) + "/warehouse_2017.osm")
 
-    # Run the measure and check output
-    runner = run_measure(input_arguments, model)
+    # Run the measure and check output.
+    puts "  Runnning measure".light_blue
+	runner = run_measure(@good_input_arguments, model)
     result = runner.result
-    show_output(result)
+    puts "  Checking results".light_blue
     assert(result.value.valueName == 'Success')
 
-    # test if the measure would grab the correct number and value of input argument.
-    assert_equal(1, arguments.size)
-    assert_equal(0.3, arguments[0].defaultValueAsDouble)
-    # check if a shgc was changed
+    # Test if the measure would grab the correct number and value of input argument.
+    assert_equal(1, @good_input_arguments.size, "Number of arguments")
+    assert_equal(0.35, @good_input_arguments['new_shgc'], "SHGC value")
+    
+	# Check if a shgc was changed.
     model.getSimpleGlazings.each do |sim_glaz|
-      assert_equal(0.3, sim_glaz.solarHeatGainCoefficient.to_f, "SHGC is incorrect")
+      assert_equal(0.35, sim_glaz.solarHeatGainCoefficient.to_f, "SHGC is incorrect")
     end
 
     # Save the model to test output directory.
     output_path = "#{output_file_path}/test_output.osm"
     model.save(output_path, true)
+	puts "Done.".light_blue
   end
 end
