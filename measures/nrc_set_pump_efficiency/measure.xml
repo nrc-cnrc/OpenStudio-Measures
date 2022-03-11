@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_set_pump_efficiency</name>
   <uid>2ae95346-3038-4237-b90b-44028ca3e6d1</uid>
-  <version_id>dd6d8558-2033-4a2f-8cbc-4aaa071ff526</version_id>
-  <version_modified>20220215T143548Z</version_modified>
+  <version_id>9282d89a-e8e1-4f32-b630-52acee2c930d</version_id>
+  <version_modified>20220311T145408Z</version_modified>
   <xml_checksum>2AF3A68E</xml_checksum>
   <class_name>NrcSetPumpEfficiency</class_name>
   <display_name>NrcSetPumpEfficiency </display_name>
@@ -53,12 +53,6 @@
       <filetype>md</filetype>
       <usage_type>license</usage_type>
       <checksum>CD7F5672</checksum>
-    </file>
-    <file>
-      <filename>.gitkeep</filename>
-      <filetype>gitkeep</filetype>
-      <usage_type>doc</usage_type>
-      <checksum>00000000</checksum>
     </file>
     <file>
       <filename>example_model.osm</filename>

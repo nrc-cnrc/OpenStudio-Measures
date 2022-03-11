@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_set_fan_efficiency</name>
   <uid>306a7623-dfbc-4faa-a855-7cfa9523935d</uid>
-  <version_id>a4f29d5f-6dad-44c1-b5e5-fa968524ff3e</version_id>
-  <version_modified>20220215T143444Z</version_modified>
+  <version_id>a68641ec-95a7-4b97-b79f-b795962255ad</version_id>
+  <version_modified>20220311T145355Z</version_modified>
   <xml_checksum>2AF3A68E</xml_checksum>
   <class_name>NrcSetFanEfficiency</class_name>
   <display_name>NrcSetFanEfficiency</display_name>
@@ -53,12 +53,6 @@
       <filetype>md</filetype>
       <usage_type>license</usage_type>
       <checksum>CD7F5672</checksum>
-    </file>
-    <file>
-      <filename>.gitkeep</filename>
-      <filetype>gitkeep</filetype>
-      <usage_type>doc</usage_type>
-      <checksum>00000000</checksum>
     </file>
     <file>
       <version>

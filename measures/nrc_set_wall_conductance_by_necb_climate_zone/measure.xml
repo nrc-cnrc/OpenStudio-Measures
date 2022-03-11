@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_set_wall_conductance_by_necb_climate_zone</name>
   <uid>ef481d8e-a30e-4f0a-9ccf-a2ed35d2170c</uid>
-  <version_id>90daac6d-5183-4c45-bb74-89f0d8996331</version_id>
-  <version_modified>20220215T143649Z</version_modified>
+  <version_id>0dd5af4b-304e-446a-943d-386d1f9725ee</version_id>
+  <version_modified>20220311T145420Z</version_modified>
   <xml_checksum>A51D361F</xml_checksum>
   <class_name>NrcSetWallConductanceByNecbClimateZone</class_name>
   <display_name>NrcSetWallConductanceByNecbClimateZone</display_name>

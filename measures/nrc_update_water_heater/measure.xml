@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_update_water_heater</name>
   <uid>2f81b690-4343-49fe-9c2a-803e531ac6c8</uid>
-  <version_id>7d2f937e-ea0d-47ca-9d7a-aaa0bd3a3c31</version_id>
-  <version_modified>20220215T143651Z</version_modified>
+  <version_id>e18c9e5e-032b-4e4d-9cce-90218d006e80</version_id>
+  <version_modified>20220311T145420Z</version_modified>
   <xml_checksum>E88CCCA7</xml_checksum>
   <class_name>NrcUpdateWaterHeater</class_name>
   <display_name>NrcUpdateWaterHeater</display_name>
@@ -80,12 +80,6 @@
       <filetype>osm</filetype>
       <usage_type>test</usage_type>
       <checksum>8F48740C</checksum>
-    </file>
-    <file>
-      <filename>.gitkeep</filename>
-      <filetype>gitkeep</filetype>
-      <usage_type>doc</usage_type>
-      <checksum>00000000</checksum>
     </file>
     <file>
       <filename>LICENSE.md</filename>

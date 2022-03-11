@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_set_boiler_efficiency</name>
   <uid>3cce913f-31d5-423b-b8ac-ddea73ffedad</uid>
-  <version_id>5cf3ae48-4345-418d-a3ad-b59fdfcf2afc</version_id>
-  <version_modified>20220215T143442Z</version_modified>
+  <version_id>73507be7-ea31-424b-9706-246113e55b24</version_id>
+  <version_modified>20220311T145355Z</version_modified>
   <xml_checksum>2AF3A68E</xml_checksum>
   <class_name>NrcSetBoilerEfficiency</class_name>
   <display_name>NrcSetBoilerEfficiency</display_name>
@@ -53,12 +53,6 @@
       <filetype>md</filetype>
       <usage_type>license</usage_type>
       <checksum>CD7F5672</checksum>
-    </file>
-    <file>
-      <filename>.gitkeep</filename>
-      <filetype>gitkeep</filetype>
-      <usage_type>doc</usage_type>
-      <checksum>00000000</checksum>
     </file>
     <file>
       <version>

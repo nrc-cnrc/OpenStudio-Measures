@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_add_ashpwh</name>
   <uid>87631e5c-6a3f-4f4b-88af-c8b6fe497809</uid>
-  <version_id>54d4c7e7-7378-4c15-9684-01c6ce888275</version_id>
-  <version_modified>20220215T143132Z</version_modified>
+  <version_id>97b2e5f7-1f7c-4acb-acc1-2ba7a73bba5d</version_id>
+  <version_modified>20220311T145333Z</version_modified>
   <xml_checksum>A05EBCA5</xml_checksum>
   <class_name>NrcAddASHPWH</class_name>
   <display_name>NrcAddASHPWH </display_name>
@@ -64,12 +64,6 @@
       <filetype>osm</filetype>
       <usage_type>test</usage_type>
       <checksum>D3EA641F</checksum>
-    </file>
-    <file>
-      <filename>.gitkeep</filename>
-      <filetype>gitkeep</filetype>
-      <usage_type>doc</usage_type>
-      <checksum>00000000</checksum>
     </file>
     <file>
       <filename>LICENSE.md</filename>

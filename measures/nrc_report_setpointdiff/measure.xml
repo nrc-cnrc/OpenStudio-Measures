@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_report_set_point_diff</name>
   <uid>d023501a-5089-4b1d-9a08-7a573820a7ef</uid>
-  <version_id>7fc0829d-dd0e-4c45-b169-119c059d9e05</version_id>
-  <version_modified>20220118T162735Z</version_modified>
+  <version_id>29c51d2c-1958-4aba-bec4-7ad2a112971f</version_id>
+  <version_modified>20220308T163547Z</version_modified>
   <xml_checksum>9BF1E6AC</xml_checksum>
   <class_name>NrcReportSetPointDiff</class_name>
   <display_name>NrcReportSetPointDiff</display_name>
@@ -165,12 +165,6 @@
       <filetype>erb</filetype>
       <usage_type>resource</usage_type>
       <checksum>D7CFF32E</checksum>
-    </file>
-    <file>
-      <filename>.gitkeep</filename>
-      <filetype>gitkeep</filetype>
-      <usage_type>doc</usage_type>
-      <checksum>00000000</checksum>
     </file>
     <file>
       <filename>BTAPMeasureHelper.rb</filename>

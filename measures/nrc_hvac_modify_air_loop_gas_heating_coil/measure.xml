@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_hvac_modify_air_loop_gas_heating_coil</name>
   <uid>1448dc9c-e13e-4ef1-b2f6-495781a9744e</uid>
-  <version_id>9ddeff6a-e27d-42a2-8dbb-1f206cd86b5e</version_id>
-  <version_modified>20220215T143334Z</version_modified>
+  <version_id>03dbad99-7b15-4eb0-a4a5-6c2862e53c22</version_id>
+  <version_modified>20220311T145345Z</version_modified>
   <xml_checksum>1F3D2430</xml_checksum>
   <class_name>NrcHvacModifyAirLoopGasHeatingCoil</class_name>
   <display_name>Modify HVAC Air Loop Gas Heating Coil Parameters</display_name>

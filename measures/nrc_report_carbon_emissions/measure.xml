@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_report_carbon_emissions</name>
   <uid>11a12238-d360-4ad9-8d85-58b56c67cf83</uid>
-  <version_id>a949faff-076e-41f4-afb0-bd3c37fda8d5</version_id>
-  <version_modified>20220303T165551Z</version_modified>
+  <version_id>3ff9ca8e-2e5b-47d6-a200-503574109fbf</version_id>
+  <version_modified>20220308T163545Z</version_modified>
   <xml_checksum>9BF1E6AC</xml_checksum>
   <class_name>NrcReportCarbonEmissions</class_name>
   <display_name>NrcReportCarbonEmissions</display_name>
@@ -399,12 +399,6 @@
       <checksum>703C9964</checksum>
     </file>
     <file>
-      <filename>.gitkeep</filename>
-      <filetype>gitkeep</filetype>
-      <usage_type>doc</usage_type>
-      <checksum>00000000</checksum>
-    </file>
-    <file>
       <filename>report.html.in</filename>
       <filetype>in</filetype>
       <usage_type>resource</usage_type>
@@ -477,12 +471,6 @@
       <checksum>A0490339</checksum>
     </file>
     <file>
-      <filename>test_gr1.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>test</usage_type>
-      <checksum>FAA5BCA3</checksum>
-    </file>
-    <file>
       <filename>EmissionFactors_NIR2019.json</filename>
       <filetype>json</filetype>
       <usage_type>resource</usage_type>
@@ -519,6 +507,12 @@
       <checksum>438E4971</checksum>
     </file>
     <file>
+      <filename>test_gr1.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>7606F0B2</checksum>
+    </file>
+    <file>
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>3.1.0</identifier>
@@ -527,13 +521,13 @@
       <filename>measure.rb</filename>
       <filetype>rb</filetype>
       <usage_type>script</usage_type>
-      <checksum>44EA4F19</checksum>
+      <checksum>AC6E0A78</checksum>
     </file>
     <file>
       <filename>test.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
-      <checksum>EAC3BAE0</checksum>
+      <checksum>B4AE2D63</checksum>
     </file>
   </files>
 </measure>
