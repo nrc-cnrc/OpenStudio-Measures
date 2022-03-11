@@ -8,20 +8,20 @@ class NrcAlterSHGC < OpenStudio::Measure::ModelMeasure
 
   # human readable name
   def name
-    return "NrcAlterSHGC"
+    return "Change SHGC"
   end
 
-  # human readable description
+  # Human readable description.
   def description
-    return "Changes solar heat gain coefficient of simple glazing systems"
+    return "Changes solar heat gain coefficient (SHGC) of simple glazing systems."
   end
 
-  # human readable description of modeling approach
+  # Human readable description of modeling approach.
   def modeler_description
-    return "Get simple glazing systems and change the SHGC "
+    return "Find all simple glazing systems int he model and change the SHGC."
   end
 
-  #Use the constructor to set global variables
+  # Use the constructor to set global variables.
   def initialize()
     super()
     #Set to true if you want to package the arguments as json.
@@ -33,34 +33,35 @@ class NrcAlterSHGC < OpenStudio::Measure::ModelMeasure
         {
             "name" => "new_shgc",
             "type" => "Double",
-            "display_name" => 'Set SHGC',
+            "display_name" => 'SHGC',
             "default_value" => 0.3,
+			"max_double_value" => 1.0,
+			"min_double_value" => 0.0,
             "is_required" => true
         }]
   end
 
-  # define what happens when the measure is run
+  # Define what happens when the measure is run.
   def run(model, runner, user_arguments)
-    #Runs parent run method.
+    
+	#Runs parent run method.
     super(model, runner, user_arguments)
-    # Gets arguments from interfaced and puts them in a hash with there display name. This also does a check on ranges to
-    # ensure that the values inputted are valid based on your @measure_interface array of hashes.
+    
+	# Gets arguments from interfaced and puts them in a hash with there display name. This also does a check on ranges to
+    #  ensure that the values inputted are valid based on your @measure_interface array of hashes.
     arguments = validate_and_get_arguments_in_hash(model, runner, user_arguments)
 
     #puts JSON.pretty_generate(arguments)
     return false if false == arguments
 
-    # Assign the user inputs to variables that can be accessed across the measure
+    # Assign the user inputs to variables that can be accessed across the measure.
     new_shgc = arguments['new_shgc']
 
-    if new_shgc == 999
-      runner.registerInfo("NRCAlterSHGC is skipped")
-    else
-      runner.registerInfo("NRCAlterSHGC is not skipped")
-      model.getSimpleGlazings.each do |sim_glaz|
-        sim_glaz.setSolarHeatGainCoefficient(new_shgc)
-      end
+    model.getSimpleGlazings.each do |sim_glaz|
+      runner.registerInfo("Changing SHGC for #{sim_glaz}")
+      sim_glaz.setSolarHeatGainCoefficient(new_shgc)
     end
+	
     return true
   end
 end
