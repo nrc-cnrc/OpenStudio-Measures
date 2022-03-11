@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_hvac_modify_air_loop_gas_heating_coil</name>
   <uid>1448dc9c-e13e-4ef1-b2f6-495781a9744e</uid>
-  <version_id>03dbad99-7b15-4eb0-a4a5-6c2862e53c22</version_id>
-  <version_modified>20220311T145345Z</version_modified>
+  <version_id>387fa263-661a-4139-80a7-9d49d9f6d505</version_id>
+  <version_modified>20220311T213419Z</version_modified>
   <xml_checksum>1F3D2430</xml_checksum>
   <class_name>NrcHvacModifyAirLoopGasHeatingCoil</class_name>
   <display_name>Modify HVAC Air Loop Gas Heating Coil Parameters</display_name>
@@ -59,18 +59,6 @@
       <checksum>A1A5426B</checksum>
     </file>
     <file>
-      <filename>BTAPMeasureHelper.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>F45B04B6</checksum>
-    </file>
-    <file>
-      <filename>NRCMeasureHelper.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>4001603A</checksum>
-    </file>
-    <file>
       <filename>test.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
@@ -81,6 +69,18 @@
       <filetype>md</filetype>
       <usage_type>readme</usage_type>
       <checksum>82965234</checksum>
+    </file>
+    <file>
+      <filename>BTAPMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>4F234BCA</checksum>
+    </file>
+    <file>
+      <filename>NRCMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>F787EF10</checksum>
     </file>
   </files>
 </measure>

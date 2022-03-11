@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_set_srr</name>
   <uid>5b955a02-309e-406a-93d7-ff4ce5540e08</uid>
-  <version_id>c301cc5e-d301-498f-8438-de9388769ea7</version_id>
-  <version_modified>20220311T145414Z</version_modified>
+  <version_id>b3f13988-9de8-409e-bd7e-df9f5e9305d5</version_id>
+  <version_modified>20220311T213438Z</version_modified>
   <xml_checksum>FC9586A7</xml_checksum>
   <class_name>NrcSetSrr</class_name>
   <display_name>nrc_set_srr</display_name>
@@ -89,12 +89,6 @@
   </attributes>
   <files>
     <file>
-      <filename>BTAPMeasureHelper.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>F45B04B6</checksum>
-    </file>
-    <file>
       <filename>README.md</filename>
       <filetype>md</filetype>
       <usage_type>readme</usage_type>
@@ -105,12 +99,6 @@
       <filetype>erb</filetype>
       <usage_type>readmeerb</usage_type>
       <checksum>877DD729</checksum>
-    </file>
-    <file>
-      <filename>NRCMeasureHelper.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>4001603A</checksum>
     </file>
     <file>
       <version>
@@ -128,6 +116,18 @@
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
       <checksum>FDFD9765</checksum>
+    </file>
+    <file>
+      <filename>BTAPMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>4F234BCA</checksum>
+    </file>
+    <file>
+      <filename>NRCMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>F787EF10</checksum>
     </file>
   </files>
 </measure>

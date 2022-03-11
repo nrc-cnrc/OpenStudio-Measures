@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_set_pump_efficiency</name>
   <uid>2ae95346-3038-4237-b90b-44028ca3e6d1</uid>
-  <version_id>9282d89a-e8e1-4f32-b630-52acee2c930d</version_id>
-  <version_modified>20220311T145408Z</version_modified>
+  <version_id>73b8d46b-a84a-42f7-9ca2-b5ef2d8499f7</version_id>
+  <version_modified>20220311T213438Z</version_modified>
   <xml_checksum>2AF3A68E</xml_checksum>
   <class_name>NrcSetPumpEfficiency</class_name>
   <display_name>NrcSetPumpEfficiency </display_name>
@@ -84,18 +84,6 @@
       <checksum>A1A5426B</checksum>
     </file>
     <file>
-      <filename>BTAPMeasureHelper.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>F45B04B6</checksum>
-    </file>
-    <file>
-      <filename>NRCMeasureHelper.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>4001603A</checksum>
-    </file>
-    <file>
       <filename>test.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
@@ -106,6 +94,18 @@
       <filetype>md</filetype>
       <usage_type>readme</usage_type>
       <checksum>A93B87E5</checksum>
+    </file>
+    <file>
+      <filename>BTAPMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>4F234BCA</checksum>
+    </file>
+    <file>
+      <filename>NRCMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>F787EF10</checksum>
     </file>
   </files>
 </measure>

@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_change_energy_recovery_efficiency</name>
   <uid>9b530f72-e5ab-467b-acd6-b5c3458d7b55</uid>
-  <version_id>6ba35bb6-40d5-4890-b9f7-6aa2c091af97</version_id>
-  <version_modified>20220311T145336Z</version_modified>
+  <version_id>d8b29f06-11b5-4dda-bbb1-505ab56012f2</version_id>
+  <version_modified>20220311T213414Z</version_modified>
   <xml_checksum>BF75C791</xml_checksum>
   <class_name>NrcChangeEnergyRecoveryEfficiency</class_name>
   <display_name>NrcChangeEnergyRecoveryEfficiency</display_name>
@@ -128,18 +128,6 @@
       <checksum>A1A5426B</checksum>
     </file>
     <file>
-      <filename>BTAPMeasureHelper.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>F45B04B6</checksum>
-    </file>
-    <file>
-      <filename>NRCMeasureHelper.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>4001603A</checksum>
-    </file>
-    <file>
       <filename>test.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
@@ -150,6 +138,18 @@
       <filetype>md</filetype>
       <usage_type>readme</usage_type>
       <checksum>E2F75DDC</checksum>
+    </file>
+    <file>
+      <filename>BTAPMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>4F234BCA</checksum>
+    </file>
+    <file>
+      <filename>NRCMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>F787EF10</checksum>
     </file>
   </files>
 </measure>

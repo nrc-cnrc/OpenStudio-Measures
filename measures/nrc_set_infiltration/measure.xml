@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_set_infiltration</name>
   <uid>68ad385a-22cd-4c01-a4a4-11c2c30026fb</uid>
-  <version_id>8f539b71-cd94-43f0-9619-60b3823ec671</version_id>
-  <version_modified>20220311T145407Z</version_modified>
+  <version_id>71ccc26f-e3ee-45dc-861f-61363b55a7db</version_id>
+  <version_modified>20220311T213437Z</version_modified>
   <xml_checksum>2AF3A68E</xml_checksum>
   <class_name>NrcSetInfiltration</class_name>
   <display_name>NrcSetInfiltration</display_name>
@@ -97,18 +97,6 @@
       <checksum>A1A5426B</checksum>
     </file>
     <file>
-      <filename>BTAPMeasureHelper.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>F45B04B6</checksum>
-    </file>
-    <file>
-      <filename>NRCMeasureHelper.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>4001603A</checksum>
-    </file>
-    <file>
       <filename>test.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
@@ -119,6 +107,18 @@
       <filetype>md</filetype>
       <usage_type>readme</usage_type>
       <checksum>381DB259</checksum>
+    </file>
+    <file>
+      <filename>BTAPMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>4F234BCA</checksum>
+    </file>
+    <file>
+      <filename>NRCMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>F787EF10</checksum>
     </file>
   </files>
 </measure>

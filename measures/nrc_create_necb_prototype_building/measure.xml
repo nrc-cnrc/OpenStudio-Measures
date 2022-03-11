@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_create_necb_prototype_building</name>
   <uid>3e9acd53-8602-4749-a655-7cbbe48e8b30</uid>
-  <version_id>cd3013b5-2f67-4323-9a65-1985e539385b</version_id>
-  <version_modified>20220311T145342Z</version_modified>
+  <version_id>dc0e31f4-603f-4efe-886a-f7c46ad6d4dc</version_id>
+  <version_modified>20220311T213418Z</version_modified>
   <xml_checksum>2C38F48B</xml_checksum>
   <class_name>NrcCreateNECBPrototypeBuilding</class_name>
   <display_name>NrcCreateNECBPrototypeBuilding</display_name>
@@ -454,12 +454,6 @@
       <checksum>A1A5426B</checksum>
     </file>
     <file>
-      <filename>BTAPMeasureHelper.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>F45B04B6</checksum>
-    </file>
-    <file>
       <filename>README.md</filename>
       <filetype>md</filetype>
       <usage_type>readme</usage_type>
@@ -490,16 +484,22 @@
       <checksum>2F82A117</checksum>
     </file>
     <file>
-      <filename>NRCMeasureHelper.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>5D52138B</checksum>
-    </file>
-    <file>
       <filename>test_2011.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
       <checksum>64A6926C</checksum>
+    </file>
+    <file>
+      <filename>BTAPMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>4F234BCA</checksum>
+    </file>
+    <file>
+      <filename>NRCMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>F787EF10</checksum>
     </file>
   </files>
 </measure>

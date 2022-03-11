@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_report_carbon_emissions</name>
   <uid>11a12238-d360-4ad9-8d85-58b56c67cf83</uid>
-  <version_id>3ff9ca8e-2e5b-47d6-a200-503574109fbf</version_id>
-  <version_modified>20220308T163545Z</version_modified>
+  <version_id>9387014e-83a7-4546-9eb0-c7cf1afad37b</version_id>
+  <version_modified>20220311T213427Z</version_modified>
   <xml_checksum>9BF1E6AC</xml_checksum>
   <class_name>NrcReportCarbonEmissions</class_name>
   <display_name>NrcReportCarbonEmissions</display_name>
@@ -441,18 +441,6 @@
       <checksum>86297DE7</checksum>
     </file>
     <file>
-      <filename>NRCReportingMeasureHelper.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>984E9ECA</checksum>
-    </file>
-    <file>
-      <filename>BTAPMeasureHelper.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>DF8E208E</checksum>
-    </file>
-    <file>
       <filename>test_gr2.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
@@ -528,6 +516,18 @@
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
       <checksum>B4AE2D63</checksum>
+    </file>
+    <file>
+      <filename>NRCReportingMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>D97AA2BB</checksum>
+    </file>
+    <file>
+      <filename>BTAPMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>B69DF022</checksum>
     </file>
   </files>
 </measure>

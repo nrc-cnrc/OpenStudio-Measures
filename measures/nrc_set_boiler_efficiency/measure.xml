@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_set_boiler_efficiency</name>
   <uid>3cce913f-31d5-423b-b8ac-ddea73ffedad</uid>
-  <version_id>73507be7-ea31-424b-9706-246113e55b24</version_id>
-  <version_modified>20220311T145355Z</version_modified>
+  <version_id>099a74c9-2764-4594-9973-a59ec6e49b4d</version_id>
+  <version_modified>20220311T213436Z</version_modified>
   <xml_checksum>2AF3A68E</xml_checksum>
   <class_name>NrcSetBoilerEfficiency</class_name>
   <display_name>NrcSetBoilerEfficiency</display_name>
@@ -78,18 +78,6 @@
       <checksum>A1A5426B</checksum>
     </file>
     <file>
-      <filename>BTAPMeasureHelper.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>F45B04B6</checksum>
-    </file>
-    <file>
-      <filename>NRCMeasureHelper.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>4001603A</checksum>
-    </file>
-    <file>
       <filename>test.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
@@ -100,6 +88,18 @@
       <filetype>md</filetype>
       <usage_type>readme</usage_type>
       <checksum>662BDB68</checksum>
+    </file>
+    <file>
+      <filename>BTAPMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>4F234BCA</checksum>
+    </file>
+    <file>
+      <filename>NRCMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>F787EF10</checksum>
     </file>
   </files>
 </measure>

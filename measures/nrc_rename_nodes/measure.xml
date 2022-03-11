@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_rename_nodes</name>
   <uid>07e104f4-7175-4a8e-8c1a-b9fafb28b3ce</uid>
-  <version_id>bcd44a7b-41bc-46ec-b4cc-355d0b7c09ef</version_id>
-  <version_modified>20220311T145349Z</version_modified>
+  <version_id>50dbf139-0022-49cf-bd45-55fd5c9881ca</version_id>
+  <version_modified>20220311T213421Z</version_modified>
   <xml_checksum>FC9586A7</xml_checksum>
   <class_name>NrcRenameNodes</class_name>
   <display_name>NrcRenameNodes</display_name>
@@ -84,22 +84,22 @@
       <checksum>5FCDA75D</checksum>
     </file>
     <file>
+      <filename>test.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>39169594</checksum>
+    </file>
+    <file>
       <filename>BTAPMeasureHelper.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>F45B04B6</checksum>
+      <checksum>4F234BCA</checksum>
     </file>
     <file>
       <filename>NRCMeasureHelper.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>4001603A</checksum>
-    </file>
-    <file>
-      <filename>test.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>test</usage_type>
-      <checksum>39169594</checksum>
+      <checksum>F787EF10</checksum>
     </file>
   </files>
 </measure>

@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_rename_surfaces</name>
   <uid>07e104f4-7175-4a8e-8c1a-b9fafb28b3ce</uid>
-  <version_id>ae5059ae-f0f6-4d2c-ac5c-d752814682d6</version_id>
-  <version_modified>20220311T145349Z</version_modified>
+  <version_id>c5547088-f3b1-4e47-8250-c54cb465aad6</version_id>
+  <version_modified>20220311T213421Z</version_modified>
   <xml_checksum>FC9586A7</xml_checksum>
   <class_name>NrcRenameSurfaces</class_name>
   <display_name>NrcRenameSurfaces</display_name>
@@ -100,18 +100,6 @@
       <checksum>11B89898</checksum>
     </file>
     <file>
-      <filename>BTAPMeasureHelper.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>F45B04B6</checksum>
-    </file>
-    <file>
-      <filename>NRCMeasureHelper.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>4001603A</checksum>
-    </file>
-    <file>
       <filename>test.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
@@ -122,6 +110,18 @@
       <filetype>erb</filetype>
       <usage_type>readmeerb</usage_type>
       <checksum>A1A5426B</checksum>
+    </file>
+    <file>
+      <filename>BTAPMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>4F234BCA</checksum>
+    </file>
+    <file>
+      <filename>NRCMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>F787EF10</checksum>
     </file>
   </files>
 </measure>

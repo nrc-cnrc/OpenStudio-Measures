@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_resize_existing_windows_to_match_a_given_wwr</name>
   <uid>b1c8aae7-db36-4461-88f8-d6ac57ec11d5</uid>
-  <version_id>2c7a3780-36f3-4eaa-9ade-9bc72eed799f</version_id>
-  <version_modified>20220311T145354Z</version_modified>
+  <version_id>0e25c022-e7f7-479c-9e72-06eeca8798c7</version_id>
+  <version_modified>20220311T213435Z</version_modified>
   <xml_checksum>A8B8B5E3</xml_checksum>
   <class_name>NrcResizeExistingWindowsToMatchAGivenWWR</class_name>
   <display_name>Nrc Resize Existing Windows To Match A Given WWR</display_name>
@@ -186,12 +186,6 @@ This will compute the WWR by taking into account all of the surfaces that have a
   </attributes>
   <files>
     <file>
-      <filename>BTAPMeasureHelper.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>F45B04B6</checksum>
-    </file>
-    <file>
       <filename>Warehouse-NECB2017-ON_Ottawa.osm</filename>
       <filetype>osm</filetype>
       <usage_type>test</usage_type>
@@ -210,12 +204,6 @@ This will compute the WWR by taking into account all of the surfaces that have a
       <checksum>ECFB14D5</checksum>
     </file>
     <file>
-      <filename>NRCMeasureHelper.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>4001603A</checksum>
-    </file>
-    <file>
       <filename>test.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
@@ -231,6 +219,18 @@ This will compute the WWR by taking into account all of the surfaces that have a
       <filetype>rb</filetype>
       <usage_type>script</usage_type>
       <checksum>635C84B2</checksum>
+    </file>
+    <file>
+      <filename>BTAPMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>4F234BCA</checksum>
+    </file>
+    <file>
+      <filename>NRCMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>F787EF10</checksum>
     </file>
   </files>
 </measure>

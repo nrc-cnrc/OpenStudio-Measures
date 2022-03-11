@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_report</name>
   <uid>d023501a-5089-4b1d-9a08-7a573820a7ef</uid>
-  <version_id>edf4a1b4-d486-4ac7-9448-a270020be33c</version_id>
-  <version_modified>20220308T173531Z</version_modified>
+  <version_id>b4950146-e31e-4737-9945-421aba1c8eeb</version_id>
+  <version_modified>20220311T213424Z</version_modified>
   <xml_checksum>9BF1E6AC</xml_checksum>
   <class_name>NrcReport</class_name>
   <display_name>NrcReport</display_name>
@@ -1383,12 +1383,6 @@
       <checksum>6F788ACD</checksum>
     </file>
     <file>
-      <filename>BTAPMeasureHelper.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>DF8E208E</checksum>
-    </file>
-    <file>
       <filename>NRCReportingMeasureHelper.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
@@ -1434,6 +1428,18 @@
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
       <checksum>FC09C0F1</checksum>
+    </file>
+    <file>
+      <filename>BTAPMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>4F234BCA</checksum>
+    </file>
+    <file>
+      <filename>NRCMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>F787EF10</checksum>
     </file>
   </files>
 </measure>

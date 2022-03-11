@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_add_hvac_availability_manager</name>
   <uid>7e2d8cb0-7ec5-494a-9e1f-bbfbd00d003d</uid>
-  <version_id>52adb6f7-3b36-4219-afb9-9add989f2df9</version_id>
-  <version_modified>20220311T145334Z</version_modified>
+  <version_id>ce48bb12-e756-40c3-b881-61d8fded4267</version_id>
+  <version_modified>20220311T213412Z</version_modified>
   <xml_checksum>BF5240D4</xml_checksum>
   <class_name>NrcAddHvacAvailabilityManager</class_name>
   <display_name>Add HVAC Availability Manager</display_name>
@@ -60,12 +60,6 @@
       <checksum>A1A5426B</checksum>
     </file>
     <file>
-      <filename>NRCMeasureHelper.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>4001603A</checksum>
-    </file>
-    <file>
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>3.1.0</identifier>
@@ -75,12 +69,6 @@
       <filetype>rb</filetype>
       <usage_type>script</usage_type>
       <checksum>81DD1EC8</checksum>
-    </file>
-    <file>
-      <filename>BTAPMeasureHelper.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>F45B04B6</checksum>
     </file>
     <file>
       <filename>test.rb</filename>
@@ -93,6 +81,18 @@
       <filetype>md</filetype>
       <usage_type>readme</usage_type>
       <checksum>018B9989</checksum>
+    </file>
+    <file>
+      <filename>NRCMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>F787EF10</checksum>
+    </file>
+    <file>
+      <filename>BTAPMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>4F234BCA</checksum>
     </file>
   </files>
 </measure>

@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_set_fenestration_wall_conductance_by_necb_climate_zone</name>
   <uid>ed475991-f1ea-4c98-968d-fdf5d56faab3</uid>
-  <version_id>432e1ace-2430-4487-8149-b91222269862</version_id>
-  <version_modified>20220311T145407Z</version_modified>
+  <version_id>dedbd48c-49f6-43c3-a016-b92c2c8c9004</version_id>
+  <version_modified>20220311T213437Z</version_modified>
   <xml_checksum>7308DE72</xml_checksum>
   <class_name>NrcSetFenestrationWallConductanceByNecbClimateZone</class_name>
   <display_name>Set Fenestration (Wall) Conductance By Necb Climate Zone</display_name>
@@ -117,12 +117,6 @@
       <checksum>A1A5426B</checksum>
     </file>
     <file>
-      <filename>BTAPMeasureHelper.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>F45B04B6</checksum>
-    </file>
-    <file>
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>0.11.5</identifier>
@@ -146,10 +140,16 @@
       <checksum>B5821B9B</checksum>
     </file>
     <file>
+      <filename>BTAPMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>4F234BCA</checksum>
+    </file>
+    <file>
       <filename>NRCMeasureHelper.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>4001603A</checksum>
+      <checksum>F787EF10</checksum>
     </file>
   </files>
 </measure>
