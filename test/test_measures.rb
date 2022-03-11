@@ -117,14 +117,18 @@ class ParallelTests
 
     # Run the tests in parallel using the available resources.
     puts "Running #{@full_file_list.size} test suites in parallel using #{ProcessorsUsed} of available cpus."
-    puts "Time: #{Time.now}".yellow
+	overall_start_time = Time.now
+    puts "Time: #{overall_start_time}".yellow
     Parallel.each(@full_file_list, in_threads: (ProcessorsUsed), progress: "Progress:") do |test_file|
       t_start = Time.now
       puts "STARTING:: Worker: #{Parallel.worker_number}, Time: #{t_start.strftime("%k:%M:%S")}, File: #{test_file.strip}".blue
       Summary_output[test_file.to_s] = {}
 	  Summary_output[test_file.to_s]['start'] = t_start.to_i
       FileUtils.rm_rf(File.join( test_file, "_test_output.json"))
-      test_passed = write_results(Open3.capture3('bundle', 'exec', "ruby '#{test_file.strip}'"), test_file)
+	  
+	  # Pass the overall start time to the test scripts for identifying old test output (really important where there are
+	  #  multiple test scripts for one measure (e.g. create grometry).
+      test_passed = write_results(Open3.capture3('bundle', 'exec', 'ruby', "#{test_file.strip}", "#{overall_start_time.to_i}"), test_file)
 	  fail_count = fail_count + 1 unless test_passed
       puts "FINISHED:: Worker: #{Parallel.worker_number}, Time: #{Time.now.strftime("%k:%M:%S")}, Duration: #{(Time.now - t_start).to_i} s, File: #{test_file.strip}".light_blue
       Summary_output[test_file.to_s]['end'] = Time.now.to_i
@@ -140,12 +144,14 @@ class ParallelTests
 	  finish = Time.at(value['end'])
 	  puts "Duration: #{value['duration']}s (Start: #{start.strftime("%k:%M:%S")}, Finish: #{finish.strftime("%k:%M:%S")}); Test:#{key}"
     end
+	
 	# Report if any missing tests
     puts "  Measures not included"
 	All_measures.each do |measure|
 	  measure_name = measure.gsub('../measures/','')
 	  puts "Did not test measure #{measure_name}".red unless Summary_output.keys.any?{|s| s.include?(measure_name)}
 	end
+	
 	# Which tests passed/failed.
     puts "  Pass/Fail summary"
     Summary_output.each do |key, value|
@@ -156,7 +162,7 @@ class ParallelTests
       end
     end
 	
-	
+	# Return with correct state.
 	if fail_count > 0 then
       puts "#{fail_count} tests failed!".red
 	  return false
