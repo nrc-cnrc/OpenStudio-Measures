@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_report_utility_costs</name>
   <uid>224561f4-8ccc-4f60-8118-34b85359d6f1</uid>
-  <version_id>7c453b87-8163-4cc8-b661-0de2ba918f7b</version_id>
-  <version_modified>20220311T213435Z</version_modified>
+  <version_id>461dfe1c-d372-486f-acf1-3b09b074288e</version_id>
+  <version_modified>20220314T181031Z</version_modified>
   <xml_checksum>9BF1E6AC</xml_checksum>
   <class_name>NrcReportUtilityCosts</class_name>
   <display_name>Report Utility Costs</display_name>

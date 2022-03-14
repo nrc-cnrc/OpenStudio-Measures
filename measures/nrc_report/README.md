@@ -251,6 +251,4 @@ ReportingMeasure
 
 
 
-
-
-Heating End Use, heating, cooling, electricity_consumption, natural_gas_consumption, district_heating, district_cooling, total_site_eui, eui
+heating, cooling, electricity_consumption, natural_gas_consumption, district_heating, district_cooling, total_site_eui, eui

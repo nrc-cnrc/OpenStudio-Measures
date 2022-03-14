@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_create_geometry</name>
   <uid>d21e6b27-1826-4c33-9cdc-abc1154ff2f5</uid>
-  <version_id>5a808b06-966e-45a9-8888-8e694fe36527</version_id>
-  <version_modified>20220311T213418Z</version_modified>
+  <version_id>3dd127b2-2520-4723-b64e-60fed2f1163c</version_id>
+  <version_modified>20220314T181002Z</version_modified>
   <xml_checksum>2609226D</xml_checksum>
   <class_name>NrcCreateGeometry</class_name>
   <display_name>NrcCreateGeometry</display_name>
@@ -538,52 +538,46 @@
       <checksum>14590712</checksum>
     </file>
     <file>
-      <filename>common.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>test</usage_type>
-      <checksum>70242A30</checksum>
-    </file>
-    <file>
-      <filename>test_2017.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>test</usage_type>
-      <checksum>2ACD930F</checksum>
-    </file>
-    <file>
-      <filename>test_2015.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>test</usage_type>
-      <checksum>6CE354CE</checksum>
-    </file>
-    <file>
-      <filename>test_2020.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>test</usage_type>
-      <checksum>5C682A77</checksum>
-    </file>
-    <file>
-      <filename>test_2011.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>test</usage_type>
-      <checksum>BFA1C6F0</checksum>
-    </file>
-    <file>
       <filename>BTAPMeasureHelper.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
       <checksum>4F234BCA</checksum>
     </file>
     <file>
+      <filename>common.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>99297E7C</checksum>
+    </file>
+    <file>
+      <filename>test_2017.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>47174BF5</checksum>
+    </file>
+    <file>
+      <filename>test_2015.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>73EB5E78</checksum>
+    </file>
+    <file>
+      <filename>test_2020.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>89251116</checksum>
+    </file>
+    <file>
+      <filename>test_2011.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>8A2BE509</checksum>
+    </file>
+    <file>
       <filename>NRCMeasureHelper.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>F787EF10</checksum>
-    </file>
-    <file>
-      <filename>test_2015-output.json</filename>
-      <filetype>json</filetype>
-      <usage_type>test</usage_type>
-      <checksum>52676697</checksum>
+      <checksum>2E96BF6F</checksum>
     </file>
   </files>
 </measure>

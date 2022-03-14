@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_create_necb_prototype_building</name>
   <uid>3e9acd53-8602-4749-a655-7cbbe48e8b30</uid>
-  <version_id>dc0e31f4-603f-4efe-886a-f7c46ad6d4dc</version_id>
-  <version_modified>20220311T213418Z</version_modified>
+  <version_id>57338e4c-7139-4592-a5c4-dd2c3c79e480</version_id>
+  <version_modified>20220314T181003Z</version_modified>
   <xml_checksum>2C38F48B</xml_checksum>
   <class_name>NrcCreateNECBPrototypeBuilding</class_name>
   <display_name>NrcCreateNECBPrototypeBuilding</display_name>

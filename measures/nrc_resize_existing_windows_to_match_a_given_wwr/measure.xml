@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_resize_existing_windows_to_match_a_given_wwr</name>
   <uid>b1c8aae7-db36-4461-88f8-d6ac57ec11d5</uid>
-  <version_id>0e25c022-e7f7-479c-9e72-06eeca8798c7</version_id>
-  <version_modified>20220311T213435Z</version_modified>
+  <version_id>383714b8-60aa-4bed-8404-590ef120a7df</version_id>
+  <version_modified>20220314T181032Z</version_modified>
   <xml_checksum>A8B8B5E3</xml_checksum>
   <class_name>NrcResizeExistingWindowsToMatchAGivenWWR</class_name>
   <display_name>Nrc Resize Existing Windows To Match A Given WWR</display_name>

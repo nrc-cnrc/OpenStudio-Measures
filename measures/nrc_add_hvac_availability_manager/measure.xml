@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_add_hvac_availability_manager</name>
   <uid>7e2d8cb0-7ec5-494a-9e1f-bbfbd00d003d</uid>
-  <version_id>ce48bb12-e756-40c3-b881-61d8fded4267</version_id>
-  <version_modified>20220311T213412Z</version_modified>
+  <version_id>e3e10cf7-2490-4460-884f-a932c1330496</version_id>
+  <version_modified>20220314T180953Z</version_modified>
   <xml_checksum>BF5240D4</xml_checksum>
   <class_name>NrcAddHvacAvailabilityManager</class_name>
   <display_name>Add HVAC Availability Manager</display_name>

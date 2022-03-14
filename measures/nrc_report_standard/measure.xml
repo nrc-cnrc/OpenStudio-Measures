@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_reporting_measure_standard</name>
   <uid>224561f4-8ccc-4f20-8118-34b85359d3f1</uid>
-  <version_id>4594ca6e-233b-4dca-b5bb-477440e5185b</version_id>
-  <version_modified>20220311T213432Z</version_modified>
+  <version_id>323263bb-f182-479d-94e5-14c81d7ed699</version_id>
+  <version_modified>20220314T181026Z</version_modified>
   <xml_checksum>DD7247CF</xml_checksum>
   <class_name>NrcReportingMeasureStandard</class_name>
   <display_name>NRC Standard Report</display_name>

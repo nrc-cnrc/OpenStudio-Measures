@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_pricing_measure</name>
   <uid>224561f4-8ccc-4f60-8118-34b85359d6f7</uid>
-  <version_id>ee017c7a-044c-42ba-a533-b2d7be03975c</version_id>
-  <version_modified>20220311T213429Z</version_modified>
+  <version_id>e3cadfe5-6932-4750-81c8-89ef9499afdf</version_id>
+  <version_modified>20220314T181022Z</version_modified>
   <xml_checksum>359BA50C</xml_checksum>
   <class_name>NrcPricingMeasure</class_name>
   <display_name>Pricing Measure</display_name>
@@ -110,12 +110,6 @@
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
       <checksum>D97AA2BB</checksum>
-    </file>
-    <file>
-      <filename>test-output.json</filename>
-      <filetype>json</filetype>
-      <usage_type>test</usage_type>
-      <checksum>85515AE9</checksum>
     </file>
     <file>
       <filename>NRCMeasureHelper.rb</filename>

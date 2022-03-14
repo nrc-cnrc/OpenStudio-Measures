@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_update_water_heater</name>
   <uid>2f81b690-4343-49fe-9c2a-803e531ac6c8</uid>
-  <version_id>b7916f23-d7ce-4696-9943-5acb2285e176</version_id>
-  <version_modified>20220311T213439Z</version_modified>
+  <version_id>06e5d23b-c4d9-4083-a3ac-fa6a27211c27</version_id>
+  <version_modified>20220314T181041Z</version_modified>
   <xml_checksum>E88CCCA7</xml_checksum>
   <class_name>NrcUpdateWaterHeater</class_name>
   <display_name>NrcUpdateWaterHeater</display_name>
