@@ -262,6 +262,18 @@ module NRCReportingMeasureTestHelper
       return nrc_measure
     end
   end
+
+  # Load a test model (code that is common in a lot of test scripts). Returns the model object.
+  def load_test_osm(full_osm_model_path)
+  
+    # Load the supplied osm.
+    translator = OpenStudio::OSVersion::VersionTranslator.new
+    path = OpenStudio::Path.new(full_osm_model_path)
+    model = translator.loadModel(path)
+    puts "assert #{(not model.empty?)}".light_blue
+    assert((not model.empty?), "Reading model file: #{path}")
+    model = model.get
+  end
 end
 
 # Add significant digits capability to float amd integer class.

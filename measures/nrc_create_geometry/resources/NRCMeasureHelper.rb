@@ -22,12 +22,14 @@ module NRCMeasureTestHelper
     existing_folders = Dir.entries(@output_path) - ['.', '..'] # Remove current folder above from list before deleting!
     existing_folders.each do |entry|
       folder_to_remove = File.expand_path("#{@output_path}/#{entry}")
-      puts "Checking existing output folder: #{folder_to_remove}".green
-      if File.mtime(folder_to_remove) < before
-        puts "Removing existing output folder: #{folder_to_remove}".yellow
-        FileUtils.rm_rf(folder_to_remove)
-      else
-        puts "Skipping existing output folder: #{folder_to_remove}".light_blue
+	  if (Dir.exist?(folder_to_remove)) # Double check it exists (incase another process has removed it as is the case with multiple test files).
+        puts "Checking existing output folder: #{before}; #{File.mtime(folder_to_remove)}; #{folder_to_remove}".green
+        if File.mtime(folder_to_remove) < before
+          puts "Removing folder: #{folder_to_remove}".yellow
+          FileUtils.rm_rf(folder_to_remove)
+        else
+          puts "Skipping existing output folder: #{folder_to_remove}".light_blue
+        end
       end
     end
   end
@@ -51,6 +53,7 @@ module NRCMeasureTestHelper
     if path == @output_root_path
       # Append the calling method name and re-validate (need to jump back two methods)
       path = @output_root_path + "/" + caller_locations(1, 2)[1].label.split.last
+	  puts "Appending path: #{path}"
       validateOutputFolder(path)
     elsif File.exist?(path)
       # Create a numbered subfolder. First check if there is a numbered folder.

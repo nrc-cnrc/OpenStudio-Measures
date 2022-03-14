@@ -10,6 +10,7 @@ if ARGV.length == 1
   start_time=Time.at(ARGV[0].to_i)
 end
 NRCMeasureTestHelper::removeOldOutputs(before: start_time)
+NRCMeasureTestHelper::appendOutputFolder("NECB2011")
 
 # Just the 2011 models.
 class NrcCreateGeometry_Test

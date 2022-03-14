@@ -10,13 +10,14 @@ if ARGV.length == 1
   start_time=Time.at(ARGV[0].to_i)
 end
 NRCMeasureTestHelper::removeOldOutputs(before: start_time)
+NRCMeasureTestHelper::appendOutputFolder("NECB2015")
 
 # Just the 2015 models.
 class NrcCreateGeometry_Test
 
   def test_2015()
     # Delay the start of this test so that the 2011 case can initialise the output folder.
-    sleep(20)
+    sleep(40)
 
     # Set the version of NECB to use in this test
     template = 'NECB2015'

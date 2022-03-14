@@ -168,9 +168,9 @@ module TestCommon
       city = city1[2].split(".").first
 
       # Define specific output folder for this test.
-      output_file_path = NRCMeasureTestHelper.appendOutputFolder("#{template}")
-      puts "Output folder ". green + "#{output_file_path}".light_blue
       model_name = "#{building_shape}-#{building_type}-#{template}-#{rotation.to_int}-#{city}-#{above_grade_floors}-#{total_floor_area.to_int}-#{aspect_ratio}"
+      output_file_path = NRCMeasureTestHelper.appendOutputFolder("#{model_name}")
+      puts "Output folder ". green + "#{output_file_path}".light_blue
 	  
       # Create an instance of the measure with good values
       runner = run_measure(input_arguments, model)

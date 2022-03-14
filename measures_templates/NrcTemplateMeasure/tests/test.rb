@@ -170,7 +170,7 @@ class NrcModelMeasure_Test < Minitest::Test
     NRCMeasureTestHelper.appendOutputFolder("test_sample_3")
 
     # Load osm file.
-    moel = NRCMeasureTestHelper.load_test_osm("#{File.dirname(__FILE__)}/SmallOffice.osm")
+    model = load_test_osm("#{File.dirname(__FILE__)}/SmallOffice.osm")
 
     # Assign the local weather file (have to provide a full path to EpwFile).
     epw = OpenStudio::EpwFile.new("#{File.dirname(__FILE__)}/weather_files/CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw")

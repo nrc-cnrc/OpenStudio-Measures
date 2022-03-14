@@ -227,7 +227,8 @@ module NRCMeasureTestHelper
     translator = OpenStudio::OSVersion::VersionTranslator.new
     path = OpenStudio::Path.new(full_osm_model_path)
     model = translator.loadModel(path)
-    assert((not model.empty?))
+    puts "assert #{(not model.empty?)}".light_blue
+    assert((not model.empty?), "Reading model file: #{path}")
     model = model.get
   end
 end
