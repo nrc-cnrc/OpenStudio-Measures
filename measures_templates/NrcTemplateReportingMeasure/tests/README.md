@@ -55,7 +55,7 @@
   "a_string_argument": "MyString",
   "a_double_argument": 50.0,
   "an_integer_argument": 5,
-  "a_string_double_argument": "3e2dce89-9dec-481d-8a1f-fdf5a4784a13",
+  "a_string_double_argument": "d18e16e8-8265-4b61-865d-416ca75347b6",
   "a_choice_argument": "choice_1",
   "a_bool_argument": true
 } |
@@ -154,7 +154,7 @@
 | a_string_argument |MyString |
 | a_double_argument |50.0 |
 | an_integer_argument |5 |
-| a_string_double_argument |4660bafc-f6c1-4c1b-8b51-7c8146bc30d5 |
+| a_string_double_argument |e17e183a-c680-4b0e-81cd-7c2b95c618a2 |
 | a_choice_argument |choice_1 |
 | a_bool_argument |true |
  
