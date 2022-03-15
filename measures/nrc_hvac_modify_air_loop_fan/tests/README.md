@@ -1,6 +1,14 @@
 # Summary Of Test Cases for 'MODIFY HVAC AIR LOOP FAN PARAMETERS' Measure
  
-## 1 - test argument ranges--264
+## 1 - test modify fan--27
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| air_loop |All |
+| pressure_rise |750.0 |
+| fan_efficiency |85.0 |
+| motor_efficiency |81.0 |
+ 
+## 2 - test argument ranges--312
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | air_loop |All |
@@ -8,7 +16,7 @@
 | fan_efficiency |85.0 |
 | motor_efficiency |81.0 |
  
-## 2 - test argument ranges--265
+## 3 - test argument ranges--313
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | air_loop |All |
@@ -16,7 +24,7 @@
 | fan_efficiency |85.0 |
 | motor_efficiency |81.0 |
  
-## 3 - test argument ranges--266
+## 4 - test argument ranges--314
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | air_loop |All |
@@ -24,7 +32,7 @@
 | fan_efficiency |101.0 |
 | motor_efficiency |81.0 |
  
-## 4 - test argument ranges--267
+## 5 - test argument ranges--315
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | air_loop |All |
@@ -32,7 +40,7 @@
 | fan_efficiency |-2.0 |
 | motor_efficiency |81.0 |
  
-## 5 - test argument ranges--268
+## 6 - test argument ranges--316
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | air_loop |All |
@@ -40,7 +48,7 @@
 | fan_efficiency |85.0 |
 | motor_efficiency |101.0 |
  
-## 6 - test argument ranges--269
+## 7 - test argument ranges--317
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | air_loop |All |
@@ -48,7 +56,7 @@
 | fan_efficiency |85.0 |
 | motor_efficiency |-2.0 |
  
-## 7 - test argument ranges--270
+## 8 - test argument ranges--318
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | air_loop |All |
@@ -56,7 +64,7 @@
 | fan_efficiency |85.0 |
 | motor_efficiency |81.0 |
  
-## 8 - test argument ranges--271
+## 9 - test argument ranges--319
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | air_loop |All |
@@ -64,7 +72,7 @@
 | fan_efficiency |85.0 |
 | motor_efficiency |81.0 |
  
-## 9 - test argument ranges--272
+## 10 - test argument ranges--320
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | air_loop |All |
@@ -72,7 +80,7 @@
 | fan_efficiency |101.0 |
 | motor_efficiency |81.0 |
  
-## 10 - test argument ranges--273
+## 11 - test argument ranges--321
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | air_loop |All |
@@ -80,7 +88,7 @@
 | fan_efficiency |-2.0 |
 | motor_efficiency |81.0 |
  
-## 11 - test argument ranges--274
+## 12 - test argument ranges--322
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | air_loop |All |
@@ -88,7 +96,7 @@
 | fan_efficiency |85.0 |
 | motor_efficiency |101.0 |
  
-## 12 - test argument ranges--275
+## 13 - test argument ranges--323
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | air_loop |All |
@@ -96,7 +104,7 @@
 | fan_efficiency |85.0 |
 | motor_efficiency |-2.0 |
  
-## 13 - test argument ranges--276
+## 14 - test argument ranges--324
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | air_loop |All |
@@ -104,7 +112,7 @@
 | fan_efficiency |85.0 |
 | motor_efficiency |81.0 |
  
-## 14 - test argument ranges--277
+## 15 - test argument ranges--325
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | air_loop |All |
@@ -112,7 +120,7 @@
 | fan_efficiency |85.0 |
 | motor_efficiency |81.0 |
  
-## 15 - test argument ranges--278
+## 16 - test argument ranges--326
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | air_loop |All |
@@ -120,7 +128,7 @@
 | fan_efficiency |101.0 |
 | motor_efficiency |81.0 |
  
-## 16 - test argument ranges--279
+## 17 - test argument ranges--327
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | air_loop |All |
@@ -128,7 +136,7 @@
 | fan_efficiency |-2.0 |
 | motor_efficiency |81.0 |
  
-## 17 - test argument ranges--280
+## 18 - test argument ranges--328
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | air_loop |All |
@@ -136,7 +144,7 @@
 | fan_efficiency |85.0 |
 | motor_efficiency |101.0 |
  
-## 18 - test argument ranges--281
+## 19 - test argument ranges--329
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | air_loop |All |
@@ -144,7 +152,7 @@
 | fan_efficiency |85.0 |
 | motor_efficiency |-2.0 |
  
-## 19 - test argument ranges--282
+## 20 - test argument ranges--330
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | air_loop |All |
@@ -152,7 +160,7 @@
 | fan_efficiency |85.0 |
 | motor_efficiency |81.0 |
  
-## 20 - test argument ranges--283
+## 21 - test argument ranges--331
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | air_loop |All |
@@ -160,7 +168,7 @@
 | fan_efficiency |85.0 |
 | motor_efficiency |81.0 |
  
-## 21 - test argument ranges--284
+## 22 - test argument ranges--332
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | air_loop |All |
@@ -168,7 +176,7 @@
 | fan_efficiency |101.0 |
 | motor_efficiency |81.0 |
  
-## 22 - test argument ranges--285
+## 23 - test argument ranges--333
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | air_loop |All |
@@ -176,7 +184,7 @@
 | fan_efficiency |-2.0 |
 | motor_efficiency |81.0 |
  
-## 23 - test argument ranges--286
+## 24 - test argument ranges--334
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | air_loop |All |
@@ -184,19 +192,11 @@
 | fan_efficiency |85.0 |
 | motor_efficiency |101.0 |
  
-## 24 - test argument ranges--287
+## 25 - test argument ranges--335
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | air_loop |All |
 | pressure_rise |750.0 |
 | fan_efficiency |85.0 |
 | motor_efficiency |-2.0 |
- 
-## 25 - test modify fan--23
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| air_loop |All |
-| pressure_rise |750.0 |
-| fan_efficiency |85.0 |
-| motor_efficiency |81.0 |
  
