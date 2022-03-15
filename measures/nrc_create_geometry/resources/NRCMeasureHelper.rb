@@ -41,7 +41,7 @@ module NRCMeasureTestHelper
 
   def self.appendOutputFolder(folder)
     # Append name and validate if specified by the user
-    path = @output_root_path + "/" + folder
+    path = @output_path + "/" + folder
     validateOutputFolder(path)
   end
 
@@ -114,7 +114,7 @@ module NRCMeasureTestHelper
     # Set the output folder. This should be unique (check done in validateOutputFolder). Create if does not exist.
     output_folder = NRCMeasureTestHelper.outputFolder
     output_folder = NRCMeasureTestHelper.validateOutputFolder(output_folder)
-    Dir.mkdir(output_folder) unless Dir.exists?(output_folder)
+    FileUtils.mkdir_p(output_folder) unless Dir.exists?(output_folder)
 
     # This will create a instance of the measure you wish to test. It does this based on the test class name.
     measure = get_measure_object()

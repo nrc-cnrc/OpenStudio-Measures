@@ -14,6 +14,19 @@ require 'fileutils'
 # Core functionality for the tests. Individual test files speed up the testing.
 module TestCommon
 
+    def remove_old_test_results()
+
+      # Check to see if an overall start time was passed (it should be if using one of the test scripts in the test folder). 
+      #  If so then use it to determine what old results are (if not use now)
+      start_time=Time.now
+      if ARGV.length == 1
+
+        # We have a time. It will be in seconds since the epoch. Update our start_time.
+        start_time=Time.at(ARGV[0].to_i)
+      end
+      NRCMeasureTestHelper.removeOldOutputs(before: start_time)
+    end
+
   class NrcCreateGeometry_Test < Minitest::Test
 
     # Brings in helper methods to simplify argument testing of json and standard argument methods.
@@ -167,9 +180,9 @@ module TestCommon
       city1 = epw_file.split("_")
       city = city1[2].split(".").first
 
-      # Define specific output folder for this test.
+      # Define specific output folder for this test. In this case use the tempalet and the model name as this combination is unique.
       model_name = "#{building_shape}-#{building_type}-#{template}-#{rotation.to_int}-#{city}-#{above_grade_floors}-#{total_floor_area.to_int}-#{aspect_ratio}"
-      output_file_path = NRCMeasureTestHelper.appendOutputFolder("#{model_name}")
+      output_file_path = NRCMeasureTestHelper.appendOutputFolder("#{template}/#{model_name}")
       puts "Output folder ". green + "#{output_file_path}".light_blue
 	  
       # Create an instance of the measure with good values

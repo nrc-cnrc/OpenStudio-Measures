@@ -784,3 +784,48 @@
 | plenum_height |0.0 |
 | sideload |false |
  
+## 3 - Courtyard-RetailStandalone-NECB2011-90-Yellowknife-1-1500-1.25
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| building_shape |Courtyard |
+| template |NECB2011 |
+| building_type |RetailStandalone |
+| epw_file |CAN_NT_Yellowknife.AP.719360_CWEC2016.epw |
+| total_floor_area |1500.0 |
+| aspect_ratio |1.25 |
+| rotation |90.0 |
+| above_grade_floors |1 |
+| floor_to_floor_height |3.2 |
+| plenum_height |0.0 |
+| sideload |false |
+ 
+## 2 - U-Shape-PrimarySchool-NECB2017-40-Vancouver-1-20000-1.5
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| building_shape |U-Shape |
+| template |NECB2017 |
+| building_type |PrimarySchool |
+| epw_file |CAN_BC_Vancouver.Intl.AP.718920_CWEC2016.epw |
+| total_floor_area |20000.0 |
+| aspect_ratio |1.5 |
+| rotation |40.0 |
+| above_grade_floors |1 |
+| floor_to_floor_height |3.2 |
+| plenum_height |0.0 |
+| sideload |false |
+ 
+## 50 - Courtyard-RetailStripmall-NECB2015-10-Windsor-1-20000-1.0
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| building_shape |Courtyard |
+| template |NECB2015 |
+| building_type |RetailStripmall |
+| epw_file |CAN_ON_Windsor.Intl.AP.715380_CWEC2016.epw |
+| total_floor_area |20000.0 |
+| aspect_ratio |1.0 |
+| rotation |10.0 |
+| above_grade_floors |1 |
+| floor_to_floor_height |3.2 |
+| plenum_height |0.0 |
+| sideload |false |
+ 
