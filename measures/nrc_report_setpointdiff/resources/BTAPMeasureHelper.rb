@@ -4,11 +4,12 @@ module BTAPMeasureHelper
   # define the arguments that the user will input  
   def arguments(model = OpenStudio::Model::Model.new)
     args = OpenStudio::Measure::OSArgumentVector.new
+	
     if true == @use_json_package
       #Set up package version of input.
       json_default = {}
       @measure_interface_detailed.each do |argument|
-       json_default[argument['name']] = argument["default_value"]
+        json_default[argument['name']] = argument["default_value"]
       end
       default = JSON.pretty_generate(json_default)
       arg = OpenStudio::Ruleset::OSArgument.makeStringArgument('json_input', true)
@@ -179,6 +180,7 @@ module BTAPMeasureTestHelper
         # Test arguments and defaults
         arguments = measure.arguments(model)
         #convert whatever the input was into a hash. Then test.
+
         #check number of arguments.
         if @use_json_package
           assert_equal(@measure_interface_detailed.size, JSON.parse(arguments[0].defaultValueAsString).size, "The measure should have #{@measure_interface_detailed.size} but actually has #{arguments.size}. Here the the arguement expected #{JSON.pretty_generate(@measure_interface_detailed) } \n and this is the actual \n  #{JSON.pretty_generate(arguments[0])}")

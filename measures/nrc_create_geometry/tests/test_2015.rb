@@ -1,12 +1,23 @@
 require_relative 'common.rb'
 include(TestCommon)
 
+# Check to see if an overall start time was passed (it should be if using one of the test scripts in the test folder). 
+#  If so then use it to determine what old results are (if not use now)
+start_time=Time.now
+if ARGV.length == 1
+
+  # We have a time. It will be in seconds since the epoch. Update our start_time.
+  start_time=Time.at(ARGV[0].to_i)
+end
+NRCMeasureTestHelper::removeOldOutputs(before: start_time)
+NRCMeasureTestHelper::appendOutputFolder("NECB2015")
+
 # Just the 2015 models.
 class NrcCreateGeometry_Test
 
   def test_2015()
     # Delay the start of this test so that the 2011 case can initialise the output folder.
-    sleep(20)
+    sleep(40)
 
     # Set the version of NECB to use in this test
     template = 'NECB2015'

@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_reporting_measure_standard</name>
   <uid>224561f4-8ccc-4f20-8118-34b85359d3f1</uid>
-  <version_id>369c1585-086d-4fff-aba4-f659fcb410d9</version_id>
-  <version_modified>20220303T202210Z</version_modified>
+  <version_id>323263bb-f182-479d-94e5-14c81d7ed699</version_id>
+  <version_modified>20220314T181026Z</version_modified>
   <xml_checksum>DD7247CF</xml_checksum>
   <class_name>NrcReportingMeasureStandard</class_name>
   <display_name>NRC Standard Report</display_name>
@@ -92,24 +92,6 @@
       <checksum>703C9964</checksum>
     </file>
     <file>
-      <filename>weather_files/CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.ddy</filename>
-      <filetype>ddy</filetype>
-      <usage_type>test</usage_type>
-      <checksum>D3C6A158</checksum>
-    </file>
-    <file>
-      <filename>weather_files/CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw</filename>
-      <filetype>epw</filetype>
-      <usage_type>test</usage_type>
-      <checksum>E21FC0AC</checksum>
-    </file>
-    <file>
-      <filename>weather_files/CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.stat</filename>
-      <filetype>stat</filetype>
-      <usage_type>test</usage_type>
-      <checksum>BAFC0770</checksum>
-    </file>
-    <file>
       <filename>report.html</filename>
       <filetype>html</filetype>
       <usage_type>resource</usage_type>
@@ -120,12 +102,6 @@
       <filetype>in</filetype>
       <usage_type>resource</usage_type>
       <checksum>AE80D342</checksum>
-    </file>
-    <file>
-      <filename>NRCReportingMeasureHelper.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>476B7502</checksum>
     </file>
     <file>
       <version>
@@ -145,16 +121,22 @@
       <checksum>F07C5C69</checksum>
     </file>
     <file>
-      <filename>report_sections.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>F1F99B4D</checksum>
-    </file>
-    <file>
       <filename>report_writer.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
       <checksum>7AD9C1DD</checksum>
+    </file>
+    <file>
+      <filename>report_sections.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>B13213BB</checksum>
+    </file>
+    <file>
+      <filename>NRCReportingMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>D97AA2BB</checksum>
     </file>
   </files>
 </measure>

@@ -135,9 +135,7 @@ module TestCommon
     end
 
     def run_test(template: 'NECB2011', building_type: 'Warehouse', building_shape: 'Rectangular', total_floor_area: 20000, above_grade_floors: 3, rotation: 0, epw_file: 'CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw', aspect_ratio: 1)
-      # Define the output folder for this test (optional - default is the method name).
-      output_file_path = NRCMeasureTestHelper.appendOutputFolder("test_geometry")
-
+      
       ####### Test Model Creation ######
       puts "  Testing for arguments:".green
       puts "  Building type: ".green + " #{building_type}".light_blue
@@ -169,14 +167,11 @@ module TestCommon
       city1 = epw_file.split("_")
       city = city1[2].split(".").first
 
-      # Define the output folder for the model. (First delete the folder if it exists)
-      model_output_folder = "#{output_file_path}/#{building_shape}-#{building_type}-#{template}-#{rotation.to_int}-#{city}-#{above_grade_floors}-#{total_floor_area.to_int}-#{aspect_ratio}"
-      puts "  Output folder ".green + " #{model_output_folder}".light_blue
-      if Dir.exist?(model_output_folder) then
-        puts "WARNING: Removing existing output folder #{model_output_folder}".yellow
-        FileUtils.remove_dir(model_output_folder, force = true)
-      end
-
+      # Define specific output folder for this test.
+      model_name = "#{building_shape}-#{building_type}-#{template}-#{rotation.to_int}-#{city}-#{above_grade_floors}-#{total_floor_area.to_int}-#{aspect_ratio}"
+      output_file_path = NRCMeasureTestHelper.appendOutputFolder("#{model_name}")
+      puts "Output folder ". green + "#{output_file_path}".light_blue
+	  
       # Create an instance of the measure with good values
       runner = run_measure(input_arguments, model)
 
@@ -187,8 +182,8 @@ module TestCommon
       assert(runner.result.value.valueName == 'Success')
 
       # save the model to test output directory
-      output_file_path1 = "#{model_output_folder}/output.osm"
-      model.save(output_file_path1, true)
+      output_file = "#{output_file_path}/#{model_name}.osm"
+      model.save(output_file, true)
     end
   end
 end

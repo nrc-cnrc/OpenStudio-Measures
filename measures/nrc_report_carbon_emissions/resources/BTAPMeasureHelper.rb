@@ -1,9 +1,10 @@
 module BTAPMeasureHelper
   ###################Helper functions
 
-  # define the arguments that the user will input
+  # define the arguments that the user will input  
   def arguments(model = OpenStudio::Model::Model.new)
     args = OpenStudio::Measure::OSArgumentVector.new
+	
     if true == @use_json_package
       #Set up package version of input.
       json_default = {}
@@ -115,7 +116,7 @@ module BTAPMeasureHelper
       when "Double"
         value = values[argument['name']]
         if (not argument["max_double_value"].nil? and value.to_f > argument["max_double_value"].to_f) or
-          (not argument["min_double_value"].nil? and value.to_f < argument["min_double_value"].to_f)
+            (not argument["min_double_value"].nil? and value.to_f < argument["min_double_value"].to_f)
           error = "#{argument['name']} must be between #{argument["min_double_value"]} and #{argument["max_double_value"]}. You entered #{value.to_f} for this #{argument['name']}.\n Please enter a value withing the expected range.\n"
           errors << error
         end
@@ -124,7 +125,7 @@ module BTAPMeasureHelper
         value = values[argument['name']]
         #  puts " the value of int is #{value}====>>>>>>>>> argument[max_integer_value]: #{argument["max_integer_value"]} , min: #{argument["min_integer_value"]}   ====>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
         if (not argument["max_integer_value"].nil? and value.to_i > argument["max_integer_value"].to_i) or
-          (not argument["min_integer_value"].nil? and value.to_i < argument["min_integer_value"].to_i)
+            (not argument["min_integer_value"].nil? and value.to_i < argument["min_integer_value"].to_i)
           error = "#{argument['name']} must be between #{argument["min_integer_value"]} and #{argument["max_integer_value"]}. You entered #{value.to_i} for this #{argument['name']}.\n Please enter a value withing the expected range.\n"
           errors << error
         end
@@ -135,7 +136,7 @@ module BTAPMeasureHelper
           error = "#{argument['name']} must be a string that can be converted to a float, or one of these #{argument["valid_strings"]}. You have entered #{value}\n"
           errors << error
         elsif (not argument["max_double_value"].nil? and value.to_f > argument["max_double_value"]) or
-          (not argument["min_double_value"].nil? and value.to_f < argument["min_double_value"])
+            (not argument["min_double_value"].nil? and value.to_f < argument["min_double_value"])
           error = "#{argument['name']} must be between #{argument["min_double_value"]} and #{argument["max_double_value"]}. You entered #{value} for #{argument['name']}. Please enter a stringdouble value in the expected range.\n"
           errors << error
         end
@@ -179,6 +180,7 @@ module BTAPMeasureTestHelper
         # Test arguments and defaults
         arguments = measure.arguments(model)
         #convert whatever the input was into a hash. Then test.
+
         #check number of arguments.
         if @use_json_package
           assert_equal(@measure_interface_detailed.size, JSON.parse(arguments[0].defaultValueAsString).size, "The measure should have #{@measure_interface_detailed.size} but actually has #{arguments.size}. Here the the arguement expected #{JSON.pretty_generate(@measure_interface_detailed) } \n and this is the actual \n  #{JSON.pretty_generate(arguments[0])}")
@@ -297,11 +299,11 @@ module BTAPMeasureTestHelper
 
     prototype_creator = Standard.build(template)
     model = prototype_creator.model_create_prototype_model(
-      epw_file: epw_file,
-      sizing_run_dir: osm_directory,
-      debug: @debug,
-      template: template,
-      building_type: building_type)
+        epw_file: epw_file,
+        sizing_run_dir: osm_directory,
+        debug: @debug,
+        template: template,
+        building_type: building_type)
 
     #set weather file to epw_file passed to model.
     weather.set_weather_file(model)
@@ -344,7 +346,7 @@ module BTAPMeasureTestHelper
     runner.result
     return runner
   end
-
+  
 
 
   #Fancy way of getting the measure object automatically.

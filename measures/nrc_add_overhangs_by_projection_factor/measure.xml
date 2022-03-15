@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_add_overhangs_by_projection_factor</name>
   <uid>d4d9130a-6a1d-4f01-8f14-f49a470a5c30</uid>
-  <version_id>7619daa2-eaac-4a56-b57a-0c95acfc4075</version_id>
-  <version_modified>20220118T162725Z</version_modified>
+  <version_id>310f2f05-842e-4b33-bc5e-71fba5dc3ea1</version_id>
+  <version_modified>20220314T180953Z</version_modified>
   <xml_checksum>6DE831F7</xml_checksum>
   <class_name>NrcAddOverhangsByProjectionFactor</class_name>
   <display_name>NrcAddOverhangsByProjectionFactor</display_name>
@@ -100,12 +100,6 @@
       <checksum>9640B6CB</checksum>
     </file>
     <file>
-      <filename>README.md.erb</filename>
-      <filetype>erb</filetype>
-      <usage_type>readmeerb</usage_type>
-      <checksum>703C9964</checksum>
-    </file>
-    <file>
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>2.0.0</identifier>
@@ -123,28 +117,34 @@
       <checksum>4C35C0B5</checksum>
     </file>
     <file>
-      <filename>BTAPMeasureHelper.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>F45B04B6</checksum>
-    </file>
-    <file>
-      <filename>NRCMeasureHelper.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>4AE7F677</checksum>
-    </file>
-    <file>
       <filename>warehouse_2017.osm</filename>
       <filetype>osm</filetype>
       <usage_type>test</usage_type>
       <checksum>D3EA641F</checksum>
     </file>
     <file>
+      <filename>README.md.erb</filename>
+      <filetype>erb</filetype>
+      <usage_type>readmeerb</usage_type>
+      <checksum>A1A5426B</checksum>
+    </file>
+    <file>
       <filename>README.md</filename>
       <filetype>md</filetype>
       <usage_type>readme</usage_type>
-      <checksum>C636D8AB</checksum>
+      <checksum>295563C3</checksum>
+    </file>
+    <file>
+      <filename>BTAPMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>4F234BCA</checksum>
+    </file>
+    <file>
+      <filename>NRCMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>F787EF10</checksum>
     </file>
   </files>
 </measure>

@@ -14,11 +14,22 @@ module NRCMeasureTestHelper
   @output_root_path = File.expand_path("#{File.expand_path(__dir__)}/../tests/output")
   Dir.mkdir @output_root_path unless Dir.exists?(@output_root_path)
   @output_path = @output_root_path
-  existing_folders = Dir.entries(@output_root_path) - ['.', '..'] # Remove current folder above from list before deleting!
-  existing_folders.each do |entry|
-    folder_to_remove = File.expand_path("#{@output_root_path}/#{entry}")
-    puts "Removing existing output folder: #{folder_to_remove}".yellow
-    FileUtils.rm_rf(folder_to_remove)
+
+  # Remove the existing test results. Need to control when this is done as multiple test scripts could be
+  #  accessing the same path.
+  # Must call this in the test script.
+  def self.removeOldOutputs(before: Time.now)
+    existing_folders = Dir.entries(@output_path) - ['.', '..'] # Remove current folder above from list before deleting!
+    existing_folders.each do |entry|
+      folder_to_remove = File.expand_path("#{@output_path}/#{entry}")
+      puts "Checking existing output folder: #{folder_to_remove}".green
+      if File.mtime(folder_to_remove) < before
+        puts "Removing existing output folder: #{folder_to_remove}".yellow
+        FileUtils.rm_rf(folder_to_remove)
+      else
+        puts "Skipping existing output folder: #{folder_to_remove}".light_blue
+      end
+    end
   end
 
   # Define methods to manage output folders.
@@ -57,8 +68,40 @@ module NRCMeasureTestHelper
     @output_path.to_s
   end
 
+  #
+  # Define the folder containing the test file for the test case summary output file.
+  @measure_path = File.expand_path("#{File.expand_path(__dir__)}/../tests")
+  @test_summary_mdfile = @measure_path + "/" + "README.md"
+  FileUtils.rm_rf(@test_summary_mdfile)
+
+  # Create initial file with title.
+  @testSummaryTitleRequired = true
+
+  def self.testSummaryTitleRequired
+    return @testSummaryTitleRequired
+  end
+
+  def self.setTestSummaryTitle(required)
+    @testSummaryTitleRequired = required
+  end
+
+  def self.testSummaryMDfile
+    @test_summary_mdfile.to_s
+  end
+
+  # Test count.
+  @testSummaryCount = 1
+   def self.incrementTestSummaryCount
+    @testSummaryCount += 1
+  end
+
+  def self.testSummaryCount
+    return @testSummaryCount
+  end
+
   # Custom way to run a measure in the test. Overwrites run_measure definition in BTAPMeasureHelper.
   def run_measure(input_arguments, model)
+
     # Provide feedback as to what is being done to teh terminal.
     puts "Running measure".green
     puts "  with input arguments".green + " #{input_arguments}".light_blue
@@ -69,15 +112,16 @@ module NRCMeasureTestHelper
     output_folder = NRCMeasureTestHelper.outputFolder
     output_folder = NRCMeasureTestHelper.validateOutputFolder(output_folder)
     Dir.mkdir(output_folder) unless Dir.exists?(output_folder)
+
     # This will create a instance of the measure you wish to test. It does this based on the test class name.
     measure = get_measure_object()
     measure.use_json_package = @use_json_package
     measure.use_string_double = @use_string_double
 
-    # Return false if can't
+    # Return false if can't.
     return false if false == measure
 
-    # Now get the arguments and create a runner
+    # Now get the arguments and create a runner.
     arguments = measure.arguments()
     argument_map = OpenStudio::Measure.convertOSArgumentVectorToMap(arguments)
     runner = OpenStudio::Measure::OSRunner.new(OpenStudio::WorkflowJSON.new)
@@ -100,16 +144,61 @@ module NRCMeasureTestHelper
       end
     end
 
-    #run the measure
+    # Run the measure.
     measure.run(model, runner, argument_map)
     runner.result
     # Reset the output path to the root folder.
     NRCMeasureTestHelper.resetOutputFolder
 
+    # Add summary of test to README file.
+    measure_name = measure.name.gsub("_", " ").upcase
+    reportCase(measure_name, output_folder.split('/').last, input_arguments)
     return runner
   end
 
-  #Fancy way of getting the measure object automatically. Added check for NRC in measure name.
+  # Method to report case being tested
+  def reportCase(measure_name, test_name, input_arguments)
+
+    # File name defined above. Open for appending.
+    out_file = File.new("#{NRCMeasureTestHelper.testSummaryMDfile}", "a")
+
+    # Only add the page title once
+    if NRCMeasureTestHelper.testSummaryTitleRequired
+      title = "# Summary Of Test Cases for '#{measure_name}' Measure"
+      out_file.puts("#{title}")
+      out_file.puts(" ")
+    end
+
+    # Current test name.
+    test_name = test_name.gsub("_", " ")
+    out_file.puts("## #{NRCMeasureTestHelper.testSummaryCount} - #{test_name}")
+
+    # Create a table describing the case tested. Table header first.
+    out_file.puts("| Test Argument | Test Value |")
+    out_file.puts("| ------------- | ---------- |")
+
+    # Table contents.
+    input_arguments.each do |key, value|
+
+      if key.include? "json_input"
+        # Value is a string, has to be parsed and converted into hash.
+        value1=JSON.parse(value)
+        value1.each do |key, value|
+          out_file.puts("| #{key} |#{value} |")
+        end
+      else
+        out_file.puts("| #{key} |#{value} |")
+      end
+    end
+    out_file.puts(" ")
+    out_file.close
+
+    # Update logical and counters.
+    NRCMeasureTestHelper.setTestSummaryTitle(false)
+    NRCMeasureTestHelper.incrementTestSummaryCount
+  end
+
+  # Fancy way of getting the measure object automatically. Added check for NRC in measure name.
   def get_measure_object()
     measure_class_name = self.class.name.to_s.match((/(NRC.*)(\_Test)/i) || ((/(BTAP.*)(\_Test)/i))).captures[0]
     btap_measure = nil
@@ -129,6 +218,18 @@ module NRCMeasureTestHelper
     else
       return nrc_measure
     end
+  end
+
+  # Load a test model (code that is common in a lot of test scripts). Returns the model object.
+  def load_test_osm(full_osm_model_path)
+
+    # Load the supplied osm.
+    translator = OpenStudio::OSVersion::VersionTranslator.new
+    path = OpenStudio::Path.new(full_osm_model_path)
+    model = translator.loadModel(path)
+    puts "assert #{(not model.empty?)}".light_blue
+    assert((not model.empty?), "Reading model file: #{path}")
+    model = model.get
   end
 end
 

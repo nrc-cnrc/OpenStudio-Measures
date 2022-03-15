@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_change_sw_hto_ashpwh</name>
   <uid>5262638c-2001-4f76-8f1d-3b2492078b35</uid>
-  <version_id>e1a0f66b-0487-4998-afb2-c2b52fe65edb</version_id>
-  <version_modified>20220118T162726Z</version_modified>
+  <version_id>82af4b48-6209-496d-b915-1da9386e9be0</version_id>
+  <version_modified>20220314T180955Z</version_modified>
   <xml_checksum>A05EBCA5</xml_checksum>
   <class_name>NrcChangeSWHtoASHPWH</class_name>
   <display_name>NRC Change SWH Heater to Heat Pump</display_name>
@@ -55,30 +55,6 @@
       <checksum>A1A5426B</checksum>
     </file>
     <file>
-      <filename>README.md</filename>
-      <filetype>md</filetype>
-      <usage_type>readme</usage_type>
-      <checksum>3280AD45</checksum>
-    </file>
-    <file>
-      <filename>BTAPMeasureHelper.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>F2F6F193</checksum>
-    </file>
-    <file>
-      <filename>NRCMeasureHelper.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>2FE92E0F</checksum>
-    </file>
-    <file>
-      <filename>test.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>test</usage_type>
-      <checksum>7B7DA409</checksum>
-    </file>
-    <file>
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>2.3.0</identifier>
@@ -88,6 +64,30 @@
       <filetype>rb</filetype>
       <usage_type>script</usage_type>
       <checksum>3979A1C3</checksum>
+    </file>
+    <file>
+      <filename>README.md</filename>
+      <filetype>md</filetype>
+      <usage_type>readme</usage_type>
+      <checksum>8E202AA4</checksum>
+    </file>
+    <file>
+      <filename>test.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>E51A7437</checksum>
+    </file>
+    <file>
+      <filename>BTAPMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>4F234BCA</checksum>
+    </file>
+    <file>
+      <filename>NRCMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>F787EF10</checksum>
     </file>
   </files>
 </measure>

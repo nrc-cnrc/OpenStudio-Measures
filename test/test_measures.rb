@@ -125,7 +125,10 @@ class ParallelTests
       Summary_output[test_file.to_s] = {}
 	  Summary_output[test_file.to_s]['start'] = t_start.to_i
       FileUtils.rm_rf(File.join( test_file, "_test_output.json"))
-      test_passed = write_results(Open3.capture3('bundle', 'exec', 'ruby', '#{test_file.strip}', '#{overall_start_time.to_i}'), test_file)
+	  
+	  # Pass the overall start time to the test scripts for identifying old test output (really important where there are
+	  #  multiple test scripts for one measure (e.g. create grometry).
+      test_passed = write_results(Open3.capture3('bundle', 'exec', 'ruby', "#{test_file.strip}", "#{overall_start_time.to_i}"), test_file)
 	  fail_count = fail_count + 1 unless test_passed
       puts "FINISHED:: Worker: #{Parallel.worker_number}, Time: #{Time.now.strftime("%k:%M:%S")}, Duration: #{(Time.now - t_start).to_i} s, File: #{test_file.strip}".light_blue
       Summary_output[test_file.to_s]['end'] = Time.now.to_i
@@ -158,6 +161,8 @@ class ParallelTests
 		puts "FAILED: #{key.strip}".red
       end
     end
+	
+	# Return with correct state.
 	if fail_count > 0 then
       puts "#{fail_count} tests failed!".red
 	  return false
