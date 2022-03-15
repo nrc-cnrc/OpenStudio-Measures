@@ -169,5 +169,8 @@ class ParallelTests
 	else
       return true
 	end
+	
+	# Report overall elapsed time.
+	puts "Overall elapsed time for tests #{(Time.now-overall_start_time)}"
   end
 end
