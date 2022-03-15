@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_set_pump_efficiency</name>
   <uid>2ae95346-3038-4237-b90b-44028ca3e6d1</uid>
-  <version_id>0015f26f-4254-4284-a902-bd2754b6f246</version_id>
-  <version_modified>20220314T181037Z</version_modified>
+  <version_id>062c2df1-4d29-49a8-8a52-2da3715c1e71</version_id>
+  <version_modified>20220315T125628Z</version_modified>
   <xml_checksum>2AF3A68E</xml_checksum>
   <class_name>NrcSetPumpEfficiency</class_name>
   <display_name>NrcSetPumpEfficiency </display_name>

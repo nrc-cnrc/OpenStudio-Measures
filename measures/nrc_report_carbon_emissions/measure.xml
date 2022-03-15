@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_report_carbon_emissions</name>
   <uid>11a12238-d360-4ad9-8d85-58b56c67cf83</uid>
-  <version_id>9ab6959c-e95a-4d3f-886b-c15ca63a6fe2</version_id>
-  <version_modified>20220314T181021Z</version_modified>
+  <version_id>3bd93120-e688-4a8f-864c-3b43e563a29a</version_id>
+  <version_modified>20220315T125607Z</version_modified>
   <xml_checksum>9BF1E6AC</xml_checksum>
   <class_name>NrcReportCarbonEmissions</class_name>
   <display_name>NrcReportCarbonEmissions</display_name>

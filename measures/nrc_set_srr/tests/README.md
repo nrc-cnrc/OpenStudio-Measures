@@ -1,62 +1,62 @@
 # Summary Of Test Cases for 'NRC SET SRR' Measure
  
-## 1 - Remove the skylights--9
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| srr_options |Remove the skylights |
-| srr |0.0 |
- 
-## 2 - Set skylights to match max SRR from NECB--9
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| srr_options |Set skylights to match max SRR from NECB |
-| srr |0.0 |
- 
-## 3 - Don't change skylights--9
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| srr_options |Don't change skylights |
-| srr |0.0 |
- 
-## 4 - Reduce existing skylight size to meet maximum NECB SRR limit--9
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| srr_options |Reduce existing skylight size to meet maximum NECB SRR limit |
-| srr |0.0 |
- 
-## 5 - Set specific SRR--54
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| srr_options |Set specific SRR |
-| srr |0.0 |
- 
-## 6 - Set specific SRR--55
+## 1 - Set specific SRR--66
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | srr_options |Set specific SRR |
 | srr |0.15 |
  
-## 7 - Set specific SRR--56
+## 2 - Set specific SRR--67
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | srr_options |Set specific SRR |
 | srr |0.2 |
  
-## 8 - Set specific SRR--57
+## 3 - Set specific SRR--68
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | srr_options |Set specific SRR |
 | srr |0.22 |
  
-## 9 - Set specific SRR--58
+## 4 - Set specific SRR--69
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | srr_options |Set specific SRR |
 | srr |0.35 |
  
-## 10 - Set specific SRR--59
+## 5 - Set specific SRR--70
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | srr_options |Set specific SRR |
 | srr |0.6 |
+ 
+## 6 - Remove the skylights--11
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| srr_options |Remove the skylights |
+| srr |0.0 |
+ 
+## 7 - Set skylights to match max SRR from NECB--11
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| srr_options |Set skylights to match max SRR from NECB |
+| srr |0.0 |
+ 
+## 8 - Don't change skylights--11
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| srr_options |Don't change skylights |
+| srr |0.0 |
+ 
+## 9 - Reduce existing skylight size to meet maximum NECB SRR limit--11
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| srr_options |Reduce existing skylight size to meet maximum NECB SRR limit |
+| srr |0.0 |
+ 
+## 10 - Set specific SRR--71
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| srr_options |Set specific SRR |
+| srr |0.0 |
  

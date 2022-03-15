@@ -1,6 +1,6 @@
 # Summary Of Test Cases for 'NRC RESIZE EXISTING WINDOWS TO MATCH A GIVEN WWR' Measure
  
-## 1 - test windowResizing--9
+## 1 - test windowResizing--11
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | remove_skylight |false |

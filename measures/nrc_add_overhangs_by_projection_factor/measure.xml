@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_add_overhangs_by_projection_factor</name>
   <uid>d4d9130a-6a1d-4f01-8f14-f49a470a5c30</uid>
-  <version_id>310f2f05-842e-4b33-bc5e-71fba5dc3ea1</version_id>
-  <version_modified>20220314T180953Z</version_modified>
+  <version_id>8715cffe-428a-48ac-ae7f-c65a9fd3e0db</version_id>
+  <version_modified>20220315T125539Z</version_modified>
   <xml_checksum>6DE831F7</xml_checksum>
   <class_name>NrcAddOverhangsByProjectionFactor</class_name>
   <display_name>NrcAddOverhangsByProjectionFactor</display_name>

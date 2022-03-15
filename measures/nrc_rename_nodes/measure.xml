@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_rename_nodes</name>
   <uid>07e104f4-7175-4a8e-8c1a-b9fafb28b3ce</uid>
-  <version_id>4da52952-1766-4c2e-9fab-39c37c603b59</version_id>
-  <version_modified>20220314T181007Z</version_modified>
+  <version_id>3823d43d-3775-455a-aee5-02e545fb51fb</version_id>
+  <version_modified>20220315T125557Z</version_modified>
   <xml_checksum>FC9586A7</xml_checksum>
   <class_name>NrcRenameNodes</class_name>
   <display_name>NrcRenameNodes</display_name>

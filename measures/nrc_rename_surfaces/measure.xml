@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_rename_surfaces</name>
   <uid>07e104f4-7175-4a8e-8c1a-b9fafb28b3ce</uid>
-  <version_id>c2fbb372-f020-4d72-a5be-3daf3d648d45</version_id>
-  <version_modified>20220314T181008Z</version_modified>
+  <version_id>ef68245d-c2d9-40d3-9567-55d4f4c757e3</version_id>
+  <version_modified>20220315T125558Z</version_modified>
   <xml_checksum>FC9586A7</xml_checksum>
   <class_name>NrcRenameSurfaces</class_name>
   <display_name>NrcRenameSurfaces</display_name>
