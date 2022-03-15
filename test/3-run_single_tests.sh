@@ -78,7 +78,8 @@ then
     "docker exec $container sh -c \"openstudio measure -u /os_test/measures/${measure}; echo DONE. Press enter to close.\""
 fi
 echo -e "${GREEN}Running tests${NC}..."
-docker exec $container sh -c "cd /os_test/test; bundle exec ruby ../measures/${measure}/tests/${test}"
+start_time=`date -u +%s` # Pass the start time in seconds since the epoch. Used for removing old test results.
+docker exec $container sh -c "cd /os_test/test; bundle exec ruby ../measures/${measure}/tests/${test} $start_time"
 
 # Stop the container
 if [ -z $fast ]
