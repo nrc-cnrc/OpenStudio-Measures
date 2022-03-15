@@ -7,6 +7,48 @@
 <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/d3/3.3.9/d3.min.js"></script>
 </head>
+<style>
+table {
+  font-family: "Verdana", Times, serif;
+  border: 5px double #004467;
+  border-radius: 11px;
+  text-align: center;
+  border-collapse: collapse;
+}
+table tbody td {
+  font-size: 13px;
+}
+table tr:nth-child(even) {
+  background: #95b6d0;
+}
+table tr:nth-child(odd) {
+  background: #f2f2f2;
+}
+table, th, td {
+  border: 2px solid #004467;
+}
+h2 {
+    color: white;
+    background: #004467;
+    margin-top: 5px;
+    padding-left: 5px;
+    padding-right: 9px;
+    display: inline;
+    clear: both;
+}
+#par1 {
+font-style: bold italic;
+color: #006699
+}
+#par {
+font-style: bold;
+color: #558CB5
+}
+#par3 {
+font-style: bold;
+color: #004467
+}
+</style>
 <body>
 <%= output %>
 </body>
