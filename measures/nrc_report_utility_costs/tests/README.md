@@ -100,3 +100,31 @@
 | electricity_cost |20.0 |
 | gas_cost |-1.0 |
  
+## 13 - test argument ranges--12
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| calc_choice |Nova Scotia rates 2021 |
+| electricity_cost |101.0 |
+| gas_cost |30.0 |
+ 
+## 14 - test argument ranges--13
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| calc_choice |Nova Scotia rates 2021 |
+| electricity_cost |-1.0 |
+| gas_cost |30.0 |
+ 
+## 15 - test argument ranges--14
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| calc_choice |Nova Scotia rates 2021 |
+| electricity_cost |20.0 |
+| gas_cost |101.0 |
+ 
+## 16 - test argument ranges--15
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| calc_choice |Nova Scotia rates 2021 |
+| electricity_cost |20.0 |
+| gas_cost |-1.0 |
+ 

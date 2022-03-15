@@ -829,3 +829,18 @@
 | plenum_height |0.0 |
 | sideload |false |
  
+## 4 - Courtyard-RetailStandalone-NECB2011-90-Montreal-Trudeau-1-1500-1.25
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| building_shape |Courtyard |
+| template |NECB2011 |
+| building_type |RetailStandalone |
+| epw_file |CAN_QC_Montreal-Trudeau.Intl.AP.716270_CWEC2016.epw |
+| total_floor_area |1500.0 |
+| aspect_ratio |1.25 |
+| rotation |90.0 |
+| above_grade_floors |1 |
+| floor_to_floor_height |3.2 |
+| plenum_height |0.0 |
+| sideload |false |
+ 

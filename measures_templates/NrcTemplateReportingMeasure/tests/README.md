@@ -122,3 +122,83 @@
 | a_choice_argument |choice_1 |
 | a_bool_argument |true |
  
+## 12 - test argument ranges--10
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| a_string_argument |MyString |
+| a_double_argument |-1.0 |
+| an_integer_argument |5 |
+| a_string_double_argument |50.0 |
+| a_choice_argument |choice_1 |
+| a_bool_argument |true |
+ 
+## 13 - test argument ranges--11
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| a_string_argument |MyString |
+| a_double_argument |50.0 |
+| an_integer_argument |5 |
+| a_string_double_argument |101.0 |
+| a_choice_argument |choice_1 |
+| a_bool_argument |true |
+ 
+## 14 - test argument ranges--12
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| a_string_argument |MyString |
+| a_double_argument |50.0 |
+| an_integer_argument |5 |
+| a_string_double_argument |101.0 |
+| a_choice_argument |choice_1 |
+| a_bool_argument |true |
+ 
+## 15 - test argument ranges--13
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| a_string_argument |MyString |
+| a_double_argument |50.0 |
+| an_integer_argument |5 |
+| a_string_double_argument |48bb3003-2910-4ff9-8e78-eaa916cd4e20 |
+| a_choice_argument |choice_1 |
+| a_bool_argument |true |
+ 
+## 16 - test argument ranges--14
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| a_string_argument |MyString |
+| a_double_argument |101.0 |
+| an_integer_argument |5 |
+| a_string_double_argument |50.0 |
+| a_choice_argument |choice_1 |
+| a_bool_argument |true |
+ 
+## 17 - test argument ranges--15
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| a_string_argument |MyString |
+| a_double_argument |-1.0 |
+| an_integer_argument |5 |
+| a_string_double_argument |50.0 |
+| a_choice_argument |choice_1 |
+| a_bool_argument |true |
+ 
+## 18 - test argument ranges--16
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| a_string_argument |MyString |
+| a_double_argument |50.0 |
+| an_integer_argument |5 |
+| a_string_double_argument |101.0 |
+| a_choice_argument |choice_1 |
+| a_bool_argument |true |
+ 
+## 19 - test argument ranges--17
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| a_string_argument |MyString |
+| a_double_argument |50.0 |
+| an_integer_argument |5 |
+| a_string_double_argument |101.0 |
+| a_choice_argument |choice_1 |
+| a_bool_argument |true |
+ 
