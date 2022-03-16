@@ -128,3 +128,10 @@
 | electricity_cost |20.0 |
 | gas_cost |-1.0 |
  
+## 17 - smallOffice
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| calc_choice |Nova Scotia rates 2021 |
+| electricity_cost |20.0 |
+| gas_cost |30.0 |
+ 

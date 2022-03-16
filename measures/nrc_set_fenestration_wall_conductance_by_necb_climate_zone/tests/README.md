@@ -561,3 +561,36 @@
 | zone7B_u_value |1.4 |
 | zone8_u_value |-1.0 |
  
+## 52 - OutputTestFolder zone6--27
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| necb_template |NECB2017 |
+| zone4_u_value |1.9 |
+| zone5_u_value |1.8 |
+| zone6_u_value |1.7 |
+| zone7A_u_value |1.5 |
+| zone7B_u_value |1.4 |
+| zone8_u_value |1.3 |
+ 
+## 53 - OutputTestFolder zone7b--27
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| necb_template |NECB2017 |
+| zone4_u_value |1.9 |
+| zone5_u_value |1.8 |
+| zone6_u_value |1.7 |
+| zone7A_u_value |1.5 |
+| zone7B_u_value |1.4 |
+| zone8_u_value |1.3 |
+ 
+## 54 - OutputTestFolder zone4--26
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| necb_template |NECB2017 |
+| zone4_u_value |1.9 |
+| zone5_u_value |1.8 |
+| zone6_u_value |1.7 |
+| zone7A_u_value |1.5 |
+| zone7B_u_value |1.4 |
+| zone8_u_value |1.3 |
+ 
