@@ -34,6 +34,7 @@ module NRCMeasureTestHelper
     end
   end
 
+  #
   # Define methods to manage output folders.
   def self.resetOutputFolder
     @output_path = @output_root_path
@@ -53,7 +54,7 @@ module NRCMeasureTestHelper
     if path == @output_root_path
       # Append the calling method name and re-validate (need to jump back two methods)
       path = @output_root_path + "/" + caller_locations(1, 2)[1].label.split.last
-	  puts "Appending path: #{path}"
+	  puts "Appending path to test output folder: #{path}"
       validateOutputFolder(path)
     elsif File.exist?(path)
       # Create a numbered subfolder. First check if there is a numbered folder.
@@ -230,7 +231,7 @@ module NRCMeasureTestHelper
     translator = OpenStudio::OSVersion::VersionTranslator.new
     path = OpenStudio::Path.new(full_osm_model_path)
     model = translator.loadModel(path)
-    assert((not model.empty?))
+    assert((not model.empty?), "Reading model file: #{path}")
     model = model.get
   end
 end

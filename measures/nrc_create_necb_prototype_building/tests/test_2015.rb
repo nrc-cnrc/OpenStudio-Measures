@@ -1,18 +1,10 @@
 require_relative 'common.rb'
 include(TestCommon)
 
-# Check to see if an overall start time was passed (it should be if using one of the test scripts in the test folder). 
-#  If so then use it to determine what old results are (if not use now)
-start_time=Time.now
-if ARGV.length == 1
-
-  # We have a time. It will be in seconds since the epoch. Update our start_time.
-  start_time=Time.at(ARGV[0].to_i)
-end
-NRCMeasureTestHelper::removeOldOutputs(before: start_time)
-
 # Just the 2015 models. Do warehouse for all editions.
 class NrcCreateNECBPrototypeBuilding_Test
+
+  remove_old_test_results
 
   def test_2015()
 

@@ -22,16 +22,19 @@ module NRCMeasureTestHelper
     existing_folders = Dir.entries(@output_path) - ['.', '..'] # Remove current folder above from list before deleting!
     existing_folders.each do |entry|
       folder_to_remove = File.expand_path("#{@output_path}/#{entry}")
-      puts "Checking existing output folder: #{folder_to_remove}".green
-      if File.mtime(folder_to_remove) < before
-        puts "Removing existing output folder: #{folder_to_remove}".yellow
-        FileUtils.rm_rf(folder_to_remove)
-      else
-        puts "Skipping existing output folder: #{folder_to_remove}".light_blue
+	  if (Dir.exist?(folder_to_remove)) # Double check it exists (incase another process has removed it as is the case with multiple test files).
+        puts "Checking existing output folder: #{before}; #{File.mtime(folder_to_remove)}; #{folder_to_remove}".green
+        if File.mtime(folder_to_remove) < before
+          puts "Removing folder: #{folder_to_remove}".yellow
+          FileUtils.rm_rf(folder_to_remove)
+        else
+          puts "Skipping existing output folder: #{folder_to_remove}".light_blue
+        end
       end
     end
   end
 
+  #
   # Define methods to manage output folders.
   def self.resetOutputFolder
     @output_path = @output_root_path
@@ -39,7 +42,7 @@ module NRCMeasureTestHelper
 
   def self.appendOutputFolder(folder)
     # Append name and validate if specified by the user
-    path = @output_root_path + "/" + folder
+    path = @output_path + "/" + folder
     validateOutputFolder(path)
   end
 
@@ -51,6 +54,7 @@ module NRCMeasureTestHelper
     if path == @output_root_path
       # Append the calling method name and re-validate (need to jump back two methods)
       path = @output_root_path + "/" + caller_locations(1, 2)[1].label.split.last
+	  puts "Appending path to test output folder: #{path}"
       validateOutputFolder(path)
     elsif File.exist?(path)
       # Create a numbered subfolder. First check if there is a numbered folder.
@@ -111,7 +115,7 @@ module NRCMeasureTestHelper
     # Set the output folder. This should be unique (check done in validateOutputFolder). Create if does not exist.
     output_folder = NRCMeasureTestHelper.outputFolder
     output_folder = NRCMeasureTestHelper.validateOutputFolder(output_folder)
-    Dir.mkdir(output_folder) unless Dir.exists?(output_folder)
+    FileUtils.mkdir_p(output_folder) unless Dir.exists?(output_folder)
 
     # This will create a instance of the measure you wish to test. It does this based on the test class name.
     measure = get_measure_object()
@@ -227,7 +231,7 @@ module NRCMeasureTestHelper
     translator = OpenStudio::OSVersion::VersionTranslator.new
     path = OpenStudio::Path.new(full_osm_model_path)
     model = translator.loadModel(path)
-    assert((not model.empty?))
+    assert((not model.empty?), "Reading model file: #{path}")
     model = model.get
   end
 end

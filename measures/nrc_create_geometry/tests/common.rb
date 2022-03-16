@@ -14,18 +14,18 @@ require 'fileutils'
 # Core functionality for the tests. Individual test files speed up the testing.
 module TestCommon
 
-    def remove_old_test_results()
+  def remove_old_test_results()
 
-      # Check to see if an overall start time was passed (it should be if using one of the test scripts in the test folder). 
-      #  If so then use it to determine what old results are (if not use now)
-      start_time=Time.now
-      if ARGV.length == 1
+    # Check to see if an overall start time was passed (it should be if using one of the test scripts in the test folder). 
+    #  If so then use it to determine what old results are (if not use now)
+    start_time=Time.now
+    if ARGV.length == 1
 
-        # We have a time. It will be in seconds since the epoch. Update our start_time.
-        start_time=Time.at(ARGV[0].to_i)
-      end
-      NRCMeasureTestHelper.removeOldOutputs(before: start_time)
+      # We have a time. It will be in seconds since the epoch. Update our start_time.
+      start_time=Time.at(ARGV[0].to_i)
     end
+    NRCMeasureTestHelper.removeOldOutputs(before: start_time)
+  end
 
   class NrcCreateGeometry_Test < Minitest::Test
 
@@ -159,7 +159,7 @@ module TestCommon
       puts "  Rotation: ".green + " #{rotation}".light_blue
       puts "  Aspect_ratio: ".green + " #{aspect_ratio}".light_blue
 
-      # Make an empty model
+      # Make an empty model.
       model = OpenStudio::Model::Model.new
 
       input_arguments = {

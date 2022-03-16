@@ -15,16 +15,17 @@ class NrcPricingMeasure_Test < Minitest::Test
 
   # Brings in helper methods to simplify argument testing of json and standard argument methods.
   include(NRCReportingMeasureTestHelper)
-  
-  # Define the output folder.
-  @@test_dir = "#{File.expand_path(__dir__)}/output"
-  # Remove if existing found. This should only be done once.
-  if Dir.exists?(@@test_dir)
-    FileUtils.rm_rf(@@test_dir)
-	sleep 10
+
+  # Check to see if an overall start time was passed (it should be if using one of the test scripts in the test folder). 
+  #  If so then use it to determine what old results are (if not use now).
+  start_time=Time.now
+  if ARGV.length == 1
+
+    # We have a time. It will be in seconds since the epoch. Update our start_time.
+    start_time=Time.at(ARGV[0].to_i)
   end
-  Dir.mkdir(@@test_dir)
-  
+  NRCReportingMeasureTestHelper.removeOldOutputs(before: start_time)
+    
   def setup()
 
     @use_json_package = false
@@ -49,8 +50,7 @@ class NrcPricingMeasure_Test < Minitest::Test
     puts "Testing report on warehouse model".blue
 	
     # Define the output folder for this test. 
-    NRCReportingMeasureTestHelper.setOutputFolder("#{@@test_dir}/warehouse")
-    Dir.mkdir(NRCReportingMeasureTestHelper.outputFolder) unless Dir.exists?(NRCReportingMeasureTestHelper.outputFolder)
+    output_file_path = NRCReportingMeasureTestHelper.appendOutputFolder("Warehouse")
 	
     # Set standard to use.
     standard = Standard.build("NECB2017")
@@ -65,7 +65,7 @@ class NrcPricingMeasure_Test < Minitest::Test
     input_arguments = {
     }
 	
-    # Create an instance of the measure
+    # Create an instance of the measure.
 	runner = run_measure(input_arguments, model)
 	
 	# Rename output file.

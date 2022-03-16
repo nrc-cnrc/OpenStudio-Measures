@@ -1,18 +1,31 @@
-# Standard openstudio requires for running test
+# Standard openstudio requires for running test.
 require 'openstudio'
 require 'openstudio/measure/ShowRunnerOutput'
 require 'openstudio-standards'
 require 'minitest/autorun'
 
-# Require the measure and test helper
+# Require the measure and test helper.
 require_relative '../measure.rb'
 require_relative '../resources/NRCMeasureHelper.rb'
 
-# Specific requires for this test
+# Specific requires for this test.
 require 'fileutils'
 
 # Core functionality for the tests. Individual test files speed up the testing.
 module TestCommon
+
+  def remove_old_test_results()
+
+    # Check to see if an overall start time was passed (it should be if using one of the test scripts in the test folder). 
+    #  If so then use it to determine what old results are (if not use now).
+    start_time=Time.now
+    if ARGV.length == 1
+
+      # We have a time. It will be in seconds since the epoch. Update our start_time.
+      start_time=Time.at(ARGV[0].to_i)
+    end
+    NRCMeasureTestHelper.removeOldOutputs(before: start_time)
+  end
 
   class NrcCreateNECBPrototypeBuilding_Test < Minitest::Test
 
@@ -160,7 +173,14 @@ module TestCommon
 
     def run_test(necb_template:, building_type_in:, epw_file_in:)
       puts "Testing  model creation for ".green + "#{building_type_in}-#{necb_template}-#{File.basename(epw_file_in, '.epw')}".light_blue
-      # Make an empty model
+
+      ####### Test Model Creation ######
+      puts "  Testing model creation for:".green
+      puts "  Building type: ".green + " #{building_type_in}".light_blue
+      puts "  Code version: ".green + " #{necb_template}".light_blue
+      puts "  Location: ".green + " #{File.basename(epw_file_in, '.epw')}".light_blue
+
+      # Make an empty model.
       model = OpenStudio::Model::Model.new
 
       input_arguments = {
@@ -171,14 +191,14 @@ module TestCommon
       }
 
       # Define specific output folder for this test.
-      output_file_path = NRCMeasureTestHelper.appendOutputFolder("#{necb_template}")
-      puts "Output folder ". green + "#{output_file_path}".light_blue
       model_name = "#{building_type_in}-#{necb_template}-#{File.basename(epw_file_in, '.epw')}"
+      output_file_path = NRCMeasureTestHelper.appendOutputFolder("#{necb_template}/#{model_name}")
+      puts "Output folder ". green + "#{output_file_path}".light_blue
 
       # Run the measure and check output.
       runner = run_measure(input_arguments, model)
       assert(runner.result.value.valueName == 'Success')
-      # save the model to test output directory
+      # Save the model to test output directory
       output_file = "#{output_file_path}/#{model_name}.osm"
       model.save(output_file, true)
 

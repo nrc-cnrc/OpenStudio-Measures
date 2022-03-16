@@ -15,42 +15,60 @@ module NRCReportingMeasureTestHelper
   @output_root_path = File.expand_path("#{File.expand_path(__dir__)}/../tests/output")
   Dir.mkdir @output_root_path unless Dir.exists?(@output_root_path) 
   @output_path = @output_root_path
-  existing_folders = Dir.entries(@output_root_path) - ['.','..'] # Remove current folder above from list before deleting!
-  existing_folders.each do |entry|
-  folder_to_remove = File.expand_path("#{@output_root_path}/#{entry}")
-  puts "Removing existing output folder: #{folder_to_remove}".yellow
-  FileUtils.rm_rf(folder_to_remove)
+
+  # Remove the existing test results. Need to control when this is done as multiple test scripts could be
+  #  accessing the same path.
+  # Must call this in the test script.
+  def self.removeOldOutputs(before: Time.now)
+    existing_folders = Dir.entries(@output_path) - ['.', '..'] # Remove current folder above from list before deleting!
+    existing_folders.each do |entry|
+      folder_to_remove = File.expand_path("#{@output_path}/#{entry}")
+	  if (Dir.exist?(folder_to_remove)) # Double check it exists (incase another process has removed it as is the case with multiple test files).
+        puts "Checking existing output folder: #{before}; #{File.mtime(folder_to_remove)}; #{folder_to_remove}".green
+        if File.mtime(folder_to_remove) < before
+          puts "Removing folder: #{folder_to_remove}".yellow
+          FileUtils.rm_rf(folder_to_remove)
+        else
+          puts "Skipping existing output folder: #{folder_to_remove}".light_blue
+        end
+      end
+    end
   end
   
+  #
   # Define methods to manage output folders.
   def self.resetOutputFolder
     @output_path = @output_root_path
   end
+
   def self.appendOutputFolder(folder)
     # Append name and validate if specified by the user
-    path = @output_root_path + "/" + folder
+    path = @output_path + "/" + folder
   validateOutputFolder(path)
   end
+
   def self.validateOutputFolder(path)
     # This should not be the root_folder.
-  # Also check if it exists.
-  # By default use the test method name.
-  path = File.expand_path(path)
-  if path == @output_root_path 
-    # Append the calling method name and re-validate (need to jump back two methods)
-    path = @output_root_path + "/" + caller_locations(1,2)[1].label.split.last
-    validateOutputFolder(path)
-  elsif File.exist?(path)
-    # Create a numbered subfolder. First check if there is a numbered folder.
-    path = path.split(/--/).first
-    count = Dir.glob("#{path}*").count
-    path = path + "--#{count}"
-    validateOutputFolder(path)
-  else
-    @output_path = path
-  end
+    # Also check if it exists.
+    # By default use the test method name.
+    path = File.expand_path(path)
+    if path == @output_root_path 
+      # Append the calling method name and re-validate (need to jump back two methods)
+      path = @output_root_path + "/" + caller_locations(1,2)[1].label.split.last
+	  puts "Appending path to test output folder: #{path}"
+      validateOutputFolder(path)
+    elsif File.exist?(path)
+      # Create a numbered subfolder. First check if there is a numbered folder.
+      path = path.split(/--/).first
+      count = Dir.glob("#{path}*").count
+      path = path + "--#{count}"
+      validateOutputFolder(path)
+    else
+      @output_path = path
+    end
     @output_path.to_s
   end
+
   def self.outputFolder
     @output_path.to_s
   end
@@ -98,7 +116,7 @@ module NRCReportingMeasureTestHelper
     # Set the output folder. This should be unique (check done in validateOutputFolder). Create if does not exist.
     output_folder = NRCReportingMeasureTestHelper.outputFolder
     output_folder = NRCReportingMeasureTestHelper.validateOutputFolder(output_folder)
-    Dir.mkdir(output_folder) unless Dir.exists?(output_folder)
+    FileUtils.mkdir_p(output_folder) unless Dir.exists?(output_folder)
   
     # This will create a instance of the measure you wish to test. It does this based on the test class name.
     measure = get_measure_object()
@@ -270,7 +288,6 @@ module NRCReportingMeasureTestHelper
     translator = OpenStudio::OSVersion::VersionTranslator.new
     path = OpenStudio::Path.new(full_osm_model_path)
     model = translator.loadModel(path)
-    puts "assert #{(not model.empty?)}".light_blue
     assert((not model.empty?), "Reading model file: #{path}")
     model = model.get
   end
