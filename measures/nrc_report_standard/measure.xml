@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_reporting_measure_standard</name>
   <uid>224561f4-8ccc-4f20-8118-34b85359d3f1</uid>
-  <version_id>7b14e0fe-e557-43fc-80b1-5a23eff2bdcc</version_id>
-  <version_modified>20220316T131810Z</version_modified>
+  <version_id>b7c6f94d-c70f-48db-8ce2-32a25a32923b</version_id>
+  <version_modified>20220311T151226Z</version_modified>
   <xml_checksum>DD7247CF</xml_checksum>
   <class_name>NrcReportingMeasureStandard</class_name>
   <display_name>NRC Standard Report</display_name>
@@ -80,10 +80,34 @@
       <checksum>6674950F</checksum>
     </file>
     <file>
+      <filename>test.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>D9CE19BE</checksum>
+    </file>
+    <file>
       <filename>README.md.erb</filename>
       <filetype>erb</filetype>
       <usage_type>readmeerb</usage_type>
       <checksum>703C9964</checksum>
+    </file>
+    <file>
+      <filename>CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.ddy</filename>
+      <filetype>ddy</filetype>
+      <usage_type>test</usage_type>
+      <checksum>D3C6A158</checksum>
+    </file>
+    <file>
+      <filename>CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw</filename>
+      <filetype>epw</filetype>
+      <usage_type>test</usage_type>
+      <checksum>E21FC0AC</checksum>
+    </file>
+    <file>
+      <filename>CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.stat</filename>
+      <filetype>stat</filetype>
+      <usage_type>test</usage_type>
+      <checksum>BAFC0770</checksum>
     </file>
     <file>
       <filename>report.html</filename>
@@ -92,10 +116,22 @@
       <checksum>0CDEAD05</checksum>
     </file>
     <file>
+      <filename>README.md</filename>
+      <filetype>md</filetype>
+      <usage_type>readme</usage_type>
+      <checksum>F07C5C69</checksum>
+    </file>
+    <file>
       <filename>report.html.in</filename>
       <filetype>in</filetype>
       <usage_type>resource</usage_type>
-      <checksum>AE80D342</checksum>
+      <checksum>7B9B9EBA</checksum>
+    </file>
+    <file>
+      <filename>NRCReportingMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>369264CA</checksum>
     </file>
     <file>
       <version>
@@ -106,37 +142,19 @@
       <filename>measure.rb</filename>
       <filetype>rb</filetype>
       <usage_type>script</usage_type>
-      <checksum>FB47A075</checksum>
-    </file>
-    <file>
-      <filename>README.md</filename>
-      <filetype>md</filetype>
-      <usage_type>readme</usage_type>
-      <checksum>F07C5C69</checksum>
-    </file>
-    <file>
-      <filename>report_writer.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>7AD9C1DD</checksum>
+      <checksum>649BC66E</checksum>
     </file>
     <file>
       <filename>report_sections.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>B13213BB</checksum>
+      <checksum>AED46BD1</checksum>
     </file>
     <file>
-      <filename>test.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>test</usage_type>
-      <checksum>60D59B94</checksum>
-    </file>
-    <file>
-      <filename>NRCReportingMeasureHelper.rb</filename>
+      <filename>report_writer.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>76513449</checksum>
+      <checksum>F14FA6B7</checksum>
     </file>
   </files>
 </measure>
