@@ -2,28 +2,39 @@
 # only adds functionality where required.
 
 require_relative 'BTAPMeasureHelper'
-require 'erb'
-require 'json'
 
 module NRCMeasureHelper
   include BTAPMeasureHelper
 end
 
 module NRCMeasureTestHelper
-
   include BTAPMeasureTestHelper
 
   # Define the output path. Set defaults and remove any existing outputs.
   @output_root_path = File.expand_path("#{File.expand_path(__dir__)}/../tests/output")
   Dir.mkdir @output_root_path unless Dir.exists?(@output_root_path)
   @output_path = @output_root_path
-  existing_folders = Dir.entries(@output_root_path) - ['.', '..'] # Remove current folder above from list before deleting!
-  existing_folders.each do |entry|
-    folder_to_remove = File.expand_path("#{@output_root_path}/#{entry}")
-    puts "Removing existing output folder: #{folder_to_remove}".yellow
-    FileUtils.rm_rf(folder_to_remove)
+
+  # Remove the existing test results. Need to control when this is done as multiple test scripts could be
+  #  accessing the same path.
+  # Must call this in the test script.
+  def self.removeOldOutputs(before: Time.now)
+    existing_folders = Dir.entries(@output_path) - ['.', '..'] # Remove current folder above from list before deleting!
+    existing_folders.each do |entry|
+      folder_to_remove = File.expand_path("#{@output_path}/#{entry}")
+	  if (Dir.exist?(folder_to_remove)) # Double check it exists (incase another process has removed it as is the case with multiple test files).
+        puts "Checking existing output folder: #{before}; #{File.mtime(folder_to_remove)}; #{folder_to_remove}".green
+        if File.mtime(folder_to_remove) < before
+          puts "Removing folder: #{folder_to_remove}".yellow
+          FileUtils.rm_rf(folder_to_remove)
+        else
+          puts "Skipping existing output folder: #{folder_to_remove}".light_blue
+        end
+      end
+    end
   end
 
+  #
   # Define methods to manage output folders.
   def self.resetOutputFolder
     @output_path = @output_root_path
@@ -31,7 +42,7 @@ module NRCMeasureTestHelper
 
   def self.appendOutputFolder(folder)
     # Append name and validate if specified by the user
-    path = @output_root_path + "/" + folder
+    path = @output_path + "/" + folder
     validateOutputFolder(path)
   end
 
@@ -43,6 +54,7 @@ module NRCMeasureTestHelper
     if path == @output_root_path
       # Append the calling method name and re-validate (need to jump back two methods)
       path = @output_root_path + "/" + caller_locations(1, 2)[1].label.split.last
+	  puts "Appending path to test output folder: #{path}"
       validateOutputFolder(path)
     elsif File.exist?(path)
       # Create a numbered subfolder. First check if there is a numbered folder.
@@ -81,7 +93,7 @@ module NRCMeasureTestHelper
     @test_summary_mdfile.to_s
   end
 
-  # Test count
+  # Test count.
   @testSummaryCount = 1
    def self.incrementTestSummaryCount
     @testSummaryCount += 1
@@ -91,28 +103,29 @@ module NRCMeasureTestHelper
     return @testSummaryCount
   end
 
-  #
   # Custom way to run a measure in the test. Overwrites run_measure definition in BTAPMeasureHelper.
   def run_measure(input_arguments, model)
+
     # Provide feedback as to what is being done to teh terminal.
     puts "Running measure".green
     puts "  with input arguments".green + " #{input_arguments}".light_blue
     puts "  on model with".green + " #{model.modelObjects.count}".light_blue + " objects".green
     puts "  from method".green + " #{caller_locations(1, 1)[0].label.split.last}".light_blue
+
     # Set the output folder. This should be unique (check done in validateOutputFolder). Create if does not exist.
     output_folder = NRCMeasureTestHelper.outputFolder
     output_folder = NRCMeasureTestHelper.validateOutputFolder(output_folder)
-    Dir.mkdir(output_folder) unless Dir.exists?(output_folder)
+    FileUtils.mkdir_p(output_folder) unless Dir.exists?(output_folder)
 
     # This will create a instance of the measure you wish to test. It does this based on the test class name.
     measure = get_measure_object()
     measure.use_json_package = @use_json_package
     measure.use_string_double = @use_string_double
 
-    # Return false if can't
+    # Return false if can't.
     return false if false == measure
 
-    # Now get the arguments and create a runner
+    # Now get the arguments and create a runner.
     arguments = measure.arguments()
     argument_map = OpenStudio::Measure.convertOSArgumentVectorToMap(arguments)
     runner = OpenStudio::Measure::OSRunner.new(OpenStudio::WorkflowJSON.new)
@@ -135,14 +148,13 @@ module NRCMeasureTestHelper
       end
     end
 
-    # Run the measure
+    # Run the measure.
     measure.run(model, runner, argument_map)
     runner.result
-
     # Reset the output path to the root folder.
     NRCMeasureTestHelper.resetOutputFolder
 
-    # Add summary of test to README file
+    # Add summary of test to README file.
     measure_name = measure.name.gsub("_", " ").upcase
     reportCase(measure_name, output_folder.split('/').last, input_arguments)
     return runner
@@ -173,7 +185,7 @@ module NRCMeasureTestHelper
     input_arguments.each do |key, value|
 
       if key.include? "json_input"
-        # Value is a string, has to be parsed and converted into hash
+        # Value is a string, has to be parsed and converted into hash.
         value1=JSON.parse(value)
         value1.each do |key, value|
           out_file.puts("| #{key} |#{value} |")
@@ -185,12 +197,12 @@ module NRCMeasureTestHelper
     out_file.puts(" ")
     out_file.close
 
-    # Update logical and counters
+    # Update logical and counters.
     NRCMeasureTestHelper.setTestSummaryTitle(false)
     NRCMeasureTestHelper.incrementTestSummaryCount
   end
 
-  #Fancy way of getting the measure object automatically. Added check for NRC in measure name.
+  # Fancy way of getting the measure object automatically. Added check for NRC in measure name.
   def get_measure_object()
     measure_class_name = self.class.name.to_s.match((/(NRC.*)(\_Test)/i) || ((/(BTAP.*)(\_Test)/i))).captures[0]
     btap_measure = nil
@@ -212,12 +224,30 @@ module NRCMeasureTestHelper
     end
   end
 
+  # Load a test model (code that is common in a lot of test scripts). Returns the model object.
+  def load_test_osm(full_osm_model_path)
+
+    # Load the supplied osm.
+    translator = OpenStudio::OSVersion::VersionTranslator.new
+    path = OpenStudio::Path.new(full_osm_model_path)
+    model = translator.loadModel(path)
+    assert((not model.empty?), "Reading model file: #{path}")
+    model = model.get
+  end
 end
 
-# Add significant digits capability to float class.
+# Add significant digits capability to float amd integer class.
 class Float
-  def signif(digits)
+  def signif(digits=3)
     return 0 if self.zero?
+    return self if self < 0.0
     self.round(-(Math.log10(self).ceil - digits))
+  end
+end
+class Integer
+  def signif(digits=3)
+    return 0 if self.zero?
+    return self if self < 0
+    self.round(-(Math.log10(self).ceil - digits)).to_i
   end
 end

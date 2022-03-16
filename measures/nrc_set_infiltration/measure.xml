@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_set_infiltration</name>
   <uid>68ad385a-22cd-4c01-a4a4-11c2c30026fb</uid>
-  <version_id>2895ea15-0d8e-4108-bad9-fa1fa84d3ab0</version_id>
-  <version_modified>20211224T141235Z</version_modified>
+  <version_id>15b31b28-cfa9-4df8-ae34-c0b3a5c4ddaf</version_id>
+  <version_modified>20220316T131814Z</version_modified>
   <xml_checksum>2AF3A68E</xml_checksum>
   <class_name>NrcSetInfiltration</class_name>
   <display_name>NrcSetInfiltration</display_name>
@@ -97,52 +97,28 @@
       <checksum>A1A5426B</checksum>
     </file>
     <file>
-      <filename>BTAPMeasureHelper.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>F45B04B6</checksum>
-    </file>
-    <file>
-      <filename>NRCMeasureHelper.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>4001603A</checksum>
-    </file>
-    <file>
-      <filename>test.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>test</usage_type>
-      <checksum>5829F3DD</checksum>
-    </file>
-    <file>
       <filename>README.md</filename>
       <filetype>md</filetype>
       <usage_type>readme</usage_type>
       <checksum>381DB259</checksum>
     </file>
     <file>
-      <filename>resources/CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.ddy</filename>
-      <filetype>ddy</filetype>
-      <usage_type>test</usage_type>
-      <checksum>D3C6A158</checksum>
+      <filename>BTAPMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>4F234BCA</checksum>
     </file>
     <file>
-      <filename>resources/CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw</filename>
-      <filetype>epw</filetype>
+      <filename>test.rb</filename>
+      <filetype>rb</filetype>
       <usage_type>test</usage_type>
-      <checksum>E21FC0AC</checksum>
+      <checksum>4C82CEA9</checksum>
     </file>
     <file>
-      <filename>resources/CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.stat</filename>
-      <filetype>stat</filetype>
-      <usage_type>test</usage_type>
-      <checksum>BAFC0770</checksum>
-    </file>
-    <file>
-      <filename>resources/Warehouse-NECB2017-ON_Ottawa.osm</filename>
-      <filetype>osm</filetype>
-      <usage_type>test</usage_type>
-      <checksum>C55B436A</checksum>
+      <filename>NRCMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>A5221895</checksum>
     </file>
   </files>
 </measure>

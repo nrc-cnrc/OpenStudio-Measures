@@ -4,9 +4,11 @@ include(TestCommon)
 # Just the 2017 models.
 class NrcCreateGeometry_Test
 
+  remove_old_test_results
+
   def test_2017()
     # Delay the start of this test so that the 2011 case can initialise the output folder.
-    sleep(30)
+    sleep(50)
 
     # Set the version of NECB to use in this test
     template = 'NECB2017'

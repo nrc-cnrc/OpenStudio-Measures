@@ -14,6 +14,19 @@ require 'fileutils'
 # Core functionality for the tests. Individual test files speed up the testing.
 module TestCommon
 
+  def remove_old_test_results()
+
+    # Check to see if an overall start time was passed (it should be if using one of the test scripts in the test folder). 
+    #  If so then use it to determine what old results are (if not use now)
+    start_time=Time.now
+    if ARGV.length == 1
+
+      # We have a time. It will be in seconds since the epoch. Update our start_time.
+      start_time=Time.at(ARGV[0].to_i)
+    end
+    NRCMeasureTestHelper.removeOldOutputs(before: start_time)
+  end
+
   class NrcCreateGeometry_Test < Minitest::Test
 
     # Brings in helper methods to simplify argument testing of json and standard argument methods.
@@ -135,9 +148,7 @@ module TestCommon
     end
 
     def run_test(template: 'NECB2011', building_type: 'Warehouse', building_shape: 'Rectangular', total_floor_area: 20000, above_grade_floors: 3, rotation: 0, epw_file: 'CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw', aspect_ratio: 1)
-      # Define the output folder for this test (optional - default is the method name).
-      output_file_path = NRCMeasureTestHelper.appendOutputFolder("test_geometry")
-
+      
       ####### Test Model Creation ######
       puts "  Testing for arguments:".green
       puts "  Building type: ".green + " #{building_type}".light_blue
@@ -148,7 +159,7 @@ module TestCommon
       puts "  Rotation: ".green + " #{rotation}".light_blue
       puts "  Aspect_ratio: ".green + " #{aspect_ratio}".light_blue
 
-      # Make an empty model
+      # Make an empty model.
       model = OpenStudio::Model::Model.new
 
       input_arguments = {
@@ -169,14 +180,11 @@ module TestCommon
       city1 = epw_file.split("_")
       city = city1[2].split(".").first
 
-      # Define the output folder for the model. (First delete the folder if it exists)
-      model_output_folder = "#{output_file_path}/#{building_shape}-#{building_type}-#{template}-#{rotation.to_int}-#{city}-#{above_grade_floors}-#{total_floor_area.to_int}-#{aspect_ratio}"
-      puts "  Output folder ".green + " #{model_output_folder}".light_blue
-      if Dir.exist?(model_output_folder) then
-        puts "WARNING: Removing existing output folder #{model_output_folder}".yellow
-        FileUtils.remove_dir(model_output_folder, force = true)
-      end
-
+      # Define specific output folder for this test. In this case use the tempalet and the model name as this combination is unique.
+      model_name = "#{building_shape}-#{building_type}-#{template}-#{rotation.to_int}-#{city}-#{above_grade_floors}-#{total_floor_area.to_int}-#{aspect_ratio}"
+      output_file_path = NRCMeasureTestHelper.appendOutputFolder("#{template}/#{model_name}")
+      puts "Output folder ". green + "#{output_file_path}".light_blue
+	  
       # Create an instance of the measure with good values
       runner = run_measure(input_arguments, model)
 
@@ -187,8 +195,8 @@ module TestCommon
       assert(runner.result.value.valueName == 'Success')
 
       # save the model to test output directory
-      output_file_path1 = "#{model_output_folder}/output.osm"
-      model.save(output_file_path1, true)
+      output_file = "#{output_file_path}/#{model_name}.osm"
+      model.save(output_file, true)
     end
   end
 end

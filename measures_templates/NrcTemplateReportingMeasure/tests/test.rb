@@ -15,6 +15,16 @@ class NrcReportingMeasure_Test < Minitest::Test
 
   # Brings in helper methods to simplify argument testing of json and standard argument methods.
   include(NRCReportingMeasureTestHelper)
+
+  # Check to see if an overall start time was passed (it should be if using one of the test scripts in the test folder). 
+  #  If so then use it to determine what old results are (if not use now).
+  start_time=Time.now
+  if ARGV.length == 1
+
+    # We have a time. It will be in seconds since the epoch. Update our start_time.
+    start_time=Time.at(ARGV[0].to_i)
+  end
+  NRCReportingMeasureTestHelper.removeOldOutputs(before: start_time)
   
   def setup()
 
@@ -93,12 +103,7 @@ class NrcReportingMeasure_Test < Minitest::Test
     NRCReportingMeasureTestHelper.appendOutputFolder("smallOffice")
 	
     # Load osm file
-    translator = OpenStudio::OSVersion::VersionTranslator.new
-    model_file = "#{File.dirname(__FILE__)}/SmallOffice.osm"
-    model = translator.loadModel(model_file)
-    msg = "Loading model: #{model_file}"
-    assert(!model.empty?, msg)
-    model = model.get
+    model = load_test_osm("#{File.dirname(__FILE__)}/SmallOffice.osm")
 
     # Assign the local weather file (have to provide a full path to EpwFile).
     epw = OpenStudio::EpwFile.new("#{File.dirname(__FILE__)}/weather_files/CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw")

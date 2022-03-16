@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_rename_nodes</name>
   <uid>07e104f4-7175-4a8e-8c1a-b9fafb28b3ce</uid>
-  <version_id>5be50131-8c2a-4c8c-a1a3-ee1028512741</version_id>
-  <version_modified>20220124T175055Z</version_modified>
+  <version_id>c0c3a7d6-99a6-4f61-850b-773f1794e72c</version_id>
+  <version_modified>20220316T131801Z</version_modified>
   <xml_checksum>FC9586A7</xml_checksum>
   <class_name>NrcRenameNodes</class_name>
   <display_name>NrcRenameNodes</display_name>
@@ -67,30 +67,6 @@
       <checksum>A1A5426B</checksum>
     </file>
     <file>
-      <filename>README.md</filename>
-      <filetype>md</filetype>
-      <usage_type>readme</usage_type>
-      <checksum>77246F89</checksum>
-    </file>
-    <file>
-      <filename>BTAPMeasureHelper.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>F2F6F193</checksum>
-    </file>
-    <file>
-      <filename>NRCMeasureHelper.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>2FE92E0F</checksum>
-    </file>
-    <file>
-      <filename>test.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>test</usage_type>
-      <checksum>BDFEB9E9</checksum>
-    </file>
-    <file>
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>3.1.0</identifier>
@@ -102,28 +78,28 @@
       <checksum>BA46DA0D</checksum>
     </file>
     <file>
-      <filename>resources/CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.ddy</filename>
-      <filetype>ddy</filetype>
-      <usage_type>test</usage_type>
-      <checksum>D3C6A158</checksum>
+      <filename>README.md</filename>
+      <filetype>md</filetype>
+      <usage_type>readme</usage_type>
+      <checksum>5FCDA75D</checksum>
     </file>
     <file>
-      <filename>resources/CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw</filename>
-      <filetype>epw</filetype>
-      <usage_type>test</usage_type>
-      <checksum>E21FC0AC</checksum>
+      <filename>BTAPMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>4F234BCA</checksum>
     </file>
     <file>
-      <filename>resources/CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.stat</filename>
-      <filetype>stat</filetype>
+      <filename>test.rb</filename>
+      <filetype>rb</filetype>
       <usage_type>test</usage_type>
-      <checksum>BAFC0770</checksum>
+      <checksum>D8643079</checksum>
     </file>
     <file>
-      <filename>resources/Warehouse-NECB2017-ON_Ottawa.osm</filename>
-      <filetype>osm</filetype>
-      <usage_type>test</usage_type>
-      <checksum>C55B436A</checksum>
+      <filename>NRCMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>A5221895</checksum>
     </file>
   </files>
 </measure>

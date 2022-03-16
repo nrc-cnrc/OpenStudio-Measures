@@ -4,9 +4,12 @@ include(TestCommon)
 # Just the 2015 models.
 class NrcCreateGeometry_Test
 
+  remove_old_test_results
+
   def test_2015()
     # Delay the start of this test so that the 2011 case can initialise the output folder.
-    sleep(20)
+    sleep(40)
+
 
     # Set the version of NECB to use in this test
     template = 'NECB2015'
@@ -15,7 +18,7 @@ class NrcCreateGeometry_Test
 	# Options. Limit to 16 cases to keep run time down.
     building_types = ["RetailStripmall", "QuickServiceRestaurant"]
     epw_files = ['CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw', 'CAN_ON_Windsor.Intl.AP.715380_CWEC2016.epw']
-    building_shapes = ["Courtyard", "Rectangular", "U-Shape"]
+    building_shapes = ["Courtyard", "Rectangular"]
     total_floor_area = [20000.0]
     rotation = [10.0]
     above_grade_floors = [1]

@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_add_doas_sys</name>
   <uid>14f47c70-84f9-4435-9155-5bd3f2d87c4c</uid>
-  <version_id>d34223a9-b738-4d67-b63a-a599ea989fe0</version_id>
-  <version_modified>20220215T143134Z</version_modified>
+  <version_id>a2e28f94-0ac6-4077-a9e8-b7dfa39197e2</version_id>
+  <version_modified>20220316T131750Z</version_modified>
   <xml_checksum>4435983D</xml_checksum>
   <class_name>NrcAddDOASSys</class_name>
   <display_name>NrcAddDOASSys</display_name>
@@ -69,28 +69,28 @@
       <checksum>A1A5426B</checksum>
     </file>
     <file>
+      <filename>README.md</filename>
+      <filetype>md</filetype>
+      <usage_type>readme</usage_type>
+      <checksum>2B19031A</checksum>
+    </file>
+    <file>
       <filename>BTAPMeasureHelper.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>F45B04B6</checksum>
-    </file>
-    <file>
-      <filename>NRCMeasureHelper.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>4001603A</checksum>
+      <checksum>4F234BCA</checksum>
     </file>
     <file>
       <filename>test.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
-      <checksum>73FFF81E</checksum>
+      <checksum>C1E9CD20</checksum>
     </file>
     <file>
-      <filename>README.md</filename>
-      <filetype>md</filetype>
-      <usage_type>readme</usage_type>
-      <checksum>2B19031A</checksum>
+      <filename>NRCMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>A5221895</checksum>
     </file>
   </files>
 </measure>

@@ -1,7 +1,7 @@
 module BTAPMeasureHelper
-  ###################Helper functions
+  ################### Helper functions
 
-  # define the arguments that the user will input
+  # Define the arguments that the user will input.
   def arguments(model = OpenStudio::Model::Model.new)
     args = OpenStudio::Measure::OSArgumentVector.new
 
@@ -65,7 +65,7 @@ module BTAPMeasureHelper
     return args
   end
 
-  #returns a hash of the user inputs for you to use in your measure.
+  # Returns a hash of the user inputs for you to use in your measure.
   def get_hash_of_arguments(user_arguments, runner)
     values = {}
     if @use_json_package
@@ -100,7 +100,7 @@ module BTAPMeasureHelper
     return values
   end
 
-  # boilerplate that validated ranges of inputs.
+  # Boilerplate that validated ranges of inputs.
   def validate_and_get_arguments_in_hash(model, runner, user_arguments)
     puts "****"
     return_value = true
@@ -111,7 +111,7 @@ module BTAPMeasureHelper
       return_value = false
     end
 
-    # Validate arguments
+    # Validate arguments.
     errors = ""
     @measure_interface_detailed.each do |argument|
       case argument['type']
@@ -144,7 +144,7 @@ module BTAPMeasureHelper
         end
       end
     end
-    #If any errors return false, else return the hash of argument values for user to use in measure.
+    # If any errors return false, else return the hash of argument values for user to use in measure.
     if errors != ""
       runner.registerError(errors)
       return false
@@ -163,27 +163,27 @@ module BTAPMeasureTestHelper
   ##### Helper methods Do notouch unless you know the consequences.
 
 
-  #Boiler plate to default values and number of arguments against what is in your test's setup method.
+  # Boiler plate to default values and number of arguments against what is in your test's setup method.
   def test_arguments_and_defaults
     [true, false].each do |json_input|
       [true, false].each do |string_double|
         @use_json_package = json_input
         @use_string_double = string_double
 
-        # Create an instance of the measure
+        # Create an instance of the measure.
         measure = get_measure_object()
         measure.use_json_package = @use_json_package
         measure.use_string_double = @use_string_double
         model = OpenStudio::Model::Model.new
 
-        # Create an instance of a runner
+        # Create an instance of a runner.
         runner = OpenStudio::Measure::OSRunner.new(OpenStudio::WorkflowJSON.new)
 
-        # Test arguments and defaults
+        # Test arguments and defaults.
         arguments = measure.arguments(model)
         #convert whatever the input was into a hash. Then test.
 
-        #check number of arguments.
+        # Check number of arguments.
         if @use_json_package
           assert_equal(@measure_interface_detailed.size, JSON.parse(arguments[0].defaultValueAsString).size, "The measure should have #{@measure_interface_detailed.size} but actually has #{arguments.size}. Here the the arguement expected #{JSON.pretty_generate(@measure_interface_detailed) } \n and this is the actual \n  #{JSON.pretty_generate(arguments[0])}")
         else
@@ -289,8 +289,7 @@ module BTAPMeasureTestHelper
     end
   end
 
-
-  # helper method to create necb archetype as a starting point for testing.
+  # Helper method to create necb archetype as a starting point for testing.
   def create_necb_protype_model(building_type, climate_zone, epw_file, template)
     osm_directory = "#{Dir.pwd}/output/#{building_type}-#{template}-#{epw_file}"
 
@@ -302,13 +301,13 @@ module BTAPMeasureTestHelper
 
     prototype_creator = Standard.build(template)
     model = prototype_creator.model_create_prototype_model(
-      epw_file: epw_file,
-      sizing_run_dir: osm_directory,
-      debug: @debug,
-      template: template,
-      building_type: building_type)
+        epw_file: epw_file,
+        sizing_run_dir: osm_directory,
+        debug: @debug,
+        template: template,
+        building_type: building_type)
 
-    #set weather file to epw_file passed to model.
+    # Set weather file to epw_file passed to model.
     weather.set_weather_file(model)
     return model
   end
@@ -344,14 +343,14 @@ module BTAPMeasureTestHelper
         argument_map[key] = argument
       end
     end
-    #run the measure
+    # Run the measure
     measure.run(model, runner, argument_map)
     runner.result
     return runner
   end
 
 
-  #Fancy way of getting the measure object automatically.
+  # Fancy way of getting the measure object automatically.
   def get_measure_object()
     measure_class_name = self.class.name.to_s.match(/(BTAP.*)(\_Test)/i).captures[0]
     measure = nil
@@ -363,7 +362,7 @@ module BTAPMeasureTestHelper
     return measure
   end
 
-  #Determines the OS argument type dynamically.
+  # Determines the OS argument type dynamically.
   def argument_type(argument)
     case argument.type.value
     when 0
@@ -392,16 +391,18 @@ module BTAPMeasureTestHelper
     !!Float(str) rescue false
   end
 
-  #Method does a deep copy of a model.
+  # Method does a deep copy of a model.
   def copy_model(model)
     copy_model = OpenStudio::Model::Model.new
-    # remove existing objects from model
+	
+    # Remove existing objects from model
     handles = OpenStudio::UUIDVector.new
     copy_model.objects.each do |obj|
       handles << obj.handle
     end
     copy_model.removeObjects(handles)
-    # put contents of new_model into model_to_replace
+	
+    # Put contents of new_model into model_to_replace
     copy_model.addObjects(model.toIdfFile.objects)
     return copy_model
   end

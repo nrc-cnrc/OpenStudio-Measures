@@ -2,13 +2,13 @@
 
 ###### (Automatically generated documentation)
 
-# NrcAlterSHGC
+# Change SHGC
 
 ## Description
-Changes solar heat gain coefficient of simple glazing systems
+Changes solar heat gain coefficient (SHGC) of simple glazing systems.
 
 ## Modeler Description
-Get simple glazing systems and change the SHGC 
+Find all simple glazing systems int he model and change the SHGC.
 
 ## Measure Type
 ModelMeasure
@@ -19,7 +19,7 @@ ModelMeasure
 ## Arguments
 
 
-### Set SHGC
+### SHGC
 
 **Name:** new_shgc,
 **Type:** Double,

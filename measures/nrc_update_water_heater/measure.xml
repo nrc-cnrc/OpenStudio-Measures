@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_update_water_heater</name>
   <uid>2f81b690-4343-49fe-9c2a-803e531ac6c8</uid>
-  <version_id>7d2f937e-ea0d-47ca-9d7a-aaa0bd3a3c31</version_id>
-  <version_modified>20220215T143651Z</version_modified>
+  <version_id>24c8f8a8-f8db-48ef-9ba8-543d2998ee01</version_id>
+  <version_modified>20220316T131816Z</version_modified>
   <xml_checksum>E88CCCA7</xml_checksum>
   <class_name>NrcUpdateWaterHeater</class_name>
   <display_name>NrcUpdateWaterHeater</display_name>
@@ -82,12 +82,6 @@
       <checksum>8F48740C</checksum>
     </file>
     <file>
-      <filename>.gitkeep</filename>
-      <filetype>gitkeep</filetype>
-      <usage_type>doc</usage_type>
-      <checksum>00000000</checksum>
-    </file>
-    <file>
       <filename>LICENSE.md</filename>
       <filetype>md</filetype>
       <usage_type>license</usage_type>
@@ -100,28 +94,28 @@
       <checksum>A1A5426B</checksum>
     </file>
     <file>
+      <filename>README.md</filename>
+      <filetype>md</filetype>
+      <usage_type>readme</usage_type>
+      <checksum>919F4E29</checksum>
+    </file>
+    <file>
       <filename>BTAPMeasureHelper.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>F45B04B6</checksum>
-    </file>
-    <file>
-      <filename>NRCMeasureHelper.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>4001603A</checksum>
+      <checksum>4F234BCA</checksum>
     </file>
     <file>
       <filename>test.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
-      <checksum>BEF7EFB9</checksum>
+      <checksum>A80449BB</checksum>
     </file>
     <file>
-      <filename>README.md</filename>
-      <filetype>md</filetype>
-      <usage_type>readme</usage_type>
-      <checksum>919F4E29</checksum>
+      <filename>NRCMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>A5221895</checksum>
     </file>
   </files>
 </measure>

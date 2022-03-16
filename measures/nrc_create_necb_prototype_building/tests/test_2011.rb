@@ -4,8 +4,10 @@ include(TestCommon)
 # Just the 2011 models.
 class NrcCreateNECBPrototypeBuilding_Test
 
+  remove_old_test_results
+
   def test_2011()
-    sleep(20)
+    #NRCMeasureTestHelper.removeOldOutputs
    
     template = 'NECB2011'
 

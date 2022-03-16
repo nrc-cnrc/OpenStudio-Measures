@@ -4,9 +4,9 @@ include(TestCommon)
 # Just the 2011 models.
 class NrcCreateGeometry_Test
 
+  remove_old_test_results
+
   def test_2011()
-  
-    sleep(20)
   
     # Set the version of NECB to use in this test
     template = 'NECB2011'

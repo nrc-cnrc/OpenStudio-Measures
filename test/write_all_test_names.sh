@@ -1,7 +1,7 @@
 #!/bin/bash
-source ./env.sh
+source ../env.sh
 
-:> measures_to_test.txt  # Empty contents of file
+:> measures_to_test-all.txt  # Empty contents of file
 
 # Generate a list of the measures.
 measures=(`ls -1 ../measures`)

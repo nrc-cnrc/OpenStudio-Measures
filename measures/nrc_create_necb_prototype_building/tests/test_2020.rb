@@ -4,6 +4,8 @@ include(TestCommon)
 # Just the 2020 models. Do warehouse for all editions.
 class NrcCreateNECBPrototypeBuilding_Test
 
+  remove_old_test_results
+
   def test_2020()
     # Delay the start of this test so that the 2011 case can initialise the output folder.
     sleep(40)

@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_add_hvac_availability_manager</name>
   <uid>7e2d8cb0-7ec5-494a-9e1f-bbfbd00d003d</uid>
-  <version_id>2f97e8d5-76ac-423f-ae3b-47e1a234c0f1</version_id>
-  <version_modified>20220118T162725Z</version_modified>
+  <version_id>1a2b5a47-6d4a-420c-9734-b6db0dcad075</version_id>
+  <version_modified>20220316T131751Z</version_modified>
   <xml_checksum>BF5240D4</xml_checksum>
   <class_name>NrcAddHvacAvailabilityManager</class_name>
   <display_name>Add HVAC Availability Manager</display_name>
@@ -60,24 +60,6 @@
       <checksum>A1A5426B</checksum>
     </file>
     <file>
-      <filename>BTAPMeasureHelper.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>A8052258</checksum>
-    </file>
-    <file>
-      <filename>NRCMeasureHelper.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>4001603A</checksum>
-    </file>
-    <file>
-      <filename>test.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>test</usage_type>
-      <checksum>E66B4F3E</checksum>
-    </file>
-    <file>
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>3.1.0</identifier>
@@ -92,7 +74,25 @@
       <filename>README.md</filename>
       <filetype>md</filetype>
       <usage_type>readme</usage_type>
-      <checksum>1A0B92FF</checksum>
+      <checksum>018B9989</checksum>
+    </file>
+    <file>
+      <filename>BTAPMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>4F234BCA</checksum>
+    </file>
+    <file>
+      <filename>test.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>996C1B38</checksum>
+    </file>
+    <file>
+      <filename>NRCMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>A5221895</checksum>
     </file>
   </files>
 </measure>

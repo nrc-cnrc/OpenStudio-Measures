@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_report_set_point_diff</name>
   <uid>d023501a-5089-4b1d-9a08-7a573820a7ef</uid>
-  <version_id>7fc0829d-dd0e-4c45-b169-119c059d9e05</version_id>
-  <version_modified>20220118T162735Z</version_modified>
+  <version_id>1d41b924-a4d3-4da2-b71e-4ec8c74c5a69</version_id>
+  <version_modified>20220316T131810Z</version_modified>
   <xml_checksum>9BF1E6AC</xml_checksum>
   <class_name>NrcReportSetPointDiff</class_name>
   <display_name>NrcReportSetPointDiff</display_name>
@@ -167,34 +167,10 @@
       <checksum>D7CFF32E</checksum>
     </file>
     <file>
-      <filename>.gitkeep</filename>
-      <filetype>gitkeep</filetype>
-      <usage_type>doc</usage_type>
-      <checksum>00000000</checksum>
-    </file>
-    <file>
-      <filename>BTAPMeasureHelper.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>3D18CB9A</checksum>
-    </file>
-    <file>
-      <filename>NRCReportingMeasureHelper.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>984E9ECA</checksum>
-    </file>
-    <file>
       <filename>os_lib_reporting.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
       <checksum>A964A633</checksum>
-    </file>
-    <file>
-      <filename>test.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>test</usage_type>
-      <checksum>3CFE3F9C</checksum>
     </file>
     <file>
       <version>
@@ -212,6 +188,24 @@
       <filetype>md</filetype>
       <usage_type>readme</usage_type>
       <checksum>B92F4B90</checksum>
+    </file>
+    <file>
+      <filename>BTAPMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>B69DF022</checksum>
+    </file>
+    <file>
+      <filename>test.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>55AD7C16</checksum>
+    </file>
+    <file>
+      <filename>NRCReportingMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>76513449</checksum>
     </file>
   </files>
 </measure>

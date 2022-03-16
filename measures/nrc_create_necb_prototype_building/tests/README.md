@@ -1,6 +1,22 @@
+## 7 - SecondarySchool-NECB2011-AB Banff
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| template |NECB2011 |
+| building_type |SecondarySchool |
+| epw_file |AB_Banff |
+| sideload |false |
+ 
+## 6 - RetailStandalone-NECB2020-NL St.Johns
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| template |NECB2020 |
+| building_type |RetailStandalone |
+| epw_file |NL_St.Johns |
+| sideload |false |
+ 
 # Summary Of Test Cases for 'NRCCREATENECBPROTOTYPEBUILDING' Measure
  
-## 1 - OutputTestFolder
+## 1 - Warehouse-NECB2015-AB Banff
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | template |NECB2015 |
@@ -8,17 +24,15 @@
 | epw_file |AB_Banff |
 | sideload |false |
  
-# Summary Of Test Cases for 'NRCCREATENECBPROTOTYPEBUILDING' Measure
- 
-## 1 - OutputTestFolder--1
+## 8 - SecondarySchool-NECB2011-AB Edmonton.Intl
 | Test Argument | Test Value |
 | ------------- | ---------- |
-| template |NECB2017 |
-| building_type |Warehouse |
-| epw_file |AB_Banff |
+| template |NECB2011 |
+| building_type |SecondarySchool |
+| epw_file |AB_Edmonton.Intl |
 | sideload |false |
  
-## 2 - OutputTestFolder--3
+## 2 - Warehouse-NECB2015-BC Vancouver
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | template |NECB2015 |
@@ -26,15 +40,23 @@
 | epw_file |BC_Vancouver |
 | sideload |false |
  
-## 2 - OutputTestFolder--5
+## 7 - MidriseApartment-NECB2020-AB Banff
 | Test Argument | Test Value |
 | ------------- | ---------- |
-| template |NECB2017 |
-| building_type |Warehouse |
-| epw_file |NB_Fredericton |
+| template |NECB2020 |
+| building_type |MidriseApartment |
+| epw_file |AB_Banff |
 | sideload |false |
  
-## 3 - OutputTestFolder--7
+## 9 - SecondarySchool-NECB2011-QC Montreal-Trudeau
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| template |NECB2011 |
+| building_type |SecondarySchool |
+| epw_file |QC_Montreal-Trudeau |
+| sideload |false |
+ 
+## 3 - Warehouse-NECB2015-ON Toronto
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | template |NECB2015 |
@@ -42,79 +64,7 @@
 | epw_file |ON_Toronto |
 | sideload |false |
  
-## 3 - OutputTestFolder--9
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| template |NECB2017 |
-| building_type |Warehouse |
-| epw_file |SK_Saskatoon |
-| sideload |false |
- 
-## 4 - OutputTestFolder--13
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| template |NECB2017 |
-| building_type |QuickServiceRestaurant |
-| epw_file |AB_Banff |
-| sideload |false |
- 
-## 4 - OutputTestFolder--11
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| template |NECB2015 |
-| building_type |LargeOffice |
-| epw_file |AB_Banff |
-| sideload |false |
- 
-## 5 - OutputTestFolder--15
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| template |NECB2017 |
-| building_type |QuickServiceRestaurant |
-| epw_file |NB_Fredericton |
-| sideload |false |
- 
-## 6 - OutputTestFolder--19
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| template |NECB2017 |
-| building_type |QuickServiceRestaurant |
-| epw_file |SK_Saskatoon |
-| sideload |false |
- 
-## 5 - OutputTestFolder--17
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| template |NECB2015 |
-| building_type |LargeOffice |
-| epw_file |BC_Vancouver |
-| sideload |false |
- 
-## 6 - OutputTestFolder--23
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| template |NECB2015 |
-| building_type |LargeOffice |
-| epw_file |ON_Toronto |
-| sideload |false |
- 
-## 7 - OutputTestFolder--25
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| template |NECB2015 |
-| building_type |RetailStripmall |
-| epw_file |AB_Banff |
-| sideload |false |
- 
-## 8 - OutputTestFolder--27
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| template |NECB2015 |
-| building_type |RetailStripmall |
-| epw_file |BC_Vancouver |
-| sideload |false |
- 
-## 7 - OutputTestFolder--21
+## 7 - HighriseApartment-NECB2017-AB Banff
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | template |NECB2017 |
@@ -122,39 +72,79 @@
 | epw_file |AB_Banff |
 | sideload |false |
  
-## 9 - OutputTestFolder--29
+## 10 - SmallOffice-NECB2011-AB Banff
 | Test Argument | Test Value |
 | ------------- | ---------- |
-| template |NECB2015 |
-| building_type |RetailStripmall |
-| epw_file |ON_Toronto |
-| sideload |false |
- 
-## 10 - OutputTestFolder--33
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| template |NECB2015 |
-| building_type |FullServiceRestaurant |
+| template |NECB2011 |
+| building_type |SmallOffice |
 | epw_file |AB_Banff |
 | sideload |false |
  
-## 11 - OutputTestFolder--35
+## 4 - LargeOffice-NECB2015-AB Banff
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | template |NECB2015 |
-| building_type |FullServiceRestaurant |
+| building_type |LargeOffice |
+| epw_file |AB_Banff |
+| sideload |false |
+ 
+## 11 - SmallOffice-NECB2011-AB Edmonton.Intl
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| template |NECB2011 |
+| building_type |SmallOffice |
+| epw_file |AB_Edmonton.Intl |
+| sideload |false |
+ 
+## 8 - MidriseApartment-NECB2020-MB Winnipeg-Richardson
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| template |NECB2020 |
+| building_type |MidriseApartment |
+| epw_file |MB_Winnipeg-Richardson |
+| sideload |false |
+ 
+## 12 - SmallOffice-NECB2011-QC Montreal-Trudeau
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| template |NECB2011 |
+| building_type |SmallOffice |
+| epw_file |QC_Montreal-Trudeau |
+| sideload |false |
+ 
+## 5 - LargeOffice-NECB2015-BC Vancouver
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| template |NECB2015 |
+| building_type |LargeOffice |
 | epw_file |BC_Vancouver |
 | sideload |false |
  
-## 12 - OutputTestFolder--37
+## 13 - MediumOffice-NECB2011-AB Banff
 | Test Argument | Test Value |
 | ------------- | ---------- |
-| template |NECB2015 |
-| building_type |FullServiceRestaurant |
-| epw_file |ON_Toronto |
+| template |NECB2011 |
+| building_type |MediumOffice |
+| epw_file |AB_Banff |
 | sideload |false |
  
-## 8 - OutputTestFolder--31
+## 9 - MidriseApartment-NECB2020-NL St.Johns
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| template |NECB2020 |
+| building_type |MidriseApartment |
+| epw_file |NL_St.Johns |
+| sideload |false |
+ 
+## 14 - MediumOffice-NECB2011-AB Edmonton.Intl
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| template |NECB2011 |
+| building_type |MediumOffice |
+| epw_file |AB_Edmonton.Intl |
+| sideload |false |
+ 
+## 8 - HighriseApartment-NECB2017-NB Fredericton
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | template |NECB2017 |
@@ -162,7 +152,71 @@
 | epw_file |NB_Fredericton |
 | sideload |false |
  
-## 9 - OutputTestFolder--41
+## 6 - LargeOffice-NECB2015-ON Toronto
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| template |NECB2015 |
+| building_type |LargeOffice |
+| epw_file |ON_Toronto |
+| sideload |false |
+ 
+## 15 - MediumOffice-NECB2011-QC Montreal-Trudeau
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| template |NECB2011 |
+| building_type |MediumOffice |
+| epw_file |QC_Montreal-Trudeau |
+| sideload |false |
+ 
+## 7 - RetailStripmall-NECB2015-AB Banff
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| template |NECB2015 |
+| building_type |RetailStripmall |
+| epw_file |AB_Banff |
+| sideload |false |
+ 
+## 8 - RetailStripmall-NECB2015-BC Vancouver
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| template |NECB2015 |
+| building_type |RetailStripmall |
+| epw_file |BC_Vancouver |
+| sideload |false |
+ 
+## 9 - RetailStripmall-NECB2015-ON Toronto
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| template |NECB2015 |
+| building_type |RetailStripmall |
+| epw_file |ON_Toronto |
+| sideload |false |
+ 
+## 10 - FullServiceRestaurant-NECB2015-AB Banff
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| template |NECB2015 |
+| building_type |FullServiceRestaurant |
+| epw_file |AB_Banff |
+| sideload |false |
+ 
+## 16 - SmallHotel-NECB2011-AB Banff
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| template |NECB2011 |
+| building_type |SmallHotel |
+| epw_file |AB_Banff |
+| sideload |false |
+ 
+## 11 - FullServiceRestaurant-NECB2015-BC Vancouver
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| template |NECB2015 |
+| building_type |FullServiceRestaurant |
+| epw_file |BC_Vancouver |
+| sideload |false |
+ 
+## 9 - HighriseApartment-NECB2017-SK Saskatoon
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | template |NECB2017 |
@@ -170,7 +224,31 @@
 | epw_file |SK_Saskatoon |
 | sideload |false |
  
-## 13 - OutputTestFolder--39
+## 12 - FullServiceRestaurant-NECB2015-ON Toronto
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| template |NECB2015 |
+| building_type |FullServiceRestaurant |
+| epw_file |ON_Toronto |
+| sideload |false |
+ 
+## 17 - SmallHotel-NECB2011-AB Edmonton.Intl
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| template |NECB2011 |
+| building_type |SmallHotel |
+| epw_file |AB_Edmonton.Intl |
+| sideload |false |
+ 
+## 18 - SmallHotel-NECB2011-QC Montreal-Trudeau
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| template |NECB2011 |
+| building_type |SmallHotel |
+| epw_file |QC_Montreal-Trudeau |
+| sideload |false |
+ 
+## 13 - Outpatient-NECB2015-AB Banff
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | template |NECB2015 |
@@ -178,7 +256,7 @@
 | epw_file |AB_Banff |
 | sideload |false |
  
-## 14 - OutputTestFolder--44
+## 14 - Outpatient-NECB2015-BC Vancouver
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | template |NECB2015 |
@@ -186,7 +264,7 @@
 | epw_file |BC_Vancouver |
 | sideload |false |
  
-## 15 - OutputTestFolder--46
+## 15 - Outpatient-NECB2015-ON Toronto
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | template |NECB2015 |
