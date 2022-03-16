@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_set_roof_conductance_by_necb_climate_zone</name>
   <uid>09b4a9fb-3649-473a-aa81-f01c680e63a8</uid>
-  <version_id>db5b14bf-7d17-42ad-9d40-ce35c33fe535</version_id>
-  <version_modified>20220315T125629Z</version_modified>
+  <version_id>14c27759-a233-4095-ac42-de3585b5df89</version_id>
+  <version_modified>20220316T131815Z</version_modified>
   <xml_checksum>A51D361F</xml_checksum>
   <class_name>NrcSetRoofConductanceByNecbClimateZone</class_name>
   <display_name>NrcSetRoofConductanceByNecbClimateZone</display_name>
@@ -128,12 +128,6 @@
       <checksum>A1A5426B</checksum>
     </file>
     <file>
-      <filename>test.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>test</usage_type>
-      <checksum>E5A9074E</checksum>
-    </file>
-    <file>
       <filename>README.md</filename>
       <filetype>md</filetype>
       <usage_type>readme</usage_type>
@@ -146,10 +140,16 @@
       <checksum>4F234BCA</checksum>
     </file>
     <file>
+      <filename>test.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>2544EC30</checksum>
+    </file>
+    <file>
       <filename>NRCMeasureHelper.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>F787EF10</checksum>
+      <checksum>A5221895</checksum>
     </file>
   </files>
 </measure>

@@ -1,6 +1,6 @@
 # Summary Of Test Cases for 'NRCREPORTCARBONEMISSIONS' Measure
  
-## 1 - Warehouse--1
+## 1 - Warehouse--7
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | location |Ontario |

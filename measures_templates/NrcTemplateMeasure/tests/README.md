@@ -1,6 +1,6 @@
 # Summary Of Test Cases for 'NRCTEMPLATEMEASURE' Measure
  
-## 1 - test argument ranges--234
+## 1 - test argument ranges
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | a_string_argument |MyString |
@@ -9,7 +9,7 @@
 | a_choice_argument |choice_1 |
 | a_bool_argument |true |
  
-## 2 - test argument ranges--235
+## 2 - test argument ranges--1
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | a_string_argument |MyString |
@@ -18,7 +18,7 @@
 | a_choice_argument |choice_1 |
 | a_bool_argument |true |
  
-## 3 - test argument ranges--236
+## 3 - test argument ranges--2
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | a_string_argument |MyString |
@@ -27,7 +27,7 @@
 | a_choice_argument |choice_1 |
 | a_bool_argument |true |
  
-## 4 - test argument ranges--237
+## 4 - test argument ranges--3
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | a_string_argument |MyString |
@@ -36,16 +36,16 @@
 | a_choice_argument |choice_1 |
 | a_bool_argument |true |
  
-## 5 - test argument ranges--238
+## 5 - test argument ranges--4
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | a_string_argument |MyString |
 | a_double_argument |50.0 |
-| a_string_double_argument |51b6903a-a241-4571-b7fd-fe8b363043f7 |
+| a_string_double_argument |9063d233-ecda-4bbe-8ed9-8c6b060ee65a |
 | a_choice_argument |choice_1 |
 | a_bool_argument |true |
  
-## 6 - test argument ranges--239
+## 6 - test argument ranges--5
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | a_string_argument |MyString |
@@ -54,7 +54,7 @@
 | a_choice_argument |choice_1 |
 | a_bool_argument |true |
  
-## 7 - test argument ranges--240
+## 7 - test argument ranges--6
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | a_string_argument |MyString |
@@ -63,7 +63,7 @@
 | a_choice_argument |choice_1 |
 | a_bool_argument |true |
  
-## 8 - test argument ranges--241
+## 8 - test argument ranges--7
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | a_string_argument |MyString |
@@ -72,7 +72,7 @@
 | a_choice_argument |choice_1 |
 | a_bool_argument |true |
  
-## 9 - test argument ranges--242
+## 9 - test argument ranges--8
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | a_string_argument |MyString |
@@ -81,7 +81,7 @@
 | a_choice_argument |choice_1 |
 | a_bool_argument |true |
  
-## 10 - test argument ranges--243
+## 10 - test argument ranges--9
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | a_string_argument |MyString |
@@ -90,7 +90,7 @@
 | a_choice_argument |choice_1 |
 | a_bool_argument |true |
  
-## 11 - test argument ranges--244
+## 11 - test argument ranges--10
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | a_string_argument |MyString |
@@ -99,7 +99,7 @@
 | a_choice_argument |choice_1 |
 | a_bool_argument |true |
  
-## 12 - test argument ranges--245
+## 12 - test argument ranges--11
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | a_string_argument |MyString |
@@ -108,7 +108,7 @@
 | a_choice_argument |choice_1 |
 | a_bool_argument |true |
  
-## 13 - test argument ranges--246
+## 13 - test argument ranges--12
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | a_string_argument |MyString |
@@ -117,16 +117,16 @@
 | a_choice_argument |choice_1 |
 | a_bool_argument |true |
  
-## 14 - test argument ranges--247
+## 14 - test argument ranges--13
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | a_string_argument |MyString |
 | a_double_argument |50.0 |
-| a_string_double_argument |fb3fecdc-2bef-47af-929f-926d232b0053 |
+| a_string_double_argument |d03429f2-d2fd-422d-8c17-0bc390035ff6 |
 | a_choice_argument |choice_1 |
 | a_bool_argument |true |
  
-## 15 - test argument ranges--248
+## 15 - test argument ranges--14
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | a_string_argument |MyString |
@@ -135,7 +135,7 @@
 | a_choice_argument |choice_1 |
 | a_bool_argument |true |
  
-## 16 - test argument ranges--249
+## 16 - test argument ranges--15
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | a_string_argument |MyString |
@@ -144,7 +144,7 @@
 | a_choice_argument |choice_1 |
 | a_bool_argument |true |
  
-## 17 - test argument ranges--250
+## 17 - test argument ranges--16
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | a_string_argument |MyString |
@@ -153,7 +153,7 @@
 | a_choice_argument |choice_1 |
 | a_bool_argument |true |
  
-## 18 - test argument ranges--251
+## 18 - test argument ranges--17
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | a_string_argument |MyString |
@@ -162,7 +162,7 @@
 | a_choice_argument |choice_1 |
 | a_bool_argument |true |
  
-## 19 - test sample 1--27
+## 19 - test sample 1--1
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | a_string_argument |MyString |
@@ -170,7 +170,7 @@
 | a_string_double_argument |75.3 |
 | a_choice_argument |choice_1 |
  
-## 20 - test sample 2--27
+## 20 - test sample 3
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | a_string_argument |MyString |
@@ -178,7 +178,7 @@
 | a_string_double_argument |75.3 |
 | a_choice_argument |choice_1 |
  
-## 21 - test sample 3--13
+## 21 - test sample 2--1
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | a_string_argument |MyString |

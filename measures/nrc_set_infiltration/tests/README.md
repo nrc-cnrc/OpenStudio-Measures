@@ -1,6 +1,6 @@
 # Summary Of Test Cases for 'NRCSETINFILTRATION' Measure
  
-## 1 - OutputTestFolder--13
+## 1 - OutputTestFolder
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | flow_rate_75Pa |4.2 |

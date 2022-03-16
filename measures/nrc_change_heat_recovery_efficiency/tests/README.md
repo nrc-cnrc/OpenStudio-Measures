@@ -1,6 +1,6 @@
 # Summary Of Test Cases for 'NRCCHANGEENERGYRECOVERYEFFICIENCY' Measure
  
-## 1 - OutputTestFolder--13
+## 1 - OutputTestFolder
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | sensible_eff_at_100_heating |0.76 |

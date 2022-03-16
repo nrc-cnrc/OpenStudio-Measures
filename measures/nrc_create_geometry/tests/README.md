@@ -1,6 +1,6 @@
 # Summary Of Test Cases for 'NRCCREATEGEOMETRY' Measure
  
-## 1 - test argument ranges
+## 1 - test argument ranges--48
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -15,7 +15,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 2 - test argument ranges--1
+## 2 - test argument ranges--49
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -30,7 +30,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 3 - test argument ranges--2
+## 3 - test argument ranges--50
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -45,7 +45,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 4 - test argument ranges--3
+## 4 - test argument ranges--51
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -60,7 +60,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 5 - test argument ranges--4
+## 5 - test argument ranges--52
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -75,7 +75,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 6 - test argument ranges--5
+## 6 - test argument ranges--53
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -90,7 +90,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 7 - test argument ranges--6
+## 7 - test argument ranges--54
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -105,7 +105,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 8 - test argument ranges--7
+## 8 - test argument ranges--55
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -120,7 +120,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 9 - test argument ranges--8
+## 9 - test argument ranges--56
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -135,7 +135,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 10 - test argument ranges--9
+## 10 - test argument ranges--57
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -150,7 +150,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 11 - test argument ranges--10
+## 11 - test argument ranges--58
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -165,7 +165,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 12 - test argument ranges--11
+## 12 - test argument ranges--59
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -180,7 +180,7 @@
 | plenum_height |3.0 |
 | sideload |false |
  
-## 13 - test argument ranges--12
+## 13 - test argument ranges--60
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -195,7 +195,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 14 - test argument ranges--13
+## 14 - test argument ranges--61
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -210,7 +210,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 15 - test argument ranges--14
+## 15 - test argument ranges--62
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -225,7 +225,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 16 - test argument ranges--15
+## 16 - test argument ranges--63
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -240,7 +240,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 17 - test argument ranges--16
+## 17 - test argument ranges--64
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -255,7 +255,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 18 - test argument ranges--17
+## 18 - test argument ranges--65
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -270,7 +270,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 19 - test argument ranges--18
+## 19 - test argument ranges--66
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -285,7 +285,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 20 - test argument ranges--19
+## 20 - test argument ranges--67
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -300,7 +300,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 21 - test argument ranges--20
+## 21 - test argument ranges--68
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -315,7 +315,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 22 - test argument ranges--21
+## 22 - test argument ranges--69
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -330,7 +330,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 23 - test argument ranges--22
+## 23 - test argument ranges--70
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -345,7 +345,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 24 - test argument ranges--23
+## 24 - test argument ranges--71
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -360,7 +360,7 @@
 | plenum_height |3.0 |
 | sideload |false |
  
-## 25 - test argument ranges--24
+## 25 - test argument ranges--72
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -375,7 +375,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 26 - test argument ranges--25
+## 26 - test argument ranges--73
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -390,7 +390,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 27 - test argument ranges--26
+## 27 - test argument ranges--74
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -405,7 +405,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 28 - test argument ranges--27
+## 28 - test argument ranges--75
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -420,7 +420,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 29 - test argument ranges--28
+## 29 - test argument ranges--76
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -435,7 +435,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 30 - test argument ranges--29
+## 30 - test argument ranges--77
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -450,7 +450,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 31 - test argument ranges--30
+## 31 - test argument ranges--78
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -465,7 +465,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 32 - test argument ranges--31
+## 32 - test argument ranges--79
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -480,7 +480,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 33 - test argument ranges--32
+## 33 - test argument ranges--80
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -495,7 +495,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 34 - test argument ranges--33
+## 34 - test argument ranges--81
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -510,7 +510,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 35 - test argument ranges--34
+## 35 - test argument ranges--82
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -525,7 +525,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 36 - test argument ranges--35
+## 36 - test argument ranges--83
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -540,7 +540,7 @@
 | plenum_height |3.0 |
 | sideload |false |
  
-## 37 - test argument ranges--36
+## 37 - test argument ranges--84
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -555,7 +555,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 38 - test argument ranges--37
+## 38 - test argument ranges--85
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -570,7 +570,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 39 - test argument ranges--38
+## 39 - test argument ranges--86
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -585,7 +585,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 40 - test argument ranges--39
+## 40 - test argument ranges--87
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -600,7 +600,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 41 - test argument ranges--40
+## 41 - test argument ranges--88
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -615,7 +615,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 42 - test argument ranges--41
+## 42 - test argument ranges--89
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -630,7 +630,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 43 - test argument ranges--42
+## 43 - test argument ranges--90
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -645,7 +645,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 44 - test argument ranges--43
+## 44 - test argument ranges--91
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -660,7 +660,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 45 - test argument ranges--44
+## 45 - test argument ranges--92
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -675,7 +675,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 46 - test argument ranges--45
+## 46 - test argument ranges--93
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -690,7 +690,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 47 - test argument ranges--46
+## 47 - test argument ranges--94
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -705,7 +705,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 48 - test argument ranges--47
+## 48 - test argument ranges--95
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -718,70 +718,6 @@
 | above_grade_floors |2 |
 | floor_to_floor_height |3.2 |
 | plenum_height |3.0 |
-| sideload |false |
- 
-# Summary Of Test Cases for 'NRCCREATEGEOMETRY' Measure
- 
-## 1 - Courtyard-RetailStandalone-NECB2011-90-Yellowknife-1-20000-1.25
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| building_shape |Courtyard |
-| template |NECB2011 |
-| building_type |RetailStandalone |
-| epw_file |CAN_NT_Yellowknife.AP.719360_CWEC2016.epw |
-| total_floor_area |20000.0 |
-| aspect_ratio |1.25 |
-| rotation |90.0 |
-| above_grade_floors |1 |
-| floor_to_floor_height |3.2 |
-| plenum_height |0.0 |
-| sideload |false |
- 
-# Summary Of Test Cases for 'NRCCREATEGEOMETRY' Measure
- 
-## 1 - U-Shape-PrimarySchool-NECB2017-40-Whitehorse-1-20000-1.5
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| building_shape |U-Shape |
-| template |NECB2017 |
-| building_type |PrimarySchool |
-| epw_file |CAN_YT_Whitehorse.Intl.AP.719640_CWEC2016.epw |
-| total_floor_area |20000.0 |
-| aspect_ratio |1.5 |
-| rotation |40.0 |
-| above_grade_floors |1 |
-| floor_to_floor_height |3.2 |
-| plenum_height |0.0 |
-| sideload |false |
- 
-## 49 - Courtyard-RetailStripmall-NECB2015-10-Ottawa-Macdonald-Cartier-1-20000-1.0
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| building_shape |Courtyard |
-| template |NECB2015 |
-| building_type |RetailStripmall |
-| epw_file |CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw |
-| total_floor_area |20000.0 |
-| aspect_ratio |1.0 |
-| rotation |10.0 |
-| above_grade_floors |1 |
-| floor_to_floor_height |3.2 |
-| plenum_height |0.0 |
-| sideload |false |
- 
-## 2 - Courtyard-RetailStandalone-NECB2011-90-Montreal-Trudeau-1-20000-1.25
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| building_shape |Courtyard |
-| template |NECB2011 |
-| building_type |RetailStandalone |
-| epw_file |CAN_QC_Montreal-Trudeau.Intl.AP.716270_CWEC2016.epw |
-| total_floor_area |20000.0 |
-| aspect_ratio |1.25 |
-| rotation |90.0 |
-| above_grade_floors |1 |
-| floor_to_floor_height |3.2 |
-| plenum_height |0.0 |
 | sideload |false |
  
 ## 3 - Courtyard-RetailStandalone-NECB2011-90-Yellowknife-1-1500-1.25
@@ -814,21 +750,6 @@
 | plenum_height |0.0 |
 | sideload |false |
  
-## 50 - Courtyard-RetailStripmall-NECB2015-10-Windsor-1-20000-1.0
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| building_shape |Courtyard |
-| template |NECB2015 |
-| building_type |RetailStripmall |
-| epw_file |CAN_ON_Windsor.Intl.AP.715380_CWEC2016.epw |
-| total_floor_area |20000.0 |
-| aspect_ratio |1.0 |
-| rotation |10.0 |
-| above_grade_floors |1 |
-| floor_to_floor_height |3.2 |
-| plenum_height |0.0 |
-| sideload |false |
- 
 ## 4 - Courtyard-RetailStandalone-NECB2011-90-Montreal-Trudeau-1-1500-1.25
 | Test Argument | Test Value |
 | ------------- | ---------- |
@@ -844,10 +765,25 @@
 | plenum_height |0.0 |
 | sideload |false |
  
-## 51 - Rectangular-RetailStripmall-NECB2015-10-Ottawa-Macdonald-Cartier-1-20000-1.0
+## 49 - L-Shape-LargeOffice-NECB2020-10-Montreal-Trudeau-12-40000-2.0
 | Test Argument | Test Value |
 | ------------- | ---------- |
-| building_shape |Rectangular |
+| building_shape |L-Shape |
+| template |NECB2020 |
+| building_type |LargeOffice |
+| epw_file |CAN_QC_Montreal-Trudeau.Intl.AP.716270_CWEC2016.epw |
+| total_floor_area |40000.0 |
+| aspect_ratio |2.0 |
+| rotation |10.0 |
+| above_grade_floors |12 |
+| floor_to_floor_height |3.2 |
+| plenum_height |0.0 |
+| sideload |false |
+ 
+## 49 - Courtyard-RetailStripmall-NECB2015-10-Ottawa-Macdonald-Cartier-1-20000-1.0
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| building_shape |Courtyard |
 | template |NECB2015 |
 | building_type |RetailStripmall |
 | epw_file |CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw |
@@ -869,38 +805,6 @@
 | total_floor_area |20000.0 |
 | aspect_ratio |1.25 |
 | rotation |90.0 |
-| above_grade_floors |1 |
-| floor_to_floor_height |3.2 |
-| plenum_height |0.0 |
-| sideload |false |
- 
-# Summary Of Test Cases for 'NRCCREATEGEOMETRY' Measure
- 
-## 1 - L-Shape-LargeOffice-NECB2020-10-Montreal-Trudeau-12-40000-2.0
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| building_shape |L-Shape |
-| template |NECB2020 |
-| building_type |LargeOffice |
-| epw_file |CAN_QC_Montreal-Trudeau.Intl.AP.716270_CWEC2016.epw |
-| total_floor_area |40000.0 |
-| aspect_ratio |2.0 |
-| rotation |10.0 |
-| above_grade_floors |12 |
-| floor_to_floor_height |3.2 |
-| plenum_height |0.0 |
-| sideload |false |
- 
-## 52 - Rectangular-RetailStripmall-NECB2015-10-Windsor-1-20000-1.0
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| building_shape |Rectangular |
-| template |NECB2015 |
-| building_type |RetailStripmall |
-| epw_file |CAN_ON_Windsor.Intl.AP.715380_CWEC2016.epw |
-| total_floor_area |20000.0 |
-| aspect_ratio |1.0 |
-| rotation |10.0 |
 | above_grade_floors |1 |
 | floor_to_floor_height |3.2 |
 | plenum_height |0.0 |
@@ -936,13 +840,13 @@
 | plenum_height |0.0 |
 | sideload |false |
  
-## 53 - Courtyard-QuickServiceRestaurant-NECB2015-10-Ottawa-Macdonald-Cartier-1-20000-1.0
+## 50 - Courtyard-RetailStripmall-NECB2015-10-Windsor-1-20000-1.0
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Courtyard |
 | template |NECB2015 |
-| building_type |QuickServiceRestaurant |
-| epw_file |CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw |
+| building_type |RetailStripmall |
+| epw_file |CAN_ON_Windsor.Intl.AP.715380_CWEC2016.epw |
 | total_floor_area |20000.0 |
 | aspect_ratio |1.0 |
 | rotation |10.0 |
@@ -966,6 +870,51 @@
 | plenum_height |0.0 |
 | sideload |false |
  
+## 51 - Rectangular-RetailStripmall-NECB2015-10-Ottawa-Macdonald-Cartier-1-20000-1.0
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| building_shape |Rectangular |
+| template |NECB2015 |
+| building_type |RetailStripmall |
+| epw_file |CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw |
+| total_floor_area |20000.0 |
+| aspect_ratio |1.0 |
+| rotation |10.0 |
+| above_grade_floors |1 |
+| floor_to_floor_height |3.2 |
+| plenum_height |0.0 |
+| sideload |false |
+ 
+## 50 - Rectangular-LargeOffice-NECB2020-10-Montreal-Trudeau-12-40000-2.0
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| building_shape |Rectangular |
+| template |NECB2020 |
+| building_type |LargeOffice |
+| epw_file |CAN_QC_Montreal-Trudeau.Intl.AP.716270_CWEC2016.epw |
+| total_floor_area |40000.0 |
+| aspect_ratio |2.0 |
+| rotation |10.0 |
+| above_grade_floors |12 |
+| floor_to_floor_height |3.2 |
+| plenum_height |0.0 |
+| sideload |false |
+ 
+## 4 - U-Shape-PrimarySchool-NECB2017-40-Vancouver-3-20000-1.5
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| building_shape |U-Shape |
+| template |NECB2017 |
+| building_type |PrimarySchool |
+| epw_file |CAN_BC_Vancouver.Intl.AP.718920_CWEC2016.epw |
+| total_floor_area |20000.0 |
+| aspect_ratio |1.5 |
+| rotation |40.0 |
+| above_grade_floors |3 |
+| floor_to_floor_height |3.2 |
+| plenum_height |0.0 |
+| sideload |false |
+ 
 ## 8 - H-Shape-RetailStandalone-NECB2011-90-Montreal-Trudeau-1-1500-1.25
 | Test Argument | Test Value |
 | ------------- | ---------- |
@@ -973,6 +922,111 @@
 | template |NECB2011 |
 | building_type |RetailStandalone |
 | epw_file |CAN_QC_Montreal-Trudeau.Intl.AP.716270_CWEC2016.epw |
+| total_floor_area |1500.0 |
+| aspect_ratio |1.25 |
+| rotation |90.0 |
+| above_grade_floors |1 |
+| floor_to_floor_height |3.2 |
+| plenum_height |0.0 |
+| sideload |false |
+ 
+## 52 - Rectangular-RetailStripmall-NECB2015-10-Windsor-1-20000-1.0
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| building_shape |Rectangular |
+| template |NECB2015 |
+| building_type |RetailStripmall |
+| epw_file |CAN_ON_Windsor.Intl.AP.715380_CWEC2016.epw |
+| total_floor_area |20000.0 |
+| aspect_ratio |1.0 |
+| rotation |10.0 |
+| above_grade_floors |1 |
+| floor_to_floor_height |3.2 |
+| plenum_height |0.0 |
+| sideload |false |
+ 
+## 5 - U-Shape-PrimarySchool-NECB2017-40-Whitehorse-1-1000-1.5
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| building_shape |U-Shape |
+| template |NECB2017 |
+| building_type |PrimarySchool |
+| epw_file |CAN_YT_Whitehorse.Intl.AP.719640_CWEC2016.epw |
+| total_floor_area |1000.0 |
+| aspect_ratio |1.5 |
+| rotation |40.0 |
+| above_grade_floors |1 |
+| floor_to_floor_height |3.2 |
+| plenum_height |0.0 |
+| sideload |false |
+ 
+## 9 - Courtyard-SmallOffice-NECB2011-90-Yellowknife-1-20000-1.25
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| building_shape |Courtyard |
+| template |NECB2011 |
+| building_type |SmallOffice |
+| epw_file |CAN_NT_Yellowknife.AP.719360_CWEC2016.epw |
+| total_floor_area |20000.0 |
+| aspect_ratio |1.25 |
+| rotation |90.0 |
+| above_grade_floors |1 |
+| floor_to_floor_height |3.2 |
+| plenum_height |0.0 |
+| sideload |false |
+ 
+## 53 - Courtyard-QuickServiceRestaurant-NECB2015-10-Ottawa-Macdonald-Cartier-1-20000-1.0
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| building_shape |Courtyard |
+| template |NECB2015 |
+| building_type |QuickServiceRestaurant |
+| epw_file |CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw |
+| total_floor_area |20000.0 |
+| aspect_ratio |1.0 |
+| rotation |10.0 |
+| above_grade_floors |1 |
+| floor_to_floor_height |3.2 |
+| plenum_height |0.0 |
+| sideload |false |
+ 
+## 10 - Courtyard-SmallOffice-NECB2011-90-Montreal-Trudeau-1-20000-1.25
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| building_shape |Courtyard |
+| template |NECB2011 |
+| building_type |SmallOffice |
+| epw_file |CAN_QC_Montreal-Trudeau.Intl.AP.716270_CWEC2016.epw |
+| total_floor_area |20000.0 |
+| aspect_ratio |1.25 |
+| rotation |90.0 |
+| above_grade_floors |1 |
+| floor_to_floor_height |3.2 |
+| plenum_height |0.0 |
+| sideload |false |
+ 
+## 6 - U-Shape-PrimarySchool-NECB2017-40-Vancouver-1-1000-1.5
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| building_shape |U-Shape |
+| template |NECB2017 |
+| building_type |PrimarySchool |
+| epw_file |CAN_BC_Vancouver.Intl.AP.718920_CWEC2016.epw |
+| total_floor_area |1000.0 |
+| aspect_ratio |1.5 |
+| rotation |40.0 |
+| above_grade_floors |1 |
+| floor_to_floor_height |3.2 |
+| plenum_height |0.0 |
+| sideload |false |
+ 
+## 11 - Courtyard-SmallOffice-NECB2011-90-Yellowknife-1-1500-1.25
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| building_shape |Courtyard |
+| template |NECB2011 |
+| building_type |SmallOffice |
+| epw_file |CAN_NT_Yellowknife.AP.719360_CWEC2016.epw |
 | total_floor_area |1500.0 |
 | aspect_ratio |1.25 |
 | rotation |90.0 |
@@ -996,29 +1050,29 @@
 | plenum_height |0.0 |
 | sideload |false |
  
-## 4 - U-Shape-PrimarySchool-NECB2017-40-Vancouver-3-20000-1.5
+## 51 - L-Shape-HighriseApartment-NECB2020-10-Montreal-Trudeau-12-40000-2.0
 | Test Argument | Test Value |
 | ------------- | ---------- |
-| building_shape |U-Shape |
-| template |NECB2017 |
-| building_type |PrimarySchool |
-| epw_file |CAN_BC_Vancouver.Intl.AP.718920_CWEC2016.epw |
-| total_floor_area |20000.0 |
-| aspect_ratio |1.5 |
-| rotation |40.0 |
-| above_grade_floors |3 |
+| building_shape |L-Shape |
+| template |NECB2020 |
+| building_type |HighriseApartment |
+| epw_file |CAN_QC_Montreal-Trudeau.Intl.AP.716270_CWEC2016.epw |
+| total_floor_area |40000.0 |
+| aspect_ratio |2.0 |
+| rotation |10.0 |
+| above_grade_floors |12 |
 | floor_to_floor_height |3.2 |
 | plenum_height |0.0 |
 | sideload |false |
  
-## 9 - Courtyard-SmallOffice-NECB2011-90-Yellowknife-1-20000-1.25
+## 12 - Courtyard-SmallOffice-NECB2011-90-Montreal-Trudeau-1-1500-1.25
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Courtyard |
 | template |NECB2011 |
 | building_type |SmallOffice |
-| epw_file |CAN_NT_Yellowknife.AP.719360_CWEC2016.epw |
-| total_floor_area |20000.0 |
+| epw_file |CAN_QC_Montreal-Trudeau.Intl.AP.716270_CWEC2016.epw |
+| total_floor_area |1500.0 |
 | aspect_ratio |1.25 |
 | rotation |90.0 |
 | above_grade_floors |1 |
@@ -1041,22 +1095,7 @@
 | plenum_height |0.0 |
 | sideload |false |
  
-## 2 - Rectangular-LargeOffice-NECB2020-10-Montreal-Trudeau-12-40000-2.0
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| building_shape |Rectangular |
-| template |NECB2020 |
-| building_type |LargeOffice |
-| epw_file |CAN_QC_Montreal-Trudeau.Intl.AP.716270_CWEC2016.epw |
-| total_floor_area |40000.0 |
-| aspect_ratio |2.0 |
-| rotation |10.0 |
-| above_grade_floors |12 |
-| floor_to_floor_height |3.2 |
-| plenum_height |0.0 |
-| sideload |false |
- 
-## 5 - U-Shape-PrimarySchool-NECB2017-40-Whitehorse-1-1000-1.5
+## 7 - U-Shape-PrimarySchool-NECB2017-40-Whitehorse-3-1000-1.5
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |U-Shape |
@@ -1066,18 +1105,18 @@
 | total_floor_area |1000.0 |
 | aspect_ratio |1.5 |
 | rotation |40.0 |
-| above_grade_floors |1 |
+| above_grade_floors |3 |
 | floor_to_floor_height |3.2 |
 | plenum_height |0.0 |
 | sideload |false |
  
-## 10 - Courtyard-SmallOffice-NECB2011-90-Montreal-Trudeau-1-20000-1.25
+## 13 - H-Shape-SmallOffice-NECB2011-90-Yellowknife-1-20000-1.25
 | Test Argument | Test Value |
 | ------------- | ---------- |
-| building_shape |Courtyard |
+| building_shape |H-Shape |
 | template |NECB2011 |
 | building_type |SmallOffice |
-| epw_file |CAN_QC_Montreal-Trudeau.Intl.AP.716270_CWEC2016.epw |
+| epw_file |CAN_NT_Yellowknife.AP.719360_CWEC2016.epw |
 | total_floor_area |20000.0 |
 | aspect_ratio |1.25 |
 | rotation |90.0 |
@@ -1101,66 +1140,6 @@
 | plenum_height |0.0 |
 | sideload |false |
  
-## 11 - Courtyard-SmallOffice-NECB2011-90-Yellowknife-1-1500-1.25
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| building_shape |Courtyard |
-| template |NECB2011 |
-| building_type |SmallOffice |
-| epw_file |CAN_NT_Yellowknife.AP.719360_CWEC2016.epw |
-| total_floor_area |1500.0 |
-| aspect_ratio |1.25 |
-| rotation |90.0 |
-| above_grade_floors |1 |
-| floor_to_floor_height |3.2 |
-| plenum_height |0.0 |
-| sideload |false |
- 
-## 6 - U-Shape-PrimarySchool-NECB2017-40-Vancouver-1-1000-1.5
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| building_shape |U-Shape |
-| template |NECB2017 |
-| building_type |PrimarySchool |
-| epw_file |CAN_BC_Vancouver.Intl.AP.718920_CWEC2016.epw |
-| total_floor_area |1000.0 |
-| aspect_ratio |1.5 |
-| rotation |40.0 |
-| above_grade_floors |1 |
-| floor_to_floor_height |3.2 |
-| plenum_height |0.0 |
-| sideload |false |
- 
-## 12 - Courtyard-SmallOffice-NECB2011-90-Montreal-Trudeau-1-1500-1.25
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| building_shape |Courtyard |
-| template |NECB2011 |
-| building_type |SmallOffice |
-| epw_file |CAN_QC_Montreal-Trudeau.Intl.AP.716270_CWEC2016.epw |
-| total_floor_area |1500.0 |
-| aspect_ratio |1.25 |
-| rotation |90.0 |
-| above_grade_floors |1 |
-| floor_to_floor_height |3.2 |
-| plenum_height |0.0 |
-| sideload |false |
- 
-## 13 - H-Shape-SmallOffice-NECB2011-90-Yellowknife-1-20000-1.25
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| building_shape |H-Shape |
-| template |NECB2011 |
-| building_type |SmallOffice |
-| epw_file |CAN_NT_Yellowknife.AP.719360_CWEC2016.epw |
-| total_floor_area |20000.0 |
-| aspect_ratio |1.25 |
-| rotation |90.0 |
-| above_grade_floors |1 |
-| floor_to_floor_height |3.2 |
-| plenum_height |0.0 |
-| sideload |false |
- 
 ## 14 - H-Shape-SmallOffice-NECB2011-90-Montreal-Trudeau-1-20000-1.25
 | Test Argument | Test Value |
 | ------------- | ---------- |
@@ -1176,13 +1155,28 @@
 | plenum_height |0.0 |
 | sideload |false |
  
-## 7 - U-Shape-PrimarySchool-NECB2017-40-Whitehorse-3-1000-1.5
+## 52 - Rectangular-HighriseApartment-NECB2020-10-Montreal-Trudeau-12-40000-2.0
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| building_shape |Rectangular |
+| template |NECB2020 |
+| building_type |HighriseApartment |
+| epw_file |CAN_QC_Montreal-Trudeau.Intl.AP.716270_CWEC2016.epw |
+| total_floor_area |40000.0 |
+| aspect_ratio |2.0 |
+| rotation |10.0 |
+| above_grade_floors |12 |
+| floor_to_floor_height |3.2 |
+| plenum_height |0.0 |
+| sideload |false |
+ 
+## 8 - U-Shape-PrimarySchool-NECB2017-40-Vancouver-3-1000-1.5
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |U-Shape |
 | template |NECB2017 |
 | building_type |PrimarySchool |
-| epw_file |CAN_YT_Whitehorse.Intl.AP.719640_CWEC2016.epw |
+| epw_file |CAN_BC_Vancouver.Intl.AP.718920_CWEC2016.epw |
 | total_floor_area |1000.0 |
 | aspect_ratio |1.5 |
 | rotation |40.0 |
@@ -1221,7 +1215,7 @@
 | plenum_height |0.0 |
 | sideload |false |
  
-## 17 - test argument ranges--48
+## 17 - test argument ranges--96
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -1236,7 +1230,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 18 - test argument ranges--49
+## 18 - test argument ranges--97
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -1251,7 +1245,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 19 - test argument ranges--50
+## 19 - test argument ranges--98
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -1266,7 +1260,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 20 - test argument ranges--51
+## 20 - test argument ranges--99
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -1281,7 +1275,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 21 - test argument ranges--52
+## 21 - test argument ranges--100
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -1296,7 +1290,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 22 - test argument ranges--53
+## 22 - test argument ranges--101
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -1311,7 +1305,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 23 - test argument ranges--54
+## 23 - test argument ranges--102
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -1326,7 +1320,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 24 - test argument ranges--55
+## 24 - test argument ranges--103
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -1341,7 +1335,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 25 - test argument ranges--56
+## 25 - test argument ranges--104
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -1356,7 +1350,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 26 - test argument ranges--57
+## 26 - test argument ranges--105
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -1371,7 +1365,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 27 - test argument ranges--58
+## 27 - test argument ranges--106
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -1386,7 +1380,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 28 - test argument ranges--59
+## 28 - test argument ranges--107
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -1401,7 +1395,7 @@
 | plenum_height |3.0 |
 | sideload |false |
  
-## 29 - test argument ranges--60
+## 29 - test argument ranges--108
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -1416,7 +1410,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 30 - test argument ranges--61
+## 30 - test argument ranges--109
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -1431,7 +1425,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 31 - test argument ranges--62
+## 31 - test argument ranges--110
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -1446,7 +1440,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 32 - test argument ranges--63
+## 32 - test argument ranges--111
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -1461,7 +1455,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 33 - test argument ranges--64
+## 33 - test argument ranges--112
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -1476,7 +1470,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 34 - test argument ranges--65
+## 34 - test argument ranges--113
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -1491,7 +1485,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 35 - test argument ranges--66
+## 35 - test argument ranges--114
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -1506,7 +1500,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 36 - test argument ranges--67
+## 36 - test argument ranges--115
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -1521,7 +1515,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 37 - test argument ranges--68
+## 37 - test argument ranges--116
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -1536,7 +1530,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 38 - test argument ranges--69
+## 38 - test argument ranges--117
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -1551,7 +1545,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 39 - test argument ranges--70
+## 39 - test argument ranges--118
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -1566,7 +1560,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 40 - test argument ranges--71
+## 40 - test argument ranges--119
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -1581,7 +1575,7 @@
 | plenum_height |3.0 |
 | sideload |false |
  
-## 41 - test argument ranges--72
+## 41 - test argument ranges--120
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -1596,7 +1590,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 42 - test argument ranges--73
+## 42 - test argument ranges--121
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -1611,7 +1605,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 43 - test argument ranges--74
+## 43 - test argument ranges--122
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -1626,7 +1620,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 44 - test argument ranges--75
+## 44 - test argument ranges--123
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -1641,7 +1635,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 45 - test argument ranges--76
+## 45 - test argument ranges--124
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -1656,7 +1650,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 46 - test argument ranges--77
+## 46 - test argument ranges--125
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -1671,7 +1665,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 47 - test argument ranges--78
+## 47 - test argument ranges--126
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -1686,7 +1680,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 48 - test argument ranges--79
+## 48 - test argument ranges--127
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -1701,7 +1695,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 49 - test argument ranges--80
+## 49 - test argument ranges--128
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -1716,7 +1710,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 50 - test argument ranges--81
+## 50 - test argument ranges--129
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -1731,7 +1725,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 51 - test argument ranges--82
+## 51 - test argument ranges--130
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -1746,7 +1740,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 52 - test argument ranges--83
+## 52 - test argument ranges--131
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -1761,7 +1755,7 @@
 | plenum_height |3.0 |
 | sideload |false |
  
-## 53 - test argument ranges--84
+## 53 - test argument ranges--132
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -1776,7 +1770,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 54 - test argument ranges--85
+## 54 - test argument ranges--133
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -1791,7 +1785,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 55 - test argument ranges--86
+## 55 - test argument ranges--134
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -1806,7 +1800,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 56 - test argument ranges--87
+## 56 - test argument ranges--135
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -1821,7 +1815,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 57 - test argument ranges--88
+## 57 - test argument ranges--136
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -1836,7 +1830,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 58 - test argument ranges--89
+## 58 - test argument ranges--137
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -1851,7 +1845,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 59 - test argument ranges--90
+## 59 - test argument ranges--138
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -1866,7 +1860,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 60 - test argument ranges--91
+## 60 - test argument ranges--139
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -1881,7 +1875,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 61 - test argument ranges--92
+## 61 - test argument ranges--140
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -1896,7 +1890,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 62 - test argument ranges--93
+## 62 - test argument ranges--141
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -1911,7 +1905,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 63 - test argument ranges--94
+## 63 - test argument ranges--142
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -1926,7 +1920,7 @@
 | plenum_height |1.0 |
 | sideload |false |
  
-## 64 - test argument ranges--95
+## 64 - test argument ranges--143
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | building_shape |Rectangular |
@@ -1939,36 +1933,6 @@
 | above_grade_floors |2 |
 | floor_to_floor_height |3.2 |
 | plenum_height |3.0 |
-| sideload |false |
- 
-## 3 - L-Shape-HighriseApartment-NECB2020-10-Montreal-Trudeau-12-40000-2.0
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| building_shape |L-Shape |
-| template |NECB2020 |
-| building_type |HighriseApartment |
-| epw_file |CAN_QC_Montreal-Trudeau.Intl.AP.716270_CWEC2016.epw |
-| total_floor_area |40000.0 |
-| aspect_ratio |2.0 |
-| rotation |10.0 |
-| above_grade_floors |12 |
-| floor_to_floor_height |3.2 |
-| plenum_height |0.0 |
-| sideload |false |
- 
-## 8 - U-Shape-PrimarySchool-NECB2017-40-Vancouver-3-1000-1.5
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| building_shape |U-Shape |
-| template |NECB2017 |
-| building_type |PrimarySchool |
-| epw_file |CAN_BC_Vancouver.Intl.AP.718920_CWEC2016.epw |
-| total_floor_area |1000.0 |
-| aspect_ratio |1.5 |
-| rotation |40.0 |
-| above_grade_floors |3 |
-| floor_to_floor_height |3.2 |
-| plenum_height |0.0 |
 | sideload |false |
  
 ## 9 - U-Shape-MediumOffice-NECB2017-40-Whitehorse-1-20000-1.5
@@ -1999,741 +1963,6 @@
 | above_grade_floors |1 |
 | floor_to_floor_height |3.2 |
 | plenum_height |0.0 |
-| sideload |false |
- 
-## 4 - Rectangular-HighriseApartment-NECB2020-10-Montreal-Trudeau-12-40000-2.0
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| building_shape |Rectangular |
-| template |NECB2020 |
-| building_type |HighriseApartment |
-| epw_file |CAN_QC_Montreal-Trudeau.Intl.AP.716270_CWEC2016.epw |
-| total_floor_area |40000.0 |
-| aspect_ratio |2.0 |
-| rotation |10.0 |
-| above_grade_floors |12 |
-| floor_to_floor_height |3.2 |
-| plenum_height |0.0 |
-| sideload |false |
- 
-## 5 - test argument ranges--96
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| building_shape |Rectangular |
-| template |NECB2017 |
-| building_type |SmallOffice |
-| epw_file |CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw |
-| total_floor_area |10000001.0 |
-| aspect_ratio |0.5 |
-| rotation |30.0 |
-| above_grade_floors |2 |
-| floor_to_floor_height |3.2 |
-| plenum_height |1.0 |
-| sideload |false |
- 
-## 6 - test argument ranges--97
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| building_shape |Rectangular |
-| template |NECB2017 |
-| building_type |SmallOffice |
-| epw_file |CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw |
-| total_floor_area |9.0 |
-| aspect_ratio |0.5 |
-| rotation |30.0 |
-| above_grade_floors |2 |
-| floor_to_floor_height |3.2 |
-| plenum_height |1.0 |
-| sideload |false |
- 
-## 7 - test argument ranges--98
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| building_shape |Rectangular |
-| template |NECB2017 |
-| building_type |SmallOffice |
-| epw_file |CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw |
-| total_floor_area |50000.0 |
-| aspect_ratio |11.0 |
-| rotation |30.0 |
-| above_grade_floors |2 |
-| floor_to_floor_height |3.2 |
-| plenum_height |1.0 |
-| sideload |false |
- 
-## 8 - test argument ranges--99
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| building_shape |Rectangular |
-| template |NECB2017 |
-| building_type |SmallOffice |
-| epw_file |CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw |
-| total_floor_area |50000.0 |
-| aspect_ratio |-0.9 |
-| rotation |30.0 |
-| above_grade_floors |2 |
-| floor_to_floor_height |3.2 |
-| plenum_height |1.0 |
-| sideload |false |
- 
-## 9 - test argument ranges--100
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| building_shape |Rectangular |
-| template |NECB2017 |
-| building_type |SmallOffice |
-| epw_file |CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw |
-| total_floor_area |50000.0 |
-| aspect_ratio |0.5 |
-| rotation |361.0 |
-| above_grade_floors |2 |
-| floor_to_floor_height |3.2 |
-| plenum_height |1.0 |
-| sideload |false |
- 
-## 10 - test argument ranges--101
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| building_shape |Rectangular |
-| template |NECB2017 |
-| building_type |SmallOffice |
-| epw_file |CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw |
-| total_floor_area |50000.0 |
-| aspect_ratio |0.5 |
-| rotation |-1.0 |
-| above_grade_floors |2 |
-| floor_to_floor_height |3.2 |
-| plenum_height |1.0 |
-| sideload |false |
- 
-## 11 - test argument ranges--102
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| building_shape |Rectangular |
-| template |NECB2017 |
-| building_type |SmallOffice |
-| epw_file |CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw |
-| total_floor_area |50000.0 |
-| aspect_ratio |0.5 |
-| rotation |30.0 |
-| above_grade_floors |201 |
-| floor_to_floor_height |3.2 |
-| plenum_height |1.0 |
-| sideload |false |
- 
-## 12 - test argument ranges--103
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| building_shape |Rectangular |
-| template |NECB2017 |
-| building_type |SmallOffice |
-| epw_file |CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw |
-| total_floor_area |50000.0 |
-| aspect_ratio |0.5 |
-| rotation |30.0 |
-| above_grade_floors |201 |
-| floor_to_floor_height |3.2 |
-| plenum_height |1.0 |
-| sideload |false |
- 
-## 13 - test argument ranges--104
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| building_shape |Rectangular |
-| template |NECB2017 |
-| building_type |SmallOffice |
-| epw_file |CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw |
-| total_floor_area |50000.0 |
-| aspect_ratio |0.5 |
-| rotation |30.0 |
-| above_grade_floors |0 |
-| floor_to_floor_height |3.2 |
-| plenum_height |1.0 |
-| sideload |false |
- 
-## 14 - test argument ranges--105
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| building_shape |Rectangular |
-| template |NECB2017 |
-| building_type |SmallOffice |
-| epw_file |CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw |
-| total_floor_area |50000.0 |
-| aspect_ratio |0.5 |
-| rotation |30.0 |
-| above_grade_floors |2 |
-| floor_to_floor_height |11.0 |
-| plenum_height |1.0 |
-| sideload |false |
- 
-## 15 - test argument ranges--106
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| building_shape |Rectangular |
-| template |NECB2017 |
-| building_type |SmallOffice |
-| epw_file |CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw |
-| total_floor_area |50000.0 |
-| aspect_ratio |0.5 |
-| rotation |30.0 |
-| above_grade_floors |2 |
-| floor_to_floor_height |1.0 |
-| plenum_height |1.0 |
-| sideload |false |
- 
-## 16 - test argument ranges--107
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| building_shape |Rectangular |
-| template |NECB2017 |
-| building_type |SmallOffice |
-| epw_file |CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw |
-| total_floor_area |50000.0 |
-| aspect_ratio |0.5 |
-| rotation |30.0 |
-| above_grade_floors |2 |
-| floor_to_floor_height |3.2 |
-| plenum_height |3.0 |
-| sideload |false |
- 
-## 17 - test argument ranges--108
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| building_shape |Rectangular |
-| template |NECB2017 |
-| building_type |SmallOffice |
-| epw_file |CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw |
-| total_floor_area |10000001.0 |
-| aspect_ratio |0.5 |
-| rotation |30.0 |
-| above_grade_floors |2 |
-| floor_to_floor_height |3.2 |
-| plenum_height |1.0 |
-| sideload |false |
- 
-## 18 - test argument ranges--109
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| building_shape |Rectangular |
-| template |NECB2017 |
-| building_type |SmallOffice |
-| epw_file |CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw |
-| total_floor_area |9.0 |
-| aspect_ratio |0.5 |
-| rotation |30.0 |
-| above_grade_floors |2 |
-| floor_to_floor_height |3.2 |
-| plenum_height |1.0 |
-| sideload |false |
- 
-## 19 - test argument ranges--110
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| building_shape |Rectangular |
-| template |NECB2017 |
-| building_type |SmallOffice |
-| epw_file |CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw |
-| total_floor_area |50000.0 |
-| aspect_ratio |11.0 |
-| rotation |30.0 |
-| above_grade_floors |2 |
-| floor_to_floor_height |3.2 |
-| plenum_height |1.0 |
-| sideload |false |
- 
-## 20 - test argument ranges--111
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| building_shape |Rectangular |
-| template |NECB2017 |
-| building_type |SmallOffice |
-| epw_file |CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw |
-| total_floor_area |50000.0 |
-| aspect_ratio |-0.9 |
-| rotation |30.0 |
-| above_grade_floors |2 |
-| floor_to_floor_height |3.2 |
-| plenum_height |1.0 |
-| sideload |false |
- 
-## 21 - test argument ranges--112
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| building_shape |Rectangular |
-| template |NECB2017 |
-| building_type |SmallOffice |
-| epw_file |CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw |
-| total_floor_area |50000.0 |
-| aspect_ratio |0.5 |
-| rotation |361.0 |
-| above_grade_floors |2 |
-| floor_to_floor_height |3.2 |
-| plenum_height |1.0 |
-| sideload |false |
- 
-## 22 - test argument ranges--113
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| building_shape |Rectangular |
-| template |NECB2017 |
-| building_type |SmallOffice |
-| epw_file |CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw |
-| total_floor_area |50000.0 |
-| aspect_ratio |0.5 |
-| rotation |-1.0 |
-| above_grade_floors |2 |
-| floor_to_floor_height |3.2 |
-| plenum_height |1.0 |
-| sideload |false |
- 
-## 23 - test argument ranges--114
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| building_shape |Rectangular |
-| template |NECB2017 |
-| building_type |SmallOffice |
-| epw_file |CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw |
-| total_floor_area |50000.0 |
-| aspect_ratio |0.5 |
-| rotation |30.0 |
-| above_grade_floors |201 |
-| floor_to_floor_height |3.2 |
-| plenum_height |1.0 |
-| sideload |false |
- 
-## 24 - test argument ranges--115
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| building_shape |Rectangular |
-| template |NECB2017 |
-| building_type |SmallOffice |
-| epw_file |CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw |
-| total_floor_area |50000.0 |
-| aspect_ratio |0.5 |
-| rotation |30.0 |
-| above_grade_floors |201 |
-| floor_to_floor_height |3.2 |
-| plenum_height |1.0 |
-| sideload |false |
- 
-## 25 - test argument ranges--116
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| building_shape |Rectangular |
-| template |NECB2017 |
-| building_type |SmallOffice |
-| epw_file |CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw |
-| total_floor_area |50000.0 |
-| aspect_ratio |0.5 |
-| rotation |30.0 |
-| above_grade_floors |0 |
-| floor_to_floor_height |3.2 |
-| plenum_height |1.0 |
-| sideload |false |
- 
-## 26 - test argument ranges--117
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| building_shape |Rectangular |
-| template |NECB2017 |
-| building_type |SmallOffice |
-| epw_file |CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw |
-| total_floor_area |50000.0 |
-| aspect_ratio |0.5 |
-| rotation |30.0 |
-| above_grade_floors |2 |
-| floor_to_floor_height |11.0 |
-| plenum_height |1.0 |
-| sideload |false |
- 
-## 27 - test argument ranges--118
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| building_shape |Rectangular |
-| template |NECB2017 |
-| building_type |SmallOffice |
-| epw_file |CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw |
-| total_floor_area |50000.0 |
-| aspect_ratio |0.5 |
-| rotation |30.0 |
-| above_grade_floors |2 |
-| floor_to_floor_height |1.0 |
-| plenum_height |1.0 |
-| sideload |false |
- 
-## 28 - test argument ranges--119
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| building_shape |Rectangular |
-| template |NECB2017 |
-| building_type |SmallOffice |
-| epw_file |CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw |
-| total_floor_area |50000.0 |
-| aspect_ratio |0.5 |
-| rotation |30.0 |
-| above_grade_floors |2 |
-| floor_to_floor_height |3.2 |
-| plenum_height |3.0 |
-| sideload |false |
- 
-## 29 - test argument ranges--120
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| building_shape |Rectangular |
-| template |NECB2017 |
-| building_type |SmallOffice |
-| epw_file |CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw |
-| total_floor_area |10000001.0 |
-| aspect_ratio |0.5 |
-| rotation |30.0 |
-| above_grade_floors |2 |
-| floor_to_floor_height |3.2 |
-| plenum_height |1.0 |
-| sideload |false |
- 
-## 30 - test argument ranges--121
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| building_shape |Rectangular |
-| template |NECB2017 |
-| building_type |SmallOffice |
-| epw_file |CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw |
-| total_floor_area |9.0 |
-| aspect_ratio |0.5 |
-| rotation |30.0 |
-| above_grade_floors |2 |
-| floor_to_floor_height |3.2 |
-| plenum_height |1.0 |
-| sideload |false |
- 
-## 31 - test argument ranges--122
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| building_shape |Rectangular |
-| template |NECB2017 |
-| building_type |SmallOffice |
-| epw_file |CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw |
-| total_floor_area |50000.0 |
-| aspect_ratio |11.0 |
-| rotation |30.0 |
-| above_grade_floors |2 |
-| floor_to_floor_height |3.2 |
-| plenum_height |1.0 |
-| sideload |false |
- 
-## 32 - test argument ranges--123
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| building_shape |Rectangular |
-| template |NECB2017 |
-| building_type |SmallOffice |
-| epw_file |CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw |
-| total_floor_area |50000.0 |
-| aspect_ratio |-0.9 |
-| rotation |30.0 |
-| above_grade_floors |2 |
-| floor_to_floor_height |3.2 |
-| plenum_height |1.0 |
-| sideload |false |
- 
-## 33 - test argument ranges--124
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| building_shape |Rectangular |
-| template |NECB2017 |
-| building_type |SmallOffice |
-| epw_file |CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw |
-| total_floor_area |50000.0 |
-| aspect_ratio |0.5 |
-| rotation |361.0 |
-| above_grade_floors |2 |
-| floor_to_floor_height |3.2 |
-| plenum_height |1.0 |
-| sideload |false |
- 
-## 34 - test argument ranges--125
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| building_shape |Rectangular |
-| template |NECB2017 |
-| building_type |SmallOffice |
-| epw_file |CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw |
-| total_floor_area |50000.0 |
-| aspect_ratio |0.5 |
-| rotation |-1.0 |
-| above_grade_floors |2 |
-| floor_to_floor_height |3.2 |
-| plenum_height |1.0 |
-| sideload |false |
- 
-## 35 - test argument ranges--126
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| building_shape |Rectangular |
-| template |NECB2017 |
-| building_type |SmallOffice |
-| epw_file |CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw |
-| total_floor_area |50000.0 |
-| aspect_ratio |0.5 |
-| rotation |30.0 |
-| above_grade_floors |201 |
-| floor_to_floor_height |3.2 |
-| plenum_height |1.0 |
-| sideload |false |
- 
-## 36 - test argument ranges--127
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| building_shape |Rectangular |
-| template |NECB2017 |
-| building_type |SmallOffice |
-| epw_file |CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw |
-| total_floor_area |50000.0 |
-| aspect_ratio |0.5 |
-| rotation |30.0 |
-| above_grade_floors |201 |
-| floor_to_floor_height |3.2 |
-| plenum_height |1.0 |
-| sideload |false |
- 
-## 37 - test argument ranges--128
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| building_shape |Rectangular |
-| template |NECB2017 |
-| building_type |SmallOffice |
-| epw_file |CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw |
-| total_floor_area |50000.0 |
-| aspect_ratio |0.5 |
-| rotation |30.0 |
-| above_grade_floors |0 |
-| floor_to_floor_height |3.2 |
-| plenum_height |1.0 |
-| sideload |false |
- 
-## 38 - test argument ranges--129
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| building_shape |Rectangular |
-| template |NECB2017 |
-| building_type |SmallOffice |
-| epw_file |CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw |
-| total_floor_area |50000.0 |
-| aspect_ratio |0.5 |
-| rotation |30.0 |
-| above_grade_floors |2 |
-| floor_to_floor_height |11.0 |
-| plenum_height |1.0 |
-| sideload |false |
- 
-## 39 - test argument ranges--130
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| building_shape |Rectangular |
-| template |NECB2017 |
-| building_type |SmallOffice |
-| epw_file |CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw |
-| total_floor_area |50000.0 |
-| aspect_ratio |0.5 |
-| rotation |30.0 |
-| above_grade_floors |2 |
-| floor_to_floor_height |1.0 |
-| plenum_height |1.0 |
-| sideload |false |
- 
-## 40 - test argument ranges--131
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| building_shape |Rectangular |
-| template |NECB2017 |
-| building_type |SmallOffice |
-| epw_file |CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw |
-| total_floor_area |50000.0 |
-| aspect_ratio |0.5 |
-| rotation |30.0 |
-| above_grade_floors |2 |
-| floor_to_floor_height |3.2 |
-| plenum_height |3.0 |
-| sideload |false |
- 
-## 41 - test argument ranges--132
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| building_shape |Rectangular |
-| template |NECB2017 |
-| building_type |SmallOffice |
-| epw_file |CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw |
-| total_floor_area |10000001.0 |
-| aspect_ratio |0.5 |
-| rotation |30.0 |
-| above_grade_floors |2 |
-| floor_to_floor_height |3.2 |
-| plenum_height |1.0 |
-| sideload |false |
- 
-## 42 - test argument ranges--133
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| building_shape |Rectangular |
-| template |NECB2017 |
-| building_type |SmallOffice |
-| epw_file |CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw |
-| total_floor_area |9.0 |
-| aspect_ratio |0.5 |
-| rotation |30.0 |
-| above_grade_floors |2 |
-| floor_to_floor_height |3.2 |
-| plenum_height |1.0 |
-| sideload |false |
- 
-## 43 - test argument ranges--134
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| building_shape |Rectangular |
-| template |NECB2017 |
-| building_type |SmallOffice |
-| epw_file |CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw |
-| total_floor_area |50000.0 |
-| aspect_ratio |11.0 |
-| rotation |30.0 |
-| above_grade_floors |2 |
-| floor_to_floor_height |3.2 |
-| plenum_height |1.0 |
-| sideload |false |
- 
-## 44 - test argument ranges--135
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| building_shape |Rectangular |
-| template |NECB2017 |
-| building_type |SmallOffice |
-| epw_file |CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw |
-| total_floor_area |50000.0 |
-| aspect_ratio |-0.9 |
-| rotation |30.0 |
-| above_grade_floors |2 |
-| floor_to_floor_height |3.2 |
-| plenum_height |1.0 |
-| sideload |false |
- 
-## 45 - test argument ranges--136
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| building_shape |Rectangular |
-| template |NECB2017 |
-| building_type |SmallOffice |
-| epw_file |CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw |
-| total_floor_area |50000.0 |
-| aspect_ratio |0.5 |
-| rotation |361.0 |
-| above_grade_floors |2 |
-| floor_to_floor_height |3.2 |
-| plenum_height |1.0 |
-| sideload |false |
- 
-## 46 - test argument ranges--137
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| building_shape |Rectangular |
-| template |NECB2017 |
-| building_type |SmallOffice |
-| epw_file |CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw |
-| total_floor_area |50000.0 |
-| aspect_ratio |0.5 |
-| rotation |-1.0 |
-| above_grade_floors |2 |
-| floor_to_floor_height |3.2 |
-| plenum_height |1.0 |
-| sideload |false |
- 
-## 47 - test argument ranges--138
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| building_shape |Rectangular |
-| template |NECB2017 |
-| building_type |SmallOffice |
-| epw_file |CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw |
-| total_floor_area |50000.0 |
-| aspect_ratio |0.5 |
-| rotation |30.0 |
-| above_grade_floors |201 |
-| floor_to_floor_height |3.2 |
-| plenum_height |1.0 |
-| sideload |false |
- 
-## 48 - test argument ranges--139
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| building_shape |Rectangular |
-| template |NECB2017 |
-| building_type |SmallOffice |
-| epw_file |CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw |
-| total_floor_area |50000.0 |
-| aspect_ratio |0.5 |
-| rotation |30.0 |
-| above_grade_floors |201 |
-| floor_to_floor_height |3.2 |
-| plenum_height |1.0 |
-| sideload |false |
- 
-## 49 - test argument ranges--140
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| building_shape |Rectangular |
-| template |NECB2017 |
-| building_type |SmallOffice |
-| epw_file |CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw |
-| total_floor_area |50000.0 |
-| aspect_ratio |0.5 |
-| rotation |30.0 |
-| above_grade_floors |0 |
-| floor_to_floor_height |3.2 |
-| plenum_height |1.0 |
-| sideload |false |
- 
-## 50 - test argument ranges--141
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| building_shape |Rectangular |
-| template |NECB2017 |
-| building_type |SmallOffice |
-| epw_file |CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw |
-| total_floor_area |50000.0 |
-| aspect_ratio |0.5 |
-| rotation |30.0 |
-| above_grade_floors |2 |
-| floor_to_floor_height |11.0 |
-| plenum_height |1.0 |
-| sideload |false |
- 
-## 51 - test argument ranges--142
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| building_shape |Rectangular |
-| template |NECB2017 |
-| building_type |SmallOffice |
-| epw_file |CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw |
-| total_floor_area |50000.0 |
-| aspect_ratio |0.5 |
-| rotation |30.0 |
-| above_grade_floors |2 |
-| floor_to_floor_height |1.0 |
-| plenum_height |1.0 |
-| sideload |false |
- 
-## 52 - test argument ranges--143
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| building_shape |Rectangular |
-| template |NECB2017 |
-| building_type |SmallOffice |
-| epw_file |CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw |
-| total_floor_area |50000.0 |
-| aspect_ratio |0.5 |
-| rotation |30.0 |
-| above_grade_floors |2 |
-| floor_to_floor_height |3.2 |
-| plenum_height |3.0 |
 | sideload |false |
  
 ## 11 - U-Shape-MediumOffice-NECB2017-40-Whitehorse-3-20000-1.5

@@ -1,10 +1,6 @@
 # Summary Of Test Cases for 'NRCTEMPLATEREPORTINGMEASURE' Measure
  
-## 1 - smallOffice
-| Test Argument | Test Value |
-| ------------- | ---------- |
- 
-## 2 - test argument ranges
+## 1 - test argument ranges
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | json_input |{
@@ -16,7 +12,7 @@
   "a_bool_argument": true
 } |
  
-## 3 - test argument ranges--1
+## 2 - test argument ranges--1
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | json_input |{
@@ -28,7 +24,7 @@
   "a_bool_argument": true
 } |
  
-## 4 - test argument ranges--2
+## 3 - test argument ranges--2
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | json_input |{
@@ -40,7 +36,7 @@
   "a_bool_argument": true
 } |
  
-## 5 - test argument ranges--3
+## 4 - test argument ranges--3
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | json_input |{
@@ -52,19 +48,19 @@
   "a_bool_argument": true
 } |
  
-## 6 - test argument ranges--4
+## 5 - test argument ranges--4
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | json_input |{
   "a_string_argument": "MyString",
   "a_double_argument": 50.0,
   "an_integer_argument": 5,
-  "a_string_double_argument": "48e90de5-bb5c-4085-bcaf-71d57063a20d",
+  "a_string_double_argument": "85f24f9e-bab6-46cd-9527-38eaddcb09b6",
   "a_choice_argument": "choice_1",
   "a_bool_argument": true
 } |
  
-## 7 - test argument ranges--5
+## 6 - test argument ranges--5
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | json_input |{
@@ -76,7 +72,7 @@
   "a_bool_argument": true
 } |
  
-## 8 - test argument ranges--6
+## 7 - test argument ranges--6
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | json_input |{
@@ -88,7 +84,7 @@
   "a_bool_argument": true
 } |
  
-## 9 - test argument ranges--7
+## 8 - test argument ranges--7
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | json_input |{
@@ -100,7 +96,7 @@
   "a_bool_argument": true
 } |
  
-## 10 - test argument ranges--8
+## 9 - test argument ranges--8
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | json_input |{
@@ -112,7 +108,7 @@
   "a_bool_argument": true
 } |
  
-## 11 - test argument ranges--9
+## 10 - test argument ranges--9
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | a_string_argument |MyString |
@@ -122,7 +118,7 @@
 | a_choice_argument |choice_1 |
 | a_bool_argument |true |
  
-## 12 - test argument ranges--10
+## 11 - test argument ranges--10
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | a_string_argument |MyString |
@@ -132,7 +128,7 @@
 | a_choice_argument |choice_1 |
 | a_bool_argument |true |
  
-## 13 - test argument ranges--11
+## 12 - test argument ranges--11
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | a_string_argument |MyString |
@@ -142,7 +138,7 @@
 | a_choice_argument |choice_1 |
 | a_bool_argument |true |
  
-## 14 - test argument ranges--12
+## 13 - test argument ranges--12
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | a_string_argument |MyString |
@@ -152,17 +148,17 @@
 | a_choice_argument |choice_1 |
 | a_bool_argument |true |
  
-## 15 - test argument ranges--13
+## 14 - test argument ranges--13
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | a_string_argument |MyString |
 | a_double_argument |50.0 |
 | an_integer_argument |5 |
-| a_string_double_argument |48bb3003-2910-4ff9-8e78-eaa916cd4e20 |
+| a_string_double_argument |793787f6-a25a-447a-866f-d65deedef29e |
 | a_choice_argument |choice_1 |
 | a_bool_argument |true |
  
-## 16 - test argument ranges--14
+## 15 - test argument ranges--14
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | a_string_argument |MyString |
@@ -172,7 +168,7 @@
 | a_choice_argument |choice_1 |
 | a_bool_argument |true |
  
-## 17 - test argument ranges--15
+## 16 - test argument ranges--15
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | a_string_argument |MyString |
@@ -182,7 +178,7 @@
 | a_choice_argument |choice_1 |
 | a_bool_argument |true |
  
-## 18 - test argument ranges--16
+## 17 - test argument ranges--16
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | a_string_argument |MyString |
@@ -192,7 +188,7 @@
 | a_choice_argument |choice_1 |
 | a_bool_argument |true |
  
-## 19 - test argument ranges--17
+## 18 - test argument ranges--17
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | a_string_argument |MyString |
@@ -201,4 +197,8 @@
 | a_string_double_argument |101.0 |
 | a_choice_argument |choice_1 |
 | a_bool_argument |true |
+ 
+## 19 - smallOffice
+| Test Argument | Test Value |
+| ------------- | ---------- |
  

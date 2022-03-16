@@ -1,6 +1,6 @@
 # Summary Of Test Cases for 'SET FENESTRATION (WALL) CONDUCTANCE BY NECB CLIMATE ZONE' Measure
  
-## 1 - OutputTestFolder zone8--27
+## 1 - OutputTestFolder zone6--1
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | necb_template |NECB2017 |
@@ -11,7 +11,7 @@
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 2 - OutputTestFolder zone7a--27
+## 2 - OutputTestFolder zone7a--1
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | necb_template |NECB2017 |
@@ -22,7 +22,7 @@
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 3 - OutputTestFolder zone5--27
+## 3 - OutputTestFolder zone4--1
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | necb_template |NECB2017 |
@@ -33,7 +33,29 @@
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 4 - test argument ranges--623
+## 4 - OutputTestFolder zone5--1
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| necb_template |NECB2017 |
+| zone4_u_value |1.9 |
+| zone5_u_value |1.8 |
+| zone6_u_value |1.7 |
+| zone7A_u_value |1.5 |
+| zone7B_u_value |1.4 |
+| zone8_u_value |1.3 |
+ 
+## 5 - OutputTestFolder zone7b--1
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| necb_template |NECB2017 |
+| zone4_u_value |1.9 |
+| zone5_u_value |1.8 |
+| zone6_u_value |1.7 |
+| zone7A_u_value |1.5 |
+| zone7B_u_value |1.4 |
+| zone8_u_value |1.3 |
+ 
+## 6 - test argument ranges
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | necb_template |NECB2017 |
@@ -44,7 +66,7 @@
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 5 - test argument ranges--624
+## 7 - test argument ranges--1
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | necb_template |NECB2017 |
@@ -55,7 +77,7 @@
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 6 - test argument ranges--625
+## 8 - test argument ranges--2
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | necb_template |NECB2017 |
@@ -66,7 +88,7 @@
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 7 - test argument ranges--626
+## 9 - test argument ranges--3
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | necb_template |NECB2017 |
@@ -77,7 +99,7 @@
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 8 - test argument ranges--627
+## 10 - test argument ranges--4
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | necb_template |NECB2017 |
@@ -88,7 +110,7 @@
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 9 - test argument ranges--628
+## 11 - test argument ranges--5
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | necb_template |NECB2017 |
@@ -99,7 +121,7 @@
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 10 - test argument ranges--629
+## 12 - test argument ranges--6
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | necb_template |NECB2017 |
@@ -110,7 +132,7 @@
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 11 - test argument ranges--630
+## 13 - test argument ranges--7
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | necb_template |NECB2017 |
@@ -121,7 +143,7 @@
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 12 - test argument ranges--631
+## 14 - test argument ranges--8
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | necb_template |NECB2017 |
@@ -132,7 +154,7 @@
 | zone7B_u_value |6.0 |
 | zone8_u_value |1.3 |
  
-## 13 - test argument ranges--632
+## 15 - test argument ranges--9
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | necb_template |NECB2017 |
@@ -143,7 +165,7 @@
 | zone7B_u_value |-1.0 |
 | zone8_u_value |1.3 |
  
-## 14 - test argument ranges--633
+## 16 - test argument ranges--10
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | necb_template |NECB2017 |
@@ -154,7 +176,7 @@
 | zone7B_u_value |1.4 |
 | zone8_u_value |6.0 |
  
-## 15 - test argument ranges--634
+## 17 - test argument ranges--11
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | necb_template |NECB2017 |
@@ -165,7 +187,7 @@
 | zone7B_u_value |1.4 |
 | zone8_u_value |-1.0 |
  
-## 16 - test argument ranges--635
+## 18 - test argument ranges--12
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | necb_template |NECB2017 |
@@ -176,7 +198,7 @@
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 17 - test argument ranges--636
+## 19 - test argument ranges--13
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | necb_template |NECB2017 |
@@ -187,7 +209,7 @@
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 18 - test argument ranges--637
+## 20 - test argument ranges--14
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | necb_template |NECB2017 |
@@ -198,7 +220,7 @@
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 19 - test argument ranges--638
+## 21 - test argument ranges--15
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | necb_template |NECB2017 |
@@ -209,7 +231,7 @@
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 20 - test argument ranges--639
+## 22 - test argument ranges--16
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | necb_template |NECB2017 |
@@ -220,7 +242,7 @@
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 21 - test argument ranges--640
+## 23 - test argument ranges--17
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | necb_template |NECB2017 |
@@ -231,7 +253,7 @@
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 22 - test argument ranges--641
+## 24 - test argument ranges--18
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | necb_template |NECB2017 |
@@ -242,7 +264,7 @@
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 23 - test argument ranges--642
+## 25 - test argument ranges--19
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | necb_template |NECB2017 |
@@ -253,7 +275,7 @@
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 24 - test argument ranges--643
+## 26 - test argument ranges--20
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | necb_template |NECB2017 |
@@ -264,7 +286,7 @@
 | zone7B_u_value |6.0 |
 | zone8_u_value |1.3 |
  
-## 25 - test argument ranges--644
+## 27 - test argument ranges--21
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | necb_template |NECB2017 |
@@ -275,7 +297,7 @@
 | zone7B_u_value |-1.0 |
 | zone8_u_value |1.3 |
  
-## 26 - test argument ranges--645
+## 28 - test argument ranges--22
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | necb_template |NECB2017 |
@@ -286,7 +308,7 @@
 | zone7B_u_value |1.4 |
 | zone8_u_value |6.0 |
  
-## 27 - test argument ranges--646
+## 29 - test argument ranges--23
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | necb_template |NECB2017 |
@@ -297,7 +319,7 @@
 | zone7B_u_value |1.4 |
 | zone8_u_value |-1.0 |
  
-## 28 - test argument ranges--647
+## 30 - test argument ranges--24
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | necb_template |NECB2017 |
@@ -308,7 +330,7 @@
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 29 - test argument ranges--648
+## 31 - test argument ranges--25
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | necb_template |NECB2017 |
@@ -319,7 +341,7 @@
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 30 - test argument ranges--649
+## 32 - test argument ranges--26
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | necb_template |NECB2017 |
@@ -330,7 +352,7 @@
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 31 - test argument ranges--650
+## 33 - test argument ranges--27
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | necb_template |NECB2017 |
@@ -341,7 +363,7 @@
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 32 - test argument ranges--651
+## 34 - test argument ranges--28
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | necb_template |NECB2017 |
@@ -352,7 +374,7 @@
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 33 - test argument ranges--652
+## 35 - test argument ranges--29
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | necb_template |NECB2017 |
@@ -363,7 +385,7 @@
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 34 - test argument ranges--653
+## 36 - test argument ranges--30
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | necb_template |NECB2017 |
@@ -374,7 +396,7 @@
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 35 - test argument ranges--654
+## 37 - test argument ranges--31
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | necb_template |NECB2017 |
@@ -385,7 +407,7 @@
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 36 - test argument ranges--655
+## 38 - test argument ranges--32
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | necb_template |NECB2017 |
@@ -396,7 +418,7 @@
 | zone7B_u_value |6.0 |
 | zone8_u_value |1.3 |
  
-## 37 - test argument ranges--656
+## 39 - test argument ranges--33
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | necb_template |NECB2017 |
@@ -407,7 +429,7 @@
 | zone7B_u_value |-1.0 |
 | zone8_u_value |1.3 |
  
-## 38 - test argument ranges--657
+## 40 - test argument ranges--34
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | necb_template |NECB2017 |
@@ -418,7 +440,7 @@
 | zone7B_u_value |1.4 |
 | zone8_u_value |6.0 |
  
-## 39 - test argument ranges--658
+## 41 - test argument ranges--35
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | necb_template |NECB2017 |
@@ -429,7 +451,7 @@
 | zone7B_u_value |1.4 |
 | zone8_u_value |-1.0 |
  
-## 40 - test argument ranges--659
+## 42 - test argument ranges--36
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | necb_template |NECB2017 |
@@ -440,7 +462,7 @@
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 41 - test argument ranges--660
+## 43 - test argument ranges--37
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | necb_template |NECB2017 |
@@ -451,7 +473,7 @@
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 42 - test argument ranges--661
+## 44 - test argument ranges--38
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | necb_template |NECB2017 |
@@ -462,7 +484,7 @@
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 43 - test argument ranges--662
+## 45 - test argument ranges--39
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | necb_template |NECB2017 |
@@ -473,7 +495,7 @@
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 44 - test argument ranges--663
+## 46 - test argument ranges--40
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | necb_template |NECB2017 |
@@ -484,7 +506,7 @@
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 45 - test argument ranges--664
+## 47 - test argument ranges--41
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | necb_template |NECB2017 |
@@ -495,7 +517,7 @@
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 46 - test argument ranges--665
+## 48 - test argument ranges--42
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | necb_template |NECB2017 |
@@ -506,7 +528,7 @@
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 47 - test argument ranges--666
+## 49 - test argument ranges--43
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | necb_template |NECB2017 |
@@ -517,7 +539,7 @@
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 48 - test argument ranges--667
+## 50 - test argument ranges--44
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | necb_template |NECB2017 |
@@ -528,7 +550,7 @@
 | zone7B_u_value |6.0 |
 | zone8_u_value |1.3 |
  
-## 49 - test argument ranges--668
+## 51 - test argument ranges--45
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | necb_template |NECB2017 |
@@ -539,7 +561,7 @@
 | zone7B_u_value |-1.0 |
 | zone8_u_value |1.3 |
  
-## 50 - test argument ranges--669
+## 52 - test argument ranges--46
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | necb_template |NECB2017 |
@@ -550,7 +572,7 @@
 | zone7B_u_value |1.4 |
 | zone8_u_value |6.0 |
  
-## 51 - test argument ranges--670
+## 53 - test argument ranges--47
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | necb_template |NECB2017 |
@@ -561,29 +583,7 @@
 | zone7B_u_value |1.4 |
 | zone8_u_value |-1.0 |
  
-## 52 - OutputTestFolder zone6--27
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| necb_template |NECB2017 |
-| zone4_u_value |1.9 |
-| zone5_u_value |1.8 |
-| zone6_u_value |1.7 |
-| zone7A_u_value |1.5 |
-| zone7B_u_value |1.4 |
-| zone8_u_value |1.3 |
- 
-## 53 - OutputTestFolder zone7b--27
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| necb_template |NECB2017 |
-| zone4_u_value |1.9 |
-| zone5_u_value |1.8 |
-| zone6_u_value |1.7 |
-| zone7A_u_value |1.5 |
-| zone7B_u_value |1.4 |
-| zone8_u_value |1.3 |
- 
-## 54 - OutputTestFolder zone4--26
+## 54 - OutputTestFolder zone8--1
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | necb_template |NECB2017 |

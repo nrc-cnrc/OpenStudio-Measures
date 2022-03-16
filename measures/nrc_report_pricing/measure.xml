@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_pricing_measure</name>
   <uid>224561f4-8ccc-4f60-8118-34b85359d6f7</uid>
-  <version_id>e3cadfe5-6932-4750-81c8-89ef9499afdf</version_id>
-  <version_modified>20220314T181022Z</version_modified>
+  <version_id>15912e0a-7846-425d-802e-324b44b406f1</version_id>
+  <version_modified>20220316T131809Z</version_modified>
   <xml_checksum>359BA50C</xml_checksum>
   <class_name>NrcPricingMeasure</class_name>
   <display_name>Pricing Measure</display_name>
@@ -83,12 +83,6 @@
       <checksum>3D5EBF8F</checksum>
     </file>
     <file>
-      <filename>test.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>test</usage_type>
-      <checksum>ADBBB893</checksum>
-    </file>
-    <file>
       <filename>README.md</filename>
       <filetype>md</filetype>
       <usage_type>readme</usage_type>
@@ -106,16 +100,28 @@
       <checksum>6211495B</checksum>
     </file>
     <file>
-      <filename>NRCReportingMeasureHelper.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>D97AA2BB</checksum>
-    </file>
-    <file>
       <filename>NRCMeasureHelper.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
       <checksum>AFFF2160</checksum>
+    </file>
+    <file>
+      <filename>test.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>AFC0BDC0</checksum>
+    </file>
+    <file>
+      <filename>NRCReportingMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>76513449</checksum>
+    </file>
+    <file>
+      <filename>test-output.json</filename>
+      <filetype>json</filetype>
+      <usage_type>test</usage_type>
+      <checksum>77ED24D3</checksum>
     </file>
   </files>
 </measure>

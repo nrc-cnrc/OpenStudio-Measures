@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_rename_surfaces</name>
   <uid>07e104f4-7175-4a8e-8c1a-b9fafb28b3ce</uid>
-  <version_id>ef68245d-c2d9-40d3-9567-55d4f4c757e3</version_id>
-  <version_modified>20220315T125558Z</version_modified>
+  <version_id>509bffaa-f98b-4035-af01-3adcd21ff79d</version_id>
+  <version_modified>20220316T131801Z</version_modified>
   <xml_checksum>FC9586A7</xml_checksum>
   <class_name>NrcRenameSurfaces</class_name>
   <display_name>NrcRenameSurfaces</display_name>
@@ -100,12 +100,6 @@
       <checksum>11B89898</checksum>
     </file>
     <file>
-      <filename>test.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>test</usage_type>
-      <checksum>A1A48D47</checksum>
-    </file>
-    <file>
       <filename>README.md.erb</filename>
       <filetype>erb</filetype>
       <usage_type>readmeerb</usage_type>
@@ -118,10 +112,16 @@
       <checksum>4F234BCA</checksum>
     </file>
     <file>
+      <filename>test.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>40519F59</checksum>
+    </file>
+    <file>
       <filename>NRCMeasureHelper.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>F787EF10</checksum>
+      <checksum>A5221895</checksum>
     </file>
   </files>
 </measure>

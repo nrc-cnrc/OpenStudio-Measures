@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_resize_existing_windows_to_match_a_given_wwr</name>
   <uid>b1c8aae7-db36-4461-88f8-d6ac57ec11d5</uid>
-  <version_id>dc5fafb1-9caa-459c-a18b-2cf4cb0c6738</version_id>
-  <version_modified>20220315T125622Z</version_modified>
+  <version_id>0b930a71-a053-45fb-ac6e-26f61b44bba5</version_id>
+  <version_modified>20220316T131811Z</version_modified>
   <xml_checksum>A8B8B5E3</xml_checksum>
   <class_name>NrcResizeExistingWindowsToMatchAGivenWWR</class_name>
   <display_name>Nrc Resize Existing Windows To Match A Given WWR</display_name>
@@ -204,12 +204,6 @@ This will compute the WWR by taking into account all of the surfaces that have a
       <checksum>ECFB14D5</checksum>
     </file>
     <file>
-      <filename>test.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>test</usage_type>
-      <checksum>C68F8664</checksum>
-    </file>
-    <file>
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>1.8.0</identifier>
@@ -227,10 +221,16 @@ This will compute the WWR by taking into account all of the surfaces that have a
       <checksum>4F234BCA</checksum>
     </file>
     <file>
+      <filename>test.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>FEA47846</checksum>
+    </file>
+    <file>
       <filename>NRCMeasureHelper.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>F787EF10</checksum>
+      <checksum>A5221895</checksum>
     </file>
   </files>
 </measure>
