@@ -1,6 +1,6 @@
 # Summary Of Test Cases for 'SET FENESTRATION (ROOF) CONDUCTANCE BY NECB CLIMATE ZONE' Measure
  
-## 1 - OutputTestFolder zone4--1
+## 1 - OutputTestFolder zone7b--1
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | necb_template |NECB2017 |
@@ -11,7 +11,7 @@
 | zone7B_u_value |2.72 |
 | zone8_u_value |2.8 |
  
-## 2 - OutputTestFolder Zone8--1
+## 2 - OutputTestFolder zone5--1
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | necb_template |NECB2017 |
@@ -22,7 +22,7 @@
 | zone7B_u_value |2.72 |
 | zone8_u_value |2.8 |
  
-## 3 - OutputTestFolder zone5--1
+## 3 - OutputTestFolder zone7a--1
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | necb_template |NECB2017 |
@@ -561,7 +561,7 @@
 | zone7B_u_value |2.72 |
 | zone8_u_value |-1.0 |
  
-## 52 - OutputTestFolder zone7a--1
+## 52 - OutputTestFolder zone4--1
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | necb_template |NECB2017 |
@@ -583,7 +583,7 @@
 | zone7B_u_value |2.72 |
 | zone8_u_value |2.8 |
  
-## 54 - OutputTestFolder zone7b--1
+## 54 - OutputTestFolder Zone8--1
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | necb_template |NECB2017 |

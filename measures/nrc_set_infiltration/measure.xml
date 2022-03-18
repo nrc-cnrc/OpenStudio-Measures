@@ -3,12 +3,13 @@
   <schema_version>3.0</schema_version>
   <name>nrc_set_infiltration</name>
   <uid>68ad385a-22cd-4c01-a4a4-11c2c30026fb</uid>
-  <version_id>15b31b28-cfa9-4df8-ae34-c0b3a5c4ddaf</version_id>
-  <version_modified>20220316T131814Z</version_modified>
+  <version_id>8ef43e38-982d-40db-aaf7-ffb2d42978f2</version_id>
+  <version_modified>20220318T193726Z</version_modified>
   <xml_checksum>2AF3A68E</xml_checksum>
   <class_name>NrcSetInfiltration</class_name>
-  <display_name>NrcSetInfiltration</display_name>
-  <description>This measures allows setting the infiltration to a specific value.</description>
+  <display_name>Set Infiltration Rate</display_name>
+  <description>This measures allows setting the infiltration to a specific value at a given reference pressure. The flow rate is 
+       converted to the flow at 5 Pa for above grade surfaces as per the assumption in the NECB.</description>
   <modeler_description>The measure sets space infiltration according to PCF 1414, section 8.4.2.9(2), page 7
             Infiltration_5Pa = C × I_75Pa × (S/A)
             Infiltration_5Pa : Air leakage rate of the building envelope at 5 Pa, in L/(s·m2)
@@ -16,15 +17,24 @@
             I_75Pa : Normalized air leakage rate at 75 Pa, in L/(s·m2)
             S = total area of the building envelope (the lowest floor area + below-ground and above-ground walls area + roof area (including
                 vertical fenestration and skylights) , in m2
-            A = total area of above-grade walls, in m2</modeler_description>
+            A = total area of above-grade walls, in m2
+            To neglect the surface area adjustment enter two identical numers for above grage and total surface area.</modeler_description>
   <arguments>
     <argument>
-      <name>flow_rate_75Pa</name>
-      <display_name>Space Infiltration Flow per Exterior Envelope Surface Area L/s/m2 at 75 Pa</display_name>
+      <name>flow_rate</name>
+      <display_name>Space Infiltration Flow per Exterior Envelope Surface Area L/s/m2 at reference pressure</display_name>
       <type>Double</type>
       <required>true</required>
       <model_dependent>false</model_dependent>
       <default_value>4.2</default_value>
+    </argument>
+    <argument>
+      <name>reference_pressure</name>
+      <display_name>Reference pressure</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>75</default_value>
     </argument>
     <argument>
       <name>flow_exponent</name>
@@ -80,6 +90,18 @@
   </attributes>
   <files>
     <file>
+      <filename>README.md.erb</filename>
+      <filetype>erb</filetype>
+      <usage_type>readmeerb</usage_type>
+      <checksum>A1A5426B</checksum>
+    </file>
+    <file>
+      <filename>NRCMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>A5221895</checksum>
+    </file>
+    <file>
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>2.8.1</identifier>
@@ -88,37 +110,31 @@
       <filename>measure.rb</filename>
       <filetype>rb</filetype>
       <usage_type>script</usage_type>
-      <checksum>FEB4583E</checksum>
-    </file>
-    <file>
-      <filename>README.md.erb</filename>
-      <filetype>erb</filetype>
-      <usage_type>readmeerb</usage_type>
-      <checksum>A1A5426B</checksum>
-    </file>
-    <file>
-      <filename>README.md</filename>
-      <filetype>md</filetype>
-      <usage_type>readme</usage_type>
-      <checksum>381DB259</checksum>
-    </file>
-    <file>
-      <filename>BTAPMeasureHelper.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>4F234BCA</checksum>
+      <checksum>F9A2DE97</checksum>
     </file>
     <file>
       <filename>test.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
-      <checksum>4C82CEA9</checksum>
+      <checksum>68C07745</checksum>
     </file>
     <file>
-      <filename>NRCMeasureHelper.rb</filename>
+      <filename>Warehouse-NECB2017-ON_Ottawa.osm</filename>
+      <filetype>osm</filetype>
+      <usage_type>test</usage_type>
+      <checksum>C55B436A</checksum>
+    </file>
+    <file>
+      <filename>README.md</filename>
+      <filetype>md</filetype>
+      <usage_type>readme</usage_type>
+      <checksum>97034F77</checksum>
+    </file>
+    <file>
+      <filename>BTAPMeasureHelper.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>A5221895</checksum>
+      <checksum>1F868572</checksum>
     </file>
   </files>
 </measure>
