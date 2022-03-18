@@ -41,7 +41,7 @@
 | ------------- | ---------- |
 | a_string_argument |MyString |
 | a_double_argument |50.0 |
-| a_string_double_argument |9063d233-ecda-4bbe-8ed9-8c6b060ee65a |
+| a_string_double_argument |10bf0b49-f9ee-4ca5-95d1-c33616ead03a |
 | a_choice_argument |choice_1 |
 | a_bool_argument |true |
  
@@ -122,7 +122,7 @@
 | ------------- | ---------- |
 | a_string_argument |MyString |
 | a_double_argument |50.0 |
-| a_string_double_argument |d03429f2-d2fd-422d-8c17-0bc390035ff6 |
+| a_string_double_argument |58b517f0-5d28-4a63-b711-829fb22d368e |
 | a_choice_argument |choice_1 |
 | a_bool_argument |true |
  
@@ -162,7 +162,7 @@
 | a_choice_argument |choice_1 |
 | a_bool_argument |true |
  
-## 19 - test sample 1--1
+## 19 - test sample 2--1
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | a_string_argument |MyString |
@@ -178,7 +178,7 @@
 | a_string_double_argument |75.3 |
 | a_choice_argument |choice_1 |
  
-## 21 - test sample 2--1
+## 21 - test sample 1--1
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | a_string_argument |MyString |
