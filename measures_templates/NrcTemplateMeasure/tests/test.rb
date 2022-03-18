@@ -176,8 +176,9 @@ class NrcModelMeasure_Test < Minitest::Test
   # Another simple way is to Load osm file.
   def test_sample_3()
     puts "Testing  model creation 3".green
+
     # Define the output folder for this test (optional - default is the method name).
-    NRCMeasureTestHelper.appendOutputFolder("test_sample_3")
+    output_file_path = NRCMeasureTestHelper.appendOutputFolder("test_sample_3")
 
     # Load osm file.
     model = load_test_osm("#{File.dirname(__FILE__)}/SmallOffice.osm")
@@ -199,5 +200,9 @@ class NrcModelMeasure_Test < Minitest::Test
     show_output(runner.result)
 
     assert(runner.result.value.valueName == 'Success')
+
+    # Save the model to test output directory.
+    output_path = "#{output_file_path}/test_output.osm"
+    model.save(output_path, true)
   end
 end
