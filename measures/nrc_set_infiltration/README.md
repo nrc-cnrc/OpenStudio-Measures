@@ -2,10 +2,11 @@
 
 ###### (Automatically generated documentation)
 
-# NrcSetInfiltration
+# Set Infiltration Rate
 
 ## Description
-This measures allows setting the infiltration to a specific value.
+This measures allows setting the infiltration to a specific value at a given reference pressure. The flow rate is 
+       converted to the flow at 5 Pa for above grade surfaces as per the assumption in the NECB.
 
 ## Modeler Description
 The measure sets space infiltration according to PCF 1414, section 8.4.2.9(2), page 7
@@ -16,6 +17,7 @@ The measure sets space infiltration according to PCF 1414, section 8.4.2.9(2), p
             S = total area of the building envelope (the lowest floor area + below-ground and above-ground walls area + roof area (including
                 vertical fenestration and skylights) , in m2
             A = total area of above-grade walls, in m2
+            To neglect the surface area adjustment enter two identical numers for above grage and total surface area.
 
 ## Measure Type
 ModelMeasure
@@ -26,9 +28,17 @@ ModelMeasure
 ## Arguments
 
 
-### Space Infiltration Flow per Exterior Envelope Surface Area L/s/m2 at 75 Pa
+### Space Infiltration Flow per Exterior Envelope Surface Area L/s/m2 at reference pressure
 
-**Name:** flow_rate_75Pa,
+**Name:** flow_rate,
+**Type:** Double,
+**Units:** ,
+**Required:** true,
+**Model Dependent:** false
+
+### Reference pressure
+
+**Name:** reference_pressure,
 **Type:** Double,
 **Units:** ,
 **Required:** true,
