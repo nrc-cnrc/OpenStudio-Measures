@@ -1,0 +1,556 @@
+
+ Meters for 7,ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A OFFICE WHOLEBUILDING LIGHTS:Lights Electricity Energy [J]
+  OnMeter=Electricity:Facility [J]
+  OnMeter=Electricity:Building [J]
+  OnMeter=Electricity:Zone:ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A [J]
+  OnMeter=InteriorLights:Electricity [J]
+  OnMeter=InteriorLights:Electricity:Zone:ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A [J]
+  OnMeter=General:InteriorLights:Electricity [J]
+
+ Meters for 80,ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 5 OFFICE WHOLEBUILDING LIGHTS:Lights Electricity Energy [J]
+  OnMeter=Electricity:Facility [J]
+  OnMeter=Electricity:Building [J]
+  OnMeter=Electricity:Zone:ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 5 [J]
+  OnMeter=InteriorLights:Electricity [J]
+  OnMeter=InteriorLights:Electricity:Zone:ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 5 [J]
+  OnMeter=General:InteriorLights:Electricity [J]
+
+ Meters for 105,ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 6 OFFICE WHOLEBUILDING LIGHTS:Lights Electricity Energy [J]
+  OnMeter=Electricity:Facility [J]
+  OnMeter=Electricity:Building [J]
+  OnMeter=Electricity:Zone:ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 6 [J]
+  OnMeter=InteriorLights:Electricity [J]
+  OnMeter=InteriorLights:Electricity:Zone:ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 6 [J]
+  OnMeter=General:InteriorLights:Electricity [J]
+
+ Meters for 130,ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 7 OFFICE WHOLEBUILDING LIGHTS:Lights Electricity Energy [J]
+  OnMeter=Electricity:Facility [J]
+  OnMeter=Electricity:Building [J]
+  OnMeter=Electricity:Zone:ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 7 [J]
+  OnMeter=InteriorLights:Electricity [J]
+  OnMeter=InteriorLights:Electricity:Zone:ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 7 [J]
+  OnMeter=General:InteriorLights:Electricity [J]
+
+ Meters for 155,ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 8 OFFICE WHOLEBUILDING LIGHTS:Lights Electricity Energy [J]
+  OnMeter=Electricity:Facility [J]
+  OnMeter=Electricity:Building [J]
+  OnMeter=Electricity:Zone:ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 8 [J]
+  OnMeter=InteriorLights:Electricity [J]
+  OnMeter=InteriorLights:Electricity:Zone:ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 8 [J]
+  OnMeter=General:InteriorLights:Electricity [J]
+
+ Meters for 180,ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A OFFICE WHOLEBUILDING ELEC EQUIP:Electric Equipment Electricity Energy [J]
+  OnMeter=Electricity:Facility [J]
+  OnMeter=Electricity:Building [J]
+  OnMeter=Electricity:Zone:ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A [J]
+  OnMeter=InteriorEquipment:Electricity [J]
+  OnMeter=InteriorEquipment:Electricity:Zone:ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A [J]
+  OnMeter=General:InteriorEquipment:Electricity [J]
+
+ Meters for 217,ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 5 OFFICE WHOLEBUILDING ELEC EQUIP:Electric Equipment Electricity Energy [J]
+  OnMeter=Electricity:Facility [J]
+  OnMeter=Electricity:Building [J]
+  OnMeter=Electricity:Zone:ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 5 [J]
+  OnMeter=InteriorEquipment:Electricity [J]
+  OnMeter=InteriorEquipment:Electricity:Zone:ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 5 [J]
+  OnMeter=General:InteriorEquipment:Electricity [J]
+
+ Meters for 230,ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 6 OFFICE WHOLEBUILDING ELEC EQUIP:Electric Equipment Electricity Energy [J]
+  OnMeter=Electricity:Facility [J]
+  OnMeter=Electricity:Building [J]
+  OnMeter=Electricity:Zone:ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 6 [J]
+  OnMeter=InteriorEquipment:Electricity [J]
+  OnMeter=InteriorEquipment:Electricity:Zone:ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 6 [J]
+  OnMeter=General:InteriorEquipment:Electricity [J]
+
+ Meters for 243,ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 7 OFFICE WHOLEBUILDING ELEC EQUIP:Electric Equipment Electricity Energy [J]
+  OnMeter=Electricity:Facility [J]
+  OnMeter=Electricity:Building [J]
+  OnMeter=Electricity:Zone:ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 7 [J]
+  OnMeter=InteriorEquipment:Electricity [J]
+  OnMeter=InteriorEquipment:Electricity:Zone:ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 7 [J]
+  OnMeter=General:InteriorEquipment:Electricity [J]
+
+ Meters for 256,ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 8 OFFICE WHOLEBUILDING ELEC EQUIP:Electric Equipment Electricity Energy [J]
+  OnMeter=Electricity:Facility [J]
+  OnMeter=Electricity:Building [J]
+  OnMeter=Electricity:Zone:ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 8 [J]
+  OnMeter=InteriorEquipment:Electricity [J]
+  OnMeter=InteriorEquipment:Electricity:Zone:ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 8 [J]
+  OnMeter=General:InteriorEquipment:Electricity [J]
+
+ Meters for 269,ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A:Zone Air System Sensible Heating Energy [J]
+  OnMeter=EnergyTransfer:Facility [J]
+  OnMeter=EnergyTransfer:Building [J]
+  OnMeter=EnergyTransfer:Zone:ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A [J]
+  OnMeter=Heating:EnergyTransfer [J]
+  OnMeter=Heating:EnergyTransfer:Zone:ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A [J]
+  OnMeter=General:Heating:EnergyTransfer [J]
+
+ Meters for 342,ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A:Zone Air System Sensible Cooling Energy [J]
+  OnMeter=EnergyTransfer:Facility [J]
+  OnMeter=EnergyTransfer:Building [J]
+  OnMeter=EnergyTransfer:Zone:ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A [J]
+  OnMeter=Cooling:EnergyTransfer [J]
+  OnMeter=Cooling:EnergyTransfer:Zone:ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A [J]
+  OnMeter=General:Cooling:EnergyTransfer [J]
+
+ Meters for 379,ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 5:Zone Air System Sensible Heating Energy [J]
+  OnMeter=EnergyTransfer:Facility [J]
+  OnMeter=EnergyTransfer:Building [J]
+  OnMeter=EnergyTransfer:Zone:ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 5 [J]
+  OnMeter=Heating:EnergyTransfer [J]
+  OnMeter=Heating:EnergyTransfer:Zone:ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 5 [J]
+  OnMeter=General:Heating:EnergyTransfer [J]
+
+ Meters for 404,ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 5:Zone Air System Sensible Cooling Energy [J]
+  OnMeter=EnergyTransfer:Facility [J]
+  OnMeter=EnergyTransfer:Building [J]
+  OnMeter=EnergyTransfer:Zone:ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 5 [J]
+  OnMeter=Cooling:EnergyTransfer [J]
+  OnMeter=Cooling:EnergyTransfer:Zone:ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 5 [J]
+  OnMeter=General:Cooling:EnergyTransfer [J]
+
+ Meters for 417,ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 6:Zone Air System Sensible Heating Energy [J]
+  OnMeter=EnergyTransfer:Facility [J]
+  OnMeter=EnergyTransfer:Building [J]
+  OnMeter=EnergyTransfer:Zone:ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 6 [J]
+  OnMeter=Heating:EnergyTransfer [J]
+  OnMeter=Heating:EnergyTransfer:Zone:ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 6 [J]
+  OnMeter=General:Heating:EnergyTransfer [J]
+
+ Meters for 442,ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 6:Zone Air System Sensible Cooling Energy [J]
+  OnMeter=EnergyTransfer:Facility [J]
+  OnMeter=EnergyTransfer:Building [J]
+  OnMeter=EnergyTransfer:Zone:ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 6 [J]
+  OnMeter=Cooling:EnergyTransfer [J]
+  OnMeter=Cooling:EnergyTransfer:Zone:ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 6 [J]
+  OnMeter=General:Cooling:EnergyTransfer [J]
+
+ Meters for 455,ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 7:Zone Air System Sensible Heating Energy [J]
+  OnMeter=EnergyTransfer:Facility [J]
+  OnMeter=EnergyTransfer:Building [J]
+  OnMeter=EnergyTransfer:Zone:ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 7 [J]
+  OnMeter=Heating:EnergyTransfer [J]
+  OnMeter=Heating:EnergyTransfer:Zone:ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 7 [J]
+  OnMeter=General:Heating:EnergyTransfer [J]
+
+ Meters for 480,ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 7:Zone Air System Sensible Cooling Energy [J]
+  OnMeter=EnergyTransfer:Facility [J]
+  OnMeter=EnergyTransfer:Building [J]
+  OnMeter=EnergyTransfer:Zone:ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 7 [J]
+  OnMeter=Cooling:EnergyTransfer [J]
+  OnMeter=Cooling:EnergyTransfer:Zone:ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 7 [J]
+  OnMeter=General:Cooling:EnergyTransfer [J]
+
+ Meters for 493,ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 8:Zone Air System Sensible Heating Energy [J]
+  OnMeter=EnergyTransfer:Facility [J]
+  OnMeter=EnergyTransfer:Building [J]
+  OnMeter=EnergyTransfer:Zone:ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 8 [J]
+  OnMeter=Heating:EnergyTransfer [J]
+  OnMeter=Heating:EnergyTransfer:Zone:ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 8 [J]
+  OnMeter=General:Heating:EnergyTransfer [J]
+
+ Meters for 518,ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 8:Zone Air System Sensible Cooling Energy [J]
+  OnMeter=EnergyTransfer:Facility [J]
+  OnMeter=EnergyTransfer:Building [J]
+  OnMeter=EnergyTransfer:Zone:ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 8 [J]
+  OnMeter=Cooling:EnergyTransfer [J]
+  OnMeter=Cooling:EnergyTransfer:Zone:ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 8 [J]
+  OnMeter=General:Cooling:EnergyTransfer [J]
+
+ Meters for 531,Whole Building:Facility Total Purchased Electricity Energy [J]
+  OnMeter=ElectricityPurchased:Facility [J]
+  OnMeter=ElectricityPurchased:Plant [J]
+  OnMeter=Cogeneration:ElectricityPurchased [J]
+  OnMeter=General:Cogeneration:ElectricityPurchased [J]
+
+ Meters for 580,Whole Building:Facility Total Surplus Electricity Energy [J]
+  OnMeter=ElectricitySurplusSold:Facility [J]
+  OnMeter=ElectricitySurplusSold:Plant [J]
+  OnMeter=Cogeneration:ElectricitySurplusSold [J]
+  OnMeter=General:Cogeneration:ElectricitySurplusSold [J]
+
+ Meters for 629,Whole Building:Facility Net Purchased Electricity Energy [J]
+  OnMeter=ElectricityNet:Facility [J]
+  OnMeter=ElectricityNet:Plant [J]
+  OnMeter=Cogeneration:ElectricityNet [J]
+  OnMeter=General:Cogeneration:ElectricityNet [J]
+
+ Meters for 678,ZONE HVAC IDEAL LOADS AIR SYSTEM 1:Zone Ideal Loads Supply Air Total Heating Energy [J]
+  OnMeter=DistrictHeating:Facility [J]
+  OnMeter=DistrictHeating:HVAC [J]
+  OnMeter=Heating:DistrictHeating [J]
+  OnMeter=General:Heating:DistrictHeating [J]
+
+ Meters for 727,ZONE HVAC IDEAL LOADS AIR SYSTEM 1:Zone Ideal Loads Supply Air Total Cooling Energy [J]
+  OnMeter=DistrictCooling:Facility [J]
+  OnMeter=DistrictCooling:HVAC [J]
+  OnMeter=Cooling:DistrictCooling [J]
+  OnMeter=General:Cooling:DistrictCooling [J]
+
+ Meters for 776,ZONE HVAC IDEAL LOADS AIR SYSTEM 2:Zone Ideal Loads Supply Air Total Heating Energy [J]
+  OnMeter=DistrictHeating:Facility [J]
+  OnMeter=DistrictHeating:HVAC [J]
+  OnMeter=Heating:DistrictHeating [J]
+  OnMeter=General:Heating:DistrictHeating [J]
+
+ Meters for 777,ZONE HVAC IDEAL LOADS AIR SYSTEM 2:Zone Ideal Loads Supply Air Total Cooling Energy [J]
+  OnMeter=DistrictCooling:Facility [J]
+  OnMeter=DistrictCooling:HVAC [J]
+  OnMeter=Cooling:DistrictCooling [J]
+  OnMeter=General:Cooling:DistrictCooling [J]
+
+ Meters for 778,ZONE HVAC IDEAL LOADS AIR SYSTEM 3:Zone Ideal Loads Supply Air Total Heating Energy [J]
+  OnMeter=DistrictHeating:Facility [J]
+  OnMeter=DistrictHeating:HVAC [J]
+  OnMeter=Heating:DistrictHeating [J]
+  OnMeter=General:Heating:DistrictHeating [J]
+
+ Meters for 779,ZONE HVAC IDEAL LOADS AIR SYSTEM 3:Zone Ideal Loads Supply Air Total Cooling Energy [J]
+  OnMeter=DistrictCooling:Facility [J]
+  OnMeter=DistrictCooling:HVAC [J]
+  OnMeter=Cooling:DistrictCooling [J]
+  OnMeter=General:Cooling:DistrictCooling [J]
+
+ Meters for 780,ZONE HVAC IDEAL LOADS AIR SYSTEM 4:Zone Ideal Loads Supply Air Total Heating Energy [J]
+  OnMeter=DistrictHeating:Facility [J]
+  OnMeter=DistrictHeating:HVAC [J]
+  OnMeter=Heating:DistrictHeating [J]
+  OnMeter=General:Heating:DistrictHeating [J]
+
+ Meters for 781,ZONE HVAC IDEAL LOADS AIR SYSTEM 4:Zone Ideal Loads Supply Air Total Cooling Energy [J]
+  OnMeter=DistrictCooling:Facility [J]
+  OnMeter=DistrictCooling:HVAC [J]
+  OnMeter=Cooling:DistrictCooling [J]
+  OnMeter=General:Cooling:DistrictCooling [J]
+
+ Meters for 782,ZONE HVAC IDEAL LOADS AIR SYSTEM 5:Zone Ideal Loads Supply Air Total Heating Energy [J]
+  OnMeter=DistrictHeating:Facility [J]
+  OnMeter=DistrictHeating:HVAC [J]
+  OnMeter=Heating:DistrictHeating [J]
+  OnMeter=General:Heating:DistrictHeating [J]
+
+ Meters for 783,ZONE HVAC IDEAL LOADS AIR SYSTEM 5:Zone Ideal Loads Supply Air Total Cooling Energy [J]
+  OnMeter=DistrictCooling:Facility [J]
+  OnMeter=DistrictCooling:HVAC [J]
+  OnMeter=Cooling:DistrictCooling [J]
+  OnMeter=General:Cooling:DistrictCooling [J]
+
+ Meters for 784,Site:Environmental Impact Total N2O Emissions Carbon Equivalent Mass [kg]
+  OnMeter=Carbon Equivalent:Facility [kg]
+  OnMeter=CarbonEquivalentEmissions:Carbon Equivalent [kg]
+
+ Meters for 809,Site:Environmental Impact Total CH4 Emissions Carbon Equivalent Mass [kg]
+  OnMeter=Carbon Equivalent:Facility [kg]
+  OnMeter=CarbonEquivalentEmissions:Carbon Equivalent [kg]
+
+ Meters for 810,Site:Environmental Impact Total CO2 Emissions Carbon Equivalent Mass [kg]
+  OnMeter=Carbon Equivalent:Facility [kg]
+  OnMeter=CarbonEquivalentEmissions:Carbon Equivalent [kg]
+
+ For Meter=Electricity:Facility [J], ResourceType=Electricity, contents are:
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A OFFICE WHOLEBUILDING LIGHTS:Lights Electricity Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 5 OFFICE WHOLEBUILDING LIGHTS:Lights Electricity Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 6 OFFICE WHOLEBUILDING LIGHTS:Lights Electricity Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 7 OFFICE WHOLEBUILDING LIGHTS:Lights Electricity Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 8 OFFICE WHOLEBUILDING LIGHTS:Lights Electricity Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A OFFICE WHOLEBUILDING ELEC EQUIP:Electric Equipment Electricity Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 5 OFFICE WHOLEBUILDING ELEC EQUIP:Electric Equipment Electricity Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 6 OFFICE WHOLEBUILDING ELEC EQUIP:Electric Equipment Electricity Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 7 OFFICE WHOLEBUILDING ELEC EQUIP:Electric Equipment Electricity Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 8 OFFICE WHOLEBUILDING ELEC EQUIP:Electric Equipment Electricity Energy
+
+ For Meter=Electricity:Building [J], ResourceType=Electricity, Group=Building, contents are:
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A OFFICE WHOLEBUILDING LIGHTS:Lights Electricity Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 5 OFFICE WHOLEBUILDING LIGHTS:Lights Electricity Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 6 OFFICE WHOLEBUILDING LIGHTS:Lights Electricity Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 7 OFFICE WHOLEBUILDING LIGHTS:Lights Electricity Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 8 OFFICE WHOLEBUILDING LIGHTS:Lights Electricity Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A OFFICE WHOLEBUILDING ELEC EQUIP:Electric Equipment Electricity Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 5 OFFICE WHOLEBUILDING ELEC EQUIP:Electric Equipment Electricity Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 6 OFFICE WHOLEBUILDING ELEC EQUIP:Electric Equipment Electricity Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 7 OFFICE WHOLEBUILDING ELEC EQUIP:Electric Equipment Electricity Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 8 OFFICE WHOLEBUILDING ELEC EQUIP:Electric Equipment Electricity Energy
+
+ For Meter=Electricity:Zone:ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A [J], ResourceType=Electricity, Group=Zone, contents are:
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A OFFICE WHOLEBUILDING LIGHTS:Lights Electricity Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A OFFICE WHOLEBUILDING ELEC EQUIP:Electric Equipment Electricity Energy
+
+ For Meter=InteriorLights:Electricity [J], ResourceType=Electricity, EndUse=InteriorLights, contents are:
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A OFFICE WHOLEBUILDING LIGHTS:Lights Electricity Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 5 OFFICE WHOLEBUILDING LIGHTS:Lights Electricity Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 6 OFFICE WHOLEBUILDING LIGHTS:Lights Electricity Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 7 OFFICE WHOLEBUILDING LIGHTS:Lights Electricity Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 8 OFFICE WHOLEBUILDING LIGHTS:Lights Electricity Energy
+
+ For Meter=InteriorLights:Electricity:Zone:ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A [J], ResourceType=Electricity, EndUse=InteriorLights, Group=Zone, contents are:
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A OFFICE WHOLEBUILDING LIGHTS:Lights Electricity Energy
+
+ For Meter=General:InteriorLights:Electricity [J], ResourceType=Electricity, EndUse=InteriorLights, contents are:
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A OFFICE WHOLEBUILDING LIGHTS:Lights Electricity Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 5 OFFICE WHOLEBUILDING LIGHTS:Lights Electricity Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 6 OFFICE WHOLEBUILDING LIGHTS:Lights Electricity Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 7 OFFICE WHOLEBUILDING LIGHTS:Lights Electricity Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 8 OFFICE WHOLEBUILDING LIGHTS:Lights Electricity Energy
+
+ For Meter=Electricity:Zone:ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 5 [J], ResourceType=Electricity, Group=Zone, contents are:
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 5 OFFICE WHOLEBUILDING LIGHTS:Lights Electricity Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 5 OFFICE WHOLEBUILDING ELEC EQUIP:Electric Equipment Electricity Energy
+
+ For Meter=InteriorLights:Electricity:Zone:ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 5 [J], ResourceType=Electricity, EndUse=InteriorLights, Group=Zone, contents are:
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 5 OFFICE WHOLEBUILDING LIGHTS:Lights Electricity Energy
+
+ For Meter=Electricity:Zone:ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 6 [J], ResourceType=Electricity, Group=Zone, contents are:
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 6 OFFICE WHOLEBUILDING LIGHTS:Lights Electricity Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 6 OFFICE WHOLEBUILDING ELEC EQUIP:Electric Equipment Electricity Energy
+
+ For Meter=InteriorLights:Electricity:Zone:ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 6 [J], ResourceType=Electricity, EndUse=InteriorLights, Group=Zone, contents are:
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 6 OFFICE WHOLEBUILDING LIGHTS:Lights Electricity Energy
+
+ For Meter=Electricity:Zone:ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 7 [J], ResourceType=Electricity, Group=Zone, contents are:
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 7 OFFICE WHOLEBUILDING LIGHTS:Lights Electricity Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 7 OFFICE WHOLEBUILDING ELEC EQUIP:Electric Equipment Electricity Energy
+
+ For Meter=InteriorLights:Electricity:Zone:ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 7 [J], ResourceType=Electricity, EndUse=InteriorLights, Group=Zone, contents are:
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 7 OFFICE WHOLEBUILDING LIGHTS:Lights Electricity Energy
+
+ For Meter=Electricity:Zone:ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 8 [J], ResourceType=Electricity, Group=Zone, contents are:
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 8 OFFICE WHOLEBUILDING LIGHTS:Lights Electricity Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 8 OFFICE WHOLEBUILDING ELEC EQUIP:Electric Equipment Electricity Energy
+
+ For Meter=InteriorLights:Electricity:Zone:ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 8 [J], ResourceType=Electricity, EndUse=InteriorLights, Group=Zone, contents are:
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 8 OFFICE WHOLEBUILDING LIGHTS:Lights Electricity Energy
+
+ For Meter=InteriorEquipment:Electricity [J], ResourceType=Electricity, EndUse=InteriorEquipment, contents are:
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A OFFICE WHOLEBUILDING ELEC EQUIP:Electric Equipment Electricity Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 5 OFFICE WHOLEBUILDING ELEC EQUIP:Electric Equipment Electricity Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 6 OFFICE WHOLEBUILDING ELEC EQUIP:Electric Equipment Electricity Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 7 OFFICE WHOLEBUILDING ELEC EQUIP:Electric Equipment Electricity Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 8 OFFICE WHOLEBUILDING ELEC EQUIP:Electric Equipment Electricity Energy
+
+ For Meter=InteriorEquipment:Electricity:Zone:ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A [J], ResourceType=Electricity, EndUse=InteriorEquipment, Group=Zone, contents are:
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A OFFICE WHOLEBUILDING ELEC EQUIP:Electric Equipment Electricity Energy
+
+ For Meter=General:InteriorEquipment:Electricity [J], ResourceType=Electricity, EndUse=InteriorEquipment, contents are:
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A OFFICE WHOLEBUILDING ELEC EQUIP:Electric Equipment Electricity Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 5 OFFICE WHOLEBUILDING ELEC EQUIP:Electric Equipment Electricity Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 6 OFFICE WHOLEBUILDING ELEC EQUIP:Electric Equipment Electricity Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 7 OFFICE WHOLEBUILDING ELEC EQUIP:Electric Equipment Electricity Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 8 OFFICE WHOLEBUILDING ELEC EQUIP:Electric Equipment Electricity Energy
+
+ For Meter=InteriorEquipment:Electricity:Zone:ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 5 [J], ResourceType=Electricity, EndUse=InteriorEquipment, Group=Zone, contents are:
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 5 OFFICE WHOLEBUILDING ELEC EQUIP:Electric Equipment Electricity Energy
+
+ For Meter=InteriorEquipment:Electricity:Zone:ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 6 [J], ResourceType=Electricity, EndUse=InteriorEquipment, Group=Zone, contents are:
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 6 OFFICE WHOLEBUILDING ELEC EQUIP:Electric Equipment Electricity Energy
+
+ For Meter=InteriorEquipment:Electricity:Zone:ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 7 [J], ResourceType=Electricity, EndUse=InteriorEquipment, Group=Zone, contents are:
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 7 OFFICE WHOLEBUILDING ELEC EQUIP:Electric Equipment Electricity Energy
+
+ For Meter=InteriorEquipment:Electricity:Zone:ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 8 [J], ResourceType=Electricity, EndUse=InteriorEquipment, Group=Zone, contents are:
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 8 OFFICE WHOLEBUILDING ELEC EQUIP:Electric Equipment Electricity Energy
+
+ For Meter=EnergyTransfer:Facility [J], ResourceType=EnergyTransfer, contents are:
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A:Zone Air System Sensible Heating Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A:Zone Air System Sensible Cooling Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 5:Zone Air System Sensible Heating Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 5:Zone Air System Sensible Cooling Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 6:Zone Air System Sensible Heating Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 6:Zone Air System Sensible Cooling Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 7:Zone Air System Sensible Heating Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 7:Zone Air System Sensible Cooling Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 8:Zone Air System Sensible Heating Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 8:Zone Air System Sensible Cooling Energy
+
+ For Meter=EnergyTransfer:Building [J], ResourceType=EnergyTransfer, Group=Building, contents are:
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A:Zone Air System Sensible Heating Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A:Zone Air System Sensible Cooling Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 5:Zone Air System Sensible Heating Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 5:Zone Air System Sensible Cooling Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 6:Zone Air System Sensible Heating Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 6:Zone Air System Sensible Cooling Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 7:Zone Air System Sensible Heating Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 7:Zone Air System Sensible Cooling Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 8:Zone Air System Sensible Heating Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 8:Zone Air System Sensible Cooling Energy
+
+ For Meter=EnergyTransfer:Zone:ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A [J], ResourceType=EnergyTransfer, Group=Zone, contents are:
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A:Zone Air System Sensible Heating Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A:Zone Air System Sensible Cooling Energy
+
+ For Meter=Heating:EnergyTransfer [J], ResourceType=EnergyTransfer, EndUse=Heating, contents are:
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A:Zone Air System Sensible Heating Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 5:Zone Air System Sensible Heating Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 6:Zone Air System Sensible Heating Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 7:Zone Air System Sensible Heating Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 8:Zone Air System Sensible Heating Energy
+
+ For Meter=Heating:EnergyTransfer:Zone:ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A [J], ResourceType=EnergyTransfer, EndUse=Heating, Group=Zone, contents are:
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A:Zone Air System Sensible Heating Energy
+
+ For Meter=General:Heating:EnergyTransfer [J], ResourceType=EnergyTransfer, EndUse=Heating, contents are:
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A:Zone Air System Sensible Heating Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 5:Zone Air System Sensible Heating Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 6:Zone Air System Sensible Heating Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 7:Zone Air System Sensible Heating Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 8:Zone Air System Sensible Heating Energy
+
+ For Meter=Cooling:EnergyTransfer [J], ResourceType=EnergyTransfer, EndUse=Cooling, contents are:
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A:Zone Air System Sensible Cooling Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 5:Zone Air System Sensible Cooling Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 6:Zone Air System Sensible Cooling Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 7:Zone Air System Sensible Cooling Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 8:Zone Air System Sensible Cooling Energy
+
+ For Meter=Cooling:EnergyTransfer:Zone:ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A [J], ResourceType=EnergyTransfer, EndUse=Cooling, Group=Zone, contents are:
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A:Zone Air System Sensible Cooling Energy
+
+ For Meter=General:Cooling:EnergyTransfer [J], ResourceType=EnergyTransfer, EndUse=Cooling, contents are:
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A:Zone Air System Sensible Cooling Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 5:Zone Air System Sensible Cooling Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 6:Zone Air System Sensible Cooling Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 7:Zone Air System Sensible Cooling Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 8:Zone Air System Sensible Cooling Energy
+
+ For Meter=EnergyTransfer:Zone:ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 5 [J], ResourceType=EnergyTransfer, Group=Zone, contents are:
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 5:Zone Air System Sensible Heating Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 5:Zone Air System Sensible Cooling Energy
+
+ For Meter=Heating:EnergyTransfer:Zone:ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 5 [J], ResourceType=EnergyTransfer, EndUse=Heating, Group=Zone, contents are:
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 5:Zone Air System Sensible Heating Energy
+
+ For Meter=Cooling:EnergyTransfer:Zone:ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 5 [J], ResourceType=EnergyTransfer, EndUse=Cooling, Group=Zone, contents are:
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 5:Zone Air System Sensible Cooling Energy
+
+ For Meter=EnergyTransfer:Zone:ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 6 [J], ResourceType=EnergyTransfer, Group=Zone, contents are:
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 6:Zone Air System Sensible Heating Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 6:Zone Air System Sensible Cooling Energy
+
+ For Meter=Heating:EnergyTransfer:Zone:ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 6 [J], ResourceType=EnergyTransfer, EndUse=Heating, Group=Zone, contents are:
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 6:Zone Air System Sensible Heating Energy
+
+ For Meter=Cooling:EnergyTransfer:Zone:ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 6 [J], ResourceType=EnergyTransfer, EndUse=Cooling, Group=Zone, contents are:
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 6:Zone Air System Sensible Cooling Energy
+
+ For Meter=EnergyTransfer:Zone:ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 7 [J], ResourceType=EnergyTransfer, Group=Zone, contents are:
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 7:Zone Air System Sensible Heating Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 7:Zone Air System Sensible Cooling Energy
+
+ For Meter=Heating:EnergyTransfer:Zone:ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 7 [J], ResourceType=EnergyTransfer, EndUse=Heating, Group=Zone, contents are:
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 7:Zone Air System Sensible Heating Energy
+
+ For Meter=Cooling:EnergyTransfer:Zone:ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 7 [J], ResourceType=EnergyTransfer, EndUse=Cooling, Group=Zone, contents are:
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 7:Zone Air System Sensible Cooling Energy
+
+ For Meter=EnergyTransfer:Zone:ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 8 [J], ResourceType=EnergyTransfer, Group=Zone, contents are:
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 8:Zone Air System Sensible Heating Energy
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 8:Zone Air System Sensible Cooling Energy
+
+ For Meter=Heating:EnergyTransfer:Zone:ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 8 [J], ResourceType=EnergyTransfer, EndUse=Heating, Group=Zone, contents are:
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 8:Zone Air System Sensible Heating Energy
+
+ For Meter=Cooling:EnergyTransfer:Zone:ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 8 [J], ResourceType=EnergyTransfer, EndUse=Cooling, Group=Zone, contents are:
+  ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 8:Zone Air System Sensible Cooling Energy
+
+ For Meter=ElectricityPurchased:Facility [J], ResourceType=ElectricityPurchased, contents are:
+  Whole Building:Facility Total Purchased Electricity Energy
+
+ For Meter=ElectricityPurchased:Plant [J], ResourceType=ElectricityPurchased, Group=Plant, contents are:
+  Whole Building:Facility Total Purchased Electricity Energy
+
+ For Meter=Cogeneration:ElectricityPurchased [J], ResourceType=ElectricityPurchased, EndUse=Cogeneration, contents are:
+  Whole Building:Facility Total Purchased Electricity Energy
+
+ For Meter=General:Cogeneration:ElectricityPurchased [J], ResourceType=ElectricityPurchased, EndUse=Cogeneration, contents are:
+  Whole Building:Facility Total Purchased Electricity Energy
+
+ For Meter=ElectricitySurplusSold:Facility [J], ResourceType=ElectricitySurplusSold, contents are:
+  Whole Building:Facility Total Surplus Electricity Energy
+
+ For Meter=ElectricitySurplusSold:Plant [J], ResourceType=ElectricitySurplusSold, Group=Plant, contents are:
+  Whole Building:Facility Total Surplus Electricity Energy
+
+ For Meter=Cogeneration:ElectricitySurplusSold [J], ResourceType=ElectricitySurplusSold, EndUse=Cogeneration, contents are:
+  Whole Building:Facility Total Surplus Electricity Energy
+
+ For Meter=General:Cogeneration:ElectricitySurplusSold [J], ResourceType=ElectricitySurplusSold, EndUse=Cogeneration, contents are:
+  Whole Building:Facility Total Surplus Electricity Energy
+
+ For Meter=ElectricityNet:Facility [J], ResourceType=ElectricityNet, contents are:
+  Whole Building:Facility Net Purchased Electricity Energy
+
+ For Meter=ElectricityNet:Plant [J], ResourceType=ElectricityNet, Group=Plant, contents are:
+  Whole Building:Facility Net Purchased Electricity Energy
+
+ For Meter=Cogeneration:ElectricityNet [J], ResourceType=ElectricityNet, EndUse=Cogeneration, contents are:
+  Whole Building:Facility Net Purchased Electricity Energy
+
+ For Meter=General:Cogeneration:ElectricityNet [J], ResourceType=ElectricityNet, EndUse=Cogeneration, contents are:
+  Whole Building:Facility Net Purchased Electricity Energy
+
+ For Meter=DistrictHeating:Facility [J], ResourceType=DistrictHeating, contents are:
+  ZONE HVAC IDEAL LOADS AIR SYSTEM 1:Zone Ideal Loads Supply Air Total Heating Energy
+  ZONE HVAC IDEAL LOADS AIR SYSTEM 2:Zone Ideal Loads Supply Air Total Heating Energy
+  ZONE HVAC IDEAL LOADS AIR SYSTEM 3:Zone Ideal Loads Supply Air Total Heating Energy
+  ZONE HVAC IDEAL LOADS AIR SYSTEM 4:Zone Ideal Loads Supply Air Total Heating Energy
+  ZONE HVAC IDEAL LOADS AIR SYSTEM 5:Zone Ideal Loads Supply Air Total Heating Energy
+
+ For Meter=DistrictHeating:HVAC [J], ResourceType=DistrictHeating, Group=HVAC, contents are:
+  ZONE HVAC IDEAL LOADS AIR SYSTEM 1:Zone Ideal Loads Supply Air Total Heating Energy
+  ZONE HVAC IDEAL LOADS AIR SYSTEM 2:Zone Ideal Loads Supply Air Total Heating Energy
+  ZONE HVAC IDEAL LOADS AIR SYSTEM 3:Zone Ideal Loads Supply Air Total Heating Energy
+  ZONE HVAC IDEAL LOADS AIR SYSTEM 4:Zone Ideal Loads Supply Air Total Heating Energy
+  ZONE HVAC IDEAL LOADS AIR SYSTEM 5:Zone Ideal Loads Supply Air Total Heating Energy
+
+ For Meter=Heating:DistrictHeating [J], ResourceType=DistrictHeating, EndUse=Heating, contents are:
+  ZONE HVAC IDEAL LOADS AIR SYSTEM 1:Zone Ideal Loads Supply Air Total Heating Energy
+  ZONE HVAC IDEAL LOADS AIR SYSTEM 2:Zone Ideal Loads Supply Air Total Heating Energy
+  ZONE HVAC IDEAL LOADS AIR SYSTEM 3:Zone Ideal Loads Supply Air Total Heating Energy
+  ZONE HVAC IDEAL LOADS AIR SYSTEM 4:Zone Ideal Loads Supply Air Total Heating Energy
+  ZONE HVAC IDEAL LOADS AIR SYSTEM 5:Zone Ideal Loads Supply Air Total Heating Energy
+
+ For Meter=General:Heating:DistrictHeating [J], ResourceType=DistrictHeating, EndUse=Heating, contents are:
+  ZONE HVAC IDEAL LOADS AIR SYSTEM 1:Zone Ideal Loads Supply Air Total Heating Energy
+  ZONE HVAC IDEAL LOADS AIR SYSTEM 2:Zone Ideal Loads Supply Air Total Heating Energy
+  ZONE HVAC IDEAL LOADS AIR SYSTEM 3:Zone Ideal Loads Supply Air Total Heating Energy
+  ZONE HVAC IDEAL LOADS AIR SYSTEM 4:Zone Ideal Loads Supply Air Total Heating Energy
+  ZONE HVAC IDEAL LOADS AIR SYSTEM 5:Zone Ideal Loads Supply Air Total Heating Energy
+
+ For Meter=DistrictCooling:Facility [J], ResourceType=DistrictCooling, contents are:
+  ZONE HVAC IDEAL LOADS AIR SYSTEM 1:Zone Ideal Loads Supply Air Total Cooling Energy
+  ZONE HVAC IDEAL LOADS AIR SYSTEM 2:Zone Ideal Loads Supply Air Total Cooling Energy
+  ZONE HVAC IDEAL LOADS AIR SYSTEM 3:Zone Ideal Loads Supply Air Total Cooling Energy
+  ZONE HVAC IDEAL LOADS AIR SYSTEM 4:Zone Ideal Loads Supply Air Total Cooling Energy
+  ZONE HVAC IDEAL LOADS AIR SYSTEM 5:Zone Ideal Loads Supply Air Total Cooling Energy
+
+ For Meter=DistrictCooling:HVAC [J], ResourceType=DistrictCooling, Group=HVAC, contents are:
+  ZONE HVAC IDEAL LOADS AIR SYSTEM 1:Zone Ideal Loads Supply Air Total Cooling Energy
+  ZONE HVAC IDEAL LOADS AIR SYSTEM 2:Zone Ideal Loads Supply Air Total Cooling Energy
+  ZONE HVAC IDEAL LOADS AIR SYSTEM 3:Zone Ideal Loads Supply Air Total Cooling Energy
+  ZONE HVAC IDEAL LOADS AIR SYSTEM 4:Zone Ideal Loads Supply Air Total Cooling Energy
+  ZONE HVAC IDEAL LOADS AIR SYSTEM 5:Zone Ideal Loads Supply Air Total Cooling Energy
+
+ For Meter=Cooling:DistrictCooling [J], ResourceType=DistrictCooling, EndUse=Cooling, contents are:
+  ZONE HVAC IDEAL LOADS AIR SYSTEM 1:Zone Ideal Loads Supply Air Total Cooling Energy
+  ZONE HVAC IDEAL LOADS AIR SYSTEM 2:Zone Ideal Loads Supply Air Total Cooling Energy
+  ZONE HVAC IDEAL LOADS AIR SYSTEM 3:Zone Ideal Loads Supply Air Total Cooling Energy
+  ZONE HVAC IDEAL LOADS AIR SYSTEM 4:Zone Ideal Loads Supply Air Total Cooling Energy
+  ZONE HVAC IDEAL LOADS AIR SYSTEM 5:Zone Ideal Loads Supply Air Total Cooling Energy
+
+ For Meter=General:Cooling:DistrictCooling [J], ResourceType=DistrictCooling, EndUse=Cooling, contents are:
+  ZONE HVAC IDEAL LOADS AIR SYSTEM 1:Zone Ideal Loads Supply Air Total Cooling Energy
+  ZONE HVAC IDEAL LOADS AIR SYSTEM 2:Zone Ideal Loads Supply Air Total Cooling Energy
+  ZONE HVAC IDEAL LOADS AIR SYSTEM 3:Zone Ideal Loads Supply Air Total Cooling Energy
+  ZONE HVAC IDEAL LOADS AIR SYSTEM 4:Zone Ideal Loads Supply Air Total Cooling Energy
+  ZONE HVAC IDEAL LOADS AIR SYSTEM 5:Zone Ideal Loads Supply Air Total Cooling Energy
+
+ For Meter=Carbon Equivalent:Facility [kg], ResourceType=Carbon Equivalent, contents are:
+  Site:Environmental Impact Total N2O Emissions Carbon Equivalent Mass
+  Site:Environmental Impact Total CH4 Emissions Carbon Equivalent Mass
+  Site:Environmental Impact Total CO2 Emissions Carbon Equivalent Mass
+
+ For Meter=CarbonEquivalentEmissions:Carbon Equivalent [kg], ResourceType=Carbon Equivalent, EndUse=CarbonEquivalentEmissions, contents are:
+  Site:Environmental Impact Total N2O Emissions Carbon Equivalent Mass
+  Site:Environmental Impact Total CH4 Emissions Carbon Equivalent Mass
+  Site:Environmental Impact Total CO2 Emissions Carbon Equivalent Mass
