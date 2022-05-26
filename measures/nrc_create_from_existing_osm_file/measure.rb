@@ -3,29 +3,31 @@ require 'openstudio-standards'
 # see the URL below for information on how to write OpenStudio measures
 # http://nrel.github.io/OpenStudio-user-documentation/reference/measure_writing_guide/
 
-# start the measure
+# Start the measure
 class NrcCreateFromExistingOsmFile < OpenStudio::Measure::ModelMeasure
   attr_accessor :use_json_package, :use_string_double
   include(NRCMeasureHelper)
+
+  # Create an array for all the osm files in the "input_osm_files" folder
   $all_osm_files = []
-  # human readable name
+  # Human readable name
   def name
     # Measure name should be the title case of the class name.
     return 'NRC Create From Existing Osm File'
   end
 
-  # human readable description
+  # Human readable description
   def description
     return "The measure searches a folder for a user defined osm file name and updates version of code"
   end
 
-  # human readable description of modeling approach
+  # Human readable description of modeling approach
   def modeler_description
     return "The measure searches a folder (input_osm_files) in the measure folder for a user defined osm file name.
-            There's a Boolean option to update to match version of code, If the bool is true then user can select one of 4 options of the code version. Options: NECB 2011, 2015, 2017 and 2020"
+            There's a Boolean option to update version of code, If the Bool is true then user can select one of 4 options of the code version. Options are: NECB 2011, 2015, 2017 and 2020"
   end
 
-  # Search for all osm files in the "input_osm_files" folder and add them to an array
+  # Search for all osm files in the "input_osm_files" folder and add them to an array.
   def find_osm_files
     osm_files_path = File.expand_path("#{File.expand_path(__dir__)}/input_osm_files/")
     files = Dir.entries(osm_files_path)
@@ -36,8 +38,7 @@ class NrcCreateFromExistingOsmFile < OpenStudio::Measure::ModelMeasure
     return $all_osm_files
   end
 
-
-  #Use the constructor to set global variables
+  # Use the constructor to set global variables
   def initialize()
     super()
     find_osm_files()
@@ -72,17 +73,17 @@ class NrcCreateFromExistingOsmFile < OpenStudio::Measure::ModelMeasure
         "name" => "template",
         "type" => "Choice",
         "display_name" => "template",
-        "default_value" => "NECB2017",
+        "default_value" => "NECB2020",
         "choices" => ["NECB2011", "NECB2015", "NECB2017", "NECB2020"],
         "is_required" => true
       }
     ]
   end
 
-  # define what happens when the measure is run
+  # Define what happens when the measure is run
   def run(model, runner, user_arguments)
 
-    #Runs parent run method.
+    # Runs parent run method.
     super(model, runner, user_arguments)
 
     @runner = runner
@@ -90,49 +91,39 @@ class NrcCreateFromExistingOsmFile < OpenStudio::Measure::ModelMeasure
     # ensure that the values inputted are valid based on your @measure_interface array of hashes.
     arguments = validate_and_get_arguments_in_hash(model, runner, user_arguments)
 
-    #puts JSON.pretty_generate(arguments)
     return false if false == arguments
 
     # Assign the user inputs to variables that can be accessed across the measure
     upload_osm_file = arguments['upload_osm_file']
     update_code_version = arguments['update_code_version']
     template = arguments['template']
+    # Report the initial template for the uploaded model
+    initial_template = model.getBuilding.standardsTemplate
+    runner.registerInitialCondition("Uploaded model had initial template :".green + " #{initial_template}".light_blue)
 
     puts "Upload_osm_file".green + " #{upload_osm_file}".light_blue
     puts "Update_code_version".green + " #{update_code_version}".light_blue
     puts "Template".green + " #{template}".light_blue
-
     puts "List of all OSM files:".green + " #{$all_osm_files}".light_blue
 
     # Load osm file
     translator = OpenStudio::OSVersion::VersionTranslator.new
     osm_file_path = File.expand_path("#{File.expand_path(__dir__)}/input_osm_files/#{upload_osm_file}")
-    model = translator.loadModel(osm_file_path)
+    new_model = translator.loadModel(osm_file_path.to_s).get
+    standard = Standard.build(template)
+    standard.model_replace_model(model, new_model)
 
-    if !model.empty?
-      puts "Loading model at :".green + " #{osm_file_path}".light_blue
-    else
-      puts "Couldn't load the model".red
-    end
-    model = model.get
     if update_code_version
       puts "Updating code version to ".green + "#{template}".light_blue
-      model = update_code_template(template, model)
+      updated_model = update_code_template(template, model)
       # Set building name
-      building = model.getBuilding
+      building = updated_model.getBuilding
       building_type = building.standardsBuildingType
       puts "Building_type".green + " #{building_type}".light_blue
       building_name = ("#{building_type}_#{template}")
       building.setName(building_name)
-      # Save the model to test output directory
-      output_path = "outputMeasure_file_path/test_output_#{template}.osm"
-    else
-      # If user selected not to update_code_version, then get the template from the model itself
-      template = model.getBuilding.standardsTemplate
-      # Save the model to test output directory
-      output_path = "output_file_path/test_output_#{template}.osm"
+      runner.registerFinalCondition("Model's template has changed to: ".green + "#{template}".light_blue)
     end
-    model.save(output_path, true)
     return true
   end
 
@@ -144,15 +135,15 @@ class NrcCreateFromExistingOsmFile < OpenStudio::Measure::ModelMeasure
     weatherFile_path = model.weatherFile.get.path.get #./weather/CAN_ON_Windsor.Intl.AP.715380_CWEC2016.epw
     epw_file = weatherFile_path.to_s.split('/')[2] #CAN_ON_Windsor.Intl.AP.715380_CWEC2016.epw
 
+    sizing_path = File.expand_path("#{File.expand_path(__dir__)}/tests/output/sizing/")
     # Apply standards ruleset to model
     model = standard.model_apply_standard(model: model,
                                           epw_file: epw_file,
-                                          sizing_run_dir: Dir.pwd)
+                                          sizing_run_dir: sizing_path)
 
     return model
   end
-
 end
 
-# register the measure to be used by the application
+# Register the measure to be used by the application
 NrcCreateFromExistingOsmFile.new.registerWithApplication

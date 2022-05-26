@@ -13,7 +13,17 @@ require 'fileutils'
 
 class NrcCreateFromExistingOsmFile_Test < Minitest::Test
   # Brings in helper methods to simplify argument testing of json and standard argument methods.
-    include(NRCMeasureTestHelper)
+  include(NRCMeasureTestHelper)
+
+  # Check to see if an overall start time was passed (it should be if using one of the test scripts in the test folder).
+  #  If so then use it to determine what old results are (if not use now).
+  start_time = Time.now
+  if ARGV.length == 1
+
+    # We have a time. It will be in seconds since the epoch. Update our start_time.
+    start_time = Time.at(ARGV[0].to_i)
+  end
+  NRCMeasureTestHelper.removeOldOutputs(before: start_time)
 
   def setup()
     # Copied from measure.
@@ -40,23 +50,22 @@ class NrcCreateFromExistingOsmFile_Test < Minitest::Test
           "name" => "template",
           "type" => "Choice",
           "display_name" => "template",
-          "default_value" => "NECB2017",
+          "default_value" => "NECB2020",
           "choices" => ["NECB2011", "NECB2015", "NECB2017", "NECB2020"],
           "is_required" => true
         }
       ]
 
     @good_input_arguments = {
-      "upload_osm_file" => "smallOffice_Windsor.osm",
+      "upload_osm_file" => "smallOffice_Victoria.osm",
       "update_code_version" => true,
       "template" => "NECB2020"
     }
   end
 
   def test_model_upload
-    # Define the output folder for this test (optional - default is the method name).
-    output_file_path = NRCMeasureTestHelper.appendOutputFolder("test_model")
-
+    # Define the output folder for this test.
+    output_file_path = NRCMeasureTestHelper.appendOutputFolder("test_uploaded_model")
     model = OpenStudio::Model::Model.new
     # create an instance of the measure
     measure = NrcCreateFromExistingOsmFile.new
@@ -65,14 +74,79 @@ class NrcCreateFromExistingOsmFile_Test < Minitest::Test
     arguments = measure.arguments(model)
     assert_equal(3, arguments.size)
 
-    input_arguments=@good_input_arguments
+    input_arguments = @good_input_arguments
+
+    upload_osm_file = input_arguments['upload_osm_file']
+    update_code_version = input_arguments['update_code_version']
+    template = input_arguments['template']
+
     # Create an instance of the measure with good values
     runner = run_measure(input_arguments, model)
-    puts "In the test , the Standards Template".green + "  #{model.getBuilding.standardsTemplate}".light_blue
 
-    # Save the model to test output directory.
-    model.save(output_file_path, true)
-    puts "Runner output #{show_output(runner.result)}".green
+    # Test if Standards is applied correctly
+    expected_template = model.getBuilding.standardsTemplate
+    if update_code_version
+      assert_equal(expected_template.to_s, template.to_s)
+    end
+
+    # save the model to test output directory
+    output_file_path1 = "#{output_file_path}/#{template}.osm"
+    model.save(output_file_path1, true)
     assert(runner.result.value.valueName == 'Success')
+  end
+
+  def test_model_diff
+    # The test will compare models with different templates.
+    all_templates = ["NECB2011", "NECB2015", "NECB2020"] # Will compare 2011, 2015, and 2020 to the NECB 2017 small office in Victoria
+    # Load osm file
+    translator = OpenStudio::OSVersion::VersionTranslator.new
+    original_path = "#{File.expand_path(__dir__)}"
+    osm_file_path = File.expand_path("../input_osm_files/smallOffice_Victoria.osm", original_path)
+    initial_model = translator.loadModel(osm_file_path.to_s).get
+    initial_template = initial_model.getBuilding.standardsTemplate
+    model = translator.loadModel(osm_file_path.to_s).get
+
+    # Create an instance of the measure
+    measure = NrcCreateFromExistingOsmFile.new
+
+    all_templates.each do |template|
+      puts "Comparing".green + " #{initial_template}".light_blue + " and".green + " #{template}"
+      # Get arguments
+      arguments = measure.arguments(model)
+      input_arguments = {
+        "upload_osm_file" => "smallOffice_Victoria.osm",
+        "update_code_version" => true,
+        "template" => template
+      }
+
+      # Create an instance of the measure with good values
+      runner = run_measure(input_arguments, model)
+
+      # Compare the two models.
+      begin
+        diffs = []
+        diffs = BTAP::FileIO::compare_osm_files(initial_model, model)
+
+      rescue => exception
+        # Log error/exception and then keep going.
+        error = "#{exception.backtrace.first}: #{exception.message} (#{exception.class})"
+        exception.backtrace.drop(1).map { |s| "\n#{s}" }.each { |bt| error << bt.to_s }
+        diffs << ": Error \n#{error}"
+      end
+
+      # Define the output folder for this test
+      outputFolder = "diff_templates_#{initial_template}_#{template}"
+      output_file_path = NRCMeasureTestHelper.appendOutputFolder(outputFolder)
+
+      #Write out diff or error message
+      diff_file = "#{output_file_path}_diffs.json"
+      FileUtils.rm(diff_file) if File.exists?(diff_file)
+
+      if diffs.size > 0
+        File.write(diff_file, JSON.pretty_generate(diffs))
+        puts "There were".green + " #{diffs.size}".light_blue + " differences/errors in".green + " #{initial_template} - #{template} ".light_blue
+        { "diffs-errors" => diffs }
+      end
+    end
   end
 end
