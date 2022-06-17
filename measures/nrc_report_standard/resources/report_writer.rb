@@ -67,7 +67,7 @@ class NrcReportingMeasureStandard < OpenStudio::Measure::ReportingMeasure
                 end
                 table_content[:data].drop(skip).each do |row|
                   output << "<tr>"
-                  row.each { |element| output << "<td>#{element}</td>" }
+                  row.each { |element| output << "<td id='reg'>#{element}</td>" }
                   output << "</tr>"
                 end
                 output << "</table>"
@@ -80,7 +80,7 @@ class NrcReportingMeasureStandard < OpenStudio::Measure::ReportingMeasure
                   skip = 1
                   if table_content[:units]
                     skip = 2
-                    output << "<td><i>#{row[1]}</i></td>"
+                    output << "<td id='reg'><i>#{row[1]}</i></td>"
                   end
                   row.drop(skip).each { |element| output << "<td>#{element}</td>" }
                   output << "</tr>"
@@ -125,17 +125,48 @@ class NrcReportingMeasureStandard < OpenStudio::Measure::ReportingMeasure
   class Word_writer < Strategy
     def do_writing(data)
       docx = Caracal::Document.new('report.docx')
+      docx.style id: 'special', name: 'Special', size: 24, bold: true
       data.each do |section|
         content = section.content
-        docx.h1("#{content[:title]}")
-        docx.p("#{content[:introduction]}")
+
+        docx.h1 "#{content[:title]}" do
+          style 'custom_style' # sets the paragraph style. generally used at the exclusion of other attributes.
+          align :left # sets the alignment. accepts :left, :center, :right, and :both.
+          color '#004467' # sets the font color.
+          size 32 # sets the font size. units in 1/2 points.
+          bold true # sets whether or not to render the text with a bold weight.
+          italic false # sets whether or not render the text in italic style.
+          underline false # sets whether or not to underline the text.
+          bgcolor 'white' # sets the background color.
+        end
+
+        docx.p "#{content[:introduction]}" do
+          style 'custom_style' # sets the paragraph style. generally used at the exclusion of other attributes.
+          align :left # sets the alignment. accepts :left, :center, :right, and :both.
+          color '#336985' # sets the font color.
+          size 26 # sets the font size. units in 1/2 points.
+          bold false # sets whether or not to render the text with a bold weight.
+          italic true # sets whether or not render the text in italic style.
+          underline false # sets whether or not to underline the text.
+          bgcolor 'white' # sets the background color.
+        end
+
         if content[:tables_and_charts] != nil
           content[:tables_and_charts].each do |table_or_chart|
             case table_or_chart
             when ReportTable
               # Its a table.
               table_content = table_or_chart.content
-              docx.p("Table: #{table_content[:caption]}")
+              docx.p "Table: #{table_content[:caption]}" do
+                style 'custom_style' # sets the paragraph style. generally used at the exclusion of other attributes.
+                align :left # sets the alignment. accepts :left, :center, :right, and :both.
+                color '#2986cc' # sets the font color.
+                size 24 # sets the font size. units in 1/2 points.
+                bold true # sets whether or not to render the text with a bold weight.
+                italic false # sets whether or not render the text in italic style.
+                underline false # sets whether or not to underline the text.
+                bgcolor 'white' # sets the background color.
+              end
 
               # Need to scan table data and replace html tags with the appropriate caracel objects.
               table_data = table_content[:data]
@@ -163,10 +194,33 @@ class NrcReportingMeasureStandard < OpenStudio::Measure::ReportingMeasure
                   cell
                 })
               end
+
               puts "#{table_data}".yellow
               # Now create the Word table.
-              docx.table(table_data)
+
+              # Check whether header is row or column
+              table_header = table_content[:by_row]
+              if table_header == true
+              docx.table table_data, border_size: 4 do
+                cell_style cols[0],  bold: true, background: '#004467', color: 'white'  # Style the first column (header)
+                cell_style cells,    size: 20, margins: { top: 100, bottom: 0, left: 100, right: 100 }
+              end
+              elsif table_header == false
+                docx.table table_data, border_size: 4 do
+                  cell_style rows[0],  bold: true, background: '#004467', color: 'white'
+                  cell_style rows[2],  bold: true, background: '#DDE5EA', color: 'black'
+                  cell_style rows[4],  bold: true, background: '#DDE5EA', color: 'black'
+                  cell_style rows[6],  bold: true, background: '#DDE5EA', color: 'black'
+                  cell_style rows[8],  bold: true, background: '#DDE5EA', color: 'black'
+                  cell_style rows[10],  bold: true, background: '#DDE5EA', color: 'black'
+                  cell_style rows[12],  bold: true, background: '#DDE5EA', color: 'black'
+                  cell_style cells,    size: 20, margins: { top: 100, bottom: 0, left: 100, right: 100 }
+                end
+              end
               docx.p("#{table_content[:description]}")
+              # Create empty lines after table
+              docx.p
+              docx.p
             when ReportChart
               puts "*** ReportChart writing *** Not yet implemented".yellow
             else

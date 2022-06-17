@@ -4,7 +4,7 @@ require_relative 'resources/report_writer.rb'
 require_relative 'resources/report_sections.rb'
 require 'erb'
 require 'json'
-# require 'caracal' # Required nokogiri which does not work with openstudio_cli.exe on server
+#require 'caracal' # Required nokogiri which does not work with openstudio_cli.exe on server
 
 # start the measure
 class NrcReportingMeasureStandard < OpenStudio::Measure::ReportingMeasure
@@ -176,9 +176,11 @@ class NrcReportingMeasureStandard < OpenStudio::Measure::ReportingMeasure
     writer.write(output)
 
     # Put this together in a word file. ** Requires caracal.
-    #docx=Word_writer.new
-    #writer = Writer.new(docx)
-    #writer.write(output)
+=begin
+    docx=Word_writer.new
+    writer = Writer.new(docx)
+    writer.write(output)
+=end
 
     # Put this together in a word file.
     json = Json_writer.new

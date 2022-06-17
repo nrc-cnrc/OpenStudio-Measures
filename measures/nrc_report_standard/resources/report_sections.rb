@@ -92,25 +92,6 @@ class NrcReportingMeasureStandard < OpenStudio::Measure::ReportingMeasure
     end
   end
 
-  # Simulation summary
-  class SimulationSummary < ReportSection
-    def initialize(btap_data: btap_data = nil)
-      @content = { title: "Simulation overview" }
-      @content[:introduction] = "The following is a summary of the simulation and the simulation results."
-
-      # Define the table content of this section. # Add URL and sha. These are in the qaqc json.
-      table = ReportTable.new(caption: "Simulation Overview.")
-      data = Array.new
-      data << ["Tool", "Version", "Revision"]
-      data << ["OpenStudio-Standards", btap_data[:os_standards_version], btap_data[:os_standards_revision]]
-      data << ["EnergyPlus", btap_data[:energyplus_version], "-"]
-      data << ["OpenStudio-Server", btap_data[:openstudio_version].split("+")[0], btap_data[:openstudio_version].split("+")[1]]
-      table.data = data
-
-      add_table_or_chart(table)
-    end
-  end
-
   # Energy summary
   class EnergySummary < ReportSection
     def initialize(btap_data: btap_data = nil)
@@ -134,7 +115,7 @@ class NrcReportingMeasureStandard < OpenStudio::Measure::ReportingMeasure
       data << ["Pumps", ((btap_data[:energy_eui_pumps_gj_per_m_sq]) * fa / 0.0036).signif, ((btap_data[:energy_eui_pumps_gj_per_m_sq]) / 0.0036).signif]
       data << ["Water Systems", ((btap_data[:"energy_eui_water systems_gj_per_m_sq"]) * fa / 0.0036).signif, ((btap_data[:"energy_eui_water systems_gj_per_m_sq"]) / 0.0036).signif]
       data << ["Interior Lighting", ((btap_data[:"energy_eui_interior lighting_gj_per_m_sq"]) * fa / 0.0036).signif, ((btap_data[:"energy_eui_interior lighting_gj_per_m_sq"]) / 0.0036).signif]
-      data << ["Heat Recovery", ((btap_data[:"energy_eui_heat recovery_gj_per_m_sq"]) * fa / 0.0036).signif, ((btap_data[:"energy_eui_heat recovery_gj_per_m_sq"]) / 0.0036).signif]
+      #data << ["Heat Recovery", ((btap_data[:"energy_eui_heat recovery_gj_per_m_sq"]) * fa / 0.0036).signif, ((btap_data[:"energy_eui_heat recovery_gj_per_m_sq"]) / 0.0036).signif]
       data << ["Total EUI", ((btap_data[:energy_eui_total_gj_per_m_sq]) * fa / 0.0036).signif, ((btap_data[:energy_eui_total_gj_per_m_sq]) / 0.0036).signif]
       table.data = data
 
@@ -155,7 +136,7 @@ class NrcReportingMeasureStandard < OpenStudio::Measure::ReportingMeasure
       hdd = btap_data[:location_necb_hdd]
 
       # Lambdas are preferred over methods in methods for small utility methods.
-      #  Reterieve the prescriptive value from the standard.
+      #  Retrieve the prescriptive value from the standard.
       std_lookup = lambda do |surface_type|
         return eval(standard.model_find_objects(standard.standards_data['surface_thermal_transmittance'], surface_type)[0]['formula'])
       end
