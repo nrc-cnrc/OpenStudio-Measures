@@ -334,7 +334,9 @@ class NrcReportingMeasureStandard < OpenStudio::Measure::ReportingMeasure
         # Get LPD from NECB 2017 Standards
         spacetype_data = standard.standards_data['tables']['space_types']['table']
         space_type_properties = spacetype_data.detect { |s| (s['building_type'] == building_type) && (s['space_type'] == space_type_name) }
-        necb_lighting_per_area = space_type_properties["lighting_per_area"]
+        # Convert from W/ft2 to W/m2
+        necb_lighting_per_area_ft2 = space_type_properties["lighting_per_area"]
+        necb_lighting_per_area = necb_lighting_per_area_ft2 * 10.76391041671
         data << [space_name, space_type_name, lighting_w_per_m_sq, necb_lighting_per_area]
       end
       table.data = data
