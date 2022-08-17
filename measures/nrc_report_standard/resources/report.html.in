@@ -24,12 +24,12 @@ table tr:nth-child(even) {
 table tr:nth-child(odd) {
   background: #f2f2f2;
 }
-table, th, td {
+table,th, td {
   border: 2px solid #004467;
 }
 h2 {
-    color: white;
-    background: #004467;
+    color: #004467;
+    background: white;
     margin-top: 5px;
     padding-left: 5px;
     padding-right: 9px;
@@ -48,6 +48,12 @@ color: #558CB5
 font-style: bold;
 color: #004467
 }
+#table_header {
+background: '#004467';
+color: 'white'
+font-style: bold;
+}
+
 </style>
 <body>
 <%= output %>

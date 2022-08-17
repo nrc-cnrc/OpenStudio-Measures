@@ -92,25 +92,6 @@ class NrcReportingMeasureStandard < OpenStudio::Measure::ReportingMeasure
     end
   end
 
-  # Simulation summary
-  class SimulationSummary < ReportSection
-    def initialize(btap_data: btap_data = nil)
-      @content = { title: "Simulation overview" }
-      @content[:introduction] = "The following is a summary of the simulation and the simulation results."
-
-      # Define the table content of this section. # Add URL and sha. These are in the qaqc json.
-      table = ReportTable.new(caption: "Simulation Overview.")
-      data = Array.new
-      data << ["Tool", "Version", "Revision"]
-      data << ["OpenStudio-Standards", btap_data[:os_standards_version], btap_data[:os_standards_revision]]
-      data << ["EnergyPlus", btap_data[:energyplus_version], "-"]
-      data << ["OpenStudio-Server", btap_data[:openstudio_version].split("+")[0], btap_data[:openstudio_version].split("+")[1]]
-      table.data = data
-
-      add_table_or_chart(table)
-    end
-  end
-
   # Energy summary
   class EnergySummary < ReportSection
     def initialize(btap_data: btap_data = nil)
@@ -134,7 +115,7 @@ class NrcReportingMeasureStandard < OpenStudio::Measure::ReportingMeasure
       data << ["Pumps", ((btap_data[:energy_eui_pumps_gj_per_m_sq]) * fa / 0.0036).signif, ((btap_data[:energy_eui_pumps_gj_per_m_sq]) / 0.0036).signif]
       data << ["Water Systems", ((btap_data[:"energy_eui_water systems_gj_per_m_sq"]) * fa / 0.0036).signif, ((btap_data[:"energy_eui_water systems_gj_per_m_sq"]) / 0.0036).signif]
       data << ["Interior Lighting", ((btap_data[:"energy_eui_interior lighting_gj_per_m_sq"]) * fa / 0.0036).signif, ((btap_data[:"energy_eui_interior lighting_gj_per_m_sq"]) / 0.0036).signif]
-      data << ["Heat Recovery", ((btap_data[:"energy_eui_heat recovery_gj_per_m_sq"]) * fa / 0.0036).signif, ((btap_data[:"energy_eui_heat recovery_gj_per_m_sq"]) / 0.0036).signif]
+      #data << ["Heat Recovery", ((btap_data[:"energy_eui_heat recovery_gj_per_m_sq"]) * fa / 0.0036).signif, ((btap_data[:"energy_eui_heat recovery_gj_per_m_sq"]) / 0.0036).signif]
       data << ["Total EUI", ((btap_data[:energy_eui_total_gj_per_m_sq]) * fa / 0.0036).signif, ((btap_data[:energy_eui_total_gj_per_m_sq]) / 0.0036).signif]
       table.data = data
 
@@ -155,7 +136,7 @@ class NrcReportingMeasureStandard < OpenStudio::Measure::ReportingMeasure
       hdd = btap_data[:location_necb_hdd]
 
       # Lambdas are preferred over methods in methods for small utility methods.
-      #  Reterieve the prescriptive value from the standard.
+      #  Retrieve the prescriptive value from the standard.
       std_lookup = lambda do |surface_type|
         return eval(standard.model_find_objects(standard.standards_data['surface_thermal_transmittance'], surface_type)[0]['formula'])
       end
@@ -272,7 +253,7 @@ class NrcReportingMeasureStandard < OpenStudio::Measure::ReportingMeasure
 
   # Ventilation summary
   class VentilationSummary < ReportSection
-    def initialize(btap_data: btap_data = nil, standard: standard = nil)
+    def initialize(btap_data: btap_data = nil, standard: standard = nil, sqlFile: sqlFile = nil, model: model = nil)
       @content = { title: "Ventilation Overview" }
       @content[:introduction] = "The following is a summary of the space ventilation in the model."
 
@@ -287,28 +268,78 @@ class NrcReportingMeasureStandard < OpenStudio::Measure::ReportingMeasure
 
       # Extract data from hash and ensure it has keys as symbols. Note need "" if there is a - in the symbol.
       data = Array.new
-      data << ["Space name", "Ventilation rate", "Volume", "Air change rate"]
-      data << [" ", "m<sup>3</sup>/s", "m<sup>3</sup>", "/hr"]
+      data << ["Space name", "Zone name", "Air Loop Name", "Ventilation rate", "Volume", "Air change rate"]
+      data << [" "," "," ", "m<sup>3</sup>/s", "m<sup>3</sup>", "/hr"]
+
+      # Thermal zones
+      rate = 0.0
+      volume = 0.0
       total_volume = 0.0
       total_rate = 0.0
-      puts "#{btap_data[:space_table]}".green
-      btap_data[:space_table].each do |space|
-        space.transform_keys!(&:to_sym)
-        puts "#{space}".blue
-        puts "#{space[:is_conditioned]}".red
-        #if space[:is_conditioned] == "Yes" then
-        volume = space[:volume]
-        rate = space[:breathing_zone_outdoor_airflow_vbz]
-        ach = 3600.0 * rate / volume
-        data << [space[:space_name], rate.signif, volume.signif, ach.signif]
-        total_volume += volume
-        total_rate += rate
-        #end
+      zones = model.getThermalZones
+      zones.sort.each do |zone|
+        zone_name = zone.name.get
+        model.getAirLoopHVACs.each do |air_loop|
+          if air_loop.thermalZones.include?(zone)
+            air_loop_name = air_loop.name.get
+            query = "SELECT Value FROM tabulardatawithstrings WHERE ReportName='Standard62.1Summary' and TableName='Zone Ventilation Parameters' and RowName= '#{zone_name.to_s.upcase}' and ColumnName= 'Breathing Zone Outdoor Airflow - Vbz'"
+            rate = model.sqlFile.get.execAndReturnFirstDouble(query)
+            rate=rate.to_f
+            btap_data_space_type = btap_data[:space_table].detect{|s|(s[:thermal_zone_name] == zone_name.to_s)}
+            volume = btap_data_space_type[:volume].to_f
+            space_name = btap_data_space_type[:space_name]
+            ach = 3600.0 * rate / volume
+            data << [space_name, zone_name, air_loop_name, rate.signif, volume.signif, ach.signif]
+            total_volume += volume
+            total_rate += rate
+          end
+        end
       end
-      data << ["Totals", total_rate.signif, total_volume.signif, (3600.0 * total_rate / total_volume).signif]
+
+      data << ["Totals", "", "",total_rate.signif, total_volume.signif, (3600.0 * total_rate / total_volume).signif]
       table.data = data
       table.description = "Table <caption> provides a breakdown of the ventilation by space in the model. -1 represents an
 	      error in retrieving the data for the energy plus sql file."
+      add_table_or_chart(table)
+    end
+  end
+  
+    # Lighting summary
+  class LightSummary < ReportSection
+    def initialize(btap_data: btap_data = nil, standard: standard = nil)
+      @content = { title: "Lighting Summary" }
+      @content[:introduction] = "The following is a summary of the lighting per area in the model."
+
+      # Define the table content of this section.
+      table = ReportTable.new(units: true, caption: "Lighting Overview.")
+
+      # Extract data from hash and ensure it has keys as symbols.
+      data = Array.new
+      data << ["Space Name", "Space Type Name", "Lighting", "NECB 2017 Reference Lighting"]
+      data << [" ", " ", "W/m<sup>2</sup>", "W/m<sup>2</sup>"]
+
+      btap_data[:space_table].each do |space|
+        space.transform_keys!(&:to_sym)
+        space_name = space[:space_name]
+        building_type = space[:building_type]
+        space_type_name = space[:space_type_name]
+
+        # In btap_data the building_type is added to the space type name
+        btap_data_space_type_name = "#{building_type}" + " " + "#{space_type_name}"
+
+        # Get LPD from btap_data
+        btap_data_sapce_type = btap_data[:space_type_table].detect { |s| (s['name'] == btap_data_space_type_name) }
+        lighting_w_per_m_sq = btap_data_sapce_type["lighting_w_per_m_sq"]
+
+        # Get LPD from NECB 2017 Standards
+        spacetype_data = standard.standards_data['tables']['space_types']['table']
+        space_type_properties = spacetype_data.detect { |s| (s['building_type'] == building_type) && (s['space_type'] == space_type_name) }
+        # Convert from W/ft2 to W/m2
+        necb_lighting_per_area_ft2 = space_type_properties["lighting_per_area"]
+        necb_lighting_per_area = necb_lighting_per_area_ft2 * 10.76391041671
+        data << [space_name, space_type_name, lighting_w_per_m_sq, necb_lighting_per_area]
+      end
+      table.data = data
       add_table_or_chart(table)
     end
   end

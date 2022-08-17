@@ -4,7 +4,7 @@ require_relative 'resources/report_writer.rb'
 require_relative 'resources/report_sections.rb'
 require 'erb'
 require 'json'
-# require 'caracal' # Required nokogiri which does not work with openstudio_cli.exe on server
+#require 'caracal' # Required nokogiri which does not work with openstudio_cli.exe on server
 
 # start the measure
 class NrcReportingMeasureStandard < OpenStudio::Measure::ReportingMeasure
@@ -166,7 +166,8 @@ class NrcReportingMeasureStandard < OpenStudio::Measure::ReportingMeasure
     output << EnergySummary.new(btap_data: btap_data)
     output << EnvelopeSummary.new(btap_data: btap_data, standard: @standard)
     output << InfiltrationSummary.new(btap_data: btap_data, standard: @standard)
-    output << VentilationSummary.new(btap_data: btap_data, standard: @standard)
+    output << VentilationSummary.new(btap_data: btap_data, standard: @standard, sqlFile: sql_file, model:model)
+	output << LightSummary.new(btap_data: btap_data, standard: @standard)
     output.each { |section| puts section.class }
     output.each { |section| puts section.content }
 
@@ -176,9 +177,11 @@ class NrcReportingMeasureStandard < OpenStudio::Measure::ReportingMeasure
     writer.write(output)
 
     # Put this together in a word file. ** Requires caracal.
-    #docx=Word_writer.new
-    #writer = Writer.new(docx)
-    #writer.write(output)
+=begin
+    docx=Word_writer.new
+    writer = Writer.new(docx)
+    writer.write(output)
+=end
 
     # Put this together in a word file.
     json = Json_writer.new
