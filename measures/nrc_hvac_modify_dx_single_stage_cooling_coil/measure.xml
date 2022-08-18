@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_hvac_modify_dx_single_stage_cooling</name>
   <uid>0f2c50cf-5491-483c-a6b3-c99eff40b57d</uid>
-  <version_id>e296940b-16e8-4330-9b18-0d98b073af35</version_id>
-  <version_modified>20220316T131759Z</version_modified>
+  <version_id>aeb6aa48-cec6-4ffa-856a-9c947792bb68</version_id>
+  <version_modified>20220817T203958Z</version_modified>
   <xml_checksum>8CBDDA1B</xml_checksum>
   <class_name>NrcHvacModifyDxSingleStageCooling</class_name>
   <display_name>Modify HVAC Air Loop DX cooling coil COP</display_name>
@@ -65,22 +65,22 @@
       <checksum>BB363B05</checksum>
     </file>
     <file>
-      <filename>BTAPMeasureHelper.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>4F234BCA</checksum>
-    </file>
-    <file>
       <filename>test.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
       <checksum>45F17AD3</checksum>
     </file>
     <file>
+      <filename>BTAPMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>AE38D9B8</checksum>
+    </file>
+    <file>
       <filename>NRCMeasureHelper.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>A5221895</checksum>
+      <checksum>EF2FCBFD</checksum>
     </file>
   </files>
 </measure>

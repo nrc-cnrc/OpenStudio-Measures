@@ -2,13 +2,13 @@
 
 ###### (Automatically generated documentation)
 
-# NrcSetBoilerEfficiency
+# Set Boiler Thermal Efficiency
 
 ## Description
-This measure sets boiler efficiency that affects heating energy consumption.
+This measure sets the boiler thermal efficiency for all boilers in the model.
 
 ## Modeler Description
-The measure offers an options to set the boiler thermal efficiency. Measure retrieved and updated on 22/05/2020 from NREL, Building Component Library https://bcl.nrel.gov/node/39443.
+The measure sets the boiler thermal efficiency for every BoilerHotWaters object in the model. Measure based on Building Component Library https://bcl.nrel.gov/node/39443. (retrieved on 22/05/2020 from NREL). Edited to use NRC/NRCan standard framework.
 
 ## Measure Type
 ModelMeasure
@@ -19,7 +19,7 @@ ModelMeasure
 ## Arguments
 
 
-### Set Boiler efficiency between 0.0 and 1.0
+### Set boiler efficiency (fraction between 0.0 and 1.0)
 
 **Name:** boiler_eff,
 **Type:** Double,

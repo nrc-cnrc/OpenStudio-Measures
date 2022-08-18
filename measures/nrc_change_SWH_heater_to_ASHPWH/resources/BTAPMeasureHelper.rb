@@ -102,7 +102,6 @@ module BTAPMeasureHelper
 
   # Boilerplate that validated ranges of inputs.
   def validate_and_get_arguments_in_hash(model, runner, user_arguments)
-    puts "****"
     return_value = true
     values = get_hash_of_arguments(user_arguments, runner)
     # use the built-in error checking

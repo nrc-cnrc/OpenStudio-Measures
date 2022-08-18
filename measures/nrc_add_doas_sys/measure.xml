@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_add_doas_sys</name>
   <uid>14f47c70-84f9-4435-9155-5bd3f2d87c4c</uid>
-  <version_id>a2e28f94-0ac6-4077-a9e8-b7dfa39197e2</version_id>
-  <version_modified>20220316T131750Z</version_modified>
+  <version_id>44b9bc03-6d7a-4180-98f3-0aa88c165b03</version_id>
+  <version_modified>20220817T203948Z</version_modified>
   <xml_checksum>4435983D</xml_checksum>
   <class_name>NrcAddDOASSys</class_name>
   <display_name>NrcAddDOASSys</display_name>
@@ -75,22 +75,22 @@
       <checksum>2B19031A</checksum>
     </file>
     <file>
-      <filename>BTAPMeasureHelper.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>4F234BCA</checksum>
-    </file>
-    <file>
       <filename>test.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
       <checksum>C1E9CD20</checksum>
     </file>
     <file>
+      <filename>BTAPMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>AE38D9B8</checksum>
+    </file>
+    <file>
       <filename>NRCMeasureHelper.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>A5221895</checksum>
+      <checksum>EF2FCBFD</checksum>
     </file>
   </files>
 </measure>

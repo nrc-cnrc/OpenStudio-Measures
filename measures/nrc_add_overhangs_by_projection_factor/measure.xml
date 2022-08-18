@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_add_overhangs_by_projection_factor</name>
   <uid>d4d9130a-6a1d-4f01-8f14-f49a470a5c30</uid>
-  <version_id>7c7cad7e-91b5-40e0-b057-7f5460544061</version_id>
-  <version_modified>20220316T131751Z</version_modified>
+  <version_id>644c3caf-08e5-4b74-9bb8-42d0d73adcd2</version_id>
+  <version_modified>20220817T203948Z</version_modified>
   <xml_checksum>6DE831F7</xml_checksum>
   <class_name>NrcAddOverhangsByProjectionFactor</class_name>
   <display_name>NrcAddOverhangsByProjectionFactor</display_name>
@@ -129,22 +129,22 @@
       <checksum>295563C3</checksum>
     </file>
     <file>
-      <filename>BTAPMeasureHelper.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>4F234BCA</checksum>
-    </file>
-    <file>
       <filename>test.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
       <checksum>093CA7A7</checksum>
     </file>
     <file>
+      <filename>BTAPMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>AE38D9B8</checksum>
+    </file>
+    <file>
       <filename>NRCMeasureHelper.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>A5221895</checksum>
+      <checksum>EF2FCBFD</checksum>
     </file>
   </files>
 </measure>

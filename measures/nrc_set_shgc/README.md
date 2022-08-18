@@ -2,13 +2,13 @@
 
 ###### (Automatically generated documentation)
 
-# Change SHGC
+# Set SHGC
 
 ## Description
 Changes solar heat gain coefficient (SHGC) of simple glazing systems.
 
 ## Modeler Description
-Find all simple glazing systems int he model and change the SHGC.
+For all simple glazing systems in the model changes the SHGC to the value specified.
 
 ## Measure Type
 ModelMeasure

@@ -2,13 +2,13 @@
 
 ###### (Automatically generated documentation)
 
-# NrcSetPumpEfficiency 
+# Set Pump Efficiency 
 
 ## Description
-The measure offers an options to set all pump efficiencies to specified value.
+Set pump motor efficiency to specified value in all fans in the model (see modeler description for specific object types).
 
 ## Modeler Description
-The measure sets motor efficiency of constant and variable speed pumps.
+The measure sets motor efficiency of constant and variable speed pumps in the model.
 
 ## Measure Type
 ModelMeasure
@@ -19,9 +19,9 @@ ModelMeasure
 ## Arguments
 
 
-### Set pump efficiency between 0.0 and 1.0
+### Set pump efficiency (fraction between 0.0 and 1.0)
 
-**Name:** eff_for_this_cz,
+**Name:** pump_eff,
 **Type:** Double,
 **Units:** ,
 **Required:** true,

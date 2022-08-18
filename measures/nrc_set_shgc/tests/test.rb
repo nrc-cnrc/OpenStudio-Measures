@@ -1,4 +1,4 @@
-# Standard openstudio requires for runnin test.
+# Standard openstudio requires for running test.
 require 'openstudio'
 require 'openstudio/measure/ShowRunnerOutput'
 require 'openstudio-standards'
@@ -11,7 +11,7 @@ require_relative '../resources/NRCMeasureHelper.rb'
 # Specific requires for this test.
 require 'fileutils'
 
-class NrcAlterSHGC_Test < Minitest::Test
+class NrcSetSHGC_Test < Minitest::Test
 
   # Brings in helper methods to simplify argument testing of json and standard argument methods.
   include(NRCMeasureTestHelper)
@@ -45,30 +45,28 @@ class NrcAlterSHGC_Test < Minitest::Test
   def test_argument_values
 
     # Define the output folder for this test (optional - default is the method name).
-    output_file_path = NRCMeasureTestHelper.appendOutputFolder("Modified_SHGC_test")
+    output_file_path = NRCMeasureTestHelper.appendOutputFolder("Set SHGC test")
 	
-    # load the test model
+    # Load the test model.
 	model = load_test_osm(File.dirname(__FILE__) + "/warehouse_2017.osm")
 
-    # Run the measure and check output.
-    puts "  Runnning measure".light_blue
-	runner = run_measure(@good_input_arguments, model)
-    result = runner.result
-    puts "  Checking results".light_blue
-    assert(result.value.valueName == 'Success')
+    # Get arguments.
+    input_arguments = @good_input_arguments
 
-    # Test if the measure would grab the correct number and value of input argument.
-    assert_equal(1, @good_input_arguments.size, "Number of arguments")
-    assert_equal(0.35, @good_input_arguments['new_shgc'], "SHGC value")
-    
+    # Run the measure. This saves the updated model to "#{output_file_path}/test_output.osm".
+    runner = run_measure(input_arguments, model)
+
+    # Check that the measure returned 'success'.
+    assert(runner.result.value.valueName == 'Success', "Error in running measure.")
+
+    # Get the SHGC value.
+    new_shgc = input_arguments['new_shgc']
+
 	# Check if a shgc was changed.
     model.getSimpleGlazings.each do |sim_glaz|
-      assert_equal(0.35, sim_glaz.solarHeatGainCoefficient.to_f, "SHGC is incorrect")
+      assert_in_delta(new_shgc, sim_glaz.solarHeatGainCoefficient.to_f, 0.001, "Error in updated SHGC.")
     end
 
-    # Save the model to test output directory.
-    output_path = "#{output_file_path}/test_output.osm"
-    model.save(output_path, true)
 	puts "Done.".light_blue
   end
 end

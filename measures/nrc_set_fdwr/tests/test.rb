@@ -12,6 +12,7 @@ require_relative '../resources/NRCMeasureHelper.rb'
 require 'fileutils'
 
 class NrcSetFdwr_Test < Minitest::Test
+
   # Brings in helper methods to simplify argument testing of json and standard argument methods.
   include(NRCMeasureTestHelper)
 
@@ -40,21 +41,27 @@ class NrcSetFdwr_Test < Minitest::Test
         "type" => "Double",
         "display_name" => 'Set specific FDWR (if option is selected above). Please enter a number greater than or equal to 0.0 and less than 1.0',
         "default_value" => 0.4,
+        "max_double_value" => 1.0,
+        "min_double_value" => 0.0,
         "is_required" => false
       }
     ]
+
+    # Must have @good_input_arguments defined for std BTAP checking to work.
+    @good_input_arguments = {
+      "fdwr_options" => "Set specific FDWR",
+      "fdwr" => 0.3
+    }
   end
 
-  # Loop through all input arguments to test all possibilities
+  # Loop through all input arguments to test all possibilities.
   def test_inputArguments
-    translator = OpenStudio::OSVersion::VersionTranslator.new
-    path = OpenStudio::Path.new(File.dirname(__FILE__) + "/resources/Warehouse-NECB2017-ON_Ottawa.osm")
-    model = translator.loadModel(path)
-    assert((not model.empty?))
-    model = model.get
+
+    # Load osm file.
+    model = load_test_osm("#{File.dirname(__FILE__)}/resources/Warehouse-NECB2017-ON_Ottawa.osm")
 
     initial_fdwr = 0.0
-    #loop through all surfaces used in the model to get the initial fdwr before running the measure
+    # Loop through all surfaces used in the model to get the initial fdwr before running the measure.
     model.getSpaces.sort.each do |space|
       space.surfaces.sort.each do |surface|
         if surface.outsideBoundaryCondition == 'Outdoors' and surface.surfaceType == "Wall"
@@ -63,6 +70,7 @@ class NrcSetFdwr_Test < Minitest::Test
       end
     end
 
+    # Test using NECB 2017.
     standard = Standard.build("NECB2017")
     all_fdwr_options = ["Remove the windows", "Set windows to match max FDWR from NECB", "Don't change windows", "Reduce existing window size to meet maximum NECB FDWR limit", "Set specific FDWR"]
     all_fdwr_options.each do |fdwr_options|
@@ -82,11 +90,13 @@ class NrcSetFdwr_Test < Minitest::Test
       # Define the output folder for this test (optional - default is the method name).
       output_file_path = NRCMeasureTestHelper.appendOutputFolder("#{fdwr_options_noSpaces}")
 
-      # Set argument values to good values and run the measure on model with spaces
+      # Run the measure. This saves the updated model to "#{output_file_path}/test_output.osm".
       runner = run_measure(input_arguments, model)
-      result = runner.result
-      assert(result.value.valueName == 'Success')
 
+      # Check that it ran successfully.
+      assert(runner.result.value.valueName == 'Success', "Error in running measure.")
+
+      # Get expected FDWR for checking.
       if (fdwr_options == "Remove the windows")
         expected_fdwr = 0.0
       elsif (fdwr_options == "Set windows to match max FDWR from NECB")
@@ -103,14 +113,8 @@ class NrcSetFdwr_Test < Minitest::Test
       end
 
       fdwr_calculated = calculateFDWR(model)
-      assert_equal(fdwr_calculated.round(3), expected_fdwr.round(3), "Fenestration did not change correctly")
+      assert_in_delta(fdwr_calculated.round(3), expected_fdwr.round(3), 0.001, "Expected FDWR.")
       puts "fdwr #{fdwr_calculated.round(3)}; expected fdwr #{expected_fdwr.round(3)}".yellow
-      # test if the measure would grab the correct number and value of input argument.
-      assert_equal(2, input_arguments.size)
-
-      # Save the model to test output directory.
-      output_path = "#{output_file_path}/test_output.osm"
-      model.save(output_path, true)
     end
   end
 

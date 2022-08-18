@@ -9,7 +9,7 @@ The measure searches a folder for a user defined osm file name and updates versi
 
 ## Modeler Description
 The measure searches a folder (input_osm_files) in the measure folder for a user defined osm file name.
-            There's a Boolean option to update to match version of code, If the bool is true then user can select one of 4 options of the code version. Options: NECB 2011, 2015, 2017 and 2020
+            There's a Boolean option to update version of code, If the Bool is true then user can select one of 4 options of the code version. Options are: NECB 2011, 2015, 2017 and 2020
 
 ## Measure Type
 ModelMeasure

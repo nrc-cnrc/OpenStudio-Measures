@@ -2,6 +2,7 @@
 require_relative 'resources/NRCReportingMeasureHelper'
 require_relative 'resources/report_writer.rb'
 require_relative 'resources/report_sections.rb'
+require_relative 'resources/additional_measure_methods.rb'
 require 'erb'
 require 'json'
 #require 'caracal' # Required nokogiri which does not work with openstudio_cli.exe on server
@@ -52,6 +53,22 @@ class NrcReportingMeasureStandard < OpenStudio::Measure::ReportingMeasure
 
     request = OpenStudio::IdfObject.load('Output:Variable,,Site Outdoor Air Drybulb Temperature,Hourly;').get
     result << request
+
+    # Parse the model for setpoints and add to the requested outputs.
+    model = runner.lastOpenStudioModel
+    if not model.empty? then
+      model = model.get
+      setPoints = model.getSetpointManagers
+      puts ("Setpoints object count: #{setPoints.size}".red)
+      setPoints.each do |setPoint|
+        puts ("#{setPoint.controlVariable}".light_blue)
+        puts ("#{setPoint.setpointNode.get.name}".light_blue)
+        variable = setPoint.controlVariable
+        node = setPoint.setpointNode.get.name
+        result << OpenStudio::IdfObject.load("Output:Variable,#{node},System Node #{variable},Hourly;").get
+        result << OpenStudio::IdfObject.load("Output:Variable,#{node},System Node Setpoint #{variable},Hourly;").get
+      end
+    end
 
     return result
   end
@@ -156,6 +173,7 @@ class NrcReportingMeasureStandard < OpenStudio::Measure::ReportingMeasure
     # Add fields to btap_data that we want in our output.
     btap_data.merge! simulation_configuration(qaqc_data)
     btap_data.merge! envelope_areas(qaqc_data)
+    btap_data.merge! gatherSetpointSummary(model)
 
     # Create output data structure.
     # This is a structured has of all the sections we want to report on.
@@ -198,10 +216,15 @@ class NrcReportingMeasureStandard < OpenStudio::Measure::ReportingMeasure
     File.open('./qaqc_data.json', 'w') { |f| f.write(JSON.pretty_generate(qaqc_data, allow_nan: true)) }
     puts "Wrote file qaqc_data.json in #{Dir.pwd} "
 
+    # Set output variables (listed in outputs method). Grab the numbers directly from btap_data.
+    runner.registerValue('total_site_energy', ((btap_data[:energy_eui_total_gj_per_m_sq]) / 0.0036).signif(4), 'kWh')
+   #puts "#{output.class}".yellow
+    
+
     return true
   end
 
-  # Additional data for btap_data
+  # Additional data for btap_data json structure
   #  Simulation environment configuration
   def simulation_configuration(qaqc_data)
     data = { simulation_openstudio_version: qaqc_data[:openstudio_version].split('+')[0],
