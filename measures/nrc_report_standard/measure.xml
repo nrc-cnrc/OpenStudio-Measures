@@ -80,12 +80,6 @@
       <checksum>6674950F</checksum>
     </file>
     <file>
-      <filename>test.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>test</usage_type>
-      <checksum>D9CE19BE</checksum>
-    </file>
-    <file>
       <filename>README.md.erb</filename>
       <filetype>erb</filetype>
       <usage_type>readmeerb</usage_type>
@@ -118,7 +112,7 @@
     <file>
       <filename>NRCReportingMeasureHelper.rb</filename>
       <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
+      <usage_type>resource</usage_type
       <checksum>76513449</checksum>
     </file>
     <file>

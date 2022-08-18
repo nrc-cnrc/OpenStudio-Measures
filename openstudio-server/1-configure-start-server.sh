@@ -26,8 +26,8 @@ download_gems
 # Define a container name for checking if the server is running and getting current server gemfile from.
 #  Also define the worker container root name (i.e. without the number) here for ease of fixing when
 #  docker changes their naming scheme.
-container=${PWD##*/}"-web-1"
-worker_root=${PWD##*/}"-worker-"
+container=${PWD##*/}"_web_1"
+worker_root=${PWD##*/}"_worker_"
 
 # Loop until container is up and running. Use 'tries' to avoid sticking here forever
 echo -e "${GREEN}Checking server is up and running${NC}...$container"
@@ -47,26 +47,12 @@ do
 done
 echo -e "${GREEN}done${NC}."
 
-# Download required gems into the osgems volume (created by the yml file).
-# Copy required gems locally and then push onto the server.
+# Install the gems specified in ../env.sh to the web container (the gems folder is shared with the workers).
 if [ $server_running -eq "1" ]
 then 
-  # Install gems. Place the gems on the web_1 container as this is accessible from all teh workers.
-  echo -e "${GREEN}Installing gems in container: ${BLUE}$container${NC}..."
-  docker exec $container sh -c "mkdir -p $gemDir"
-  for (( iGem=0; iGem<${nGems}; iGem++ ))
-  do
-    echo -e "  copying ${BLUE}${server_gems[($iGem*3)]}${NC} to ${BLUE}$gemDir${NC} in container ${BLUE}$container${NC}"
-    docker cp ../.gems/${server_gems[($iGem*3)]} $container:$gemDir
-  done
-  echo -e "${GREEN}done${NC}."
-  
-  # Copy the default Gemfile. Edit this on the windows side and then copy to each worker.
-  echo -e "${GREEN}Copying current openstudio-server gemfile from $container${NC}"
-  docker cp $container:/usr/local/openstudio-${os_version}/Ruby/Gemfile .gemfile
-  
-# Update the gems on the worker nodes to use the specified version of standards (and it dependencies).
-#  *** bundle config local.openstudio-standards /var/os-gems/openstudio-standards
+  install_gems $container
+
+# Now update all the worker nodes.
   echo -e "${GREEN}Recovering worker IDs from docker${NC}..."
   STEP="${GREEN}Recovering worker IDs from docker${NC}"
   workerIDs=($(docker ps -q -f name=${worker_root}))
@@ -77,51 +63,7 @@ then
   STEP="${GREEN}Updating worker node Gemfiles${NC}"
   nWorkers=${#workerIDs[@]}
   echo "Number of workers $nWorkers"
-  echo "Number of gems $nGems"
-  
-  # Loop through the gemfiles specified in the env.sh file and modify the local .gemfile
-  echo -e "${GREEN}... editing local .gemfile${NC}..."
-  for (( iGem=0; iGem<${nGems}; iGem++ ))
-  do
-    OLD="gem '${server_gems[($iGem*3)+1]}'"
-    NEW="gem '${server_gems[($iGem*3)+1]}', path: '/var/gems'" # This path is on the worker node
-    #SPEC="spec.add_dependency '${server_gems[($iGem*3)+1]}'"
-    if grep "gem '${server_gems[($iGem*3)+1]}'" .gemfile
-    then
-      echo -e "Found ${BLUE}${server_gems[($iGem*3)+1]}${NC} gem in local gemfile"
-      sed -i -e "s|$OLD.*|$NEW|g" .gemfile
-      #sed -i -e "s|$SPEC.*|$SPEC, '>= 0'|g" .gems/openstudio-gems.gemspec-updated
-    else
-      if [ ${server_gems[($iGem*3)+1]} = 'openstudio-gems' ]
-      then
-        echo -e "${YELLOW}Skipping ${server_gems[($iGem*3)+1]}${NC}"
-      else
-        echo -e "${YELLOW}Adding new gem ${BLUE}${server_gems[($iGem*3)+1]}${YELLOW} to local gemfile${NC}"
-        echo "$NEW" >> .gemfile
-      fi
-    fi
-    #  echo -e "${BLUE}Gem #$iGem${NC} - ${server_gems[($iGem*3)+1]}"
-    #  docker exec ${workerIDs[$iWorker]} sh -c "cd /var/oscli; bundle config local.${server_gems[($iGem*3)+1]} /var/os-gems/${server_gems[($iGem*3)]}"
-  done
-  
-  # Parse the project Gemfile and add measure specific gems from there into the local .gemfile
-  echo -e "${GREEN}... adding measure specific gems to .gemfile${NC}..."
-  addgems="FALSE"
-  while read -r line
-  do
-    #echo -e "${YELLOW}$line${NC}"
-	if [ "$addgems" = "TRUE" ]
-	then
-	  echo -e "adding gem requirements: ${line}"
-	  echo $line >> .gemfile
-	fi
-    if [[ "$line" =~ "Additional" ]]
-	then
-      echo -e "${GREEN}$line${NC}"
-	  addgems="TRUE"
-	fi
-  done < ../Gemfile
-  
+   
   # Keep track of PIDs of spawned processes with popup windows.
   child_pids=()
   # Now copy the local gemfile to the workers.
@@ -156,7 +98,8 @@ then
   echo -e "${GREEN}done${NC}."
   cd ..
 
-  # Offer to kill all the worker log windows at once.
+  # Offer to kill all the worker log windows at once. For some strange reason the PIDs recorded above no longer exist (they are all 2 greater). Do not 
+  #  want to just add 2 to the PID though as that could have serious side effects!
   echo "Remove all worker log pop-up windows?"
   select yn in "Yes" "No"; do
     case $yn in

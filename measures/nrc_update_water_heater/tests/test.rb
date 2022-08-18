@@ -40,10 +40,8 @@ class NrcUpdateWaterHeater_Test < Minitest::Test
   end
 
   def test_argument_values
-    # create an instance of the measure
-    measure = NrcUpdateWaterHeater.new
 
-    # load the test model
+    # Load the test model.
     translator = OpenStudio::OSVersion::VersionTranslator.new
     path = OpenStudio::Path.new(File.dirname(__FILE__) + "/in.osm")
     model = translator.loadModel(path)

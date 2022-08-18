@@ -14,4 +14,9 @@ openstudio-server/.gemfile
 
 # Files and folders from setting up tests.
 test/.env
+test/.script.sed
+test/.docker/Dockerfile
+test/*.tar.gz
+test/.gemfile
+test/measures_to_test-all.txt
 .gems

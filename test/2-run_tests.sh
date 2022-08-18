@@ -1,19 +1,34 @@
 #!/bin/bash
 source ../env.sh
 
-# Check if running a fast test (no updates and container will be kept alive)
+# Set defaults here that may be adjusted by command line args.
 fast=""
-if [ -n $1 ] && [[ $1 = "--fast" ]]
-then
-  echo -e "${YELLOW}Fast run option specified. Container will not be stopped after test. You will have to do this manually!${NC}."
-  fast="true"
-  container=$2
-else
-  container=$1
-fi
+container=""
+
+# Parse the command line.
+while [[ $# -gt 0 ]]; do
+  case $1 in
+    -f|--fast)
+      echo -e "${GREEN}Fast run option specified. Container will not be stopped after test. You will have to do this manually!${NC}."
+      fast="true"
+      shift # past argument
+      ;;
+    -c|--container)
+      echo -e "${GREEN}Specified a specific container!${NC}."
+      container="$2"
+      shift # past argument
+      shift # past value
+      ;;
+    -*|--*)
+      echo -e "${YELLOW}Unknown option $1${NC}"
+      exit 1
+      ;;
+  esac
+done
+
 
 # Check if a container name was provided on the command line, if not use the default from env.sh.
-if [ -z $container ] 
+if [ -z ${container} ] 
 then
     echo -e "${YELLOW}Using default container name ${BLUE}${default_container}${NC}."
 	container=$default_container
@@ -23,25 +38,26 @@ fi
 
 # Start container
 echo -e "${GREEN}Starting the test environment container${NC}..."
-docker container start $container
+docker container start ${container}
+
 # Run the tests
 echo -e "${GREEN}Starting the tests${NC}..."
-if [ -z $fast ] 
+if [ -z ${fast} ] 
 then
   echo -e "${GREEN}Updating gems${NC} (info in popup window)..."
   mintty -s 72,32 -t "Gem update info" -h always /bin/bash -c \
-    "docker exec $container sh -c \"cd /os_test; bundle update; echo DONE. Press enter to close.\""
+    "docker exec $container sh -c \"cd /var/oscli; bundle update; echo DONE. Press enter to close.\""
   echo -e "${GREEN}Updating measures${NC} (info in popup window)..."
   mintty -s 144,32 -t "Measure update info" -h always /bin/bash -c \
-    "docker exec $container sh -c \"openstudio measure -t /os_test/measures; echo DONE. Press enter to close.\""
+    "docker exec $container sh -c \"openstudio --bundle /var/oscli/Gemfile --bundle_path /var/oscli --bundle_without native_ext measure -t /os_test/measures; echo DONE. Press enter to close.\""
 fi
 echo -e "${GREEN}Running tests${NC}..."
-docker exec $container sh -c "cd /os_test/test; bundle exec ruby test_measures.rb"
+docker exec ${container} sh -c "cd /var/oscli; bundle exec ruby /os_test/test/test_measures.rb"
 
-# Stop the container
-if [ -z $fast ]
+# Stop the container.
+if [ -z ${fast} ]
 then
   echo -e "${GREEN}Stopping the test environment container${NC}..."
-  docker container stop $container
+  docker container stop ${container}
   echo -e "...${GREEN}done${NC}." 
 fi

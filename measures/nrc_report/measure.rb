@@ -137,6 +137,12 @@ class NrcReport < OpenStudio::Measure::ReportingMeasure
 
   def outputs
     result = OpenStudio::Measure::OSOutputVector.new
+    test_output = OpenStudio::Measure::OSOutput.makeDoubleOutput('heat') # kWh
+	test_output.setDisplayName("Heating End Use")
+	test_output.setShortName("h")
+	test_output.setDescription("Total heating energy for the simulation period")
+	test_output.setUnits("kWh")
+	result << test_output
     result << OpenStudio::Measure::OSOutput.makeDoubleOutput('heating') # kWh
     result << OpenStudio::Measure::OSOutput.makeDoubleOutput('cooling') # kWh
     result << OpenStudio::Measure::OSOutput.makeDoubleOutput('electricity_consumption') # kWh
@@ -156,6 +162,23 @@ class NrcReport < OpenStudio::Measure::ReportingMeasure
     if !runner.validateUserArguments(arguments, user_arguments)
       return false
     end
+	
+	# TEST
+    test_output = OpenStudio::Measure::OSOutput.makeDoubleOutput('heating') # kWh
+	test_output.setDisplayName("Heathig end use")
+	test_output.setUnits("kWh")
+	puts "*******************************************"
+	puts "*******************************************"
+	puts "name: #{test_output.name}"
+	puts "displayName: #{test_output.displayName}"
+	puts "shortName: #{test_output.shortName}"
+	puts "description: #{test_output.description}"
+	puts "units: #{test_output.units}"
+	puts "*******************************************"
+	puts "*******************************************"
+	puts test_output.print
+	puts "*******************************************"
+	puts "*******************************************"
 
     #get arguments
     report_depth = runner.getStringArgumentValue("report_depth", user_arguments)

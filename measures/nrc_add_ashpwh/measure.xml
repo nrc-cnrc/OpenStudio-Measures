@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_add_ashpwh</name>
   <uid>87631e5c-6a3f-4f4b-88af-c8b6fe497809</uid>
-  <version_id>d69bb094-0591-402f-83cb-2768a7dc3f51</version_id>
-  <version_modified>20220316T131750Z</version_modified>
+  <version_id>712b288e-31e8-43fe-9628-f5fcbf661a6a</version_id>
+  <version_modified>20220817T203947Z</version_modified>
   <xml_checksum>A05EBCA5</xml_checksum>
   <class_name>NrcAddASHPWH</class_name>
   <display_name>NrcAddASHPWH </display_name>
@@ -84,22 +84,22 @@
       <checksum>5B56867C</checksum>
     </file>
     <file>
-      <filename>BTAPMeasureHelper.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>4F234BCA</checksum>
-    </file>
-    <file>
       <filename>test.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
       <checksum>76811183</checksum>
     </file>
     <file>
+      <filename>BTAPMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>AE38D9B8</checksum>
+    </file>
+    <file>
       <filename>NRCMeasureHelper.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>A5221895</checksum>
+      <checksum>EF2FCBFD</checksum>
     </file>
   </files>
 </measure>

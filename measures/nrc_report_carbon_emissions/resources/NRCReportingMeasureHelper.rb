@@ -6,6 +6,18 @@ require 'fileutils'
 
 module NRCReportingMeasureHelper
   include BTAPMeasureHelper
+
+  # Find the version of NECB used to define the model. Default to 2017.
+  def find_standard(model)
+    if model.getBuilding.standardsTemplate.is_initialized
+      standardsTemplate = (model.getBuilding.standardsTemplate).to_s
+      standard = Standard.build(standardsTemplate)
+    else
+      puts "The measure wasn't able to determine the standards template from the model, a default value of 'NECB2017' will be used.".red
+      standard = Standard.build('NECB2017')
+    end
+    return standard
+  end
 end
 
 module NRCReportingMeasureTestHelper
@@ -207,7 +219,7 @@ module NRCReportingMeasureTestHelper
     runner.setLastEpwFilePath(epw_path)
     runner.setLastEnergyPlusSqlFilePath(sql_path)
   
-    # Temporarily change directory to the run directory and run the measure
+    # Temporarily change directory to the run directory and run the measure.
     start_dir = Dir.pwd
     begin
       Dir.chdir(output_folder)
@@ -215,19 +227,20 @@ module NRCReportingMeasureTestHelper
     ensure
       Dir.chdir(start_dir)
     end
+    result = runner.result.value.valueName
   
     # Reset the output path to the root folder.
     NRCReportingMeasureTestHelper.resetOutputFolder
 
-    # Add summary of test to README file
+    # Add summary of test to README file.
     measure_name = measure.name.gsub("_", " ").upcase
-    reportCase(measure_name, output_folder.split('/').last, input_arguments)
+    reportCase(measure_name, output_folder.split('/').last, input_arguments, result)
 
     return runner
   end
 
   # Method to report case being tested
-  def reportCase(measure_name, test_name, input_arguments)
+  def reportCase(measure_name, test_name, input_arguments, result)
 
     # File name defined above. Open for appending.
     out_file = File.new("#{NRCReportingMeasureTestHelper.testSummaryMDfile}", "a")
@@ -237,11 +250,22 @@ module NRCReportingMeasureTestHelper
       title = "# Summary Of Test Cases for '#{measure_name}' Measure"
       out_file.puts("#{title}")
       out_file.puts(" ")
+      out_file.puts("The following describe the parameter tests that are conducted on the measure. Note some of the ")
+      out_file.puts("tests are designed to return a fail and some a success. The report below contains all the tests that ")
+      out_file.puts("have the correct response. For example the argument range limit tests are expected to fail. ")
+      out_file.puts(" ")
     end
   
     # Current test name.
     test_name = test_name.gsub("_", " ")
     out_file.puts("## #{NRCReportingMeasureTestHelper.testSummaryCount} - #{test_name}")
+    out_file.puts(" ")
+    if (result == 'Success')
+      out_file.puts("This test was expected to pass and it did.")
+    else
+      out_file.puts("This test was expected to generate an error and it did.")
+    end
+    out_file.puts(" ")
   
     # Create a table describing the case tested. Table header first.
     out_file.puts("| Test Argument | Test Value |")

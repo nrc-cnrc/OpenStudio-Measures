@@ -3,17 +3,17 @@
   <schema_version>3.0</schema_version>
   <name>nrc_set_boiler_efficiency</name>
   <uid>3cce913f-31d5-423b-b8ac-ddea73ffedad</uid>
-  <version_id>1b0ee8dc-f378-4b8f-9d3a-a98a19129c9a</version_id>
-  <version_modified>20220316T131812Z</version_modified>
+  <version_id>f9ca0435-8612-42e2-ad4b-3881488bd4a5</version_id>
+  <version_modified>20220817T204004Z</version_modified>
   <xml_checksum>2AF3A68E</xml_checksum>
   <class_name>NrcSetBoilerEfficiency</class_name>
-  <display_name>NrcSetBoilerEfficiency</display_name>
-  <description>This measure sets boiler efficiency that affects heating energy consumption.</description>
-  <modeler_description>The measure offers an options to set the boiler thermal efficiency. Measure retrieved and updated on 22/05/2020 from NREL, Building Component Library https://bcl.nrel.gov/node/39443.</modeler_description>
+  <display_name>Set Boiler Thermal Efficiency</display_name>
+  <description>This measure sets the boiler thermal efficiency for all boilers in the model.</description>
+  <modeler_description>The measure sets the boiler thermal efficiency for every BoilerHotWaters object in the model. Measure based on Building Component Library https://bcl.nrel.gov/node/39443. (retrieved on 22/05/2020 from NREL). Edited to use NRC/NRCan standard framework.</modeler_description>
   <arguments>
     <argument>
       <name>boiler_eff</name>
-      <display_name>Set Boiler efficiency between 0.0 and 1.0</display_name>
+      <display_name>Set boiler efficiency (fraction between 0.0 and 1.0)</display_name>
       <type>Double</type>
       <required>true</required>
       <model_dependent>false</model_dependent>
@@ -55,17 +55,6 @@
       <checksum>CD7F5672</checksum>
     </file>
     <file>
-      <version>
-        <software_program>OpenStudio</software_program>
-        <identifier>2.8.1</identifier>
-        <min_compatible>2.8.1</min_compatible>
-      </version>
-      <filename>measure.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>script</usage_type>
-      <checksum>40E12B65</checksum>
-    </file>
-    <file>
       <filename>warehouse_2017.osm</filename>
       <filetype>osm</filetype>
       <usage_type>test</usage_type>
@@ -78,28 +67,39 @@
       <checksum>A1A5426B</checksum>
     </file>
     <file>
-      <filename>README.md</filename>
-      <filetype>md</filetype>
-      <usage_type>readme</usage_type>
-      <checksum>662BDB68</checksum>
-    </file>
-    <file>
-      <filename>BTAPMeasureHelper.rb</filename>
+      <version>
+        <software_program>OpenStudio</software_program>
+        <identifier>2.8.1</identifier>
+        <min_compatible>2.8.1</min_compatible>
+      </version>
+      <filename>measure.rb</filename>
       <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>4F234BCA</checksum>
+      <usage_type>script</usage_type>
+      <checksum>5BE79EDB</checksum>
     </file>
     <file>
       <filename>test.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
-      <checksum>F5D058B8</checksum>
+      <checksum>AF38573E</checksum>
+    </file>
+    <file>
+      <filename>README.md</filename>
+      <filetype>md</filetype>
+      <usage_type>readme</usage_type>
+      <checksum>BACE378F</checksum>
+    </file>
+    <file>
+      <filename>BTAPMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>AE38D9B8</checksum>
     </file>
     <file>
       <filename>NRCMeasureHelper.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>A5221895</checksum>
+      <checksum>EF2FCBFD</checksum>
     </file>
   </files>
 </measure>

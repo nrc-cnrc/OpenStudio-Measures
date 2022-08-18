@@ -1,14 +1,14 @@
-# Standard openstudio requires for runnin test
+# Standard openstudio requires for runnin test.
 require 'openstudio'
 require 'openstudio/measure/ShowRunnerOutput'
 require 'openstudio-standards'
 require 'minitest/autorun'
 
-# Require the measure and test helper
+# Require the measure and test helper.
 require_relative '../measure.rb'
 require_relative '../resources/NRCMeasureHelper.rb'
 
-# Specific requires for this test
+# Specific requires for this test.
 require 'fileutils'
 
 class NrcSetBoilerEfficiency_Test < Minitest::Test
@@ -26,55 +26,48 @@ class NrcSetBoilerEfficiency_Test < Minitest::Test
 
   def setup()
     @measure_interface_detailed = [
-        {
-            "name" => "boiler_eff",
-            "type" => "Double",
-            "display_name" => 'Set Boiler efficiency between 0.0 and 1.0',
-            "default_value" => 0.85,
-            "is_required" => true
-        }]
+      {
+        "name" => "boiler_eff",
+        "type" => "Double",
+        "display_name" => 'Set boiler efficiency (fraction between 0.0 and 1.0)',
+        "default_value" => 0.85,
+        "max_double_value" => 1.0,
+        "min_double_value" => 0.0,
+        "is_required" => true
+      }
+    ]
+
+    # Must have @good_input_arguments defined for std BTAP checking to work.
     @good_input_arguments = {
-        "boiler_eff" => 0.85
+        "boiler_eff" => 0.93
     }
   end
 
   def test_argument_values
-    measure = NrcSetBoilerEfficiency.new
 
-    # load the test model
-    translator = OpenStudio::OSVersion::VersionTranslator.new
-    path = OpenStudio::Path.new(File.dirname(__FILE__) + "/warehouse_2017.osm")
-    model = translator.loadModel(path)
-    assert((not model.empty?))
-    model = model.get
+    # Load osm file.
+    model = load_test_osm("#{File.dirname(__FILE__)}/warehouse_2017.osm")
 
-    # get arguments
-    arguments = measure.arguments(model)
-    input_arguments = {
-        "boiler_eff" => 0.85
-    }
-
+    # Get arguments.
+    input_arguments = @good_input_arguments
     boiler_eff = input_arguments['boiler_eff']
 
-    # test if the measure would grab the correct number and value of input argument.
-    assert_equal(1, arguments.size)
-    assert_equal(0.85, arguments[0].defaultValueAsDouble)
-
     # Define the output folder for this test (optional - default is the method name).
-    output_file_path = NRCMeasureTestHelper.appendOutputFolder("OutputTestFolder")
+    output_file_path = NRCMeasureTestHelper.appendOutputFolder("Good Thermal Efficiency Test")
 
     # Run the measure and check output
     runner = run_measure(input_arguments, model)
     result = runner.result
-    show_output(result)
     assert(result.value.valueName == 'Success')
-
-    model.getBoilerHotWaters.each do |boiler_water|
-      assert_equal(boiler_eff, boiler_water.nominalThermalEfficiency, "boiler efficiency is incorrect")
-    end
 
     # Save the model to test output directory.
     output_path = "#{output_file_path}/test_output.osm"
     model.save(output_path, true)
+
+    # Check values correctly updated.
+    model.getBoilerHotWaters.each do |boiler_water|
+      assert_in_delta(boiler_eff, boiler_water.nominalThermalEfficiency, 0.005, "boiler thermal efficiency")
+    end
+
   end
 end

@@ -98,6 +98,7 @@ class NrcSetInfiltration < OpenStudio::Measure::ModelMeasure
   # Define what happens when the measure is run.
   def run(model, runner, user_arguments)
     super(model, runner, user_arguments)
+
     # Gets arguments from interfaced and puts them in a hash with there display name. This also does a check on ranges to
     #   ensure that the values inputted are valid based on your @measure_interface array of hashes.
     arguments = validate_and_get_arguments_in_hash(model, runner, user_arguments)

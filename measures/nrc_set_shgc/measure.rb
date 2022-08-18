@@ -1,14 +1,13 @@
-# see the URL below for information on how to write OpenStudio measures
-# http://nrel.github.io/OpenStudio-user-documentation/reference/measure_writing_guide/
 require_relative 'resources/NRCMeasureHelper'
-# start the measure
-class NrcAlterSHGC < OpenStudio::Measure::ModelMeasure
+
+# Start the measure.
+class NrcSetSHGC < OpenStudio::Measure::ModelMeasure
   attr_accessor :use_json_package, :use_string_double
   include(NRCMeasureHelper)
 
-  # human readable name
+  # Human readable name.
   def name
-    return "Change SHGC"
+    return "Set SHGC"
   end
 
   # Human readable description.
@@ -18,27 +17,30 @@ class NrcAlterSHGC < OpenStudio::Measure::ModelMeasure
 
   # Human readable description of modeling approach.
   def modeler_description
-    return "Find all simple glazing systems int he model and change the SHGC."
+    return "For all simple glazing systems in the model changes the SHGC to the value specified."
   end
 
   # Use the constructor to set global variables.
   def initialize()
     super()
+
     #Set to true if you want to package the arguments as json.
     @use_json_package = false
+
     #Set to true if you want to want to allow strings and doubles in stringdouble types. Set to false to force to use doubles. The latter is used for certain
     # continuous optimization algorithms. You may have to re-examine your input in PAT as this fundamentally changes the measure.
     @use_string_double = false
     @measure_interface_detailed = [
-        {
-            "name" => "new_shgc",
-            "type" => "Double",
-            "display_name" => 'SHGC',
-            "default_value" => 0.3,
-			"max_double_value" => 1.0,
-			"min_double_value" => 0.0,
-            "is_required" => true
-        }]
+      {
+        "name" => "new_shgc",
+        "type" => "Double",
+        "display_name" => 'SHGC',
+        "default_value" => 0.3,
+        "max_double_value" => 1.0,
+        "min_double_value" => 0.0,
+        "is_required" => true
+      }
+    ]
   end
 
   # Define what happens when the measure is run.
@@ -57,6 +59,7 @@ class NrcAlterSHGC < OpenStudio::Measure::ModelMeasure
     # Assign the user inputs to variables that can be accessed across the measure.
     new_shgc = arguments['new_shgc']
 
+    runner.registerInfo("Updating components in measure #{self.class.name}")
     model.getSimpleGlazings.each do |sim_glaz|
       runner.registerInfo("Changing SHGC for #{sim_glaz}")
       sim_glaz.setSolarHeatGainCoefficient(new_shgc)
@@ -66,5 +69,5 @@ class NrcAlterSHGC < OpenStudio::Measure::ModelMeasure
   end
 end
 
-# register the measure to be used by the application
-NrcAlterSHGC.new.registerWithApplication
+# Register the measure to be used by the application.
+NrcSetSHGC.new.registerWithApplication

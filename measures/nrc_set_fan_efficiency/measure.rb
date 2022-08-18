@@ -5,23 +5,24 @@ require_relative 'resources/NRCMeasureHelper'
 class NrcSetFanEfficiency < OpenStudio::Measure::ModelMeasure
   attr_accessor :use_json_package, :use_string_double
   include(NRCMeasureHelper)
-  # human readable name
+
+  # Human readable name.
   def name
     # Measure name should be the title case of the class name.
-    return 'NrcSetFanEfficiency'
+    return 'Set Fan Efficiency'
   end
 
-  # human readable description
+  # Human readable description.
   def description
-    return 'The measure offers an options to set fan efficiency to specified value.'
+    return 'Set fan efficiency to specified value in all fans in the model (see modeler description for specific object types).'
   end
 
-  # human readable description of modeling approach
+  # Human readable description of modeling approach.
   def modeler_description
-    return 'Does not curently work with Fan:SystemModel.'
+    return 'Loops through the model and update the fan efficiency for: FanConstantVolume, FanOnOff, FanVariableVolume and FanZoneExhaust objects in the model.'
   end
 
-  #Use the constructor to set global variables
+  # Use the constructor to set global variables.
   def initialize()
     super()
     #Set to true if you want to package the arguments as json.
@@ -30,50 +31,50 @@ class NrcSetFanEfficiency < OpenStudio::Measure::ModelMeasure
     # continuous optimization algorithms. You may have to re-examine your input in PAT as this fundamentally changes the measure.
     @use_string_double = false
     @measure_interface_detailed = [
-        {
-            "name" => "eff_for_this_cz",
-            "type" => "Double",
-            "display_name" => 'Set Fan efficiency between 0.0 and 1.0',
-            "default_value" => 0.55,
-            "is_required" => true
-        }]
+      {
+        "name" => "fan_eff",
+        "type" => "Double",
+        "display_name" => 'Set fan efficiency (fraction between 0.0 and 1.0)',
+        "default_value" => 0.55,
+        "max_double_value" => 1.0,
+        "min_double_value" => 0.0,
+        "is_required" => true
+      }
+    ]
   end
 
-  # define what happens when the measure is run
+  # Define what happens when the measure is run.
   def run(model, runner, user_arguments)
-    #Runs parent run method.
     super(model, runner, user_arguments)
+
     # Gets arguments from interfaced and puts them in a hash with there display name. This also does a check on ranges to
-    # ensure that the values inputted are valid based on your @measure_interface array of hashes.
+    #  ensure that the values inputted are valid based on your @measure_interface array of hashes.
     arguments = validate_and_get_arguments_in_hash(model, runner, user_arguments)
 
     #puts JSON.pretty_generate(arguments)
     return false if false == arguments
 
-    # Assign the user inputs to variables that can be accessed across the measure
-    eff_for_this_cz = arguments['eff_for_this_cz']
+    # Assign the user inputs to variables that can be accessed across the measure.
+    fan_eff = arguments['fan_eff']
 
-    if eff_for_this_cz == 999
-      runner.registerInfo("NrcSetFanEff is skipped")
-    else
-      runner.registerInfo("NrcSetFanEff is not skipped")
+    runner.registerInfo("Updating components in measure #{self.class.name}")
 
-      model.getFanConstantVolumes.each do |fan|
-        fan.setFanEfficiency(eff_for_this_cz)
-      end
-
-      model.getFanOnOffs.each do |fan|
-        fan.setFanEfficiency(eff_for_this_cz)
-      end
-
-      model.getFanVariableVolumes.each do |fan|
-        fan.setFanEfficiency(eff_for_this_cz)
-      end
-
-      model.getFanZoneExhausts.each do |fan|
-        fan.setFanEfficiency(eff_for_this_cz)
-      end
+    model.getFanConstantVolumes.each do |fan|
+      fan.setFanEfficiency(fan_eff)
     end
+
+    model.getFanOnOffs.each do |fan|
+      fan.setFanEfficiency(fan_eff)
+    end
+
+    model.getFanVariableVolumes.each do |fan|
+      fan.setFanEfficiency(fan_eff)
+    end
+
+    model.getFanZoneExhausts.each do |fan|
+      fan.setFanEfficiency(fan_eff)
+    end
+
     return true
   end
 end
