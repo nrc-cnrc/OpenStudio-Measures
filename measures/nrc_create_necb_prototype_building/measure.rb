@@ -162,6 +162,14 @@ class NrcCreateNECBPrototypeBuilding < OpenStudio::Measure::ModelMeasure
         "choices" => epw_files_chs,
         "is_required" => true
       },
+	  {
+        "name" => "primary_heating_fuel",
+        "type" => "Choice",
+        "display_name" => "Heating fuel",
+        "default_value" => "NaturalGas",
+        "choices" => ["NaturalGas", "Electricity", "FuelOilNo2"],
+        "is_required" => true
+      },
       {
         "name" => "sideload",
         "type" => "Bool",
@@ -186,6 +194,7 @@ class NrcCreateNECBPrototypeBuilding < OpenStudio::Measure::ModelMeasure
     building_type = arguments['building_type']
     template = arguments['template']
     epw_file1 = arguments['epw_file']
+	primary_heating_fuel = arguments['primary_heating_fuel']
     sideload = arguments['sideload']
     epw_file = find_epwFile(epw_file1)
 
@@ -216,6 +225,7 @@ class NrcCreateNECBPrototypeBuilding < OpenStudio::Measure::ModelMeasure
     new_model = standard.model_create_prototype_model(template: template,
                                                       building_type: building_type,
                                                       epw_file: epw_file,
+													  primary_heating_fuel: primary_heating_fuel,
                                                       sizing_run_dir: NRCMeasureTestHelper.outputFolder)
     standard.model_replace_model(model, new_model)
     log_msgs
