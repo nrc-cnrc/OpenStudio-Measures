@@ -207,7 +207,7 @@ class NrcCreateGeometry < OpenStudio::Measure::ModelMeasure
                                                       length = a,
                                                       width = b,
                                                       above_ground_storys = above_grade_floors,
-                                                      under_ground_storys = 0,
+                                                      under_ground_storys = 0,# Set to 1, when modeling a basement
                                                       floor_to_floor_height = floor_to_floor_height,
                                                       plenum_height = plenum_height,
                                                       perimeter_zone_depth = perimeter_depth,
@@ -389,6 +389,13 @@ class NrcCreateGeometry < OpenStudio::Measure::ModelMeasure
     standard.model_apply_standard(model: model,
                                   epw_file: epw_file,
                                   sizing_run_dir: NRCMeasureTestHelper.outputFolder)
+								  
+	facility = model.getFacility
+    exterior_lights = facility.exteriorLights
+    exterior_lights.each do |exterior_light|
+      puts "Removed exterior light : #{exterior_light.name}.".green
+      exterior_light.remove
+    end							  
 
     # Check if new SRR was set properly
     srr_lim = standard.get_standards_constant('skylight_to_roof_ratio_max_value')
