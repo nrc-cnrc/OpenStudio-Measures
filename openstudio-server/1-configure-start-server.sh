@@ -18,7 +18,8 @@ echo -e "${GREEN}OpenStudio Server is starting up${NC}..."
 echo -e "Progress in new window 'OpenStudio Server Log'"
 echo
 
-mintty -s 188,32 -t "OpenStudio Server Log" -h always /bin/bash -c "win_user=$(whoami) docker-compose up --scale worker=${OS_SERVER_WORKERS}" &
+#mintty -s 188,32 -t "OpenStudio Server Log" -h always /bin/bash -c "win_user=$(whoami) docker-compose up --scale worker=${OS_SERVER_WORKERS}" &
+mintty -s 188,32 -t "OpenStudio Server Log" -h always /bin/bash -c "win_user=$(whoami) docker compose up --scale worker=${OS_SERVER_WORKERS}" &
 
 # While the server is starting download/update the local copies of the gems
 download_gems
@@ -26,8 +27,8 @@ download_gems
 # Define a container name for checking if the server is running and getting current server gemfile from.
 #  Also define the worker container root name (i.e. without the number) here for ease of fixing when
 #  docker changes their naming scheme.
-container=${PWD##*/}"_web_1"
-worker_root=${PWD##*/}"_worker_"
+container=${PWD##*/}"-web-1"
+worker_root=${PWD##*/}"-worker-"
 
 # Loop until container is up and running. Use 'tries' to avoid sticking here forever
 echo -e "${GREEN}Checking server is up and running${NC}...$container"
@@ -40,8 +41,8 @@ do
   tries=$[$tries+1]
   if [[ $tries -gt 20 ]] 
   then
-    container=${PWD##*/}"_web_1"
-    worker_root=${PWD##*/}"_worker_"    
+    container=${PWD##*/}"-web-1"
+    worker_root=${PWD##*/}"-worker-"    
   else
     if [[ $tries -gt 29 ]]
     then
@@ -49,6 +50,7 @@ do
       server_running="0"
       exit 2
     fi
+  fi
 done
 echo -e "${GREEN}done${NC}."
 

@@ -128,15 +128,28 @@ download_gems () {
 }
 
 install_gems () {
+
+  echo -e "copying ${BLUE}weather files${NC} to ${GREEN}$gemDir${NC} in container ${BLUE}$container${NC}"
+  cp -r ../openstudio-server/ServerData/weather/ ../.gems
+
+  echo -e "Deleting ${BLUE}weather files${NC} from Standards"
+  rm -r ../.gems/openstudio-standards/data/weather  
+  
+  echo -e "Adding new ${BLUE}weather files${NC}"
+  SourceFolder="../openstudio-server/ServerData/weather/"
+  DestFolder="../.gems/openstudio-standards/data/"
+  cp -rv ./$SourceFolder ./$DestFolder
+
   # Install gems. Place the gems on the specified container.
   container=$1
   echo -e "${GREEN}Installing gems in container: ${BLUE}$container${NC}..."
   docker exec $container sh -c "mkdir -p $gemDir"
   for (( iGem=0; iGem<${nGems}; iGem++ ))
   do
-    echo -e "  copying ${BLUE}${server_gems[($iGem*3)]}${NC} to ${BLUE}$gemDir${NC} in container ${BLUE}$container${NC}"
+    echo -e "copying ${BLUE}${server_gems[($iGem*3)]}${NC} to ${BLUE}$gemDir${NC} in container ${BLUE}$container${NC}"
     docker cp ../.gems/${server_gems[($iGem*3)]} $container:$gemDir
   done
+
   echo -e "${GREEN}done${NC}."
   
   # Copy the default Gemfile. Edit this on the windows side and then copy it back.
@@ -174,6 +187,9 @@ install_gems () {
     echo gem ${other_gems[$iGem]} >> .gemfile
   done
 
+
+  
+  
   # Now copy the .gemfile back to the container, but put it in the /var/oscli folder.
   docker cp .gemfile $container:/var/oscli/Gemfile
 
