@@ -16,8 +16,8 @@ class NrcCreateGeometry_Test
 
 	# Options. Limit to 16 cases to keep run time down.
     building_types = ["PrimarySchool", "MediumOffice"]
-    epw_files = ['CAN_YT_Whitehorse.Intl.AP.719640_CWEC2016.epw', 'CAN_BC_Vancouver.Intl.AP.718920_CWEC2016.epw']
-    building_shapes = ["U-Shape"]
+    epw_files = ['NL_Corner_ECY-3.0','NS_Halifax_ECY-0.0','NS_Sydney-McCurdy_EWY-0.0'] 
+	building_shapes = ["U-Shape"]
     total_floor_area = [20000.0, 1000.0]
     rotation = [40.0]
     above_grade_floors = [1, 3]

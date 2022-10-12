@@ -15,9 +15,8 @@ class NrcCreateNECBPrototypeBuilding_Test
     building_types = ['Warehouse',
                       'RetailStandalone',
                       'MidriseApartment']
-    epw_files = ['AB_Banff',
-                 'MB_Winnipeg-Richardson',
-                 'NL_St.Johns']
+    epw_files = ['NB_Saint_ECY-3.0',
+                 'NL_Corner_ECY-0.0']
 
     # A new variable to count the number of osm models that are different than the ones in the regression folder
     $num_failed = 0
