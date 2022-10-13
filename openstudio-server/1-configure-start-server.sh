@@ -26,8 +26,8 @@ download_gems
 # Define a container name for checking if the server is running and getting current server gemfile from.
 #  Also define the worker container root name (i.e. without the number) here for ease of fixing when
 #  docker changes their naming scheme.
-container=${PWD##*/}"_web_1"
-worker_root=${PWD##*/}"_worker_"
+container=${PWD##*/}"-web-1"
+worker_root=${PWD##*/}"-worker-"
 
 # Loop until container is up and running. Use 'tries' to avoid sticking here forever
 echo -e "${GREEN}Checking server is up and running${NC}...$container"
@@ -49,6 +49,7 @@ do
       server_running="0"
       exit 2
     fi
+  fi
 done
 echo -e "${GREEN}done${NC}."
 
