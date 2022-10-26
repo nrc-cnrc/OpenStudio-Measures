@@ -15,7 +15,7 @@ class NrcCreateNECBPrototypeBuilding_Test
     building_types = ['Warehouse',
                       'QuickServiceRestaurant',
                       'HighriseApartment']
-    epw_files = ['NL_Corner_ECY-3.0',
+    epw_files = ['NL_Corner.Brook_ECY-3.0',
                  'NS_Halifax_ECY-0.0',
                  'NS_Sydney-McCurdy_EWY-0.0']
 
