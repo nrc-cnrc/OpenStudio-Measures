@@ -19,6 +19,9 @@ echo -e "${GREEN}Setting OpenStudio environment${NC}..."
 os_version="3.2.1"
 os_image=openstudio:$os_version
 
+# Add identifier to image name so we can keep track of our updates. This image is uesd for testing.
+nrc_os_image=${os_image}".a"
+
 # OpenStudio server and supporting gems (these need to be kept in sync when updating os_version).
 server_image=nrel/openstudio-server:$os_version
 rserve_image=nrel/openstudio-rserve:$os_version
@@ -129,17 +132,6 @@ download_gems () {
 
 install_gems () {
 
-  echo -e "copying ${BLUE}weather files${NC} to ${GREEN}$gemDir${NC} in container ${BLUE}$container${NC}"
-  cp -r ../openstudio-server/ServerData/weather/ ../.gems
-
-  echo -e "Deleting ${BLUE}weather files${NC} from Standards"
-  rm -r ../.gems/openstudio-standards/data/weather  
-  
-  echo -e "Adding new ${BLUE}weather files${NC}"
-  SourceFolder="../openstudio-server/ServerData/weather/"
-  DestFolder="../.gems/openstudio-standards/data/"
-  cp -rv ./$SourceFolder ./$DestFolder
-
   # Install gems. Place the gems on the specified container.
   container=$1
   echo -e "${GREEN}Installing gems in container: ${BLUE}$container${NC}..."
@@ -187,9 +179,6 @@ install_gems () {
     echo gem ${other_gems[$iGem]} >> .gemfile
   done
 
-
-  
-  
   # Now copy the .gemfile back to the container, but put it in the /var/oscli folder.
   docker cp .gemfile $container:/var/oscli/Gemfile
 

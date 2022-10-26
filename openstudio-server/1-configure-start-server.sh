@@ -24,13 +24,17 @@ mintty -s 188,32 -t "OpenStudio Server Log" -h always /bin/bash -c "win_user=$(w
 # While the server is starting download/update the local copies of the gems
 download_gems
 
+# Copy our weather files to the local copy of the standards gem.
+echo -e "${GREEN}Copying weather files to local copy of openstudio-standards${NC}"
+cp -f ServerData/weather/CAN_* ../.gems/openstudio-standards/data/weather
+
 # Define a container name for checking if the server is running and getting current server gemfile from.
 #  Also define the worker container root name (i.e. without the number) here for ease of fixing when
 #  docker changes their naming scheme.
 container=${PWD##*/}"-web-1"
 worker_root=${PWD##*/}"-worker-"
 
-# Loop until container is up and running. Use 'tries' to avoid sticking here forever
+# Loop until container is up and running. Use 'tries' to avoid sticking here forever.
 echo -e "${GREEN}Checking server is up and running${NC}...$container"
 tries="0"
 server_running="1"
@@ -41,8 +45,8 @@ do
   tries=$[$tries+1]
   if [[ $tries -gt 20 ]] 
   then
-    container=${PWD##*/}"-web-1"
-    worker_root=${PWD##*/}"-worker-"    
+    container=${PWD##*/}"_web_1"
+    worker_root=${PWD##*/}"_worker_"    
   else
     if [[ $tries -gt 29 ]]
     then
