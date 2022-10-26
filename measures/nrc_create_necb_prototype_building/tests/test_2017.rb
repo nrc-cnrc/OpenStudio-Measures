@@ -37,7 +37,7 @@ class NrcCreateNECBPrototypeBuilding_Test
         end
       end
     end
-    puts "Failure in #{$num_failed} models that are different from the ones in the regression models".red
+    puts "Failure in #{$num_failed} models that are different from the ones in the regression models".blue
 
     # Now wait for the forked processes to all finish and figure out if there were any failures.
     # Would be good if we could capture the minitest output from each process and output them here.
