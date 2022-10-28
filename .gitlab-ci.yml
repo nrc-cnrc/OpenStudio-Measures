@@ -1,5 +1,5 @@
 default:
-  image: localhost:5000/nrc_openstudio:3.2.1.a
+  image: nrel/openstudio:3.2.1
 
 variables:
   GIT_CLONE_PATH: $CI_BUILDS_DIR/$CI_CONCURRENT_ID/os-measures
@@ -22,6 +22,7 @@ test:
   
   script:
   - cd test
+  - ls /var/gems
   - bundle exec ruby test_measures.rb
   
   cache:
