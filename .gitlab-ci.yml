@@ -5,15 +5,6 @@ variables:
   GIT_CLONE_PATH: $CI_BUILDS_DIR/$CI_CONCURRENT_ID/os-measures
 
 before_script:
-  - source ./env.sh && download_gems
-  - pwd
-  - ls -a ..
-  - mkdir -p /var/gems
-  - cp -r ../.gems/* /var/gems
-  - echo '---'
-  - ls -l /var/gems
-  - ls /var/gems/openstudio-standards/data/weather/CAN*
-  - cp -f openstudio-server/ServerData/weather/CAN_* /var/gems/openstudio-standards/data/weather
   - bundle install
   
 test:
@@ -23,8 +14,15 @@ test:
   - const-ibp
   
   script:
+  - echo 'Configuring test environment'
+  - source ./env.sh && download_gems
+  - echo 'Copying gems to standard location for our containers'
+  - mkdir -p /var/gems
+  - cp -r ../.gems/* /var/gems
+  - echo 'Copying additional data to openstudio-standards'
+  - cp -f openstudio-server/ServerData/weather/CAN_* /var/gems/openstudio-standards/data/weather
+  - echo 'Starting tests'
   - cd test
-  - ls /var/gems/openstudio-standards/data/weather/CAN*
   - bundle exec ruby test_measures.rb
   
   cache:
