@@ -6,7 +6,7 @@ variables:
 
 before_script:
 
-test_nrel:
+test_using_nrel_image:
   tags:
   - linux
   - docker
@@ -30,7 +30,7 @@ test_nrel:
     paths:
       - vendor/bundle
 
-test_nrc:
+test_using_nrc_image:
   image: localhost:5000/nrc_openstudio:3.2.1.a
 
   tags:
@@ -39,6 +39,32 @@ test_nrc:
   - const-ibp
   
   script:
+  - echo 'Starting tests'
+  - cd test
+  - bundle install
+  - bundle exec ruby test_measures.rb
+  
+  cache:
+    key: "OSmeasures"
+    paths:
+      - vendor/bundle
+
+test_using_nrel_server_image:
+  image: nrel/openstudio-server:3.2.1
+
+  tags:
+  - linux
+  - docker
+  - const-ibp
+  
+  script:
+  - echo 'Configuring test environment'
+  - source ./env.sh && download_gems
+  - echo 'Copying gems to standard location for our containers'
+  - mkdir -p /var/gems
+  - cp -r ../.gems/* /var/gems
+  - echo 'Copying additional data to openstudio-standards'
+  - cp -f openstudio-server/ServerData/weather/CAN_* /var/gems/openstudio-standards/data/weather
   - echo 'Starting tests'
   - cd test
   - bundle install
