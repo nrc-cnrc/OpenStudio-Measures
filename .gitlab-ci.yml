@@ -12,6 +12,8 @@ before_script:
   - cp -r ../.gems/* /var/gems
   - echo '---'
   - ls -l /var/gems
+  - ls /var/gems/openstudio-standards/data/weather/CAN*
+  - cp -f openstudio-server/ServerData/weather/CAN_* /var/gems/openstudio-standards/data/weather
   - bundle install
   
 test:
