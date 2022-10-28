@@ -22,7 +22,7 @@ test:
   
   script:
   - cd test
-  - ls /var/gems
+  - ls /var/gems/openstudio-standards/data/weather/CAN*
   - bundle exec ruby test_measures.rb
   
   cache:
