@@ -5,6 +5,12 @@ variables:
   GIT_CLONE_PATH: $CI_BUILDS_DIR/$CI_CONCURRENT_ID/os-measures
 
 before_script:
+  - echo 'Measures are tested on three seperate images. They should pass on all'
+  - echo '  The NREL/openstudio and NRC/openstudio images should match teh configuration'
+  - echo '    in the local testing environment.'
+  - echo '  The NREL/openstudio-server image is used by PAT.'
+  - echo '  The modifications in this script should be identical to those in the test and'
+  - echo '    server configurations.'
 
 test_using_nrel_image:
   tags:
@@ -13,7 +19,8 @@ test_using_nrel_image:
   - const-ibp
   
   script:
-  - echo 'Configuring test environment'
+  - echo 'Configuring test environment using NREL openstudio'
+  - echo '  This image can be used in testing'
   - source ./env.sh && download_gems
   - echo 'Copying gems to standard location for our containers'
   - mkdir -p /var/gems
@@ -39,6 +46,8 @@ test_using_nrc_image:
   - const-ibp
   
   script:
+  - echo 'Configuring test environment using NRC specific openstudio'
+  - echo '  This image can be used in testing'
   - echo 'Starting tests'
   - cd test
   - bundle install
@@ -58,7 +67,8 @@ test_using_nrel_server_image:
   - const-ibp
   
   script:
-  - echo 'Configuring test environment'
+  - echo 'Configuring test environment using openstudio-server'
+  - echo '  This is the image used by PAT'
   - source ./env.sh && download_gems
   - echo 'Copying gems to standard location for our containers'
   - mkdir -p /var/gems
