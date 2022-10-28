@@ -1,5 +1,5 @@
 default:
-  image: localhost:5000/nrc_openstudio:3.2.1
+  image: localhost:5000/nrc_openstudio:3.2.1.a
 
 variables:
   GIT_CLONE_PATH: $CI_BUILDS_DIR/$CI_CONCURRENT_ID/os-measures
