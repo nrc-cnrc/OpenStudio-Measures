@@ -5,8 +5,8 @@ variables:
   GIT_CLONE_PATH: $CI_BUILDS_DIR/$CI_CONCURRENT_ID/os-measures
 
 before_script:
-  
-test:
+
+test_nrel:
   tags:
   - linux
   - docker
@@ -20,6 +20,25 @@ test:
   - cp -r ../.gems/* /var/gems
   - echo 'Copying additional data to openstudio-standards'
   - cp -f openstudio-server/ServerData/weather/CAN_* /var/gems/openstudio-standards/data/weather
+  - echo 'Starting tests'
+  - cd test
+  - bundle install
+  - bundle exec ruby test_measures.rb
+  
+  cache:
+    key: "OSmeasures"
+    paths:
+      - vendor/bundle
+
+test_nrc:
+  image: localhost:5000/nrc_openstudio:3.2.1.a
+
+  tags:
+  - linux
+  - docker
+  - const-ibp
+  
+  script:
   - echo 'Starting tests'
   - cd test
   - bundle install

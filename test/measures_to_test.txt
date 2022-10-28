@@ -8,10 +8,10 @@ measures/nrc_add_overhangs_by_projection_factor/tests/test.rb
 measures/nrc_change_cav_to_vav/tests/test.rb
 measures/nrc_change_heat_recovery_efficiency/tests/test.rb
 measures/nrc_change_SWH_heater_to_ASHPWH/tests/test.rb
-measures/nrc_create_geometry/tests/test_2011.rb
-measures/nrc_create_geometry/tests/test_2015.rb
-measures/nrc_create_geometry/tests/test_2017.rb
-measures/nrc_create_geometry/tests/test_2020.rb
+#measures/nrc_create_geometry/tests/test_2011.rb
+#measures/nrc_create_geometry/tests/test_2015.rb
+#measures/nrc_create_geometry/tests/test_2017.rb
+#measures/nrc_create_geometry/tests/test_2020.rb
 measures/nrc_create_necb_prototype_building/tests/test_2011.rb
 measures/nrc_create_necb_prototype_building/tests/test_2015.rb
 measures/nrc_create_necb_prototype_building/tests/test_2017.rb
