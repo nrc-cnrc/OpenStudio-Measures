@@ -16,7 +16,7 @@ class NrcCreateGeometry_Test
 
 	# Options. Limit to 16 cases to keep run time down.
     building_types = ["PrimarySchool", "MediumOffice"]
-    epw_files = ['NL_Corner_ECY-3.0','NS_Halifax_ECY-0.0','NS_Sydney-McCurdy_EWY-0.0'] 
+    epw_files = ['NL_Corner.Brook_ECY-3.0','NS_Halifax_ECY-0.0','NS_Sydney-McCurdy_EWY-0.0'] 
 	building_shapes = ["U-Shape"]
     total_floor_area = [20000.0, 1000.0]
     rotation = [40.0]

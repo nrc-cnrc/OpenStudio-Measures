@@ -119,7 +119,7 @@ class NrcCreateGeometry < OpenStudio::Measure::ModelMeasure
         "name" => "total_floor_area",
         "type" => "Double",
         "display_name" => "Total building area (m2)",
-        "default_value" => 5000.0,
+        "default_value" => 50000.0,
         "max_double_value" => 10000000.0,
         "min_double_value" => 10.0,
         "is_required" => true

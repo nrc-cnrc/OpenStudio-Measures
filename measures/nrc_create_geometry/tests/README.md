@@ -4,434 +4,434 @@ The following describe the parameter tests that are conducted on the measure. No
 tests are designed to return a fail and some a success. The report below contains all the tests that 
 have the correct response. For example the argument range limit tests are expected to fail. 
  
-## 1 - Courtyard-RetailStandalone-NECB2011-90-TMY-3-1-20000-1.25
+## 1 - U-Shape-PrimarySchool-NECB2017-40-ECY-3-1-20000-1.5
  
 This test was expected to pass and it did.
  
 | Test Argument | Test Value |
 | ------------- | ---------- |
-| building_shape |Courtyard |
-| template |NECB2011 |
-| building_type |RetailStandalone |
-| epw_file |MB_Thompson_TMY-3.0 |
+| building_shape |U-Shape |
+| template |NECB2017 |
+| building_type |PrimarySchool |
+| epw_file |NL_Corner.Brook_ECY-3.0 |
 | total_floor_area |20000.0 |
-| aspect_ratio |1.25 |
-| rotation |90.0 |
+| aspect_ratio |1.5 |
+| rotation |40.0 |
 | above_grade_floors |1 |
 | floor_to_floor_height |3.2 |
 | plenum_height |0.0 |
 | sideload |false |
  
-## 2 - Courtyard-RetailStandalone-NECB2011-90-ECY-0-1-20000-1.25
+## 2 - U-Shape-PrimarySchool-NECB2017-40-ECY-0-1-20000-1.5
  
 This test was expected to pass and it did.
  
 | Test Argument | Test Value |
 | ------------- | ---------- |
-| building_shape |Courtyard |
-| template |NECB2011 |
-| building_type |RetailStandalone |
-| epw_file |MB_Winnipeg-Richardson_ECY-0.0 |
+| building_shape |U-Shape |
+| template |NECB2017 |
+| building_type |PrimarySchool |
+| epw_file |NS_Halifax_ECY-0.0 |
 | total_floor_area |20000.0 |
-| aspect_ratio |1.25 |
-| rotation |90.0 |
+| aspect_ratio |1.5 |
+| rotation |40.0 |
 | above_grade_floors |1 |
 | floor_to_floor_height |3.2 |
 | plenum_height |0.0 |
 | sideload |false |
  
-## 3 - Courtyard-RetailStandalone-NECB2011-90-EWY-0-1-20000-1.25
+## 3 - U-Shape-PrimarySchool-NECB2017-40-EWY-0-1-20000-1.5
  
 This test was expected to pass and it did.
  
 | Test Argument | Test Value |
 | ------------- | ---------- |
-| building_shape |Courtyard |
-| template |NECB2011 |
-| building_type |RetailStandalone |
-| epw_file |NB_Moncton-Greater_EWY-0.0 |
+| building_shape |U-Shape |
+| template |NECB2017 |
+| building_type |PrimarySchool |
+| epw_file |NS_Sydney-McCurdy_EWY-0.0 |
 | total_floor_area |20000.0 |
-| aspect_ratio |1.25 |
-| rotation |90.0 |
+| aspect_ratio |1.5 |
+| rotation |40.0 |
 | above_grade_floors |1 |
 | floor_to_floor_height |3.2 |
 | plenum_height |0.0 |
 | sideload |false |
  
-## 4 - Courtyard-RetailStandalone-NECB2011-90-TMY-3-1-1500-1.25
+## 4 - U-Shape-PrimarySchool-NECB2017-40-ECY-3-3-20000-1.5
  
 This test was expected to pass and it did.
  
 | Test Argument | Test Value |
 | ------------- | ---------- |
-| building_shape |Courtyard |
-| template |NECB2011 |
-| building_type |RetailStandalone |
-| epw_file |MB_Thompson_TMY-3.0 |
-| total_floor_area |1500.0 |
-| aspect_ratio |1.25 |
-| rotation |90.0 |
-| above_grade_floors |1 |
-| floor_to_floor_height |3.2 |
-| plenum_height |0.0 |
-| sideload |false |
- 
-## 5 - Courtyard-RetailStandalone-NECB2011-90-ECY-0-1-1500-1.25
- 
-This test was expected to pass and it did.
- 
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| building_shape |Courtyard |
-| template |NECB2011 |
-| building_type |RetailStandalone |
-| epw_file |MB_Winnipeg-Richardson_ECY-0.0 |
-| total_floor_area |1500.0 |
-| aspect_ratio |1.25 |
-| rotation |90.0 |
-| above_grade_floors |1 |
-| floor_to_floor_height |3.2 |
-| plenum_height |0.0 |
-| sideload |false |
- 
-## 6 - Courtyard-RetailStandalone-NECB2011-90-EWY-0-1-1500-1.25
- 
-This test was expected to pass and it did.
- 
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| building_shape |Courtyard |
-| template |NECB2011 |
-| building_type |RetailStandalone |
-| epw_file |NB_Moncton-Greater_EWY-0.0 |
-| total_floor_area |1500.0 |
-| aspect_ratio |1.25 |
-| rotation |90.0 |
-| above_grade_floors |1 |
-| floor_to_floor_height |3.2 |
-| plenum_height |0.0 |
-| sideload |false |
- 
-## 7 - H-Shape-RetailStandalone-NECB2011-90-TMY-3-1-20000-1.25
- 
-This test was expected to pass and it did.
- 
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| building_shape |H-Shape |
-| template |NECB2011 |
-| building_type |RetailStandalone |
-| epw_file |MB_Thompson_TMY-3.0 |
+| building_shape |U-Shape |
+| template |NECB2017 |
+| building_type |PrimarySchool |
+| epw_file |NL_Corner.Brook_ECY-3.0 |
 | total_floor_area |20000.0 |
-| aspect_ratio |1.25 |
-| rotation |90.0 |
-| above_grade_floors |1 |
+| aspect_ratio |1.5 |
+| rotation |40.0 |
+| above_grade_floors |3 |
 | floor_to_floor_height |3.2 |
 | plenum_height |0.0 |
 | sideload |false |
  
-## 8 - H-Shape-RetailStandalone-NECB2011-90-ECY-0-1-20000-1.25
+## 5 - U-Shape-PrimarySchool-NECB2017-40-ECY-0-3-20000-1.5
  
 This test was expected to pass and it did.
  
 | Test Argument | Test Value |
 | ------------- | ---------- |
-| building_shape |H-Shape |
-| template |NECB2011 |
-| building_type |RetailStandalone |
-| epw_file |MB_Winnipeg-Richardson_ECY-0.0 |
+| building_shape |U-Shape |
+| template |NECB2017 |
+| building_type |PrimarySchool |
+| epw_file |NS_Halifax_ECY-0.0 |
 | total_floor_area |20000.0 |
-| aspect_ratio |1.25 |
-| rotation |90.0 |
-| above_grade_floors |1 |
+| aspect_ratio |1.5 |
+| rotation |40.0 |
+| above_grade_floors |3 |
 | floor_to_floor_height |3.2 |
 | plenum_height |0.0 |
 | sideload |false |
  
-## 9 - H-Shape-RetailStandalone-NECB2011-90-EWY-0-1-20000-1.25
+## 6 - U-Shape-PrimarySchool-NECB2017-40-EWY-0-3-20000-1.5
  
 This test was expected to pass and it did.
  
 | Test Argument | Test Value |
 | ------------- | ---------- |
-| building_shape |H-Shape |
-| template |NECB2011 |
-| building_type |RetailStandalone |
-| epw_file |NB_Moncton-Greater_EWY-0.0 |
+| building_shape |U-Shape |
+| template |NECB2017 |
+| building_type |PrimarySchool |
+| epw_file |NS_Sydney-McCurdy_EWY-0.0 |
 | total_floor_area |20000.0 |
-| aspect_ratio |1.25 |
-| rotation |90.0 |
-| above_grade_floors |1 |
+| aspect_ratio |1.5 |
+| rotation |40.0 |
+| above_grade_floors |3 |
 | floor_to_floor_height |3.2 |
 | plenum_height |0.0 |
 | sideload |false |
  
-## 10 - H-Shape-RetailStandalone-NECB2011-90-TMY-3-1-1500-1.25
+## 7 - U-Shape-PrimarySchool-NECB2017-40-ECY-3-1-1000-1.5
  
 This test was expected to pass and it did.
  
 | Test Argument | Test Value |
 | ------------- | ---------- |
-| building_shape |H-Shape |
-| template |NECB2011 |
-| building_type |RetailStandalone |
-| epw_file |MB_Thompson_TMY-3.0 |
-| total_floor_area |1500.0 |
-| aspect_ratio |1.25 |
-| rotation |90.0 |
+| building_shape |U-Shape |
+| template |NECB2017 |
+| building_type |PrimarySchool |
+| epw_file |NL_Corner.Brook_ECY-3.0 |
+| total_floor_area |1000.0 |
+| aspect_ratio |1.5 |
+| rotation |40.0 |
 | above_grade_floors |1 |
 | floor_to_floor_height |3.2 |
 | plenum_height |0.0 |
 | sideload |false |
  
-## 11 - H-Shape-RetailStandalone-NECB2011-90-ECY-0-1-1500-1.25
+## 8 - U-Shape-PrimarySchool-NECB2017-40-ECY-0-1-1000-1.5
  
 This test was expected to pass and it did.
  
 | Test Argument | Test Value |
 | ------------- | ---------- |
-| building_shape |H-Shape |
-| template |NECB2011 |
-| building_type |RetailStandalone |
-| epw_file |MB_Winnipeg-Richardson_ECY-0.0 |
-| total_floor_area |1500.0 |
-| aspect_ratio |1.25 |
-| rotation |90.0 |
+| building_shape |U-Shape |
+| template |NECB2017 |
+| building_type |PrimarySchool |
+| epw_file |NS_Halifax_ECY-0.0 |
+| total_floor_area |1000.0 |
+| aspect_ratio |1.5 |
+| rotation |40.0 |
 | above_grade_floors |1 |
 | floor_to_floor_height |3.2 |
 | plenum_height |0.0 |
 | sideload |false |
  
-## 12 - H-Shape-RetailStandalone-NECB2011-90-EWY-0-1-1500-1.25
+## 9 - U-Shape-PrimarySchool-NECB2017-40-EWY-0-1-1000-1.5
  
 This test was expected to pass and it did.
  
 | Test Argument | Test Value |
 | ------------- | ---------- |
-| building_shape |H-Shape |
-| template |NECB2011 |
-| building_type |RetailStandalone |
-| epw_file |NB_Moncton-Greater_EWY-0.0 |
-| total_floor_area |1500.0 |
-| aspect_ratio |1.25 |
-| rotation |90.0 |
+| building_shape |U-Shape |
+| template |NECB2017 |
+| building_type |PrimarySchool |
+| epw_file |NS_Sydney-McCurdy_EWY-0.0 |
+| total_floor_area |1000.0 |
+| aspect_ratio |1.5 |
+| rotation |40.0 |
 | above_grade_floors |1 |
 | floor_to_floor_height |3.2 |
 | plenum_height |0.0 |
 | sideload |false |
  
-## 13 - Courtyard-SmallOffice-NECB2011-90-TMY-3-1-20000-1.25
+## 10 - U-Shape-PrimarySchool-NECB2017-40-ECY-3-3-1000-1.5
  
 This test was expected to pass and it did.
  
 | Test Argument | Test Value |
 | ------------- | ---------- |
-| building_shape |Courtyard |
-| template |NECB2011 |
-| building_type |SmallOffice |
-| epw_file |MB_Thompson_TMY-3.0 |
+| building_shape |U-Shape |
+| template |NECB2017 |
+| building_type |PrimarySchool |
+| epw_file |NL_Corner.Brook_ECY-3.0 |
+| total_floor_area |1000.0 |
+| aspect_ratio |1.5 |
+| rotation |40.0 |
+| above_grade_floors |3 |
+| floor_to_floor_height |3.2 |
+| plenum_height |0.0 |
+| sideload |false |
+ 
+## 11 - U-Shape-PrimarySchool-NECB2017-40-ECY-0-3-1000-1.5
+ 
+This test was expected to pass and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| building_shape |U-Shape |
+| template |NECB2017 |
+| building_type |PrimarySchool |
+| epw_file |NS_Halifax_ECY-0.0 |
+| total_floor_area |1000.0 |
+| aspect_ratio |1.5 |
+| rotation |40.0 |
+| above_grade_floors |3 |
+| floor_to_floor_height |3.2 |
+| plenum_height |0.0 |
+| sideload |false |
+ 
+## 12 - U-Shape-PrimarySchool-NECB2017-40-EWY-0-3-1000-1.5
+ 
+This test was expected to pass and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| building_shape |U-Shape |
+| template |NECB2017 |
+| building_type |PrimarySchool |
+| epw_file |NS_Sydney-McCurdy_EWY-0.0 |
+| total_floor_area |1000.0 |
+| aspect_ratio |1.5 |
+| rotation |40.0 |
+| above_grade_floors |3 |
+| floor_to_floor_height |3.2 |
+| plenum_height |0.0 |
+| sideload |false |
+ 
+## 13 - U-Shape-MediumOffice-NECB2017-40-ECY-3-1-20000-1.5
+ 
+This test was expected to pass and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| building_shape |U-Shape |
+| template |NECB2017 |
+| building_type |MediumOffice |
+| epw_file |NL_Corner.Brook_ECY-3.0 |
 | total_floor_area |20000.0 |
-| aspect_ratio |1.25 |
-| rotation |90.0 |
+| aspect_ratio |1.5 |
+| rotation |40.0 |
 | above_grade_floors |1 |
 | floor_to_floor_height |3.2 |
 | plenum_height |0.0 |
 | sideload |false |
  
-## 14 - Courtyard-SmallOffice-NECB2011-90-ECY-0-1-20000-1.25
+## 14 - U-Shape-MediumOffice-NECB2017-40-ECY-0-1-20000-1.5
  
 This test was expected to pass and it did.
  
 | Test Argument | Test Value |
 | ------------- | ---------- |
-| building_shape |Courtyard |
-| template |NECB2011 |
-| building_type |SmallOffice |
-| epw_file |MB_Winnipeg-Richardson_ECY-0.0 |
+| building_shape |U-Shape |
+| template |NECB2017 |
+| building_type |MediumOffice |
+| epw_file |NS_Halifax_ECY-0.0 |
 | total_floor_area |20000.0 |
-| aspect_ratio |1.25 |
-| rotation |90.0 |
+| aspect_ratio |1.5 |
+| rotation |40.0 |
 | above_grade_floors |1 |
 | floor_to_floor_height |3.2 |
 | plenum_height |0.0 |
 | sideload |false |
  
-## 15 - Courtyard-SmallOffice-NECB2011-90-EWY-0-1-20000-1.25
+## 15 - U-Shape-MediumOffice-NECB2017-40-EWY-0-1-20000-1.5
  
 This test was expected to pass and it did.
  
 | Test Argument | Test Value |
 | ------------- | ---------- |
-| building_shape |Courtyard |
-| template |NECB2011 |
-| building_type |SmallOffice |
-| epw_file |NB_Moncton-Greater_EWY-0.0 |
+| building_shape |U-Shape |
+| template |NECB2017 |
+| building_type |MediumOffice |
+| epw_file |NS_Sydney-McCurdy_EWY-0.0 |
 | total_floor_area |20000.0 |
-| aspect_ratio |1.25 |
-| rotation |90.0 |
+| aspect_ratio |1.5 |
+| rotation |40.0 |
 | above_grade_floors |1 |
 | floor_to_floor_height |3.2 |
 | plenum_height |0.0 |
 | sideload |false |
  
-## 16 - Courtyard-SmallOffice-NECB2011-90-TMY-3-1-1500-1.25
+## 16 - U-Shape-MediumOffice-NECB2017-40-ECY-3-3-20000-1.5
  
 This test was expected to pass and it did.
  
 | Test Argument | Test Value |
 | ------------- | ---------- |
-| building_shape |Courtyard |
-| template |NECB2011 |
-| building_type |SmallOffice |
-| epw_file |MB_Thompson_TMY-3.0 |
-| total_floor_area |1500.0 |
-| aspect_ratio |1.25 |
-| rotation |90.0 |
-| above_grade_floors |1 |
-| floor_to_floor_height |3.2 |
-| plenum_height |0.0 |
-| sideload |false |
- 
-## 17 - Courtyard-SmallOffice-NECB2011-90-ECY-0-1-1500-1.25
- 
-This test was expected to pass and it did.
- 
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| building_shape |Courtyard |
-| template |NECB2011 |
-| building_type |SmallOffice |
-| epw_file |MB_Winnipeg-Richardson_ECY-0.0 |
-| total_floor_area |1500.0 |
-| aspect_ratio |1.25 |
-| rotation |90.0 |
-| above_grade_floors |1 |
-| floor_to_floor_height |3.2 |
-| plenum_height |0.0 |
-| sideload |false |
- 
-## 18 - Courtyard-SmallOffice-NECB2011-90-EWY-0-1-1500-1.25
- 
-This test was expected to pass and it did.
- 
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| building_shape |Courtyard |
-| template |NECB2011 |
-| building_type |SmallOffice |
-| epw_file |NB_Moncton-Greater_EWY-0.0 |
-| total_floor_area |1500.0 |
-| aspect_ratio |1.25 |
-| rotation |90.0 |
-| above_grade_floors |1 |
-| floor_to_floor_height |3.2 |
-| plenum_height |0.0 |
-| sideload |false |
- 
-## 19 - H-Shape-SmallOffice-NECB2011-90-TMY-3-1-20000-1.25
- 
-This test was expected to pass and it did.
- 
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| building_shape |H-Shape |
-| template |NECB2011 |
-| building_type |SmallOffice |
-| epw_file |MB_Thompson_TMY-3.0 |
+| building_shape |U-Shape |
+| template |NECB2017 |
+| building_type |MediumOffice |
+| epw_file |NL_Corner.Brook_ECY-3.0 |
 | total_floor_area |20000.0 |
-| aspect_ratio |1.25 |
-| rotation |90.0 |
-| above_grade_floors |1 |
+| aspect_ratio |1.5 |
+| rotation |40.0 |
+| above_grade_floors |3 |
 | floor_to_floor_height |3.2 |
 | plenum_height |0.0 |
 | sideload |false |
  
-## 20 - H-Shape-SmallOffice-NECB2011-90-ECY-0-1-20000-1.25
+## 17 - U-Shape-MediumOffice-NECB2017-40-ECY-0-3-20000-1.5
  
 This test was expected to pass and it did.
  
 | Test Argument | Test Value |
 | ------------- | ---------- |
-| building_shape |H-Shape |
-| template |NECB2011 |
-| building_type |SmallOffice |
-| epw_file |MB_Winnipeg-Richardson_ECY-0.0 |
+| building_shape |U-Shape |
+| template |NECB2017 |
+| building_type |MediumOffice |
+| epw_file |NS_Halifax_ECY-0.0 |
 | total_floor_area |20000.0 |
-| aspect_ratio |1.25 |
-| rotation |90.0 |
-| above_grade_floors |1 |
+| aspect_ratio |1.5 |
+| rotation |40.0 |
+| above_grade_floors |3 |
 | floor_to_floor_height |3.2 |
 | plenum_height |0.0 |
 | sideload |false |
  
-## 21 - H-Shape-SmallOffice-NECB2011-90-EWY-0-1-20000-1.25
+## 18 - U-Shape-MediumOffice-NECB2017-40-EWY-0-3-20000-1.5
  
 This test was expected to pass and it did.
  
 | Test Argument | Test Value |
 | ------------- | ---------- |
-| building_shape |H-Shape |
-| template |NECB2011 |
-| building_type |SmallOffice |
-| epw_file |NB_Moncton-Greater_EWY-0.0 |
+| building_shape |U-Shape |
+| template |NECB2017 |
+| building_type |MediumOffice |
+| epw_file |NS_Sydney-McCurdy_EWY-0.0 |
 | total_floor_area |20000.0 |
-| aspect_ratio |1.25 |
-| rotation |90.0 |
-| above_grade_floors |1 |
+| aspect_ratio |1.5 |
+| rotation |40.0 |
+| above_grade_floors |3 |
 | floor_to_floor_height |3.2 |
 | plenum_height |0.0 |
 | sideload |false |
  
-## 22 - H-Shape-SmallOffice-NECB2011-90-TMY-3-1-1500-1.25
+## 19 - U-Shape-MediumOffice-NECB2017-40-ECY-3-1-1000-1.5
  
 This test was expected to pass and it did.
  
 | Test Argument | Test Value |
 | ------------- | ---------- |
-| building_shape |H-Shape |
-| template |NECB2011 |
-| building_type |SmallOffice |
-| epw_file |MB_Thompson_TMY-3.0 |
-| total_floor_area |1500.0 |
-| aspect_ratio |1.25 |
-| rotation |90.0 |
+| building_shape |U-Shape |
+| template |NECB2017 |
+| building_type |MediumOffice |
+| epw_file |NL_Corner.Brook_ECY-3.0 |
+| total_floor_area |1000.0 |
+| aspect_ratio |1.5 |
+| rotation |40.0 |
 | above_grade_floors |1 |
 | floor_to_floor_height |3.2 |
 | plenum_height |0.0 |
 | sideload |false |
  
-## 23 - H-Shape-SmallOffice-NECB2011-90-ECY-0-1-1500-1.25
+## 20 - U-Shape-MediumOffice-NECB2017-40-ECY-0-1-1000-1.5
  
 This test was expected to pass and it did.
  
 | Test Argument | Test Value |
 | ------------- | ---------- |
-| building_shape |H-Shape |
-| template |NECB2011 |
-| building_type |SmallOffice |
-| epw_file |MB_Winnipeg-Richardson_ECY-0.0 |
-| total_floor_area |1500.0 |
-| aspect_ratio |1.25 |
-| rotation |90.0 |
+| building_shape |U-Shape |
+| template |NECB2017 |
+| building_type |MediumOffice |
+| epw_file |NS_Halifax_ECY-0.0 |
+| total_floor_area |1000.0 |
+| aspect_ratio |1.5 |
+| rotation |40.0 |
 | above_grade_floors |1 |
 | floor_to_floor_height |3.2 |
 | plenum_height |0.0 |
 | sideload |false |
  
-## 24 - H-Shape-SmallOffice-NECB2011-90-EWY-0-1-1500-1.25
+## 21 - U-Shape-MediumOffice-NECB2017-40-EWY-0-1-1000-1.5
  
 This test was expected to pass and it did.
  
 | Test Argument | Test Value |
 | ------------- | ---------- |
-| building_shape |H-Shape |
-| template |NECB2011 |
-| building_type |SmallOffice |
-| epw_file |NB_Moncton-Greater_EWY-0.0 |
-| total_floor_area |1500.0 |
-| aspect_ratio |1.25 |
-| rotation |90.0 |
+| building_shape |U-Shape |
+| template |NECB2017 |
+| building_type |MediumOffice |
+| epw_file |NS_Sydney-McCurdy_EWY-0.0 |
+| total_floor_area |1000.0 |
+| aspect_ratio |1.5 |
+| rotation |40.0 |
 | above_grade_floors |1 |
+| floor_to_floor_height |3.2 |
+| plenum_height |0.0 |
+| sideload |false |
+ 
+## 22 - U-Shape-MediumOffice-NECB2017-40-ECY-3-3-1000-1.5
+ 
+This test was expected to pass and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| building_shape |U-Shape |
+| template |NECB2017 |
+| building_type |MediumOffice |
+| epw_file |NL_Corner.Brook_ECY-3.0 |
+| total_floor_area |1000.0 |
+| aspect_ratio |1.5 |
+| rotation |40.0 |
+| above_grade_floors |3 |
+| floor_to_floor_height |3.2 |
+| plenum_height |0.0 |
+| sideload |false |
+ 
+## 23 - U-Shape-MediumOffice-NECB2017-40-ECY-0-3-1000-1.5
+ 
+This test was expected to pass and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| building_shape |U-Shape |
+| template |NECB2017 |
+| building_type |MediumOffice |
+| epw_file |NS_Halifax_ECY-0.0 |
+| total_floor_area |1000.0 |
+| aspect_ratio |1.5 |
+| rotation |40.0 |
+| above_grade_floors |3 |
+| floor_to_floor_height |3.2 |
+| plenum_height |0.0 |
+| sideload |false |
+ 
+## 24 - U-Shape-MediumOffice-NECB2017-40-EWY-0-3-1000-1.5
+ 
+This test was expected to pass and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| building_shape |U-Shape |
+| template |NECB2017 |
+| building_type |MediumOffice |
+| epw_file |NS_Sydney-McCurdy_EWY-0.0 |
+| total_floor_area |1000.0 |
+| aspect_ratio |1.5 |
+| rotation |40.0 |
+| above_grade_floors |3 |
 | floor_to_floor_height |3.2 |
 | plenum_height |0.0 |
 | sideload |false |
