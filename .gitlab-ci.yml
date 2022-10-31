@@ -5,6 +5,12 @@ variables:
   GIT_CLONE_PATH: $CI_BUILDS_DIR/$CI_CONCURRENT_ID/os-measures
 
 test_README:
+  tags:
+  - linux
+  - docker
+  - const-ibp
+  
+  script:
   - |
     echo 'Measures are tested on three seperate images. They should pass on all.'
     echo '  The test_using_nrel_image and test_using_nrc_image tests should match the configuration'
