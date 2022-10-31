@@ -163,6 +163,9 @@ class NrcReportingMeasureStandard < OpenStudio::Measure::ReportingMeasure
     btap_data = BTAPData.new(model: model,
                              runner: runner,
                              cost_result: nil,
+                             npv_start_year: nil, 
+                             npv_end_year: nil, 
+                             npv_discount_rate: nil,
                              qaqc: qaqc_data).btap_data
 
     # Ensure that all levels of the has have symbols (makes for consistent look up syntax)							
