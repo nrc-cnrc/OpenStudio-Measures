@@ -19,6 +19,9 @@ echo -e "${GREEN}Setting OpenStudio environment${NC}..."
 os_version="3.2.1"
 os_image=openstudio:$os_version
 
+# Add identifier to image name so we can keep track of our updates. This image is uesd for testing.
+nrc_os_image=${os_image}".a"
+
 # OpenStudio server and supporting gems (these need to be kept in sync when updating os_version).
 server_image=nrel/openstudio-server:$os_version
 rserve_image=nrel/openstudio-rserve:$os_version
@@ -128,15 +131,17 @@ download_gems () {
 }
 
 install_gems () {
+
   # Install gems. Place the gems on the specified container.
   container=$1
   echo -e "${GREEN}Installing gems in container: ${BLUE}$container${NC}..."
   docker exec $container sh -c "mkdir -p $gemDir"
   for (( iGem=0; iGem<${nGems}; iGem++ ))
   do
-    echo -e "  copying ${BLUE}${server_gems[($iGem*3)]}${NC} to ${BLUE}$gemDir${NC} in container ${BLUE}$container${NC}"
+    echo -e "copying ${BLUE}${server_gems[($iGem*3)]}${NC} to ${BLUE}$gemDir${NC} in container ${BLUE}$container${NC}"
     docker cp ../.gems/${server_gems[($iGem*3)]} $container:$gemDir
   done
+
   echo -e "${GREEN}done${NC}."
   
   # Copy the default Gemfile. Edit this on the windows side and then copy it back.

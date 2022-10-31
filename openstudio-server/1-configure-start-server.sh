@@ -18,10 +18,15 @@ echo -e "${GREEN}OpenStudio Server is starting up${NC}..."
 echo -e "Progress in new window 'OpenStudio Server Log'"
 echo
 
-mintty -s 188,32 -t "OpenStudio Server Log" -h always /bin/bash -c "win_user=$(whoami) docker-compose up --scale worker=${OS_SERVER_WORKERS}" &
+#mintty -s 188,32 -t "OpenStudio Server Log" -h always /bin/bash -c "win_user=$(whoami) docker-compose up --scale worker=${OS_SERVER_WORKERS}" &
+mintty -s 188,32 -t "OpenStudio Server Log" -h always /bin/bash -c "win_user=$(whoami) docker compose up --scale worker=${OS_SERVER_WORKERS}" &
 
 # While the server is starting download/update the local copies of the gems
 download_gems
+
+# Copy our weather files to the local copy of the standards gem.
+echo -e "${GREEN}Copying weather files to local copy of openstudio-standards${NC}"
+cp -f ServerData/weather/CAN_* ../.gems/openstudio-standards/data/weather
 
 # Define a container name for checking if the server is running and getting current server gemfile from.
 #  Also define the worker container root name (i.e. without the number) here for ease of fixing when
@@ -29,7 +34,7 @@ download_gems
 container=${PWD##*/}"-web-1"
 worker_root=${PWD##*/}"-worker-"
 
-# Loop until container is up and running. Use 'tries' to avoid sticking here forever
+# Loop until container is up and running. Use 'tries' to avoid sticking here forever.
 echo -e "${GREEN}Checking server is up and running${NC}...$container"
 tries="0"
 server_running="1"
