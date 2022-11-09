@@ -26,7 +26,7 @@ module TestCommon
           "name" => "location",
           "type" => "Choice",
           "display_name" => "Location",
-          "default_value" => 'Get From the Model',
+          "default_value" => 'Nunavut',
           "choices" => ['Get From the Model', 'Canada', 'Newfoundland and Labrador', 'Prince Edward Island', 'Nova Scotia', 'New Brunswick', 'Quebec', 'Ontario', 'Manitoba',
                         'Saskatchewan', 'Alberta', 'British Columbia', 'Yukon', 'Northwest Territories', 'Nunavut'],
           "is_required" => true
@@ -35,7 +35,7 @@ module TestCommon
           "name" => "year",
           "type" => "Choice",
           "display_name" => "Year",
-          "default_value" => '1990',
+          "default_value" => '2019',
           "choices" => ['1990', '2000', '2005', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025', '2026', '2027', '2028', '2029', '2030', '2031', '2032', '2033', '2034', '2035', '2036', '2037', '2038', '2099',
                         '2040', '2041', '2042', '2043', '2044', '2045', '2046', '2047', '2048', '2049', '2050'],
           "is_required" => true
@@ -62,7 +62,6 @@ module TestCommon
 
     def possible_sections
       result = []
-      # methods for sections in order that they will appear in report
       result << 'ghg_NIR_summary_section'
       result << 'ghg_energyStar_summary_section'
       result << 'model_summary_section'
@@ -82,7 +81,6 @@ module TestCommon
 
       # get arguments
       arguments = measure.arguments()
-
       argument_map = OpenStudio::Measure.convertOSArgumentVectorToMap(arguments)
 
       location = arguments[0].clone
@@ -107,6 +105,7 @@ module TestCommon
         "nir_report_year" => "2019"
       }
 
+      puts ">>>>> input_arguments #{input_arguments} "
       # Create an instance of the measure
       run_measure(input_arguments, model)
 
@@ -120,6 +119,7 @@ module TestCommon
       #diffs = FileUtils.compare_file("#{NRCReportingMeasureTestHelper.outputFolder}/#{output_file}","#{NRCReportingMeasureTestHelper.outputFolder}/#{output_file}.reg")
       #assert(diffs, "There were differences to the regression files:\n")
     end
+
   end
 end
 

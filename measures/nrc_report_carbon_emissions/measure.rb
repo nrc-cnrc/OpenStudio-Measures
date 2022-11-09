@@ -65,7 +65,7 @@ class NrcReportCarbonEmissions < OpenStudio::Measure::ReportingMeasure
         "name" => "location",
         "type" => "Choice",
         "display_name" => "Location",
-        "default_value" => 'Get From the Model',
+        "default_value" => 'Nunavut',
         "choices" => ['Get From the Model', 'Canada', 'Newfoundland and Labrador', 'Prince Edward Island', 'Nova Scotia', 'New Brunswick', 'Quebec', 'Ontario', 'Manitoba',
                       'Saskatchewan', 'Alberta', 'British Columbia', 'Yukon', 'Northwest Territories', 'Nunavut'],
         "is_required" => true
@@ -74,7 +74,7 @@ class NrcReportCarbonEmissions < OpenStudio::Measure::ReportingMeasure
         "name" => "year",
         "type" => "Choice",
         "display_name" => "Year",
-        "default_value" => '1990',
+        "default_value" => '2016',
         "choices" => ['1990', '2000', '2005', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025', '2026', '2027', '2028', '2029', '2030', '2031', '2032', '2033', '2034', '2035', '2036', '2037', '2038', '2099',
                       '2040', '2041', '2042', '2043', '2044', '2045', '2046', '2047', '2048', '2049', '2050'],
         "is_required" => true
@@ -176,6 +176,8 @@ class NrcReportCarbonEmissions < OpenStudio::Measure::ReportingMeasure
     year = runner.getStringArgumentValue("year", user_arguments)
     nir_report_year = runner.getStringArgumentValue("nir_report_year", user_arguments)
 
+    puts ">>>>> measure user_arguments #{user_arguments}"
+    puts ">>>>>>>>>> location #{location}  year #{year}  nir_report_year #{nir_report_year} "
     # Get the last model and sql file.
     model = runner.lastOpenStudioModel
     if model.empty?
@@ -205,6 +207,7 @@ class NrcReportCarbonEmissions < OpenStudio::Measure::ReportingMeasure
       location = findProvince(loc)
     end
     $location = location
+    puts ">>>>> location #{location} "
     # Get the natural gas EF from the JSON file 'NG_EFs.json'
     ng_path = File.expand_path('../resources/NG_EFs.json', __FILE__)
     ng_emissionFactorsFile = File.read(ng_path)
@@ -218,6 +221,31 @@ class NrcReportCarbonEmissions < OpenStudio::Measure::ReportingMeasure
       end
     end
 
+    nir_files_path = File.expand_path("#{File.expand_path(__dir__)}/resources/")
+=begin
+    ##########################################################
+    # Merge the 3 different json NIR files into one
+    hash_arr = []
+    files = Dir.entries(nir_files_path)
+    files.each do |file_name|
+      next unless ((File.extname(file_name) == '.json') and (file_name.include? "EmissionFactors_NIR"))
+      path = File.expand_path("#{nir_files_path}/#{file_name}", __FILE__)
+      all_nir_files = File.read(path)
+      nir_data_hash = JSON.parse(all_nir_files)
+      stored = {file_name.to_s => nir_data_hash}
+      hash_arr << stored
+  end
+
+    File.open("#{nir_files_path}/all_nir_reports.json", "a") do |f|
+      f.write(JSON.pretty_generate(hash_arr))
+    end
+=end
+
+
+
+
+=begin
+
     # Find the electricity EF from the JSON file 'EmissionFactors.json'
     path = ''
     if nir_report_year == 2019
@@ -227,33 +255,57 @@ class NrcReportCarbonEmissions < OpenStudio::Measure::ReportingMeasure
     elsif nir_report_year == 2021
       path = File.expand_path('../resources/EmissionFactors_NIR2021.json', __FILE__)
     end
+=end
 
     # NIR 2019 has EFs till 2017 only, so if year 2018 or 2019 is selected, the EF will be determined from NIR 2021
-    if ((year == 2018) && (nir_report_year == 2019))
-      path = File.expand_path('../resources/EmissionFactors_NIR2021.json', __FILE__)
-    elsif ((year == 2019) && (nir_report_year == 2019))
-      path = File.expand_path('../resources/EmissionFactors_NIR2021.json', __FILE__)
-      # NIR 2020 has EFs till 2018 only, so if year 2019 is selected, the EF will be determined from NIR 2021
-    elsif ((year == 2019) && (nir_report_year == 2020))
-      path = File.expand_path('../resources/EmissionFactors_NIR2021.json', __FILE__)
-    elsif year > 2019
-      path = File.expand_path('../resources/ProjectionFactors.json', __FILE__)
-    end
 
-    allEmissionFactorsFile = File.read(path)
-    data_hash = JSON.parse(allEmissionFactorsFile)
-    data_hash.each do |k, v|
-      # all locations
-      k.each do |k1, v1|
-        if k1 == location
-          $electricity_EF = v1[year.to_s]
+   if year <= 2019
+     json_path = File.expand_path("#{nir_files_path}/all_nir_reports.json", __FILE__)
+
+     allEmissionFactorsFile1 = File.read(json_path)
+     data_hash = JSON.parse(allEmissionFactorsFile1)
+     data_hash.each do |key, value|
+       key.each do |k, v|
+         if k.include? nir_report_year.to_s
+           #  If the input argument 'Year' was selected equals to '2018' or '2019', and input argument 'NIR Report Year' was selected '2019' or '2020', Emission
+           #  Factors will be calculated based on NIR Report '2021'
+           puts "Working on NIR report : ".green + "#{k}".light_blue
+           v.each do |k1, v1|
+             k1.each do |loc, value|
+               if loc == location
+                 $electricity_EF = value[year.to_s]
+                 puts "The EF for ".green + " #{loc}".light_blue + " is".green + " #{$electricity_EF}".light_blue
+                 break
+               end
+             end
+           end
+         end
+       end
+     end
+
+     else
+      path = File.expand_path('../resources/ProjectionFactors.json', __FILE__)
+      allEmissionFactorsFile = File.read(path)
+      data_hash = JSON.parse(allEmissionFactorsFile)
+      data_hash.each do |k, v|
+        # all locations
+        k.each do |k1, v1|
+          if k1 == location
+            $electricity_EF = v1[year.to_s]
+          end
         end
       end
     end
 
+
+
     $year = year
     $nir_report_year = nir_report_year
 
+    puts "Year :".green + "#{year}".light_blue + "  NIR report year : ".green + " #{$nir_report_year}".light_blue + "  $electricity_EF".green + " #{$electricity_EF}".light_blue + " location".green + " #{location} ".light_blue
+
+    puts ">>>>>> $electricity_EF #{$electricity_EF}"
+    puts ">>>>>> $electricity_EF #{$naturalGas_EF}"
     # assign the user inputs to variables
     args = OsLib_HelperMethods.createRunVariables(runner, model, user_arguments, arguments)
     unless args
@@ -328,7 +380,7 @@ class NrcReportCarbonEmissions < OpenStudio::Measure::ReportingMeasure
     html_out = renderer.result(binding)
 
     # write html file
-    html_out_path = './report.html'
+    html_out_path = "./#{@test_dir}/report.html"
     File.open(html_out_path, 'w') do |file|
       file << html_out
       # make sure data is written to the disk one way or the other
