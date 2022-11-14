@@ -168,20 +168,20 @@ module OsLib_Reporting
 
   ####### This section calculates the GHG based on NIR reports
   def self.ghg_NIR_summary_section(model, sqlFile, runner, name_only = false)
-    endUse_summary_data_table = {}
-    endUse_summary_data_table[:title] = ''
-    endUse_summary_data_table[:header] = ["End Use", "Electricity", "Natural Gas", "Annual GHG Emissions"]
-    endUse_summary_data_table[:units] = ['', 'GJ', 'GJ', 'tCO2eq']
-    endUse_summary_data_table[:data] = []
+    nir_emmision_summary_data_table = {}
+    nir_emmision_summary_data_table[:title] = ''
+    nir_emmision_summary_data_table[:header] = ["Year", "Electricity NIR EF", "Electricity Emissions", "Natural Gas EF", "Natural Gas Emissions", "Annual GHG Emissions"]
+    nir_emmision_summary_data_table[:units] = ['', 'g CO2eq/kWh', 'tCO2eq', 'kg CO2eq/GJ', 'tCO2eq', 'tCO2eq']
+    nir_emmision_summary_data_table[:data] = []
 
     # gather data for section
-    @endUse_summary_table_section = {}
-    @endUse_summary_table_section[:title] = 'Annual GHG Emissions Based on NIR Report Emission Factors'
-    @endUse_summary_table_section[:data] = []
+    @nir_emission_summary_table_section = {}
+    @nir_emission_summary_table_section[:title] = 'Annual GHG Emissions Based on NIR Report Emission Factors'
+    @nir_emission_summary_table_section[:data] = []
 
     # stop here if only name is requested this is used to populate display name for arguments
     if name_only == true
-      return @endUse_summary_table_section
+      return @nir_emission_summary_table_section
     end
     array_endUse_all = []
     array_endUse = []
@@ -204,22 +204,9 @@ module OsLib_Reporting
         end
       end
       array_endUse_all.push(array_endUse)
-      endUse_summary_data_table[:data] << array_endUse
+      #nir_emmision_summary_data_table[:data] << array_endUse
       array_endUse = []
       counter += 1
-    end
-
-    #Calculate the ghg emissions
-    array_endUse_all.each do |array|
-
-      # Natural gas ghgEmission
-      gas_consumption_gj = array[2]
-      naturalGas_emissions = $naturalGas_EF * gas_consumption_gj / 1000 # convert from kgCO2eq to tCO2eq
-      # Electricity ghgEmission
-      electricity_consumption_kWh = OpenStudio::convert(array[1], "GJ", "kWh").get
-      electricity_emissions = $electricity_EF * electricity_consumption_kWh / 1000000 # convert from g CO2eq to tCO2eq
-      total_emissions = electricity_emissions + naturalGas_emissions
-      array << total_emissions.round(2)
     end
 
     #Calculate Sum of Columns
@@ -236,8 +223,46 @@ module OsLib_Reporting
       $co_total = sum.round(2) # The last value here will be the correct one.
     end
     @totals[0] = 'Total'
-    endUse_summary_data_table[:data] << @totals
-    # Create a csv file
+
+    #Calculate the ghg emissions
+    total_emissions_array = []
+    total_emissions_sub_array = []
+    $electricity_EF.each do |year, electricity_EF|
+      # Natural gas ghgEmission
+      gas_consumption_gj = @totals[2]
+      naturalGas_emissions = $naturalGas_EF * gas_consumption_gj / 1000 # convert from kgCO2eq to tCO2eq
+      # Electricity ghgEmission
+      electricity_consumption_kWh = OpenStudio::convert(@totals[1], "GJ", "kWh").get
+      electricity_emissions = electricity_EF * electricity_consumption_kWh / 1000000 # convert from g CO2eq to tCO2eq
+      total_emissions = electricity_emissions + naturalGas_emissions
+      total_emissions_sub_array << [year, electricity_EF, electricity_emissions.signif(3), $naturalGas_EF, naturalGas_emissions.signif(3), total_emissions.signif(3)]
+      total_emissions_array << total_emissions_sub_array
+      total_emissions_sub_array = []
+      nir_emmision_summary_data_table[:data] << [year, electricity_EF, electricity_emissions.signif(3), $naturalGas_EF, naturalGas_emissions.signif(3), total_emissions.signif(3)]
+    end
+
+    total_emissions_array = total_emissions_array.flatten(1)
+
+
+    #Calculate Sum of Columns
+    array_emissions_all_transpose = []
+    array_emissions_all_transpose = total_emissions_array.transpose
+    total_emissions = []
+    array_emissions_all_transpose.each do |row|
+      sum = 0
+      for i in row do
+        next if i.class == String
+        sum += i
+      end
+      total_emissions << sum.round(2)
+    end
+    total_emissions[0] = 'Total Emissions'
+    total_emissions[1] = ''
+    total_emissions[3] = ''
+
+    total_emissions_array << total_emissions
+    nir_emmision_summary_data_table[:data] << total_emissions
+      # Create a csv file
     # Create if does not exist. Different logic from other testing as there are multiple test scripts writing
     # to this folder so it cannot be deleted.
     @test_dir = NRCReportingMeasureTestHelper.appendOutputFolder("EmissionReport")
@@ -245,18 +270,21 @@ module OsLib_Reporting
       puts "Creating output folder: #{@test_dir}"
       Dir.mkdir(@test_dir)
     end
+
     testing_report = "#{@test_dir}/NIR_ghgEmissions.csv"
     File.open(testing_report, 'a') do |file|
       # Add the header only once
       if file.tell() == 0
-        file.puts "Location, Standard building type,  Electricity_EndUse (GJ),Elec_EF (gCO2eq/kWh), NaturalGas_EndUse (GJ), NaturalGas_EF (gCO2eq/MJ), total_emissions (tCO2eq)}"
+        file.puts "Year, Electricity NIR EF [g CO2eq/kWh], Electricity Emissions [tCO2eq], Natural Gas EF [kg CO2eq/GJ], Natural Gas Emissions [tCO2eq], Annual GHG Emissions [tCO2eq]"
       end
-      file.puts "#{model.getWeatherFile.city} , #{model.getBuilding.standardsBuildingType.get.to_s}, #{@totals[1]}, #{$electricity_EF} , #{@totals[2]} , #{$naturalGas_EF}, #{@totals[3]} "
+      total_emissions_array.each do |elem|
+        file.puts elem.join(',')
+      end
     end
 
     # don't create empty table
-    @endUse_summary_table_section[:tables] = [endUse_summary_data_table] # only one table for this section
-    return @endUse_summary_table_section
+    @nir_emission_summary_table_section[:tables] = [nir_emmision_summary_data_table] # only one table for this section
+    return @nir_emission_summary_table_section
   end
 
   ####### This section calculates the GHG based on Energy Star Portfolio Manager factors
@@ -382,7 +410,6 @@ module OsLib_Reporting
     end
     model_summary_data_table[:data] << ["Standard building type", model.getBuilding.standardsBuildingType.get.to_s]
     model_summary_data_table[:data] << ["Location", $location]
-    model_summary_data_table[:data] << ["Year", $year]
 
     # don't create empty table
     @model_summary_table_section[:tables] = [model_summary_data_table] # only one table for this section
@@ -400,7 +427,7 @@ module OsLib_Reporting
 
     # gather data for section
     @emissionFactors_summary_table_section = {}
-    @emissionFactors_summary_table_section[:title] = 'Emission Factors'
+    @emissionFactors_summary_table_section[:title] = 'Energy Star Emission Factors'
     @emissionFactors_summary_table_section[:data] = []
 
     # stop here if only name is requested this is used to populate display name for arguments
@@ -408,8 +435,6 @@ module OsLib_Reporting
       return @emissionFactors_summary_table_section
     end
 
-    emissionFactors_summary_data_table[:data] << ["NIR Report Year", $nir_report_year]
-    emissionFactors_summary_data_table[:data] << ["NIR Report Electricity Emission Factor (g CO2eq/kWh)", $electricity_EF.round(2)]
     emissionFactors_summary_data_table[:data] << ["ECCC Natural Gas Emission Factor (kg CO2eq/GJ)", $naturalGas_EF.round(2)]
     emissionFactors_summary_data_table[:data] << ["Energy Star Electricity Emission Factor (kg CO2eq/GJ)", @energyStar_electricity_emission_factor.round(2)]
     emissionFactors_summary_data_table[:data] << ["Energy Star Natural Gas Emission Factor (kg CO2eq/GJ)", @gas_emission_factor.round(2)]
@@ -420,6 +445,34 @@ module OsLib_Reporting
     @emissionFactors_summary_table_section[:tables] = [emissionFactors_summary_data_table] # only one table for this section
 
     return @emissionFactors_summary_table_section
+  end
+
+  # create model summary section
+  def self.nir_emissionFactors_summary_section(model, sqlFile, runner, name_only = false)
+    nir_emissionFactors_summary_data_table = {}
+    nir_emissionFactors_summary_data_table[:title] = ''
+    nir_emissionFactors_summary_data_table[:header] = ["NIR Report Year : #{$nir_report_year}", "NIR Emission factor (g CO2eq/kWh)"]
+    nir_emissionFactors_summary_data_table[:units] = ['', '']
+    nir_emissionFactors_summary_data_table[:data] = []
+
+    # gather data for section
+    @nir_emissionFactors_summary_table_section = {}
+    @nir_emissionFactors_summary_table_section[:title] = 'NIR Report Emission Factors'
+    @nir_emissionFactors_summary_table_section[:data] = []
+
+    # stop here if only name is requested this is used to populate display name for arguments
+    if name_only == true
+      return @nir_emissionFactors_summary_table_section
+    end
+
+    $electricity_EF.each do |key, value|
+      nir_emissionFactors_summary_data_table[:data] << [key, value]
+    end
+
+    # don't create empty table
+    @nir_emissionFactors_summary_table_section[:tables] = [nir_emissionFactors_summary_data_table] # only one table for this section
+
+    return @nir_emissionFactors_summary_table_section
   end
 
 end

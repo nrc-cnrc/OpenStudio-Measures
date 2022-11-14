@@ -12,7 +12,7 @@ require 'base64'
 
 # Keep track of the total CO2e value. This is a hack with a global variable.
 $co_total = 0.0
-$electricity_EF = 0.0
+$electricity_EF = {}
 $naturalGas_EF = 0.0
 
 # start the measure
@@ -36,14 +36,11 @@ class NrcReportCarbonEmissions < OpenStudio::Measure::ReportingMeasure
   # human readable description of modeling approach
   def modeler_description
     return "This measure calculates the GHG emissions expressed in tonnes CO2eq based on Emission Factors from NIR reports and Energy Star Portfolio Manager. User can select emission factors before year 2019 from one of 3 NIR reports (2019, 2020 and 2021).
-            Emission Factors from 2019 NIR reports are till 2017, Emission Factors from 2020 NIR reports are till 2018, and Emission Factors from 2019 NIR reports are till 2020.
-            If the input argument 'Year' was selected equals to '2018' or '2019', and input argument 'NIR Report Year' was selected '2019' or '2020', Emission
-            Factors will be calculated based on NIR Report '2021'
+            NIR report 2019 has EFs till 2017 only, so if year 2018 or 2019 is selected, the EF will be calculated based on NIR Report '2021'
             Future GHG factors till 2050 are created by Environment and Climate Change Canada.
             The natural gas emission factors for each province are calculated by Environment and Climate Change Canada."
   end
 
-  #################################
   #Use the constructor to set global variables
   def initialize()
     super()
@@ -71,11 +68,20 @@ class NrcReportCarbonEmissions < OpenStudio::Measure::ReportingMeasure
         "is_required" => true
       },
       {
-        "name" => "year",
+        "name" => "start_year",
         "type" => "Choice",
         "display_name" => "Year",
-        "default_value" => '2016',
-        "choices" => ['1990', '2000', '2005', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025', '2026', '2027', '2028', '2029', '2030', '2031', '2032', '2033', '2034', '2035', '2036', '2037', '2038', '2099',
+        "default_value" => '2050',
+        "choices" => ['1990', '2000', '2005', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025', '2026', '2027', '2028', '2029', '2030', '2031', '2032', '2033', '2034', '2035', '2036', '2037', '2038', '2039',
+                      '2040', '2041', '2042', '2043', '2044', '2045', '2046', '2047', '2048', '2049', '2050'],
+        "is_required" => true
+      },
+      {
+        "name" => "end_year",
+        "type" => "Choice",
+        "display_name" => "Year",
+        "default_value" => '2050',
+        "choices" => ['1990', '2000', '2005', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025', '2026', '2027', '2028', '2029', '2030', '2031', '2032', '2033', '2034', '2035', '2036', '2037', '2038', '2039',
                       '2040', '2041', '2042', '2043', '2044', '2045', '2046', '2047', '2048', '2049', '2050'],
         "is_required" => true
       },
@@ -83,7 +89,7 @@ class NrcReportCarbonEmissions < OpenStudio::Measure::ReportingMeasure
         "name" => "nir_report_year",
         "type" => "Choice",
         "display_name" => "NIR Report Year",
-        "default_value" => '2019',
+        "default_value" => '2021',
         "choices" => ['2019', '2020', '2021'],
         "is_required" => true
       }
@@ -106,6 +112,7 @@ class NrcReportCarbonEmissions < OpenStudio::Measure::ReportingMeasure
     result << 'ghg_energyStar_summary_section'
     result << 'model_summary_section'
     result << 'emissionFactors_summary_section'
+    result << 'nir_emissionFactors_summary_section'
     result
   end
 
@@ -171,13 +178,6 @@ class NrcReportCarbonEmissions < OpenStudio::Measure::ReportingMeasure
       return false
     end
 
-    #get arguments
-    location = runner.getStringArgumentValue("location", user_arguments)
-    year = runner.getStringArgumentValue("year", user_arguments)
-    nir_report_year = runner.getStringArgumentValue("nir_report_year", user_arguments)
-
-    puts ">>>>> measure user_arguments #{user_arguments}"
-    puts ">>>>>>>>>> location #{location}  year #{year}  nir_report_year #{nir_report_year} "
     # Get the last model and sql file.
     model = runner.lastOpenStudioModel
     if model.empty?
@@ -194,118 +194,98 @@ class NrcReportCarbonEmissions < OpenStudio::Measure::ReportingMeasure
     sqlFile = sqlFile.get
     model.setSqlFile(sqlFile)
 
-    # assign the user inputs to variables
-    location = runner.getStringArgumentValue('location', user_arguments)
-    year = runner.getStringArgumentValue('year', user_arguments)
-    year = year.to_i
+    #get arguments
+    location = runner.getStringArgumentValue("location", user_arguments)
+    start_year = runner.getStringArgumentValue("start_year", user_arguments)
+    end_year = runner.getStringArgumentValue("end_year", user_arguments)
+    nir_report_year = runner.getStringArgumentValue("nir_report_year", user_arguments)
+
     nir_report_year = nir_report_year.to_i
+    $nir_report_year = nir_report_year
 
-    #Convert variables to global variables to use them in the report
-    #$year = year
-    if location.include? "Get From the Model"
-      loc = model.getWeatherFile.stateProvinceRegion
-      location = findProvince(loc)
+    all_years = ['1990', '2000', '2005', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025', '2026', '2027', '2028', '2029', '2030', '2031', '2032', '2033', '2034', '2035', '2036', '2037', '2038', '2039',
+                 '2040', '2041', '2042', '2043', '2044', '2045', '2046', '2047', '2048', '2049', '2050']
+
+    start_year_index = all_years.find_index(start_year)
+    end_year_index = all_years.find_index(end_year)
+
+    if (start_year.to_i > end_year.to_i)
+      runner.registerError("End year must be greater or equal to the start year.")
+      return false
     end
-    $location = location
-    puts ">>>>> location #{location} "
-    # Get the natural gas EF from the JSON file 'NG_EFs.json'
-    ng_path = File.expand_path('../resources/NG_EFs.json', __FILE__)
-    ng_emissionFactorsFile = File.read(ng_path)
-    ng_data_hash = JSON.parse(ng_emissionFactorsFile)
-    ng_data_hash.each do |k, v|
-      k.each do |k1, v1|
-        if k1 == location
-          $naturalGas_EF = v1['kg CO2e/GJ']
-          break
-        end
+
+    selected_years = all_years[start_year_index..end_year_index]
+
+    $year = []
+    selected_years.each do |year|
+      year = year.to_i
+
+      if location.include? "Get From the Model"
+        loc = model.getWeatherFile.stateProvinceRegion
+        location = findProvince(loc)
       end
-    end
 
-    nir_files_path = File.expand_path("#{File.expand_path(__dir__)}/resources/")
-=begin
-    ##########################################################
-    # Merge the 3 different json NIR files into one
-    hash_arr = []
-    files = Dir.entries(nir_files_path)
-    files.each do |file_name|
-      next unless ((File.extname(file_name) == '.json') and (file_name.include? "EmissionFactors_NIR"))
-      path = File.expand_path("#{nir_files_path}/#{file_name}", __FILE__)
-      all_nir_files = File.read(path)
-      nir_data_hash = JSON.parse(all_nir_files)
-      stored = {file_name.to_s => nir_data_hash}
-      hash_arr << stored
-  end
-
-    File.open("#{nir_files_path}/all_nir_reports.json", "a") do |f|
-      f.write(JSON.pretty_generate(hash_arr))
-    end
-=end
-
-
-
-
-=begin
-
-    # Find the electricity EF from the JSON file 'EmissionFactors.json'
-    path = ''
-    if nir_report_year == 2019
-      path = File.expand_path('../resources/EmissionFactors_NIR2019.json', __FILE__)
-    elsif nir_report_year == 2020
-      path = File.expand_path('../resources/EmissionFactors_NIR2020.json', __FILE__)
-    elsif nir_report_year == 2021
-      path = File.expand_path('../resources/EmissionFactors_NIR2021.json', __FILE__)
-    end
-=end
-
-    # NIR 2019 has EFs till 2017 only, so if year 2018 or 2019 is selected, the EF will be determined from NIR 2021
-
-   if year <= 2019
-     json_path = File.expand_path("#{nir_files_path}/all_nir_reports.json", __FILE__)
-
-     allEmissionFactorsFile1 = File.read(json_path)
-     data_hash = JSON.parse(allEmissionFactorsFile1)
-     data_hash.each do |key, value|
-       key.each do |k, v|
-         if k.include? nir_report_year.to_s
-           #  If the input argument 'Year' was selected equals to '2018' or '2019', and input argument 'NIR Report Year' was selected '2019' or '2020', Emission
-           #  Factors will be calculated based on NIR Report '2021'
-           puts "Working on NIR report : ".green + "#{k}".light_blue
-           v.each do |k1, v1|
-             k1.each do |loc, value|
-               if loc == location
-                 $electricity_EF = value[year.to_s]
-                 puts "The EF for ".green + " #{loc}".light_blue + " is".green + " #{$electricity_EF}".light_blue
-                 break
-               end
-             end
-           end
-         end
-       end
-     end
-
-     else
-      path = File.expand_path('../resources/ProjectionFactors.json', __FILE__)
-      allEmissionFactorsFile = File.read(path)
-      data_hash = JSON.parse(allEmissionFactorsFile)
-      data_hash.each do |k, v|
-        # all locations
+      # Get the natural gas EF from the JSON file 'NG_EFs.json'
+      ng_path = File.expand_path('../resources/NG_EFs.json', __FILE__)
+      ng_emissionFactorsFile = File.read(ng_path)
+      ng_data_hash = JSON.parse(ng_emissionFactorsFile)
+      ng_data_hash.each do |k, v|
         k.each do |k1, v1|
           if k1 == location
-            $electricity_EF = v1[year.to_s]
+            $naturalGas_EF = v1['kg CO2e/GJ']
+            break
           end
         end
       end
+
+      nir_files_path = File.expand_path("#{File.expand_path(__dir__)}/resources/")
+      electricity_EF = 0.0
+      if year <= 2019
+        json_path = File.expand_path("#{nir_files_path}/all_nir_reports.json", __FILE__)
+        # NIR 2019 has EFs till 2017 only, so if year 2018 or 2019 is selected, the EF will be determined from NIR 2021
+        if year == 2018 or year == 2019
+          nir_report_year = 2021
+        end
+        allEmissionFactorsFile1 = File.read(json_path)
+        data_hash = JSON.parse(allEmissionFactorsFile1)
+        data_hash.each do |key, value|
+          key.each do |k, v|
+            if k.include? nir_report_year.to_s
+              #  If the input argument 'Year' was selected equals to '2018' or '2019', and input argument 'NIR Report Year' was selected '2019' or '2020', Emission
+              #  Factors will be calculated based on NIR Report '2021'
+              puts "Working on NIR report : ".green + "#{k}".light_blue
+              v.each do |k1, v1|
+                k1.each do |loc, value|
+                  if loc == location
+                    electricity_EF = value[year.to_s]
+                    $electricity_EF[year] = electricity_EF
+                    puts "The projection EF for ".green + " #{loc}".light_blue + " for year ".green + " #{year}".light_blue + " is".green + " #{$electricity_EF}".light_blue
+                    break
+                  end
+                end
+              end
+            end
+          end
+        end
+      else
+        path = File.expand_path('../resources/ProjectionFactors.json', __FILE__)
+        allEmissionFactorsFile = File.read(path)
+        data_hash = JSON.parse(allEmissionFactorsFile)
+        data_hash.each do |k, v|
+          # all locations
+          k.each do |k1, v1|
+            if k1 == location
+              electricity_EF = v1[year.to_s]
+              $electricity_EF[year] = electricity_EF
+              puts "The projection EF for ".green + " #{loc}".light_blue + " for year ".green + " #{year}".light_blue + " is".green + " #{electricity_EF}".light_blue
+            end
+          end
+        end
+      end
+      puts "Year :".green + "#{year}".light_blue + "  NIR report year : ".green + " #{$nir_report_year}".light_blue + "  $electricity_EF".green + " #{$electricity_EF}".light_blue + " location".green + " #{location} ".light_blue
     end
+    $location = location
 
-
-
-    $year = year
-    $nir_report_year = nir_report_year
-
-    puts "Year :".green + "#{year}".light_blue + "  NIR report year : ".green + " #{$nir_report_year}".light_blue + "  $electricity_EF".green + " #{$electricity_EF}".light_blue + " location".green + " #{location} ".light_blue
-
-    puts ">>>>>> $electricity_EF #{$electricity_EF}"
-    puts ">>>>>> $electricity_EF #{$naturalGas_EF}"
     # assign the user inputs to variables
     args = OsLib_HelperMethods.createRunVariables(runner, model, user_arguments, arguments)
     unless args
@@ -362,8 +342,10 @@ class NrcReportCarbonEmissions < OpenStudio::Measure::ReportingMeasure
     end
     @sections << ordered_section[2]
     @sections << ordered_section[3]
+    @sections << ordered_section[4]
     @sections << ordered_section[0]
     @sections << ordered_section[1]
+
     html_in_path = "#{File.dirname(__FILE__)}/resources/report.html.erb"
 
     if File.exist?(html_in_path)

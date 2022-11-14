@@ -3,16 +3,14 @@
   <schema_version>3.0</schema_version>
   <name>nrc_report_carbon_emissions</name>
   <uid>11a12238-d360-4ad9-8d85-58b56c67cf83</uid>
-  <version_id>92212922-2566-4ee8-a352-8b1301e8bc77</version_id>
-  <version_modified>20221108T200241Z</version_modified>
+  <version_id>1a1297bb-0b5f-40d3-b6de-5121ab5dfe74</version_id>
+  <version_modified>20221114T150149Z</version_modified>
   <xml_checksum>9BF1E6AC</xml_checksum>
   <class_name>NrcReportCarbonEmissions</class_name>
   <display_name>NrcReportCarbonEmissions</display_name>
   <description>This reporting measure calculates the annual greenhouse gas emissions.</description>
   <modeler_description>This measure calculates the GHG emissions expressed in tonnes CO2eq based on Emission Factors from NIR reports and Energy Star Portfolio Manager. User can select emission factors before year 2019 from one of 3 NIR reports (2019, 2020 and 2021).
-            Emission Factors from 2019 NIR reports are till 2017, Emission Factors from 2020 NIR reports are till 2018, and Emission Factors from 2019 NIR reports are till 2020.
-            If the input argument 'Year' was selected equals to '2018' or '2019', and input argument 'NIR Report Year' was selected '2019' or '2020', Emission
-            Factors will be calculated based on NIR Report '2021'
+            NIR report 2019 has EFs till 2017 only, so if year 2018 or 2019 is selected, the EF will be calculated based on NIR Report '2021'
             Future GHG factors till 2050 are created by Environment and Climate Change Canada.
             The natural gas emission factors for each province are calculated by Environment and Climate Change Canada.</modeler_description>
   <arguments>
@@ -87,12 +85,12 @@
       </choices>
     </argument>
     <argument>
-      <name>year</name>
+      <name>start_year</name>
       <display_name>Year</display_name>
       <type>Choice</type>
       <required>true</required>
       <model_dependent>false</model_dependent>
-      <default_value>2045</default_value>
+      <default_value>2050</default_value>
       <choices>
         <choice>
           <value>1990</value>
@@ -211,8 +209,182 @@
           <display_name>2038</display_name>
         </choice>
         <choice>
-          <value>2099</value>
-          <display_name>2099</display_name>
+          <value>2039</value>
+          <display_name>2039</display_name>
+        </choice>
+        <choice>
+          <value>2040</value>
+          <display_name>2040</display_name>
+        </choice>
+        <choice>
+          <value>2041</value>
+          <display_name>2041</display_name>
+        </choice>
+        <choice>
+          <value>2042</value>
+          <display_name>2042</display_name>
+        </choice>
+        <choice>
+          <value>2043</value>
+          <display_name>2043</display_name>
+        </choice>
+        <choice>
+          <value>2044</value>
+          <display_name>2044</display_name>
+        </choice>
+        <choice>
+          <value>2045</value>
+          <display_name>2045</display_name>
+        </choice>
+        <choice>
+          <value>2046</value>
+          <display_name>2046</display_name>
+        </choice>
+        <choice>
+          <value>2047</value>
+          <display_name>2047</display_name>
+        </choice>
+        <choice>
+          <value>2048</value>
+          <display_name>2048</display_name>
+        </choice>
+        <choice>
+          <value>2049</value>
+          <display_name>2049</display_name>
+        </choice>
+        <choice>
+          <value>2050</value>
+          <display_name>2050</display_name>
+        </choice>
+      </choices>
+    </argument>
+    <argument>
+      <name>end_year</name>
+      <display_name>Year</display_name>
+      <type>Choice</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>2050</default_value>
+      <choices>
+        <choice>
+          <value>1990</value>
+          <display_name>1990</display_name>
+        </choice>
+        <choice>
+          <value>2000</value>
+          <display_name>2000</display_name>
+        </choice>
+        <choice>
+          <value>2005</value>
+          <display_name>2005</display_name>
+        </choice>
+        <choice>
+          <value>2013</value>
+          <display_name>2013</display_name>
+        </choice>
+        <choice>
+          <value>2014</value>
+          <display_name>2014</display_name>
+        </choice>
+        <choice>
+          <value>2015</value>
+          <display_name>2015</display_name>
+        </choice>
+        <choice>
+          <value>2016</value>
+          <display_name>2016</display_name>
+        </choice>
+        <choice>
+          <value>2017</value>
+          <display_name>2017</display_name>
+        </choice>
+        <choice>
+          <value>2018</value>
+          <display_name>2018</display_name>
+        </choice>
+        <choice>
+          <value>2019</value>
+          <display_name>2019</display_name>
+        </choice>
+        <choice>
+          <value>2020</value>
+          <display_name>2020</display_name>
+        </choice>
+        <choice>
+          <value>2021</value>
+          <display_name>2021</display_name>
+        </choice>
+        <choice>
+          <value>2022</value>
+          <display_name>2022</display_name>
+        </choice>
+        <choice>
+          <value>2023</value>
+          <display_name>2023</display_name>
+        </choice>
+        <choice>
+          <value>2024</value>
+          <display_name>2024</display_name>
+        </choice>
+        <choice>
+          <value>2025</value>
+          <display_name>2025</display_name>
+        </choice>
+        <choice>
+          <value>2026</value>
+          <display_name>2026</display_name>
+        </choice>
+        <choice>
+          <value>2027</value>
+          <display_name>2027</display_name>
+        </choice>
+        <choice>
+          <value>2028</value>
+          <display_name>2028</display_name>
+        </choice>
+        <choice>
+          <value>2029</value>
+          <display_name>2029</display_name>
+        </choice>
+        <choice>
+          <value>2030</value>
+          <display_name>2030</display_name>
+        </choice>
+        <choice>
+          <value>2031</value>
+          <display_name>2031</display_name>
+        </choice>
+        <choice>
+          <value>2032</value>
+          <display_name>2032</display_name>
+        </choice>
+        <choice>
+          <value>2033</value>
+          <display_name>2033</display_name>
+        </choice>
+        <choice>
+          <value>2034</value>
+          <display_name>2034</display_name>
+        </choice>
+        <choice>
+          <value>2035</value>
+          <display_name>2035</display_name>
+        </choice>
+        <choice>
+          <value>2036</value>
+          <display_name>2036</display_name>
+        </choice>
+        <choice>
+          <value>2037</value>
+          <display_name>2037</display_name>
+        </choice>
+        <choice>
+          <value>2038</value>
+          <display_name>2038</display_name>
+        </choice>
+        <choice>
+          <value>2039</value>
+          <display_name>2039</display_name>
         </choice>
         <choice>
           <value>2040</value>
@@ -266,7 +438,7 @@
       <type>Choice</type>
       <required>true</required>
       <model_dependent>false</model_dependent>
-      <default_value>2019</default_value>
+      <default_value>2021</default_value>
       <choices>
         <choice>
           <value>2019</value>
@@ -339,6 +511,24 @@
     <argument>
       <name>emissionFactors_summary_section</name>
       <display_name>OsLib_Reporting.emissionFactors_summary_section(nil,nil,nil,true)[:title]</display_name>
+      <type>Boolean</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>true</default_value>
+      <choices>
+        <choice>
+          <value>true</value>
+          <display_name>true</display_name>
+        </choice>
+        <choice>
+          <value>false</value>
+          <display_name>false</display_name>
+        </choice>
+      </choices>
+    </argument>
+    <argument>
+      <name>nir_emissionFactors_summary_section</name>
+      <display_name>OsLib_Reporting.nir_emissionFactors_summary_section(nil,nil,nil,true)[:title]</display_name>
       <type>Boolean</type>
       <required>true</required>
       <model_dependent>false</model_dependent>
@@ -477,34 +667,10 @@
       <checksum>A0490339</checksum>
     </file>
     <file>
-      <filename>EmissionFactors_NIR2020.json</filename>
-      <filetype>json</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>EF778EF6</checksum>
-    </file>
-    <file>
-      <filename>EmissionFactors_NIR2021.json</filename>
-      <filetype>json</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>3AB03472</checksum>
-    </file>
-    <file>
       <filename>ProjectionFactors.json</filename>
       <filetype>json</filetype>
       <usage_type>resource</usage_type>
       <checksum>0108350E</checksum>
-    </file>
-    <file>
-      <filename>README.md</filename>
-      <filetype>md</filetype>
-      <usage_type>readme</usage_type>
-      <checksum>C40415FB</checksum>
-    </file>
-    <file>
-      <filename>os_lib_reporting.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>438E4971</checksum>
     </file>
     <file>
       <filename>test_gr1.rb</filename>
@@ -513,22 +679,22 @@
       <checksum>D40757A8</checksum>
     </file>
     <file>
-      <filename>EmissionFactors_NIR2019.json</filename>
+      <filename>all_nir_reports.json</filename>
       <filetype>json</filetype>
       <usage_type>resource</usage_type>
-      <checksum>83AF1750</checksum>
+      <checksum>3E79C61D</checksum>
+    </file>
+    <file>
+      <filename>os_lib_reporting.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>68DD123D</checksum>
     </file>
     <file>
       <filename>test.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
-      <checksum>5E3F0FCD</checksum>
-    </file>
-    <file>
-      <filename>all_nir_reports.json</filename>
-      <filetype>json</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>3E79C61D</checksum>
+      <checksum>7DE59FAD</checksum>
     </file>
     <file>
       <version>
@@ -539,7 +705,13 @@
       <filename>measure.rb</filename>
       <filetype>rb</filetype>
       <usage_type>script</usage_type>
-      <checksum>BD078F96</checksum>
+      <checksum>74A56FFE</checksum>
+    </file>
+    <file>
+      <filename>README.md</filename>
+      <filetype>md</filetype>
+      <usage_type>readme</usage_type>
+      <checksum>CE275274</checksum>
     </file>
   </files>
 </measure>
