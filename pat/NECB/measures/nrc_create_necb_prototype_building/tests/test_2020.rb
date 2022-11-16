@@ -4,6 +4,8 @@ include(TestCommon)
 # Just the 2020 models. Do warehouse for all editions.
 class NrcCreateNECBPrototypeBuilding_Test
 
+  remove_old_test_results
+
   def test_2020()
     # Delay the start of this test so that the 2011 case can initialise the output folder.
     sleep(40)
@@ -13,9 +15,8 @@ class NrcCreateNECBPrototypeBuilding_Test
     building_types = ['Warehouse',
                       'RetailStandalone',
                       'MidriseApartment']
-    epw_files = ['AB_Banff',
-                 'MB_Winnipeg-Richardson',
-                 'NL_St.Johns']
+    epw_files = ['NB_Saint.John_ECY-3.0',
+                 'NL_Corner.Brook_ECY-0.0']
 
     # A new variable to count the number of osm models that are different than the ones in the regression folder
     $num_failed = 0
@@ -32,11 +33,10 @@ class NrcCreateNECBPrototypeBuilding_Test
           end
         else
           run_test(necb_template: template, building_type_in: building_type, epw_file_in: epw_file)
-
         end
       end
     end
-    puts "Failure in #{$num_failed} models that are different from the ones in the regression models".red
+    puts "Failure in #{$num_failed} models that are different from the ones in the regression models".blue
 
     # Now wait for the forked processes to all finish and figure out if there were any failures.
     # Would be good if we could capture the minitest output from each process and output them here.

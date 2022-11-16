@@ -1,0 +1,656 @@
+{
+  "analysis": {
+    "display_name": "NECB parametric run SK+MB",
+    "name": "NECB parametric run SK+MB",
+    "output_variables": [
+      {
+        "objective_function": false,
+        "objective_function_index": null,
+        "objective_function_target": null,
+        "objective_function_group": null,
+        "scaling_factor": null,
+        "display_name": "total_site_energy",
+        "display_name_short": "total_site_energy",
+        "metadata_id": null,
+        "name": "nrc_reporting_measure_standard.total_site_energy",
+        "visualize": true,
+        "export": true,
+        "variable_type": "double"
+      },
+      {
+        "objective_function": false,
+        "objective_function_index": null,
+        "objective_function_target": null,
+        "objective_function_group": null,
+        "scaling_factor": null,
+        "display_name": "total_site_energy_normalized",
+        "display_name_short": "total_site_energy_normalized",
+        "metadata_id": null,
+        "name": "nrc_reporting_measure_standard.total_site_energy_normalized",
+        "visualize": true,
+        "export": true,
+        "variable_type": "double"
+      },
+      {
+        "objective_function": false,
+        "objective_function_index": null,
+        "objective_function_target": null,
+        "objective_function_group": null,
+        "scaling_factor": null,
+        "display_name": "annual_electricity_use",
+        "display_name_short": "annual_electricity_use",
+        "metadata_id": null,
+        "name": "nrc_reporting_measure_standard.annual_electricity_use",
+        "visualize": true,
+        "export": true,
+        "variable_type": "double"
+      },
+      {
+        "objective_function": false,
+        "objective_function_index": null,
+        "objective_function_target": null,
+        "objective_function_group": null,
+        "scaling_factor": null,
+        "display_name": "annual_natural_gas_use",
+        "display_name_short": "annual_natural_gas_use",
+        "metadata_id": null,
+        "name": "nrc_reporting_measure_standard.annual_natural_gas_use",
+        "visualize": true,
+        "export": true,
+        "variable_type": "double"
+      }
+    ],
+    "problem": {
+      "workflow": [
+        {
+          "name": "nrc_create_necb_prototype_building",
+          "display_name": "NrcCreateNECBPrototypeBuilding",
+          "measure_type": "RubyMeasure",
+          "measure_definition_class_name": "NrcCreateNECBPrototypeBuilding",
+          "measure_definition_directory": "./measures/nrc_create_necb_prototype_building",
+          "measure_definition_directory_local": "D:/devel/openstudio-measures/measures/nrc_create_necb_prototype_building",
+          "measure_definition_display_name": "NrcCreateNECBPrototypeBuilding",
+          "measure_definition_name": "nrc_create_necb_prototype_building",
+          "measure_definition_name_xml": null,
+          "measure_definition_uuid": "3e9acd53-8602-4749-a655-7cbbe48e8b30",
+          "measure_definition_version_uuid": "5c9fe06a-75d5-4e10-b24c-cc76d53fda98",
+          "uuid": "3e9acd53-8602-4749-a655-7cbbe48e8b30",
+          "version_uuid": "5c9fe06a-75d5-4e10-b24c-cc76d53fda98",
+          "description": "This measure creates an NECB prototype building from scratch and uses it as the base for an analysis.",
+          "taxonomy": "Whole Building.Space Types",
+          "arguments": [
+            {
+              "display_name": "Check for sideload files (to overwrite standards info)?",
+              "display_name_short": "sideload",
+              "name": "sideload",
+              "value_type": "boolean",
+              "default_value": false,
+              "value": false
+            }
+          ],
+          "variables": [
+            {
+              "argument": {
+                "display_name": "Template",
+                "display_name_short": "template",
+                "name": "template",
+                "value_type": "string",
+                "default_value": "NECB2017",
+                "value": "NECB2011",
+                "choice_display_names": [
+                  "NECB2011",
+                  "NECB2015",
+                  "NECB2017",
+                  "NECB2020"
+                ]
+              },
+              "display_name": "Template",
+              "display_name_short": "template",
+              "variable_type": "variable",
+              "minimum": "NECB2017",
+              "maximum": "NECB2017",
+              "static_value": "NECB2011",
+              "uuid": "",
+              "version_uuid": "",
+              "variable": true,
+              "uncertainty_description": {
+                "type": "discrete",
+                "attributes": [
+                  {
+                    "name": "discrete",
+                    "values_and_weights": [
+                      {
+                        "value": "NECB2011",
+                        "weight": 0.25
+                      },
+                      {
+                        "value": "NECB2015",
+                        "weight": 0.25
+                      },
+                      {
+                        "value": "NECB2017",
+                        "weight": 0.25
+                      },
+                      {
+                        "value": "NECB2020",
+                        "weight": 0.25
+                      }
+                    ]
+                  },
+                  {
+                    "name": "lower_bounds",
+                    "value": "NECB2017"
+                  },
+                  {
+                    "name": "upper_bounds",
+                    "value": "NECB2017"
+                  },
+                  {
+                    "name": "modes",
+                    "value": "NECB2017"
+                  },
+                  {
+                    "name": "delta_x",
+                    "value": "NECB2017"
+                  },
+                  {
+                    "name": "stddev",
+                    "value": "NECB2017"
+                  }
+                ]
+              },
+              "workflow_index": 0
+            },
+            {
+              "argument": {
+                "display_name": "Building Type",
+                "display_name_short": "building_type",
+                "name": "building_type",
+                "value_type": "string",
+                "default_value": "Warehouse",
+                "value": "Warehouse",
+                "choice_display_names": [
+                  "SecondarySchool",
+                  "PrimarySchool",
+                  "SmallOffice",
+                  "MediumOffice",
+                  "LargeOffice",
+                  "SmallHotel",
+                  "LargeHotel",
+                  "Warehouse",
+                  "RetailStandalone",
+                  "RetailStripmall",
+                  "QuickServiceRestaurant",
+                  "FullServiceRestaurant",
+                  "MidriseApartment",
+                  "HighriseApartment",
+                  "Hospital",
+                  "Outpatient"
+                ]
+              },
+              "display_name": "Building Type",
+              "display_name_short": "building_type",
+              "variable_type": "variable",
+              "minimum": "Warehouse",
+              "maximum": "Warehouse",
+              "static_value": "Warehouse",
+              "uuid": "",
+              "version_uuid": "",
+              "variable": true,
+              "uncertainty_description": {
+                "type": "discrete",
+                "attributes": [
+                  {
+                    "name": "discrete",
+                    "values_and_weights": [
+                      {
+                        "value": "Warehouse",
+                        "weight": 0.1111111111111111
+                      },
+                      {
+                        "value": "SmallOffice",
+                        "weight": 0.1111111111111111
+                      },
+                      {
+                        "value": "RetailStandalone",
+                        "weight": 0.1111111111111111
+                      },
+                      {
+                        "value": "MediumOffice",
+                        "weight": 0.1111111111111111
+                      },
+                      {
+                        "value": "RetailStripmall",
+                        "weight": 0.1111111111111111
+                      },
+                      {
+                        "value": "FullServiceRestaurant",
+                        "weight": 0.1111111111111111
+                      },
+                      {
+                        "value": "MidriseApartment",
+                        "weight": 0.1111111111111111
+                      },
+                      {
+                        "value": "QuickServiceRestaurant",
+                        "weight": 0.1111111111111111
+                      },
+                      {
+                        "value": "LargeOffice",
+                        "weight": 0.1111111111111111
+                      }
+                    ]
+                  },
+                  {
+                    "name": "lower_bounds",
+                    "value": "Warehouse"
+                  },
+                  {
+                    "name": "upper_bounds",
+                    "value": "Warehouse"
+                  },
+                  {
+                    "name": "modes",
+                    "value": "Warehouse"
+                  },
+                  {
+                    "name": "delta_x",
+                    "value": "Warehouse"
+                  },
+                  {
+                    "name": "stddev",
+                    "value": "Warehouse"
+                  }
+                ]
+              },
+              "workflow_index": 1
+            },
+            {
+              "argument": {
+                "display_name": "Climate File",
+                "display_name_short": "epw_file",
+                "name": "epw_file",
+                "value_type": "string",
+                "default_value": "ON_Ottawa-Macdonald-Cartier_TMY-0.0",
+                "value": "MB_Winnipeg-Richardson_TMY-0.0",
+                "choice_display_names": [
+                  "AB_Calgary_ECY-0.0",
+                  "AB_Calgary_ECY-3.0",
+                  "AB_Calgary_EWY-0.0",
+                  "AB_Calgary_EWY-3.0",
+                  "AB_Calgary_TDY-0.0",
+                  "AB_Calgary_TDY-3.0",
+                  "AB_Calgary_TMY-0.0",
+                  "AB_Calgary_TMY-3.0",
+                  "AB_Edmonton_ECY-0.0",
+                  "AB_Edmonton_ECY-3.0",
+                  "AB_Edmonton_EWY-0.0",
+                  "AB_Edmonton_EWY-3.0",
+                  "AB_Edmonton_TDY-0.0",
+                  "AB_Edmonton_TDY-3.0",
+                  "AB_Edmonton_TMY-0.0",
+                  "AB_Edmonton_TMY-3.0",
+                  "AB_Fort.McMurray_ECY-0.0",
+                  "AB_Fort.McMurray_ECY-3.0",
+                  "AB_Fort.McMurray_EWY-0.0",
+                  "AB_Fort.McMurray_EWY-3.0",
+                  "AB_Fort.McMurray_TDY-0.0",
+                  "AB_Fort.McMurray_TDY-3.0",
+                  "AB_Fort.McMurray_TMY-0.0",
+                  "AB_Fort.McMurray_TMY-3.0",
+                  "BC_Kelowna_ECY-0.0",
+                  "BC_Kelowna_ECY-3.0",
+                  "BC_Kelowna_EWY-0.0",
+                  "BC_Kelowna_EWY-3.0",
+                  "BC_Kelowna_TDY-0.0",
+                  "BC_Kelowna_TDY-3.0",
+                  "BC_Kelowna_TMY-0.0",
+                  "BC_Kelowna_TMY-3.0",
+                  "BC_Vancouver_ECY-0.0",
+                  "BC_Vancouver_ECY-3.0",
+                  "BC_Vancouver_EWY-0.0",
+                  "BC_Vancouver_EWY-3.0",
+                  "BC_Vancouver_TDY-0.0",
+                  "BC_Vancouver_TDY-3.0",
+                  "BC_Vancouver_TMY-0.0",
+                  "BC_Vancouver_TMY-3.0",
+                  "BC_Victoria_ECY-0.0",
+                  "BC_Victoria_ECY-3.0",
+                  "BC_Victoria_EWY-0.0",
+                  "BC_Victoria_EWY-3.0",
+                  "BC_Victoria_TDY-0.0",
+                  "BC_Victoria_TDY-3.0",
+                  "BC_Victoria_TMY-0.0",
+                  "BC_Victoria_TMY-3.0",
+                  "MB_Thompson_ECY-0.0",
+                  "MB_Thompson_ECY-3.0",
+                  "MB_Thompson_EWY-0.0",
+                  "MB_Thompson_EWY-3.0",
+                  "MB_Thompson_TDY-0.0",
+                  "MB_Thompson_TDY-3.0",
+                  "MB_Thompson_TMY-0.0",
+                  "MB_Thompson_TMY-3.0",
+                  "MB_Winnipeg-Richardson_ECY-0.0",
+                  "MB_Winnipeg-Richardson_ECY-3.0",
+                  "MB_Winnipeg-Richardson_EWY-0.0",
+                  "MB_Winnipeg-Richardson_EWY-3.0",
+                  "MB_Winnipeg-Richardson_TDY-0.0",
+                  "MB_Winnipeg-Richardson_TDY-3.0",
+                  "MB_Winnipeg-Richardson_TMY-0.0",
+                  "MB_Winnipeg-Richardson_TMY-3.0",
+                  "NB_Moncton-Greater_ECY-0.0",
+                  "NB_Moncton-Greater_ECY-3.0",
+                  "NB_Moncton-Greater_EWY-0.0",
+                  "NB_Moncton-Greater_EWY-3.0",
+                  "NB_Moncton-Greater_TDY-0.0",
+                  "NB_Moncton-Greater_TDY-3.0",
+                  "NB_Moncton-Greater_TMY-0.0",
+                  "NB_Moncton-Greater_TMY-3.0",
+                  "NB_Saint.John_ECY-0.0",
+                  "NB_Saint.John_ECY-3.0",
+                  "NB_Saint.John_EWY-0.0",
+                  "NB_Saint.John_EWY-3.0",
+                  "NB_Saint.John_TDY-0.0",
+                  "NB_Saint.John_TDY-3.0",
+                  "NB_Saint.John_TMY-0.0",
+                  "NB_Saint.John_TMY-3.0",
+                  "NL_Corner.Brook_ECY-0.0",
+                  "NL_Corner.Brook_ECY-3.0",
+                  "NL_Corner.Brook_EWY-0.0",
+                  "NL_Corner.Brook_EWY-3.0",
+                  "NL_Corner.Brook_TDY-0.0",
+                  "NL_Corner.Brook_TDY-3.0",
+                  "NL_Corner.Brook_TMY-0.0",
+                  "NL_Corner.Brook_TMY-3.0",
+                  "NL_St.Johns_ECY-0.0",
+                  "NL_St.Johns_ECY-3.0",
+                  "NL_St.Johns_EWY-0.0",
+                  "NL_St.Johns_EWY-3.0",
+                  "NL_St.Johns_TDY-0.0",
+                  "NL_St.Johns_TDY-3.0",
+                  "NL_St.Johns_TMY-0.0",
+                  "NL_St.Johns_TMY-3.0",
+                  "NS_Halifax_ECY-0.0",
+                  "NS_Halifax_ECY-3.0",
+                  "NS_Halifax_EWY-0.0",
+                  "NS_Halifax_EWY-3.0",
+                  "NS_Halifax_TDY-0.0",
+                  "NS_Halifax_TDY-3.0",
+                  "NS_Halifax_TMY-0.0",
+                  "NS_Halifax_TMY-3.0",
+                  "NS_Sydney-McCurdy_ECY-0.0",
+                  "NS_Sydney-McCurdy_ECY-3.0",
+                  "NS_Sydney-McCurdy_EWY-0.0",
+                  "NS_Sydney-McCurdy_EWY-3.0",
+                  "NS_Sydney-McCurdy_TDY-0.0",
+                  "NS_Sydney-McCurdy_TDY-3.0",
+                  "NS_Sydney-McCurdy_TMY-0.0",
+                  "NS_Sydney-McCurdy_TMY-3.0",
+                  "NT_Inuvik-Zubko_ECY-0.0",
+                  "NT_Inuvik-Zubko_ECY-3.0",
+                  "NT_Inuvik-Zubko_EWY-0.0",
+                  "NT_Inuvik-Zubko_EWY-3.0",
+                  "NT_Inuvik-Zubko_TDY-0.0",
+                  "NT_Inuvik-Zubko_TDY-3.0",
+                  "NT_Inuvik-Zubko_TMY-0.0",
+                  "NT_Inuvik-Zubko_TMY-3.0",
+                  "NT_Yellowknife_ECY-0.0",
+                  "NT_Yellowknife_ECY-3.0",
+                  "NT_Yellowknife_EWY-0.0",
+                  "NT_Yellowknife_EWY-3.0",
+                  "NT_Yellowknife_TDY-0.0",
+                  "NT_Yellowknife_TDY-3.0",
+                  "NT_Yellowknife_TMY-0.0",
+                  "NT_Yellowknife_TMY-3.0",
+                  "NU_Cambridge_ECY-0.0",
+                  "NU_Cambridge_ECY-3.0",
+                  "NU_Cambridge_EWY-0.0",
+                  "NU_Cambridge_EWY-3.0",
+                  "NU_Cambridge_TDY-0.0",
+                  "NU_Cambridge_TDY-3.0",
+                  "NU_Cambridge_TMY-0.0",
+                  "NU_Cambridge_TMY-3.0",
+                  "NU_Iqaluit_ECY-0.0",
+                  "NU_Iqaluit_ECY-3.0",
+                  "NU_Iqaluit_EWY-0.0",
+                  "NU_Iqaluit_EWY-3.0",
+                  "NU_Iqaluit_TDY-0.0",
+                  "NU_Iqaluit_TDY-3.0",
+                  "NU_Iqaluit_TMY-0.0",
+                  "NU_Iqaluit_TMY-3.0",
+                  "NU_Rankin_ECY-0.0",
+                  "NU_Rankin_ECY-3.0",
+                  "NU_Rankin_EWY-0.0",
+                  "NU_Rankin_EWY-3.0",
+                  "NU_Rankin_TDY-0.0",
+                  "NU_Rankin_TDY-3.0",
+                  "NU_Rankin_TMY-0.0",
+                  "NU_Rankin_TMY-3.0",
+                  "ON_Ottawa-Macdonald-Cartier_ECY-0.0",
+                  "ON_Ottawa-Macdonald-Cartier_ECY-3.0",
+                  "ON_Ottawa-Macdonald-Cartier_EWY-0.0",
+                  "ON_Ottawa-Macdonald-Cartier_EWY-3.0",
+                  "ON_Ottawa-Macdonald-Cartier_TDY-0.0",
+                  "ON_Ottawa-Macdonald-Cartier_TDY-3.0",
+                  "ON_Ottawa-Macdonald-Cartier_TMY-0.0",
+                  "ON_Ottawa-Macdonald-Cartier_TMY-3.0",
+                  "ON_Sudbury_ECY-0.0",
+                  "ON_Sudbury_ECY-3.0",
+                  "ON_Sudbury_EWY-0.0",
+                  "ON_Sudbury_EWY-3.0",
+                  "ON_Sudbury_TDY-0.0",
+                  "ON_Sudbury_TDY-3.0",
+                  "ON_Sudbury_TMY-0.0",
+                  "ON_Sudbury_TMY-3.0",
+                  "ON_Toronto_ECY-0.0",
+                  "ON_Toronto_ECY-3.0",
+                  "ON_Toronto_EWY-0.0",
+                  "ON_Toronto_EWY-3.0",
+                  "ON_Toronto_TDY-0.0",
+                  "ON_Toronto_TDY-3.0",
+                  "ON_Toronto_TMY-0.0",
+                  "ON_Toronto_TMY-3.0",
+                  "PE_Charlottetown_ECY-0.0",
+                  "PE_Charlottetown_ECY-3.0",
+                  "PE_Charlottetown_EWY-0.0",
+                  "PE_Charlottetown_EWY-3.0",
+                  "PE_Charlottetown_TDY-0.0",
+                  "PE_Charlottetown_TDY-3.0",
+                  "PE_Charlottetown_TMY-0.0",
+                  "PE_Charlottetown_TMY-3.0",
+                  "QC_Jonquiere_ECY-0.0",
+                  "QC_Jonquiere_ECY-3.0",
+                  "QC_Jonquiere_EWY-0.0",
+                  "QC_Jonquiere_EWY-3.0",
+                  "QC_Jonquiere_TDY-0.0",
+                  "QC_Jonquiere_TDY-3.0",
+                  "QC_Jonquiere_TMY-0.0",
+                  "QC_Jonquiere_TMY-3.0",
+                  "QC_Montreal-Trudeau_ECY-0.0",
+                  "QC_Montreal-Trudeau_ECY-3.0",
+                  "QC_Montreal-Trudeau_EWY-0.0",
+                  "QC_Montreal-Trudeau_EWY-3.0",
+                  "QC_Montreal-Trudeau_TDY-0.0",
+                  "QC_Montreal-Trudeau_TDY-3.0",
+                  "QC_Montreal-Trudeau_TMY-0.0",
+                  "QC_Montreal-Trudeau_TMY-3.0",
+                  "QC_Quebec-Lesage_ECY-0.0",
+                  "QC_Quebec-Lesage_ECY-3.0",
+                  "QC_Quebec-Lesage_EWY-0.0",
+                  "QC_Quebec-Lesage_EWY-3.0",
+                  "QC_Quebec-Lesage_TDY-0.0",
+                  "QC_Quebec-Lesage_TDY-3.0",
+                  "QC_Quebec-Lesage_TMY-0.0",
+                  "QC_Quebec-Lesage_TMY-3.0",
+                  "SK_Regina_ECY-0.0",
+                  "SK_Regina_ECY-3.0",
+                  "SK_Regina_EWY-0.0",
+                  "SK_Regina_EWY-3.0",
+                  "SK_Regina_TDY-0.0",
+                  "SK_Regina_TDY-3.0",
+                  "SK_Regina_TMY-0.0",
+                  "SK_Regina_TMY-3.0",
+                  "SK_Saskatoon_ECY-0.0",
+                  "SK_Saskatoon_ECY-3.0",
+                  "SK_Saskatoon_EWY-0.0",
+                  "SK_Saskatoon_EWY-3.0",
+                  "SK_Saskatoon_TDY-0.0",
+                  "SK_Saskatoon_TDY-3.0",
+                  "SK_Saskatoon_TMY-0.0",
+                  "SK_Saskatoon_TMY-3.0",
+                  "YT_Dawson_ECY-0.0",
+                  "YT_Dawson_ECY-3.0",
+                  "YT_Dawson_EWY-0.0",
+                  "YT_Dawson_EWY-3.0",
+                  "YT_Dawson_TDY-0.0",
+                  "YT_Dawson_TDY-3.0",
+                  "YT_Dawson_TMY-0.0",
+                  "YT_Dawson_TMY-3.0",
+                  "YT_Whitehorse_ECY-0.0",
+                  "YT_Whitehorse_ECY-3.0",
+                  "YT_Whitehorse_EWY-0.0",
+                  "YT_Whitehorse_EWY-3.0",
+                  "YT_Whitehorse_TDY-0.0",
+                  "YT_Whitehorse_TDY-3.0",
+                  "YT_Whitehorse_TMY-0.0",
+                  "YT_Whitehorse_TMY-3.0"
+                ]
+              },
+              "display_name": "Climate File",
+              "display_name_short": "epw_file",
+              "variable_type": "variable",
+              "minimum": "ON_Ottawa-Macdonald-Cartier_TMY-0.0",
+              "maximum": "ON_Ottawa-Macdonald-Cartier_TMY-0.0",
+              "static_value": "MB_Winnipeg-Richardson_TMY-0.0",
+              "uuid": "",
+              "version_uuid": "",
+              "variable": true,
+              "uncertainty_description": {
+                "type": "discrete",
+                "attributes": [
+                  {
+                    "name": "discrete",
+                    "values_and_weights": [
+                      {
+                        "value": "MB_Thompson_TMY-0.0",
+                        "weight": 0.125
+                      },
+                      {
+                        "value": "MB_Thompson_TMY-3.0",
+                        "weight": 0.125
+                      },
+                      {
+                        "value": "MB_Winnipeg-Richardson_TMY-0.0",
+                        "weight": 0.125
+                      },
+                      {
+                        "value": "MB_Winnipeg-Richardson_TMY-3.0",
+                        "weight": 0.125
+                      },
+                      {
+                        "value": "SK_Regina_TMY-0.0",
+                        "weight": 0.125
+                      },
+                      {
+                        "value": "SK_Regina_TMY-3.0",
+                        "weight": 0.125
+                      },
+                      {
+                        "value": "SK_Saskatoon_TMY-0.0",
+                        "weight": 0.125
+                      },
+                      {
+                        "value": "SK_Saskatoon_TMY-3.0",
+                        "weight": 0.125
+                      }
+                    ]
+                  },
+                  {
+                    "name": "lower_bounds",
+                    "value": "ON_Ottawa-Macdonald-Cartier_TMY-0.0"
+                  },
+                  {
+                    "name": "upper_bounds",
+                    "value": "ON_Ottawa-Macdonald-Cartier_TMY-0.0"
+                  },
+                  {
+                    "name": "modes",
+                    "value": "AB_Banff"
+                  },
+                  {
+                    "name": "delta_x",
+                    "value": "AB_Banff"
+                  },
+                  {
+                    "name": "stddev",
+                    "value": "AB_Banff"
+                  }
+                ]
+              },
+              "workflow_index": 2
+            }
+          ],
+          "workflow_index": 0
+        },
+        {
+          "name": "nrc_reporting_measure_standard",
+          "display_name": "NRC Standard Report",
+          "measure_type": "ReportingMeasure",
+          "measure_definition_class_name": "NrcReportingMeasureStandard",
+          "measure_definition_directory": "./measures/nrc_report_standard",
+          "measure_definition_directory_local": "D:/devel/openstudio-measures/measures/nrc_report_standard",
+          "measure_definition_display_name": "NRC Standard Report",
+          "measure_definition_name": "nrc_reporting_measure_standard",
+          "measure_definition_name_xml": null,
+          "measure_definition_uuid": "224561f4-8ccc-4f20-8118-34b85359d3f1",
+          "measure_definition_version_uuid": "8fb72f1d-e00a-4e5d-b7e8-e8356fd9854d",
+          "uuid": "224561f4-8ccc-4f20-8118-34b85359d3f1",
+          "version_uuid": "8fb72f1d-e00a-4e5d-b7e8-e8356fd9854d",
+          "description": "This reporting measure uses and extends the standard QAQC reporting from openstudio-standards.",
+          "taxonomy": "Reporting.QAQC",
+          "arguments": [
+            {
+              "display_name": "A Choice String Argument ",
+              "display_name_short": "a_choice_argument",
+              "name": "a_choice_argument",
+              "value_type": "string",
+              "default_value": "choice_1",
+              "value": "choice_1"
+            }
+          ],
+          "variables": [],
+          "workflow_index": 1
+        }
+      ],
+      "algorithm": {
+        "in_measure_combinations": "true",
+        "include_baseline_in_combinations": "true",
+        "seed": null,
+        "objective_functions": []
+      },
+      "analysis_type": "baseline_perturbation"
+    },
+    "seed": {
+      "file_type": "OSM",
+      "path": "./seeds/EmptyModel.osm"
+    },
+    "weather_file": {
+      "file_type": "EPW",
+      "path": "./weather/SeedWeather.epw"
+    },
+    "file_format_version": 1,
+    "cli_debug": "",
+    "cli_verbose": "",
+    "download_reports": true,
+    "download_osw": true,
+    "download_osm": true,
+    "download_zip": true,
+    "run_workflow_timeout": 28800,
+    "upload_results_timeout": 28800,
+    "initialize_worker_timeout": 28800,
+    "server_scripts": {
+      "server_finalization": "./scripts/server_finalization/finalize.sh",
+      "worker_initialization": "./scripts/worker_initialization/initialize.sh"
+    }
+  }
+}

@@ -12,7 +12,6 @@ This will replace the model object with a brand new model. It effectively ignore
 	updated tables/formulas to those in the standard they can be sideloaded into the standard definition - this new data will
 	then be used to create the model.
 
-
 ## Measure Type
 ModelMeasure
 
@@ -57,3 +56,7 @@ ModelMeasure
 
 
 
+
+
+## Automated Testing
+A summary of the arguments and values used in the automated testing of this measure is [here](./tests/README.md).

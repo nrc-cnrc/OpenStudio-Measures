@@ -4,6 +4,8 @@ include(TestCommon)
 # Just the 2015 models. Do warehouse for all editions.
 class NrcCreateNECBPrototypeBuilding_Test
 
+  remove_old_test_results
+
   def test_2015()
 
     # Delay the start of this test so that the 2011 case can initialise the output folder.
@@ -16,9 +18,9 @@ class NrcCreateNECBPrototypeBuilding_Test
                       'RetailStripmall',
                       'FullServiceRestaurant',
                       'Outpatient']
-    epw_files = ['AB_Banff',
-                 'BC_Vancouver',
-                 'ON_Toronto']
+   epw_files = ['MB_Thompson_TMY-3.0',
+                 'MB_Winnipeg-Richardson_ECY-0.0',
+                 'NB_Moncton-Greater_EWY-0.0']
 
     # A new variable to count the number of osm models that are different than the ones in the regression folder
     $num_failed = 0

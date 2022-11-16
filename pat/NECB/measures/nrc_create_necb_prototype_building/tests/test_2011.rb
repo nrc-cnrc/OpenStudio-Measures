@@ -4,7 +4,11 @@ include(TestCommon)
 # Just the 2011 models.
 class NrcCreateNECBPrototypeBuilding_Test
 
+  remove_old_test_results
+
   def test_2011()
+    #NRCMeasureTestHelper.removeOldOutputs
+   
     template = 'NECB2011'
 
     building_types = ['Warehouse',
@@ -13,9 +17,9 @@ class NrcCreateNECBPrototypeBuilding_Test
                       'SmallOffice',
                       'MediumOffice',
                       'SmallHotel']
-    epw_files = ['AB_Banff',
-                 'AB_Edmonton.Intl',
-                 'QC_Montreal-Trudeau']
+    epw_files = ['MB_Thompson_TMY-3.0',
+                 'MB_Winnipeg-Richardson_ECY-0.0',
+                 'NB_Moncton-Greater_EWY-0.0']
 
     # A new variable to count the number of osm models that are different than the ones in the regression folder
     $num_failed = 0
