@@ -94,7 +94,7 @@ class NrcReportingMeasureStandard < OpenStudio::Measure::ReportingMeasure
 
   # Energy summary
   class EnergySummary < ReportSection
-    def initialize(btap_data: btap_data = nil)
+    def initialize(btap_data: btap_data = nil, runner: runner = nil)
       @content = { title: "Energy End Use Overview" }
       @content[:introduction] = "The following is a summary of the energy end use from the simulation."
 
@@ -116,10 +116,17 @@ class NrcReportingMeasureStandard < OpenStudio::Measure::ReportingMeasure
       data << ["Water Systems", ((btap_data[:"energy_eui_water systems_gj_per_m_sq"]) * fa / 0.0036).signif, ((btap_data[:"energy_eui_water systems_gj_per_m_sq"]) / 0.0036).signif]
       data << ["Interior Lighting", ((btap_data[:"energy_eui_interior lighting_gj_per_m_sq"]) * fa / 0.0036).signif, ((btap_data[:"energy_eui_interior lighting_gj_per_m_sq"]) / 0.0036).signif]
       #data << ["Heat Recovery", ((btap_data[:"energy_eui_heat recovery_gj_per_m_sq"]) * fa / 0.0036).signif, ((btap_data[:"energy_eui_heat recovery_gj_per_m_sq"]) / 0.0036).signif]
-      data << ["Total EUI", ((btap_data[:energy_eui_total_gj_per_m_sq]) * fa / 0.0036).signif, ((btap_data[:energy_eui_total_gj_per_m_sq]) / 0.0036).signif]
+      eui = btap_data[:energy_eui_total_gj_per_m_sq] / 0.0036 # kWh/m2
+      data << ["Total EUI", (eui * fa).signif, (eui).signif]
       table.data = data
 
       add_table_or_chart(table)
+
+	  # Pass recovered values to the output variables in the measure.
+      runner.registerValue('total_site_energy', (eui * fa).signif(4), 'kWh')
+      runner.registerValue('total_site_energy_normalized', (eui).signif(4), 'kWh/m2')
+      runner.registerValue('annual_electricity_use', 1.234, 'kWh')
+      runner.registerValue('annual_natural_gas_use', 1.234, 'GJ')
     end
   end
 

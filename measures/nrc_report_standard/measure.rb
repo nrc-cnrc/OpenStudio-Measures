@@ -35,6 +35,9 @@ class NrcReportingMeasureStandard < OpenStudio::Measure::ReportingMeasure
   def outputs
     outs = OpenStudio::Measure::OSOutputVector.new
     outs << OpenStudio::Measure::OSOutput.makeDoubleOutput('total_site_energy') # kWh; 4 significant figs
+    outs << OpenStudio::Measure::OSOutput.makeDoubleOutput('total_site_energy_normalized') # kWh/m2; 4 significant figs
+    outs << OpenStudio::Measure::OSOutput.makeDoubleOutput('annual_electricity_use') # kWh; 3 significant figs
+    outs << OpenStudio::Measure::OSOutput.makeDoubleOutput('annual_natural_gas_use') # GJ; 3 significant figs
     return outs
   end
 
@@ -43,17 +46,39 @@ class NrcReportingMeasureStandard < OpenStudio::Measure::ReportingMeasure
   def energyPlusOutputRequests(runner, user_arguments)
     super(runner, user_arguments)
 
-    result = OpenStudio::IdfObjectVector.new
+    request = OpenStudio::IdfObjectVector.new
 
     # use the built-in error checking
     if !runner.validateUserArguments(arguments, user_arguments)
-      return result
+      return request
     end
 
-    request = OpenStudio::IdfObject.load('Output:Variable,,Site Outdoor Air Drybulb Temperature,Hourly;').get
-    result << request
+    # List outputs required.
+	# No need ofr these as OpenStudio outputs the data required already. If this changes the CI testing will 
+	# catch the change.
+    request << OpenStudio::IdfObject.load('Output:Meter,NaturalGas:Facility,Monthly;').get
+    request << OpenStudio::IdfObject.load('Output:Meter,Electricity:Facility,Monthly;').get
+    request << OpenStudio::IdfObject.load('Output:Meter,NaturalGas:Facility,Hourly;').get
+    request << OpenStudio::IdfObject.load('Output:Meter,Electricity:Facility,Hourly;').get
+    request << OpenStudio::IdfObject.load('Output:Variable,,Site Outdoor Air Drybulb Temperature,Hourly;').get
 
-    return result
+    # Parse the model for setpoints and add to the requested outputs.
+    model = runner.lastOpenStudioModel
+    if not model.empty? then
+      model = model.get
+      setPoints = model.getSetpointManagers
+      puts ("Setpoints object count: #{setPoints.size}".red)
+      setPoints.each do |setPoint|
+        puts ("#{setPoint.controlVariable}".light_blue)
+        puts ("#{setPoint.setpointNode.get.name}".light_blue)
+        variable = setPoint.controlVariable
+        node = setPoint.setpointNode.get.name
+        request << OpenStudio::IdfObject.load("Output:Variable,#{node},System Node #{variable},Hourly;").get
+        request << OpenStudio::IdfObject.load("Output:Variable,#{node},System Node Setpoint #{variable},Hourly;").get
+      end
+    end
+
+    return request
   end
 
   # Use the constructor to set global variables
@@ -110,16 +135,11 @@ class NrcReportingMeasureStandard < OpenStudio::Measure::ReportingMeasure
     sql_file = sql_file.get
     model.setSqlFile(sql_file)
 
+    # Figure out which version of NECB was used for the model.
+    @standard = find_standard(model)
+
     # Recover the btap and qaqc data. Store in global variables for use in report sections.
     # Need to generate the qaqc json first.
-    if model.getBuilding.standardsTemplate.is_initialized
-      standardsTemplate = (model.getBuilding.standardsTemplate).to_s
-      @standard = Standard.build(standardsTemplate)
-    else
-      puts "The measure wasn't able to determine the standards template from the model, a default value of 'NECB2017' will be used.".red
-      @standard = Standard.build('NECB2017')
-    end
-
     qaqc_data = @standard.init_qaqc(model)
     command = "SELECT Value
                   FROM TabularDataWithStrings
@@ -163,7 +183,7 @@ class NrcReportingMeasureStandard < OpenStudio::Measure::ReportingMeasure
     output = Array.new
     output << ServerSummary.new(btap_data: btap_data)
     output << ModelSummary.new(btap_data: btap_data)
-    output << EnergySummary.new(btap_data: btap_data)
+    output << EnergySummary.new(btap_data: btap_data, runner: runner)
     output << EnvelopeSummary.new(btap_data: btap_data, standard: @standard)
     output << InfiltrationSummary.new(btap_data: btap_data, standard: @standard)
     output << VentilationSummary.new(btap_data: btap_data, standard: @standard, sqlFile: sql_file, model:model)
@@ -177,11 +197,9 @@ class NrcReportingMeasureStandard < OpenStudio::Measure::ReportingMeasure
     writer.write(output)
 
     # Put this together in a word file. ** Requires caracal.
-=begin
-    docx=Word_writer.new
-    writer = Writer.new(docx)
-    writer.write(output)
-=end
+    #docx=Word_writer.new
+    #writer = Writer.new(docx)
+    #writer.write(output)
 
     # Put this together in a word file.
     json = Json_writer.new
