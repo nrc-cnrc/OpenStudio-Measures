@@ -16,7 +16,7 @@ class NrcCreateGeometry_Test
 
 	# Options. Limit to 4 cases to keep run time down (as these models take time to simulate).
     building_types = ["LargeOffice", "HighriseApartment"]
-    epw_files = ['CAN_QC_Montreal-Trudeau.Intl.AP.716270_CWEC2016.epw']
+    epw_files = ['NB_Saint.John_ECY-3.0','NL_Corner.Brook_ECY-0.0']
     building_shapes = ["L-Shape", "Rectangular"]
     total_floor_area = [40000.0]
     rotation = [10.0]

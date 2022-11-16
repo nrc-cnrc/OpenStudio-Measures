@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_new_spacetype_lpd_list</name>
   <uid>fe83dee3-2233-4744-abb1-3cbb1777fbae</uid>
-  <version_id>bbdabb93-cc6c-4669-805d-1e90ad7b4b29</version_id>
-  <version_modified>20220316T131800Z</version_modified>
+  <version_id>8edf258f-7c1f-467c-b700-741d2ad245e9</version_id>
+  <version_modified>20220817T203959Z</version_modified>
   <xml_checksum>2609226D</xml_checksum>
   <class_name>NrcNewSpacetypeLPDList</class_name>
   <display_name>NrcNewSpacetypeLPDList</display_name>
@@ -84,22 +84,28 @@
       <checksum>17F94475</checksum>
     </file>
     <file>
-      <filename>BTAPMeasureHelper.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>4F234BCA</checksum>
-    </file>
-    <file>
       <filename>test.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
       <checksum>65FE3DC4</checksum>
     </file>
     <file>
+      <filename>BTAPMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>AE38D9B8</checksum>
+    </file>
+    <file>
       <filename>NRCMeasureHelper.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>A5221895</checksum>
+      <checksum>EF2FCBFD</checksum>
+    </file>
+    <file>
+      <filename>listofspacenameschangedSI.csv</filename>
+      <filetype>csv</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>4721C23F</checksum>
     </file>
   </files>
 </measure>

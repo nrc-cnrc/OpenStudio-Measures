@@ -5,10 +5,10 @@ measures/nrc_add_doas_sys/tests/test.rb
 measures/nrc_add_drain_water_heat_recovery/tests/test.rb
 measures/nrc_add_hvac_availability_manager/tests/test.rb
 measures/nrc_add_overhangs_by_projection_factor/tests/test.rb
-measures/nrc_alter_shgc/tests/test.rb
 measures/nrc_change_cav_to_vav/tests/test.rb
 measures/nrc_change_heat_recovery_efficiency/tests/test.rb
 measures/nrc_change_SWH_heater_to_ASHPWH/tests/test.rb
+measures/nrc_create_from_existing_osm_file/tests/test.rb
 measures/nrc_create_geometry/tests/test_2011.rb
 measures/nrc_create_geometry/tests/test_2015.rb
 measures/nrc_create_geometry/tests/test_2017.rb
@@ -32,7 +32,7 @@ measures/nrc_rename_surfaces/tests/test.rb
 measures/nrc_report_carbon_emissions/tests/test.rb
 measures/nrc_report_pricing/tests/test.rb
 measures/nrc_report_setpointdiff/tests/test.rb
-measures/nrc_report_standard/tests/test.rb
+#measures/nrc_report_standard/tests/test.rb
 measures/nrc_report_utility_costs/tests/test.rb
 measures/nrc_resize_existing_windows_to_match_a_given_wwr/tests/test.rb
 measures/nrc_set_boiler_efficiency/tests/test.rb
@@ -43,8 +43,9 @@ measures/nrc_set_fenestration_wall_conductance_by_necb_climate_zone/tests/test.r
 measures/nrc_set_infiltration/tests/test.rb
 measures/nrc_set_pump_efficiency/tests/test.rb
 measures/nrc_set_roof_conductance_by_necb_climate_zone/tests/test.rb
+measures/nrc_set_shgc/tests/test.rb
 measures/nrc_set_srr/tests/test.rb
 measures/nrc_set_wall_conductance_by_necb_climate_zone/tests/test.rb
-measures/nrc_update_water_heater/tests/test.rb
+#measures/nrc_update_water_heater/tests/test.rb
 measures_templates/NrcTemplateMeasure/tests/test.rb
 measures_templates/NrcTemplateReportingMeasure/tests/test.rb

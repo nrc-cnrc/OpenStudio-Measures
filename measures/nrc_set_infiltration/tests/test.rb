@@ -73,6 +73,8 @@ class NrcSetInfiltration_Test < Minitest::Test
         "is_required" => true
       }
     ]
+
+    # Must have @good_input_arguments defined for std BTAP checking to work
     @good_input_arguments = {
       "flow_rate" => 2.0,
       "reference_pressure" => 75.0,
@@ -93,7 +95,7 @@ class NrcSetInfiltration_Test < Minitest::Test
     puts "Testing NECB default value".green
 
     # Define the output folder for this test (optional - default is the method name).
-    output_file_path = NRCMeasureTestHelper.appendOutputFolder("WarehouseGood")
+    output_file_path = NRCMeasureTestHelper.appendOutputFolder("Warehouse Good")
 
     # Load osm file.
     model = load_test_osm("#{File.dirname(__FILE__)}/Warehouse-NECB2017-ON_Ottawa.osm")
@@ -101,23 +103,20 @@ class NrcSetInfiltration_Test < Minitest::Test
     # Get arguments.
     input_arguments = @good_input_arguments
 
-    # Run the measure and check output.
+    # Run the measure. This saves the updated model to "#{output_file_path}/test_output.osm".
     runner = run_measure(input_arguments, model)
-    result = runner.result
-    assert(result.value.valueName == 'Success')
 
-    # Save the model to test output directory.
-    output_path = "#{output_file_path}/test_output.osm"
-    model.save(output_path, true)
+    # Check that the measure returned 'success'.
+    assert(runner.result.value.valueName == 'Success', "Error in running measure.")
 
-    # Get the calculate infiltration rate for checking.
+    # Get the calculated infiltration rate for checking.
     output_object = runner.result.stepValues.find {|item| item.name.eql?'calculated_infiltration_rate'}
     rate = output_object.valueAsDouble
 
     # Loop through all infiltration objects used in the model to test if the measure has successfully set the infiltration rate.
     space_infiltration_objects = model.getSpaceInfiltrationDesignFlowRates
     space_infiltration_objects.each do |space_infiltration_object|
-      assert_equal(rate.round(6), (space_infiltration_object.flowperExteriorSurfaceArea).to_f.round(6))
+      assert_in_delta(rate.round(6), (space_infiltration_object.flowperExteriorSurfaceArea).to_f.round(6), 0.000001, 'surface infiltration rate')
     end
   end
 
@@ -149,7 +148,7 @@ class NrcSetInfiltration_Test < Minitest::Test
     # Loop through all infiltration objects used in the model to test if the measure has successfully set the infiltration rate.
     space_infiltration_objects = model.getSpaceInfiltrationDesignFlowRates
     space_infiltration_objects.each do |space_infiltration_object|
-      assert_equal(rate.round(6), (space_infiltration_object.flowperExteriorSurfaceArea).to_f.round(6))
+      assert_in_delta(rate.round(6), (space_infiltration_object.flowperExteriorSurfaceArea).to_f.round(6), 0.000001, 'surface infiltration rate')
     end
   end
 end

@@ -351,5 +351,6 @@ class NrcReportingMeasureStandard < OpenStudio::Measure::ReportingMeasure
     end
   end
 
+
 end
 

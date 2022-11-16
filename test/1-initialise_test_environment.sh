@@ -2,16 +2,42 @@
 STEP="Initializing"
 source ../env.sh
 
+# Set defaults here that may be adjusted by command line args.
+local_image=""
+
+# Parse the command line.
+while [[ $# -gt 0 ]]; do
+  case $1 in
+    -i|--image)
+      echo -e "${GREEN}Using the specified local image!${NC}."
+      local_image="$2"
+      shift # past argument
+      shift # past value
+      ;;
+    -*|--*)
+      echo -e "${YELLOW}Unknown option $1${NC}"
+      exit 1
+      ;;
+  esac
+done
+
 # Tell user what we're doing. If the image is already present and up to date then this will be quick.
-echo -e "${GREEN}Pulling base openstudio image from docker hub${NC}..."
-docker pull $image
-echo -e "...${GREEN}done${NC}."
+if [ -z $local_image ] 
+then
+  echo -e "${GREEN}Pulling base openstudio image from docker hub${NC}..."
+  docker pull nrcconstructioncnrc/${nrc_os_image}
+  echo -e "...${GREEN}done${NC}."
+else
+  echo -e "${YELLOW}Using specified image name ${BLUE}${local_image}${NC}."
+  docker load -i ${local_image}
+  echo -e "...${GREEN}done${NC}."
+fi
 
 # Check if a container name was provided on the command line, if not use the default from env.sh.
 testContainer=$1
-if [ -z $testContainer ]; then
+if [ -z ${testContainer} ]; then
   echo -e "${YELLOW}Using default container name ${BLUE}${default_container}${NC}."
-  testContainer=$default_container
+  testContainer=${default_container}
 else
   echo -e "${YELLOW}Using specified container name ${BLUE}${testContainer}${NC}."
 fi
@@ -22,8 +48,11 @@ create_newContainer() {
   echo -e "${YELLOW}If you get an error here check the folder mounted in the -v option must be a sharable resource - see the docker interface to enable${NC}"
 
   echo "Creating testing container with command:"
-  echo -e "${GREEN}docker create -ti -P -v $shared_win_folder:/os_test --name $testContainer $image${NC}"
-  MSYS_NO_PATHCONV=1 docker create -ti -P -v $shared_win_folder:/os_test --name $testContainer $image
+  echo -e   "${GREEN}docker create -ti -P -v $measures_win_folder:/os_test --name $testContainer nrcconstructioncnrc/${nrc_os_image}${NC}"
+  MSYS_NO_PATHCONV=1 docker create -ti -P -v ${measures_win_folder}/test:/os_test/test -v ${measures_win_folder}/measures:/os_test/measures -v ${measures_win_folder}/measures_templates:/os_test/measures_templates --name ${testContainer} nrcconstructioncnrc/${nrc_os_image}
+
+  echo -e "${GREEN}Starting the test environment container${NC}..."
+  docker container start ${testContainer}
 }
 
 # The docker ps will return the container ID if it exists, nothing if not.
@@ -58,23 +87,15 @@ fi
 echo -e "${GREEN}Starting the test environment container${NC}..."
 docker container start $testContainer
 
-# Download, install gems and run bundle.
+# Download gems.
 download_gems
 
-# Install gems.
-echo -e "${GREEN}Installing gems in container: ${BLUE}$testContainer${NC}..."
-docker exec $testContainer sh -c "mkdir -p $gemDir"
-for ((iGem = 0; iGem < ${nGems}; iGem++)); do
-  echo -e "  copying ${BLUE}${server_gems[($iGem * 3)]}${NC} to ${BLUE}$gemDir${NC} in container ${BLUE}$testContainer${NC}"
-  docker cp ../.gems/${server_gems[($iGem * 3)]} $testContainer:$gemDir
-done
-echo -e "${GREEN}done${NC}."
+# Copy our weather files to the local copy of the standards gem.
+echo -e "${GREEN}Copying weather files to local copy of openstudio-standards${NC}"
+cp -f ../openstudio-server/ServerData/weather/CAN_* ../.gems/openstudio-standards/data/weather
 
-echo -e "${GREEN}Running bundle on installed gems in container: ${BLUE}$testContainer${NC}..."
-echo -e "  ${GREEN}output in popup window${NC}"
-mintty -s 144,32 -t "Container ${testContainer} bundle log" -h always /bin/bash -c \
-"docker exec $testContainer sh -c \"cd /os_test; rm -f Gemfile.lock; bundle install; bundle list --paths; echo DONE. Press enter to close.\""
-echo -e "${GREEN}done${NC}."
+# Install gems and run bundle.
+install_gems $testContainer
 
 echo -e "${GREEN}Stopping the test environment container${NC}..."
 #docker container stop $testContainer

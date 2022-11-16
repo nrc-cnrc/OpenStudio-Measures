@@ -72,6 +72,13 @@ ModelMeasure
 
 
 
+## Outputs
+
+
+
+
+calculated_infiltration_rate
+
 
 ## Automated Testing
 A summary of the arguments and values used in the automated testing of this measure is [here](./tests/README.md).

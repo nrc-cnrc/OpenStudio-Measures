@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_report</name>
   <uid>d023501a-5089-4b1d-9a08-7a573820a7ef</uid>
-  <version_id>d64972a6-73ac-484f-a3ae-617466607cad</version_id>
-  <version_modified>20220316T131807Z</version_modified>
+  <version_id>92fac226-3501-470a-9e9c-30046e575e02</version_id>
+  <version_modified>20220812T155211Z</version_modified>
   <xml_checksum>9BF1E6AC</xml_checksum>
   <class_name>NrcReport</class_name>
   <display_name>NrcReport</display_name>
@@ -1413,18 +1413,6 @@
       <checksum>FC09C0F1</checksum>
     </file>
     <file>
-      <filename>BTAPMeasureHelper.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>4F234BCA</checksum>
-    </file>
-    <file>
-      <filename>NRCMeasureHelper.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>A5221895</checksum>
-    </file>
-    <file>
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>2.8.1</identifier>
@@ -1436,10 +1424,34 @@
       <checksum>49286638</checksum>
     </file>
     <file>
+      <filename>BTAPMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>AE38D9B8</checksum>
+    </file>
+    <file>
+      <filename>NRCMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>EF2FCBFD</checksum>
+    </file>
+    <file>
       <filename>README.md</filename>
       <filetype>md</filetype>
       <usage_type>readme</usage_type>
       <checksum>99B9525E</checksum>
+    </file>
+    <file>
+      <filename>regression_files/diff.html</filename>
+      <filetype>html</filetype>
+      <usage_type>test</usage_type>
+      <checksum>D8949774</checksum>
+    </file>
+    <file>
+      <filename>weather_files/CAN_AB_Edmonton.Intl.AP.711230_CWEC2016.epw</filename>
+      <filetype>epw</filetype>
+      <usage_type>test</usage_type>
+      <checksum>59FE78BA</checksum>
     </file>
   </files>
 </measure>

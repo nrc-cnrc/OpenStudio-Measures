@@ -15,9 +15,8 @@ class NrcCreateNECBPrototypeBuilding_Test
     building_types = ['Warehouse',
                       'RetailStandalone',
                       'MidriseApartment']
-    epw_files = ['AB_Banff',
-                 'MB_Winnipeg-Richardson',
-                 'NL_St.Johns']
+    epw_files = ['NB_Saint.John_ECY-3.0',
+                 'NL_Corner.Brook_ECY-0.0']
 
     # A new variable to count the number of osm models that are different than the ones in the regression folder
     $num_failed = 0
@@ -34,11 +33,10 @@ class NrcCreateNECBPrototypeBuilding_Test
           end
         else
           run_test(necb_template: template, building_type_in: building_type, epw_file_in: epw_file)
-
         end
       end
     end
-    puts "Failure in #{$num_failed} models that are different from the ones in the regression models".red
+    puts "Failure in #{$num_failed} models that are different from the ones in the regression models".blue
 
     # Now wait for the forked processes to all finish and figure out if there were any failures.
     # Would be good if we could capture the minitest output from each process and output them here.

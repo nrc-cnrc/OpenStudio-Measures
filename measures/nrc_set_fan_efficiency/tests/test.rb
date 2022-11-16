@@ -27,64 +27,54 @@ class NrcSetFanEfficiency_Test < Minitest::Test
 
   def setup()
     @measure_interface_detailed = [
-        {
-            "name" => "eff_for_this_cz",
-            "type" => "Double",
-            "display_name" => 'Set Fan efficiency between 0.0 and 1.0',
-            "default_value" => 0.55,
-            "is_required" => true
-        }]
+      {
+        "name" => "fan_eff",
+        "type" => "Double",
+        "display_name" => 'Set fan efficiency (fraction between 0.0 and 1.0)',
+        "default_value" => 0.55,
+        "max_double_value" => 1.0,
+        "min_double_value" => 0.0,
+        "is_required" => true
+      }
+    ]
+
+    # Must have @good_input_arguments defined for std BTAP checking to work.
     @good_input_arguments = {
-        "eff_for_this_cz" => 0.55
+        "fan_eff" => 0.65
     }
   end
 
   def test_argument_values
-    # create an instance of the measure
-    measure = NrcSetFanEfficiency.new
 
-    # load the test model
-    translator = OpenStudio::OSVersion::VersionTranslator.new
-    path = OpenStudio::Path.new(File.dirname(__FILE__) + "/warehouse_2017.osm")
-    model = translator.loadModel(path)
-    assert((not model.empty?))
-    model = model.get
+    # Load osm file.
+    model = load_test_osm("#{File.dirname(__FILE__)}/warehouse_2017.osm")
 
-    # get arguments
-    arguments = measure.arguments(model)
-    input_arguments = {
-        "eff_for_this_cz" => 0.55
-    }
+    # Get arguments.
+    input_arguments = @good_input_arguments
+    fan_eff = input_arguments['fan_eff']
 
     # Define the output folder for this test (optional - default is the method name).
-    output_file_path = NRCMeasureTestHelper.appendOutputFolder("OutputTestFolder")
+    output_file_path = NRCMeasureTestHelper.appendOutputFolder("Good Fan Efficiency Test")
 
-    # Run the measure and check output
+    # Run the measure. This saves the updated model to "#{output_file_path}/test_output.osm".
     runner = run_measure(input_arguments, model)
-    result = runner.result
-    show_output(result)
-    assert(result.value.valueName == 'Success')
 
-    # test if the measure would grab the correct number and value of input argument.
-    assert_equal(1, arguments.size)
-    assert_equal(0.55, arguments[0].defaultValueAsDouble)
+    # Check that the measure returned 'success'.
+    assert(runner.result.value.valueName == 'Success', "Error in running measure.")
 
-    #check if fan efficiency was changed correctly
+    # Check if fan efficiency was changed correctly
     model.getFanOnOffs.each do |fan|
-      assert_equal(0.55, fan.fanEfficiency, "Fan efficiency did not change correctly")
+      assert_in_delta(fan_eff, fan.fanEfficiency, 0.005, "Error in OnOff Fan efficiency.")
     end
     model.getFanConstantVolumes.each do |fan|
-      assert_equal(0.55, fan.fanEfficiency, "Fan efficiency did not change correctly")
+      assert_in_delta(fan_eff, fan.fanEfficiency, 0.005, "Error in Constant Volume Fan efficiency.")
     end
     model.getFanVariableVolumes.each do |fan|
-      assert_equal(0.55, fan.fanEfficiency, "Fan efficiency did not change correctly")
+      assert_in_delta(fan_eff, fan.fanEfficiency, 0.005, "Error in Variable Volume Fan efficiency.")
     end
     model.getFanZoneExhausts.each do |fan|
-      assert_equal(0.55, fan.fanEfficiency, "Fan efficiency did not change correctly")
+      assert_in_delta(fan_eff, fan.fanEfficiency, 0.005, "Error in Exhaust Fan efficiency.")
     end
 
-    # Save the model to test output directory.
-    output_path = "#{output_file_path}/test_output.osm"
-    model.save(output_path, true)
   end
 end

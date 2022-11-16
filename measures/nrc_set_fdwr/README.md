@@ -2,10 +2,10 @@
 
 ###### (Automatically generated documentation)
 
-# nrc_set_fdwr
+# Set FDWR
 
 ## Description
-This measure sets the FDWR according to the selected action
+This measure sets the FDWR according to the selected rule.
 
 ## Modeler Description
 The measure has a dropdown list to select specific pre-defined options. The options are :
@@ -15,8 +15,8 @@ The measure has a dropdown list to select specific pre-defined options. The opti
     •	Reduce existing window size to meet maximum NECB FDWR limit
     •	Set specific FDWR
     Specific FDWR is only used if the 'Set specific FDWR' option is selected.
-    The measure will grab the standards template from the model, but in case it was undefined a default value of 'NECB2017' will be used.
-    The measure sets the FDWR according to NECB 2017 section 3.2.1.4
+    The measure will select the standards template from the model, but in case it was undefined a default value of 'NECB2017' will be used.
+    The measure sets the FDWR according to NECB section 3.2.1.4 (2017 version)
 
 ## Measure Type
 ModelMeasure

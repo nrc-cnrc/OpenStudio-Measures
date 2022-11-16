@@ -85,6 +85,7 @@ class NrcReportingMeasure_Test < Minitest::Test
 
     ]
 
+    # Must have @good_input_arguments defined for std BTAP checking to work.
     @good_input_arguments = {
         "a_string_argument" => "MyString",
         "a_double_argument" => 50.0,

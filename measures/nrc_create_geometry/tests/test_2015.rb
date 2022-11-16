@@ -17,7 +17,7 @@ class NrcCreateGeometry_Test
 
 	# Options. Limit to 16 cases to keep run time down.
     building_types = ["RetailStripmall", "QuickServiceRestaurant"]
-    epw_files = ['CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw', 'CAN_ON_Windsor.Intl.AP.715380_CWEC2016.epw']
+    epw_files = ['MB_Thompson_TMY-3.0','MB_Winnipeg-Richardson_ECY-0.0','NB_Moncton-Greater_EWY-0.0']
     building_shapes = ["Courtyard", "Rectangular"]
     total_floor_area = [20000.0]
     rotation = [10.0]

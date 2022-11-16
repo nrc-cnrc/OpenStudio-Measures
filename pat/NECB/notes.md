@@ -27,3 +27,9 @@ contained in OS-3.0.1-results.xlsx.
 Updating to v 3.2.1 resulted in significant differences in results for the medium office archetype model. This was traced
 to a bug fix in EnergyPlus in the fan model (for details see https://github.com/NREL/EnergyPlus/pull/8401). 
 Full results are i the file OS-3.2.1-results.xlsx and the analysis between the two versions in analysis.xlsx.
+
+*** Openstudio-Standards version 3.2.1
+Updating to v 3.2.1.a resulted in minor differences in results for the majority of models. Known changes in this update 
+relate to the completion of the NECB2020 ruleset (several rules were corrected to match the published code). The largest 
+differences observed are related to the MURB model. It is believed this is due to changes in the archetype definition made by NRCan. 
+Full results are i the file OS-3.2.1.a-results.xlsx and the analysis between the two versions in analysis.xlsx.
