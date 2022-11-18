@@ -165,7 +165,7 @@ module NRCMeasureTestHelper
 
     # Save the model to test output directory. Do this now before asserts (so we have this in case of errors).
     output_path = "#{NRCMeasureTestHelper.outputFolder}/test_output.osm"
-    model.save(output_path, true)
+   # model.save(output_path, true)
 
     # Get the result of the measure. Cannot check for success here as some tests designed to fail!
     resultValue = runner.result.value.valueName

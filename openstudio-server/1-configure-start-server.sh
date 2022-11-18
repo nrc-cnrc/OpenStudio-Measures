@@ -26,7 +26,7 @@ download_gems
 
 # Copy our weather files to the local copy of the standards gem.
 echo -e "${GREEN}Copying weather files to local copy of openstudio-standards${NC}"
-cp -f ServerData/weather/CAN_* ../.gems/openstudio-standards/data/weather
+cp -fr ServerData/weather/ ../.gems/openstudio-standards/data/
 
 # Define a container name for checking if the server is running and getting current server gemfile from.
 #  Also define the worker container root name (i.e. without the number) here for ease of fixing when
@@ -45,8 +45,8 @@ do
   tries=$[$tries+1]
   if [[ $tries -gt 20 ]] 
   then
-    container=${PWD##*/}"_web_1"
-    worker_root=${PWD##*/}"_worker_"    
+    container=${PWD##*/}"-web-1"
+    worker_root=${PWD##*/}"-worker-"    
   else
     if [[ $tries -gt 29 ]]
     then

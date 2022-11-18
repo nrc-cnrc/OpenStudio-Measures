@@ -36,48 +36,6 @@ class NrcCreateGeometry < OpenStudio::Measure::ModelMeasure
     #@use_string_double = true
     @use_string_double = false
 
-    epw_files= ["AB_Calgary_ECY-0.0", "AB_Calgary_ECY-3.0", "AB_Calgary_EWY-0.0", "AB_Calgary_EWY-3.0", "AB_Calgary_TDY-0.0", 
-"AB_Calgary_TDY-3.0", "AB_Calgary_TMY-0.0", "AB_Calgary_TMY-3.0", "AB_Edmonton_ECY-0.0", "AB_Edmonton_ECY-3.0", 
-"AB_Edmonton_EWY-0.0", "AB_Edmonton_EWY-3.0", "AB_Edmonton_TDY-0.0", "AB_Edmonton_TDY-3.0", "AB_Edmonton_TMY-0.0", 
-"AB_Edmonton_TMY-3.0", "AB_Fort.McMurray_ECY-0.0", "AB_Fort.McMurray_ECY-3.0", "AB_Fort.McMurray_EWY-0.0", "AB_Fort.McMurray_EWY-3.0", 
-"AB_Fort.McMurray_TDY-0.0", "AB_Fort.McMurray_TDY-3.0", "AB_Fort.McMurray_TMY-0.0", "AB_Fort.McMurray_TMY-3.0", "BC_Kelowna_ECY-0.0", 
-"BC_Kelowna_ECY-3.0", "BC_Kelowna_EWY-0.0", "BC_Kelowna_EWY-3.0", "BC_Kelowna_TDY-0.0", "BC_Kelowna_TDY-3.0", "BC_Kelowna_TMY-0.0", 
-"BC_Kelowna_TMY-3.0", "BC_Vancouver_ECY-0.0", "BC_Vancouver_ECY-3.0", "BC_Vancouver_EWY-0.0", "BC_Vancouver_EWY-3.0", "BC_Vancouver_TDY-0.0", 
-"BC_Vancouver_TDY-3.0", "BC_Vancouver_TMY-0.0", "BC_Vancouver_TMY-3.0", "BC_Victoria_ECY-0.0", "BC_Victoria_ECY-3.0", "BC_Victoria_EWY-0.0", 
-"BC_Victoria_EWY-3.0", "BC_Victoria_TDY-0.0", "BC_Victoria_TDY-3.0", "BC_Victoria_TMY-0.0", "BC_Victoria_TMY-3.0", "MB_Thompson_ECY-0.0", 
-"MB_Thompson_ECY-3.0", "MB_Thompson_EWY-0.0", "MB_Thompson_EWY-3.0", "MB_Thompson_TDY-0.0", "MB_Thompson_TDY-3.0", "MB_Thompson_TMY-0.0", 
-"MB_Thompson_TMY-3.0", "MB_Winnipeg-Richardson_ECY-0.0", "MB_Winnipeg-Richardson_ECY-3.0", "MB_Winnipeg-Richardson_EWY-0.0", "MB_Winnipeg-Richardson_EWY-3.0", 
-"MB_Winnipeg-Richardson_TDY-0.0", "MB_Winnipeg-Richardson_TDY-3.0", "MB_Winnipeg-Richardson_TMY-0.0", "MB_Winnipeg-Richardson_TMY-3.0", 
-"NB_Moncton-Greater_ECY-0.0", "NB_Moncton-Greater_ECY-3.0", "NB_Moncton-Greater_EWY-0.0", "NB_Moncton-Greater_EWY-3.0", "NB_Moncton-Greater_TDY-0.0", 
-"NB_Moncton-Greater_TDY-3.0", "NB_Moncton-Greater_TMY-0.0", "NB_Moncton-Greater_TMY-3.0", "NB_Saint.John_ECY-0.0", "NB_Saint.John_ECY-3.0", 
-"NB_Saint.John_EWY-0.0", "NB_Saint.John_EWY-3.0", "NB_Saint.John_TDY-0.0", "NB_Saint.John_TDY-3.0", "NB_Saint.John_TMY-0.0", "NB_Saint.John_TMY-3.0", 
-"NL_Corner.Brook_ECY-0.0", "NL_Corner.Brook_ECY-3.0", "NL_Corner.Brook_EWY-0.0", "NL_Corner.Brook_EWY-3.0", "NL_Corner.Brook_TDY-0.0", "NL_Corner.Brook_TDY-3.0", 
-"NL_Corner.Brook_TMY-0.0", "NL_Corner.Brook_TMY-3.0", "NL_St.Johns_ECY-0.0", "NL_St.Johns_ECY-3.0", "NL_St.Johns_EWY-0.0", "NL_St.Johns_EWY-3.0", 
-"NL_St.Johns_TDY-0.0", "NL_St.Johns_TDY-3.0", "NL_St.Johns_TMY-0.0", "NL_St.Johns_TMY-3.0", "NS_Halifax_ECY-0.0", "NS_Halifax_ECY-3.0", "NS_Halifax_EWY-0.0", 
-"NS_Halifax_EWY-3.0", "NS_Halifax_TDY-0.0", "NS_Halifax_TDY-3.0", "NS_Halifax_TMY-0.0", "NS_Halifax_TMY-3.0", "NS_Sydney-McCurdy_ECY-0.0", "NS_Sydney-McCurdy_ECY-3.0", 
-"NS_Sydney-McCurdy_EWY-0.0", "NS_Sydney-McCurdy_EWY-3.0", "NS_Sydney-McCurdy_TDY-0.0", "NS_Sydney-McCurdy_TDY-3.0", "NS_Sydney-McCurdy_TMY-0.0", "NS_Sydney-McCurdy_TMY-3.0", 
-"NT_Inuvik-Zubko_ECY-0.0", "NT_Inuvik-Zubko_ECY-3.0", "NT_Inuvik-Zubko_EWY-0.0", "NT_Inuvik-Zubko_EWY-3.0", "NT_Inuvik-Zubko_TDY-0.0", "NT_Inuvik-Zubko_TDY-3.0", 
-"NT_Inuvik-Zubko_TMY-0.0", "NT_Inuvik-Zubko_TMY-3.0", "NT_Yellowknife_ECY-0.0", "NT_Yellowknife_ECY-3.0", "NT_Yellowknife_EWY-0.0", "NT_Yellowknife_EWY-3.0", 
-"NT_Yellowknife_TDY-0.0", "NT_Yellowknife_TDY-3.0", "NT_Yellowknife_TMY-0.0", "NT_Yellowknife_TMY-3.0", "NU_Cambridge_ECY-0.0", "NU_Cambridge_ECY-3.0", 
-"NU_Cambridge_EWY-0.0", "NU_Cambridge_EWY-3.0", "NU_Cambridge_TDY-0.0", "NU_Cambridge_TDY-3.0", "NU_Cambridge_TMY-0.0", "NU_Cambridge_TMY-3.0", "NU_Iqaluit_ECY-0.0", 
-"NU_Iqaluit_ECY-3.0", "NU_Iqaluit_EWY-0.0", "NU_Iqaluit_EWY-3.0", "NU_Iqaluit_TDY-0.0", "NU_Iqaluit_TDY-3.0", "NU_Iqaluit_TMY-0.0", "NU_Iqaluit_TMY-3.0", 
-"NU_Rankin_ECY-0.0", "NU_Rankin_ECY-3.0", "NU_Rankin_EWY-0.0", "NU_Rankin_EWY-3.0", "NU_Rankin_TDY-0.0", "NU_Rankin_TDY-3.0", "NU_Rankin_TMY-0.0", "NU_Rankin_TMY-3.0", 
-"ON_Ottawa-Macdonald-Cartier_ECY-0.0", "ON_Ottawa-Macdonald-Cartier_ECY-3.0", "ON_Ottawa-Macdonald-Cartier_EWY-0.0", "ON_Ottawa-Macdonald-Cartier_EWY-3.0", 
-"ON_Ottawa-Macdonald-Cartier_TDY-0.0", "ON_Ottawa-Macdonald-Cartier_TDY-3.0", "ON_Ottawa-Macdonald-Cartier_TMY-0.0", "ON_Ottawa-Macdonald-Cartier_TMY-3.0", 
-"ON_Sudbury_ECY-0.0", "ON_Sudbury_ECY-3.0", "ON_Sudbury_EWY-0.0", "ON_Sudbury_EWY-3.0", "ON_Sudbury_TDY-0.0", "ON_Sudbury_TDY-3.0", "ON_Sudbury_TMY-0.0", 
-"ON_Sudbury_TMY-3.0", "ON_Toronto_ECY-0.0", "ON_Toronto_ECY-3.0", "ON_Toronto_EWY-0.0", "ON_Toronto_EWY-3.0", "ON_Toronto_TDY-0.0", "ON_Toronto_TDY-3.0", 
-"ON_Toronto_TMY-0.0", "ON_Toronto_TMY-3.0", "PE_Charlottetown_ECY-0.0", "PE_Charlottetown_ECY-3.0", "PE_Charlottetown_EWY-0.0", "PE_Charlottetown_EWY-3.0", 
-"PE_Charlottetown_TDY-0.0", "PE_Charlottetown_TDY-3.0", "PE_Charlottetown_TMY-0.0", "PE_Charlottetown_TMY-3.0", "QC_Jonquiere_ECY-0.0", "QC_Jonquiere_ECY-3.0", 
-"QC_Jonquiere_EWY-0.0", "QC_Jonquiere_EWY-3.0", "QC_Jonquiere_TDY-0.0", "QC_Jonquiere_TDY-3.0", "QC_Jonquiere_TMY-0.0", "QC_Jonquiere_TMY-3.0", "QC_Montreal-Trudeau_ECY-0.0", 
-"QC_Montreal-Trudeau_ECY-3.0", "QC_Montreal-Trudeau_EWY-0.0", "QC_Montreal-Trudeau_EWY-3.0", "QC_Montreal-Trudeau_TDY-0.0", "QC_Montreal-Trudeau_TDY-3.0", 
-"QC_Montreal-Trudeau_TMY-0.0", "QC_Montreal-Trudeau_TMY-3.0", "QC_Quebec-Lesage_ECY-0.0", "QC_Quebec-Lesage_ECY-3.0", "QC_Quebec-Lesage_EWY-0.0", 
-"QC_Quebec-Lesage_EWY-3.0", "QC_Quebec-Lesage_TDY-0.0", "QC_Quebec-Lesage_TDY-3.0", "QC_Quebec-Lesage_TMY-0.0", "QC_Quebec-Lesage_TMY-3.0", 
-"SK_Regina_ECY-0.0", "SK_Regina_ECY-3.0", "SK_Regina_EWY-0.0", "SK_Regina_EWY-3.0", "SK_Regina_TDY-0.0", "SK_Regina_TDY-3.0", "SK_Regina_TMY-0.0", 
-"SK_Regina_TMY-3.0", "SK_Saskatoon_ECY-0.0", "SK_Saskatoon_ECY-3.0", "SK_Saskatoon_EWY-0.0", "SK_Saskatoon_EWY-3.0", "SK_Saskatoon_TDY-0.0", 
-"SK_Saskatoon_TDY-3.0", "SK_Saskatoon_TMY-0.0", "SK_Saskatoon_TMY-3.0", "YT_Dawson_ECY-0.0", "YT_Dawson_ECY-3.0", "YT_Dawson_EWY-0.0", 
-"YT_Dawson_EWY-3.0", "YT_Dawson_TDY-0.0", "YT_Dawson_TDY-3.0", "YT_Dawson_TMY-0.0", "YT_Dawson_TMY-3.0", "YT_Whitehorse_ECY-0.0", "YT_Whitehorse_ECY-3.0", 
-"YT_Whitehorse_EWY-0.0", "YT_Whitehorse_EWY-3.0", "YT_Whitehorse_TDY-0.0", "YT_Whitehorse_TDY-3.0", "YT_Whitehorse_TMY-0.0", "YT_Whitehorse_TMY-3.0"]
-
     # Put in this array of hashes all the input variables that you need in your measure. Your choice of types are Sting, Double,
     # StringDouble, and Choice. Optional fields are valid strings, max_double_value, and min_double_value. This will
     # create all the variables, validate the ranges and types you need,  and make them available in the 'run' method as a hash after
@@ -108,11 +66,27 @@ class NrcCreateGeometry < OpenStudio::Measure::ModelMeasure
         "is_required" => true
       },
       {
-        "name" => "epw_file",
+        "name" => "location",
         "type" => "Choice",
-        "display_name" => "Weather file",
-          "default_value" => "ON_Ottawa-Macdonald-Cartier_TMY-0.0",
-        "choices" => epw_files,
+        "display_name" => "Location",
+        "default_value" => "Calgary",
+        "choices" => ["Calgary", "Edmonton", "Fort.McMurray", "Kelowna", "Vancouver", "Victoria", "Thompson", "Winnipeg-Richardson", "Moncton-Greater", "Saint.John", "Corner.Brook", "St.Johns", "Halifax", "Sydney-McCurdy", "Inuvik-Zubko", "Yellowknife", "Cambridge.Bay", "Iqaluit", "Rankin.Inlet", "Ottawa-Macdonald-Cartier", "Sudbury", "Toronto.Pearson", "Charlottetown", "Jonquiere", "Montreal-Trudeau", "Quebec-Lesage", "Regina", "Saskatoon", "Dawson", "Whitehorse", "Prince.Albert", "Windsor"],
+        "is_required" => true
+      },
+      {
+        "name" => "weather_file_type",
+        "type" => "Choice",
+        "display_name" => "Weather Type",
+        "default_value" => "ECY",
+        "choices" => ["ECY", "EWY", "TDY", "TMY", "CWEC2016"],
+        "is_required" => true
+      },
+      {
+        "name" => "global_warming",
+        "type" => "Choice",
+        "display_name" => "Global Warming",
+        "default_value" => "0.0",
+        "choices" => ["0.0", "3.0"],
         "is_required" => true
       },
       {
@@ -192,13 +166,93 @@ class NrcCreateGeometry < OpenStudio::Measure::ModelMeasure
     #puts JSON.pretty_generate(arguments)
     return false if false == arguments
 
-    w_files = {"AB_Calgary_ECY-0.0"=>"CAN_AB_Calgary.Intl.AP.718770_ECY-0.0.epw", "AB_Calgary_ECY-3.0"=>"CAN_AB_Calgary.Intl.AP.718770_ECY-3.0.epw", "AB_Calgary_EWY-0.0"=>"CAN_AB_Calgary.Intl.AP.718770_EWY-0.0.epw", "AB_Calgary_EWY-3.0"=>"CAN_AB_Calgary.Intl.AP.718770_EWY-3.0.epw", "AB_Calgary_TDY-0.0"=>"CAN_AB_Calgary.Intl.AP.718770_TDY-0.0.epw", "AB_Calgary_TDY-3.0"=>"CAN_AB_Calgary.Intl.AP.718770_TDY-3.0.epw", "AB_Calgary_TMY-0.0"=>"CAN_AB_Calgary.Intl.AP.718770_TMY-0.0.epw", "AB_Calgary_TMY-3.0"=>"CAN_AB_Calgary.Intl.AP.718770_TMY-3.0.epw", "AB_Edmonton_ECY-0.0"=>"CAN_AB_Edmonton.Intl.AP.711230_ECY-0.0.epw", "AB_Edmonton_ECY-3.0"=>"CAN_AB_Edmonton.Intl.AP.711230_ECY-3.0.epw", "AB_Edmonton_EWY-0.0"=>"CAN_AB_Edmonton.Intl.AP.711230_EWY-0.0.epw", "AB_Edmonton_EWY-3.0"=>"CAN_AB_Edmonton.Intl.AP.711230_EWY-3.0.epw", "AB_Edmonton_TDY-0.0"=>"CAN_AB_Edmonton.Intl.AP.711230_TDY-0.0.epw", "AB_Edmonton_TDY-3.0"=>"CAN_AB_Edmonton.Intl.AP.711230_TDY-3.0.epw", "AB_Edmonton_TMY-0.0"=>"CAN_AB_Edmonton.Intl.AP.711230_TMY-0.0.epw", "AB_Edmonton_TMY-3.0"=>"CAN_AB_Edmonton.Intl.AP.711230_TMY-3.0.epw", "AB_Fort.McMurray_ECY-0.0"=>"CAN_AB_Fort.McMurray.AP.716890_ECY-0.0.epw", "AB_Fort.McMurray_ECY-3.0"=>"CAN_AB_Fort.McMurray.AP.716890_ECY-3.0.epw", "AB_Fort.McMurray_EWY-0.0"=>"CAN_AB_Fort.McMurray.AP.716890_EWY-0.0.epw", "AB_Fort.McMurray_EWY-3.0"=>"CAN_AB_Fort.McMurray.AP.716890_EWY-3.0.epw", "AB_Fort.McMurray_TDY-0.0"=>"CAN_AB_Fort.McMurray.AP.716890_TDY-0.0.epw", "AB_Fort.McMurray_TDY-3.0"=>"CAN_AB_Fort.McMurray.AP.716890_TDY-3.0.epw", "AB_Fort.McMurray_TMY-0.0"=>"CAN_AB_Fort.McMurray.AP.716890_TMY-0.0.epw", "AB_Fort.McMurray_TMY-3.0"=>"CAN_AB_Fort.McMurray.AP.716890_TMY-3.0.epw", "BC_Kelowna_ECY-0.0"=>"CAN_BC_Kelowna.Intl.AP.712030_ECY-0.0.epw", "BC_Kelowna_ECY-3.0"=>"CAN_BC_Kelowna.Intl.AP.712030_ECY-3.0.epw", "BC_Kelowna_EWY-0.0"=>"CAN_BC_Kelowna.Intl.AP.712030_EWY-0.0.epw", "BC_Kelowna_EWY-3.0"=>"CAN_BC_Kelowna.Intl.AP.712030_EWY-3.0.epw", "BC_Kelowna_TDY-0.0"=>"CAN_BC_Kelowna.Intl.AP.712030_TDY-0.0.epw", "BC_Kelowna_TDY-3.0"=>"CAN_BC_Kelowna.Intl.AP.712030_TDY-3.0.epw", "BC_Kelowna_TMY-0.0"=>"CAN_BC_Kelowna.Intl.AP.712030_TMY-0.0.epw", "BC_Kelowna_TMY-3.0"=>"CAN_BC_Kelowna.Intl.AP.712030_TMY-3.0.epw", "BC_Vancouver_ECY-0.0"=>"CAN_BC_Vancouver.Intl.AP.718920_ECY-0.0.epw", "BC_Vancouver_ECY-3.0"=>"CAN_BC_Vancouver.Intl.AP.718920_ECY-3.0.epw", "BC_Vancouver_EWY-0.0"=>"CAN_BC_Vancouver.Intl.AP.718920_EWY-0.0.epw", "BC_Vancouver_EWY-3.0"=>"CAN_BC_Vancouver.Intl.AP.718920_EWY-3.0.epw", "BC_Vancouver_TDY-0.0"=>"CAN_BC_Vancouver.Intl.AP.718920_TDY-0.0.epw", "BC_Vancouver_TDY-3.0"=>"CAN_BC_Vancouver.Intl.AP.718920_TDY-3.0.epw", "BC_Vancouver_TMY-0.0"=>"CAN_BC_Vancouver.Intl.AP.718920_TMY-0.0.epw", "BC_Vancouver_TMY-3.0"=>"CAN_BC_Vancouver.Intl.AP.718920_TMY-3.0.epw", "BC_Victoria_ECY-0.0"=>"CAN_BC_Victoria.Intl.AP.717990_ECY-0.0.epw", "BC_Victoria_ECY-3.0"=>"CAN_BC_Victoria.Intl.AP.717990_ECY-3.0.epw", "BC_Victoria_EWY-0.0"=>"CAN_BC_Victoria.Intl.AP.717990_EWY-0.0.epw", "BC_Victoria_EWY-3.0"=>"CAN_BC_Victoria.Intl.AP.717990_EWY-3.0.epw", "BC_Victoria_TDY-0.0"=>"CAN_BC_Victoria.Intl.AP.717990_TDY-0.0.epw", "BC_Victoria_TDY-3.0"=>"CAN_BC_Victoria.Intl.AP.717990_TDY-3.0.epw", "BC_Victoria_TMY-0.0"=>"CAN_BC_Victoria.Intl.AP.717990_TMY-0.0.epw", "BC_Victoria_TMY-3.0"=>"CAN_BC_Victoria.Intl.AP.717990_TMY-3.0.epw", "MB_Thompson_ECY-0.0"=>"CAN_MB_Thompson.AP.710790_ECY-0.0.epw", "MB_Thompson_ECY-3.0"=>"CAN_MB_Thompson.AP.710790_ECY-3.0.epw", "MB_Thompson_EWY-0.0"=>"CAN_MB_Thompson.AP.710790_EWY-0.0.epw", "MB_Thompson_EWY-3.0"=>"CAN_MB_Thompson.AP.710790_EWY-3.0.epw", "MB_Thompson_TDY-0.0"=>"CAN_MB_Thompson.AP.710790_TDY-0.0.epw", "MB_Thompson_TDY-3.0"=>"CAN_MB_Thompson.AP.710790_TDY-3.0.epw", "MB_Thompson_TMY-0.0"=>"CAN_MB_Thompson.AP.710790_TMY-0.0.epw", "MB_Thompson_TMY-3.0"=>"CAN_MB_Thompson.AP.710790_TMY-3.0.epw", "MB_Winnipeg-Richardson_ECY-0.0"=>"CAN_MB_Winnipeg-Richardson.Intl.AP.718520_ECY-0.0.epw", "MB_Winnipeg-Richardson_ECY-3.0"=>"CAN_MB_Winnipeg-Richardson.Intl.AP.718520_ECY-3.0.epw", "MB_Winnipeg-Richardson_EWY-0.0"=>"CAN_MB_Winnipeg-Richardson.Intl.AP.718520_EWY-0.0.epw", "MB_Winnipeg-Richardson_EWY-3.0"=>"CAN_MB_Winnipeg-Richardson.Intl.AP.718520_EWY-3.0.epw", "MB_Winnipeg-Richardson_TDY-0.0"=>"CAN_MB_Winnipeg-Richardson.Intl.AP.718520_TDY-0.0.epw", "MB_Winnipeg-Richardson_TDY-3.0"=>"CAN_MB_Winnipeg-Richardson.Intl.AP.718520_TDY-3.0.epw", "MB_Winnipeg-Richardson_TMY-0.0"=>"CAN_MB_Winnipeg-Richardson.Intl.AP.718520_TMY-0.0.epw", "MB_Winnipeg-Richardson_TMY-3.0"=>"CAN_MB_Winnipeg-Richardson.Intl.AP.718520_TMY-3.0.epw", "NB_Moncton-Greater_ECY-0.0"=>"CAN_NB_Moncton-Greater.Moncton.LeBlanc.Intl.AP.717050_ECY-0.0.epw", "NB_Moncton-Greater_ECY-3.0"=>"CAN_NB_Moncton-Greater.Moncton.LeBlanc.Intl.AP.717050_ECY-3.0.epw", "NB_Moncton-Greater_EWY-0.0"=>"CAN_NB_Moncton-Greater.Moncton.LeBlanc.Intl.AP.717050_EWY-0.0.epw", "NB_Moncton-Greater_EWY-3.0"=>"CAN_NB_Moncton-Greater.Moncton.LeBlanc.Intl.AP.717050_EWY-3.0.epw", "NB_Moncton-Greater_TDY-0.0"=>"CAN_NB_Moncton-Greater.Moncton.LeBlanc.Intl.AP.717050_TDY-0.0.epw", "NB_Moncton-Greater_TDY-3.0"=>"CAN_NB_Moncton-Greater.Moncton.LeBlanc.Intl.AP.717050_TDY-3.0.epw", "NB_Moncton-Greater_TMY-0.0"=>"CAN_NB_Moncton-Greater.Moncton.LeBlanc.Intl.AP.717050_TMY-0.0.epw", "NB_Moncton-Greater_TMY-3.0"=>"CAN_NB_Moncton-Greater.Moncton.LeBlanc.Intl.AP.717050_TMY-3.0.epw", "NB_Saint.John_ECY-0.0"=>"CAN_NB_Saint.John.AP.716090_ECY-0.0.epw", "NB_Saint.John_ECY-3.0"=>"CAN_NB_Saint.John.AP.716090_ECY-3.0.epw", "NB_Saint.John_EWY-0.0"=>"CAN_NB_Saint.John.AP.716090_EWY-0.0.epw", "NB_Saint.John_EWY-3.0"=>"CAN_NB_Saint.John.AP.716090_EWY-3.0.epw", "NB_Saint.John_TDY-0.0"=>"CAN_NB_Saint.John.AP.716090_TDY-0.0.epw", "NB_Saint.John_TDY-3.0"=>"CAN_NB_Saint.John.AP.716090_TDY-3.0.epw", "NB_Saint.John_TMY-0.0"=>"CAN_NB_Saint.John.AP.716090_TMY-0.0.epw", "NB_Saint.John_TMY-3.0"=>"CAN_NB_Saint.John.AP.716090_TMY-3.0.epw", "NL_Corner.Brook_ECY-0.0"=>"CAN_NL_Corner.Brook.719730_ECY-0.0.epw", "NL_Corner.Brook_ECY-3.0"=>"CAN_NL_Corner.Brook.719730_ECY-3.0.epw", "NL_Corner.Brook_EWY-0.0"=>"CAN_NL_Corner.Brook.719730_EWY-0.0.epw", "NL_Corner.Brook_EWY-3.0"=>"CAN_NL_Corner.Brook.719730_EWY-3.0.epw", "NL_Corner.Brook_TDY-0.0"=>"CAN_NL_Corner.Brook.719730_TDY-0.0.epw", "NL_Corner.Brook_TDY-3.0"=>"CAN_NL_Corner.Brook.719730_TDY-3.0.epw", "NL_Corner.Brook_TMY-0.0"=>"CAN_NL_Corner.Brook.719730_TMY-0.0.epw", "NL_Corner.Brook_TMY-3.0"=>"CAN_NL_Corner.Brook.719730_TMY-3.0.epw", "NL_St.Johns_ECY-0.0"=>"CAN_NL_St.Johns.Intl.AP.718010_ECY-0.0.epw", "NL_St.Johns_ECY-3.0"=>"CAN_NL_St.Johns.Intl.AP.718010_ECY-3.0.epw", "NL_St.Johns_EWY-0.0"=>"CAN_NL_St.Johns.Intl.AP.718010_EWY-0.0.epw", "NL_St.Johns_EWY-3.0"=>"CAN_NL_St.Johns.Intl.AP.718010_EWY-3.0.epw", "NL_St.Johns_TDY-0.0"=>"CAN_NL_St.Johns.Intl.AP.718010_TDY-0.0.epw", "NL_St.Johns_TDY-3.0"=>"CAN_NL_St.Johns.Intl.AP.718010_TDY-3.0.epw", "NL_St.Johns_TMY-0.0"=>"CAN_NL_St.Johns.Intl.AP.718010_TMY-0.0.epw", "NL_St.Johns_TMY-3.0"=>"CAN_NL_St.Johns.Intl.AP.718010_TMY-3.0.epw", "NS_Halifax_ECY-0.0"=>"CAN_NS_Halifax.Intl.AP.713950_ECY-0.0.epw", "NS_Halifax_ECY-3.0"=>"CAN_NS_Halifax.Intl.AP.713950_ECY-3.0.epw", "NS_Halifax_EWY-0.0"=>"CAN_NS_Halifax.Intl.AP.713950_EWY-0.0.epw", "NS_Halifax_EWY-3.0"=>"CAN_NS_Halifax.Intl.AP.713950_EWY-3.0.epw", "NS_Halifax_TDY-0.0"=>"CAN_NS_Halifax.Intl.AP.713950_TDY-0.0.epw", "NS_Halifax_TDY-3.0"=>"CAN_NS_Halifax.Intl.AP.713950_TDY-3.0.epw", "NS_Halifax_TMY-0.0"=>"CAN_NS_Halifax.Intl.AP.713950_TMY-0.0.epw", "NS_Halifax_TMY-3.0"=>"CAN_NS_Halifax.Intl.AP.713950_TMY-3.0.epw", "NS_Sydney-McCurdy_ECY-0.0"=>"CAN_NS_Sydney-McCurdy.AP.717070_ECY-0.0.epw", "NS_Sydney-McCurdy_ECY-3.0"=>"CAN_NS_Sydney-McCurdy.AP.717070_ECY-3.0.epw", "NS_Sydney-McCurdy_EWY-0.0"=>"CAN_NS_Sydney-McCurdy.AP.717070_EWY-0.0.epw", "NS_Sydney-McCurdy_EWY-3.0"=>"CAN_NS_Sydney-McCurdy.AP.717070_EWY-3.0.epw", "NS_Sydney-McCurdy_TDY-0.0"=>"CAN_NS_Sydney-McCurdy.AP.717070_TDY-0.0.epw", "NS_Sydney-McCurdy_TDY-3.0"=>"CAN_NS_Sydney-McCurdy.AP.717070_TDY-3.0.epw", "NS_Sydney-McCurdy_TMY-0.0"=>"CAN_NS_Sydney-McCurdy.AP.717070_TMY-0.0.epw", "NS_Sydney-McCurdy_TMY-3.0"=>"CAN_NS_Sydney-McCurdy.AP.717070_TMY-3.0.epw", "NT_Inuvik-Zubko_ECY-0.0"=>"CAN_NT_Inuvik-Zubko.AP.719570_ECY-0.0.epw", "NT_Inuvik-Zubko_ECY-3.0"=>"CAN_NT_Inuvik-Zubko.AP.719570_ECY-3.0.epw", "NT_Inuvik-Zubko_EWY-0.0"=>"CAN_NT_Inuvik-Zubko.AP.719570_EWY-0.0.epw", "NT_Inuvik-Zubko_EWY-3.0"=>"CAN_NT_Inuvik-Zubko.AP.719570_EWY-3.0.epw", "NT_Inuvik-Zubko_TDY-0.0"=>"CAN_NT_Inuvik-Zubko.AP.719570_TDY-0.0.epw", "NT_Inuvik-Zubko_TDY-3.0"=>"CAN_NT_Inuvik-Zubko.AP.719570_TDY-3.0.epw", "NT_Inuvik-Zubko_TMY-0.0"=>"CAN_NT_Inuvik-Zubko.AP.719570_TMY-0.0.epw", "NT_Inuvik-Zubko_TMY-3.0"=>"CAN_NT_Inuvik-Zubko.AP.719570_TMY-3.0.epw", "NT_Yellowknife_ECY-0.0"=>"CAN_NT_Yellowknife.AP.719360_ECY-0.0.epw", "NT_Yellowknife_ECY-3.0"=>"CAN_NT_Yellowknife.AP.719360_ECY-3.0.epw", "NT_Yellowknife_EWY-0.0"=>"CAN_NT_Yellowknife.AP.719360_EWY-0.0.epw", "NT_Yellowknife_EWY-3.0"=>"CAN_NT_Yellowknife.AP.719360_EWY-3.0.epw", "NT_Yellowknife_TDY-0.0"=>"CAN_NT_Yellowknife.AP.719360_TDY-0.0.epw", "NT_Yellowknife_TDY-3.0"=>"CAN_NT_Yellowknife.AP.719360_TDY-3.0.epw", "NT_Yellowknife_TMY-0.0"=>"CAN_NT_Yellowknife.AP.719360_TMY-0.0.epw", "NT_Yellowknife_TMY-3.0"=>"CAN_NT_Yellowknife.AP.719360_TMY-3.0.epw", "NU_Cambridge_ECY-0.0"=>"CAN_NU_Cambridge.Bay.AP.719250_ECY-0.0.epw", "NU_Cambridge_ECY-3.0"=>"CAN_NU_Cambridge.Bay.AP.719250_ECY-3.0.epw", "NU_Cambridge_EWY-0.0"=>"CAN_NU_Cambridge.Bay.AP.719250_EWY-0.0.epw", "NU_Cambridge_EWY-3.0"=>"CAN_NU_Cambridge.Bay.AP.719250_EWY-3.0.epw", "NU_Cambridge_TDY-0.0"=>"CAN_NU_Cambridge.Bay.AP.719250_TDY-0.0.epw", "NU_Cambridge_TDY-3.0"=>"CAN_NU_Cambridge.Bay.AP.719250_TDY-3.0.epw", "NU_Cambridge_TMY-0.0"=>"CAN_NU_Cambridge.Bay.AP.719250_TMY-0.0.epw", "NU_Cambridge_TMY-3.0"=>"CAN_NU_Cambridge.Bay.AP.719250_TMY-3.0.epw", "NU_Iqaluit_ECY-0.0"=>"CAN_NU_Iqaluit.AP.719090_ECY-0.0.epw", "NU_Iqaluit_ECY-3.0"=>"CAN_NU_Iqaluit.AP.719090_ECY-3.0.epw", "NU_Iqaluit_EWY-0.0"=>"CAN_NU_Iqaluit.AP.719090_EWY-0.0.epw", "NU_Iqaluit_EWY-3.0"=>"CAN_NU_Iqaluit.AP.719090_EWY-3.0.epw", "NU_Iqaluit_TDY-0.0"=>"CAN_NU_Iqaluit.AP.719090_TDY-0.0.epw", "NU_Iqaluit_TDY-3.0"=>"CAN_NU_Iqaluit.AP.719090_TDY-3.0.epw", "NU_Iqaluit_TMY-0.0"=>"CAN_NU_Iqaluit.AP.719090_TMY-0.0.epw", "NU_Iqaluit_TMY-3.0"=>"CAN_NU_Iqaluit.AP.719090_TMY-3.0.epw", "NU_Rankin_ECY-0.0"=>"CAN_NU_Rankin.Inlet.AP.710830_ECY-0.0.epw", "NU_Rankin_ECY-3.0"=>"CAN_NU_Rankin.Inlet.AP.710830_ECY-3.0.epw", "NU_Rankin_EWY-0.0"=>"CAN_NU_Rankin.Inlet.AP.710830_EWY-0.0.epw", "NU_Rankin_EWY-3.0"=>"CAN_NU_Rankin.Inlet.AP.710830_EWY-3.0.epw", "NU_Rankin_TDY-0.0"=>"CAN_NU_Rankin.Inlet.AP.710830_TDY-0.0.epw", "NU_Rankin_TDY-3.0"=>"CAN_NU_Rankin.Inlet.AP.710830_TDY-3.0.epw", "NU_Rankin_TMY-0.0"=>"CAN_NU_Rankin.Inlet.AP.710830_TMY-0.0.epw", "NU_Rankin_TMY-3.0"=>"CAN_NU_Rankin.Inlet.AP.710830_TMY-3.0.epw", "ON_Ottawa-Macdonald-Cartier_ECY-0.0"=>"CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_ECY-0.0.epw", "ON_Ottawa-Macdonald-Cartier_ECY-3.0"=>"CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_ECY-3.0.epw", "ON_Ottawa-Macdonald-Cartier_EWY-0.0"=>"CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_EWY-0.0.epw", "ON_Ottawa-Macdonald-Cartier_EWY-3.0"=>"CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_EWY-3.0.epw", "ON_Ottawa-Macdonald-Cartier_TDY-0.0"=>"CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_TDY-0.0.epw", "ON_Ottawa-Macdonald-Cartier_TDY-3.0"=>"CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_TDY-3.0.epw", "ON_Ottawa-Macdonald-Cartier_TMY-0.0"=>"CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_TMY-0.0.epw", "ON_Ottawa-Macdonald-Cartier_TMY-3.0"=>"CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_TMY-3.0.epw", "ON_Sudbury_ECY-0.0"=>"CAN_ON_Sudbury.AP.717300_ECY-0.0.epw", "ON_Sudbury_ECY-3.0"=>"CAN_ON_Sudbury.AP.717300_ECY-3.0.epw", "ON_Sudbury_EWY-0.0"=>"CAN_ON_Sudbury.AP.717300_EWY-0.0.epw", "ON_Sudbury_EWY-3.0"=>"CAN_ON_Sudbury.AP.717300_EWY-3.0.epw", "ON_Sudbury_TDY-0.0"=>"CAN_ON_Sudbury.AP.717300_TDY-0.0.epw", "ON_Sudbury_TDY-3.0"=>"CAN_ON_Sudbury.AP.717300_TDY-3.0.epw", "ON_Sudbury_TMY-0.0"=>"CAN_ON_Sudbury.AP.717300_TMY-0.0.epw", "ON_Sudbury_TMY-3.0"=>"CAN_ON_Sudbury.AP.717300_TMY-3.0.epw", "ON_Toronto_ECY-0.0"=>"CAN_ON_Toronto.Pearson.Intl.AP.716240_ECY-0.0.epw", "ON_Toronto_ECY-3.0"=>"CAN_ON_Toronto.Pearson.Intl.AP.716240_ECY-3.0.epw", "ON_Toronto_EWY-0.0"=>"CAN_ON_Toronto.Pearson.Intl.AP.716240_EWY-0.0.epw", "ON_Toronto_EWY-3.0"=>"CAN_ON_Toronto.Pearson.Intl.AP.716240_EWY-3.0.epw", "ON_Toronto_TDY-0.0"=>"CAN_ON_Toronto.Pearson.Intl.AP.716240_TDY-0.0.epw", "ON_Toronto_TDY-3.0"=>"CAN_ON_Toronto.Pearson.Intl.AP.716240_TDY-3.0.epw", "ON_Toronto_TMY-0.0"=>"CAN_ON_Toronto.Pearson.Intl.AP.716240_TMY-0.0.epw", "ON_Toronto_TMY-3.0"=>"CAN_ON_Toronto.Pearson.Intl.AP.716240_TMY-3.0.epw", "PE_Charlottetown_ECY-0.0"=>"CAN_PE_Charlottetown.AP.717060_ECY-0.0.epw", "PE_Charlottetown_ECY-3.0"=>"CAN_PE_Charlottetown.AP.717060_ECY-3.0.epw", "PE_Charlottetown_EWY-0.0"=>"CAN_PE_Charlottetown.AP.717060_EWY-0.0.epw", "PE_Charlottetown_EWY-3.0"=>"CAN_PE_Charlottetown.AP.717060_EWY-3.0.epw", "PE_Charlottetown_TDY-0.0"=>"CAN_PE_Charlottetown.AP.717060_TDY-0.0.epw", "PE_Charlottetown_TDY-3.0"=>"CAN_PE_Charlottetown.AP.717060_TDY-3.0.epw", "PE_Charlottetown_TMY-0.0"=>"CAN_PE_Charlottetown.AP.717060_TMY-0.0.epw", "PE_Charlottetown_TMY-3.0"=>"CAN_PE_Charlottetown.AP.717060_TMY-3.0.epw", "QC_Jonquiere_ECY-0.0"=>"CAN_QC_Jonquiere.716170_ECY-0.0.epw", "QC_Jonquiere_ECY-3.0"=>"CAN_QC_Jonquiere.716170_ECY-3.0.epw", "QC_Jonquiere_EWY-0.0"=>"CAN_QC_Jonquiere.716170_EWY-0.0.epw", "QC_Jonquiere_EWY-3.0"=>"CAN_QC_Jonquiere.716170_EWY-3.0.epw", "QC_Jonquiere_TDY-0.0"=>"CAN_QC_Jonquiere.716170_TDY-0.0.epw", "QC_Jonquiere_TDY-3.0"=>"CAN_QC_Jonquiere.716170_TDY-3.0.epw", "QC_Jonquiere_TMY-0.0"=>"CAN_QC_Jonquiere.716170_TMY-0.0.epw", "QC_Jonquiere_TMY-3.0"=>"CAN_QC_Jonquiere.716170_TMY-3.0.epw", "QC_Montreal-Trudeau_ECY-0.0"=>"CAN_QC_Montreal-Trudeau.Intl.AP.716270_ECY-0.0.epw", "QC_Montreal-Trudeau_ECY-3.0"=>"CAN_QC_Montreal-Trudeau.Intl.AP.716270_ECY-3.0.epw", "QC_Montreal-Trudeau_EWY-0.0"=>"CAN_QC_Montreal-Trudeau.Intl.AP.716270_EWY-0.0.epw", "QC_Montreal-Trudeau_EWY-3.0"=>"CAN_QC_Montreal-Trudeau.Intl.AP.716270_EWY-3.0.epw", "QC_Montreal-Trudeau_TDY-0.0"=>"CAN_QC_Montreal-Trudeau.Intl.AP.716270_TDY-0.0.epw", "QC_Montreal-Trudeau_TDY-3.0"=>"CAN_QC_Montreal-Trudeau.Intl.AP.716270_TDY-3.0.epw", "QC_Montreal-Trudeau_TMY-0.0"=>"CAN_QC_Montreal-Trudeau.Intl.AP.716270_TMY-0.0.epw", "QC_Montreal-Trudeau_TMY-3.0"=>"CAN_QC_Montreal-Trudeau.Intl.AP.716270_TMY-3.0.epw", "QC_Quebec-Lesage_ECY-0.0"=>"CAN_QC_Quebec-Lesage.Intl.AP.717140_ECY-0.0.epw", "QC_Quebec-Lesage_ECY-3.0"=>"CAN_QC_Quebec-Lesage.Intl.AP.717140_ECY-3.0.epw", "QC_Quebec-Lesage_EWY-0.0"=>"CAN_QC_Quebec-Lesage.Intl.AP.717140_EWY-0.0.epw", "QC_Quebec-Lesage_EWY-3.0"=>"CAN_QC_Quebec-Lesage.Intl.AP.717140_EWY-3.0.epw", "QC_Quebec-Lesage_TDY-0.0"=>"CAN_QC_Quebec-Lesage.Intl.AP.717140_TDY-0.0.epw", "QC_Quebec-Lesage_TDY-3.0"=>"CAN_QC_Quebec-Lesage.Intl.AP.717140_TDY-3.0.epw", "QC_Quebec-Lesage_TMY-0.0"=>"CAN_QC_Quebec-Lesage.Intl.AP.717140_TMY-0.0.epw", "QC_Quebec-Lesage_TMY-3.0"=>"CAN_QC_Quebec-Lesage.Intl.AP.717140_TMY-3.0.epw", "SK_Regina_ECY-0.0"=>"CAN_SK_Regina.Intl.AP.715140_ECY-0.0.epw", "SK_Regina_ECY-3.0"=>"CAN_SK_Regina.Intl.AP.715140_ECY-3.0.epw", "SK_Regina_EWY-0.0"=>"CAN_SK_Regina.Intl.AP.715140_EWY-0.0.epw", "SK_Regina_EWY-3.0"=>"CAN_SK_Regina.Intl.AP.715140_EWY-3.0.epw", "SK_Regina_TDY-0.0"=>"CAN_SK_Regina.Intl.AP.715140_TDY-0.0.epw", "SK_Regina_TDY-3.0"=>"CAN_SK_Regina.Intl.AP.715140_TDY-3.0.epw", "SK_Regina_TMY-0.0"=>"CAN_SK_Regina.Intl.AP.715140_TMY-0.0.epw", "SK_Regina_TMY-3.0"=>"CAN_SK_Regina.Intl.AP.715140_TMY-3.0.epw", "SK_Saskatoon_ECY-0.0"=>"CAN_SK_Saskatoon.Intl.AP.718660_ECY-0.0.epw", "SK_Saskatoon_ECY-3.0"=>"CAN_SK_Saskatoon.Intl.AP.718660_ECY-3.0.epw", "SK_Saskatoon_EWY-0.0"=>"CAN_SK_Saskatoon.Intl.AP.718660_EWY-0.0.epw", "SK_Saskatoon_EWY-3.0"=>"CAN_SK_Saskatoon.Intl.AP.718660_EWY-3.0.epw", "SK_Saskatoon_TDY-0.0"=>"CAN_SK_Saskatoon.Intl.AP.718660_TDY-0.0.epw", "SK_Saskatoon_TDY-3.0"=>"CAN_SK_Saskatoon.Intl.AP.718660_TDY-3.0.epw", "SK_Saskatoon_TMY-0.0"=>"CAN_SK_Saskatoon.Intl.AP.718660_TMY-0.0.epw", "SK_Saskatoon_TMY-3.0"=>"CAN_SK_Saskatoon.Intl.AP.718660_TMY-3.0.epw", "YT_Dawson_ECY-0.0"=>"CAN_YT_Dawson.719660_ECY-0.0.epw", "YT_Dawson_ECY-3.0"=>"CAN_YT_Dawson.719660_ECY-3.0.epw", "YT_Dawson_EWY-0.0"=>"CAN_YT_Dawson.719660_EWY-0.0.epw", "YT_Dawson_EWY-3.0"=>"CAN_YT_Dawson.719660_EWY-3.0.epw", "YT_Dawson_TDY-0.0"=>"CAN_YT_Dawson.719660_TDY-0.0.epw", "YT_Dawson_TDY-3.0"=>"CAN_YT_Dawson.719660_TDY-3.0.epw", "YT_Dawson_TMY-0.0"=>"CAN_YT_Dawson.719660_TMY-0.0.epw", "YT_Dawson_TMY-3.0"=>"CAN_YT_Dawson.719660_TMY-3.0.epw", "YT_Whitehorse_ECY-0.0"=>"CAN_YT_Whitehorse.Intl.AP.719640_ECY-0.0.epw", "YT_Whitehorse_ECY-3.0"=>"CAN_YT_Whitehorse.Intl.AP.719640_ECY-3.0.epw", "YT_Whitehorse_EWY-0.0"=>"CAN_YT_Whitehorse.Intl.AP.719640_EWY-0.0.epw", "YT_Whitehorse_EWY-3.0"=>"CAN_YT_Whitehorse.Intl.AP.719640_EWY-3.0.epw", "YT_Whitehorse_TDY-0.0"=>"CAN_YT_Whitehorse.Intl.AP.719640_TDY-0.0.epw", "YT_Whitehorse_TDY-3.0"=>"CAN_YT_Whitehorse.Intl.AP.719640_TDY-3.0.epw", "YT_Whitehorse_TMY-0.0"=>"CAN_YT_Whitehorse.Intl.AP.719640_TMY-0.0.epw", "YT_Whitehorse_TMY-3.0"=>"CAN_YT_Whitehorse.Intl.AP.719640_TMY-3.0.epw"}
+    epw_files = ["CAN_AB_Calgary.Intl.AP.718770_ECY-0.0.epw", "CAN_AB_Calgary.Intl.AP.718770_ECY-3.0.epw", "CAN_AB_Calgary.Intl.AP.718770_EWY-0.0.epw", "CAN_AB_Calgary.Intl.AP.718770_EWY-3.0.epw",
+                 "CAN_AB_Calgary.Intl.AP.718770_TDY-0.0.epw", "CAN_AB_Calgary.Intl.AP.718770_TDY-3.0.epw", "CAN_AB_Calgary.Intl.AP.718770_TMY-0.0.epw", "CAN_AB_Calgary.Intl.AP.718770_TMY-3.0.epw",
+                 "CAN_AB_Edmonton.Intl.AP.711230_ECY-0.0.epw", "CAN_AB_Edmonton.Intl.AP.711230_ECY-3.0.epw", "CAN_AB_Edmonton.Intl.AP.711230_EWY-0.0.epw", "CAN_AB_Edmonton.Intl.AP.711230_EWY-3.0.epw",
+                 "CAN_AB_Edmonton.Intl.AP.711230_TDY-0.0.epw", "CAN_AB_Edmonton.Intl.AP.711230_TDY-3.0.epw", "CAN_AB_Edmonton.Intl.AP.711230_TMY-0.0.epw", "CAN_AB_Edmonton.Intl.AP.711230_TMY-3.0.epw",
+                 "CAN_AB_Fort.McMurray.AP.716890_ECY-0.0.epw", "CAN_AB_Fort.McMurray.AP.716890_ECY-3.0.epw", "CAN_AB_Fort.McMurray.AP.716890_EWY-0.0.epw", "CAN_AB_Fort.McMurray.AP.716890_EWY-3.0.epw",
+                 "CAN_AB_Fort.McMurray.AP.716890_TDY-0.0.epw", "CAN_AB_Fort.McMurray.AP.716890_TDY-3.0.epw", "CAN_AB_Fort.McMurray.AP.716890_TMY-0.0.epw", "CAN_AB_Fort.McMurray.AP.716890_TMY-3.0.epw",
+                 "CAN_BC_Kelowna.Intl.AP.712030_ECY-0.0.epw", "CAN_BC_Kelowna.Intl.AP.712030_ECY-3.0.epw", "CAN_BC_Kelowna.Intl.AP.712030_EWY-0.0.epw", "CAN_BC_Kelowna.Intl.AP.712030_EWY-3.0.epw",
+                 "CAN_BC_Kelowna.Intl.AP.712030_TDY-0.0.epw", "CAN_BC_Kelowna.Intl.AP.712030_TDY-3.0.epw", "CAN_BC_Kelowna.Intl.AP.712030_TMY-0.0.epw", "CAN_BC_Kelowna.Intl.AP.712030_TMY-3.0.epw",
+                 "CAN_BC_Vancouver.Intl.AP.718920_ECY-0.0.epw", "CAN_BC_Vancouver.Intl.AP.718920_ECY-3.0.epw", "CAN_BC_Vancouver.Intl.AP.718920_EWY-0.0.epw", "CAN_BC_Vancouver.Intl.AP.718920_EWY-3.0.epw",
+                 "CAN_BC_Vancouver.Intl.AP.718920_TDY-0.0.epw", "CAN_BC_Vancouver.Intl.AP.718920_TDY-3.0.epw", "CAN_BC_Vancouver.Intl.AP.718920_TMY-0.0.epw", "CAN_BC_Vancouver.Intl.AP.718920_TMY-3.0.epw",
+                 "CAN_BC_Victoria.Intl.AP.717990_ECY-0.0.epw", "CAN_BC_Victoria.Intl.AP.717990_ECY-3.0.epw", "CAN_BC_Victoria.Intl.AP.717990_EWY-0.0.epw", "CAN_BC_Victoria.Intl.AP.717990_EWY-3.0.epw",
+                 "CAN_BC_Victoria.Intl.AP.717990_TDY-0.0.epw", "CAN_BC_Victoria.Intl.AP.717990_TDY-3.0.epw", "CAN_BC_Victoria.Intl.AP.717990_TMY-0.0.epw", "CAN_BC_Victoria.Intl.AP.717990_TMY-3.0.epw",
+                 "CAN_MB_Thompson.AP.710790_ECY-0.0.epw", "CAN_MB_Thompson.AP.710790_ECY-3.0.epw", "CAN_MB_Thompson.AP.710790_EWY-0.0.epw", "CAN_MB_Thompson.AP.710790_EWY-3.0.epw",
+                 "CAN_MB_Thompson.AP.710790_TDY-0.0.epw", "CAN_MB_Thompson.AP.710790_TDY-3.0.epw", "CAN_MB_Thompson.AP.710790_TMY-0.0.epw", "CAN_MB_Thompson.AP.710790_TMY-3.0.epw",
+                 "CAN_MB_Winnipeg-Richardson.Intl.AP.718520_ECY-0.0.epw", "CAN_MB_Winnipeg-Richardson.Intl.AP.718520_ECY-3.0.epw", "CAN_MB_Winnipeg-Richardson.Intl.AP.718520_EWY-0.0.epw",
+                 "CAN_MB_Winnipeg-Richardson.Intl.AP.718520_EWY-3.0.epw", "CAN_MB_Winnipeg-Richardson.Intl.AP.718520_TDY-0.0.epw", "CAN_MB_Winnipeg-Richardson.Intl.AP.718520_TDY-3.0.epw",
+                 "CAN_MB_Winnipeg-Richardson.Intl.AP.718520_TMY-0.0.epw", "CAN_MB_Winnipeg-Richardson.Intl.AP.718520_TMY-3.0.epw", "CAN_NB_Moncton-Greater.Moncton.LeBlanc.Intl.AP.717050_ECY-0.0.epw",
+                 "CAN_NB_Moncton-Greater.Moncton.LeBlanc.Intl.AP.717050_ECY-3.0.epw", "CAN_NB_Moncton-Greater.Moncton.LeBlanc.Intl.AP.717050_EWY-0.0.epw",
+                 "CAN_NB_Moncton-Greater.Moncton.LeBlanc.Intl.AP.717050_EWY-3.0.epw", "CAN_NB_Moncton-Greater.Moncton.LeBlanc.Intl.AP.717050_TDY-0.0.epw",
+                 "CAN_NB_Moncton-Greater.Moncton.LeBlanc.Intl.AP.717050_TDY-3.0.epw", "CAN_NB_Moncton-Greater.Moncton.LeBlanc.Intl.AP.717050_TMY-0.0.epw",
+                 "CAN_NB_Moncton-Greater.Moncton.LeBlanc.Intl.AP.717050_TMY-3.0.epw", "CAN_NB_Saint.John.AP.716090_ECY-0.0.epw", "CAN_NB_Saint.John.AP.716090_ECY-3.0.epw",
+                 "CAN_NB_Saint.John.AP.716090_EWY-0.0.epw", "CAN_NB_Saint.John.AP.716090_EWY-3.0.epw", "CAN_NB_Saint.John.AP.716090_TDY-0.0.epw", "CAN_NB_Saint.John.AP.716090_TDY-3.0.epw",
+                 "CAN_NB_Saint.John.AP.716090_TMY-0.0.epw", "CAN_NB_Saint.John.AP.716090_TMY-3.0.epw", "CAN_NL_Corner.Brook.719730_ECY-0.0.epw", "CAN_NL_Corner.Brook.719730_ECY-3.0.epw",
+                 "CAN_NL_Corner.Brook.719730_EWY-0.0.epw", "CAN_NL_Corner.Brook.719730_EWY-3.0.epw", "CAN_NL_Corner.Brook.719730_TDY-0.0.epw", "CAN_NL_Corner.Brook.719730_TDY-3.0.epw",
+                 "CAN_NL_Corner.Brook.719730_TMY-0.0.epw", "CAN_NL_Corner.Brook.719730_TMY-3.0.epw", "CAN_NL_St.Johns.Intl.AP.718010_ECY-0.0.epw", "CAN_NL_St.Johns.Intl.AP.718010_ECY-3.0.epw",
+                 "CAN_NL_St.Johns.Intl.AP.718010_EWY-0.0.epw", "CAN_NL_St.Johns.Intl.AP.718010_EWY-3.0.epw", "CAN_NL_St.Johns.Intl.AP.718010_TDY-0.0.epw", "CAN_NL_St.Johns.Intl.AP.718010_TDY-3.0.epw",
+                 "CAN_NL_St.Johns.Intl.AP.718010_TMY-0.0.epw", "CAN_NL_St.Johns.Intl.AP.718010_TMY-3.0.epw", "CAN_NS_Halifax.Intl.AP.713950_ECY-0.0.epw", "CAN_NS_Halifax.Intl.AP.713950_ECY-3.0.epw",
+                 "CAN_NS_Halifax.Intl.AP.713950_EWY-0.0.epw", "CAN_NS_Halifax.Intl.AP.713950_EWY-3.0.epw", "CAN_NS_Halifax.Intl.AP.713950_TDY-0.0.epw", "CAN_NS_Halifax.Intl.AP.713950_TDY-3.0.epw",
+                 "CAN_NS_Halifax.Intl.AP.713950_TMY-0.0.epw", "CAN_NS_Halifax.Intl.AP.713950_TMY-3.0.epw", "CAN_NS_Sydney-McCurdy.AP.717070_ECY-0.0.epw", "CAN_NS_Sydney-McCurdy.AP.717070_ECY-3.0.epw",
+                 "CAN_NS_Sydney-McCurdy.AP.717070_EWY-0.0.epw", "CAN_NS_Sydney-McCurdy.AP.717070_EWY-3.0.epw", "CAN_NS_Sydney-McCurdy.AP.717070_TDY-0.0.epw", "CAN_NS_Sydney-McCurdy.AP.717070_TDY-3.0.epw",
+                 "CAN_NS_Sydney-McCurdy.AP.717070_TMY-0.0.epw", "CAN_NS_Sydney-McCurdy.AP.717070_TMY-3.0.epw", "CAN_NT_Inuvik-Zubko.AP.719570_ECY-0.0.epw", "CAN_NT_Inuvik-Zubko.AP.719570_ECY-3.0.epw",
+                 "CAN_NT_Inuvik-Zubko.AP.719570_EWY-0.0.epw", "CAN_NT_Inuvik-Zubko.AP.719570_EWY-3.0.epw", "CAN_NT_Inuvik-Zubko.AP.719570_TDY-0.0.epw", "CAN_NT_Inuvik-Zubko.AP.719570_TDY-3.0.epw",
+                 "CAN_NT_Inuvik-Zubko.AP.719570_TMY-0.0.epw", "CAN_NT_Inuvik-Zubko.AP.719570_TMY-3.0.epw", "CAN_NT_Yellowknife.AP.719360_ECY-0.0.epw", "CAN_NT_Yellowknife.AP.719360_ECY-3.0.epw",
+                 "CAN_NT_Yellowknife.AP.719360_EWY-0.0.epw", "CAN_NT_Yellowknife.AP.719360_EWY-3.0.epw", "CAN_NT_Yellowknife.AP.719360_TDY-0.0.epw", "CAN_NT_Yellowknife.AP.719360_TDY-3.0.epw",
+                 "CAN_NT_Yellowknife.AP.719360_TMY-0.0.epw", "CAN_NT_Yellowknife.AP.719360_TMY-3.0.epw", "CAN_NU_Cambridge.Bay.AP.719250_ECY-0.0.epw", "CAN_NU_Cambridge.Bay.AP.719250_ECY-3.0.epw",
+                 "CAN_NU_Cambridge.Bay.AP.719250_EWY-0.0.epw", "CAN_NU_Cambridge.Bay.AP.719250_EWY-3.0.epw", "CAN_NU_Cambridge.Bay.AP.719250_TDY-0.0.epw", "CAN_NU_Cambridge.Bay.AP.719250_TDY-3.0.epw",
+                 "CAN_NU_Cambridge.Bay.AP.719250_TMY-0.0.epw", "CAN_NU_Cambridge.Bay.AP.719250_TMY-3.0.epw", "CAN_NU_Iqaluit.AP.719090_ECY-0.0.epw", "CAN_NU_Iqaluit.AP.719090_ECY-3.0.epw",
+                 "CAN_NU_Iqaluit.AP.719090_EWY-0.0.epw", "CAN_NU_Iqaluit.AP.719090_EWY-3.0.epw", "CAN_NU_Iqaluit.AP.719090_TDY-0.0.epw", "CAN_NU_Iqaluit.AP.719090_TDY-3.0.epw",
+                 "CAN_NU_Iqaluit.AP.719090_TMY-0.0.epw", "CAN_NU_Iqaluit.AP.719090_TMY-3.0.epw", "CAN_NU_Rankin.Inlet.AP.710830_ECY-0.0.epw", "CAN_NU_Rankin.Inlet.AP.710830_ECY-3.0.epw",
+                 "CAN_NU_Rankin.Inlet.AP.710830_EWY-0.0.epw", "CAN_NU_Rankin.Inlet.AP.710830_EWY-3.0.epw", "CAN_NU_Rankin.Inlet.AP.710830_TDY-0.0.epw", "CAN_NU_Rankin.Inlet.AP.710830_TDY-3.0.epw",
+                 "CAN_NU_Rankin.Inlet.AP.710830_TMY-0.0.epw", "CAN_NU_Rankin.Inlet.AP.710830_TMY-3.0.epw", "CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_ECY-0.0.epw",
+                 "CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_ECY-3.0.epw", "CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_EWY-0.0.epw", "CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_EWY-3.0.epw",
+                 "CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_TDY-0.0.epw", "CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_TDY-3.0.epw", "CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_TMY-0.0.epw",
+                 "CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_TMY-3.0.epw", "CAN_ON_Sudbury.AP.717300_ECY-0.0.epw", "CAN_ON_Sudbury.AP.717300_ECY-3.0.epw", "CAN_ON_Sudbury.AP.717300_EWY-0.0.epw",
+                 "CAN_ON_Sudbury.AP.717300_EWY-3.0.epw", "CAN_ON_Sudbury.AP.717300_TDY-0.0.epw", "CAN_ON_Sudbury.AP.717300_TDY-3.0.epw", "CAN_ON_Sudbury.AP.717300_TMY-0.0.epw",
+                 "CAN_ON_Sudbury.AP.717300_TMY-3.0.epw", "CAN_ON_Toronto.Pearson.Intl.AP.716240_ECY-0.0.epw", "CAN_ON_Toronto.Pearson.Intl.AP.716240_ECY-3.0.epw",
+                 "CAN_ON_Toronto.Pearson.Intl.AP.716240_EWY-0.0.epw", "CAN_ON_Toronto.Pearson.Intl.AP.716240_EWY-3.0.epw", "CAN_ON_Toronto.Pearson.Intl.AP.716240_TDY-0.0.epw",
+                 "CAN_ON_Toronto.Pearson.Intl.AP.716240_TDY-3.0.epw", "CAN_ON_Toronto.Pearson.Intl.AP.716240_TMY-0.0.epw", "CAN_ON_Toronto.Pearson.Intl.AP.716240_TMY-3.0.epw",
+                 "CAN_PE_Charlottetown.AP.717060_ECY-0.0.epw", "CAN_PE_Charlottetown.AP.717060_ECY-3.0.epw", "CAN_PE_Charlottetown.AP.717060_EWY-0.0.epw", "CAN_PE_Charlottetown.AP.717060_EWY-3.0.epw",
+                 "CAN_PE_Charlottetown.AP.717060_TDY-0.0.epw", "CAN_PE_Charlottetown.AP.717060_TDY-3.0.epw", "CAN_PE_Charlottetown.AP.717060_TMY-0.0.epw", "CAN_PE_Charlottetown.AP.717060_TMY-3.0.epw",
+                 "CAN_QC_Jonquiere.716170_ECY-0.0.epw", "CAN_QC_Jonquiere.716170_ECY-3.0.epw", "CAN_QC_Jonquiere.716170_EWY-0.0.epw", "CAN_QC_Jonquiere.716170_EWY-3.0.epw",
+                 "CAN_QC_Jonquiere.716170_TDY-0.0.epw", "CAN_QC_Jonquiere.716170_TDY-3.0.epw", "CAN_QC_Jonquiere.716170_TMY-0.0.epw", "CAN_QC_Jonquiere.716170_TMY-3.0.epw",
+                 "CAN_QC_Montreal-Trudeau.Intl.AP.716270_ECY-0.0.epw", "CAN_QC_Montreal-Trudeau.Intl.AP.716270_ECY-3.0.epw", "CAN_QC_Montreal-Trudeau.Intl.AP.716270_EWY-0.0.epw",
+                 "CAN_QC_Montreal-Trudeau.Intl.AP.716270_EWY-3.0.epw", "CAN_QC_Montreal-Trudeau.Intl.AP.716270_TDY-0.0.epw", "CAN_QC_Montreal-Trudeau.Intl.AP.716270_TDY-3.0.epw",
+                 "CAN_QC_Montreal-Trudeau.Intl.AP.716270_TMY-0.0.epw", "CAN_QC_Montreal-Trudeau.Intl.AP.716270_TMY-3.0.epw", "CAN_QC_Quebec-Lesage.Intl.AP.717140_ECY-0.0.epw",
+                 "CAN_QC_Quebec-Lesage.Intl.AP.717140_ECY-3.0.epw", "CAN_QC_Quebec-Lesage.Intl.AP.717140_EWY-0.0.epw", "CAN_QC_Quebec-Lesage.Intl.AP.717140_EWY-3.0.epw",
+                 "CAN_QC_Quebec-Lesage.Intl.AP.717140_TDY-0.0.epw", "CAN_QC_Quebec-Lesage.Intl.AP.717140_TDY-3.0.epw", "CAN_QC_Quebec-Lesage.Intl.AP.717140_TMY-0.0.epw",
+                 "CAN_QC_Quebec-Lesage.Intl.AP.717140_TMY-3.0.epw", "CAN_SK_Regina.Intl.AP.715140_ECY-0.0.epw", "CAN_SK_Regina.Intl.AP.715140_ECY-3.0.epw", "CAN_SK_Regina.Intl.AP.715140_EWY-0.0.epw",
+                 "CAN_SK_Regina.Intl.AP.715140_EWY-3.0.epw", "CAN_SK_Regina.Intl.AP.715140_TDY-0.0.epw", "CAN_SK_Regina.Intl.AP.715140_TDY-3.0.epw", "CAN_SK_Regina.Intl.AP.715140_TMY-0.0.epw",
+                 "CAN_SK_Regina.Intl.AP.715140_TMY-3.0.epw", "CAN_SK_Saskatoon.Intl.AP.718660_ECY-0.0.epw", "CAN_SK_Saskatoon.Intl.AP.718660_ECY-3.0.epw", "CAN_SK_Saskatoon.Intl.AP.718660_EWY-0.0.epw",
+                 "CAN_SK_Saskatoon.Intl.AP.718660_EWY-3.0.epw", "CAN_SK_Saskatoon.Intl.AP.718660_TDY-0.0.epw", "CAN_SK_Saskatoon.Intl.AP.718660_TDY-3.0.epw", "CAN_SK_Saskatoon.Intl.AP.718660_TMY-0.0.epw",
+                 "CAN_SK_Saskatoon.Intl.AP.718660_TMY-3.0.epw", "CAN_YT_Dawson.719660_ECY-0.0.epw", "CAN_YT_Dawson.719660_ECY-3.0.epw", "CAN_YT_Dawson.719660_EWY-0.0.epw",
+                 "CAN_YT_Dawson.719660_EWY-3.0.epw", "CAN_YT_Dawson.719660_TDY-0.0.epw", "CAN_YT_Dawson.719660_TDY-3.0.epw", "CAN_YT_Dawson.719660_TMY-0.0.epw", "CAN_YT_Dawson.719660_TMY-3.0.epw",
+                 "CAN_YT_Whitehorse.Intl.AP.719640_ECY-0.0.epw", "CAN_YT_Whitehorse.Intl.AP.719640_ECY-3.0.epw", "CAN_YT_Whitehorse.Intl.AP.719640_EWY-0.0.epw",
+                 "CAN_YT_Whitehorse.Intl.AP.719640_EWY-3.0.epw", "CAN_YT_Whitehorse.Intl.AP.719640_TDY-0.0.epw", "CAN_YT_Whitehorse.Intl.AP.719640_TDY-3.0.epw",
+                 "CAN_YT_Whitehorse.Intl.AP.719640_TMY-0.0.epw", "CAN_YT_Whitehorse.Intl.AP.719640_TMY-3.0.epw",
+                 "CAN_AB_Calgary.Intl.AP.718770_CWEC2016.epw", "CAN_AB_Edmonton.Intl.AP.711230_CWEC2016.epw", "CAN_AB_Fort.McMurray.AP.716890_CWEC2016.epw", "CAN_BC_Vancouver.Intl.AP.718920_CWEC2016.epw",
+                 "CAN_BC_Victoria.Intl.AP.717990_CWEC2016.epw", "CAN_MB_Winnipeg-Richardson.Intl.AP.718520_CWEC2016.epw", "CAN_NB_Saint.John.AP.716090_CWEC2016.epw",
+                 "CAN_NL_St.Johns.Intl.AP.718010_CWEC2016.epw", "CAN_NS_Halifax.Dockyard.713280_CWEC2016.epw", "CAN_NS_Sydney-McCurdy.AP.717070_CWEC2016.epw", "CAN_NT_Inuvik-Zubko.AP.719570_CWEC2016.epw",
+                 "CAN_NT_Yellowknife.AP.719360_CWEC2016.epw", "CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw", "CAN_ON_Toronto.Pearson.Intl.AP.716240_CWEC2016.epw",
+                 "CAN_PE_Charlottetown.AP.717060_CWEC2016.epw", "CAN_QC_Montreal-Trudeau.Intl.AP.716270_CWEC2016.epw", "CAN_QC_Quebec-Lesage.Intl.AP.717140_CWEC2016.epw",
+                 "CAN_SK_Saskatoon.Intl.AP.718660_CWEC2016.epw", "CAN_YT_Whitehorse.Intl.AP.719640_CWEC2016.epw",
+                 "CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_16.epw", "CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_17.epw", "CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_18.epw",
+                 "CAN_ON_Toronto.Pearson.Intl.AP.716240_16.epw", "CAN_ON_Toronto.Pearson.Intl.AP.716240_17.epw", "CAN_ON_Toronto.Pearson.Intl.AP.716240_18.epw",
+                 "CAN_ON_Windsor.Intl.AP.715380_16.epw", "CAN_ON_Windsor.Intl.AP.715380_17.epw", "CAN_ON_Windsor.Intl.AP.715380_18.epw", "CAN_BC_Kelowna.Intl.AP.712030_CWEC2016.epw",
+                 "CAN_MB_Thompson.AP.710790_CWEC2016.epw", "CAN_NB_Moncton-Greater.Moncton.LeBlanc.Intl.AP.717050_CWEC2016.epw",
+                 "CAN_NL_Corner.Brook.719730_CWEC2016.epw", "CAN_NU_Cambridge.Bay.AP.719250_CWEC2016.epw", "CAN_NU_Iqaluit.AP.719090_CWEC2016.epw",
+                 "CAN_NU_Rankin.Inlet.AP.710830_CWEC2016.epw", "CAN_ON_Sudbury.AP.717300_CWEC2016.epw", "CAN_QC_Jonquiere.716170_CWEC2016.epw",
+                 "CAN_SK_Prince.Albert.AP.718690_CWEC2016.epw", "CAN_SK_Regina.Intl.AP.715140_CWEC2016.epw", "CAN_YT_Dawson.719660_CWEC2020.epw"]
 
     # assign the user inputs to variables
     building_shape = arguments['building_shape']
     building_type = arguments['building_type']
     template = arguments['template']
-    epw_file1 = arguments['epw_file']
+    location = arguments['location']
+    weather_file_type = arguments['weather_file_type']
+    global_warming = arguments['global_warming']
     total_floor_area = arguments['total_floor_area']
     aspect_ratio = arguments['aspect_ratio']
     rotation = arguments['rotation']
@@ -208,8 +262,18 @@ class NrcCreateGeometry < OpenStudio::Measure::ModelMeasure
     floor_area = total_floor_area / above_grade_floors
     climate_zone = 'NECB HDD Method'
     sideload = arguments['sideload']
-    epw_file = w_files[epw_file1]
-	
+
+    epw_file = ""
+    epw_files.each do |w_file|
+      if (weather_file_type == "CWEC2016") && (w_file.include? "CWEC2016") && (w_file.include? location)
+        epw_file = w_file
+      elsif (weather_file_type == "CWEC2016") && (w_file.include? "Dawson")
+        epw_file = "CAN_YT_Dawson.719660_CWEC2020.epw" # Only CWEC2020 is available for "CAN_YT_Dawson.719660"
+      elsif (w_file.include? location) && (w_file.include? weather_file_type) && (w_file.include? global_warming)
+        epw_file = w_file
+      end
+    end
+
     if plenum_height <= 0
       plenum_height = 0.0
     end
@@ -252,7 +316,7 @@ class NrcCreateGeometry < OpenStudio::Measure::ModelMeasure
                                                       length = a,
                                                       width = b,
                                                       above_ground_storys = above_grade_floors,
-                                                      under_ground_storys = 0,# Set to 1, when modeling a basement
+                                                      under_ground_storys = 0, # Set to 1, when modeling a basement
                                                       floor_to_floor_height = floor_to_floor_height,
                                                       plenum_height = plenum_height,
                                                       perimeter_zone_depth = perimeter_depth,
@@ -434,13 +498,13 @@ class NrcCreateGeometry < OpenStudio::Measure::ModelMeasure
     standard.model_apply_standard(model: model,
                                   epw_file: epw_file,
                                   sizing_run_dir: NRCMeasureTestHelper.outputFolder)
-								  
-	facility = model.getFacility
+
+    facility = model.getFacility
     exterior_lights = facility.exteriorLights
     exterior_lights.each do |exterior_light|
       puts "Removed exterior light : #{exterior_light.name}.".green
       exterior_light.remove
-    end							  
+    end
 
     # Check if new SRR was set properly
     srr_lim = standard.get_standards_constant('skylight_to_roof_ratio_max_value')
