@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_add_ashpwh</name>
   <uid>87631e5c-6a3f-4f4b-88af-c8b6fe497809</uid>
-  <version_id>712b288e-31e8-43fe-9628-f5fcbf661a6a</version_id>
-  <version_modified>20220817T203947Z</version_modified>
+  <version_id>b3f4a311-dca2-4d94-8f58-350643361306</version_id>
+  <version_modified>20221116T170824Z</version_modified>
   <xml_checksum>A05EBCA5</xml_checksum>
   <class_name>NrcAddASHPWH</class_name>
   <display_name>NrcAddASHPWH </display_name>
@@ -100,6 +100,12 @@
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
       <checksum>EF2FCBFD</checksum>
+    </file>
+    <file>
+      <filename>README.md</filename>
+      <filetype>md</filetype>
+      <usage_type>test</usage_type>
+      <checksum>FA5928AD</checksum>
     </file>
   </files>
 </measure>

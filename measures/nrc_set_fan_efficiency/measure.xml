@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_set_fan_efficiency</name>
   <uid>306a7623-dfbc-4faa-a855-7cfa9523935d</uid>
-  <version_id>16099ced-4c8a-420d-9450-d0bb36e1b347</version_id>
-  <version_modified>20220817T204005Z</version_modified>
+  <version_id>d72479a5-dbfb-498a-8b19-13f9c53e22e2</version_id>
+  <version_modified>20221116T170909Z</version_modified>
   <xml_checksum>2AF3A68E</xml_checksum>
   <class_name>NrcSetFanEfficiency</class_name>
   <display_name>Set Fan Efficiency</display_name>
@@ -100,6 +100,12 @@
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
       <checksum>E01E24C9</checksum>
+    </file>
+    <file>
+      <filename>README.md</filename>
+      <filetype>md</filetype>
+      <usage_type>test</usage_type>
+      <checksum>76C2F4E1</checksum>
     </file>
   </files>
 </measure>

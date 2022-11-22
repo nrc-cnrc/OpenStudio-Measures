@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_change_energy_recovery_efficiency</name>
   <uid>9b530f72-e5ab-467b-acd6-b5c3458d7b55</uid>
-  <version_id>69198ac8-17c6-442c-84bd-ebc2b03b9480</version_id>
-  <version_modified>20220817T203949Z</version_modified>
+  <version_id>2d11dd2a-25ae-4715-b2f3-ea883df333b2</version_id>
+  <version_modified>20221116T170829Z</version_modified>
   <xml_checksum>BF75C791</xml_checksum>
   <class_name>NrcChangeEnergyRecoveryEfficiency</class_name>
   <display_name>NrcChangeEnergyRecoveryEfficiency</display_name>
@@ -150,6 +150,12 @@
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
       <checksum>EF2FCBFD</checksum>
+    </file>
+    <file>
+      <filename>README.md</filename>
+      <filetype>md</filetype>
+      <usage_type>test</usage_type>
+      <checksum>1AC8F1BB</checksum>
     </file>
   </files>
 </measure>

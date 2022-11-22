@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_hvac_modify_dx_single_stage_cooling</name>
   <uid>0f2c50cf-5491-483c-a6b3-c99eff40b57d</uid>
-  <version_id>aeb6aa48-cec6-4ffa-856a-9c947792bb68</version_id>
-  <version_modified>20220817T203958Z</version_modified>
+  <version_id>44d99f9e-5e65-4a9a-a0e0-f1a20f4560e3</version_id>
+  <version_modified>20221116T170858Z</version_modified>
   <xml_checksum>8CBDDA1B</xml_checksum>
   <class_name>NrcHvacModifyDxSingleStageCooling</class_name>
   <display_name>Modify HVAC Air Loop DX cooling coil COP</display_name>
@@ -81,6 +81,12 @@
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
       <checksum>EF2FCBFD</checksum>
+    </file>
+    <file>
+      <filename>README.md</filename>
+      <filetype>md</filetype>
+      <usage_type>test</usage_type>
+      <checksum>6135D2EC</checksum>
     </file>
   </files>
 </measure>

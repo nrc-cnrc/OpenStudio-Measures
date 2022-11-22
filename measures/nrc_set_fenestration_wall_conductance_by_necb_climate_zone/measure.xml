@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_set_fenestration_wall_conductance_by_necb_climate_zone</name>
   <uid>ed475991-f1ea-4c98-968d-fdf5d56faab3</uid>
-  <version_id>3745f2a1-02aa-4581-a817-f1a634b526ec</version_id>
-  <version_modified>20220817T204006Z</version_modified>
+  <version_id>4e690989-6d96-4dd5-9758-862b6ec6704d</version_id>
+  <version_modified>20221116T170936Z</version_modified>
   <xml_checksum>7308DE72</xml_checksum>
   <class_name>NrcSetFenestrationWallConductanceByNecbClimateZone</class_name>
   <display_name>Set Fenestration (Wall) Conductance By Necb Climate Zone</display_name>
@@ -150,6 +150,12 @@
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
       <checksum>EF2FCBFD</checksum>
+    </file>
+    <file>
+      <filename>README.md</filename>
+      <filetype>md</filetype>
+      <usage_type>test</usage_type>
+      <checksum>EFFFF222</checksum>
     </file>
   </files>
 </measure>

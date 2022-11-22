@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_report_set_point_diff</name>
   <uid>d023501a-5089-4b1d-9a08-7a573820a7ef</uid>
-  <version_id>bfb703d4-44b1-419f-96b0-046810422bd2</version_id>
-  <version_modified>20220817T204003Z</version_modified>
+  <version_id>b915e543-9fae-466a-b900-28148a60ec3f</version_id>
+  <version_modified>20221116T170907Z</version_modified>
   <xml_checksum>9BF1E6AC</xml_checksum>
   <class_name>NrcReportSetPointDiff</class_name>
   <display_name>NrcReportSetPointDiff</display_name>
@@ -206,6 +206,12 @@
       <filetype>rb</filetype>
       <usage_type>script</usage_type>
       <checksum>E6B07788</checksum>
+    </file>
+    <file>
+      <filename>README.md</filename>
+      <filetype>md</filetype>
+      <usage_type>test</usage_type>
+      <checksum>45D97064</checksum>
     </file>
   </files>
 </measure>

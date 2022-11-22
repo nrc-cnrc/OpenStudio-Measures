@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_reporting_measure_standard</name>
   <uid>224561f4-8ccc-4f20-8118-34b85359d3f1</uid>
-  <version_id>dbe3bb7e-d608-48fc-b2bc-dcd6076e0490</version_id>
-  <version_modified>20221116T201929Z</version_modified>
+  <version_id>36481821-7b9f-42fb-943a-3f5c5ed47f87</version_id>
+  <version_modified>20221117T190201Z</version_modified>
   <xml_checksum>DD7247CF</xml_checksum>
   <class_name>NrcReportingMeasureStandard</class_name>
   <display_name>NRC Standard Report</display_name>
@@ -193,7 +193,7 @@
       <filename>report_sections.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>51EE316A</checksum>
+      <checksum>C0E73CEE</checksum>
     </file>
   </files>
 </measure>

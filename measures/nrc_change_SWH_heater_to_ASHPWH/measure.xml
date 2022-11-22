@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_change_sw_hto_ashpwh</name>
   <uid>5262638c-2001-4f76-8f1d-3b2492078b35</uid>
-  <version_id>f7ca9d39-8043-4733-b238-48d5ca45b5c6</version_id>
-  <version_modified>20220817T203949Z</version_modified>
+  <version_id>27b2d34a-dc1f-400a-8d9d-f5f0020adb5f</version_id>
+  <version_modified>20221116T170832Z</version_modified>
   <xml_checksum>A05EBCA5</xml_checksum>
   <class_name>NrcChangeSWHtoASHPWH</class_name>
   <display_name>NRC Change SWH Heater to Heat Pump</display_name>
@@ -88,6 +88,12 @@
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
       <checksum>EF2FCBFD</checksum>
+    </file>
+    <file>
+      <filename>README.md</filename>
+      <filetype>md</filetype>
+      <usage_type>test</usage_type>
+      <checksum>E2543885</checksum>
     </file>
   </files>
 </measure>

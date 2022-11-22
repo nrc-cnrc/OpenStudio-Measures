@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_new_spacetype_lpd_list</name>
   <uid>fe83dee3-2233-4744-abb1-3cbb1777fbae</uid>
-  <version_id>8edf258f-7c1f-467c-b700-741d2ad245e9</version_id>
-  <version_modified>20220817T203959Z</version_modified>
+  <version_id>6073aa1b-b870-4eea-b2ad-577671ee2b37</version_id>
+  <version_modified>20221116T170904Z</version_modified>
   <xml_checksum>2609226D</xml_checksum>
   <class_name>NrcNewSpacetypeLPDList</class_name>
   <display_name>NrcNewSpacetypeLPDList</display_name>
@@ -102,10 +102,10 @@
       <checksum>EF2FCBFD</checksum>
     </file>
     <file>
-      <filename>listofspacenameschangedSI.csv</filename>
-      <filetype>csv</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>4721C23F</checksum>
+      <filename>README.md</filename>
+      <filetype>md</filetype>
+      <usage_type>test</usage_type>
+      <checksum>0AA13C7F</checksum>
     </file>
   </files>
 </measure>

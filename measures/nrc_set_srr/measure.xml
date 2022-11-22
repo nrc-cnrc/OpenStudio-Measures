@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_set_srr</name>
   <uid>5b955a02-309e-406a-93d7-ff4ce5540e08</uid>
-  <version_id>70007bb7-7546-4caf-8cc6-efec2533b023</version_id>
-  <version_modified>20220817T204007Z</version_modified>
+  <version_id>8a042878-7183-4fae-8119-80d709f9a07a</version_id>
+  <version_modified>20221116T171010Z</version_modified>
   <xml_checksum>FC9586A7</xml_checksum>
   <class_name>NrcSetSrr</class_name>
   <display_name>nrc_set_srr</display_name>
@@ -130,28 +130,34 @@
       <checksum>EF2FCBFD</checksum>
     </file>
     <file>
-      <filename>CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.ddy</filename>
+      <filename>resources/CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.ddy</filename>
       <filetype>ddy</filetype>
       <usage_type>test</usage_type>
       <checksum>D3C6A158</checksum>
     </file>
     <file>
-      <filename>CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw</filename>
+      <filename>resources/CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw</filename>
       <filetype>epw</filetype>
       <usage_type>test</usage_type>
       <checksum>E21FC0AC</checksum>
     </file>
     <file>
-      <filename>CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.stat</filename>
+      <filename>resources/CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.stat</filename>
       <filetype>stat</filetype>
       <usage_type>test</usage_type>
       <checksum>BAFC0770</checksum>
     </file>
     <file>
-      <filename>Warehouse-NECB2017-ON_Ottawa.osm</filename>
+      <filename>resources/Warehouse-NECB2017-ON_Ottawa.osm</filename>
       <filetype>osm</filetype>
       <usage_type>test</usage_type>
       <checksum>C55B436A</checksum>
+    </file>
+    <file>
+      <filename>README.md</filename>
+      <filetype>md</filetype>
+      <usage_type>test</usage_type>
+      <checksum>552A2EAC</checksum>
     </file>
   </files>
 </measure>
