@@ -180,7 +180,7 @@ class NrcReportingMeasureStandard < OpenStudio::Measure::ReportingMeasure
     # Add fields to btap_data that we want in our output.
     btap_data.merge! simulation_configuration(qaqc_data)
     btap_data.merge! envelope_areas(qaqc_data)
-    btap_data.merge! gatherSetpointSummary(model)
+    #btap_data.merge! gatherSetpointSummary(model)
 
     # Create output data structure.
     # This is a structured has of all the sections we want to report on.

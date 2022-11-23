@@ -123,10 +123,10 @@ class NrcReportingMeasureStandard < OpenStudio::Measure::ReportingMeasure
       add_table_or_chart(table)
 
 	  # Pass recovered values to the output variables in the measure.
-      runner.registerValue('total_site_energy', (eui * fa).signif(4), 'kWh')
       runner.registerValue('total_site_energy_normalized', (eui).signif(4), 'kWh/m2')
-      runner.registerValue('annual_electricity_use', 1.234, 'kWh')
-      runner.registerValue('annual_natural_gas_use', 1.234, 'GJ')
+      runner.registerValue('total_site_energy', (eui*fa).signif(4), 'kWh')
+      runner.registerValue('annual_electricity_use', ((btap_data[:energy_eui_electricity_gj_per_m_sq]) * fa / 0.0036).signif(4), 'kWh')
+      runner.registerValue('annual_natural_gas_use', ((btap_data[:energy_eui_natural_gas_gj_per_m_sq]) * fa / 0.0036).signif(4), 'kWh')
     end
   end
 

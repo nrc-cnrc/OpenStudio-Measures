@@ -143,6 +143,7 @@ class NrcReportingMeasureStandard < OpenStudio::Measure::ReportingMeasure
       #  need to calculate the difference between them.
       #  extract the nodeT and the setpointT and one of the dateTime series (we can assume these have the same values,
       #  then create a new vector with the diff.
+      puts "#{node_timeseries}".yellow
       dateTime = node_timeseries[0][:data][:datetime]
       units = node_timeseries[0][:data][:units]
       nodeTindex = node_timeseries.index { |element| element[:item].include?("Node Temperature")}
