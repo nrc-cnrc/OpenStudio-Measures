@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_create_necb_prototype_building</name>
   <uid>3e9acd53-8602-4749-a655-7cbbe48e8b30</uid>
-  <version_id>5c9fe06a-75d5-4e10-b24c-cc76d53fda98</version_id>
-  <version_modified>20221114T200226Z</version_modified>
+  <version_id>bcf8c0aa-9bd7-4a10-a3d4-25d86f112a1c</version_id>
+  <version_modified>20221116T170846Z</version_modified>
   <xml_checksum>2C38F48B</xml_checksum>
   <class_name>NrcCreateNECBPrototypeBuilding</class_name>
   <display_name>NrcCreateNECBPrototypeBuilding</display_name>
@@ -1533,6 +1533,12 @@
       <filetype>txt</filetype>
       <usage_type>resource</usage_type>
       <checksum>D3368658</checksum>
+    </file>
+    <file>
+      <filename>README.md</filename>
+      <filetype>md</filetype>
+      <usage_type>test</usage_type>
+      <checksum>87592576</checksum>
     </file>
   </files>
 </measure>
