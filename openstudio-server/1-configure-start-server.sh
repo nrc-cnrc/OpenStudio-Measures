@@ -45,8 +45,8 @@ do
   tries=$[$tries+1]
   if [[ $tries -gt 20 ]] 
   then
-    container=${PWD##*/}"-web-1"
-    worker_root=${PWD##*/}"-worker-"    
+    container=${PWD##*/}"_web_1"
+    worker_root=${PWD##*/}"_worker_"    
   else
     if [[ $tries -gt 29 ]]
     then
