@@ -267,7 +267,7 @@ class NrcCreateGeometry < OpenStudio::Measure::ModelMeasure
     epw_files.each do |w_file|
       if (weather_file_type == "CWEC2016") && (w_file.include? "CWEC2016") && (w_file.include? location)
         epw_file = w_file
-      elsif (weather_file_type == "CWEC2016") && (w_file.include? "Dawson")
+      elsif (weather_file_type == "CWEC2016") && (location.include? "Dawson")
         epw_file = "CAN_YT_Dawson.719660_CWEC2020.epw" # Only CWEC2020 is available for "CAN_YT_Dawson.719660"
       elsif (w_file.include? location) && (w_file.include? weather_file_type) && (w_file.include? global_warming)
         epw_file = w_file
