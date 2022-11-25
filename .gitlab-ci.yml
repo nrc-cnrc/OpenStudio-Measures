@@ -32,7 +32,7 @@ test_using_nrel_image:
   - mkdir -p /var/gems
   - cp -r ../.gems/* /var/gems
   - echo 'Copying additional data to openstudio-standards'
-  - cp -fr openstudio-server/ServerData/weather* /var/gems/openstudio-standards/data
+  - cp -fr openstudio-server/ServerData/weather /var/gems/openstudio-standards/data
   - echo 'Starting tests'
   - cd test
   - bundle install
