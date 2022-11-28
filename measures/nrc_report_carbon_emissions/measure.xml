@@ -3,15 +3,18 @@
   <schema_version>3.0</schema_version>
   <name>nrc_report_carbon_emissions</name>
   <uid>11a12238-d360-4ad9-8d85-58b56c67cf83</uid>
-  <version_id>1a1297bb-0b5f-40d3-b6de-5121ab5dfe74</version_id>
-  <version_modified>20221114T150149Z</version_modified>
+  <version_id>372699a1-ee27-45fe-9a49-a92986aadf52</version_id>
+  <version_modified>20221124T142506Z</version_modified>
   <xml_checksum>9BF1E6AC</xml_checksum>
   <class_name>NrcReportCarbonEmissions</class_name>
   <display_name>NrcReportCarbonEmissions</display_name>
   <description>This reporting measure calculates the annual greenhouse gas emissions.</description>
   <modeler_description>This measure calculates the GHG emissions expressed in tonnes CO2eq based on Emission Factors from NIR reports and Energy Star Portfolio Manager. User can select emission factors before year 2019 from one of 3 NIR reports (2019, 2020 and 2021).
-            NIR report 2019 has EFs till 2017 only, so if year 2018 or 2019 is selected, the EF will be calculated based on NIR Report '2021'
+            NIR report 2019 has EFs till 2017 only, so if year 2018 or 2019 is selected, the EF will be calculated based on NIR Report '2021'. Emission factors for Natural Gas,
+            Propane and Fuel Oils are obtained from NIR report 2022. The natural gas emission factors from the NIR report 2022 are till year 2020, so if any other year after
+            that, the 2020 EF will be used.
             Future GHG factors till 2050 are created by Environment and Climate Change Canada.
+            Emission factors from Energy Star Portfolio Manager are obtained from August 2022 Portfolio Manager at https://portfoliomanager.energystar.gov/pdf/reference/Emissions.pdf
             The natural gas emission factors for each province are calculated by Environment and Climate Change Canada.</modeler_description>
   <arguments>
     <argument>
@@ -20,7 +23,7 @@
       <type>Choice</type>
       <required>true</required>
       <model_dependent>false</model_dependent>
-      <default_value>Nunavut</default_value>
+      <default_value>Ontario</default_value>
       <choices>
         <choice>
           <value>Get From the Model</value>
@@ -90,7 +93,7 @@
       <type>Choice</type>
       <required>true</required>
       <model_dependent>false</model_dependent>
-      <default_value>2050</default_value>
+      <default_value>2015</default_value>
       <choices>
         <choice>
           <value>1990</value>
@@ -264,7 +267,7 @@
       <type>Choice</type>
       <required>true</required>
       <model_dependent>false</model_dependent>
-      <default_value>2050</default_value>
+      <default_value>2025</default_value>
       <choices>
         <choice>
           <value>1990</value>
@@ -577,22 +580,10 @@
   </attributes>
   <files>
     <file>
-      <filename>LICENSE.md</filename>
-      <filetype>md</filetype>
-      <usage_type>license</usage_type>
-      <checksum>CD7F5672</checksum>
-    </file>
-    <file>
       <filename>README.md.erb</filename>
       <filetype>erb</filetype>
       <usage_type>readmeerb</usage_type>
       <checksum>703C9964</checksum>
-    </file>
-    <file>
-      <filename>.gitkeep</filename>
-      <filetype>gitkeep</filetype>
-      <usage_type>doc</usage_type>
-      <checksum>00000000</checksum>
     </file>
     <file>
       <filename>report.html.in</filename>
@@ -685,16 +676,10 @@
       <checksum>3E79C61D</checksum>
     </file>
     <file>
-      <filename>os_lib_reporting.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>68DD123D</checksum>
-    </file>
-    <file>
       <filename>test.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
-      <checksum>7DE59FAD</checksum>
+      <checksum>43FCF1C0</checksum>
     </file>
     <file>
       <version>
@@ -705,13 +690,31 @@
       <filename>measure.rb</filename>
       <filetype>rb</filetype>
       <usage_type>script</usage_type>
-      <checksum>74A56FFE</checksum>
+      <checksum>A4C5D515</checksum>
+    </file>
+    <file>
+      <filename>os_lib_reporting.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>CE82A6E7</checksum>
+    </file>
+    <file>
+      <filename>natural_gas_emission_factors_nir2022.json</filename>
+      <filetype>json</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>3693552A</checksum>
+    </file>
+    <file>
+      <filename>parseCSV.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>3F417C6D</checksum>
     </file>
     <file>
       <filename>README.md</filename>
       <filetype>md</filetype>
       <usage_type>readme</usage_type>
-      <checksum>CE275274</checksum>
+      <checksum>661FDC89</checksum>
     </file>
   </files>
 </measure>

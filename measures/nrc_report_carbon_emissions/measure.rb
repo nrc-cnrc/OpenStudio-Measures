@@ -13,7 +13,7 @@ require 'base64'
 # Keep track of the total CO2e value. This is a hack with a global variable.
 $co_total = 0.0
 $electricity_EF = {}
-$naturalGas_EF = 0.0
+$naturalGas_EF = {}
 
 # start the measure
 class NrcReportCarbonEmissions < OpenStudio::Measure::ReportingMeasure
@@ -36,8 +36,11 @@ class NrcReportCarbonEmissions < OpenStudio::Measure::ReportingMeasure
   # human readable description of modeling approach
   def modeler_description
     return "This measure calculates the GHG emissions expressed in tonnes CO2eq based on Emission Factors from NIR reports and Energy Star Portfolio Manager. User can select emission factors before year 2019 from one of 3 NIR reports (2019, 2020 and 2021).
-            NIR report 2019 has EFs till 2017 only, so if year 2018 or 2019 is selected, the EF will be calculated based on NIR Report '2021'
+            NIR report 2019 has EFs till 2017 only, so if year 2018 or 2019 is selected, the EF will be calculated based on NIR Report '2021'. Emission factors for Natural Gas,
+            Propane and Fuel Oils are obtained from NIR report 2022. The natural gas emission factors from the NIR report 2022 are till year 2020, so if any other year after
+            that, the 2020 EF will be used.
             Future GHG factors till 2050 are created by Environment and Climate Change Canada.
+            Emission factors from Energy Star Portfolio Manager are obtained from August 2022 Portfolio Manager at https://portfoliomanager.energystar.gov/pdf/reference/Emissions.pdf
             The natural gas emission factors for each province are calculated by Environment and Climate Change Canada."
   end
 
@@ -62,7 +65,7 @@ class NrcReportCarbonEmissions < OpenStudio::Measure::ReportingMeasure
         "name" => "location",
         "type" => "Choice",
         "display_name" => "Location",
-        "default_value" => 'Nunavut',
+        "default_value" => 'Ontario',
         "choices" => ['Get From the Model', 'Canada', 'Newfoundland and Labrador', 'Prince Edward Island', 'Nova Scotia', 'New Brunswick', 'Quebec', 'Ontario', 'Manitoba',
                       'Saskatchewan', 'Alberta', 'British Columbia', 'Yukon', 'Northwest Territories', 'Nunavut'],
         "is_required" => true
@@ -71,7 +74,7 @@ class NrcReportCarbonEmissions < OpenStudio::Measure::ReportingMeasure
         "name" => "start_year",
         "type" => "Choice",
         "display_name" => "Year",
-        "default_value" => '2050',
+        "default_value" => '2015',
         "choices" => ['1990', '2000', '2005', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025', '2026', '2027', '2028', '2029', '2030', '2031', '2032', '2033', '2034', '2035', '2036', '2037', '2038', '2039',
                       '2040', '2041', '2042', '2043', '2044', '2045', '2046', '2047', '2048', '2049', '2050'],
         "is_required" => true
@@ -80,7 +83,7 @@ class NrcReportCarbonEmissions < OpenStudio::Measure::ReportingMeasure
         "name" => "end_year",
         "type" => "Choice",
         "display_name" => "Year",
-        "default_value" => '2050',
+        "default_value" => '2025',
         "choices" => ['1990', '2000', '2005', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025', '2026', '2027', '2028', '2029', '2030', '2031', '2032', '2033', '2034', '2035', '2036', '2037', '2038', '2039',
                       '2040', '2041', '2042', '2043', '2044', '2045', '2046', '2047', '2048', '2049', '2050'],
         "is_required" => true
@@ -139,32 +142,24 @@ class NrcReportCarbonEmissions < OpenStudio::Measure::ReportingMeasure
   end
 
   def findProvince(loc)
-    if loc == 'AB'
-      province = 'Alberta'
-    elsif loc == 'BC'
-      province = 'British Columbia'
-    elsif loc == 'MB'
-      province = 'Manitoba'
-    elsif loc == 'NB'
-      province = 'New Brunswick'
-    elsif loc == 'NL'
-      province = 'Newfoundland and Labrador'
-    elsif loc == 'NT'
-      province = 'Northwest Territories'
-    elsif loc == 'NS'
-      province = 'Nova Scotia'
-    elsif loc == 'NU'
-      province = 'Nunavut'
-    elsif loc == 'ON'
-      province = 'Ontario'
-    elsif loc == 'PE'
-      province = 'Prince Edward Island'
-    elsif loc == 'QC'
-      province = 'Quebec'
-    elsif loc == 'SK'
-      province = 'Saskatchewan'
-    elsif loc == 'YT'
-      province = 'Yukon'
+    province = ""
+    province_hash = {}
+    province_hash['AB'] = 'Alberta'
+    province_hash['BC'] = 'British Columbia'
+    province_hash['MB'] = 'Manitoba'
+    province_hash['NB'] = 'New Brunswick'
+    province_hash['NL'] = 'Newfoundland and Labrador'
+    province_hash['NT'] = 'Northwest Territories'
+    province_hash['NS'] = 'Nova Scotia'
+    province_hash['NU'] = 'Nunavut'
+    province_hash['ON'] = 'Ontario'
+    province_hash['PE'] = 'Prince Edward Island'
+    province_hash['QC'] = 'Quebec'
+    province_hash['SK'] = 'Saskatchewan'
+    province_hash['YT'] = 'Yukon'
+    province = province_hash[loc]
+    if province.nil?
+      province = province_hash.key(loc)
     end
     return province
   end
@@ -225,19 +220,33 @@ class NrcReportCarbonEmissions < OpenStudio::Measure::ReportingMeasure
         location = findProvince(loc)
       end
 
-      # Get the natural gas EF from the JSON file 'NG_EFs.json'
-      ng_path = File.expand_path('../resources/NG_EFs.json', __FILE__)
-      ng_emissionFactorsFile = File.read(ng_path)
-      ng_data_hash = JSON.parse(ng_emissionFactorsFile)
-      ng_data_hash.each do |k, v|
-        k.each do |k1, v1|
-          if k1 == location
-            $naturalGas_EF = v1['kg CO2e/GJ']
-            break
+      # Get the natural gas EF from the JSON file 'natural_gas_emission_factors_nir2022.json'
+      ng_ef = 0.0
+      nir_ng_files_path = File.expand_path("#{File.expand_path(__dir__)}/resources/")
+      if year > 2020
+        year = 2020
+      end
+      json_ng_path = File.expand_path("#{nir_ng_files_path}/natural_gas_emission_factors_nir2022.json", __FILE__)
+      prov = findProvince(location)
+      allNGEmissionFactorsFile1 = File.read(json_ng_path)
+      data_ng_hash = JSON.parse(allNGEmissionFactorsFile1)
+      data_ng_hash.each do |key1, value1|
+        key1.each do |key, value|
+          if key == "Year" && value == year.to_s
+            ng_arr = key1.to_a
+            ng_arr.each do |arr|
+              if arr[0].include? prov
+                ng_ef = arr[1]
+                break
+              end
+            end
           end
         end
       end
-
+      # Convert from m3 to GJ https://apps.cer-rec.gc.ca/Conversion/conversion-tables.aspx?GoCTemplateCulture=fr-CA#2-3
+      # Convert the natural gas Ef from g/m3 to kg/GJ
+      naturalGas_EF = ng_ef.to_f * 0.001 / 0.037244529
+      $naturalGas_EF[year] = naturalGas_EF
       nir_files_path = File.expand_path("#{File.expand_path(__dir__)}/resources/")
       electricity_EF = 0.0
       if year <= 2019
@@ -259,7 +268,7 @@ class NrcReportCarbonEmissions < OpenStudio::Measure::ReportingMeasure
                   if loc == location
                     electricity_EF = value[year.to_s]
                     $electricity_EF[year] = electricity_EF
-                    puts "The projection EF for ".green + " #{loc}".light_blue + " for year ".green + " #{year}".light_blue + " is".green + " #{$electricity_EF}".light_blue
+                    puts "The EF for ".green + " #{loc}".light_blue + " for year ".green + " #{year}".light_blue + " is".green + " #{$electricity_EF}".light_blue
                     break
                   end
                 end
