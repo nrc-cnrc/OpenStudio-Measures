@@ -1,0 +1,180 @@
+<?xml version="1.0"?>
+<measure>
+  <schema_version>3.0</schema_version>
+  <name>nrc_report_several_output_variables</name>
+  <uid>e79e4994-6a52-461b-8e80-19ceb8c04ba3</uid>
+  <version_id>6fa75a34-ab7e-407b-bdca-f1544c4abc13</version_id>
+  <version_modified>20221201T130838Z</version_modified>
+  <xml_checksum>9BF1E6AC</xml_checksum>
+  <class_name>NrcReportSeveralOutputVariables</class_name>
+  <display_name>Nrc Report Several Output Variables</display_name>
+  <description>This measure displays csv files for output variables.</description>
+  <modeler_description>The measure creates CSV files for output variables entered by the user. The output variables have to be entered in the format :
+    OutputVariable1 : Key Name1,OutputVariable2 : Key Name2,OutputVariable3 : Key Name3,...etc
+    Also the measures creates hourly data for meter outputs ("Electricity:Facility", "Gas:Facility", "NaturalGas:Facility")</modeler_description>
+  <arguments>
+    <argument>
+      <name>reporting_frequency</name>
+      <display_name>Reporting Frequency</display_name>
+      <type>Choice</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>Hourly</default_value>
+      <choices>
+        <choice>
+          <value>Hourly</value>
+          <display_name>Hourly</display_name>
+        </choice>
+        <choice>
+          <value>Timestep</value>
+          <display_name>Timestep</display_name>
+        </choice>
+      </choices>
+    </argument>
+    <argument>
+      <name>output_variables</name>
+      <display_name>Please Enter the Output Variables in the format 'OutputVariable1 : Key Name1,OutputVariable2 : Key Name2,OutputVariable3 : Key Name3'   </display_name>
+      <type>String</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>Site Outdoor Air Drybulb Temperature:*,Baseboard Total Heating Rate:*</default_value>
+    </argument>
+    <argument>
+      <name>loads_summary_section</name>
+      <display_name>OsLib_Reporting.loads_summary_section(nil,nil,nil,true)[:title]</display_name>
+      <type>Boolean</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>true</default_value>
+      <choices>
+        <choice>
+          <value>true</value>
+          <display_name>true</display_name>
+        </choice>
+        <choice>
+          <value>false</value>
+          <display_name>false</display_name>
+        </choice>
+      </choices>
+    </argument>
+  </arguments>
+  <outputs />
+  <provenances />
+  <tags>
+    <tag>Reporting.QAQC</tag>
+  </tags>
+  <attributes>
+    <attribute>
+      <name>Measure Type</name>
+      <value>ReportingMeasure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Software Tool</name>
+      <value>OpenStudio Application</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Software Tool</name>
+      <value>Parametric Analysis Tool</value>
+      <datatype>string</datatype>
+    </attribute>
+  </attributes>
+  <files>
+    <file>
+      <filename>README.md.erb</filename>
+      <filetype>erb</filetype>
+      <usage_type>readmeerb</usage_type>
+      <checksum>F1C26127</checksum>
+    </file>
+    <file>
+      <filename>example_model.osm</filename>
+      <filetype>osm</filetype>
+      <usage_type>test</usage_type>
+      <checksum>39B6E26C</checksum>
+    </file>
+    <file>
+      <filename>USA_CO_Golden-NREL.724666_TMY3.epw</filename>
+      <filetype>epw</filetype>
+      <usage_type>test</usage_type>
+      <checksum>BDF687C1</checksum>
+    </file>
+    <file>
+      <filename>report.html.in</filename>
+      <filetype>in</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>3F69E3FB</checksum>
+    </file>
+    <file>
+      <filename>os_lib_helper_methods.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>55314FBC</checksum>
+    </file>
+    <file>
+      <filename>Warehouse_CAN_BC_Victoria.osm</filename>
+      <filetype>osm</filetype>
+      <usage_type>test</usage_type>
+      <checksum>6A3D0EE5</checksum>
+    </file>
+    <file>
+      <filename>Warehouse_CAN_ON_Ottawa.osm</filename>
+      <filetype>osm</filetype>
+      <usage_type>test</usage_type>
+      <checksum>F6522CD5</checksum>
+    </file>
+    <file>
+      <filename>test_gr1.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>600A589B</checksum>
+    </file>
+    <file>
+      <filename>BTAPMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>B69DF022</checksum>
+    </file>
+    <file>
+      <filename>NRCReportingMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>9B27BD19</checksum>
+    </file>
+    <file>
+      <filename>report.html.erb</filename>
+      <filetype>erb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>090E3DE7</checksum>
+    </file>
+    <file>
+      <filename>test.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>E6108531</checksum>
+    </file>
+    <file>
+      <version>
+        <software_program>OpenStudio</software_program>
+        <identifier>3.2.1</identifier>
+        <min_compatible>3.2.1</min_compatible>
+      </version>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>script</usage_type>
+      <checksum>F0E91721</checksum>
+    </file>
+    <file>
+      <filename>README.md</filename>
+      <filetype>md</filetype>
+      <usage_type>readme</usage_type>
+      <checksum>69AEE9F7</checksum>
+    </file>
+    <file>
+      <filename>os_lib_reporting.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>21E9A93D</checksum>
+    </file>
+  </files>
+</measure>
