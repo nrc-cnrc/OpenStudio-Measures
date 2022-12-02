@@ -109,17 +109,18 @@ end
 class ParallelTests
   def run(file_list)
     fail_count = 0
+    completed = []
 
-    @full_file_list = nil
+    full_file_list = nil
 
     # Shuffle the order of the supplied test files (these are absolute paths to the test.rb file)
-    @full_file_list = file_list.shuffle
+    full_file_list = file_list.shuffle
 
     # Run the tests in parallel using the available resources.
-    puts "Running #{@full_file_list.size} test suites in parallel using #{ProcessorsUsed} of available cpus."
+    puts "Running #{full_file_list.size} test suites in parallel using #{ProcessorsUsed} of available cpus."
 	overall_start_time = Time.now
     puts "Time: #{overall_start_time}".yellow
-    Parallel.each(@full_file_list, in_threads: (ProcessorsUsed), progress: "Progress:") do |test_file|
+    Parallel.each(full_file_list, in_threads: (ProcessorsUsed), progress: "Progress:") do |test_file|
       t_start = Time.now
       puts "STARTING:: Worker: #{Parallel.worker_number}, Time: #{t_start.strftime("%k:%M:%S")}, File: #{test_file.strip}".blue
       Summary_output[test_file.to_s] = {}
@@ -133,6 +134,15 @@ class ParallelTests
       puts "FINISHED:: Worker: #{Parallel.worker_number}, Time: #{Time.now.strftime("%k:%M:%S")}, Duration: #{(Time.now - t_start).to_i} s, File: #{test_file.strip}".light_blue
       Summary_output[test_file.to_s]['end'] = Time.now.to_i
       Summary_output[test_file.to_s]['duration'] = Summary_output[test_file.to_s]['end'] - Summary_output[test_file.to_s]['start']
+      completed << test_file.to_s
+
+      # If long running list what we have left to complete
+      elapsed_time = Time.now.to_i-overall_start_time.to_i
+      if (elapsed_time > 500) then
+        puts "Overall running time of #{elapsed_time} seconds so far".yellow
+        puts "Remaining tests:".yellow
+        puts "#{full_file_list - completed}".yellow
+      end
     end
 
 	# Report testing summary
@@ -162,6 +172,10 @@ class ParallelTests
       end
     end
 	
+	# Report overall elapsed time.
+    minutes, seconds = (Time.now.to_i-overall_start_time.to_i).divmod(60)
+	puts "Overall elapsed time for tests #{minutes}m #{seconds}s".yellow
+
 	# Return with correct state.
 	if fail_count > 0 then
       puts "#{fail_count} tests failed!".red
@@ -170,7 +184,5 @@ class ParallelTests
       return true
 	end
 	
-	# Report overall elapsed time.
-	puts "Overall elapsed time for tests #{(Time.now-overall_start_time)}"
   end
 end

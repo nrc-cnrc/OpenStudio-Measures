@@ -20,7 +20,7 @@ class NrcCreateGeometry_Test
     above_grade_floors = [1]
     aspect_ratio = [1.25]
     weather_file_types = ["ECY"]
-    locations = ["Thompson", "Winnipeg-Richardson", "Moncton-Greater"]
+    locations = ["Charlottetown", "Saskatoon", "Dawson"]
     global_warmings = ["0.0"]
 
     building_types.each do |type|

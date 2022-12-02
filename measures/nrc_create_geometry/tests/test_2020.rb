@@ -15,8 +15,8 @@ class NrcCreateGeometry_Test
     puts "Testing  model creation for #{template}".blue
 
     # Options. Limit to 4 cases to keep run time down (as these models take time to simulate).
-    building_types = ["Warehouse", "LargeOffice", "HighriseApartment"]
-    locations = ['Saint.John', 'Corner.Brook']
+    building_types = ["HighriseApartment"]
+    locations = ['Saint.John', 'Edmonton']
     building_shapes = ["L-Shape", "Rectangular"]
     total_floor_area = [40000.0]
     rotation = [10.0]
