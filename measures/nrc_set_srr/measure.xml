@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_set_srr</name>
   <uid>5b955a02-309e-406a-93d7-ff4ce5540e08</uid>
-  <version_id>8a042878-7183-4fae-8119-80d709f9a07a</version_id>
-  <version_modified>20221116T171010Z</version_modified>
+  <version_id>172a3fdb-2e8f-42a3-ada7-47212abc007d</version_id>
+  <version_modified>20221202T175035Z</version_modified>
   <xml_checksum>FC9586A7</xml_checksum>
   <class_name>NrcSetSrr</class_name>
   <display_name>nrc_set_srr</display_name>

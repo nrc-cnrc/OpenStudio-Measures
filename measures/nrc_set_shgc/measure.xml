@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_set_shgc</name>
   <uid>9d86e04c-8e2c-4a42-a0dc-037a20881320</uid>
-  <version_id>21db5cbb-6f35-4b74-8d72-e6a42e11eb25</version_id>
-  <version_modified>20221116T171009Z</version_modified>
+  <version_id>dfd4483b-8d36-41c5-9f0d-9d3d59e034fc</version_id>
+  <version_modified>20221202T175034Z</version_modified>
   <xml_checksum>9C8A26EB</xml_checksum>
   <class_name>NrcSetSHGC</class_name>
   <display_name>Set SHGC</display_name>

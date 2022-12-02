@@ -99,65 +99,71 @@ module OsLib_Reporting
     return province
   end
 
-  # Copied from https://github.com/NREL/openstudio-standards/blob/aca8b959ad59216d5d7ddc56c93dfc3d928ec30e/lib/openstudio-standards/standards/necb/common/btap_data.rb#L1649
+  def self.find_ng_ef(year)
+    year = 2020 if year > 2020
+    ng_ef = $naturalGas_EF[year]
+    return ng_ef
+  end
+
+  # The 'get_utility_ghg_kg_per_gj' method is based on https://github.com/NREL/openstudio-standards/blob/aca8b959ad59216d5d7ddc56c93dfc3d928ec30e/lib/openstudio-standards/standards/necb/common/btap_data.rb#L1649
   def self.get_utility_ghg_kg_per_gj(province:, fuel_type:)
     ghg_data = [
-      # Obtained from Portfolio Manager https://portfoliomanager.energystar.gov/pdf/reference/Emissions.pdf 10/10/2020
-      { "province": 'AB', "fuel_type": 'Gas', "CO2eq Emissions (kg/MBtu)": 53.24, "CO2eq Emissions (g/m3)": 1939.0 },
-      { "province": 'BC', "fuel_type": 'Gas', "CO2eq Emissions (kg/MBtu)": 53.19, "CO2eq Emissions (g/m3)": 1937.0 },
-      { "province": 'MB', "fuel_type": 'Gas', "CO2eq Emissions (kg/MBtu)": 52.09, "CO2eq Emissions (g/m3)": 1897.0 },
-      { "province": 'NB', "fuel_type": 'Gas', "CO2eq Emissions (kg/MBtu)": 52.50, "CO2eq Emissions (g/m3)": 1912.0 },
-      { "province": 'NL', "fuel_type": 'Gas', "CO2eq Emissions (kg/MBtu)": 52.50, "CO2eq Emissions (g/m3)": 1912.0 },
-      { "province": 'NT', "fuel_type": 'Gas', "CO2eq Emissions (kg/MBtu)": 52.50, "CO2eq Emissions (g/m3)": 1912.0 },
-      { "province": 'NS', "fuel_type": 'Gas', "CO2eq Emissions (kg/MBtu)": 52.50, "CO2eq Emissions (g/m3)": 1912.0 },
-      { "province": 'NU', "fuel_type": 'Gas', "CO2eq Emissions (kg/MBtu)": 52.50, "CO2eq Emissions (g/m3)": 1912.0 },
-      { "province": 'ON', "fuel_type": 'Gas', "CO2eq Emissions (kg/MBtu)": 52.14, "CO2eq Emissions (g/m3)": 1912.0 },
-      { "province": 'PE', "fuel_type": 'Gas', "CO2eq Emissions (kg/MBtu)": 52.50, "CO2eq Emissions (g/m3)": 1912.0 },
-      { "province": 'QC', "fuel_type": 'Gas', "CO2eq Emissions (kg/MBtu)": 52.12, "CO2eq Emissions (g/m3)": 1898.0 },
-      { "province": 'SK', "fuel_type": 'Gas', "CO2eq Emissions (kg/MBtu)": 50.53, "CO2eq Emissions (g/m3)": 1840.0 },
-      { "province": 'YT', "fuel_type": 'Gas', "CO2eq Emissions (kg/MBtu)": 52.50, "CO2eq Emissions (g/m3)": 1912.0 },
+      # Obtained from 'August 2022 Portfolio Manager' at https://portfoliomanager.energystar.gov/pdf/reference/Emissions.pdf
+      { "province": 'AB', "fuel_type": 'Gas', "CO2eq Emissions (kg/MBtu)": 54.18, "CO2eq Emissions (g/m3)": 1973.0 },
+      { "province": 'BC', "fuel_type": 'Gas', "CO2eq Emissions (kg/MBtu)": 54.29, "CO2eq Emissions (g/m3)": 1977.0 },
+      { "province": 'MB', "fuel_type": 'Gas', "CO2eq Emissions (kg/MBtu)": 52.89, "CO2eq Emissions (g/m3)": 1926.0 },
+      { "province": 'NB', "fuel_type": 'Gas', "CO2eq Emissions (kg/MBtu)": 53.05, "CO2eq Emissions (g/m3)": 1932.0 },
+      { "province": 'NL', "fuel_type": 'Gas', "CO2eq Emissions (kg/MBtu)": 53.05, "CO2eq Emissions (g/m3)": 1932.0 },
+      { "province": 'NT', "fuel_type": 'Gas', "CO2eq Emissions (kg/MBtu)": 54.29, "CO2eq Emissions (g/m3)": 1977.0 },
+      { "province": 'NS', "fuel_type": 'Gas', "CO2eq Emissions (kg/MBtu)": 53.05, "CO2eq Emissions (g/m3)": 1932.0 },
+      { "province": 'NU', "fuel_type": 'Gas', "CO2eq Emissions (kg/MBtu)": 54.29, "CO2eq Emissions (g/m3)": 1977.0 },
+      { "province": 'ON', "fuel_type": 'Gas', "CO2eq Emissions (kg/MBtu)": 53.05, "CO2eq Emissions (g/m3)": 1932.0 },
+      { "province": 'PE', "fuel_type": 'Gas', "CO2eq Emissions (kg/MBtu)": 53.05, "CO2eq Emissions (g/m3)": 1932.0 },
+      { "province": 'QC', "fuel_type": 'Gas', "CO2eq Emissions (kg/MBtu)": 53.19, "CO2eq Emissions (g/m3)": 1937.0 },
+      { "province": 'SK', "fuel_type": 'Gas', "CO2eq Emissions (kg/MBtu)": 53.02, "CO2eq Emissions (g/m3)": 1931.0 },
+      { "province": 'YT', "fuel_type": 'Gas', "CO2eq Emissions (kg/MBtu)": 54.29, "CO2eq Emissions (g/m3)": 1977.0 },
 
-      { "province": 'AB', "fuel_type": 'FuelOilNo2', "CO2eq Emissions (kg/MBtu)": 75.13, "CO2eq Emissions (g/m3)": 2763.0 },
-      { "province": 'BC', "fuel_type": 'FuelOilNo2', "CO2eq Emissions (kg/MBtu)": 75.13, "CO2eq Emissions (g/m3)": 2763.0 },
-      { "province": 'MB', "fuel_type": 'FuelOilNo2', "CO2eq Emissions (kg/MBtu)": 75.13, "CO2eq Emissions (g/m3)": 2763.0 },
-      { "province": 'NB', "fuel_type": 'FuelOilNo2', "CO2eq Emissions (kg/MBtu)": 75.13, "CO2eq Emissions (g/m3)": 2763.0 },
-      { "province": 'NL', "fuel_type": 'FuelOilNo2', "CO2eq Emissions (kg/MBtu)": 75.13, "CO2eq Emissions (g/m3)": 2763.0 },
-      { "province": 'NT', "fuel_type": 'FuelOilNo2', "CO2eq Emissions (kg/MBtu)": 75.13, "CO2eq Emissions (g/m3)": 2763.0 },
-      { "province": 'NS', "fuel_type": 'FuelOilNo2', "CO2eq Emissions (kg/MBtu)": 75.13, "CO2eq Emissions (g/m3)": 2763.0 },
-      { "province": 'NU', "fuel_type": 'FuelOilNo2', "CO2eq Emissions (kg/MBtu)": 75.13, "CO2eq Emissions (g/m3)": 2763.0 },
-      { "province": 'ON', "fuel_type": 'FuelOilNo2', "CO2eq Emissions (kg/MBtu)": 75.13, "CO2eq Emissions (g/m3)": 2763.0 },
-      { "province": 'PE', "fuel_type": 'FuelOilNo2', "CO2eq Emissions (kg/MBtu)": 75.13, "CO2eq Emissions (g/m3)": 2763.0 },
-      { "province": 'QC', "fuel_type": 'FuelOilNo2', "CO2eq Emissions (kg/MBtu)": 75.13, "CO2eq Emissions (g/m3)": 2763.0 },
-      { "province": 'SK', "fuel_type": 'FuelOilNo2', "CO2eq Emissions (kg/MBtu)": 75.13, "CO2eq Emissions (g/m3)": 2763.0 },
-      { "province": 'YT', "fuel_type": 'FuelOilNo2', "CO2eq Emissions (kg/MBtu)": 75.13, "CO2eq Emissions (g/m3)": 2763.0 },
+      { "province": 'AB', "fuel_type": 'FuelOilNo2', "CO2eq Emissions (kg/MBtu)": 75.13, "CO2eq Emissions (g/L)": 2763.0 },
+      { "province": 'BC', "fuel_type": 'FuelOilNo2', "CO2eq Emissions (kg/MBtu)": 75.13, "CO2eq Emissions (g/L)": 2763.0 },
+      { "province": 'MB', "fuel_type": 'FuelOilNo2', "CO2eq Emissions (kg/MBtu)": 75.13, "CO2eq Emissions (g/L)": 2763.0 },
+      { "province": 'NB', "fuel_type": 'FuelOilNo2', "CO2eq Emissions (kg/MBtu)": 75.13, "CO2eq Emissions (g/L)": 2763.0 },
+      { "province": 'NL', "fuel_type": 'FuelOilNo2', "CO2eq Emissions (kg/MBtu)": 75.13, "CO2eq Emissions (g/L)": 2763.0 },
+      { "province": 'NT', "fuel_type": 'FuelOilNo2', "CO2eq Emissions (kg/MBtu)": 75.13, "CO2eq Emissions (g/L)": 2763.0 },
+      { "province": 'NS', "fuel_type": 'FuelOilNo2', "CO2eq Emissions (kg/MBtu)": 75.13, "CO2eq Emissions (g/L)": 2763.0 },
+      { "province": 'NU', "fuel_type": 'FuelOilNo2', "CO2eq Emissions (kg/MBtu)": 75.13, "CO2eq Emissions (g/L)": 2763.0 },
+      { "province": 'ON', "fuel_type": 'FuelOilNo2', "CO2eq Emissions (kg/MBtu)": 75.13, "CO2eq Emissions (g/L)": 2763.0 },
+      { "province": 'PE', "fuel_type": 'FuelOilNo2', "CO2eq Emissions (kg/MBtu)": 75.13, "CO2eq Emissions (g/L)": 2763.0 },
+      { "province": 'QC', "fuel_type": 'FuelOilNo2', "CO2eq Emissions (kg/MBtu)": 75.13, "CO2eq Emissions (g/L)": 2763.0 },
+      { "province": 'SK', "fuel_type": 'FuelOilNo2', "CO2eq Emissions (kg/MBtu)": 75.13, "CO2eq Emissions (g/L)": 2763.0 },
+      { "province": 'YT', "fuel_type": 'FuelOilNo2', "CO2eq Emissions (kg/MBtu)": 75.13, "CO2eq Emissions (g/L)": 2763.0 },
 
-      { "province": 'AB', "fuel_type": 'Propane', "CO2eq Emissions (kg/MBtu)": 64.25, "CO2eq Emissions (g/m3)": 1548.00 },
-      { "province": 'BC', "fuel_type": 'Propane', "CO2eq Emissions (kg/MBtu)": 64.25, "CO2eq Emissions (g/m3)": 1548.00 },
-      { "province": 'MB', "fuel_type": 'Propane', "CO2eq Emissions (kg/MBtu)": 64.25, "CO2eq Emissions (g/m3)": 1548.00 },
-      { "province": 'NB', "fuel_type": 'Propane', "CO2eq Emissions (kg/MBtu)": 64.25, "CO2eq Emissions (g/m3)": 1548.00 },
-      { "province": 'NL', "fuel_type": 'Propane', "CO2eq Emissions (kg/MBtu)": 64.25, "CO2eq Emissions (g/m3)": 1548.00 },
-      { "province": 'NT', "fuel_type": 'Propane', "CO2eq Emissions (kg/MBtu)": 64.25, "CO2eq Emissions (g/m3)": 1548.00 },
-      { "province": 'NS', "fuel_type": 'Propane', "CO2eq Emissions (kg/MBtu)": 64.25, "CO2eq Emissions (g/m3)": 1548.00 },
-      { "province": 'NU', "fuel_type": 'Propane', "CO2eq Emissions (kg/MBtu)": 64.25, "CO2eq Emissions (g/m3)": 1548.00 },
-      { "province": 'ON', "fuel_type": 'Propane', "CO2eq Emissions (kg/MBtu)": 64.25, "CO2eq Emissions (g/m3)": 1548.00 },
-      { "province": 'PE', "fuel_type": 'Propane', "CO2eq Emissions (kg/MBtu)": 64.25, "CO2eq Emissions (g/m3)": 1548.00 },
-      { "province": 'QC', "fuel_type": 'Propane', "CO2eq Emissions (kg/MBtu)": 64.25, "CO2eq Emissions (g/m3)": 1548.00 },
-      { "province": 'SK', "fuel_type": 'Propane', "CO2eq Emissions (kg/MBtu)": 64.25, "CO2eq Emissions (g/m3)": 1548.00 },
-      { "province": 'YT', "fuel_type": 'Propane', "CO2eq Emissions (kg/MBtu)": 64.25, "CO2eq Emissions (g/m3)": 1548.00 },
+      { "province": 'AB', "fuel_type": 'Propane', "CO2eq Emissions (kg/MBtu)": 64.52, "CO2eq Emissions (g/L)": 1548.00 },
+      { "province": 'BC', "fuel_type": 'Propane', "CO2eq Emissions (kg/MBtu)": 64.52, "CO2eq Emissions (g/L)": 1548.00 },
+      { "province": 'MB', "fuel_type": 'Propane', "CO2eq Emissions (kg/MBtu)": 64.52, "CO2eq Emissions (g/L)": 1548.00 },
+      { "province": 'NB', "fuel_type": 'Propane', "CO2eq Emissions (kg/MBtu)": 64.52, "CO2eq Emissions (g/L)": 1548.00 },
+      { "province": 'NL', "fuel_type": 'Propane', "CO2eq Emissions (kg/MBtu)": 64.52, "CO2eq Emissions (g/L)": 1548.00 },
+      { "province": 'NT', "fuel_type": 'Propane', "CO2eq Emissions (kg/MBtu)": 64.52, "CO2eq Emissions (g/L)": 1548.00 },
+      { "province": 'NS', "fuel_type": 'Propane', "CO2eq Emissions (kg/MBtu)": 64.52, "CO2eq Emissions (g/L)": 1548.00 },
+      { "province": 'NU', "fuel_type": 'Propane', "CO2eq Emissions (kg/MBtu)": 64.52, "CO2eq Emissions (g/L)": 1548.00 },
+      { "province": 'ON', "fuel_type": 'Propane', "CO2eq Emissions (kg/MBtu)": 64.52, "CO2eq Emissions (g/L)": 1548.00 },
+      { "province": 'PE', "fuel_type": 'Propane', "CO2eq Emissions (kg/MBtu)": 64.52, "CO2eq Emissions (g/L)": 1548.00 },
+      { "province": 'QC', "fuel_type": 'Propane', "CO2eq Emissions (kg/MBtu)": 64.52, "CO2eq Emissions (g/L)": 1548.00 },
+      { "province": 'SK', "fuel_type": 'Propane', "CO2eq Emissions (kg/MBtu)": 64.52, "CO2eq Emissions (g/L)": 1548.00 },
+      { "province": 'YT', "fuel_type": 'Propane', "CO2eq Emissions (kg/MBtu)": 64.52, "CO2eq Emissions (g/L)": 1548.00 },
 
-      { "province": 'AB', "fuel_type": 'Electricity', "CO2eq Emissions (kg/MBtu)": 231.54, "CO2eq Emissions (g/m3)": 790.0 },
-      { "province": 'BC', "fuel_type": 'Electricity', "CO2eq Emissions (kg/MBtu)": 2.99, "CO2eq Emissions (g/m3)": 10.2 },
-      { "province": 'MB', "fuel_type": 'Electricity', "CO2eq Emissions (kg/MBtu)": 0.56, "CO2eq Emissions (g/m3)": 1.9 },
-      { "province": 'NB', "fuel_type": 'Electricity', "CO2eq Emissions (kg/MBtu)": 76.20, "CO2eq Emissions (g/m3)": 260.0 },
-      { "province": 'NL', "fuel_type": 'Electricity', "CO2eq Emissions (kg/MBtu)": 11.72, "CO2eq Emissions (g/m3)": 40.0 },
-      { "province": 'NT', "fuel_type": 'Electricity', "CO2eq Emissions (kg/MBtu)": 46.89, "CO2eq Emissions (g/m3)": 160.0 },
-      { "province": 'NS', "fuel_type": 'Electricity', "CO2eq Emissions (kg/MBtu)": 213.95, "CO2eq Emissions (g/m3)": 730.0 },
-      { "province": 'NU', "fuel_type": 'Electricity', "CO2eq Emissions (kg/MBtu)": 222.74, "CO2eq Emissions (g/m3)": 760.0 },
-      { "province": 'ON', "fuel_type": 'Electricity', "CO2eq Emissions (kg/MBtu)": 5.86, "CO2eq Emissions (g/m3)": 20.0 },
-      { "province": 'PE', "fuel_type": 'Electricity', "CO2eq Emissions (kg/MBtu)": 76.20, "CO2eq Emissions (g/m3)": 260.0 },
-      { "province": 'QC', "fuel_type": 'Electricity', "CO2eq Emissions (kg/MBtu)": 0.41, "CO2eq Emissions (g/m3)": 1.4 },
-      { "province": 'SK', "fuel_type": 'Electricity', "CO2eq Emissions (kg/MBtu)": 211.04, "CO2eq Emissions (g/m3)": 720.0 },
-      { "province": 'YT', "fuel_type": 'Electricity', "CO2eq Emissions (kg/MBtu)": 16.41, "CO2eq Emissions (g/m3)": 140.0 }
+      { "province": 'AB', "fuel_type": 'Electricity', "CO2eq Emissions (kg/MBtu)": 199.30, "CO2eq Emissions (g/kWh)": 680.0 },
+      { "province": 'BC', "fuel_type": 'Electricity', "CO2eq Emissions (kg/MBtu)": 5.57, "CO2eq Emissions (g/kWh)": 19.0 },
+      { "province": 'MB', "fuel_type": 'Electricity', "CO2eq Emissions (kg/MBtu)": 0.35, "CO2eq Emissions (g/kWh)": 1.2 },
+      { "province": 'NB', "fuel_type": 'Electricity', "CO2eq Emissions (kg/MBtu)": 90.86, "CO2eq Emissions (g/kWh)": 310.0 },
+      { "province": 'NL', "fuel_type": 'Electricity', "CO2eq Emissions (kg/MBtu)": 8.21, "CO2eq Emissions (g/kWh)": 28.0 },
+      { "province": 'NT', "fuel_type": 'Electricity', "CO2eq Emissions (kg/MBtu)": 49.82, "CO2eq Emissions (g/kWh)": 170.0 },
+      { "province": 'NS', "fuel_type": 'Electricity', "CO2eq Emissions (kg/MBtu)": 213.95, "CO2eq Emissions (g/kWh)": 730.0 },
+      { "province": 'NU', "fuel_type": 'Electricity', "CO2eq Emissions (kg/MBtu)": 254.98, "CO2eq Emissions (g/kWh)": 870.0 },
+      { "province": 'ON', "fuel_type": 'Electricity', "CO2eq Emissions (kg/MBtu)": 8.50, "CO2eq Emissions (g/kWh)": 29.0 },
+      { "province": 'PE', "fuel_type": 'Electricity', "CO2eq Emissions (kg/MBtu)": 90.86, "CO2eq Emissions (g/kWh)": 310.0 },
+      { "province": 'QC', "fuel_type": 'Electricity', "CO2eq Emissions (kg/MBtu)": 0.44, "CO2eq Emissions (g/kWh)": 1.5 },
+      { "province": 'SK', "fuel_type": 'Electricity', "CO2eq Emissions (kg/MBtu)": 213.95, "CO2eq Emissions (g/kWh)": 730.0 },
+      { "province": 'YT', "fuel_type": 'Electricity', "CO2eq Emissions (kg/MBtu)": 35.17, "CO2eq Emissions (g/kWh)": 120.0 }
     ]
     mbtu_to_gj = 1.05505585
     factor = ghg_data.detect { |item| (item[:province] == province) && (item[:fuel_type] == fuel_type) }
@@ -168,20 +174,20 @@ module OsLib_Reporting
 
   ####### This section calculates the GHG based on NIR reports
   def self.ghg_NIR_summary_section(model, sqlFile, runner, name_only = false)
-    endUse_summary_data_table = {}
-    endUse_summary_data_table[:title] = ''
-    endUse_summary_data_table[:header] = ["End Use", "Electricity", "Natural Gas", "Annual GHG Emissions"]
-    endUse_summary_data_table[:units] = ['', 'GJ', 'GJ', 'tCO2eq']
-    endUse_summary_data_table[:data] = []
+    nir_emmision_summary_data_table = {}
+    nir_emmision_summary_data_table[:title] = ''
+    nir_emmision_summary_data_table[:header] = ["Year", "Electricity NIR EF", "Electricity Emissions", "Natural Gas EF", "Natural Gas Emissions", "Fuel Oil No2 EF", "Fuel Oil No2 Emissions", "Propane EF", "Propane Emissions", "Annual GHG Emissions"]
+    nir_emmision_summary_data_table[:units] = ['', 'g CO2eq/kWh', 'tCO2eq', 'kg CO2eq/GJ', 'tCO2eq', 'kg CO2eq/GJ', 'tCO2eq', 'kg CO2eq/GJ', 'tCO2eq', 'tCO2eq']
+    nir_emmision_summary_data_table[:data] = []
 
     # gather data for section
-    @endUse_summary_table_section = {}
-    @endUse_summary_table_section[:title] = 'Annual GHG Emissions Based on NIR Report Emission Factors'
-    @endUse_summary_table_section[:data] = []
+    @nir_emission_summary_table_section = {}
+    @nir_emission_summary_table_section[:title] = 'Annual GHG Emissions Based on NIR Report Emission Factors'
+    @nir_emission_summary_table_section[:data] = []
 
     # stop here if only name is requested this is used to populate display name for arguments
     if name_only == true
-      return @endUse_summary_table_section
+      return @nir_emission_summary_table_section
     end
     array_endUse_all = []
     array_endUse = []
@@ -196,7 +202,7 @@ module OsLib_Reporting
       # loop through fuels
       total_end_use = 0.0
       fuel_type_names.each do |fuel_type|
-        if ((fuel_type.include? "Electricity") || (fuel_type.include? "Natural Gas"))
+        if ((fuel_type.include? "Electricity") || (fuel_type.include? "Natural Gas") || (fuel_type.include? "Fuel Oil No 2") || (fuel_type.include? "Propane"))
           query_fuel = "SELECT Value FROM tabulardatawithstrings WHERE ReportName='AnnualBuildingUtilityPerformanceSummary' and TableName='End Uses' and RowName= '#{end_use}' and ColumnName= '#{fuel_type}'"
           results_fuel = sqlFile.execAndReturnFirstDouble(query_fuel).get
           total_end_use += results_fuel
@@ -204,24 +210,10 @@ module OsLib_Reporting
         end
       end
       array_endUse_all.push(array_endUse)
-      endUse_summary_data_table[:data] << array_endUse
+      #nir_emmision_summary_data_table[:data] << array_endUse
       array_endUse = []
       counter += 1
     end
-
-    #Calculate the ghg emissions
-    array_endUse_all.each do |array|
-
-      # Natural gas ghgEmission
-      gas_consumption_gj = array[2]
-      naturalGas_emissions = $naturalGas_EF * gas_consumption_gj / 1000 # convert from kgCO2eq to tCO2eq
-      # Electricity ghgEmission
-      electricity_consumption_kWh = OpenStudio::convert(array[1], "GJ", "kWh").get
-      electricity_emissions = $electricity_EF * electricity_consumption_kWh / 1000000 # convert from g CO2eq to tCO2eq
-      total_emissions = electricity_emissions + naturalGas_emissions
-      array << total_emissions.round(2)
-    end
-
     #Calculate Sum of Columns
     array_endUse_all_transpose = []
     array_endUse_all_transpose = array_endUse_all.transpose
@@ -235,28 +227,84 @@ module OsLib_Reporting
       @totals << sum.round(2)
       $co_total = sum.round(2) # The last value here will be the correct one.
     end
-    @totals[0] = 'Total'
-    endUse_summary_data_table[:data] << @totals
+    @totals[0] = 'Total' # ["Electricity", "Natural Gas", "Fuel Oil No 2", "Propane",]
+
+    #Calculate the ghg emissions
+    mbtu_to_gj = 1.05505585
+
+    # Propane and Fuel Oils emission factors are obtained from NIR report 2022 part 2
+    # Conversion tables are obtained from https://apps.cer-rec.gc.ca/Conversion/conversion-tables.aspx?GoCTemplateCulture=fr-CA#2-3
+    fuel_oil_2_EF_kgPerMBtu = 74.86 #kg/MBtu >> NIR  74.86 (kg/MBtu)  2753 (g/L)  : EnergyStar 75.13 (kg/MBtu)  =  2,763 (g/L)
+    propane_EF_kgPerMBtu = 63.14 #kg/MBtu>> NIR  63.14 (kg/MBtu) 1515 (g/L) EnergyStar 64.52 (kg/MBtu)  = 1,548 (g/L)
+    # NIR report part 2 Propane EF = 1515 (g/L)  =1515 (kg/m3) = 59.34 (kg/GJ)
+    # 1,0 Mètres cubes propane (m³)	= 25,53 Gigajoules (GJ) >> 1515000 (g/m3) 1515000*0.001/25.53 (kg/GJ)
+    fuel_oil_2_EF = fuel_oil_2_EF_kgPerMBtu / mbtu_to_gj # kg/GJ
+    propane_EF = propane_EF_kgPerMBtu / mbtu_to_gj # kg/GJ
+    total_emissions_array = []
+    total_emissions_sub_array = []
+    $electricity_EF.each do |year, electricity_EF|
+      # Natural gas ghgEmission
+      gas_consumption_gj = @totals[2]
+      ng_ef = find_ng_ef(year)
+      naturalGas_emissions = ng_ef.to_f * gas_consumption_gj / 1000 # convert from kgCO2eq to tCO2eq
+      # Electricity ghgEmission
+      electricity_consumption_kWh = OpenStudio::convert(@totals[1], "GJ", "kWh").get
+      electricity_emissions = electricity_EF * electricity_consumption_kWh / 1000000 # convert from g CO2eq to tCO2eq
+      # Fuel Oil No 2 ghgEmission
+      fuel_oil_2_consumption_gj = @totals[3]
+      fuel_oil_2_emissions = fuel_oil_2_EF * fuel_oil_2_consumption_gj / 1000 # convert from kgCO2eq to tCO2eq
+      # Propane ghgEmission
+      propane_consumption_gj = @totals[4]
+      propane_emissions = propane_EF * propane_consumption_gj / 1000 # convert from kgCO2eq to tCO2eq
+      total_emissions = electricity_emissions + naturalGas_emissions + fuel_oil_2_emissions + propane_emissions
+      total_emissions_sub_array << [year, electricity_EF, electricity_emissions.signif(3), ng_ef.round(2), naturalGas_emissions.signif(3), fuel_oil_2_EF.round(2), fuel_oil_2_emissions.signif(3), propane_EF.round(2), propane_emissions.signif(3), total_emissions.signif(3)]
+      total_emissions_array << total_emissions_sub_array
+      total_emissions_sub_array = []
+      nir_emmision_summary_data_table[:data] << [year, electricity_EF, electricity_emissions.signif(3), ng_ef.round(2), naturalGas_emissions.signif(3), fuel_oil_2_EF.round(2), fuel_oil_2_emissions.signif(3), propane_EF.round(2), propane_emissions.signif(3), total_emissions.signif(3)]
+    end
+    total_emissions_array = total_emissions_array.flatten(1)
+
+    #Calculate Sum of Columns
+    array_emissions_all_transpose = []
+    array_emissions_all_transpose = total_emissions_array.transpose
+    total_emissions = []
+    array_emissions_all_transpose.each do |row|
+      sum = 0
+      for i in row do
+        next if i.class == String
+        sum += i
+      end
+      total_emissions << sum.round(2)
+    end
+    total_emissions[0] = 'Total Emissions'
+    # Let the total columns for the EFs be empty
+    total_emissions[1] = ''
+    total_emissions[3] = ''
+    total_emissions[5] = ''
+    total_emissions[7] = ''
+    total_emissions_array << total_emissions
+    nir_emmision_summary_data_table[:data] << total_emissions
     # Create a csv file
     # Create if does not exist. Different logic from other testing as there are multiple test scripts writing
     # to this folder so it cannot be deleted.
     @test_dir = NRCReportingMeasureTestHelper.appendOutputFolder("EmissionReport")
     if !Dir.exists?(@test_dir)
-      puts "Creating output folder: #{@test_dir}"
       Dir.mkdir(@test_dir)
     end
+
     testing_report = "#{@test_dir}/NIR_ghgEmissions.csv"
     File.open(testing_report, 'a') do |file|
       # Add the header only once
       if file.tell() == 0
-        file.puts "Location, Standard building type,  Electricity_EndUse (GJ),Elec_EF (gCO2eq/kWh), NaturalGas_EndUse (GJ), NaturalGas_EF (gCO2eq/MJ), total_emissions (tCO2eq)}"
+        file.puts "Year, Electricity NIR EF [g CO2eq/kWh], Electricity Emissions [tCO2eq], Natural Gas EF [kg CO2eq/GJ], Natural Gas Emissions [tCO2eq], Fuel Oil No2 EF [kg CO2eq/GJ], Fuel Oil No2 Emissions [tCO2eq], Propane EF [kg CO2eq/GJ], Propane Emissions [tCO2eq], Annual GHG Emissions [tCO2eq]"
       end
-      file.puts "#{model.getWeatherFile.city} , #{model.getBuilding.standardsBuildingType.get.to_s}, #{@totals[1]}, #{$electricity_EF} , #{@totals[2]} , #{$naturalGas_EF}, #{@totals[3]} "
+      total_emissions_array.each do |elem|
+        file.puts elem.join(',')
+      end
     end
-
     # don't create empty table
-    @endUse_summary_table_section[:tables] = [endUse_summary_data_table] # only one table for this section
-    return @endUse_summary_table_section
+    @nir_emission_summary_table_section[:tables] = [nir_emmision_summary_data_table] # only one table for this section
+    return @nir_emission_summary_table_section
   end
 
   ####### This section calculates the GHG based on Energy Star Portfolio Manager factors
@@ -334,18 +382,18 @@ module OsLib_Reporting
     #Calculate Sum of Columns
     array_endUse_all_transpose = []
     array_endUse_all_transpose = array_endUse_all.transpose
-    @totals = []
+    @totals1 = []
     array_endUse_all_transpose.each do |row|
       sum = 0
       for i in row do
         next if i.class == String
         sum += i
       end
-      @totals << sum.round(2)
+      @totals1 << sum.round(2)
       $co_total = sum.round(2) # The last value here will be the correct one.
     end
-    @totals[0] = 'Total'
-    energyStar_summary_data_table[:data] << @totals
+    @totals1[0] = 'Total'
+    energyStar_summary_data_table[:data] << @totals1
     # Create a csv file
     testing_report = "#{@test_dir}/EnergyStar_ghgEmissions.csv"
 
@@ -355,7 +403,7 @@ module OsLib_Reporting
       if file.tell() == 0
         file.puts "Location, Standard building type,  Electricity_EndUse (GJ),EnergyStar_electricity_emission_factor (kg CO2eq/GJ), NaturalGas_EndUse (GJ), NaturalGas_EF (kg CO2eq/GJ), total_emissions (tCO2eq)}"
       end
-      file.puts "#{model.getWeatherFile.city} , #{model.getBuilding.standardsBuildingType.get.to_s}, #{@totals[1]}, #{@energyStar_electricity_emission_factor} , #{@totals[2]} , #{@gas_emission_factor}, #{@totals[5]} "
+      file.puts "#{model.getWeatherFile.city} , #{model.getBuilding.standardsBuildingType.get.to_s}, #{@totals1[1]}, #{@energyStar_electricity_emission_factor} , #{@totals1[2]} , #{@gas_emission_factor}, #{@totals1[5]} "
     end
 
     # don't create empty table
@@ -382,7 +430,6 @@ module OsLib_Reporting
     end
     model_summary_data_table[:data] << ["Standard building type", model.getBuilding.standardsBuildingType.get.to_s]
     model_summary_data_table[:data] << ["Location", $location]
-    model_summary_data_table[:data] << ["Year", $year]
 
     # don't create empty table
     @model_summary_table_section[:tables] = [model_summary_data_table] # only one table for this section
@@ -390,7 +437,7 @@ module OsLib_Reporting
     return @model_summary_table_section
   end
 
-  # create model summary section
+  # create emissionFactors section
   def self.emissionFactors_summary_section(model, sqlFile, runner, name_only = false)
     emissionFactors_summary_data_table = {}
     emissionFactors_summary_data_table[:title] = ''
@@ -400,7 +447,7 @@ module OsLib_Reporting
 
     # gather data for section
     @emissionFactors_summary_table_section = {}
-    @emissionFactors_summary_table_section[:title] = 'Emission Factors'
+    @emissionFactors_summary_table_section[:title] = 'Energy Star Emission Factors'
     @emissionFactors_summary_table_section[:data] = []
 
     # stop here if only name is requested this is used to populate display name for arguments
@@ -408,9 +455,6 @@ module OsLib_Reporting
       return @emissionFactors_summary_table_section
     end
 
-    emissionFactors_summary_data_table[:data] << ["NIR Report Year", $nir_report_year]
-    emissionFactors_summary_data_table[:data] << ["NIR Report Electricity Emission Factor (g CO2eq/kWh)", $electricity_EF.round(2)]
-    emissionFactors_summary_data_table[:data] << ["ECCC Natural Gas Emission Factor (kg CO2eq/GJ)", $naturalGas_EF.round(2)]
     emissionFactors_summary_data_table[:data] << ["Energy Star Electricity Emission Factor (kg CO2eq/GJ)", @energyStar_electricity_emission_factor.round(2)]
     emissionFactors_summary_data_table[:data] << ["Energy Star Natural Gas Emission Factor (kg CO2eq/GJ)", @gas_emission_factor.round(2)]
     emissionFactors_summary_data_table[:data] << ["Energy Star FuelOilNo2 Emission Factor (kg CO2eq/GJ)", @fuelOilNo2_emission_factor.round(2)]
@@ -420,6 +464,34 @@ module OsLib_Reporting
     @emissionFactors_summary_table_section[:tables] = [emissionFactors_summary_data_table] # only one table for this section
 
     return @emissionFactors_summary_table_section
+  end
+
+  # create NIR emission factors section
+  def self.nir_emissionFactors_summary_section(model, sqlFile, runner, name_only = false)
+    nir_emissionFactors_summary_data_table = {}
+    nir_emissionFactors_summary_data_table[:title] = ''
+    nir_emissionFactors_summary_data_table[:header] = ["NIR Report Year : #{$nir_report_year}", "NIR Electricity Emission factor (g CO2eq/kWh)"]
+    nir_emissionFactors_summary_data_table[:units] = ['', '']
+    nir_emissionFactors_summary_data_table[:data] = []
+
+    # gather data for section
+    @nir_emissionFactors_summary_table_section = {}
+    @nir_emissionFactors_summary_table_section[:title] = 'NIR Report Emission Factors'
+    @nir_emissionFactors_summary_table_section[:data] = []
+
+    # stop here if only name is requested this is used to populate display name for arguments
+    if name_only == true
+      return @nir_emissionFactors_summary_table_section
+    end
+
+    $electricity_EF.each do |key, value|
+      nir_emissionFactors_summary_data_table[:data] << [key, value]
+    end
+
+    # don't create empty table
+    @nir_emissionFactors_summary_table_section[:tables] = [nir_emissionFactors_summary_data_table] # only one table for this section
+
+    return @nir_emissionFactors_summary_table_section
   end
 
 end

@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_set_roof_conductance_by_necb_climate_zone</name>
   <uid>09b4a9fb-3649-473a-aa81-f01c680e63a8</uid>
-  <version_id>19eab9bc-a60c-4a50-9023-c91dd5eadc1a</version_id>
-  <version_modified>20221116T170956Z</version_modified>
+  <version_id>9e4c17b8-aa38-4783-ac13-6b570f7a1b3e</version_id>
+  <version_modified>20221202T175034Z</version_modified>
   <xml_checksum>A51D361F</xml_checksum>
   <class_name>NrcSetRoofConductanceByNecbClimateZone</class_name>
   <display_name>NrcSetRoofConductanceByNecbClimateZone</display_name>

@@ -3,8 +3,9 @@ include(TestCommon)
 
 # Just some models.
 class NrcReportCarbonEmissions_Test
-  def test_gr1()
-    building_types = ['Warehouse',
+  def test_gr11()
+    building_types = ['Warehouse']#,
+=begin
                       'SmallOffice',
                       'PrimarySchool',
                       'SecondarySchool',
@@ -12,6 +13,7 @@ class NrcReportCarbonEmissions_Test
                       'MediumOffice',
                       'LargeOffice',
                       'SmallHotel']
+=end
 
     building_types.each do |building_type|
       test_report(building_type: building_type)
