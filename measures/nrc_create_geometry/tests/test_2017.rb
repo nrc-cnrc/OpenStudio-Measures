@@ -16,7 +16,7 @@ class NrcCreateGeometry_Test
 
     # Options. Limit to 16 cases to keep run time down.
     building_types = ["PrimarySchool", "MediumOffice", "LargeOffice"]
-    locations = ['Corner.Brook', 'Halifax', 'Sydney-McCurdy']
+    locations = ['Toronto.Pearson', 'Halifax', 'Vancouver']
     building_shapes = ["U-Shape"]
     total_floor_area = [20000.0, 10000.0]
     rotation = [40.0]
