@@ -59,8 +59,13 @@ done
 echo -e "${GREEN}done${NC}."
 
 # Install the gems specified in ../env.sh to the web container (the gems folder is shared with the workers).
+# First apply NRC specific fix to simulation.rb
 if [ $server_running -eq "1" ]
 then 
+  # Fix simulation.rb so it works on PAT.
+  sed -i 's/#FileUtils.touch/FileUtils.touch/' ../.gems/openstudio-standards/lib/openstudio-standards/utilities/simulation.rb
+
+  # Now install the gems
   install_gems $container
 
 # Now update all the worker nodes.
