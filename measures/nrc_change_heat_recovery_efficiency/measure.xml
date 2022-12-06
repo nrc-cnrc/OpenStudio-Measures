@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_change_energy_recovery_efficiency</name>
   <uid>9b530f72-e5ab-467b-acd6-b5c3458d7b55</uid>
-  <version_id>2d11dd2a-25ae-4715-b2f3-ea883df333b2</version_id>
-  <version_modified>20221116T170829Z</version_modified>
+  <version_id>af5876aa-9098-4849-a495-affae410de5d</version_id>
+  <version_modified>20221202T175005Z</version_modified>
   <xml_checksum>BF75C791</xml_checksum>
   <class_name>NrcChangeEnergyRecoveryEfficiency</class_name>
   <display_name>NrcChangeEnergyRecoveryEfficiency</display_name>

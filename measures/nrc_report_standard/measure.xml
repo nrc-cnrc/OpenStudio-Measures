@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_reporting_measure_standard</name>
   <uid>224561f4-8ccc-4f20-8118-34b85359d3f1</uid>
-  <version_id>46ede12a-1f0b-4ee3-89e2-0476a10ca6c9</version_id>
-  <version_modified>20221117T185958Z</version_modified>
+  <version_id>171afa75-03af-4452-b2ce-61eca3bd1b59</version_id>
+  <version_modified>20221202T175028Z</version_modified>
   <xml_checksum>DD7247CF</xml_checksum>
   <class_name>NrcReportingMeasureStandard</class_name>
   <display_name>NRC Standard Report</display_name>
@@ -167,12 +167,6 @@
       <checksum>ACCBC28E</checksum>
     </file>
     <file>
-      <filename>additional_measure_methods.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>28ABCA64</checksum>
-    </file>
-    <file>
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>3.2.1</identifier>
@@ -184,16 +178,22 @@
       <checksum>BC045897</checksum>
     </file>
     <file>
-      <filename>README.md</filename>
-      <filetype>md</filetype>
-      <usage_type>test</usage_type>
-      <checksum>A3ED7944</checksum>
-    </file>
-    <file>
       <filename>report_sections.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
       <checksum>C0E73CEE</checksum>
+    </file>
+    <file>
+      <filename>additional_measure_methods.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>28ABCA64</checksum>
+    </file>
+    <file>
+      <filename>README.md</filename>
+      <filetype>md</filetype>
+      <usage_type>test</usage_type>
+      <checksum>A3ED7944</checksum>
     </file>
   </files>
 </measure>

@@ -147,7 +147,7 @@ def do_writing(outputpath, data)
 	    content[:tables_and_charts].each do |table_or_chart|
 	      table_or_chart.transform_keys!(&:to_sym) # Ensure we have symbols
 	      #puts "#{table_or_chart}".green
-		  case table_or_chart[:json_class]
+		  case table_or_chart[:class]
 		  when /ReportTable$/
 		    # Its a table.
 		    table_content=table_or_chart[:content]

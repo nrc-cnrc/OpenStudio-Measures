@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_create_geometry</name>
   <uid>d21e6b27-1826-4c33-9cdc-abc1154ff2f5</uid>
-  <version_id>eae5b171-4747-4920-b06d-a2efdb6c4d6a</version_id>
-  <version_modified>20221116T170839Z</version_modified>
+  <version_id>1b9d11ec-80c8-4e9a-b383-8da250d637d8</version_id>
+  <version_modified>20221202T175008Z</version_modified>
   <xml_checksum>2609226D</xml_checksum>
   <class_name>NrcCreateGeometry</class_name>
   <display_name>NrcCreateGeometry</display_name>
@@ -146,972 +146,188 @@
       </choices>
     </argument>
     <argument>
-      <name>epw_file</name>
-      <display_name>Weather file</display_name>
+      <name>location</name>
+      <display_name>Location</display_name>
       <type>Choice</type>
       <required>true</required>
       <model_dependent>false</model_dependent>
-      <default_value>ON_Ottawa-Macdonald-Cartier_TMY-0.0</default_value>
+      <default_value>Calgary</default_value>
       <choices>
         <choice>
-          <value>AB_Calgary_ECY-0.0</value>
-          <display_name>AB_Calgary_ECY-0.0</display_name>
+          <value>Calgary</value>
+          <display_name>Calgary</display_name>
         </choice>
         <choice>
-          <value>AB_Calgary_ECY-3.0</value>
-          <display_name>AB_Calgary_ECY-3.0</display_name>
+          <value>Edmonton</value>
+          <display_name>Edmonton</display_name>
         </choice>
         <choice>
-          <value>AB_Calgary_EWY-0.0</value>
-          <display_name>AB_Calgary_EWY-0.0</display_name>
+          <value>Fort.McMurray</value>
+          <display_name>Fort.McMurray</display_name>
         </choice>
         <choice>
-          <value>AB_Calgary_EWY-3.0</value>
-          <display_name>AB_Calgary_EWY-3.0</display_name>
+          <value>Kelowna</value>
+          <display_name>Kelowna</display_name>
         </choice>
         <choice>
-          <value>AB_Calgary_TDY-0.0</value>
-          <display_name>AB_Calgary_TDY-0.0</display_name>
+          <value>Vancouver</value>
+          <display_name>Vancouver</display_name>
         </choice>
         <choice>
-          <value>AB_Calgary_TDY-3.0</value>
-          <display_name>AB_Calgary_TDY-3.0</display_name>
+          <value>Victoria</value>
+          <display_name>Victoria</display_name>
         </choice>
         <choice>
-          <value>AB_Calgary_TMY-0.0</value>
-          <display_name>AB_Calgary_TMY-0.0</display_name>
+          <value>Thompson</value>
+          <display_name>Thompson</display_name>
         </choice>
         <choice>
-          <value>AB_Calgary_TMY-3.0</value>
-          <display_name>AB_Calgary_TMY-3.0</display_name>
+          <value>Winnipeg-Richardson</value>
+          <display_name>Winnipeg-Richardson</display_name>
         </choice>
         <choice>
-          <value>AB_Edmonton_ECY-0.0</value>
-          <display_name>AB_Edmonton_ECY-0.0</display_name>
+          <value>Moncton-Greater</value>
+          <display_name>Moncton-Greater</display_name>
         </choice>
         <choice>
-          <value>AB_Edmonton_ECY-3.0</value>
-          <display_name>AB_Edmonton_ECY-3.0</display_name>
+          <value>Saint.John</value>
+          <display_name>Saint.John</display_name>
         </choice>
         <choice>
-          <value>AB_Edmonton_EWY-0.0</value>
-          <display_name>AB_Edmonton_EWY-0.0</display_name>
+          <value>Corner.Brook</value>
+          <display_name>Corner.Brook</display_name>
         </choice>
         <choice>
-          <value>AB_Edmonton_EWY-3.0</value>
-          <display_name>AB_Edmonton_EWY-3.0</display_name>
+          <value>St.Johns</value>
+          <display_name>St.Johns</display_name>
         </choice>
         <choice>
-          <value>AB_Edmonton_TDY-0.0</value>
-          <display_name>AB_Edmonton_TDY-0.0</display_name>
+          <value>Halifax</value>
+          <display_name>Halifax</display_name>
         </choice>
         <choice>
-          <value>AB_Edmonton_TDY-3.0</value>
-          <display_name>AB_Edmonton_TDY-3.0</display_name>
+          <value>Sydney-McCurdy</value>
+          <display_name>Sydney-McCurdy</display_name>
         </choice>
         <choice>
-          <value>AB_Edmonton_TMY-0.0</value>
-          <display_name>AB_Edmonton_TMY-0.0</display_name>
+          <value>Inuvik-Zubko</value>
+          <display_name>Inuvik-Zubko</display_name>
         </choice>
         <choice>
-          <value>AB_Edmonton_TMY-3.0</value>
-          <display_name>AB_Edmonton_TMY-3.0</display_name>
+          <value>Yellowknife</value>
+          <display_name>Yellowknife</display_name>
         </choice>
         <choice>
-          <value>AB_Fort.McMurray_ECY-0.0</value>
-          <display_name>AB_Fort.McMurray_ECY-0.0</display_name>
+          <value>Cambridge.Bay</value>
+          <display_name>Cambridge.Bay</display_name>
         </choice>
         <choice>
-          <value>AB_Fort.McMurray_ECY-3.0</value>
-          <display_name>AB_Fort.McMurray_ECY-3.0</display_name>
+          <value>Iqaluit</value>
+          <display_name>Iqaluit</display_name>
         </choice>
         <choice>
-          <value>AB_Fort.McMurray_EWY-0.0</value>
-          <display_name>AB_Fort.McMurray_EWY-0.0</display_name>
+          <value>Rankin.Inlet</value>
+          <display_name>Rankin.Inlet</display_name>
         </choice>
         <choice>
-          <value>AB_Fort.McMurray_EWY-3.0</value>
-          <display_name>AB_Fort.McMurray_EWY-3.0</display_name>
+          <value>Ottawa-Macdonald-Cartier</value>
+          <display_name>Ottawa-Macdonald-Cartier</display_name>
         </choice>
         <choice>
-          <value>AB_Fort.McMurray_TDY-0.0</value>
-          <display_name>AB_Fort.McMurray_TDY-0.0</display_name>
+          <value>Sudbury</value>
+          <display_name>Sudbury</display_name>
         </choice>
         <choice>
-          <value>AB_Fort.McMurray_TDY-3.0</value>
-          <display_name>AB_Fort.McMurray_TDY-3.0</display_name>
+          <value>Toronto.Pearson</value>
+          <display_name>Toronto.Pearson</display_name>
         </choice>
         <choice>
-          <value>AB_Fort.McMurray_TMY-0.0</value>
-          <display_name>AB_Fort.McMurray_TMY-0.0</display_name>
+          <value>Charlottetown</value>
+          <display_name>Charlottetown</display_name>
         </choice>
         <choice>
-          <value>AB_Fort.McMurray_TMY-3.0</value>
-          <display_name>AB_Fort.McMurray_TMY-3.0</display_name>
+          <value>Jonquiere</value>
+          <display_name>Jonquiere</display_name>
         </choice>
         <choice>
-          <value>BC_Kelowna_ECY-0.0</value>
-          <display_name>BC_Kelowna_ECY-0.0</display_name>
+          <value>Montreal-Trudeau</value>
+          <display_name>Montreal-Trudeau</display_name>
         </choice>
         <choice>
-          <value>BC_Kelowna_ECY-3.0</value>
-          <display_name>BC_Kelowna_ECY-3.0</display_name>
+          <value>Quebec-Lesage</value>
+          <display_name>Quebec-Lesage</display_name>
         </choice>
         <choice>
-          <value>BC_Kelowna_EWY-0.0</value>
-          <display_name>BC_Kelowna_EWY-0.0</display_name>
+          <value>Regina</value>
+          <display_name>Regina</display_name>
         </choice>
         <choice>
-          <value>BC_Kelowna_EWY-3.0</value>
-          <display_name>BC_Kelowna_EWY-3.0</display_name>
+          <value>Saskatoon</value>
+          <display_name>Saskatoon</display_name>
         </choice>
         <choice>
-          <value>BC_Kelowna_TDY-0.0</value>
-          <display_name>BC_Kelowna_TDY-0.0</display_name>
+          <value>Dawson</value>
+          <display_name>Dawson</display_name>
         </choice>
         <choice>
-          <value>BC_Kelowna_TDY-3.0</value>
-          <display_name>BC_Kelowna_TDY-3.0</display_name>
+          <value>Whitehorse</value>
+          <display_name>Whitehorse</display_name>
         </choice>
         <choice>
-          <value>BC_Kelowna_TMY-0.0</value>
-          <display_name>BC_Kelowna_TMY-0.0</display_name>
+          <value>Prince.Albert</value>
+          <display_name>Prince.Albert</display_name>
         </choice>
         <choice>
-          <value>BC_Kelowna_TMY-3.0</value>
-          <display_name>BC_Kelowna_TMY-3.0</display_name>
+          <value>Windsor</value>
+          <display_name>Windsor</display_name>
         </choice>
+      </choices>
+    </argument>
+    <argument>
+      <name>weather_file_type</name>
+      <display_name>Weather Type</display_name>
+      <type>Choice</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>ECY</default_value>
+      <choices>
         <choice>
-          <value>BC_Vancouver_ECY-0.0</value>
-          <display_name>BC_Vancouver_ECY-0.0</display_name>
+          <value>ECY</value>
+          <display_name>ECY</display_name>
         </choice>
         <choice>
-          <value>BC_Vancouver_ECY-3.0</value>
-          <display_name>BC_Vancouver_ECY-3.0</display_name>
+          <value>EWY</value>
+          <display_name>EWY</display_name>
         </choice>
         <choice>
-          <value>BC_Vancouver_EWY-0.0</value>
-          <display_name>BC_Vancouver_EWY-0.0</display_name>
+          <value>TDY</value>
+          <display_name>TDY</display_name>
         </choice>
         <choice>
-          <value>BC_Vancouver_EWY-3.0</value>
-          <display_name>BC_Vancouver_EWY-3.0</display_name>
+          <value>TMY</value>
+          <display_name>TMY</display_name>
         </choice>
         <choice>
-          <value>BC_Vancouver_TDY-0.0</value>
-          <display_name>BC_Vancouver_TDY-0.0</display_name>
+          <value>CWEC2016</value>
+          <display_name>CWEC2016</display_name>
         </choice>
+      </choices>
+    </argument>
+    <argument>
+      <name>global_warming</name>
+      <display_name>Global Warming</display_name>
+      <type>Choice</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>0.0</default_value>
+      <choices>
         <choice>
-          <value>BC_Vancouver_TDY-3.0</value>
-          <display_name>BC_Vancouver_TDY-3.0</display_name>
+          <value>0.0</value>
+          <display_name>0.0</display_name>
         </choice>
         <choice>
-          <value>BC_Vancouver_TMY-0.0</value>
-          <display_name>BC_Vancouver_TMY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>BC_Vancouver_TMY-3.0</value>
-          <display_name>BC_Vancouver_TMY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>BC_Victoria_ECY-0.0</value>
-          <display_name>BC_Victoria_ECY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>BC_Victoria_ECY-3.0</value>
-          <display_name>BC_Victoria_ECY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>BC_Victoria_EWY-0.0</value>
-          <display_name>BC_Victoria_EWY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>BC_Victoria_EWY-3.0</value>
-          <display_name>BC_Victoria_EWY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>BC_Victoria_TDY-0.0</value>
-          <display_name>BC_Victoria_TDY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>BC_Victoria_TDY-3.0</value>
-          <display_name>BC_Victoria_TDY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>BC_Victoria_TMY-0.0</value>
-          <display_name>BC_Victoria_TMY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>BC_Victoria_TMY-3.0</value>
-          <display_name>BC_Victoria_TMY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>MB_Thompson_ECY-0.0</value>
-          <display_name>MB_Thompson_ECY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>MB_Thompson_ECY-3.0</value>
-          <display_name>MB_Thompson_ECY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>MB_Thompson_EWY-0.0</value>
-          <display_name>MB_Thompson_EWY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>MB_Thompson_EWY-3.0</value>
-          <display_name>MB_Thompson_EWY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>MB_Thompson_TDY-0.0</value>
-          <display_name>MB_Thompson_TDY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>MB_Thompson_TDY-3.0</value>
-          <display_name>MB_Thompson_TDY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>MB_Thompson_TMY-0.0</value>
-          <display_name>MB_Thompson_TMY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>MB_Thompson_TMY-3.0</value>
-          <display_name>MB_Thompson_TMY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>MB_Winnipeg-Richardson_ECY-0.0</value>
-          <display_name>MB_Winnipeg-Richardson_ECY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>MB_Winnipeg-Richardson_ECY-3.0</value>
-          <display_name>MB_Winnipeg-Richardson_ECY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>MB_Winnipeg-Richardson_EWY-0.0</value>
-          <display_name>MB_Winnipeg-Richardson_EWY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>MB_Winnipeg-Richardson_EWY-3.0</value>
-          <display_name>MB_Winnipeg-Richardson_EWY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>MB_Winnipeg-Richardson_TDY-0.0</value>
-          <display_name>MB_Winnipeg-Richardson_TDY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>MB_Winnipeg-Richardson_TDY-3.0</value>
-          <display_name>MB_Winnipeg-Richardson_TDY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>MB_Winnipeg-Richardson_TMY-0.0</value>
-          <display_name>MB_Winnipeg-Richardson_TMY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>MB_Winnipeg-Richardson_TMY-3.0</value>
-          <display_name>MB_Winnipeg-Richardson_TMY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>NB_Moncton-Greater_ECY-0.0</value>
-          <display_name>NB_Moncton-Greater_ECY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>NB_Moncton-Greater_ECY-3.0</value>
-          <display_name>NB_Moncton-Greater_ECY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>NB_Moncton-Greater_EWY-0.0</value>
-          <display_name>NB_Moncton-Greater_EWY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>NB_Moncton-Greater_EWY-3.0</value>
-          <display_name>NB_Moncton-Greater_EWY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>NB_Moncton-Greater_TDY-0.0</value>
-          <display_name>NB_Moncton-Greater_TDY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>NB_Moncton-Greater_TDY-3.0</value>
-          <display_name>NB_Moncton-Greater_TDY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>NB_Moncton-Greater_TMY-0.0</value>
-          <display_name>NB_Moncton-Greater_TMY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>NB_Moncton-Greater_TMY-3.0</value>
-          <display_name>NB_Moncton-Greater_TMY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>NB_Saint.John_ECY-0.0</value>
-          <display_name>NB_Saint.John_ECY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>NB_Saint.John_ECY-3.0</value>
-          <display_name>NB_Saint.John_ECY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>NB_Saint.John_EWY-0.0</value>
-          <display_name>NB_Saint.John_EWY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>NB_Saint.John_EWY-3.0</value>
-          <display_name>NB_Saint.John_EWY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>NB_Saint.John_TDY-0.0</value>
-          <display_name>NB_Saint.John_TDY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>NB_Saint.John_TDY-3.0</value>
-          <display_name>NB_Saint.John_TDY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>NB_Saint.John_TMY-0.0</value>
-          <display_name>NB_Saint.John_TMY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>NB_Saint.John_TMY-3.0</value>
-          <display_name>NB_Saint.John_TMY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>NL_Corner.Brook_ECY-0.0</value>
-          <display_name>NL_Corner.Brook_ECY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>NL_Corner.Brook_ECY-3.0</value>
-          <display_name>NL_Corner.Brook_ECY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>NL_Corner.Brook_EWY-0.0</value>
-          <display_name>NL_Corner.Brook_EWY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>NL_Corner.Brook_EWY-3.0</value>
-          <display_name>NL_Corner.Brook_EWY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>NL_Corner.Brook_TDY-0.0</value>
-          <display_name>NL_Corner.Brook_TDY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>NL_Corner.Brook_TDY-3.0</value>
-          <display_name>NL_Corner.Brook_TDY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>NL_Corner.Brook_TMY-0.0</value>
-          <display_name>NL_Corner.Brook_TMY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>NL_Corner.Brook_TMY-3.0</value>
-          <display_name>NL_Corner.Brook_TMY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>NL_St.Johns_ECY-0.0</value>
-          <display_name>NL_St.Johns_ECY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>NL_St.Johns_ECY-3.0</value>
-          <display_name>NL_St.Johns_ECY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>NL_St.Johns_EWY-0.0</value>
-          <display_name>NL_St.Johns_EWY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>NL_St.Johns_EWY-3.0</value>
-          <display_name>NL_St.Johns_EWY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>NL_St.Johns_TDY-0.0</value>
-          <display_name>NL_St.Johns_TDY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>NL_St.Johns_TDY-3.0</value>
-          <display_name>NL_St.Johns_TDY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>NL_St.Johns_TMY-0.0</value>
-          <display_name>NL_St.Johns_TMY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>NL_St.Johns_TMY-3.0</value>
-          <display_name>NL_St.Johns_TMY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>NS_Halifax_ECY-0.0</value>
-          <display_name>NS_Halifax_ECY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>NS_Halifax_ECY-3.0</value>
-          <display_name>NS_Halifax_ECY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>NS_Halifax_EWY-0.0</value>
-          <display_name>NS_Halifax_EWY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>NS_Halifax_EWY-3.0</value>
-          <display_name>NS_Halifax_EWY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>NS_Halifax_TDY-0.0</value>
-          <display_name>NS_Halifax_TDY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>NS_Halifax_TDY-3.0</value>
-          <display_name>NS_Halifax_TDY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>NS_Halifax_TMY-0.0</value>
-          <display_name>NS_Halifax_TMY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>NS_Halifax_TMY-3.0</value>
-          <display_name>NS_Halifax_TMY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>NS_Sydney-McCurdy_ECY-0.0</value>
-          <display_name>NS_Sydney-McCurdy_ECY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>NS_Sydney-McCurdy_ECY-3.0</value>
-          <display_name>NS_Sydney-McCurdy_ECY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>NS_Sydney-McCurdy_EWY-0.0</value>
-          <display_name>NS_Sydney-McCurdy_EWY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>NS_Sydney-McCurdy_EWY-3.0</value>
-          <display_name>NS_Sydney-McCurdy_EWY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>NS_Sydney-McCurdy_TDY-0.0</value>
-          <display_name>NS_Sydney-McCurdy_TDY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>NS_Sydney-McCurdy_TDY-3.0</value>
-          <display_name>NS_Sydney-McCurdy_TDY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>NS_Sydney-McCurdy_TMY-0.0</value>
-          <display_name>NS_Sydney-McCurdy_TMY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>NS_Sydney-McCurdy_TMY-3.0</value>
-          <display_name>NS_Sydney-McCurdy_TMY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>NT_Inuvik-Zubko_ECY-0.0</value>
-          <display_name>NT_Inuvik-Zubko_ECY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>NT_Inuvik-Zubko_ECY-3.0</value>
-          <display_name>NT_Inuvik-Zubko_ECY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>NT_Inuvik-Zubko_EWY-0.0</value>
-          <display_name>NT_Inuvik-Zubko_EWY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>NT_Inuvik-Zubko_EWY-3.0</value>
-          <display_name>NT_Inuvik-Zubko_EWY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>NT_Inuvik-Zubko_TDY-0.0</value>
-          <display_name>NT_Inuvik-Zubko_TDY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>NT_Inuvik-Zubko_TDY-3.0</value>
-          <display_name>NT_Inuvik-Zubko_TDY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>NT_Inuvik-Zubko_TMY-0.0</value>
-          <display_name>NT_Inuvik-Zubko_TMY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>NT_Inuvik-Zubko_TMY-3.0</value>
-          <display_name>NT_Inuvik-Zubko_TMY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>NT_Yellowknife_ECY-0.0</value>
-          <display_name>NT_Yellowknife_ECY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>NT_Yellowknife_ECY-3.0</value>
-          <display_name>NT_Yellowknife_ECY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>NT_Yellowknife_EWY-0.0</value>
-          <display_name>NT_Yellowknife_EWY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>NT_Yellowknife_EWY-3.0</value>
-          <display_name>NT_Yellowknife_EWY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>NT_Yellowknife_TDY-0.0</value>
-          <display_name>NT_Yellowknife_TDY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>NT_Yellowknife_TDY-3.0</value>
-          <display_name>NT_Yellowknife_TDY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>NT_Yellowknife_TMY-0.0</value>
-          <display_name>NT_Yellowknife_TMY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>NT_Yellowknife_TMY-3.0</value>
-          <display_name>NT_Yellowknife_TMY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>NU_Cambridge_ECY-0.0</value>
-          <display_name>NU_Cambridge_ECY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>NU_Cambridge_ECY-3.0</value>
-          <display_name>NU_Cambridge_ECY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>NU_Cambridge_EWY-0.0</value>
-          <display_name>NU_Cambridge_EWY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>NU_Cambridge_EWY-3.0</value>
-          <display_name>NU_Cambridge_EWY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>NU_Cambridge_TDY-0.0</value>
-          <display_name>NU_Cambridge_TDY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>NU_Cambridge_TDY-3.0</value>
-          <display_name>NU_Cambridge_TDY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>NU_Cambridge_TMY-0.0</value>
-          <display_name>NU_Cambridge_TMY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>NU_Cambridge_TMY-3.0</value>
-          <display_name>NU_Cambridge_TMY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>NU_Iqaluit_ECY-0.0</value>
-          <display_name>NU_Iqaluit_ECY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>NU_Iqaluit_ECY-3.0</value>
-          <display_name>NU_Iqaluit_ECY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>NU_Iqaluit_EWY-0.0</value>
-          <display_name>NU_Iqaluit_EWY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>NU_Iqaluit_EWY-3.0</value>
-          <display_name>NU_Iqaluit_EWY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>NU_Iqaluit_TDY-0.0</value>
-          <display_name>NU_Iqaluit_TDY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>NU_Iqaluit_TDY-3.0</value>
-          <display_name>NU_Iqaluit_TDY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>NU_Iqaluit_TMY-0.0</value>
-          <display_name>NU_Iqaluit_TMY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>NU_Iqaluit_TMY-3.0</value>
-          <display_name>NU_Iqaluit_TMY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>NU_Rankin_ECY-0.0</value>
-          <display_name>NU_Rankin_ECY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>NU_Rankin_ECY-3.0</value>
-          <display_name>NU_Rankin_ECY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>NU_Rankin_EWY-0.0</value>
-          <display_name>NU_Rankin_EWY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>NU_Rankin_EWY-3.0</value>
-          <display_name>NU_Rankin_EWY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>NU_Rankin_TDY-0.0</value>
-          <display_name>NU_Rankin_TDY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>NU_Rankin_TDY-3.0</value>
-          <display_name>NU_Rankin_TDY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>NU_Rankin_TMY-0.0</value>
-          <display_name>NU_Rankin_TMY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>NU_Rankin_TMY-3.0</value>
-          <display_name>NU_Rankin_TMY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>ON_Ottawa-Macdonald-Cartier_ECY-0.0</value>
-          <display_name>ON_Ottawa-Macdonald-Cartier_ECY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>ON_Ottawa-Macdonald-Cartier_ECY-3.0</value>
-          <display_name>ON_Ottawa-Macdonald-Cartier_ECY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>ON_Ottawa-Macdonald-Cartier_EWY-0.0</value>
-          <display_name>ON_Ottawa-Macdonald-Cartier_EWY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>ON_Ottawa-Macdonald-Cartier_EWY-3.0</value>
-          <display_name>ON_Ottawa-Macdonald-Cartier_EWY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>ON_Ottawa-Macdonald-Cartier_TDY-0.0</value>
-          <display_name>ON_Ottawa-Macdonald-Cartier_TDY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>ON_Ottawa-Macdonald-Cartier_TDY-3.0</value>
-          <display_name>ON_Ottawa-Macdonald-Cartier_TDY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>ON_Ottawa-Macdonald-Cartier_TMY-0.0</value>
-          <display_name>ON_Ottawa-Macdonald-Cartier_TMY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>ON_Ottawa-Macdonald-Cartier_TMY-3.0</value>
-          <display_name>ON_Ottawa-Macdonald-Cartier_TMY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>ON_Sudbury_ECY-0.0</value>
-          <display_name>ON_Sudbury_ECY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>ON_Sudbury_ECY-3.0</value>
-          <display_name>ON_Sudbury_ECY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>ON_Sudbury_EWY-0.0</value>
-          <display_name>ON_Sudbury_EWY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>ON_Sudbury_EWY-3.0</value>
-          <display_name>ON_Sudbury_EWY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>ON_Sudbury_TDY-0.0</value>
-          <display_name>ON_Sudbury_TDY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>ON_Sudbury_TDY-3.0</value>
-          <display_name>ON_Sudbury_TDY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>ON_Sudbury_TMY-0.0</value>
-          <display_name>ON_Sudbury_TMY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>ON_Sudbury_TMY-3.0</value>
-          <display_name>ON_Sudbury_TMY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>ON_Toronto_ECY-0.0</value>
-          <display_name>ON_Toronto_ECY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>ON_Toronto_ECY-3.0</value>
-          <display_name>ON_Toronto_ECY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>ON_Toronto_EWY-0.0</value>
-          <display_name>ON_Toronto_EWY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>ON_Toronto_EWY-3.0</value>
-          <display_name>ON_Toronto_EWY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>ON_Toronto_TDY-0.0</value>
-          <display_name>ON_Toronto_TDY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>ON_Toronto_TDY-3.0</value>
-          <display_name>ON_Toronto_TDY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>ON_Toronto_TMY-0.0</value>
-          <display_name>ON_Toronto_TMY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>ON_Toronto_TMY-3.0</value>
-          <display_name>ON_Toronto_TMY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>PE_Charlottetown_ECY-0.0</value>
-          <display_name>PE_Charlottetown_ECY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>PE_Charlottetown_ECY-3.0</value>
-          <display_name>PE_Charlottetown_ECY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>PE_Charlottetown_EWY-0.0</value>
-          <display_name>PE_Charlottetown_EWY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>PE_Charlottetown_EWY-3.0</value>
-          <display_name>PE_Charlottetown_EWY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>PE_Charlottetown_TDY-0.0</value>
-          <display_name>PE_Charlottetown_TDY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>PE_Charlottetown_TDY-3.0</value>
-          <display_name>PE_Charlottetown_TDY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>PE_Charlottetown_TMY-0.0</value>
-          <display_name>PE_Charlottetown_TMY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>PE_Charlottetown_TMY-3.0</value>
-          <display_name>PE_Charlottetown_TMY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>QC_Jonquiere_ECY-0.0</value>
-          <display_name>QC_Jonquiere_ECY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>QC_Jonquiere_ECY-3.0</value>
-          <display_name>QC_Jonquiere_ECY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>QC_Jonquiere_EWY-0.0</value>
-          <display_name>QC_Jonquiere_EWY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>QC_Jonquiere_EWY-3.0</value>
-          <display_name>QC_Jonquiere_EWY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>QC_Jonquiere_TDY-0.0</value>
-          <display_name>QC_Jonquiere_TDY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>QC_Jonquiere_TDY-3.0</value>
-          <display_name>QC_Jonquiere_TDY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>QC_Jonquiere_TMY-0.0</value>
-          <display_name>QC_Jonquiere_TMY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>QC_Jonquiere_TMY-3.0</value>
-          <display_name>QC_Jonquiere_TMY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>QC_Montreal-Trudeau_ECY-0.0</value>
-          <display_name>QC_Montreal-Trudeau_ECY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>QC_Montreal-Trudeau_ECY-3.0</value>
-          <display_name>QC_Montreal-Trudeau_ECY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>QC_Montreal-Trudeau_EWY-0.0</value>
-          <display_name>QC_Montreal-Trudeau_EWY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>QC_Montreal-Trudeau_EWY-3.0</value>
-          <display_name>QC_Montreal-Trudeau_EWY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>QC_Montreal-Trudeau_TDY-0.0</value>
-          <display_name>QC_Montreal-Trudeau_TDY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>QC_Montreal-Trudeau_TDY-3.0</value>
-          <display_name>QC_Montreal-Trudeau_TDY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>QC_Montreal-Trudeau_TMY-0.0</value>
-          <display_name>QC_Montreal-Trudeau_TMY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>QC_Montreal-Trudeau_TMY-3.0</value>
-          <display_name>QC_Montreal-Trudeau_TMY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>QC_Quebec-Lesage_ECY-0.0</value>
-          <display_name>QC_Quebec-Lesage_ECY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>QC_Quebec-Lesage_ECY-3.0</value>
-          <display_name>QC_Quebec-Lesage_ECY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>QC_Quebec-Lesage_EWY-0.0</value>
-          <display_name>QC_Quebec-Lesage_EWY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>QC_Quebec-Lesage_EWY-3.0</value>
-          <display_name>QC_Quebec-Lesage_EWY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>QC_Quebec-Lesage_TDY-0.0</value>
-          <display_name>QC_Quebec-Lesage_TDY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>QC_Quebec-Lesage_TDY-3.0</value>
-          <display_name>QC_Quebec-Lesage_TDY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>QC_Quebec-Lesage_TMY-0.0</value>
-          <display_name>QC_Quebec-Lesage_TMY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>QC_Quebec-Lesage_TMY-3.0</value>
-          <display_name>QC_Quebec-Lesage_TMY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>SK_Regina_ECY-0.0</value>
-          <display_name>SK_Regina_ECY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>SK_Regina_ECY-3.0</value>
-          <display_name>SK_Regina_ECY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>SK_Regina_EWY-0.0</value>
-          <display_name>SK_Regina_EWY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>SK_Regina_EWY-3.0</value>
-          <display_name>SK_Regina_EWY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>SK_Regina_TDY-0.0</value>
-          <display_name>SK_Regina_TDY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>SK_Regina_TDY-3.0</value>
-          <display_name>SK_Regina_TDY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>SK_Regina_TMY-0.0</value>
-          <display_name>SK_Regina_TMY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>SK_Regina_TMY-3.0</value>
-          <display_name>SK_Regina_TMY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>SK_Saskatoon_ECY-0.0</value>
-          <display_name>SK_Saskatoon_ECY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>SK_Saskatoon_ECY-3.0</value>
-          <display_name>SK_Saskatoon_ECY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>SK_Saskatoon_EWY-0.0</value>
-          <display_name>SK_Saskatoon_EWY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>SK_Saskatoon_EWY-3.0</value>
-          <display_name>SK_Saskatoon_EWY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>SK_Saskatoon_TDY-0.0</value>
-          <display_name>SK_Saskatoon_TDY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>SK_Saskatoon_TDY-3.0</value>
-          <display_name>SK_Saskatoon_TDY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>SK_Saskatoon_TMY-0.0</value>
-          <display_name>SK_Saskatoon_TMY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>SK_Saskatoon_TMY-3.0</value>
-          <display_name>SK_Saskatoon_TMY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>YT_Dawson_ECY-0.0</value>
-          <display_name>YT_Dawson_ECY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>YT_Dawson_ECY-3.0</value>
-          <display_name>YT_Dawson_ECY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>YT_Dawson_EWY-0.0</value>
-          <display_name>YT_Dawson_EWY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>YT_Dawson_EWY-3.0</value>
-          <display_name>YT_Dawson_EWY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>YT_Dawson_TDY-0.0</value>
-          <display_name>YT_Dawson_TDY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>YT_Dawson_TDY-3.0</value>
-          <display_name>YT_Dawson_TDY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>YT_Dawson_TMY-0.0</value>
-          <display_name>YT_Dawson_TMY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>YT_Dawson_TMY-3.0</value>
-          <display_name>YT_Dawson_TMY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>YT_Whitehorse_ECY-0.0</value>
-          <display_name>YT_Whitehorse_ECY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>YT_Whitehorse_ECY-3.0</value>
-          <display_name>YT_Whitehorse_ECY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>YT_Whitehorse_EWY-0.0</value>
-          <display_name>YT_Whitehorse_EWY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>YT_Whitehorse_EWY-3.0</value>
-          <display_name>YT_Whitehorse_EWY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>YT_Whitehorse_TDY-0.0</value>
-          <display_name>YT_Whitehorse_TDY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>YT_Whitehorse_TDY-3.0</value>
-          <display_name>YT_Whitehorse_TDY-3.0</display_name>
-        </choice>
-        <choice>
-          <value>YT_Whitehorse_TMY-0.0</value>
-          <display_name>YT_Whitehorse_TMY-0.0</display_name>
-        </choice>
-        <choice>
-          <value>YT_Whitehorse_TMY-3.0</value>
-          <display_name>YT_Whitehorse_TMY-3.0</display_name>
+          <value>3.0</value>
+          <display_name>3.0</display_name>
         </choice>
       </choices>
     </argument>
@@ -1217,12 +433,6 @@
       <checksum>A1A5426B</checksum>
     </file>
     <file>
-      <filename>README.md</filename>
-      <filetype>md</filetype>
-      <usage_type>readme</usage_type>
-      <checksum>C64654AE</checksum>
-    </file>
-    <file>
       <filename>BTAPMeasureHelper.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
@@ -1235,6 +445,18 @@
       <checksum>EF2FCBFD</checksum>
     </file>
     <file>
+      <filename>test_2015.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>DF409DEC</checksum>
+    </file>
+    <file>
+      <filename>README.md</filename>
+      <filetype>md</filetype>
+      <usage_type>readme</usage_type>
+      <checksum>A66DA8BF</checksum>
+    </file>
+    <file>
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>2.3.0</identifier>
@@ -1243,43 +465,37 @@
       <filename>measure.rb</filename>
       <filetype>rb</filetype>
       <usage_type>script</usage_type>
-      <checksum>2F6B058E</checksum>
+      <checksum>D52EE3BB</checksum>
     </file>
     <file>
       <filename>common.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
-      <checksum>39150D93</checksum>
+      <checksum>9B85B5E3</checksum>
     </file>
     <file>
       <filename>test_2017.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
-      <checksum>5DE74A53</checksum>
-    </file>
-    <file>
-      <filename>test_2015.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>test</usage_type>
-      <checksum>00173C93</checksum>
-    </file>
-    <file>
-      <filename>test_2020.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>test</usage_type>
-      <checksum>2EB61871</checksum>
+      <checksum>2F357AF6</checksum>
     </file>
     <file>
       <filename>test_2011.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
-      <checksum>ABCFFE81</checksum>
+      <checksum>5994CBD3</checksum>
+    </file>
+    <file>
+      <filename>test_2020.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>69D5D8AA</checksum>
     </file>
     <file>
       <filename>README.md</filename>
       <filetype>md</filetype>
       <usage_type>test</usage_type>
-      <checksum>70751C6F</checksum>
+      <checksum>3C744683</checksum>
     </file>
   </files>
 </measure>

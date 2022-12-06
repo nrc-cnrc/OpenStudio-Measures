@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_pricing_measure</name>
   <uid>224561f4-8ccc-4f60-8118-34b85359d6f7</uid>
-  <version_id>6c18983b-e987-418a-b449-072a2d7a5d88</version_id>
-  <version_modified>20221116T170907Z</version_modified>
+  <version_id>a0de14d9-e80f-4007-9ed5-38939c483597</version_id>
+  <version_modified>20221202T175028Z</version_modified>
   <xml_checksum>359BA50C</xml_checksum>
   <class_name>NrcPricingMeasure</class_name>
   <display_name>Pricing Measure</display_name>

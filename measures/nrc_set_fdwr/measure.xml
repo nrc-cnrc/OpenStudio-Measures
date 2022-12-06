@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_set_fdwr</name>
   <uid>5b955a02-309e-406a-93d7-ff4ce5540e08</uid>
-  <version_id>8b9510cb-4592-439b-af98-a84b426aeb0f</version_id>
-  <version_modified>20221116T170910Z</version_modified>
+  <version_id>35a8627f-9b82-40c5-9719-a9666c6f9f28</version_id>
+  <version_modified>20221202T175030Z</version_modified>
   <xml_checksum>FC9586A7</xml_checksum>
   <class_name>NrcSetFdwr</class_name>
   <display_name>Set FDWR</display_name>

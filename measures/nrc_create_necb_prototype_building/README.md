@@ -37,9 +37,25 @@ ModelMeasure
 **Required:** true,
 **Model Dependent:** false
 
-### Climate File
+### Location
 
-**Name:** epw_file,
+**Name:** location,
+**Type:** Choice,
+**Units:** ,
+**Required:** true,
+**Model Dependent:** false
+
+### Weather Type
+
+**Name:** weather_file_type,
+**Type:** Choice,
+**Units:** ,
+**Required:** true,
+**Model Dependent:** false
+
+### Global Warming
+
+**Name:** global_warming,
 **Type:** Choice,
 **Units:** ,
 **Required:** true,

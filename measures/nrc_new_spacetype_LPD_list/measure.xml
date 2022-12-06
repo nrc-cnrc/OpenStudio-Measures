@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_new_spacetype_lpd_list</name>
   <uid>fe83dee3-2233-4744-abb1-3cbb1777fbae</uid>
-  <version_id>6073aa1b-b870-4eea-b2ad-577671ee2b37</version_id>
-  <version_modified>20221116T170904Z</version_modified>
+  <version_id>a7f68da6-1ebc-4dc4-bce7-9cf93f92002b</version_id>
+  <version_modified>20221202T175025Z</version_modified>
   <xml_checksum>2609226D</xml_checksum>
   <class_name>NrcNewSpacetypeLPDList</class_name>
   <display_name>NrcNewSpacetypeLPDList</display_name>
