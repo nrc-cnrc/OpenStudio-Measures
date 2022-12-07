@@ -33,11 +33,12 @@ module TestCommon
           "name" => "output_variables",
           "type" => "String",
           "display_name" => "Please Enter the Output Variables in the format 'OutputVariable1 : Key Name1,OutputVariable2 : Key Name2,OutputVariable3 : Key Name3'   ",
-          "default_value" => "Site Outdoor Air Drybulb Temperature:*,Baseboard Total Heating Rate:*",
+          "default_value" => "Heating Coil Heating Rate:*,Baseboard Total Heating Rate:*",
           "is_required" => true
         }
       ]
 
+=begin
       possible_sections.each do |method_name|
         @measure_interface_detailed << {
           "name" => method_name,
@@ -47,14 +48,17 @@ module TestCommon
           "is_required" => true
         }
       end
+=end
     end
 
+=begin
     def possible_sections
       result = []
       # methods for sections in order that they will appear in report
       result << 'loads_summary_section'
       result
     end
+=end
 
     def test_report()
       building_types = ['Warehouse']
@@ -99,7 +103,7 @@ module TestCommon
           # Set input args. In this case the std matches the one used to create the test model.
           input_arguments = {
             "reporting_frequency" => "Hourly",
-            "output_variables" => "Site Outdoor Air Drybulb Temperature:*,Baseboard Total Heating Rate:*"
+            "output_variables" => "Heating Coil Heating Rate:*,Baseboard Total Heating Rate:*"
           }
 
           # Create an instance of the measure

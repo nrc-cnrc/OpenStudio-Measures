@@ -185,7 +185,6 @@ module NRCReportingMeasureTestHelper
 
     # Get the e+ output requests, this will be done automatically by OS App and PAT
     idf_output_requests = measure.energyPlusOutputRequests(runner, argument_map)
-
     # Convert output requests to OSM for testing, OS App and PAT will add these to the E+ Idf.
     workspace = OpenStudio::Workspace.new('Draft'.to_StrictnessLevel, 'EnergyPlus'.to_IddFileType)
     workspace.addObjects(idf_output_requests)

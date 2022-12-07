@@ -41,15 +41,6 @@ ReportingMeasure
 **Model Dependent:** false
 
 
-### OsLib_Reporting.loads_summary_section(nil,nil,nil,true)[:title]
-
-**Name:** loads_summary_section,
-**Type:** Boolean,
-**Units:** ,
-**Required:** true,
-**Model Dependent:** false
-
-
 
 
 
