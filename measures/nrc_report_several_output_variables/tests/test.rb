@@ -37,28 +37,7 @@ module TestCommon
           "is_required" => true
         }
       ]
-
-=begin
-      possible_sections.each do |method_name|
-        @measure_interface_detailed << {
-          "name" => method_name,
-          "type" => "Bool",
-          "display_name" => "OsLib_Reporting.#{method_name}(nil,nil,nil,true)[:title]",
-          "default_value" => true,
-          "is_required" => true
-        }
-      end
-=end
     end
-
-=begin
-    def possible_sections
-      result = []
-      # methods for sections in order that they will appear in report
-      result << 'loads_summary_section'
-      result
-    end
-=end
 
     def test_report()
       building_types = ['Warehouse']
@@ -98,12 +77,11 @@ module TestCommon
             sizing_run_dir: test_dir,
             debug: @debug,
             building_type: building_type)
-          #primary_heating_fuel:"NaturalGas")
 
           # Set input args. In this case the std matches the one used to create the test model.
           input_arguments = {
             "reporting_frequency" => "Hourly",
-            "output_variables" => "Heating Coil Heating Rate:*,Baseboard Total Heating Rate:*"
+            "output_variables" => "System Node Standard Density Volume Flow Rate:Node 5, System Node Standard Density Volume Flow Rate:Node 21, Water Heater Heating Rate:*, Water Heater Water Volume Flow Rate:*"
           }
 
           # Create an instance of the measure
@@ -111,6 +89,5 @@ module TestCommon
         end
       end
     end
-
   end
 end
