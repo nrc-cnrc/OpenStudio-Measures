@@ -337,8 +337,12 @@ class NrcReportingMeasureStandard < OpenStudio::Measure::ReportingMeasure
           space_type_name.tr("0-9", "")
         end
 
-        # In btap_data the building_type is added to the space type name.
-        btap_data_space_type_name = "#{building_type}" + " " + "#{space_type_name}"
+        # In btap_data the building_type is added to the space type name (unless its a whole building).
+        if space_type_name.include? building_type
+          btap_data_space_type_name = "#{space_type_name}"
+        else
+          btap_data_space_type_name = "#{building_type}" + " " + "#{space_type_name}"
+        end
         puts "******** #{btap_data_space_type_name}"
 
         # Get LPD from btap_data.
@@ -349,7 +353,13 @@ class NrcReportingMeasureStandard < OpenStudio::Measure::ReportingMeasure
         spacetype_data = standard.standards_data['tables']['space_types']['table']
         File.open('./spacetype_data.json', 'w') { |f| f.write(JSON.pretty_generate(spacetype_data, allow_nan: true)) }
         puts "Wrote file spacetype_data.json in #{Dir.pwd} "
-        space_type_properties = spacetype_data.detect { |s| (s['building_type'] == building_type) && (s['space_type'] == space_type_name) }
+
+        # btap_data has building type included in space type name for whole building definitions. Treat that case seperately.
+        if space_type_name.include? building_type
+          space_type_properties = spacetype_data.detect { |s| (s['building_type'] == building_type) && (s['space_type'] == "WholeBuilding") }
+        else
+          space_type_properties = spacetype_data.detect { |s| (s['building_type'] == building_type) && (s['space_type'] == space_type_name) }
+        end
         
         # Convert from W/ft2 to W/m2
         necb_lighting_per_area_ft2 = space_type_properties["lighting_per_area"]
