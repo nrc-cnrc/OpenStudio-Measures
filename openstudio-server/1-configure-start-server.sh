@@ -5,9 +5,22 @@ source ../env.sh
 # Error message in case of failure
 trap '[ "$?" -eq 0 ] || read -p "$? Looks like something went wrong in step ´$STEP´... Press enter to continue..."' EXIT
 
-# Create the PAT results folder (as defined in env.sh)
-STEP="${GREEN}Creating a folder to save PAT results in:${NC} ${PAT_shared_win_folder}"
-mkdir -p ${PAT_shared_win_folder}
+# Create the PAT results, gems and data folders (root defined in env.sh)
+STEP="${GREEN}Creating a folder to save PAT results in:${NC} ${docker_win_root}/PAT"
+mkdir -p ${docker_win_root}/PAT
+mkdir -p ${docker_win_root}/osdata
+mkdir -p ${docker_win_root}/osgems
+mkdir -p ${docker_win_root}/workers
+
+# Create docker volumes for the large file storage needs of server.
+docker volume create -d local --name openstudio-server-osgems \
+  --opt device="${docker_win_root}\osgems" \
+  --opt type="none" \
+  --opt o="bind"
+docker volume create -d local --name openstudio-server-osdata \
+  --opt device="${docker_win_root}\osdata" \
+  --opt type="none" \
+  --opt o="bind"
 
 # Set number of workers as an env var here (this is then used for the containers)
 # Run the docker compose file and display the log in a new window
