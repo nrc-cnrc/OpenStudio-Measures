@@ -141,7 +141,9 @@ class ParallelTests
       if (elapsed_time > 500) then
         puts "Overall running time of #{elapsed_time} seconds so far".yellow
         puts "Remaining tests:".yellow
-        puts "#{full_file_list - completed}".yellow
+        (full_file_list - completed).each do |test_name|
+          puts "#{test_name}".gsub(/(\r$|\n$)/,'').yellow
+        end
       end
     end
 
