@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_set_fdwr</name>
   <uid>5b955a02-309e-406a-93d7-ff4ce5540e08</uid>
-  <version_id>35a8627f-9b82-40c5-9719-a9666c6f9f28</version_id>
-  <version_modified>20221202T175030Z</version_modified>
+  <version_id>9769236b-d5e6-45e8-9999-88ab476d4531</version_id>
+  <version_modified>20230112T161106Z</version_modified>
   <xml_checksum>FC9586A7</xml_checksum>
   <class_name>NrcSetFdwr</class_name>
   <display_name>Set FDWR</display_name>
@@ -150,12 +150,6 @@
       <filetype>osm</filetype>
       <usage_type>test</usage_type>
       <checksum>C55B436A</checksum>
-    </file>
-    <file>
-      <filename>README.md</filename>
-      <filetype>md</filetype>
-      <usage_type>test</usage_type>
-      <checksum>F4139565</checksum>
     </file>
   </files>
 </measure>
