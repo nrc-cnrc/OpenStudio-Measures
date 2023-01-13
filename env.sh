@@ -60,11 +60,11 @@ fi
 
 # Shared folder (this is the folder on the windows box that will be linked to the windows-host in the 
 # docker container). The hard drive that this folder is on has to be shared via the docker dashboard.
-PAT_shared_win_folder="D:\Docker\OpenStudioServer\PAT_Results"
+docker_win_root="D:\Docker\OS"
 
 # Set environment variables to be used by OpenStudio Server
 export OS_SERVER_WORKERS=$workers
-export OS_SERVER_PAT_SHARED_FOLDER=${PAT_shared_win_folder}
+export OS_SERVER_WIN_ROOT=${docker_win_root}
 export OS_SERVER_IMAGE=${server_image}
 export OS_RSERVE_IMAGE=${rserve_image}
 export REDIS_PASSWORD=openstudio
