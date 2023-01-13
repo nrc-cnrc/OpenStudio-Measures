@@ -83,4 +83,120 @@ class NrcReportingMeasureStandard_Test < Minitest::Test
 	#diffs = FileUtils.compare_file("#{NRCReportingMeasureTestHelper.outputFolder}/#{output_file}","#{NRCReportingMeasureTestHelper.outputFolder}/#{output_file}.reg")
 	#assert(diffs, "There were differences to the regression files:\n")
   end
+
+  def test_report_warehouse_prototype()
+    puts "Testing report on small Office model".blue
+	
+    # Define the output folder for this test (optional - default is the method name). 
+    NRCReportingMeasureTestHelper.appendOutputFolder("warehouse")
+	
+    # Set standard to use.
+    standard = Standard.build("NECB2017")
+
+    # Create prototype model and update to follow standard rules (plus any sideload).
+    model = standard.model_create_prototype_model(template: "NECB2017",
+                                                  building_type: "Warehouse",
+                                                  epw_file: "CAN_AB_Banff.CS.711220_CWEC2016.epw",
+                                                  sizing_run_dir: NRCReportingMeasureTestHelper.appendOutputFolder("Sizing"))
+
+    # Set input args. In this case the std matches the one used to create the test model.
+    input_arguments = {
+    }
+    
+    # Create an instance of the measure
+	runner = run_measure(input_arguments, model)
+	
+	# Rename output file.
+    #output_file = "report_no_diffs.html"
+    #File.rename("#{NRCReportingMeasureTestHelper.outputFolder}/report.html", "#{NRCReportingMeasureTestHelper.outputFolder}/#{output_file}")
+
+    # Check for differences between the current output and the regression report. Need to write regression file without CRTF endiings.
+	#regression_file = IO.read("#{File.dirname(__FILE__)}/regression_reports/#{output_file}").gsub(/\r\n?/,"\n")
+	#IO.write("#{NRCReportingMeasureTestHelper.outputFolder}/#{output_file}.reg", regression_file)
+	#diffs = FileUtils.compare_file("#{NRCReportingMeasureTestHelper.outputFolder}/#{output_file}","#{NRCReportingMeasureTestHelper.outputFolder}/#{output_file}.reg")
+	#assert(diffs, "There were differences to the regression files:\n")
+  end
+
+  def test_report_warehouse_geom()
+    puts "Testing report on small Office model".blue
+	
+    # Define the output folder for this test (optional - default is the method name). 
+    NRCReportingMeasureTestHelper.appendOutputFolder("WarehouseGeom")
+	
+    # Set standard to use.
+    standard = Standard.build("NECB2017")
+
+    # Make an empty model.
+    model = OpenStudio::Model::Model.new
+
+    # Create model geometry.
+    BTAP::Geometry::Wizards::create_shape_rectangle(model,
+                                                      length = 100,
+                                                      width = 80,
+                                                      above_ground_storys = 1,
+                                                      under_ground_storys = 0, # Set to 1, when modeling a basement
+                                                      floor_to_floor_height = 4.7,
+                                                      plenum_height = 0.0,
+                                                      perimeter_zone_depth = 2.3,
+                                                      initial_height = 0.0)
+
+    # Need to set building level info
+    building = model.getBuilding
+    building_name = ("Warehouse")
+    building.setName(building_name)
+    building.setStandardsBuildingType("Warehouse")
+    building.setStandardsNumberOfStories(1)
+    building.setStandardsNumberOfAboveGroundStories(1)
+
+    # Set design days
+    OpenStudio::Model::DesignDay.new(model)
+
+    # Get the space Type data from standards data
+    space_type = OpenStudio::Model::SpaceType.new(model)
+    space_type.setName("Warehouse WholeBuilding")
+    space_type.setStandardsSpaceType("WholeBuilding")
+    space_type.setStandardsBuildingType("Warehouse")
+    building.setSpaceType(space_type)
+
+    # Add internal loads
+    standard.space_type_apply_internal_loads(space_type: space_type)
+
+    # Schedules
+    standard.space_type_apply_internal_load_schedules(space_type,
+                                                      true,
+                                                      true,
+                                                      true,
+                                                      true,
+                                                      true,
+                                                      true,
+                                                      true)
+
+    # Create thermal zones (these will get overwritten in the apply_standard method)
+    standard.model_create_thermal_zones(model)
+
+    # Set the start day
+    model.setDayofWeekforStartDay("Sunday")
+
+    # Apply standards ruleset to model (note this does a sizing run)
+    standard.model_apply_standard(model: model,
+                                  epw_file: "CAN_AB_Banff.CS.711220_CWEC2016.epw",
+                                  sizing_run_dir: NRCReportingMeasureTestHelper.appendOutputFolder("Sizing"))
+
+    # Set input args. In this case the std matches the one used to create the test model.
+    input_arguments = {
+    }
+    
+    # Create an instance of the measure
+	runner = run_measure(input_arguments, model)
+	
+	# Rename output file.
+    #output_file = "report_no_diffs.html"
+    #File.rename("#{NRCReportingMeasureTestHelper.outputFolder}/report.html", "#{NRCReportingMeasureTestHelper.outputFolder}/#{output_file}")
+
+    # Check for differences between the current output and the regression report. Need to write regression file without CRTF endiings.
+	#regression_file = IO.read("#{File.dirname(__FILE__)}/regression_reports/#{output_file}").gsub(/\r\n?/,"\n")
+	#IO.write("#{NRCReportingMeasureTestHelper.outputFolder}/#{output_file}.reg", regression_file)
+	#diffs = FileUtils.compare_file("#{NRCReportingMeasureTestHelper.outputFolder}/#{output_file}","#{NRCReportingMeasureTestHelper.outputFolder}/#{output_file}.reg")
+	#assert(diffs, "There were differences to the regression files:\n")
+  end
 end
