@@ -150,6 +150,7 @@ class NrcReportingMeasureStandard < OpenStudio::Measure::ReportingMeasure
                   AND RowName = 'Principal Heating Source'
                   AND ColumnName='Data'"
     value = model.sqlFile.get.execAndReturnFirstString(command)
+
     # Make sure all the data are available.
     qaqc_data[:building][:principal_heating_source] = 'unknown'
     unless value.empty?
@@ -176,6 +177,13 @@ class NrcReportingMeasureStandard < OpenStudio::Measure::ReportingMeasure
     qaqc_data.transform_keys!(&:to_sym)
     btap_data.transform_keys!(&:to_sym)
     puts "#{btap_data.keys}".light_blue
+
+    # Write default json files.
+    File.open('./btap_data_default.json', 'w') { |f| f.write(JSON.pretty_generate(btap_data.sort.to_h, allow_nan: true)) }
+    puts "Wrote file btap_data.json in #{Dir.pwd} "
+
+    File.open('./qaqc_data_default.json', 'w') { |f| f.write(JSON.pretty_generate(qaqc_data, allow_nan: true)) }
+    puts "Wrote file qaqc_data.json in #{Dir.pwd} "
 
     # Add fields to btap_data that we want in our output.
     btap_data.merge! simulation_configuration(qaqc_data)
