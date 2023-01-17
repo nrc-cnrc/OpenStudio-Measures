@@ -20,7 +20,7 @@ os_version="3.2.1"
 os_image=openstudio:$os_version
 
 # Add identifier to image name so we can keep track of our updates. This image is uesd for testing.
-nrc_os_image=${os_image}".a"
+nrc_os_image=${os_image}"-7e631a2"
 
 # OpenStudio server and supporting gems (these need to be kept in sync when updating os_version).
 server_image=nrel/openstudio-server:$os_version
