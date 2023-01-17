@@ -54,7 +54,7 @@ test_using_nrel_image:
 
 test_using_nrc_image:
   stage: test
-  image: localhost:5000/nrc_openstudio:3.2.1
+  image: localhost:5000/openstudio:3.2.1
 
   tags:
   - linux
