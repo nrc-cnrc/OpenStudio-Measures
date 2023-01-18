@@ -1,8 +1,15 @@
 # Start the measure
 require_relative 'resources/NRCReportingMeasureHelper'
 require_relative 'resources/report_writer.rb'
-require_relative 'resources/report_sections.rb'
-require_relative 'resources/additional_measure_methods.rb'
+require_relative 'resources/report_templates.rb'
+require_relative 'resources/section_server_summary.rb'
+require_relative 'resources/section_model_summary.rb'
+require_relative 'resources/section_energy_summary.rb'
+require_relative 'resources/section_ventilation_summary.rb'
+require_relative 'resources/section_infiltration_summary.rb'
+require_relative 'resources/section_envelope_summary.rb'
+require_relative 'resources/section_lighting_summary.rb'
+require_relative 'resources/section_setpoint_summary.rb'
 require 'erb'
 require 'json'
 #require 'caracal' # Required nokogiri which does not work with openstudio_cli.exe on server
@@ -185,22 +192,25 @@ class NrcReportingMeasureStandard < OpenStudio::Measure::ReportingMeasure
     File.open('./qaqc_data_default.json', 'w') { |f| f.write(JSON.pretty_generate(qaqc_data, allow_nan: true)) }
     puts "Wrote file qaqc_data.json in #{Dir.pwd} "
 
-    # Add fields to btap_data that we want in our output.
-    btap_data.merge! simulation_configuration(qaqc_data)
-    btap_data.merge! envelope_areas(qaqc_data)
-    #btap_data.merge! gatherSetpointSummary(model)
+
+
+
+    # **** Do something with measures_data_table in btap_json to summarize the individual data point/model.
+
 
     # Create output data structure.
     # This is a structured has of all the sections we want to report on.
     # Each section is a hash.
     output = Array.new
-    output << ServerSummary.new(btap_data: btap_data)
+    output << ServerSummary.new(btap_data: btap_data, qaqc_data: qaqc_data)
     output << ModelSummary.new(btap_data: btap_data)
     output << EnergySummary.new(btap_data: btap_data, runner: runner)
-    output << EnvelopeSummary.new(btap_data: btap_data, standard: @standard)
+    output << EnvelopeSummary.new(btap_data: btap_data, qaqc_data: qaqc_data, standard: @standard)
     output << InfiltrationSummary.new(btap_data: btap_data, standard: @standard)
     output << VentilationSummary.new(btap_data: btap_data, standard: @standard, sqlFile: sql_file, model:model)
-	output << LightSummary.new(btap_data: btap_data, standard: @standard)
+	output << LightingSummary.new(btap_data: btap_data, standard: @standard)
+
+
     output.each { |section| puts section.class }
     output.each { |section| puts section.content }
 
@@ -238,28 +248,7 @@ class NrcReportingMeasureStandard < OpenStudio::Measure::ReportingMeasure
   end
 
   # Additional data for btap_data json structure
-  #  Simulation environment configuration
-  def simulation_configuration(qaqc_data)
-    data = { simulation_openstudio_version: qaqc_data[:openstudio_version].split('+')[0],
-             simulation_openstudio_revision: qaqc_data[:openstudio_version].split('+')[1],
-             simulation_energyplus_version: qaqc_data[:energyplus_version]
-    }
-  end
 
-  # Building envelope areas
-  def envelope_areas(qaqc_data)
-    data = { bldg_outdoor_walls_area_m2: qaqc_data[:envelope][:outdoor_walls_area_m2],
-             bldg_outdoor_roofs_area_m2: qaqc_data[:envelope][:outdoor_roofs_area_m2],
-             bldg_outdoor_floors_area_m2: qaqc_data[:envelope][:outdoor_floors_area_m2],
-             bldg_ground_walls_area_m2: qaqc_data[:envelope][:ground_walls_area_m2],
-             bldg_ground_roofs_area_m2: qaqc_data[:envelope][:ground_roofs_area_m2],
-             bldg_ground_floors_area_m2: qaqc_data[:envelope][:ground_floors_area_m2],
-             bldg_windows_area_m2: qaqc_data[:envelope][:windows_area_m2],
-             bldg_doors_area_m2: qaqc_data[:envelope][:doors_area_m2],
-             bldg_overhead_doors_area_m2: qaqc_data[:envelope][:overhead_doors_area_m2],
-             bldg_skylights_area_m2: qaqc_data[:envelope][:skylights_area_m2]
-    }
-  end
 end
 
 # register the measure to be used by the application

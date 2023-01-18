@@ -2,9 +2,13 @@
 
 class NrcReportingMeasureStandard < OpenStudio::Measure::ReportingMeasure
 
-  # Control summary
-  class ControlSummary < ReportSection
-    def initialize(btap_data: btap_data = nil)
+  # Control set pointsummary
+  class SetPointSummary < ReportSection
+    def initialize(btap_data:, qaqc_data:)
+
+      # Extract additional information required and add to btap_data.
+      btap_data.merge! additional_btap_data(qaqc_data)
+
       @content = { title: "Control Performance Overview" }
       @content[:introduction] = "The following is a summary of the control performance in the model. Currently focus is on HVAC temperature set points."
 
@@ -54,7 +58,7 @@ class NrcReportingMeasureStandard < OpenStudio::Measure::ReportingMeasure
     system "which Rscript"
     puts "-----------------------".green
 
-    rfile=File.expand_path("#{File.dirname(__FILE__)}/boxplot.r")
+    rfile=File.expand_path("#{File.dirname(__FILE__)}/chart_template_boxplot.r")
     system "Rscript #{rfile} setpoint.csv setpoint_plot.png"
 
     # Check if R works
@@ -74,7 +78,6 @@ class NrcReportingMeasureStandard < OpenStudio::Measure::ReportingMeasure
     #puts "R eval #{result.class}; #{result}"
 
     end
-  end
 
 
     #data = { simulation_openstudio_version: qaqc_data[:openstudio_version].split('+')[0],
@@ -83,7 +86,7 @@ class NrcReportingMeasureStandard < OpenStudio::Measure::ReportingMeasure
     #}
   # Gather the data required for the setpoint summary and return in a hash. 
   # Called from the main measure.
-  def gatherSetpointSummary(model)
+  def additional_btap_data(model)
     numSetPointManagers = model.getSetpointManagers.size + 1 # If none then return an empty hash?
 
     # Get the sql file (this is set in the main measure).
@@ -188,5 +191,6 @@ class NrcReportingMeasureStandard < OpenStudio::Measure::ReportingMeasure
     puts "#{setpoint_data}".light_blue
 
     return {setpoint_data: setpoint_data}
+  end
   end
 end
