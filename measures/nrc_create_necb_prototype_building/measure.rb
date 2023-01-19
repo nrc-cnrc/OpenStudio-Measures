@@ -218,11 +218,11 @@ class NrcCreateNECBPrototypeBuilding < OpenStudio::Measure::ModelMeasure
       end
     end
 
-    # Debugging
-    puts "  Weather file: ".green + " #{epw_file}".yellow
-    epw_file_test = "/var/gems/openstudio-standards/data/weather/#{epw_file}"
-    puts "  Weather file status: ".green + " #{File.exists?(epw_file_test)}".yellow
-    epwfile = OpenStudio::EpwFile.new(epw_file_test)
+    # Debugging.
+    #puts "  Weather file: ".green + " #{epw_file}".yellow
+    #epw_file_test = "/var/gems/openstudio-standards/data/weather/#{epw_file}"
+    #puts "  Weather file status: ".green + " #{File.exists?(epw_file_test)}".yellow
+    #epwfile = OpenStudio::EpwFile.new(epw_file_test)
 
     # Turn debugging output on/off
     @debug = false
