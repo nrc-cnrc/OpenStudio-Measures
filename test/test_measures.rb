@@ -101,6 +101,8 @@ def write_results(result, test_file)
     puts "---------------"
     puts output.to_s.pink
     puts "---------------"
+    puts result[0].split(/\r?\n/).select{|e| e.include?("RuntimeError")}.to_s.red
+    puts "---------------"
 	Summary_output[test_file.to_s]['result'] = "FAILED"
     return false
   end
