@@ -101,7 +101,7 @@ def write_results(result, test_file)
     puts "--------------- Full traceback ---------------"
     puts output.to_s.pink
     puts "--------------- Error text (from above) ---------------"
-    error_messages = result[0].split(/\r?\n/).select{|e| e.include?(["RuntimeError", "Errno"])}.to_s
+    error_messages = result[0].split(/\r?\n/).select{|e| e.match?/"RuntimeError"|"Errno"/}.to_s
     puts error_messages.red
     puts "---------------"
 	Summary_output[test_file.to_s]['result'] = "FAILED"
