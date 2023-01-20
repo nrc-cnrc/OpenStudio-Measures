@@ -18,7 +18,7 @@ README:
     echo '  The test_using_nrel_server_image image is used by PAT. The modifications in'
     echo '    this test should be identical to those in the NRC server configuration scripts.'
 
-test_using_nrel_image:
+using_nrel_image:
   stage: test 
   image: nrel/openstudio:3.2.1
 
@@ -57,12 +57,13 @@ test_using_nrc_image:
   - echo '  This image can be used in testing'
   - cd test
   - bundle install
+  - ls /var/gems/openstudio-standards/data/weather/CAN*epw
 
   script:
   - echo 'Starting tests'
   - bundle exec ruby test_measures.rb
 
-test_using_nrel_server_image:
+using_nrel_server_image:
   stage: test
   image: nrel/openstudio-server:3.2.1
 
