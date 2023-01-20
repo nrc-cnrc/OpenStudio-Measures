@@ -18,7 +18,7 @@ README:
     echo '  The test_using_nrel_server_image image is used by PAT. The modifications in'
     echo '    this test should be identical to those in the NRC server configuration scripts.'
 
-using_nrel_image:
+test_using_nrel_image:
   stage: test 
   image: nrel/openstudio:3.2.1
 
@@ -63,7 +63,7 @@ test_using_nrc_image:
   - echo 'Starting tests'
   - bundle exec ruby test_measures.rb
 
-using_nrel_server_image:
+test_using_nrel_server_image:
   stage: test
   image: nrel/openstudio-server:3.2.1
 
