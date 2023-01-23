@@ -22,9 +22,18 @@ end
 module NRCMeasureTestHelper
   include BTAPMeasureTestHelper
 
-  # Define the output path. Set defaults and remove any existing outputs.
+  # Define the output path. Set defaults and remove any existing outputs. 
+  # Sometimes this can error due to timing between the test classes. Catch the error and try again after a short delay.
   @output_root_path = File.expand_path("#{File.expand_path(__dir__)}/../tests/output")
-  Dir.mkdir @output_root_path unless Dir.exists?(@output_root_path)
+  begin
+    Dir.mkdir @output_root_path unless Dir.exists?(@output_root_path)
+  rescue
+    sleep(10)
+    Dir.mkdir @output_root_path unless Dir.exists?(@output_root_path)
+  ensure
+    sleep(10)
+    Dir.mkdir @output_root_path unless Dir.exists?(@output_root_path)
+  end
   @output_path = @output_root_path
 
   # Remove the existing test results. Need to control when this is done as multiple test scripts could be
