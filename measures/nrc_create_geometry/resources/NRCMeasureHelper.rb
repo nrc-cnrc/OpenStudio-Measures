@@ -82,6 +82,7 @@ module NRCMeasureTestHelper
       path = path.split(/--/).first
       count = Dir.glob("#{path}*").count
       path = path + "--#{count}"
+      sleep(10)
       validateOutputFolder(path)
     else
       @output_path = path
