@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_set_infiltration</name>
   <uid>68ad385a-22cd-4c01-a4a4-11c2c30026fb</uid>
-  <version_id>571e950f-7454-4a5a-8235-3395f70b60c2</version_id>
-  <version_modified>20230112T161111Z</version_modified>
+  <version_id>ac24e83c-108e-4710-9859-2a6e5644b592</version_id>
+  <version_modified>20230120T215934Z</version_modified>
   <xml_checksum>2AF3A68E</xml_checksum>
   <class_name>NrcSetInfiltration</class_name>
   <display_name>Set Infiltration Rate</display_name>

@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_hvac_modify_air_loop_fan</name>
   <uid>e33a8f1a-f69c-4c4b-90c9-629859a89e80</uid>
-  <version_id>d5aee7d3-3f03-486d-b132-cc23e48c0a22</version_id>
-  <version_modified>20230112T161101Z</version_modified>
+  <version_id>6099dbea-c7e6-498a-847a-60d67352ff36</version_id>
+  <version_modified>20230120T215914Z</version_modified>
   <xml_checksum>ED6112BA</xml_checksum>
   <class_name>NrcHvacModifyAirLoopFan</class_name>
   <display_name>Modify HVAC Air Loop Fan Parameters</display_name>
