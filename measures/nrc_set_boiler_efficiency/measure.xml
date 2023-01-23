@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_set_boiler_efficiency</name>
   <uid>3cce913f-31d5-423b-b8ac-ddea73ffedad</uid>
-  <version_id>f9ca0435-8612-42e2-ad4b-3881488bd4a5</version_id>
-  <version_modified>20220817T204004Z</version_modified>
+  <version_id>6352f421-29de-49d7-a0f7-f0e36376f6a6</version_id>
+  <version_modified>20230112T161106Z</version_modified>
   <xml_checksum>2AF3A68E</xml_checksum>
   <class_name>NrcSetBoilerEfficiency</class_name>
   <display_name>Set Boiler Thermal Efficiency</display_name>

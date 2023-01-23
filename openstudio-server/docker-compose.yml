@@ -31,9 +31,9 @@ services:
     ports:
       - "8080:80"
     volumes:
-      - osdata:/mnt/openstudio
-      - osgems:/var/gems
-      - ${OS_SERVER_PAT_SHARED_FOLDER}:/mnt/openstudio/server/assets/
+      - openstudio-server-osdata:/mnt/openstudio
+      - openstudio-server-osgems:/var/gems
+      - ${OS_SERVER_WIN_ROOT}/PAT:/mnt/openstudio/server/assets/
     command: /usr/local/bin/start-server
   web-background:
     image: ${OS_SERVER_IMAGE}
@@ -49,7 +49,7 @@ services:
       - queue
       - web
     volumes:
-      - osdata:/mnt/openstudio
+      - openstudio-server-osdata:/mnt/openstudio
     command: /usr/local/bin/start-web-background
   worker:
     image: ${OS_SERVER_IMAGE}
@@ -67,7 +67,7 @@ services:
       - queue
       - rserve
     volumes:
-      - osgems:/var/gems
+      - openstudio-server-osgems:/var/gems
     command: /usr/local/bin/start-workers
   rserve:
     image: ${OS_RSERVE_IMAGE}
@@ -78,12 +78,14 @@ services:
       - MONGO_PASSWORD=${MONGO_PASSWORD}
       - SECRET_KEY_BASE=${SECRET_KEY_BASE}
     volumes:
-      - osdata:/mnt/openstudio
+      - openstudio-server-osdata:/mnt/openstudio
     depends_on:
       - web
       - web-background
       - db
 volumes:
-  osdata:
   dbdata:
-  osgems:
+  openstudio-server-osdata:
+    external: true
+  openstudio-server-osgems:
+    external: true

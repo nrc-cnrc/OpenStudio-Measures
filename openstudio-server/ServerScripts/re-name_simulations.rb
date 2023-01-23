@@ -41,7 +41,7 @@ def rename_datapoint(required_analysis_id)
 	puts "Renaming datapoint ID #{id}".green
 	variables = dp['set_variable_values']
 	name = ""
-	variables.each_value {|value| name << value}
+	variables.each_value {|value| name << "#{value}:"}
 	puts "Name: #{name}".yellow
 	puts "Datapoint[name]: #{dp['name']}".green
 	

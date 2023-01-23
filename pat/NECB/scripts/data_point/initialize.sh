@@ -16,7 +16,7 @@ workerAnalyses+=$(ls -1 /mnt/openstudio | grep analysis )
 for analysis in $workerAnalyses
 do
    uuid=$(echo $analysis | cut -d'_' -f 2) 
-   if echo $analyses | grep -q "$uuid"; then
+   if [[ $analyses == *$uuid* ]]; then
      echo -e "${BLUE}Keeping analysis:${NC} $analysis"
    else
      toDelete+=$uuid

@@ -28,7 +28,7 @@ ModelMeasure
 **Required:** true,
 **Model Dependent:** false
 
-**Choice Display Names** ["EmptyModel.osm", "smallOffice_Victoria.osm", "smallOffice_Windsor.osm"]
+**Choice Display Names** ["smallOffice_Victoria.osm", "smallOffice_Windsor.osm"]
 
 
 ### Update to match version of code?

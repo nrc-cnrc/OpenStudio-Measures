@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_set_shgc</name>
   <uid>9d86e04c-8e2c-4a42-a0dc-037a20881320</uid>
-  <version_id>e30fa755-415f-4e81-a8ca-a2cdc58d375d</version_id>
-  <version_modified>20220421T200505Z</version_modified>
+  <version_id>dfd4483b-8d36-41c5-9f0d-9d3d59e034fc</version_id>
+  <version_modified>20221202T175034Z</version_modified>
   <xml_checksum>9C8A26EB</xml_checksum>
   <class_name>NrcSetSHGC</class_name>
   <display_name>Set SHGC</display_name>
@@ -94,6 +94,12 @@
       <filetype>md</filetype>
       <usage_type>readme</usage_type>
       <checksum>B2435154</checksum>
+    </file>
+    <file>
+      <filename>README.md</filename>
+      <filetype>md</filetype>
+      <usage_type>test</usage_type>
+      <checksum>721FEAFB</checksum>
     </file>
   </files>
 </measure>

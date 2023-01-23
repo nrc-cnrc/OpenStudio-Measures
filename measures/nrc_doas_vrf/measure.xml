@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_doasvrf</name>
   <uid>b48dc234-3f04-4153-b380-28de7b0c7a8f</uid>
-  <version_id>364e7070-b5c5-4ba5-8d17-db93d2b6f63b</version_id>
-  <version_modified>20220817T203957Z</version_modified>
+  <version_id>e6864510-5ed0-47ff-a230-8d2e0d1c1516</version_id>
+  <version_modified>20221202T175023Z</version_modified>
   <xml_checksum>C49A7DAB</xml_checksum>
   <class_name>NrcDOASVRF</class_name>
   <display_name>NrcDOASVRF</display_name>
@@ -94,6 +94,12 @@
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
       <checksum>EF2FCBFD</checksum>
+    </file>
+    <file>
+      <filename>README.md</filename>
+      <filetype>md</filetype>
+      <usage_type>test</usage_type>
+      <checksum>4C41654F</checksum>
     </file>
   </files>
 </measure>

@@ -19,8 +19,8 @@ echo -e "${GREEN}Setting OpenStudio environment${NC}..."
 os_version="3.2.1"
 os_image=openstudio:$os_version
 
-# Add identifier to image name so we can keep track of our updates. This image is uesd for testing.
-nrc_os_image=${os_image}".a"
+# Add identifier to image name so we can keep track of our updates. This image is used for testing.
+nrc_os_image=${os_image}"-7e631a2-540c09cd1"
 
 # OpenStudio server and supporting gems (these need to be kept in sync when updating os_version).
 server_image=nrel/openstudio-server:$os_version
@@ -60,11 +60,11 @@ fi
 
 # Shared folder (this is the folder on the windows box that will be linked to the windows-host in the 
 # docker container). The hard drive that this folder is on has to be shared via the docker dashboard.
-PAT_shared_win_folder="D:\Docker\OpenStudioServer\PAT_Results"
+docker_win_root="D:\Docker\OS"
 
 # Set environment variables to be used by OpenStudio Server
 export OS_SERVER_WORKERS=$workers
-export OS_SERVER_PAT_SHARED_FOLDER=${PAT_shared_win_folder}
+export OS_SERVER_WIN_ROOT=${docker_win_root}
 export OS_SERVER_IMAGE=${server_image}
 export OS_RSERVE_IMAGE=${rserve_image}
 export REDIS_PASSWORD=openstudio

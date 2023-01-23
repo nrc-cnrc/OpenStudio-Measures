@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_create_from_existing_osm_file</name>
   <uid>9cd66007-71b8-4f28-b41f-d70c7844aaaa</uid>
-  <version_id>4aff82f6-bad5-41c5-a598-7e6f679b7829</version_id>
-  <version_modified>20220817T203951Z</version_modified>
+  <version_id>34375b22-2df1-43b9-97e1-f006e42557f1</version_id>
+  <version_modified>20230112T161004Z</version_modified>
   <xml_checksum>FC9586A7</xml_checksum>
   <class_name>NrcCreateFromExistingOsmFile</class_name>
   <display_name>NRC Create From Existing Osm File</display_name>
@@ -18,12 +18,8 @@
       <type>Choice</type>
       <required>true</required>
       <model_dependent>false</model_dependent>
-      <default_value>EmptyModel.osm</default_value>
+      <default_value>smallOffice_Victoria.osm</default_value>
       <choices>
-        <choice>
-          <value>EmptyModel.osm</value>
-          <display_name>EmptyModel.osm</display_name>
-        </choice>
         <choice>
           <value>smallOffice_Victoria.osm</value>
           <display_name>smallOffice_Victoria.osm</display_name>
@@ -146,7 +142,7 @@
       <filename>README.md</filename>
       <filetype>md</filetype>
       <usage_type>readme</usage_type>
-      <checksum>743E77A0</checksum>
+      <checksum>132E6972</checksum>
     </file>
   </files>
 </measure>

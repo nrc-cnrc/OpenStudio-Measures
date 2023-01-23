@@ -3,8 +3,13 @@
   <schema_version>3.0</schema_version>
   <name>nrc_report_carbon_emissions</name>
   <uid>11a12238-d360-4ad9-8d85-58b56c67cf83</uid>
+<<<<<<< HEAD
+  <version_id>322faa68-1e8a-4e4d-bd9c-d209cb6557ea</version_id>
+  <version_modified>20221116T170906Z</version_modified>
+=======
   <version_id>372699a1-ee27-45fe-9a49-a92986aadf52</version_id>
   <version_modified>20221124T142506Z</version_modified>
+>>>>>>> devel
   <xml_checksum>9BF1E6AC</xml_checksum>
   <class_name>NrcReportCarbonEmissions</class_name>
   <display_name>NrcReportCarbonEmissions</display_name>
@@ -711,10 +716,53 @@
       <checksum>3F417C6D</checksum>
     </file>
     <file>
+<<<<<<< HEAD
+      <filename>docs/br4_final_en.pdf</filename>
+      <filetype>pdf</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>186743AE</checksum>
+    </file>
+    <file>
+      <filename>docs/GGS_LifeCycleCostCalculator.xlsx</filename>
+      <filetype>xlsx</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>9EFBCADB</checksum>
+    </file>
+    <file>
+      <filename>docs/GHG_EF.xlsx</filename>
+      <filetype>xlsx</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>030E5D8A</checksum>
+    </file>
+    <file>
+      <filename>docs/NIR2019-Part3.pdf</filename>
+      <filetype>pdf</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>D746DAA4</checksum>
+    </file>
+    <file>
+      <filename>docs/NIR2020-Part3.pdf</filename>
+      <filetype>pdf</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>9B14BEFF</checksum>
+    </file>
+    <file>
+      <filename>docs/NIR2021-Part3.pdf</filename>
+      <filetype>pdf</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>F09913F6</checksum>
+    </file>
+    <file>
+      <filename>README.md</filename>
+      <filetype>md</filetype>
+      <usage_type>test</usage_type>
+      <checksum>E1D670F5</checksum>
+=======
       <filename>README.md</filename>
       <filetype>md</filetype>
       <usage_type>readme</usage_type>
       <checksum>661FDC89</checksum>
+>>>>>>> devel
     </file>
   </files>
 </measure>

@@ -1,5 +1,5 @@
 # Strategy implementation of various writers. These are bound to the data structure 
-#  created in report_sections.rb
+#  created in report_template.rb (and made concrete in the section*.rb files)
 # Includes:
 #  html
 #  word - requires caracal gem which is disabled for now

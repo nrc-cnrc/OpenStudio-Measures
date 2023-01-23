@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_create_geometry</name>
   <uid>d21e6b27-1826-4c33-9cdc-abc1154ff2f5</uid>
-  <version_id>77a9cbf4-bed5-4a07-b14c-10cdd854df15</version_id>
-  <version_modified>20221118T135325Z</version_modified>
+  <version_id>afbd1ed6-7995-4a3c-9a28-f3983f33a260</version_id>
+  <version_modified>20230113T180500Z</version_modified>
   <xml_checksum>2609226D</xml_checksum>
   <class_name>NrcCreateGeometry</class_name>
   <display_name>NrcCreateGeometry</display_name>
@@ -445,45 +445,10 @@
       <checksum>EF2FCBFD</checksum>
     </file>
     <file>
-      <version>
-        <software_program>OpenStudio</software_program>
-        <identifier>2.3.0</identifier>
-        <min_compatible>2.3.0</min_compatible>
-      </version>
-      <filename>measure.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>script</usage_type>
-      <checksum>F3E4A7E6</checksum>
-    </file>
-    <file>
-      <filename>common.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>test</usage_type>
-      <checksum>BFD72B10</checksum>
-    </file>
-    <file>
-      <filename>test_2017.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>test</usage_type>
-      <checksum>2D99C776</checksum>
-    </file>
-    <file>
       <filename>test_2015.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
       <checksum>DF409DEC</checksum>
-    </file>
-    <file>
-      <filename>test_2020.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>test</usage_type>
-      <checksum>F690DCED</checksum>
-    </file>
-    <file>
-      <filename>test_2011.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>test</usage_type>
-      <checksum>6B123E5B</checksum>
     </file>
     <file>
       <filename>README.md</filename>
@@ -492,10 +457,63 @@
       <checksum>A66DA8BF</checksum>
     </file>
     <file>
+      <version>
+        <software_program>OpenStudio</software_program>
+        <identifier>2.3.0</identifier>
+        <min_compatible>2.3.0</min_compatible>
+      </version>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>script</usage_type>
+      <checksum>D52EE3BB</checksum>
+    </file>
+    <file>
+      <filename>common.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>9B85B5E3</checksum>
+    </file>
+    <file>
+      <filename>test_2017.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>2F357AF6</checksum>
+    </file>
+    <file>
+      <filename>test_2011.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>5994CBD3</checksum>
+    </file>
+    <file>
+      <filename>test_2020.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>69D5D8AA</checksum>
+    </file>
+    <file>
+      <filename>test_2015-output.json</filename>
+      <filetype>json</filetype>
+      <usage_type>test</usage_type>
+      <checksum>F1E3F21C</checksum>
+    </file>
+    <file>
+      <filename>test_2017-output.json</filename>
+      <filetype>json</filetype>
+      <usage_type>test</usage_type>
+      <checksum>0E5D4095</checksum>
+    </file>
+    <file>
+      <filename>test_2011-output.json</filename>
+      <filetype>json</filetype>
+      <usage_type>test</usage_type>
+      <checksum>EA7F6886</checksum>
+    </file>
+    <file>
       <filename>README.md</filename>
       <filetype>md</filetype>
       <usage_type>test</usage_type>
-      <checksum>451A5F1A</checksum>
+      <checksum>0FBBEE50</checksum>
     </file>
   </files>
 </measure>

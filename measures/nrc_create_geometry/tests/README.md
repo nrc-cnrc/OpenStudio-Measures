@@ -4,723 +4,1043 @@ The following describe the parameter tests that are conducted on the measure. No
 tests are designed to return a fail and some a success. The report below contains all the tests that 
 have the correct response. For example the argument range limit tests are expected to fail. 
  
-## 1 - U-Shape-PrimarySchool-NECB2017-40-1-20000-1.5 Corner.Brook TDY 0
+## 1 - L-Shape-HighriseApartment-NECB2020-10-12-40000-2.0 Saint.John TMY 3
  
 This test was expected to pass and it did.
  
 | Test Argument | Test Value |
 | ------------- | ---------- |
-| building_shape |U-Shape |
-| template |NECB2017 |
-| building_type |PrimarySchool |
-| location |Corner.Brook |
-| weather_file_type |TDY |
-| global_warming |0.0 |
-| total_floor_area |20000.0 |
-| aspect_ratio |1.5 |
-| rotation |40.0 |
-| above_grade_floors |1 |
+| building_shape |L-Shape |
+| template |NECB2020 |
+| building_type |HighriseApartment |
+| location |Saint.John |
+| weather_file_type |TMY |
+| global_warming |3.0 |
+| total_floor_area |40000.0 |
+| aspect_ratio |2.0 |
+| rotation |10.0 |
+| above_grade_floors |12 |
 | floor_to_floor_height |3.2 |
 | plenum_height |0.0 |
 | sideload |false |
  
-## 2 - U-Shape-PrimarySchool-NECB2017-40-1-20000-1.5 Halifax TDY 0
+## 2 - L-Shape-HighriseApartment-NECB2020-10-12-40000-2.0 Edmonton TMY 3
  
 This test was expected to pass and it did.
  
 | Test Argument | Test Value |
 | ------------- | ---------- |
-| building_shape |U-Shape |
-| template |NECB2017 |
-| building_type |PrimarySchool |
-| location |Halifax |
-| weather_file_type |TDY |
-| global_warming |0.0 |
-| total_floor_area |20000.0 |
-| aspect_ratio |1.5 |
-| rotation |40.0 |
-| above_grade_floors |1 |
+| building_shape |L-Shape |
+| template |NECB2020 |
+| building_type |HighriseApartment |
+| location |Edmonton |
+| weather_file_type |TMY |
+| global_warming |3.0 |
+| total_floor_area |40000.0 |
+| aspect_ratio |2.0 |
+| rotation |10.0 |
+| above_grade_floors |12 |
 | floor_to_floor_height |3.2 |
 | plenum_height |0.0 |
 | sideload |false |
  
-## 3 - U-Shape-PrimarySchool-NECB2017-40-1-20000-1.5 Sydney-McCurdy TDY 0
+## 3 - Rectangular-HighriseApartment-NECB2020-10-12-40000-2.0 Saint.John TMY 3
  
 This test was expected to pass and it did.
  
 | Test Argument | Test Value |
 | ------------- | ---------- |
-| building_shape |U-Shape |
-| template |NECB2017 |
-| building_type |PrimarySchool |
-| location |Sydney-McCurdy |
-| weather_file_type |TDY |
-| global_warming |0.0 |
-| total_floor_area |20000.0 |
-| aspect_ratio |1.5 |
-| rotation |40.0 |
-| above_grade_floors |1 |
+| building_shape |Rectangular |
+| template |NECB2020 |
+| building_type |HighriseApartment |
+| location |Saint.John |
+| weather_file_type |TMY |
+| global_warming |3.0 |
+| total_floor_area |40000.0 |
+| aspect_ratio |2.0 |
+| rotation |10.0 |
+| above_grade_floors |12 |
 | floor_to_floor_height |3.2 |
 | plenum_height |0.0 |
 | sideload |false |
  
-## 4 - U-Shape-PrimarySchool-NECB2017-40-3-20000-1.5 Corner.Brook TDY 0
+## 4 - Rectangular-HighriseApartment-NECB2020-10-12-40000-2.0 Edmonton TMY 3
  
 This test was expected to pass and it did.
  
 | Test Argument | Test Value |
 | ------------- | ---------- |
-| building_shape |U-Shape |
-| template |NECB2017 |
-| building_type |PrimarySchool |
-| location |Corner.Brook |
-| weather_file_type |TDY |
-| global_warming |0.0 |
-| total_floor_area |20000.0 |
-| aspect_ratio |1.5 |
-| rotation |40.0 |
-| above_grade_floors |3 |
+| building_shape |Rectangular |
+| template |NECB2020 |
+| building_type |HighriseApartment |
+| location |Edmonton |
+| weather_file_type |TMY |
+| global_warming |3.0 |
+| total_floor_area |40000.0 |
+| aspect_ratio |2.0 |
+| rotation |10.0 |
+| above_grade_floors |12 |
 | floor_to_floor_height |3.2 |
 | plenum_height |0.0 |
 | sideload |false |
  
-## 5 - U-Shape-PrimarySchool-NECB2017-40-3-20000-1.5 Halifax TDY 0
+## 5 - test argument ranges
  
-This test was expected to pass and it did.
+This test was expected to generate an error and it did.
  
 | Test Argument | Test Value |
 | ------------- | ---------- |
-| building_shape |U-Shape |
+| building_shape |Rectangular |
 | template |NECB2017 |
-| building_type |PrimarySchool |
-| location |Halifax |
-| weather_file_type |TDY |
+| building_type |SmallOffice |
+| location |Calgary |
+| weather_file_type |ECY |
 | global_warming |0.0 |
-| total_floor_area |20000.0 |
-| aspect_ratio |1.5 |
-| rotation |40.0 |
-| above_grade_floors |3 |
+| total_floor_area |10000001.0 |
+| aspect_ratio |0.5 |
+| rotation |30.0 |
+| above_grade_floors |2 |
 | floor_to_floor_height |3.2 |
-| plenum_height |0.0 |
+| plenum_height |1.0 |
 | sideload |false |
  
-## 6 - U-Shape-PrimarySchool-NECB2017-40-3-20000-1.5 Sydney-McCurdy TDY 0
+## 6 - test argument ranges--1
  
-This test was expected to pass and it did.
+This test was expected to generate an error and it did.
  
 | Test Argument | Test Value |
 | ------------- | ---------- |
-| building_shape |U-Shape |
+| building_shape |Rectangular |
 | template |NECB2017 |
-| building_type |PrimarySchool |
-| location |Sydney-McCurdy |
-| weather_file_type |TDY |
+| building_type |SmallOffice |
+| location |Calgary |
+| weather_file_type |ECY |
 | global_warming |0.0 |
-| total_floor_area |20000.0 |
-| aspect_ratio |1.5 |
-| rotation |40.0 |
-| above_grade_floors |3 |
+| total_floor_area |9.0 |
+| aspect_ratio |0.5 |
+| rotation |30.0 |
+| above_grade_floors |2 |
 | floor_to_floor_height |3.2 |
-| plenum_height |0.0 |
+| plenum_height |1.0 |
 | sideload |false |
  
-## 7 - U-Shape-PrimarySchool-NECB2017-40-1-10000-1.5 Corner.Brook TDY 0
+## 7 - test argument ranges--2
  
-This test was expected to pass and it did.
+This test was expected to generate an error and it did.
  
 | Test Argument | Test Value |
 | ------------- | ---------- |
-| building_shape |U-Shape |
+| building_shape |Rectangular |
 | template |NECB2017 |
-| building_type |PrimarySchool |
-| location |Corner.Brook |
-| weather_file_type |TDY |
+| building_type |SmallOffice |
+| location |Calgary |
+| weather_file_type |ECY |
 | global_warming |0.0 |
-| total_floor_area |10000.0 |
-| aspect_ratio |1.5 |
-| rotation |40.0 |
-| above_grade_floors |1 |
+| total_floor_area |50000.0 |
+| aspect_ratio |11.0 |
+| rotation |30.0 |
+| above_grade_floors |2 |
 | floor_to_floor_height |3.2 |
-| plenum_height |0.0 |
+| plenum_height |1.0 |
 | sideload |false |
  
-## 8 - U-Shape-PrimarySchool-NECB2017-40-1-10000-1.5 Halifax TDY 0
+## 8 - test argument ranges--3
  
-This test was expected to pass and it did.
+This test was expected to generate an error and it did.
  
 | Test Argument | Test Value |
 | ------------- | ---------- |
-| building_shape |U-Shape |
+| building_shape |Rectangular |
 | template |NECB2017 |
-| building_type |PrimarySchool |
-| location |Halifax |
-| weather_file_type |TDY |
+| building_type |SmallOffice |
+| location |Calgary |
+| weather_file_type |ECY |
 | global_warming |0.0 |
-| total_floor_area |10000.0 |
-| aspect_ratio |1.5 |
-| rotation |40.0 |
-| above_grade_floors |1 |
+| total_floor_area |50000.0 |
+| aspect_ratio |-0.9 |
+| rotation |30.0 |
+| above_grade_floors |2 |
 | floor_to_floor_height |3.2 |
-| plenum_height |0.0 |
+| plenum_height |1.0 |
 | sideload |false |
  
-## 9 - U-Shape-PrimarySchool-NECB2017-40-1-10000-1.5 Sydney-McCurdy TDY 0
+## 9 - test argument ranges--4
  
-This test was expected to pass and it did.
+This test was expected to generate an error and it did.
  
 | Test Argument | Test Value |
 | ------------- | ---------- |
-| building_shape |U-Shape |
+| building_shape |Rectangular |
 | template |NECB2017 |
-| building_type |PrimarySchool |
-| location |Sydney-McCurdy |
-| weather_file_type |TDY |
+| building_type |SmallOffice |
+| location |Calgary |
+| weather_file_type |ECY |
 | global_warming |0.0 |
-| total_floor_area |10000.0 |
-| aspect_ratio |1.5 |
-| rotation |40.0 |
-| above_grade_floors |1 |
+| total_floor_area |50000.0 |
+| aspect_ratio |0.5 |
+| rotation |361.0 |
+| above_grade_floors |2 |
 | floor_to_floor_height |3.2 |
-| plenum_height |0.0 |
+| plenum_height |1.0 |
 | sideload |false |
  
-## 10 - U-Shape-PrimarySchool-NECB2017-40-3-10000-1.5 Corner.Brook TDY 0
+## 10 - test argument ranges--5
  
-This test was expected to pass and it did.
+This test was expected to generate an error and it did.
  
 | Test Argument | Test Value |
 | ------------- | ---------- |
-| building_shape |U-Shape |
+| building_shape |Rectangular |
 | template |NECB2017 |
-| building_type |PrimarySchool |
-| location |Corner.Brook |
-| weather_file_type |TDY |
+| building_type |SmallOffice |
+| location |Calgary |
+| weather_file_type |ECY |
 | global_warming |0.0 |
-| total_floor_area |10000.0 |
-| aspect_ratio |1.5 |
-| rotation |40.0 |
-| above_grade_floors |3 |
+| total_floor_area |50000.0 |
+| aspect_ratio |0.5 |
+| rotation |-1.0 |
+| above_grade_floors |2 |
 | floor_to_floor_height |3.2 |
-| plenum_height |0.0 |
+| plenum_height |1.0 |
 | sideload |false |
  
-## 11 - U-Shape-PrimarySchool-NECB2017-40-3-10000-1.5 Halifax TDY 0
+## 11 - test argument ranges--6
  
-This test was expected to pass and it did.
+This test was expected to generate an error and it did.
  
 | Test Argument | Test Value |
 | ------------- | ---------- |
-| building_shape |U-Shape |
+| building_shape |Rectangular |
 | template |NECB2017 |
-| building_type |PrimarySchool |
-| location |Halifax |
-| weather_file_type |TDY |
+| building_type |SmallOffice |
+| location |Calgary |
+| weather_file_type |ECY |
 | global_warming |0.0 |
-| total_floor_area |10000.0 |
-| aspect_ratio |1.5 |
-| rotation |40.0 |
-| above_grade_floors |3 |
+| total_floor_area |50000.0 |
+| aspect_ratio |0.5 |
+| rotation |30.0 |
+| above_grade_floors |201 |
 | floor_to_floor_height |3.2 |
-| plenum_height |0.0 |
+| plenum_height |1.0 |
 | sideload |false |
  
-## 12 - U-Shape-PrimarySchool-NECB2017-40-3-10000-1.5 Sydney-McCurdy TDY 0
+## 12 - test argument ranges--7
  
-This test was expected to pass and it did.
+This test was expected to generate an error and it did.
  
 | Test Argument | Test Value |
 | ------------- | ---------- |
-| building_shape |U-Shape |
+| building_shape |Rectangular |
 | template |NECB2017 |
-| building_type |PrimarySchool |
-| location |Sydney-McCurdy |
-| weather_file_type |TDY |
+| building_type |SmallOffice |
+| location |Calgary |
+| weather_file_type |ECY |
 | global_warming |0.0 |
-| total_floor_area |10000.0 |
-| aspect_ratio |1.5 |
-| rotation |40.0 |
-| above_grade_floors |3 |
+| total_floor_area |50000.0 |
+| aspect_ratio |0.5 |
+| rotation |30.0 |
+| above_grade_floors |201 |
 | floor_to_floor_height |3.2 |
-| plenum_height |0.0 |
+| plenum_height |1.0 |
 | sideload |false |
  
-## 13 - U-Shape-MediumOffice-NECB2017-40-1-20000-1.5 Corner.Brook TDY 0
+## 13 - test argument ranges--8
  
-This test was expected to pass and it did.
+This test was expected to generate an error and it did.
  
 | Test Argument | Test Value |
 | ------------- | ---------- |
-| building_shape |U-Shape |
+| building_shape |Rectangular |
 | template |NECB2017 |
-| building_type |MediumOffice |
-| location |Corner.Brook |
-| weather_file_type |TDY |
+| building_type |SmallOffice |
+| location |Calgary |
+| weather_file_type |ECY |
 | global_warming |0.0 |
-| total_floor_area |20000.0 |
-| aspect_ratio |1.5 |
-| rotation |40.0 |
-| above_grade_floors |1 |
+| total_floor_area |50000.0 |
+| aspect_ratio |0.5 |
+| rotation |30.0 |
+| above_grade_floors |0 |
 | floor_to_floor_height |3.2 |
-| plenum_height |0.0 |
+| plenum_height |1.0 |
 | sideload |false |
  
-## 14 - U-Shape-MediumOffice-NECB2017-40-1-20000-1.5 Halifax TDY 0
+## 14 - test argument ranges--9
  
-This test was expected to pass and it did.
+This test was expected to generate an error and it did.
  
 | Test Argument | Test Value |
 | ------------- | ---------- |
-| building_shape |U-Shape |
+| building_shape |Rectangular |
 | template |NECB2017 |
-| building_type |MediumOffice |
-| location |Halifax |
-| weather_file_type |TDY |
+| building_type |SmallOffice |
+| location |Calgary |
+| weather_file_type |ECY |
 | global_warming |0.0 |
-| total_floor_area |20000.0 |
-| aspect_ratio |1.5 |
-| rotation |40.0 |
-| above_grade_floors |1 |
-| floor_to_floor_height |3.2 |
-| plenum_height |0.0 |
+| total_floor_area |50000.0 |
+| aspect_ratio |0.5 |
+| rotation |30.0 |
+| above_grade_floors |2 |
+| floor_to_floor_height |11.0 |
+| plenum_height |1.0 |
 | sideload |false |
  
-## 15 - U-Shape-MediumOffice-NECB2017-40-1-20000-1.5 Sydney-McCurdy TDY 0
+## 15 - test argument ranges--10
  
-This test was expected to pass and it did.
+This test was expected to generate an error and it did.
  
 | Test Argument | Test Value |
 | ------------- | ---------- |
-| building_shape |U-Shape |
+| building_shape |Rectangular |
 | template |NECB2017 |
-| building_type |MediumOffice |
-| location |Sydney-McCurdy |
-| weather_file_type |TDY |
+| building_type |SmallOffice |
+| location |Calgary |
+| weather_file_type |ECY |
 | global_warming |0.0 |
-| total_floor_area |20000.0 |
-| aspect_ratio |1.5 |
-| rotation |40.0 |
-| above_grade_floors |1 |
-| floor_to_floor_height |3.2 |
-| plenum_height |0.0 |
+| total_floor_area |50000.0 |
+| aspect_ratio |0.5 |
+| rotation |30.0 |
+| above_grade_floors |2 |
+| floor_to_floor_height |1.0 |
+| plenum_height |1.0 |
 | sideload |false |
  
-## 16 - U-Shape-MediumOffice-NECB2017-40-3-20000-1.5 Corner.Brook TDY 0
+## 16 - test argument ranges--11
  
-This test was expected to pass and it did.
+This test was expected to generate an error and it did.
  
 | Test Argument | Test Value |
 | ------------- | ---------- |
-| building_shape |U-Shape |
+| building_shape |Rectangular |
 | template |NECB2017 |
-| building_type |MediumOffice |
-| location |Corner.Brook |
-| weather_file_type |TDY |
+| building_type |SmallOffice |
+| location |Calgary |
+| weather_file_type |ECY |
 | global_warming |0.0 |
-| total_floor_area |20000.0 |
-| aspect_ratio |1.5 |
-| rotation |40.0 |
-| above_grade_floors |3 |
+| total_floor_area |50000.0 |
+| aspect_ratio |0.5 |
+| rotation |30.0 |
+| above_grade_floors |2 |
 | floor_to_floor_height |3.2 |
-| plenum_height |0.0 |
+| plenum_height |3.0 |
 | sideload |false |
  
-## 17 - U-Shape-MediumOffice-NECB2017-40-3-20000-1.5 Halifax TDY 0
+## 17 - test argument ranges--12
  
-This test was expected to pass and it did.
+This test was expected to generate an error and it did.
  
 | Test Argument | Test Value |
 | ------------- | ---------- |
-| building_shape |U-Shape |
+| building_shape |Rectangular |
 | template |NECB2017 |
-| building_type |MediumOffice |
-| location |Halifax |
-| weather_file_type |TDY |
+| building_type |SmallOffice |
+| location |Calgary |
+| weather_file_type |ECY |
 | global_warming |0.0 |
-| total_floor_area |20000.0 |
-| aspect_ratio |1.5 |
-| rotation |40.0 |
-| above_grade_floors |3 |
+| total_floor_area |10000001.0 |
+| aspect_ratio |0.5 |
+| rotation |30.0 |
+| above_grade_floors |2 |
 | floor_to_floor_height |3.2 |
-| plenum_height |0.0 |
+| plenum_height |1.0 |
 | sideload |false |
  
-## 18 - U-Shape-MediumOffice-NECB2017-40-3-20000-1.5 Sydney-McCurdy TDY 0
+## 18 - test argument ranges--13
  
-This test was expected to pass and it did.
+This test was expected to generate an error and it did.
  
 | Test Argument | Test Value |
 | ------------- | ---------- |
-| building_shape |U-Shape |
+| building_shape |Rectangular |
 | template |NECB2017 |
-| building_type |MediumOffice |
-| location |Sydney-McCurdy |
-| weather_file_type |TDY |
+| building_type |SmallOffice |
+| location |Calgary |
+| weather_file_type |ECY |
 | global_warming |0.0 |
-| total_floor_area |20000.0 |
-| aspect_ratio |1.5 |
-| rotation |40.0 |
-| above_grade_floors |3 |
+| total_floor_area |9.0 |
+| aspect_ratio |0.5 |
+| rotation |30.0 |
+| above_grade_floors |2 |
 | floor_to_floor_height |3.2 |
-| plenum_height |0.0 |
+| plenum_height |1.0 |
 | sideload |false |
  
-## 19 - U-Shape-MediumOffice-NECB2017-40-1-10000-1.5 Corner.Brook TDY 0
+## 19 - test argument ranges--14
  
-This test was expected to pass and it did.
+This test was expected to generate an error and it did.
  
 | Test Argument | Test Value |
 | ------------- | ---------- |
-| building_shape |U-Shape |
+| building_shape |Rectangular |
 | template |NECB2017 |
-| building_type |MediumOffice |
-| location |Corner.Brook |
-| weather_file_type |TDY |
+| building_type |SmallOffice |
+| location |Calgary |
+| weather_file_type |ECY |
 | global_warming |0.0 |
-| total_floor_area |10000.0 |
-| aspect_ratio |1.5 |
-| rotation |40.0 |
-| above_grade_floors |1 |
+| total_floor_area |50000.0 |
+| aspect_ratio |11.0 |
+| rotation |30.0 |
+| above_grade_floors |2 |
 | floor_to_floor_height |3.2 |
-| plenum_height |0.0 |
+| plenum_height |1.0 |
 | sideload |false |
  
-## 20 - U-Shape-MediumOffice-NECB2017-40-1-10000-1.5 Halifax TDY 0
+## 20 - test argument ranges--15
  
-This test was expected to pass and it did.
+This test was expected to generate an error and it did.
  
 | Test Argument | Test Value |
 | ------------- | ---------- |
-| building_shape |U-Shape |
+| building_shape |Rectangular |
 | template |NECB2017 |
-| building_type |MediumOffice |
-| location |Halifax |
-| weather_file_type |TDY |
+| building_type |SmallOffice |
+| location |Calgary |
+| weather_file_type |ECY |
 | global_warming |0.0 |
-| total_floor_area |10000.0 |
-| aspect_ratio |1.5 |
-| rotation |40.0 |
-| above_grade_floors |1 |
+| total_floor_area |50000.0 |
+| aspect_ratio |-0.9 |
+| rotation |30.0 |
+| above_grade_floors |2 |
 | floor_to_floor_height |3.2 |
-| plenum_height |0.0 |
+| plenum_height |1.0 |
 | sideload |false |
  
-## 21 - U-Shape-MediumOffice-NECB2017-40-1-10000-1.5 Sydney-McCurdy TDY 0
+## 21 - test argument ranges--16
  
-This test was expected to pass and it did.
+This test was expected to generate an error and it did.
  
 | Test Argument | Test Value |
 | ------------- | ---------- |
-| building_shape |U-Shape |
+| building_shape |Rectangular |
 | template |NECB2017 |
-| building_type |MediumOffice |
-| location |Sydney-McCurdy |
-| weather_file_type |TDY |
+| building_type |SmallOffice |
+| location |Calgary |
+| weather_file_type |ECY |
 | global_warming |0.0 |
-| total_floor_area |10000.0 |
-| aspect_ratio |1.5 |
-| rotation |40.0 |
-| above_grade_floors |1 |
+| total_floor_area |50000.0 |
+| aspect_ratio |0.5 |
+| rotation |361.0 |
+| above_grade_floors |2 |
 | floor_to_floor_height |3.2 |
-| plenum_height |0.0 |
+| plenum_height |1.0 |
 | sideload |false |
  
-## 22 - U-Shape-MediumOffice-NECB2017-40-3-10000-1.5 Corner.Brook TDY 0
+## 22 - test argument ranges--17
  
-This test was expected to pass and it did.
+This test was expected to generate an error and it did.
  
 | Test Argument | Test Value |
 | ------------- | ---------- |
-| building_shape |U-Shape |
+| building_shape |Rectangular |
 | template |NECB2017 |
-| building_type |MediumOffice |
-| location |Corner.Brook |
-| weather_file_type |TDY |
+| building_type |SmallOffice |
+| location |Calgary |
+| weather_file_type |ECY |
 | global_warming |0.0 |
-| total_floor_area |10000.0 |
-| aspect_ratio |1.5 |
-| rotation |40.0 |
-| above_grade_floors |3 |
+| total_floor_area |50000.0 |
+| aspect_ratio |0.5 |
+| rotation |-1.0 |
+| above_grade_floors |2 |
 | floor_to_floor_height |3.2 |
-| plenum_height |0.0 |
+| plenum_height |1.0 |
 | sideload |false |
  
-## 23 - U-Shape-MediumOffice-NECB2017-40-3-10000-1.5 Halifax TDY 0
+## 23 - test argument ranges--18
  
-This test was expected to pass and it did.
+This test was expected to generate an error and it did.
  
 | Test Argument | Test Value |
 | ------------- | ---------- |
-| building_shape |U-Shape |
+| building_shape |Rectangular |
 | template |NECB2017 |
-| building_type |MediumOffice |
-| location |Halifax |
-| weather_file_type |TDY |
+| building_type |SmallOffice |
+| location |Calgary |
+| weather_file_type |ECY |
 | global_warming |0.0 |
-| total_floor_area |10000.0 |
-| aspect_ratio |1.5 |
-| rotation |40.0 |
-| above_grade_floors |3 |
+| total_floor_area |50000.0 |
+| aspect_ratio |0.5 |
+| rotation |30.0 |
+| above_grade_floors |201 |
 | floor_to_floor_height |3.2 |
-| plenum_height |0.0 |
+| plenum_height |1.0 |
 | sideload |false |
  
-## 24 - U-Shape-MediumOffice-NECB2017-40-3-10000-1.5 Sydney-McCurdy TDY 0
+## 24 - test argument ranges--19
  
-This test was expected to pass and it did.
+This test was expected to generate an error and it did.
  
 | Test Argument | Test Value |
 | ------------- | ---------- |
-| building_shape |U-Shape |
+| building_shape |Rectangular |
 | template |NECB2017 |
-| building_type |MediumOffice |
-| location |Sydney-McCurdy |
-| weather_file_type |TDY |
+| building_type |SmallOffice |
+| location |Calgary |
+| weather_file_type |ECY |
 | global_warming |0.0 |
-| total_floor_area |10000.0 |
-| aspect_ratio |1.5 |
-| rotation |40.0 |
-| above_grade_floors |3 |
+| total_floor_area |50000.0 |
+| aspect_ratio |0.5 |
+| rotation |30.0 |
+| above_grade_floors |201 |
 | floor_to_floor_height |3.2 |
-| plenum_height |0.0 |
+| plenum_height |1.0 |
 | sideload |false |
  
-## 25 - U-Shape-LargeOffice-NECB2017-40-1-20000-1.5 Corner.Brook TDY 0
+## 25 - test argument ranges--20
  
-This test was expected to pass and it did.
+This test was expected to generate an error and it did.
  
 | Test Argument | Test Value |
 | ------------- | ---------- |
-| building_shape |U-Shape |
+| building_shape |Rectangular |
 | template |NECB2017 |
-| building_type |LargeOffice |
-| location |Corner.Brook |
-| weather_file_type |TDY |
+| building_type |SmallOffice |
+| location |Calgary |
+| weather_file_type |ECY |
 | global_warming |0.0 |
-| total_floor_area |20000.0 |
-| aspect_ratio |1.5 |
-| rotation |40.0 |
-| above_grade_floors |1 |
+| total_floor_area |50000.0 |
+| aspect_ratio |0.5 |
+| rotation |30.0 |
+| above_grade_floors |0 |
 | floor_to_floor_height |3.2 |
-| plenum_height |0.0 |
+| plenum_height |1.0 |
 | sideload |false |
  
-## 26 - U-Shape-LargeOffice-NECB2017-40-1-20000-1.5 Halifax TDY 0
+## 26 - test argument ranges--21
  
-This test was expected to pass and it did.
+This test was expected to generate an error and it did.
  
 | Test Argument | Test Value |
 | ------------- | ---------- |
-| building_shape |U-Shape |
+| building_shape |Rectangular |
 | template |NECB2017 |
-| building_type |LargeOffice |
-| location |Halifax |
-| weather_file_type |TDY |
+| building_type |SmallOffice |
+| location |Calgary |
+| weather_file_type |ECY |
 | global_warming |0.0 |
-| total_floor_area |20000.0 |
-| aspect_ratio |1.5 |
-| rotation |40.0 |
-| above_grade_floors |1 |
-| floor_to_floor_height |3.2 |
-| plenum_height |0.0 |
+| total_floor_area |50000.0 |
+| aspect_ratio |0.5 |
+| rotation |30.0 |
+| above_grade_floors |2 |
+| floor_to_floor_height |11.0 |
+| plenum_height |1.0 |
 | sideload |false |
  
-## 27 - U-Shape-LargeOffice-NECB2017-40-1-20000-1.5 Sydney-McCurdy TDY 0
+## 27 - test argument ranges--22
  
-This test was expected to pass and it did.
+This test was expected to generate an error and it did.
  
 | Test Argument | Test Value |
 | ------------- | ---------- |
-| building_shape |U-Shape |
+| building_shape |Rectangular |
 | template |NECB2017 |
-| building_type |LargeOffice |
-| location |Sydney-McCurdy |
-| weather_file_type |TDY |
+| building_type |SmallOffice |
+| location |Calgary |
+| weather_file_type |ECY |
 | global_warming |0.0 |
-| total_floor_area |20000.0 |
-| aspect_ratio |1.5 |
-| rotation |40.0 |
-| above_grade_floors |1 |
-| floor_to_floor_height |3.2 |
-| plenum_height |0.0 |
+| total_floor_area |50000.0 |
+| aspect_ratio |0.5 |
+| rotation |30.0 |
+| above_grade_floors |2 |
+| floor_to_floor_height |1.0 |
+| plenum_height |1.0 |
 | sideload |false |
  
-## 28 - U-Shape-LargeOffice-NECB2017-40-3-20000-1.5 Corner.Brook TDY 0
+## 28 - test argument ranges--23
  
-This test was expected to pass and it did.
+This test was expected to generate an error and it did.
  
 | Test Argument | Test Value |
 | ------------- | ---------- |
-| building_shape |U-Shape |
+| building_shape |Rectangular |
 | template |NECB2017 |
-| building_type |LargeOffice |
-| location |Corner.Brook |
-| weather_file_type |TDY |
+| building_type |SmallOffice |
+| location |Calgary |
+| weather_file_type |ECY |
 | global_warming |0.0 |
-| total_floor_area |20000.0 |
-| aspect_ratio |1.5 |
-| rotation |40.0 |
-| above_grade_floors |3 |
+| total_floor_area |50000.0 |
+| aspect_ratio |0.5 |
+| rotation |30.0 |
+| above_grade_floors |2 |
 | floor_to_floor_height |3.2 |
-| plenum_height |0.0 |
+| plenum_height |3.0 |
 | sideload |false |
  
-## 29 - U-Shape-LargeOffice-NECB2017-40-3-20000-1.5 Halifax TDY 0
+## 29 - test argument ranges--24
  
-This test was expected to pass and it did.
+This test was expected to generate an error and it did.
  
 | Test Argument | Test Value |
 | ------------- | ---------- |
-| building_shape |U-Shape |
+| building_shape |Rectangular |
 | template |NECB2017 |
-| building_type |LargeOffice |
-| location |Halifax |
-| weather_file_type |TDY |
+| building_type |SmallOffice |
+| location |Calgary |
+| weather_file_type |ECY |
 | global_warming |0.0 |
-| total_floor_area |20000.0 |
-| aspect_ratio |1.5 |
-| rotation |40.0 |
-| above_grade_floors |3 |
+| total_floor_area |10000001.0 |
+| aspect_ratio |0.5 |
+| rotation |30.0 |
+| above_grade_floors |2 |
 | floor_to_floor_height |3.2 |
-| plenum_height |0.0 |
+| plenum_height |1.0 |
 | sideload |false |
  
-## 30 - U-Shape-LargeOffice-NECB2017-40-3-20000-1.5 Sydney-McCurdy TDY 0
+## 30 - test argument ranges--25
  
-This test was expected to pass and it did.
+This test was expected to generate an error and it did.
  
 | Test Argument | Test Value |
 | ------------- | ---------- |
-| building_shape |U-Shape |
+| building_shape |Rectangular |
 | template |NECB2017 |
-| building_type |LargeOffice |
-| location |Sydney-McCurdy |
-| weather_file_type |TDY |
+| building_type |SmallOffice |
+| location |Calgary |
+| weather_file_type |ECY |
 | global_warming |0.0 |
-| total_floor_area |20000.0 |
-| aspect_ratio |1.5 |
-| rotation |40.0 |
-| above_grade_floors |3 |
+| total_floor_area |9.0 |
+| aspect_ratio |0.5 |
+| rotation |30.0 |
+| above_grade_floors |2 |
 | floor_to_floor_height |3.2 |
-| plenum_height |0.0 |
+| plenum_height |1.0 |
 | sideload |false |
  
-## 31 - U-Shape-LargeOffice-NECB2017-40-1-10000-1.5 Corner.Brook TDY 0
+## 31 - test argument ranges--26
  
-This test was expected to pass and it did.
+This test was expected to generate an error and it did.
  
 | Test Argument | Test Value |
 | ------------- | ---------- |
-| building_shape |U-Shape |
+| building_shape |Rectangular |
 | template |NECB2017 |
-| building_type |LargeOffice |
-| location |Corner.Brook |
-| weather_file_type |TDY |
+| building_type |SmallOffice |
+| location |Calgary |
+| weather_file_type |ECY |
 | global_warming |0.0 |
-| total_floor_area |10000.0 |
-| aspect_ratio |1.5 |
-| rotation |40.0 |
-| above_grade_floors |1 |
+| total_floor_area |50000.0 |
+| aspect_ratio |11.0 |
+| rotation |30.0 |
+| above_grade_floors |2 |
 | floor_to_floor_height |3.2 |
-| plenum_height |0.0 |
+| plenum_height |1.0 |
 | sideload |false |
  
-## 32 - U-Shape-LargeOffice-NECB2017-40-1-10000-1.5 Halifax TDY 0
+## 32 - test argument ranges--27
  
-This test was expected to pass and it did.
+This test was expected to generate an error and it did.
  
 | Test Argument | Test Value |
 | ------------- | ---------- |
-| building_shape |U-Shape |
+| building_shape |Rectangular |
 | template |NECB2017 |
-| building_type |LargeOffice |
-| location |Halifax |
-| weather_file_type |TDY |
+| building_type |SmallOffice |
+| location |Calgary |
+| weather_file_type |ECY |
 | global_warming |0.0 |
-| total_floor_area |10000.0 |
-| aspect_ratio |1.5 |
-| rotation |40.0 |
-| above_grade_floors |1 |
+| total_floor_area |50000.0 |
+| aspect_ratio |-0.9 |
+| rotation |30.0 |
+| above_grade_floors |2 |
 | floor_to_floor_height |3.2 |
-| plenum_height |0.0 |
+| plenum_height |1.0 |
 | sideload |false |
  
-## 33 - U-Shape-LargeOffice-NECB2017-40-1-10000-1.5 Sydney-McCurdy TDY 0
+## 33 - test argument ranges--28
  
-This test was expected to pass and it did.
+This test was expected to generate an error and it did.
  
 | Test Argument | Test Value |
 | ------------- | ---------- |
-| building_shape |U-Shape |
+| building_shape |Rectangular |
 | template |NECB2017 |
-| building_type |LargeOffice |
-| location |Sydney-McCurdy |
-| weather_file_type |TDY |
+| building_type |SmallOffice |
+| location |Calgary |
+| weather_file_type |ECY |
 | global_warming |0.0 |
-| total_floor_area |10000.0 |
-| aspect_ratio |1.5 |
-| rotation |40.0 |
-| above_grade_floors |1 |
+| total_floor_area |50000.0 |
+| aspect_ratio |0.5 |
+| rotation |361.0 |
+| above_grade_floors |2 |
 | floor_to_floor_height |3.2 |
-| plenum_height |0.0 |
+| plenum_height |1.0 |
 | sideload |false |
  
-## 34 - U-Shape-LargeOffice-NECB2017-40-3-10000-1.5 Corner.Brook TDY 0
+## 34 - test argument ranges--29
  
-This test was expected to pass and it did.
+This test was expected to generate an error and it did.
  
 | Test Argument | Test Value |
 | ------------- | ---------- |
-| building_shape |U-Shape |
+| building_shape |Rectangular |
 | template |NECB2017 |
-| building_type |LargeOffice |
-| location |Corner.Brook |
-| weather_file_type |TDY |
+| building_type |SmallOffice |
+| location |Calgary |
+| weather_file_type |ECY |
 | global_warming |0.0 |
-| total_floor_area |10000.0 |
-| aspect_ratio |1.5 |
-| rotation |40.0 |
-| above_grade_floors |3 |
+| total_floor_area |50000.0 |
+| aspect_ratio |0.5 |
+| rotation |-1.0 |
+| above_grade_floors |2 |
 | floor_to_floor_height |3.2 |
-| plenum_height |0.0 |
+| plenum_height |1.0 |
 | sideload |false |
  
-## 35 - U-Shape-LargeOffice-NECB2017-40-3-10000-1.5 Halifax TDY 0
+## 35 - test argument ranges--30
  
-This test was expected to pass and it did.
+This test was expected to generate an error and it did.
  
 | Test Argument | Test Value |
 | ------------- | ---------- |
-| building_shape |U-Shape |
+| building_shape |Rectangular |
 | template |NECB2017 |
-| building_type |LargeOffice |
-| location |Halifax |
-| weather_file_type |TDY |
+| building_type |SmallOffice |
+| location |Calgary |
+| weather_file_type |ECY |
 | global_warming |0.0 |
-| total_floor_area |10000.0 |
-| aspect_ratio |1.5 |
-| rotation |40.0 |
-| above_grade_floors |3 |
+| total_floor_area |50000.0 |
+| aspect_ratio |0.5 |
+| rotation |30.0 |
+| above_grade_floors |201 |
 | floor_to_floor_height |3.2 |
-| plenum_height |0.0 |
+| plenum_height |1.0 |
 | sideload |false |
  
-## 36 - U-Shape-LargeOffice-NECB2017-40-3-10000-1.5 Sydney-McCurdy TDY 0
+## 36 - test argument ranges--31
  
-This test was expected to pass and it did.
+This test was expected to generate an error and it did.
  
 | Test Argument | Test Value |
 | ------------- | ---------- |
-| building_shape |U-Shape |
+| building_shape |Rectangular |
 | template |NECB2017 |
-| building_type |LargeOffice |
-| location |Sydney-McCurdy |
-| weather_file_type |TDY |
+| building_type |SmallOffice |
+| location |Calgary |
+| weather_file_type |ECY |
 | global_warming |0.0 |
-| total_floor_area |10000.0 |
-| aspect_ratio |1.5 |
-| rotation |40.0 |
-| above_grade_floors |3 |
+| total_floor_area |50000.0 |
+| aspect_ratio |0.5 |
+| rotation |30.0 |
+| above_grade_floors |201 |
 | floor_to_floor_height |3.2 |
-| plenum_height |0.0 |
+| plenum_height |1.0 |
+| sideload |false |
+ 
+## 37 - test argument ranges--32
+ 
+This test was expected to generate an error and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| building_shape |Rectangular |
+| template |NECB2017 |
+| building_type |SmallOffice |
+| location |Calgary |
+| weather_file_type |ECY |
+| global_warming |0.0 |
+| total_floor_area |50000.0 |
+| aspect_ratio |0.5 |
+| rotation |30.0 |
+| above_grade_floors |0 |
+| floor_to_floor_height |3.2 |
+| plenum_height |1.0 |
+| sideload |false |
+ 
+## 38 - test argument ranges--33
+ 
+This test was expected to generate an error and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| building_shape |Rectangular |
+| template |NECB2017 |
+| building_type |SmallOffice |
+| location |Calgary |
+| weather_file_type |ECY |
+| global_warming |0.0 |
+| total_floor_area |50000.0 |
+| aspect_ratio |0.5 |
+| rotation |30.0 |
+| above_grade_floors |2 |
+| floor_to_floor_height |11.0 |
+| plenum_height |1.0 |
+| sideload |false |
+ 
+## 39 - test argument ranges--34
+ 
+This test was expected to generate an error and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| building_shape |Rectangular |
+| template |NECB2017 |
+| building_type |SmallOffice |
+| location |Calgary |
+| weather_file_type |ECY |
+| global_warming |0.0 |
+| total_floor_area |50000.0 |
+| aspect_ratio |0.5 |
+| rotation |30.0 |
+| above_grade_floors |2 |
+| floor_to_floor_height |1.0 |
+| plenum_height |1.0 |
+| sideload |false |
+ 
+## 40 - test argument ranges--35
+ 
+This test was expected to generate an error and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| building_shape |Rectangular |
+| template |NECB2017 |
+| building_type |SmallOffice |
+| location |Calgary |
+| weather_file_type |ECY |
+| global_warming |0.0 |
+| total_floor_area |50000.0 |
+| aspect_ratio |0.5 |
+| rotation |30.0 |
+| above_grade_floors |2 |
+| floor_to_floor_height |3.2 |
+| plenum_height |3.0 |
+| sideload |false |
+ 
+## 41 - test argument ranges--36
+ 
+This test was expected to generate an error and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| building_shape |Rectangular |
+| template |NECB2017 |
+| building_type |SmallOffice |
+| location |Calgary |
+| weather_file_type |ECY |
+| global_warming |0.0 |
+| total_floor_area |10000001.0 |
+| aspect_ratio |0.5 |
+| rotation |30.0 |
+| above_grade_floors |2 |
+| floor_to_floor_height |3.2 |
+| plenum_height |1.0 |
+| sideload |false |
+ 
+## 42 - test argument ranges--37
+ 
+This test was expected to generate an error and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| building_shape |Rectangular |
+| template |NECB2017 |
+| building_type |SmallOffice |
+| location |Calgary |
+| weather_file_type |ECY |
+| global_warming |0.0 |
+| total_floor_area |9.0 |
+| aspect_ratio |0.5 |
+| rotation |30.0 |
+| above_grade_floors |2 |
+| floor_to_floor_height |3.2 |
+| plenum_height |1.0 |
+| sideload |false |
+ 
+## 43 - test argument ranges--38
+ 
+This test was expected to generate an error and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| building_shape |Rectangular |
+| template |NECB2017 |
+| building_type |SmallOffice |
+| location |Calgary |
+| weather_file_type |ECY |
+| global_warming |0.0 |
+| total_floor_area |50000.0 |
+| aspect_ratio |11.0 |
+| rotation |30.0 |
+| above_grade_floors |2 |
+| floor_to_floor_height |3.2 |
+| plenum_height |1.0 |
+| sideload |false |
+ 
+## 44 - test argument ranges--39
+ 
+This test was expected to generate an error and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| building_shape |Rectangular |
+| template |NECB2017 |
+| building_type |SmallOffice |
+| location |Calgary |
+| weather_file_type |ECY |
+| global_warming |0.0 |
+| total_floor_area |50000.0 |
+| aspect_ratio |-0.9 |
+| rotation |30.0 |
+| above_grade_floors |2 |
+| floor_to_floor_height |3.2 |
+| plenum_height |1.0 |
+| sideload |false |
+ 
+## 45 - test argument ranges--40
+ 
+This test was expected to generate an error and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| building_shape |Rectangular |
+| template |NECB2017 |
+| building_type |SmallOffice |
+| location |Calgary |
+| weather_file_type |ECY |
+| global_warming |0.0 |
+| total_floor_area |50000.0 |
+| aspect_ratio |0.5 |
+| rotation |361.0 |
+| above_grade_floors |2 |
+| floor_to_floor_height |3.2 |
+| plenum_height |1.0 |
+| sideload |false |
+ 
+## 46 - test argument ranges--41
+ 
+This test was expected to generate an error and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| building_shape |Rectangular |
+| template |NECB2017 |
+| building_type |SmallOffice |
+| location |Calgary |
+| weather_file_type |ECY |
+| global_warming |0.0 |
+| total_floor_area |50000.0 |
+| aspect_ratio |0.5 |
+| rotation |-1.0 |
+| above_grade_floors |2 |
+| floor_to_floor_height |3.2 |
+| plenum_height |1.0 |
+| sideload |false |
+ 
+## 47 - test argument ranges--42
+ 
+This test was expected to generate an error and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| building_shape |Rectangular |
+| template |NECB2017 |
+| building_type |SmallOffice |
+| location |Calgary |
+| weather_file_type |ECY |
+| global_warming |0.0 |
+| total_floor_area |50000.0 |
+| aspect_ratio |0.5 |
+| rotation |30.0 |
+| above_grade_floors |201 |
+| floor_to_floor_height |3.2 |
+| plenum_height |1.0 |
+| sideload |false |
+ 
+## 48 - test argument ranges--43
+ 
+This test was expected to generate an error and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| building_shape |Rectangular |
+| template |NECB2017 |
+| building_type |SmallOffice |
+| location |Calgary |
+| weather_file_type |ECY |
+| global_warming |0.0 |
+| total_floor_area |50000.0 |
+| aspect_ratio |0.5 |
+| rotation |30.0 |
+| above_grade_floors |201 |
+| floor_to_floor_height |3.2 |
+| plenum_height |1.0 |
+| sideload |false |
+ 
+## 49 - test argument ranges--44
+ 
+This test was expected to generate an error and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| building_shape |Rectangular |
+| template |NECB2017 |
+| building_type |SmallOffice |
+| location |Calgary |
+| weather_file_type |ECY |
+| global_warming |0.0 |
+| total_floor_area |50000.0 |
+| aspect_ratio |0.5 |
+| rotation |30.0 |
+| above_grade_floors |0 |
+| floor_to_floor_height |3.2 |
+| plenum_height |1.0 |
+| sideload |false |
+ 
+## 50 - test argument ranges--45
+ 
+This test was expected to generate an error and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| building_shape |Rectangular |
+| template |NECB2017 |
+| building_type |SmallOffice |
+| location |Calgary |
+| weather_file_type |ECY |
+| global_warming |0.0 |
+| total_floor_area |50000.0 |
+| aspect_ratio |0.5 |
+| rotation |30.0 |
+| above_grade_floors |2 |
+| floor_to_floor_height |11.0 |
+| plenum_height |1.0 |
+| sideload |false |
+ 
+## 51 - test argument ranges--46
+ 
+This test was expected to generate an error and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| building_shape |Rectangular |
+| template |NECB2017 |
+| building_type |SmallOffice |
+| location |Calgary |
+| weather_file_type |ECY |
+| global_warming |0.0 |
+| total_floor_area |50000.0 |
+| aspect_ratio |0.5 |
+| rotation |30.0 |
+| above_grade_floors |2 |
+| floor_to_floor_height |1.0 |
+| plenum_height |1.0 |
+| sideload |false |
+ 
+## 52 - test argument ranges--47
+ 
+This test was expected to generate an error and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| building_shape |Rectangular |
+| template |NECB2017 |
+| building_type |SmallOffice |
+| location |Calgary |
+| weather_file_type |ECY |
+| global_warming |0.0 |
+| total_floor_area |50000.0 |
+| aspect_ratio |0.5 |
+| rotation |30.0 |
+| above_grade_floors |2 |
+| floor_to_floor_height |3.2 |
+| plenum_height |3.0 |
 | sideload |false |
  

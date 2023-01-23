@@ -1,18 +1,31 @@
-# Standard openstudio requires for running test
+# Standard openstudio requires for running test.
 require 'openstudio'
 require 'openstudio/measure/ShowRunnerOutput'
 require 'openstudio-standards'
 require 'minitest/autorun'
 
-# Require the measure and test helper
+# Require the measure and test helper.
 require_relative '../measure.rb'
 require_relative '../resources/NRCMeasureHelper.rb'
 
-# Specific requires for this test
+# Specific requires for this test.
 require 'fileutils'
 
 # Core functionality for the tests. Individual test files speed up the testing.
 module TestCommon
+
+  def remove_old_test_results()
+
+    # Check to see if an overall start time was passed (it should be if using one of the test scripts in the test folder). 
+    #  If so then use it to determine what old results are (if not use now).
+    start_time = Time.now
+    if ARGV.length == 1
+
+      # We have a time. It will be in seconds since the epoch. Update our start_time.
+      start_time = Time.at(ARGV[0].to_i)
+    end
+    NRCMeasureTestHelper.removeOldOutputs(before: start_time)
+  end
 
   class NrcCreateNECBPrototypeBuilding_Test < Minitest::Test
 
@@ -20,15 +33,6 @@ module TestCommon
     include(NRCMeasureTestHelper)
 
     def setup()
-      # Define the output folder.
-      @test_dir = "#{File.dirname(__FILE__)}/output"
-      # Create if does not exist. Different logic from outher testing as there are multiple test scripts writing
-      # to this folder so it cannot be deleted.
-      if !Dir.exists?(@test_dir)
-        puts "Creating output folder: #{@test_dir}".blue
-        Dir.mkdir(@test_dir)
-      end
-
       # Copied from measure.
       @use_json_package = false
       @use_string_double = true
@@ -50,88 +54,13 @@ module TestCommon
       building_type_chs << 'Hospital'
       building_type_chs << 'Outpatient'
 
-      #Drop down selector for Canadian weather files.
-      epw_files_chs = OpenStudio::StringVector.new
-      ['AB_Banff',
-       'AB_Calgary',
-       'AB_Edmonton.Intl',
-       'AB_Edmonton.Stony.Plain',
-       'AB_Fort.McMurray',
-       'AB_Grande.Prairie',
-       'AB_Lethbridge',
-       'AB_Medicine.Hat',
-       'BC_Abbotsford',
-       'BC_Comox.Valley',
-       'BC_Crankbrook-Canadian.Rockies',
-       'BC_Fort.St.John-North.Peace',
-       'BC_Hope',
-       'BC_Kamloops',
-       'BC_Port.Hardy',
-       'BC_Prince.George',
-       'BC_Smithers',
-       'BC_Summerland',
-       'BC_Vancouver',
-       'BC_Victoria',
-       'MB_Brandon.Muni',
-       'MB_The.Pas',
-       'MB_Winnipeg-Richardson',
-       'NB_Fredericton',
-       'NB_Miramichi',
-       'NB_Saint.John',
-       'NL_Gander',
-       'NL_Goose.Bay',
-       'NL_St.Johns',
-       'NL_Stephenville',
-       'NS_CFB.Greenwood',
-       'NS_CFB.Shearwater',
-       'NS_Halifax',
-       'NS_Sable.Island.Natl.Park',
-       'NS_Sydney-McCurdy',
-       'NS_Truro',
-       'NS_Yarmouth',
-       'NT_Inuvik-Zubko',
-       'NT_Yellowknife',
-       'ON_Armstrong',
-       'ON_CFB.Trenton',
-       'ON_Dryden',
-       'ON_London',
-       'ON_Moosonee',
-       'ON_Mount.Forest',
-       'ON_North.Bay-Garland',
-       'ON_Ottawa',
-       'ON_Sault.Ste.Marie',
-       'ON_Timmins.Power',
-       'ON_Toronto',
-       'ON_Windsor',
-       'PE_Charlottetown',
-       'QC_Kuujjuaq',
-       'QC_Kuujuarapik',
-       'QC_Lac.Eon',
-       'QC_Mont-Joli',
-       'QC_Montreal-Mirabel',
-       'QC_Montreal-St-Hubert.Longueuil',
-       'QC_Montreal-Trudeau',
-       'QC_Quebec',
-       'QC_Riviere-du-Loup',
-       'QC_Roberval',
-       'QC_Saguenay-Bagotville',
-       'QC_Schefferville',
-       'QC_Sept-Iles',
-       'QC_Val-d-Or',
-       'SK_Estevan',
-       'SK_North.Battleford',
-       'SK_Saskatoon',
-       'YT_Whitehorse'].each do |epw_file|
-        epw_files_chs << epw_file
-      end
-
       @measure_interface_detailed = [
         {
           "name" => "template",
           "type" => "Choice",
           "display_name" => "Template",
           "default_value" => "NECB2017",
-          "choices" => ["NECB2011", "NECB2015", "NECB2017"],
+          "choices" => ["NECB2011", "NECB2015", "NECB2017", "NECB2020"],
           "is_required" => true
         },
         {
@@ -143,11 +72,27 @@ module TestCommon
           "is_required" => true
         },
         {
-          "name" => "epw_file",
+          "name" => "location",
           "type" => "Choice",
-          "display_name" => "Climate File",
-          "default_value" => "AB_Banff",
-          "choices" => epw_files_chs,
+          "display_name" => "Location",
+          "default_value" => "Calgary",
+          "choices" => ["Calgary", "Edmonton", "Fort.McMurray", "Kelowna", "Vancouver", "Victoria", "Thompson", "Winnipeg-Richardson", "Moncton-Greater", "Saint.John", "Corner.Brook", "St.Johns", "Halifax", "Sydney-McCurdy", "Inuvik-Zubko", "Yellowknife", "Cambridge.Bay", "Iqaluit", "Rankin.Inlet", "Ottawa-Macdonald-Cartier", "Sudbury", "Toronto.Pearson", "Charlottetown", "Jonquiere", "Montreal-Trudeau", "Quebec-Lesage", "Regina", "Saskatoon", "Dawson", "Whitehorse"],
+          "is_required" => true
+        },
+        {
+          "name" => "weather_file_type",
+          "type" => "Choice",
+          "display_name" => "Weather Type",
+          "default_value" => "ECY",
+          "choices" => ["ECY", "EWY", "TDY", "TMY", "CWEC2016"],
+          "is_required" => true
+        },
+        {
+          "name" => "global_warming",
+          "type" => "Choice",
+          "display_name" => "Global Warming",
+          "default_value" => "0.0",
+          "choices" => ["0.0", "3.0"],
           "is_required" => true
         },
         {
@@ -162,38 +107,44 @@ module TestCommon
       @good_input_arguments = {
         "template" => "NECB2017",
         "building_type" => "Warehouse",
-        "epw_file" => "ON_Ottawa",
+        "location" => "Calgary",
+        "weather_file_type" => "ECY",
+        "global_warming" => "0.0",
         "sideload" => false
       }
     end
 
-    def run_test(necb_template:, building_type_in:, epw_file_in:)
-      puts "Testing  model creation for #{building_type_in}-#{necb_template}-#{File.basename(epw_file_in, '.epw')}".blue
-      puts "Test dir: #{@test_dir}".blue
-      # Make an empty model
+    def run_test(necb_template:, building_type_in:, location_in:, weather_file_type_in:, global_warming_in:)
+      puts "Testing  model creation for ".green + "#{building_type_in}-#{necb_template}-#{location_in}".light_blue
+
+      ####### Test Model Creation ######
+      puts "  Testing model creation for:".green
+      puts "  Building type: ".green + " #{building_type_in}".light_blue
+      puts "  Code version: ".green + " #{necb_template}".light_blue
+      puts "  Location: ".green + " #{location_in}".light_blue
+      puts "  Weather Type: ".green + " #{weather_file_type_in}".light_blue
+      puts "  Global Warming: ".green + " #{global_warming_in}".light_blue
+
+      # Make an empty model.
       model = OpenStudio::Model::Model.new
 
       input_arguments = {
         "template" => necb_template,
         "building_type" => building_type_in,
-        "epw_file" => epw_file_in,
+        "location" => location_in,
+        "weather_file_type" => weather_file_type_in,
+        "global_warming" => global_warming_in,
         "sideload" => false
       }
 
       # Define specific output folder for this test.
-      model_name = "#{building_type_in}-#{necb_template}-#{File.basename(epw_file_in, '.epw')}"
-      puts "Model name #{model_name}".pink
-      if Dir.exist?(model_name) then
-        puts "WARNING: Removing existing output folder #{model_name}".yellow
-        FileUtils.remove_dir(model_name, force = true)
-      end
-      outputFolder = NRCMeasureTestHelper.setOutputFolder("#{@test_dir}/#{model_name}")
+      model_name = "#{building_type_in}-#{necb_template}-#{location_in}_#{weather_file_type_in}_#{global_warming_in.to_i}"
+      output_file_path = NRCMeasureTestHelper.appendOutputFolder("#{necb_template}/#{model_name}")
+      puts "Output folder ".green + "#{output_file_path}".light_blue
+
       # Run the measure and check output.
       runner = run_measure(input_arguments, model)
       assert(runner.result.value.valueName == 'Success')
-      # save the model to test output directory
-      output_file_path = "#{outputFolder}/#{model_name}.osm"
-      model.save(output_file_path, true)
 
       begin
         diffs = []
@@ -227,7 +178,7 @@ module TestCommon
       end
 
       # Write out diff or error message (make sure an old file does not exist).
-      diff_file = "#{outputFolder}/#{model_name}_diffs.json"
+      diff_file = "#{output_file_path}/#{model_name}_diffs.json"
       FileUtils.rm(diff_file) if File.exists?(diff_file)
       if diffs.size > 0
         $num_failed += 1
@@ -235,7 +186,8 @@ module TestCommon
       end
 
       # Check for no errors.
-      puts "There were #{diffs.size} differences/errors in #{building_type_in} #{necb_template} #{epw_file_in}".yellow
+      puts "There were #{diffs.size} differences/errors in #{building_type_in} #{necb_template} #{location_in} #{weather_file_type_in} #{global_warming_in}".yellow
+
       return true
     end
   end

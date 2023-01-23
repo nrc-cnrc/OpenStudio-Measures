@@ -62,4 +62,10 @@ ReportingMeasure
 
 
 
-total_site_energy, annual_electricity_use, annual_natural_gas_use, annual_electricity_cost, annual_natural_gas_cost
+
+
+total_site_energy, total_site_energy_normalized, annual_electricity_use, annual_natural_gas_use, annual_electricity_cost, annual_natural_gas_cost
+
+
+## Automated Testing
+A summary of the arguments and values used in the automated testing of this measure is [here](./tests/README.md). 

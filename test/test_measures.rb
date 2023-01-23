@@ -98,10 +98,14 @@ def write_results(result, test_file)
     #puts test_file_output
     File.open(test_file_output, 'w') {|f| f.write(JSON.pretty_generate(output))}
     puts "FAILED: #{test_file}".red
-    puts "---------------"
+    puts "--------------- Full traceback ---------------"
     puts output.to_s.pink
+    puts "--------------- Error text (from above) ---------------"
+    error_messages = result[0].split(/\r?\n/).select{|e| e.include?("RuntimeError") || e.include?("Errno")}.to_s
+    puts error_messages.red
     puts "---------------"
 	Summary_output[test_file.to_s]['result'] = "FAILED"
+	Summary_output[test_file.to_s]['errors'] = error_messages
     return false
   end
 end
@@ -141,7 +145,9 @@ class ParallelTests
       if (elapsed_time > 500) then
         puts "Overall running time of #{elapsed_time} seconds so far".yellow
         puts "Remaining tests:".yellow
-        puts "#{full_file_list - completed}".yellow
+        (full_file_list - completed).each do |test_name|
+          puts "#{test_name}".gsub(/(\r$|\n$)/,'').yellow
+        end
       end
     end
 
@@ -169,6 +175,7 @@ class ParallelTests
 		puts "PASSED: #{key.strip}".green
       else
 		puts "FAILED: #{key.strip}".red
+		puts "Reason: #{value['errors']}".red
       end
     end
 	

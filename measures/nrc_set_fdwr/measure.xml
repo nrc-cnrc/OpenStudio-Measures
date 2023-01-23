@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_set_fdwr</name>
   <uid>5b955a02-309e-406a-93d7-ff4ce5540e08</uid>
-  <version_id>7ccfb3c1-fab9-4ed8-8a38-35fa7d013a8c</version_id>
-  <version_modified>20220817T204005Z</version_modified>
+  <version_id>9769236b-d5e6-45e8-9999-88ab476d4531</version_id>
+  <version_modified>20230112T161106Z</version_modified>
   <xml_checksum>FC9586A7</xml_checksum>
   <class_name>NrcSetFdwr</class_name>
   <display_name>Set FDWR</display_name>
@@ -111,30 +111,6 @@
       <checksum>EF2FCBFD</checksum>
     </file>
     <file>
-      <filename>CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.ddy</filename>
-      <filetype>ddy</filetype>
-      <usage_type>test</usage_type>
-      <checksum>D3C6A158</checksum>
-    </file>
-    <file>
-      <filename>CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw</filename>
-      <filetype>epw</filetype>
-      <usage_type>test</usage_type>
-      <checksum>E21FC0AC</checksum>
-    </file>
-    <file>
-      <filename>CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.stat</filename>
-      <filetype>stat</filetype>
-      <usage_type>test</usage_type>
-      <checksum>BAFC0770</checksum>
-    </file>
-    <file>
-      <filename>Warehouse-NECB2017-ON_Ottawa.osm</filename>
-      <filetype>osm</filetype>
-      <usage_type>test</usage_type>
-      <checksum>C55B436A</checksum>
-    </file>
-    <file>
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>3.1.0</identifier>
@@ -150,6 +126,30 @@
       <filetype>md</filetype>
       <usage_type>readme</usage_type>
       <checksum>AEF893A5</checksum>
+    </file>
+    <file>
+      <filename>resources/CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.ddy</filename>
+      <filetype>ddy</filetype>
+      <usage_type>test</usage_type>
+      <checksum>D3C6A158</checksum>
+    </file>
+    <file>
+      <filename>resources/CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw</filename>
+      <filetype>epw</filetype>
+      <usage_type>test</usage_type>
+      <checksum>E21FC0AC</checksum>
+    </file>
+    <file>
+      <filename>resources/CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.stat</filename>
+      <filetype>stat</filetype>
+      <usage_type>test</usage_type>
+      <checksum>BAFC0770</checksum>
+    </file>
+    <file>
+      <filename>resources/Warehouse-NECB2017-ON_Ottawa.osm</filename>
+      <filetype>osm</filetype>
+      <usage_type>test</usage_type>
+      <checksum>C55B436A</checksum>
     </file>
   </files>
 </measure>

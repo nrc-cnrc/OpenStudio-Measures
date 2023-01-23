@@ -1,8 +1,15 @@
 # Start the measure
 require_relative 'resources/NRCReportingMeasureHelper'
 require_relative 'resources/report_writer.rb'
-require_relative 'resources/report_sections.rb'
-require_relative 'resources/additional_measure_methods.rb'
+require_relative 'resources/report_templates.rb'
+require_relative 'resources/section_server_summary.rb'
+require_relative 'resources/section_model_summary.rb'
+require_relative 'resources/section_energy_summary.rb'
+require_relative 'resources/section_ventilation_summary.rb'
+require_relative 'resources/section_infiltration_summary.rb'
+require_relative 'resources/section_envelope_summary.rb'
+require_relative 'resources/section_lighting_summary.rb'
+require_relative 'resources/section_setpoint_summary.rb'
 require 'erb'
 require 'json'
 #require 'caracal' # Required nokogiri which does not work with openstudio_cli.exe on server
@@ -36,6 +43,9 @@ class NrcReportingMeasureStandard < OpenStudio::Measure::ReportingMeasure
   def outputs
     outs = OpenStudio::Measure::OSOutputVector.new
     outs << OpenStudio::Measure::OSOutput.makeDoubleOutput('total_site_energy') # kWh; 4 significant figs
+    outs << OpenStudio::Measure::OSOutput.makeDoubleOutput('total_site_energy_normalized') # kWh/m2; 4 significant figs
+    outs << OpenStudio::Measure::OSOutput.makeDoubleOutput('annual_electricity_use') # kWh; 3 significant figs
+    outs << OpenStudio::Measure::OSOutput.makeDoubleOutput('annual_natural_gas_use') # GJ; 3 significant figs
     return outs
   end
 
@@ -44,15 +54,21 @@ class NrcReportingMeasureStandard < OpenStudio::Measure::ReportingMeasure
   def energyPlusOutputRequests(runner, user_arguments)
     super(runner, user_arguments)
 
-    result = OpenStudio::IdfObjectVector.new
+    request = OpenStudio::IdfObjectVector.new
 
     # use the built-in error checking
     if !runner.validateUserArguments(arguments, user_arguments)
-      return result
+      return request
     end
 
-    request = OpenStudio::IdfObject.load('Output:Variable,,Site Outdoor Air Drybulb Temperature,Hourly;').get
-    result << request
+    # List outputs required.
+	# No need ofr these as OpenStudio outputs the data required already. If this changes the CI testing will 
+	# catch the change.
+    request << OpenStudio::IdfObject.load('Output:Meter,NaturalGas:Facility,Monthly;').get
+    request << OpenStudio::IdfObject.load('Output:Meter,Electricity:Facility,Monthly;').get
+    request << OpenStudio::IdfObject.load('Output:Meter,NaturalGas:Facility,Hourly;').get
+    request << OpenStudio::IdfObject.load('Output:Meter,Electricity:Facility,Hourly;').get
+    request << OpenStudio::IdfObject.load('Output:Variable,,Site Outdoor Air Drybulb Temperature,Hourly;').get
 
     # Parse the model for setpoints and add to the requested outputs.
     model = runner.lastOpenStudioModel
@@ -65,12 +81,12 @@ class NrcReportingMeasureStandard < OpenStudio::Measure::ReportingMeasure
         puts ("#{setPoint.setpointNode.get.name}".light_blue)
         variable = setPoint.controlVariable
         node = setPoint.setpointNode.get.name
-        result << OpenStudio::IdfObject.load("Output:Variable,#{node},System Node #{variable},Hourly;").get
-        result << OpenStudio::IdfObject.load("Output:Variable,#{node},System Node Setpoint #{variable},Hourly;").get
+        request << OpenStudio::IdfObject.load("Output:Variable,#{node},System Node #{variable},Hourly;").get
+        request << OpenStudio::IdfObject.load("Output:Variable,#{node},System Node Setpoint #{variable},Hourly;").get
       end
     end
 
-    return result
+    return request
   end
 
   # Use the constructor to set global variables
@@ -127,16 +143,11 @@ class NrcReportingMeasureStandard < OpenStudio::Measure::ReportingMeasure
     sql_file = sql_file.get
     model.setSqlFile(sql_file)
 
+    # Figure out which version of NECB was used for the model.
+    @standard = find_standard(model)
+
     # Recover the btap and qaqc data. Store in global variables for use in report sections.
     # Need to generate the qaqc json first.
-    if model.getBuilding.standardsTemplate.is_initialized
-      standardsTemplate = (model.getBuilding.standardsTemplate).to_s
-      @standard = Standard.build(standardsTemplate)
-    else
-      puts "The measure wasn't able to determine the standards template from the model, a default value of 'NECB2017' will be used.".red
-      @standard = Standard.build('NECB2017')
-    end
-
     qaqc_data = @standard.init_qaqc(model)
     command = "SELECT Value
                   FROM TabularDataWithStrings
@@ -146,6 +157,7 @@ class NrcReportingMeasureStandard < OpenStudio::Measure::ReportingMeasure
                   AND RowName = 'Principal Heating Source'
                   AND ColumnName='Data'"
     value = model.sqlFile.get.execAndReturnFirstString(command)
+
     # Make sure all the data are available.
     qaqc_data[:building][:principal_heating_source] = 'unknown'
     unless value.empty?
@@ -173,22 +185,32 @@ class NrcReportingMeasureStandard < OpenStudio::Measure::ReportingMeasure
     btap_data.transform_keys!(&:to_sym)
     puts "#{btap_data.keys}".light_blue
 
-    # Add fields to btap_data that we want in our output.
-    btap_data.merge! simulation_configuration(qaqc_data)
-    btap_data.merge! envelope_areas(qaqc_data)
-    btap_data.merge! gatherSetpointSummary(model)
+    # Write default json files.
+    File.open('./btap_data_default.json', 'w') { |f| f.write(JSON.pretty_generate(btap_data.sort.to_h, allow_nan: true)) }
+    puts "Wrote file btap_data.json in #{Dir.pwd} "
+
+    File.open('./qaqc_data_default.json', 'w') { |f| f.write(JSON.pretty_generate(qaqc_data, allow_nan: true)) }
+    puts "Wrote file qaqc_data.json in #{Dir.pwd} "
+
+
+
+
+    # **** Do something with measures_data_table in btap_json to summarize the individual data point/model.
+
 
     # Create output data structure.
     # This is a structured has of all the sections we want to report on.
     # Each section is a hash.
     output = Array.new
-    output << ServerSummary.new(btap_data: btap_data)
+    output << ServerSummary.new(btap_data: btap_data, qaqc_data: qaqc_data)
     output << ModelSummary.new(btap_data: btap_data)
-    output << EnergySummary.new(btap_data: btap_data)
-    output << EnvelopeSummary.new(btap_data: btap_data, standard: @standard)
+    output << EnergySummary.new(btap_data: btap_data, runner: runner)
+    output << EnvelopeSummary.new(btap_data: btap_data, qaqc_data: qaqc_data, standard: @standard)
     output << InfiltrationSummary.new(btap_data: btap_data, standard: @standard)
     output << VentilationSummary.new(btap_data: btap_data, standard: @standard, sqlFile: sql_file, model:model)
-	output << LightSummary.new(btap_data: btap_data, standard: @standard)
+	output << LightingSummary.new(btap_data: btap_data, standard: @standard)
+
+
     output.each { |section| puts section.class }
     output.each { |section| puts section.content }
 
@@ -198,11 +220,9 @@ class NrcReportingMeasureStandard < OpenStudio::Measure::ReportingMeasure
     writer.write(output)
 
     # Put this together in a word file. ** Requires caracal.
-=begin
-    docx=Word_writer.new
-    writer = Writer.new(docx)
-    writer.write(output)
-=end
+    #docx=Word_writer.new
+    #writer = Writer.new(docx)
+    #writer.write(output)
 
     # Put this together in a word file.
     json = Json_writer.new
@@ -228,28 +248,7 @@ class NrcReportingMeasureStandard < OpenStudio::Measure::ReportingMeasure
   end
 
   # Additional data for btap_data json structure
-  #  Simulation environment configuration
-  def simulation_configuration(qaqc_data)
-    data = { simulation_openstudio_version: qaqc_data[:openstudio_version].split('+')[0],
-             simulation_openstudio_revision: qaqc_data[:openstudio_version].split('+')[1],
-             simulation_energyplus_version: qaqc_data[:energyplus_version]
-    }
-  end
 
-  # Building envelope areas
-  def envelope_areas(qaqc_data)
-    data = { bldg_outdoor_walls_area_m2: qaqc_data[:envelope][:outdoor_walls_area_m2],
-             bldg_outdoor_roofs_area_m2: qaqc_data[:envelope][:outdoor_roofs_area_m2],
-             bldg_outdoor_floors_area_m2: qaqc_data[:envelope][:outdoor_floors_area_m2],
-             bldg_ground_walls_area_m2: qaqc_data[:envelope][:ground_walls_area_m2],
-             bldg_ground_roofs_area_m2: qaqc_data[:envelope][:ground_roofs_area_m2],
-             bldg_ground_floors_area_m2: qaqc_data[:envelope][:ground_floors_area_m2],
-             bldg_windows_area_m2: qaqc_data[:envelope][:windows_area_m2],
-             bldg_doors_area_m2: qaqc_data[:envelope][:doors_area_m2],
-             bldg_overhead_doors_area_m2: qaqc_data[:envelope][:overhead_doors_area_m2],
-             bldg_skylights_area_m2: qaqc_data[:envelope][:skylights_area_m2]
-    }
-  end
 end
 
 # register the measure to be used by the application
