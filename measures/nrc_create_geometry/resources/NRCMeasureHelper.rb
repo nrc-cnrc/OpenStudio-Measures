@@ -76,6 +76,7 @@ module NRCMeasureTestHelper
       # Append the calling method name and re-validate (need to jump back two methods)
       path = @output_root_path + "/" + caller_locations(1, 2)[1].label.split.last
 	  puts "Appending path to test output folder: #{path}"
+      sleep(10)
       validateOutputFolder(path)
     elsif File.exist?(path)
       # Create a numbered subfolder. First check if there is a numbered folder.
