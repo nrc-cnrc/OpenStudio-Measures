@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_report_several_output_variables</name>
   <uid>c10037a2-15d3-462b-8f1b-07d2b11fd61d</uid>
-  <version_id>fb54e8b6-a44c-4dc6-8976-527f8460450d</version_id>
-  <version_modified>20221205T150022Z</version_modified>
+  <version_id>a918bc3f-13b7-4b2a-822d-917cdfd3733d</version_id>
+  <version_modified>20230118T204854Z</version_modified>
   <xml_checksum>9BF1E6AC</xml_checksum>
   <class_name>NrcReportSeveralOutputVariables</class_name>
   <display_name>Nrc Report Several Output Variables</display_name>
@@ -16,9 +16,7 @@
     <argument>
       <name>reporting_frequency</name>
       <display_name>Reporting Frequency</display_name>
-      <description></description>
       <type>Choice</type>
-      <units></units>
       <required>true</required>
       <model_dependent>false</model_dependent>
       <default_value>Hourly</default_value>
@@ -32,20 +30,14 @@
           <display_name>Timestep</display_name>
         </choice>
       </choices>
-      <min_value></min_value>
-      <max_value></max_value>
     </argument>
     <argument>
       <name>output_variables</name>
       <display_name>Please Enter the Output Variables in the format 'OutputVariable1 : Key Name1,OutputVariable2 : Key Name2,OutputVariable3 : Key Name3'   </display_name>
-      <description></description>
       <type>String</type>
-      <units></units>
       <required>true</required>
       <model_dependent>false</model_dependent>
-      <default_value>Site Outdoor Air Drybulb Temperature:*,Baseboard Total Heating Rate:*</default_value>
-      <min_value></min_value>
-      <max_value></max_value>
+      <default_value>Heating Coil Heating Rate:*,Baseboard Total Heating Rate:*</default_value>
     </argument>
   </arguments>
   <outputs />
@@ -78,46 +70,10 @@
       <checksum>F1C26127</checksum>
     </file>
     <file>
-      <filename>example_model.osm</filename>
-      <filetype>osm</filetype>
-      <usage_type>test</usage_type>
-      <checksum>39B6E26C</checksum>
-    </file>
-    <file>
-      <filename>USA_CO_Golden-NREL.724666_TMY3.epw</filename>
-      <filetype>epw</filetype>
-      <usage_type>test</usage_type>
-      <checksum>BDF687C1</checksum>
-    </file>
-    <file>
       <filename>report.html.in</filename>
       <filetype>in</filetype>
       <usage_type>resource</usage_type>
       <checksum>3F69E3FB</checksum>
-    </file>
-    <file>
-      <filename>os_lib_helper_methods.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>55314FBC</checksum>
-    </file>
-    <file>
-      <filename>Warehouse_CAN_BC_Victoria.osm</filename>
-      <filetype>osm</filetype>
-      <usage_type>test</usage_type>
-      <checksum>6A3D0EE5</checksum>
-    </file>
-    <file>
-      <filename>Warehouse_CAN_ON_Ottawa.osm</filename>
-      <filetype>osm</filetype>
-      <usage_type>test</usage_type>
-      <checksum>F6522CD5</checksum>
-    </file>
-    <file>
-      <filename>test_gr1.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>test</usage_type>
-      <checksum>600A589B</checksum>
     </file>
     <file>
       <filename>BTAPMeasureHelper.rb</filename>
@@ -126,22 +82,28 @@
       <checksum>B69DF022</checksum>
     </file>
     <file>
+      <filename>report.html.erb</filename>
+      <filetype>erb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>C8210F6A</checksum>
+    </file>
+    <file>
+      <filename>README.md</filename>
+      <filetype>md</filetype>
+      <usage_type>readme</usage_type>
+      <checksum>4D90D7C3</checksum>
+    </file>
+    <file>
       <filename>test.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
-      <checksum>E6108531</checksum>
+      <checksum>D37FAFDE</checksum>
     </file>
     <file>
       <filename>NRCReportingMeasureHelper.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>DB93FE1A</checksum>
-    </file>
-    <file>
-      <filename>report.html.erb</filename>
-      <filetype>erb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>C8210F6A</checksum>
+      <checksum>F26CB9D8</checksum>
     </file>
     <file>
       <version>
@@ -152,37 +114,7 @@
       <filename>measure.rb</filename>
       <filetype>rb</filetype>
       <usage_type>script</usage_type>
-      <checksum>01F3E395</checksum>
-    </file>
-    <file>
-      <filename>README.md</filename>
-      <filetype>md</filetype>
-      <usage_type>readme</usage_type>
-      <checksum>4D90D7C3</checksum>
-    </file>
-    <file>
-      <filename>os_lib_reporting.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>89926791</checksum>
-    </file>
-    <file>
-      <filename>README.md</filename>
-      <filetype>md</filetype>
-      <usage_type>test</usage_type>
-      <checksum>AFE7F081</checksum>
-    </file>
-    <file>
-      <filename>NRCReportingMeasureHelper1.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>9B27BD19</checksum>
-    </file>
-    <file>
-      <filename>NRCReportingMeasureHelper11.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>7ABE78B8</checksum>
+      <checksum>C21A6AB4</checksum>
     </file>
   </files>
 </measure>

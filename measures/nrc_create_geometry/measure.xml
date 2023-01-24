@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_create_geometry</name>
   <uid>d21e6b27-1826-4c33-9cdc-abc1154ff2f5</uid>
-  <version_id>afbd1ed6-7995-4a3c-9a28-f3983f33a260</version_id>
-  <version_modified>20230113T180500Z</version_modified>
+  <version_id>eb93151a-3335-423d-a5ab-64e94868c1e5</version_id>
+  <version_modified>20230120T215858Z</version_modified>
   <xml_checksum>2609226D</xml_checksum>
   <class_name>NrcCreateGeometry</class_name>
   <display_name>NrcCreateGeometry</display_name>
@@ -490,30 +490,6 @@
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
       <checksum>69D5D8AA</checksum>
-    </file>
-    <file>
-      <filename>test_2015-output.json</filename>
-      <filetype>json</filetype>
-      <usage_type>test</usage_type>
-      <checksum>F1E3F21C</checksum>
-    </file>
-    <file>
-      <filename>test_2017-output.json</filename>
-      <filetype>json</filetype>
-      <usage_type>test</usage_type>
-      <checksum>0E5D4095</checksum>
-    </file>
-    <file>
-      <filename>test_2011-output.json</filename>
-      <filetype>json</filetype>
-      <usage_type>test</usage_type>
-      <checksum>EA7F6886</checksum>
-    </file>
-    <file>
-      <filename>README.md</filename>
-      <filetype>md</filetype>
-      <usage_type>test</usage_type>
-      <checksum>0FBBEE50</checksum>
     </file>
   </files>
 </measure>

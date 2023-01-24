@@ -25,11 +25,13 @@ done
 if [ -z $local_image ] 
 then
   echo -e "${GREEN}Pulling base openstudio image from docker hub${NC}..."
-  docker pull nrcconstructioncnrc/${nrc_os_image}
+  docker pull nrel/${os_image}
+  test_image=nrel/${os_image}
   echo -e "...${GREEN}done${NC}."
 else
-  echo -e "${YELLOW}Using specified image name ${BLUE}${local_image}${NC}."
+  echo -e "${YELLOW}Using specified local image name ${BLUE}${local_image}${NC}."
   docker load -i ${local_image}
+  test_image=${local_image}
   echo -e "...${GREEN}done${NC}."
 fi
 
@@ -48,8 +50,8 @@ create_newContainer() {
   echo -e "${YELLOW}If you get an error here check the folder mounted in the -v option must be a sharable resource - see the docker interface to enable${NC}"
 
   echo "Creating testing container with command:"
-  echo -e   "${GREEN}docker create -ti -P -v $measures_win_folder:/os_test --name $testContainer nrcconstructioncnrc/${nrc_os_image}${NC}"
-  MSYS_NO_PATHCONV=1 docker create -ti -P -v ${measures_win_folder}/test:/os_test/test -v ${measures_win_folder}/measures:/os_test/measures -v ${measures_win_folder}/measures_templates:/os_test/measures_templates --name ${testContainer} nrcconstructioncnrc/${nrc_os_image}
+  echo -e   "${GREEN}docker create -ti -P -v $measures_win_folder:/os_test --name $testContainer ${test_image}${NC}"
+  MSYS_NO_PATHCONV=1 docker create -ti -P -v ${measures_win_folder}/test:/os_test/test -v ${measures_win_folder}/measures:/os_test/measures -v ${measures_win_folder}/measures_templates:/os_test/measures_templates --name ${testContainer} ${test_image}
 
   echo -e "${GREEN}Starting the test environment container${NC}..."
   docker container start ${testContainer}
