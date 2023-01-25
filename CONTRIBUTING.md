@@ -10,7 +10,7 @@ Feel free to propose changes by creating Pull Requests. If you don't have write 
 a file will create a Fork of this project for you to save your proposed changes to. Submitting 
 a change to a file will write it to a new Branch in your Fork, so you can send a Pull Request.
 
-If this is your first time contributing on GitHub, don't worry! Let us know if you have any questions.
+If this is your first time contributing on GitLab, don't worry! Let us know if you have any questions.
 
 ### Security
 
