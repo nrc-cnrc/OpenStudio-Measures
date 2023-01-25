@@ -1,11 +1,11 @@
 # Steps to install WSL2 and Docker
 
 ## Description
-This paper shows the steps to install Docker and WSL2 on **Windows 10**.  
+These are the steps to install Docker and WSL2 on **Windows 10**.  
 
 1-	Uninstall Docker.
 
-2-	Delete all old Docker folders: ( Without deleting all old files, you’ll get timeout error, and Docker won’t start)   
+2-	Delete all old Docker folders: ( Without deleting all existing files, you’ll get a timeout error, and Docker won’t start)   
 - *C:\Users\useName\AppData\Local\Docker*   
 - *C:\Users\useName\AppData\Roaming\Docker*   
 - *C:\Users\useName\AppData\Roaming\Docker Desktop*
@@ -33,11 +33,11 @@ This paper shows the steps to install Docker and WSL2 on **Windows 10**.
 In cmd type :<code> wsl -l -v</code>
 - You should get **Version 2**
 
-12-	If Docker didn’t start, keep trying to restart Docker, or even restart the computer until it successfully load. You can also try *‘Reset to Factory Defaults’* in Docker Dashboard. 
+12-	If Docker didn’t start, keep trying to restart Docker, or even restart the computer until it successfully loads. You can also try *‘Reset to Factory Defaults’* in Docker Dashboard. 
 
-13-	 To limit the CPU usage (I haven’t tested it yet):
+13-	 To limit the CPU usage
 
-- Use Notepad to create a file *(.wslconfig)* and save it at *C:\Users\useName\.wslconfig*
+- Create a file titled *(.wslconfig)* and save it at *C:/Users/<insert_your_name>/
 - In the file, adjust to the required RAM  
 <code>
 [wsl2]   
