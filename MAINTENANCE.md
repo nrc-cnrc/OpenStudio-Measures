@@ -1,5 +1,5 @@
 The measures and server scripts in this repository rely on other open source projects. These other repositories 
-are under active development, notably OpenStudio and OpenStudio standards. From time to time it will be necessary 
+are under active development, notably OpenStudio and OpenStudio-Standards. From time to time it will be necessary 
 to update the version of the repositories referenced here.
 
 ### OpenStudio-Standards
@@ -15,7 +15,7 @@ and will be a more complex process.
 ## Update process
 
 # NRCan feature inclusion/no openstudio-server update
-Essentially the update proces is a merge of the nrcan branch of openstudio-standards into the nrc branch. 
+Essentially the update proces is a merge of the nrcan branch of openstudio-standards into the nrcan_nrc branch. 
 
 1) Edit the env.sh file to use the nrcan branch of openstudio-standards
 2) Create the test environment and run all the tests
@@ -27,8 +27,8 @@ Essentially the update proces is a merge of the nrcan branch of openstudio-stand
     a) Check for differences in output from this run
 	b) Document resons for changes (e.g. improved algorithm, different zoning assumptions)
 	
-Once the tests have passed git merge the nrcan branch into the nrcan_nrc branch and create a pull request 
-(currently Iain can action this).
+Once the tests have passed, git merge the nrcan branch into the nrcan_nrc branch and create a pull request 
+(currently Iain MacDonald can action this).
 
 Revert the env.sh file back to using the nrcan_nrc branch and run the tests again (just to be sure that any 
 differences we have in the nrcan_nrc branch do not cause issues).
