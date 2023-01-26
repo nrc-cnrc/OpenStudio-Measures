@@ -19,4 +19,5 @@ test/.docker/Dockerfile
 test/*.tar.gz
 test/.gemfile
 test/measures_to_test-all.txt
+test/output
 .gems
