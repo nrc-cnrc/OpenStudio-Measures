@@ -4,6 +4,25 @@ The following describe the parameter tests that are conducted on the measure. No
 tests are designed to return a fail and some a success. The report below contains all the tests that 
 have the correct response. For example the argument range limit tests are expected to fail. 
  
+## 1 - Warehouse-NECB2015-Thompson EWY 3
+ 
+This test was expected to pass and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| template |NECB2015 |
+| building_type |Warehouse |
+| location |Thompson |
+| weather_file_type |EWY |
+| global_warming |3.0 |
+| sideload |false |
+ 
+# Summary Of Test Cases for 'NRCCREATENECBPROTOTYPEBUILDING' Measure
+ 
+The following describe the parameter tests that are conducted on the measure. Note some of the 
+tests are designed to return a fail and some a success. The report below contains all the tests that 
+have the correct response. For example the argument range limit tests are expected to fail. 
+ 
 ## 1 - Warehouse-NECB2011-Thompson ECY 0
  
 This test was expected to pass and it did.
@@ -15,6 +34,25 @@ This test was expected to pass and it did.
 | location |Thompson |
 | weather_file_type |ECY |
 | global_warming |0.0 |
+| sideload |false |
+ 
+# Summary Of Test Cases for 'NRCCREATENECBPROTOTYPEBUILDING' Measure
+ 
+The following describe the parameter tests that are conducted on the measure. Note some of the 
+tests are designed to return a fail and some a success. The report below contains all the tests that 
+have the correct response. For example the argument range limit tests are expected to fail. 
+ 
+## 1 - Warehouse-NECB2020-Saint.John TMY 3
+ 
+This test was expected to pass and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| template |NECB2020 |
+| building_type |Warehouse |
+| location |Saint.John |
+| weather_file_type |TMY |
+| global_warming |3.0 |
 | sideload |false |
  
 # Summary Of Test Cases for 'NRCCREATENECBPROTOTYPEBUILDING' Measure
@@ -36,41 +74,16 @@ This test was expected to pass and it did.
 | global_warming |0.0 |
 | sideload |false |
  
-# Summary Of Test Cases for 'NRCCREATENECBPROTOTYPEBUILDING' Measure
- 
-The following describe the parameter tests that are conducted on the measure. Note some of the 
-tests are designed to return a fail and some a success. The report below contains all the tests that 
-have the correct response. For example the argument range limit tests are expected to fail. 
- 
-## 1 - Warehouse-NECB2015-Thompson EWY 3
+## 2 - LargeOffice-NECB2015-Thompson EWY 3
  
 This test was expected to pass and it did.
  
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | template |NECB2015 |
-| building_type |Warehouse |
+| building_type |LargeOffice |
 | location |Thompson |
 | weather_file_type |EWY |
-| global_warming |3.0 |
-| sideload |false |
- 
-# Summary Of Test Cases for 'NRCCREATENECBPROTOTYPEBUILDING' Measure
- 
-The following describe the parameter tests that are conducted on the measure. Note some of the 
-tests are designed to return a fail and some a success. The report below contains all the tests that 
-have the correct response. For example the argument range limit tests are expected to fail. 
- 
-## 1 - Warehouse-NECB2020-Saint.John TMY 3
- 
-This test was expected to pass and it did.
- 
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| template |NECB2020 |
-| building_type |Warehouse |
-| location |Saint.John |
-| weather_file_type |TMY |
 | global_warming |3.0 |
 | sideload |false |
  
@@ -100,14 +113,14 @@ This test was expected to pass and it did.
 | global_warming |0.0 |
 | sideload |false |
  
-## 2 - LargeOffice-NECB2015-Thompson EWY 3
+## 3 - RetailStripmall-NECB2015-Thompson EWY 3
  
 This test was expected to pass and it did.
  
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | template |NECB2015 |
-| building_type |LargeOffice |
+| building_type |RetailStripmall |
 | location |Thompson |
 | weather_file_type |EWY |
 | global_warming |3.0 |
@@ -124,19 +137,6 @@ This test was expected to pass and it did.
 | location |Corner.Brook |
 | weather_file_type |TDY |
 | global_warming |0.0 |
-| sideload |false |
- 
-## 3 - RetailStripmall-NECB2015-Thompson EWY 3
- 
-This test was expected to pass and it did.
- 
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| template |NECB2015 |
-| building_type |RetailStripmall |
-| location |Thompson |
-| weather_file_type |EWY |
-| global_warming |3.0 |
 | sideload |false |
  
 ## 3 - SecondarySchool-NECB2011-Thompson ECY 0
@@ -217,19 +217,6 @@ This test was expected to pass and it did.
 | global_warming |0.0 |
 | sideload |false |
  
-## 4 - MidriseApartment-NECB2020-Saint.John TMY 3
- 
-This test was expected to pass and it did.
- 
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| template |NECB2020 |
-| building_type |MidriseApartment |
-| location |Saint.John |
-| weather_file_type |TMY |
-| global_warming |3.0 |
-| sideload |false |
- 
 ## 5 - Warehouse-NECB2017-Halifax TDY 0
  
 This test was expected to pass and it did.
@@ -241,6 +228,19 @@ This test was expected to pass and it did.
 | location |Halifax |
 | weather_file_type |TDY |
 | global_warming |0.0 |
+| sideload |false |
+ 
+## 4 - MidriseApartment-NECB2020-Saint.John TMY 3
+ 
+This test was expected to pass and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| template |NECB2020 |
+| building_type |MidriseApartment |
+| location |Saint.John |
+| weather_file_type |TMY |
+| global_warming |3.0 |
 | sideload |false |
  
 ## 5 - Warehouse-NECB2020-Corner.Brook TMY 3
@@ -295,19 +295,6 @@ This test was expected to pass and it did.
 | global_warming |0.0 |
 | sideload |false |
  
-## 8 - MidriseApartment-NECB2020-Corner.Brook TMY 3
- 
-This test was expected to pass and it did.
- 
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| template |NECB2020 |
-| building_type |MidriseApartment |
-| location |Corner.Brook |
-| weather_file_type |TMY |
-| global_warming |3.0 |
-| sideload |false |
- 
 ## 7 - QuickServiceRestaurant-NECB2017-Halifax TDY 0
  
 This test was expected to pass and it did.
@@ -319,6 +306,19 @@ This test was expected to pass and it did.
 | location |Halifax |
 | weather_file_type |TDY |
 | global_warming |0.0 |
+| sideload |false |
+ 
+## 8 - MidriseApartment-NECB2020-Corner.Brook TMY 3
+ 
+This test was expected to pass and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| template |NECB2020 |
+| building_type |MidriseApartment |
+| location |Corner.Brook |
+| weather_file_type |TMY |
+| global_warming |3.0 |
 | sideload |false |
  
 ## 6 - SmallHotel-NECB2011-Thompson ECY 0
@@ -373,19 +373,6 @@ This test was expected to pass and it did.
 | global_warming |0.0 |
 | sideload |false |
  
-## 9 - Warehouse-NECB2017-Moncton-Greater TDY 0
- 
-This test was expected to pass and it did.
- 
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| template |NECB2017 |
-| building_type |Warehouse |
-| location |Moncton-Greater |
-| weather_file_type |TDY |
-| global_warming |0.0 |
-| sideload |false |
- 
 ## 9 - SecondarySchool-NECB2011-Winnipeg-Richardson ECY 0
  
 This test was expected to pass and it did.
@@ -396,6 +383,19 @@ This test was expected to pass and it did.
 | building_type |SecondarySchool |
 | location |Winnipeg-Richardson |
 | weather_file_type |ECY |
+| global_warming |0.0 |
+| sideload |false |
+ 
+## 9 - Warehouse-NECB2017-Moncton-Greater TDY 0
+ 
+This test was expected to pass and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| template |NECB2017 |
+| building_type |Warehouse |
+| location |Moncton-Greater |
+| weather_file_type |TDY |
 | global_warming |0.0 |
 | sideload |false |
  
@@ -542,6 +542,19 @@ This test was expected to pass and it did.
 | global_warming |0.0 |
 | sideload |false |
  
+## 18 - SmallHotel-NECB2011-Moncton-Greater ECY 0
+ 
+This test was expected to pass and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| template |NECB2011 |
+| building_type |SmallHotel |
+| location |Moncton-Greater |
+| weather_file_type |ECY |
+| global_warming |0.0 |
+| sideload |false |
+ 
 ## 4 - Outpatient-NECB2015-Thompson EWY 3
  
 This test was expected to pass and it did.
@@ -579,19 +592,6 @@ This test was expected to pass and it did.
 | location |Winnipeg-Richardson |
 | weather_file_type |EWY |
 | global_warming |3.0 |
-| sideload |false |
- 
-## 18 - SmallHotel-NECB2011-Moncton-Greater ECY 0
- 
-This test was expected to pass and it did.
- 
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| template |NECB2011 |
-| building_type |SmallHotel |
-| location |Moncton-Greater |
-| weather_file_type |ECY |
-| global_warming |0.0 |
 | sideload |false |
  
 ## 7 - RetailStripmall-NECB2015-Winnipeg-Richardson EWY 3

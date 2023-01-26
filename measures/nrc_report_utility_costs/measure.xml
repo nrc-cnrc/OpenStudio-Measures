@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_report_utility_costs</name>
   <uid>224561f4-8ccc-4f60-8118-34b85359d6f1</uid>
-  <version_id>1be4e3fe-1fcf-49b2-b712-dcd1f020f1de</version_id>
-  <version_modified>20230120T215926Z</version_modified>
+  <version_id>08326242-fd11-409c-b035-9768a617ff64</version_id>
+  <version_modified>20230126T143955Z</version_modified>
   <xml_checksum>9BF1E6AC</xml_checksum>
   <class_name>NrcReportUtilityCosts</class_name>
   <display_name>Report Utility Costs</display_name>
@@ -166,12 +166,6 @@
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
       <checksum>279B6AAB</checksum>
-    </file>
-    <file>
-      <filename>CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw</filename>
-      <filetype>epw</filetype>
-      <usage_type>test</usage_type>
-      <checksum>E21FC0AC</checksum>
     </file>
   </files>
 </measure>

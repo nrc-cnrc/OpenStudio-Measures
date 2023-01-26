@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_update_water_heater</name>
   <uid>2f81b690-4343-49fe-9c2a-803e531ac6c8</uid>
-  <version_id>6d414d02-56e5-457b-95dc-b2bba084c979</version_id>
-  <version_modified>20221122T201152Z</version_modified>
+  <version_id>77e40f72-54ab-4a96-87fc-b93e827dd21d</version_id>
+  <version_modified>20230126T144001Z</version_modified>
   <xml_checksum>E88CCCA7</xml_checksum>
   <class_name>NrcUpdateWaterHeater</class_name>
   <display_name>NrcUpdateWaterHeater</display_name>
@@ -116,6 +116,12 @@
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
       <checksum>A1E2E55E</checksum>
+    </file>
+    <file>
+      <filename>test-output.json</filename>
+      <filetype>json</filetype>
+      <usage_type>test</usage_type>
+      <checksum>C08CC1E5</checksum>
     </file>
   </files>
 </measure>

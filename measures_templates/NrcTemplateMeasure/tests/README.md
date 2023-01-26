@@ -15,7 +15,7 @@ This test was expected to pass and it did.
 | a_string_double_argument |75.3 |
 | a_choice_argument |choice_1 |
  
-## 2 - test sample 2--1
+## 2 - Test Model Creation C--1
  
 This test was expected to pass and it did.
  
@@ -26,7 +26,223 @@ This test was expected to pass and it did.
 | a_string_double_argument |75.3 |
 | a_choice_argument |choice_1 |
  
-## 3 - Test Model Creation C--1
+## 3 - test argument ranges
+ 
+This test was expected to generate an error and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| a_string_argument |MyString |
+| a_double_argument |101.0 |
+| a_string_double_argument |50.0 |
+| a_choice_argument |choice_1 |
+| a_bool_argument |true |
+ 
+## 4 - test argument ranges--1
+ 
+This test was expected to generate an error and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| a_string_argument |MyString |
+| a_double_argument |-1.0 |
+| a_string_double_argument |50.0 |
+| a_choice_argument |choice_1 |
+| a_bool_argument |true |
+ 
+## 5 - test argument ranges--2
+ 
+This test was expected to generate an error and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| a_string_argument |MyString |
+| a_double_argument |50.0 |
+| a_string_double_argument |101.0 |
+| a_choice_argument |choice_1 |
+| a_bool_argument |true |
+ 
+## 6 - test argument ranges--3
+ 
+This test was expected to generate an error and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| a_string_argument |MyString |
+| a_double_argument |50.0 |
+| a_string_double_argument |101.0 |
+| a_choice_argument |choice_1 |
+| a_bool_argument |true |
+ 
+## 7 - test argument ranges--4
+ 
+This test was expected to generate an error and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| a_string_argument |MyString |
+| a_double_argument |50.0 |
+| a_string_double_argument |532577ef-dc1e-4bac-afcb-9915dd78f760 |
+| a_choice_argument |choice_1 |
+| a_bool_argument |true |
+ 
+## 8 - test argument ranges--5
+ 
+This test was expected to generate an error and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| a_string_argument |MyString |
+| a_double_argument |101.0 |
+| a_string_double_argument |50.0 |
+| a_choice_argument |choice_1 |
+| a_bool_argument |true |
+ 
+## 9 - test argument ranges--6
+ 
+This test was expected to generate an error and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| a_string_argument |MyString |
+| a_double_argument |-1.0 |
+| a_string_double_argument |50.0 |
+| a_choice_argument |choice_1 |
+| a_bool_argument |true |
+ 
+## 10 - test argument ranges--7
+ 
+This test was expected to generate an error and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| a_string_argument |MyString |
+| a_double_argument |50.0 |
+| a_string_double_argument |101.0 |
+| a_choice_argument |choice_1 |
+| a_bool_argument |true |
+ 
+## 11 - test argument ranges--8
+ 
+This test was expected to generate an error and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| a_string_argument |MyString |
+| a_double_argument |50.0 |
+| a_string_double_argument |101.0 |
+| a_choice_argument |choice_1 |
+| a_bool_argument |true |
+ 
+## 12 - test argument ranges--9
+ 
+This test was expected to generate an error and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| a_string_argument |MyString |
+| a_double_argument |101.0 |
+| a_string_double_argument |50.0 |
+| a_choice_argument |choice_1 |
+| a_bool_argument |true |
+ 
+## 13 - test argument ranges--10
+ 
+This test was expected to generate an error and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| a_string_argument |MyString |
+| a_double_argument |-1.0 |
+| a_string_double_argument |50.0 |
+| a_choice_argument |choice_1 |
+| a_bool_argument |true |
+ 
+## 14 - test argument ranges--11
+ 
+This test was expected to generate an error and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| a_string_argument |MyString |
+| a_double_argument |50.0 |
+| a_string_double_argument |101.0 |
+| a_choice_argument |choice_1 |
+| a_bool_argument |true |
+ 
+## 15 - test argument ranges--12
+ 
+This test was expected to generate an error and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| a_string_argument |MyString |
+| a_double_argument |50.0 |
+| a_string_double_argument |101.0 |
+| a_choice_argument |choice_1 |
+| a_bool_argument |true |
+ 
+## 16 - test argument ranges--13
+ 
+This test was expected to generate an error and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| a_string_argument |MyString |
+| a_double_argument |50.0 |
+| a_string_double_argument |87c84db5-f8e6-42a3-b505-8d09df5625f8 |
+| a_choice_argument |choice_1 |
+| a_bool_argument |true |
+ 
+## 17 - test argument ranges--14
+ 
+This test was expected to generate an error and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| a_string_argument |MyString |
+| a_double_argument |101.0 |
+| a_string_double_argument |50.0 |
+| a_choice_argument |choice_1 |
+| a_bool_argument |true |
+ 
+## 18 - test argument ranges--15
+ 
+This test was expected to generate an error and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| a_string_argument |MyString |
+| a_double_argument |-1.0 |
+| a_string_double_argument |50.0 |
+| a_choice_argument |choice_1 |
+| a_bool_argument |true |
+ 
+## 19 - test argument ranges--16
+ 
+This test was expected to generate an error and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| a_string_argument |MyString |
+| a_double_argument |50.0 |
+| a_string_double_argument |101.0 |
+| a_choice_argument |choice_1 |
+| a_bool_argument |true |
+ 
+## 20 - test argument ranges--17
+ 
+This test was expected to generate an error and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| a_string_argument |MyString |
+| a_double_argument |50.0 |
+| a_string_double_argument |101.0 |
+| a_choice_argument |choice_1 |
+| a_bool_argument |true |
+ 
+## 21 - test sample 2--1
  
 This test was expected to pass and it did.
  
@@ -36,220 +252,4 @@ This test was expected to pass and it did.
 | a_double_argument |10.0 |
 | a_string_double_argument |75.3 |
 | a_choice_argument |choice_1 |
- 
-## 4 - test argument ranges
- 
-This test was expected to generate an error and it did.
- 
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| a_string_argument |MyString |
-| a_double_argument |101.0 |
-| a_string_double_argument |50.0 |
-| a_choice_argument |choice_1 |
-| a_bool_argument |true |
- 
-## 5 - test argument ranges--1
- 
-This test was expected to generate an error and it did.
- 
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| a_string_argument |MyString |
-| a_double_argument |-1.0 |
-| a_string_double_argument |50.0 |
-| a_choice_argument |choice_1 |
-| a_bool_argument |true |
- 
-## 6 - test argument ranges--2
- 
-This test was expected to generate an error and it did.
- 
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| a_string_argument |MyString |
-| a_double_argument |50.0 |
-| a_string_double_argument |101.0 |
-| a_choice_argument |choice_1 |
-| a_bool_argument |true |
- 
-## 7 - test argument ranges--3
- 
-This test was expected to generate an error and it did.
- 
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| a_string_argument |MyString |
-| a_double_argument |50.0 |
-| a_string_double_argument |101.0 |
-| a_choice_argument |choice_1 |
-| a_bool_argument |true |
- 
-## 8 - test argument ranges--4
- 
-This test was expected to generate an error and it did.
- 
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| a_string_argument |MyString |
-| a_double_argument |50.0 |
-| a_string_double_argument |1e01598e-5331-4146-8e3a-e9b051e805e0 |
-| a_choice_argument |choice_1 |
-| a_bool_argument |true |
- 
-## 9 - test argument ranges--5
- 
-This test was expected to generate an error and it did.
- 
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| a_string_argument |MyString |
-| a_double_argument |101.0 |
-| a_string_double_argument |50.0 |
-| a_choice_argument |choice_1 |
-| a_bool_argument |true |
- 
-## 10 - test argument ranges--6
- 
-This test was expected to generate an error and it did.
- 
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| a_string_argument |MyString |
-| a_double_argument |-1.0 |
-| a_string_double_argument |50.0 |
-| a_choice_argument |choice_1 |
-| a_bool_argument |true |
- 
-## 11 - test argument ranges--7
- 
-This test was expected to generate an error and it did.
- 
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| a_string_argument |MyString |
-| a_double_argument |50.0 |
-| a_string_double_argument |101.0 |
-| a_choice_argument |choice_1 |
-| a_bool_argument |true |
- 
-## 12 - test argument ranges--8
- 
-This test was expected to generate an error and it did.
- 
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| a_string_argument |MyString |
-| a_double_argument |50.0 |
-| a_string_double_argument |101.0 |
-| a_choice_argument |choice_1 |
-| a_bool_argument |true |
- 
-## 13 - test argument ranges--9
- 
-This test was expected to generate an error and it did.
- 
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| a_string_argument |MyString |
-| a_double_argument |101.0 |
-| a_string_double_argument |50.0 |
-| a_choice_argument |choice_1 |
-| a_bool_argument |true |
- 
-## 14 - test argument ranges--10
- 
-This test was expected to generate an error and it did.
- 
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| a_string_argument |MyString |
-| a_double_argument |-1.0 |
-| a_string_double_argument |50.0 |
-| a_choice_argument |choice_1 |
-| a_bool_argument |true |
- 
-## 15 - test argument ranges--11
- 
-This test was expected to generate an error and it did.
- 
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| a_string_argument |MyString |
-| a_double_argument |50.0 |
-| a_string_double_argument |101.0 |
-| a_choice_argument |choice_1 |
-| a_bool_argument |true |
- 
-## 16 - test argument ranges--12
- 
-This test was expected to generate an error and it did.
- 
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| a_string_argument |MyString |
-| a_double_argument |50.0 |
-| a_string_double_argument |101.0 |
-| a_choice_argument |choice_1 |
-| a_bool_argument |true |
- 
-## 17 - test argument ranges--13
- 
-This test was expected to generate an error and it did.
- 
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| a_string_argument |MyString |
-| a_double_argument |50.0 |
-| a_string_double_argument |8b03119a-419b-4100-acc5-56c747c7c798 |
-| a_choice_argument |choice_1 |
-| a_bool_argument |true |
- 
-## 18 - test argument ranges--14
- 
-This test was expected to generate an error and it did.
- 
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| a_string_argument |MyString |
-| a_double_argument |101.0 |
-| a_string_double_argument |50.0 |
-| a_choice_argument |choice_1 |
-| a_bool_argument |true |
- 
-## 19 - test argument ranges--15
- 
-This test was expected to generate an error and it did.
- 
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| a_string_argument |MyString |
-| a_double_argument |-1.0 |
-| a_string_double_argument |50.0 |
-| a_choice_argument |choice_1 |
-| a_bool_argument |true |
- 
-## 20 - test argument ranges--16
- 
-This test was expected to generate an error and it did.
- 
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| a_string_argument |MyString |
-| a_double_argument |50.0 |
-| a_string_double_argument |101.0 |
-| a_choice_argument |choice_1 |
-| a_bool_argument |true |
- 
-## 21 - test argument ranges--17
- 
-This test was expected to generate an error and it did.
- 
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| a_string_argument |MyString |
-| a_double_argument |50.0 |
-| a_string_double_argument |101.0 |
-| a_choice_argument |choice_1 |
-| a_bool_argument |true |
  

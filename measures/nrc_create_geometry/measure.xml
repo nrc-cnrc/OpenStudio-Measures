@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_create_geometry</name>
   <uid>d21e6b27-1826-4c33-9cdc-abc1154ff2f5</uid>
-  <version_id>eb93151a-3335-423d-a5ab-64e94868c1e5</version_id>
-  <version_modified>20230120T215858Z</version_modified>
+  <version_id>6ec939ec-65ce-40dd-a96f-430214de6a00</version_id>
+  <version_modified>20230126T143948Z</version_modified>
   <xml_checksum>2609226D</xml_checksum>
   <class_name>NrcCreateGeometry</class_name>
   <display_name>NrcCreateGeometry</display_name>
@@ -439,18 +439,6 @@
       <checksum>AE38D9B8</checksum>
     </file>
     <file>
-      <filename>NRCMeasureHelper.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>EF2FCBFD</checksum>
-    </file>
-    <file>
-      <filename>test_2015.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>test</usage_type>
-      <checksum>DF409DEC</checksum>
-    </file>
-    <file>
       <filename>README.md</filename>
       <filetype>md</filetype>
       <usage_type>readme</usage_type>
@@ -474,22 +462,34 @@
       <checksum>9B85B5E3</checksum>
     </file>
     <file>
-      <filename>test_2017.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>test</usage_type>
-      <checksum>2F357AF6</checksum>
-    </file>
-    <file>
       <filename>test_2011.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
       <checksum>5994CBD3</checksum>
     </file>
     <file>
+      <filename>NRCMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>62F545DA</checksum>
+    </file>
+    <file>
+      <filename>test_2015.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>D17A61F3</checksum>
+    </file>
+    <file>
+      <filename>test_2017.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>B52DBB7A</checksum>
+    </file>
+    <file>
       <filename>test_2020.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
-      <checksum>69D5D8AA</checksum>
+      <checksum>40517747</checksum>
     </file>
   </files>
 </measure>
