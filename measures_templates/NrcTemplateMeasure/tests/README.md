@@ -4,7 +4,7 @@ The following describe the parameter tests that are conducted on the measure. No
 tests are designed to return a fail and some a success. The report below contains all the tests that 
 have the correct response. For example the argument range limit tests are expected to fail. 
  
-## 1 - Test Model Creation A
+## 1 - Test Model Creation C--1
  
 This test was expected to pass and it did.
  
@@ -15,7 +15,7 @@ This test was expected to pass and it did.
 | a_string_double_argument |75.3 |
 | a_choice_argument |choice_1 |
  
-## 2 - Test Model Creation C--1
+## 2 - Test Model Creation A
  
 This test was expected to pass and it did.
  
@@ -82,7 +82,7 @@ This test was expected to generate an error and it did.
 | ------------- | ---------- |
 | a_string_argument |MyString |
 | a_double_argument |50.0 |
-| a_string_double_argument |532577ef-dc1e-4bac-afcb-9915dd78f760 |
+| a_string_double_argument |d7e29a9a-a956-4a15-b5a6-ccb942982a21 |
 | a_choice_argument |choice_1 |
 | a_bool_argument |true |
  
@@ -190,7 +190,7 @@ This test was expected to generate an error and it did.
 | ------------- | ---------- |
 | a_string_argument |MyString |
 | a_double_argument |50.0 |
-| a_string_double_argument |87c84db5-f8e6-42a3-b505-8d09df5625f8 |
+| a_string_double_argument |6a1fe299-9f23-4bfe-be47-e29a3344b6db |
 | a_choice_argument |choice_1 |
 | a_bool_argument |true |
  

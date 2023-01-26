@@ -4,7 +4,7 @@ The following describe the parameter tests that are conducted on the measure. No
 tests are designed to return a fail and some a success. The report below contains all the tests that 
 have the correct response. For example the argument range limit tests are expected to fail. 
  
-## 1 - OutputTestFolder zone4--1
+## 1 - OutputTestFolder zone5--1
  
 This test was expected to pass and it did.
  
@@ -18,7 +18,7 @@ This test was expected to pass and it did.
 | zone7B_u_value |0.117 |
 | zone8_u_value |0.11 |
  
-## 2 - OutputTestFolder zone7a--1
+## 2 - OutputTestFolder zone8--1
  
 This test was expected to pass and it did.
  
@@ -32,7 +32,7 @@ This test was expected to pass and it did.
 | zone7B_u_value |0.117 |
 | zone8_u_value |0.11 |
  
-## 3 - OutputTestFolder zone7b--1
+## 3 - OutputTestFolder zone4--1
  
 This test was expected to pass and it did.
  
@@ -46,7 +46,7 @@ This test was expected to pass and it did.
 | zone7B_u_value |0.117 |
 | zone8_u_value |0.11 |
  
-## 4 - OutputTestFolder zone5--1
+## 4 - OutputTestFolder zone6--1
  
 This test was expected to pass and it did.
  
@@ -60,7 +60,7 @@ This test was expected to pass and it did.
 | zone7B_u_value |0.117 |
 | zone8_u_value |0.11 |
  
-## 5 - OutputTestFolder zone8--1
+## 5 - OutputTestFolder zone7a--1
  
 This test was expected to pass and it did.
  
@@ -746,7 +746,7 @@ This test was expected to generate an error and it did.
 | zone7B_u_value |0.117 |
 | zone8_u_value |-1.0 |
  
-## 54 - OutputTestFolder zone6--1
+## 54 - OutputTestFolder zone7b--1
  
 This test was expected to pass and it did.
  

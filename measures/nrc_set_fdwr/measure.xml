@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_set_fdwr</name>
   <uid>5b955a02-309e-406a-93d7-ff4ce5540e08</uid>
-  <version_id>f64572ed-9f91-4885-b049-31eec13fc0dc</version_id>
-  <version_modified>20230126T143957Z</version_modified>
+  <version_id>3247d2a2-8893-408e-875e-24a6c9a6932a</version_id>
+  <version_modified>20230126T165658Z</version_modified>
   <xml_checksum>FC9586A7</xml_checksum>
   <class_name>NrcSetFdwr</class_name>
   <display_name>Set FDWR</display_name>
@@ -99,12 +99,6 @@
       <checksum>AE38D9B8</checksum>
     </file>
     <file>
-      <filename>test.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>test</usage_type>
-      <checksum>0B0E50B3</checksum>
-    </file>
-    <file>
       <filename>NRCMeasureHelper.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
@@ -126,6 +120,12 @@
       <filetype>md</filetype>
       <usage_type>readme</usage_type>
       <checksum>AEF893A5</checksum>
+    </file>
+    <file>
+      <filename>test.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>CC3A2013</checksum>
     </file>
   </files>
 </measure>

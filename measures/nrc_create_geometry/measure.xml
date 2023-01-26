@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_create_geometry</name>
   <uid>d21e6b27-1826-4c33-9cdc-abc1154ff2f5</uid>
-  <version_id>6ec939ec-65ce-40dd-a96f-430214de6a00</version_id>
-  <version_modified>20230126T143948Z</version_modified>
+  <version_id>c9bc7cba-94dd-4d92-a5bb-199617185bcd</version_id>
+  <version_modified>20230126T165644Z</version_modified>
   <xml_checksum>2609226D</xml_checksum>
   <class_name>NrcCreateGeometry</class_name>
   <display_name>NrcCreateGeometry</display_name>
@@ -480,16 +480,16 @@
       <checksum>D17A61F3</checksum>
     </file>
     <file>
-      <filename>test_2017.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>test</usage_type>
-      <checksum>B52DBB7A</checksum>
-    </file>
-    <file>
       <filename>test_2020.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
       <checksum>40517747</checksum>
+    </file>
+    <file>
+      <filename>test_2017.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>B7B3A953</checksum>
     </file>
   </files>
 </measure>

@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_create_necb_prototype_building</name>
   <uid>3e9acd53-8602-4749-a655-7cbbe48e8b30</uid>
-  <version_id>2b1da447-2098-4275-b319-8912296c4c1c</version_id>
-  <version_modified>20230126T143948Z</version_modified>
+  <version_id>65fd519a-9d58-4870-884a-efbc4ace5378</version_id>
+  <version_modified>20230126T165654Z</version_modified>
   <xml_checksum>2C38F48B</xml_checksum>
   <class_name>NrcCreateNECBPrototypeBuilding</class_name>
   <display_name>NrcCreateNECBPrototypeBuilding</display_name>
@@ -344,40 +344,10 @@
       <checksum>AE38D9B8</checksum>
     </file>
     <file>
-      <filename>NRCMeasureHelper.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>C4FF2319</checksum>
-    </file>
-    <file>
       <filename>README.md</filename>
       <filetype>md</filetype>
       <usage_type>readme</usage_type>
       <checksum>8270864D</checksum>
-    </file>
-    <file>
-      <filename>test_2015.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>test</usage_type>
-      <checksum>890361DB</checksum>
-    </file>
-    <file>
-      <filename>test_2020.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>test</usage_type>
-      <checksum>036993F0</checksum>
-    </file>
-    <file>
-      <filename>test_2017.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>test</usage_type>
-      <checksum>3E7ED7D1</checksum>
-    </file>
-    <file>
-      <filename>test_2011.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>test</usage_type>
-      <checksum>041818AD</checksum>
     </file>
     <file>
       <filename>common.rb</filename>
@@ -395,6 +365,36 @@
       <filetype>rb</filetype>
       <usage_type>script</usage_type>
       <checksum>55022CD9</checksum>
+    </file>
+    <file>
+      <filename>NRCMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>62F545DA</checksum>
+    </file>
+    <file>
+      <filename>test_2015.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>4A434ABA</checksum>
+    </file>
+    <file>
+      <filename>test_2020.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>15D43804</checksum>
+    </file>
+    <file>
+      <filename>test_2017.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>9371A5A6</checksum>
+    </file>
+    <file>
+      <filename>test_2011.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>E34D3CA5</checksum>
     </file>
   </files>
 </measure>

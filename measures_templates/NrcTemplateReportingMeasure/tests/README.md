@@ -74,7 +74,7 @@ This test was expected to generate an error and it did.
   "a_string_argument": "MyString",
   "a_double_argument": 50.0,
   "an_integer_argument": 5,
-  "a_string_double_argument": "4059dfa7-9259-4221-89b3-e3f76658f842",
+  "a_string_double_argument": "adff3978-ecc8-442c-b3b5-dfa5ed0e197c",
   "a_choice_argument": "choice_1",
   "a_bool_argument": true
 } |
@@ -200,7 +200,7 @@ This test was expected to generate an error and it did.
 | a_string_argument |MyString |
 | a_double_argument |50.0 |
 | an_integer_argument |5 |
-| a_string_double_argument |d0122fa0-9e95-4402-9330-ff9ade2b1a19 |
+| a_string_double_argument |5028e5fe-4d93-4613-a2b7-a7b2edc3c4ae |
 | a_choice_argument |choice_1 |
 | a_bool_argument |true |
  
