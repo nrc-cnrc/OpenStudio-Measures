@@ -22,19 +22,35 @@ end
 module NRCMeasureTestHelper
   include BTAPMeasureTestHelper
 
-  # Define the output path. Set defaults and remove any existing outputs. 
-  # Sometimes this can error due to timing between the test classes. Catch the error and try again after a short delay.
-  @output_root_path = File.expand_path("#{File.expand_path(__dir__)}/../tests/output")
-  begin
-    Dir.mkdir @output_root_path unless Dir.exists?(@output_root_path)
-  rescue
-    sleep(10)
-    Dir.mkdir @output_root_path unless Dir.exists?(@output_root_path)
-  ensure
-    sleep(10)
-    Dir.mkdir @output_root_path unless Dir.exists?(@output_root_path)
+  # Define the output path. Set defaults and remove any existing outputs.
+  # If the output root has been defined in the env variable then use that otherwise default to the
+  # measures test folder.
+  def self.setOutputFolder(measure_test_name)
+    output_folder=ENV['OS_MEASURES_TEST_DIR']
+    puts "Output folder: #{output_folder}".pink
+    if output_folder != ""
+      if Dir.exist?("/#{output_folder}")
+        @output_root_path = File.expand_path("/#{output_folder}/output/#{measure_test_name}")
+      else
+        @output_root_path = File.expand_path("#{File.expand_path(__dir__)}/../tests/output")
+      end
+    else
+      @output_root_path = File.expand_path("#{File.expand_path(__dir__)}/../tests/output")
+    end
+
+    # Make the folder. Try again if there is a failure (likely from an operating system collision).
+    begin
+      FileUtils.mkdir_p @output_root_path unless Dir.exists?(@output_root_path)
+    rescue
+      sleep(10)
+      FileUtils.mkdir_p @output_root_path unless Dir.exists?(@output_root_path)
+    ensure
+      sleep(10)
+      FileUtils.mkdir_p @output_root_path unless Dir.exists?(@output_root_path)
+    end
+    @output_path = @output_root_path
+    puts "Test output folder: #{@output_path}".green
   end
-  @output_path = @output_root_path
 
   # Remove the existing test results. Need to control when this is done as multiple test scripts could be
   #  accessing the same path.

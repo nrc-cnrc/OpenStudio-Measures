@@ -24,9 +24,34 @@ module NRCReportingMeasureTestHelper
   include BTAPMeasureTestHelper
 
   # Define the output path. Set defaults and remove any existing outputs.
-  @output_root_path = File.expand_path("#{File.expand_path(__dir__)}/../tests/output")
-  Dir.mkdir @output_root_path unless Dir.exists?(@output_root_path)
-  @output_path = @output_root_path
+  # If the output root has been defined in the env variable then use that otherwise default to the
+  # measures test folder.
+  def self.setOutputFolder(measure_test_name)
+    output_folder=ENV['OS_MEASURES_TEST_DIR']
+    puts "Output folder: #{output_folder}".pink
+    if output_folder != ""
+      if Dir.exist?("/#{output_folder}")
+        @output_root_path = File.expand_path("/#{output_folder}/output/#{measure_test_name}")
+      else
+        @output_root_path = File.expand_path("#{File.expand_path(__dir__)}/../tests/output")
+      end
+    else
+      @output_root_path = File.expand_path("#{File.expand_path(__dir__)}/../tests/output")
+    end
+
+    # Make the folder. Try again if there is a failure (likely from an operating system collision).
+    begin
+      FileUtils.mkdir_p @output_root_path unless Dir.exists?(@output_root_path)
+    rescue
+      sleep(10)
+      FileUtils.mkdir_p @output_root_path unless Dir.exists?(@output_root_path)
+    ensure
+      sleep(10)
+      FileUtils.mkdir_p @output_root_path unless Dir.exists?(@output_root_path)
+    end
+    @output_path = @output_root_path
+    puts "Test output folder: #{@output_path}".green
+  end
 
   # Remove the existing test results. Need to control when this is done as multiple test scripts could be
   #  accessing the same path.
@@ -35,7 +60,7 @@ module NRCReportingMeasureTestHelper
     existing_folders = Dir.entries(@output_path) - ['.', '..'] # Remove current folder above from list before deleting!
     existing_folders.each do |entry|
       folder_to_remove = File.expand_path("#{@output_path}/#{entry}")
-      if (Dir.exist?(folder_to_remove)) # Double check it exists (incase another process has removed it as is the case with multiple test files).
+	  if (Dir.exist?(folder_to_remove)) # Double check it exists (incase another process has removed it as is the case with multiple test files).
         puts "Checking existing output folder: #{before}; #{File.mtime(folder_to_remove)}; #{folder_to_remove}".green
         if File.mtime(folder_to_remove) < before
           puts "Removing folder: #{folder_to_remove}".yellow
@@ -46,7 +71,7 @@ module NRCReportingMeasureTestHelper
       end
     end
   end
-
+  
   #
   # Define methods to manage output folders.
   def self.resetOutputFolder
@@ -56,7 +81,7 @@ module NRCReportingMeasureTestHelper
   def self.appendOutputFolder(folder)
     # Append name and validate if specified by the user
     path = @output_path + "/" + folder
-    validateOutputFolder(path)
+  validateOutputFolder(path)
   end
 
   def self.validateOutputFolder(path)
@@ -64,16 +89,18 @@ module NRCReportingMeasureTestHelper
     # Also check if it exists.
     # By default use the test method name.
     path = File.expand_path(path)
-    if path == @output_root_path
+    if path == @output_root_path 
       # Append the calling method name and re-validate (need to jump back two methods)
       path = @output_root_path + "/" + caller_locations(1,2)[1].label.split.last
-      puts "Appending path to test output folder: #{path}"
+	  puts "Appending path to test output folder: #{path}"
+      sleep(10)
       validateOutputFolder(path)
     elsif File.exist?(path)
       # Create a numbered subfolder. First check if there is a numbered folder.
       path = path.split(/--/).first
       count = Dir.glob("#{path}*").count
       path = path + "--#{count}"
+      sleep(10)
       validateOutputFolder(path)
     else
       @output_path = path
@@ -90,27 +117,27 @@ module NRCReportingMeasureTestHelper
   @measure_path = File.expand_path("#{File.expand_path(__dir__)}/../tests")
   @test_summary_mdfile = @measure_path + "/" + "README.md"
   FileUtils.rm_rf(@test_summary_mdfile)
-
+  
   # Create initial file with title.
   @testSummaryTitleRequired = true
   def self.testSummaryTitleRequired
     return @testSummaryTitleRequired
   end
-
+  
   def self.setTestSummaryTitle(required)
     @testSummaryTitleRequired = required
   end
-
+  
   def self.testSummaryMDfile
     @test_summary_mdfile.to_s
   end
-
+  
   # Test count
   @testSummaryCount = 1
   def self.incrementTestSummaryCount
     @testSummaryCount += 1
   end
-
+  
   def self.testSummaryCount
     return @testSummaryCount
   end
@@ -118,7 +145,7 @@ module NRCReportingMeasureTestHelper
   #
   # Custom way to run a reporting measure in the test. Overwrites run_measure definition in BTAPMeasureTestHelper.
   def run_measure(input_arguments, model)
-
+  
     # Provide feedback as to what is being done to teh terminal.
     puts "Running measure".green
     puts "  with input arguments".green + " #{input_arguments}".light_blue
@@ -129,20 +156,20 @@ module NRCReportingMeasureTestHelper
     output_folder = NRCReportingMeasureTestHelper.outputFolder
     output_folder = NRCReportingMeasureTestHelper.validateOutputFolder(output_folder)
     FileUtils.mkdir_p(output_folder) unless Dir.exists?(output_folder)
-
+  
     # This will create a instance of the measure you wish to test. It does this based on the test class name.
     measure = get_measure_object()
     measure.use_json_package = @use_json_package
     measure.use_string_double = @use_string_double
-
+  
     # Return false if can't
     return false if false == measure
-
+  
     # Now get the arguments and create a runner
     arguments = measure.arguments()
     argument_map = OpenStudio::Measure.convertOSArgumentVectorToMap(arguments)
     runner = OpenStudio::Measure::OSRunner.new(OpenStudio::WorkflowJSON.new)
-
+  
     # Set the arguements in the argument map use json or real arguments.
     if @use_json_package
       argument = arguments[0].clone
@@ -160,6 +187,10 @@ module NRCReportingMeasureTestHelper
         argument_map[key] = argument
       end
     end
+  
+    # Get the e+ output requests, this will be done automatically by OS App and PAT
+    runner.setLastOpenStudioModel(model)
+    idf_output_requests = measure.energyPlusOutputRequests(runner, argument_map)
 
     # Mimic the process of running this measure in OS App or PAT.
     # Create a new folder to work in (if it does not exist)
@@ -180,11 +211,6 @@ module NRCReportingMeasureTestHelper
       FileUtils.rm(model_out_path)
     end
 
-    # Set up runner
-    runner.setLastOpenStudioModel(model)
-
-    # Get the e+ output requests, this will be done automatically by OS App and PAT
-    idf_output_requests = measure.energyPlusOutputRequests(runner, argument_map)
     # Convert output requests to OSM for testing, OS App and PAT will add these to the E+ Idf.
     workspace = OpenStudio::Workspace.new('Draft'.to_StrictnessLevel, 'EnergyPlus'.to_IddFileType)
     workspace.addObjects(idf_output_requests)
@@ -194,14 +220,14 @@ module NRCReportingMeasureTestHelper
     # Add requested outputs to model.
     model.addObjects(request_model.objects)
     model.save(model_out_path, true)
-
+    
     sql_path = "#{output_folder}/run/eplusout.sql"
     if ENV['OPENSTUDIO_TEST_NO_CACHE_SQLFILE']
       if File.exist?(sql_path)
         FileUtils.rm_f(sql_path)
       end
     end
-
+    
     osw_path = File.join(output_folder, 'in.osw')
     osw_path = File.absolute_path(osw_path.to_s)
 
@@ -215,12 +241,12 @@ module NRCReportingMeasureTestHelper
     cmd = "\"#{cli_path}\" run -w \"#{osw_path}\""
     puts "Running openstudio with command: ".green + "\n#{cmd}".light_blue
     OpenstudioStandards.run_command(cmd)
-
+  
     # Set up runner, this will happen automatically when measure is run in PAT or OpenStudio.
     runner.setLastOpenStudioModelPath(model_out_path)
     runner.setLastEpwFilePath(epw_path)
     runner.setLastEnergyPlusSqlFilePath(sql_path)
-
+  
     # Temporarily change directory to the run directory and run the measure.
     start_dir = Dir.pwd
     begin
@@ -230,7 +256,7 @@ module NRCReportingMeasureTestHelper
       Dir.chdir(start_dir)
     end
     result = runner.result.value.valueName
-
+  
     # Reset the output path to the root folder.
     NRCReportingMeasureTestHelper.resetOutputFolder
 
@@ -257,7 +283,7 @@ module NRCReportingMeasureTestHelper
       out_file.puts("have the correct response. For example the argument range limit tests are expected to fail. ")
       out_file.puts(" ")
     end
-
+  
     # Current test name.
     test_name = test_name.gsub("_", " ")
     out_file.puts("## #{NRCReportingMeasureTestHelper.testSummaryCount} - #{test_name}")
@@ -268,7 +294,7 @@ module NRCReportingMeasureTestHelper
       out_file.puts("This test was expected to generate an error and it did.")
     end
     out_file.puts(" ")
-
+  
     # Create a table describing the case tested. Table header first.
     out_file.puts("| Test Argument | Test Value |")
     out_file.puts("| ------------- | ---------- |")
@@ -279,7 +305,7 @@ module NRCReportingMeasureTestHelper
     end
     out_file.puts(" ")
     out_file.close
-
+  
     # Update logical and counters.
     NRCReportingMeasureTestHelper.setTestSummaryTitle(false)
     NRCReportingMeasureTestHelper.incrementTestSummaryCount
@@ -309,7 +335,7 @@ module NRCReportingMeasureTestHelper
 
   # Load a test model (code that is common in a lot of test scripts). Returns the model object.
   def load_test_osm(full_osm_model_path)
-
+  
     # Load the supplied osm.
     translator = OpenStudio::OSVersion::VersionTranslator.new
     path = OpenStudio::Path.new(full_osm_model_path)

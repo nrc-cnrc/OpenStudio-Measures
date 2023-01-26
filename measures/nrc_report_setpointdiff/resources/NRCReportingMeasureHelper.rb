@@ -24,9 +24,34 @@ module NRCReportingMeasureTestHelper
   include BTAPMeasureTestHelper
 
   # Define the output path. Set defaults and remove any existing outputs.
-  @output_root_path = File.expand_path("#{File.expand_path(__dir__)}/../tests/output")
-  Dir.mkdir @output_root_path unless Dir.exists?(@output_root_path) 
-  @output_path = @output_root_path
+  # If the output root has been defined in the env variable then use that otherwise default to the
+  # measures test folder.
+  def self.setOutputFolder(measure_test_name)
+    output_folder=ENV['OS_MEASURES_TEST_DIR']
+    puts "Output folder: #{output_folder}".pink
+    if output_folder != ""
+      if Dir.exist?("/#{output_folder}")
+        @output_root_path = File.expand_path("/#{output_folder}/output/#{measure_test_name}")
+      else
+        @output_root_path = File.expand_path("#{File.expand_path(__dir__)}/../tests/output")
+      end
+    else
+      @output_root_path = File.expand_path("#{File.expand_path(__dir__)}/../tests/output")
+    end
+
+    # Make the folder. Try again if there is a failure (likely from an operating system collision).
+    begin
+      FileUtils.mkdir_p @output_root_path unless Dir.exists?(@output_root_path)
+    rescue
+      sleep(10)
+      FileUtils.mkdir_p @output_root_path unless Dir.exists?(@output_root_path)
+    ensure
+      sleep(10)
+      FileUtils.mkdir_p @output_root_path unless Dir.exists?(@output_root_path)
+    end
+    @output_path = @output_root_path
+    puts "Test output folder: #{@output_path}".green
+  end
 
   # Remove the existing test results. Need to control when this is done as multiple test scripts could be
   #  accessing the same path.
@@ -68,12 +93,14 @@ module NRCReportingMeasureTestHelper
       # Append the calling method name and re-validate (need to jump back two methods)
       path = @output_root_path + "/" + caller_locations(1,2)[1].label.split.last
 	  puts "Appending path to test output folder: #{path}"
+      sleep(10)
       validateOutputFolder(path)
     elsif File.exist?(path)
       # Create a numbered subfolder. First check if there is a numbered folder.
       path = path.split(/--/).first
       count = Dir.glob("#{path}*").count
       path = path + "--#{count}"
+      sleep(10)
       validateOutputFolder(path)
     else
       @output_path = path
@@ -162,6 +189,7 @@ module NRCReportingMeasureTestHelper
     end
   
     # Get the e+ output requests, this will be done automatically by OS App and PAT
+    runner.setLastOpenStudioModel(model)
     idf_output_requests = measure.energyPlusOutputRequests(runner, argument_map)
 
     # Mimic the process of running this measure in OS App or PAT.
