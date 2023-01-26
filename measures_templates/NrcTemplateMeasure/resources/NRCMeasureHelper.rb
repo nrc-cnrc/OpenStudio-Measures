@@ -22,9 +22,18 @@ end
 module NRCMeasureTestHelper
   include BTAPMeasureTestHelper
 
-  # Define the output path. Set defaults and remove any existing outputs.
+  # Define the output path. Set defaults and remove any existing outputs. 
+  # Sometimes this can error due to timing between the test classes. Catch the error and try again after a short delay.
   @output_root_path = File.expand_path("#{File.expand_path(__dir__)}/../tests/output")
-  Dir.mkdir @output_root_path unless Dir.exists?(@output_root_path)
+  begin
+    Dir.mkdir @output_root_path unless Dir.exists?(@output_root_path)
+  rescue
+    sleep(10)
+    Dir.mkdir @output_root_path unless Dir.exists?(@output_root_path)
+  ensure
+    sleep(10)
+    Dir.mkdir @output_root_path unless Dir.exists?(@output_root_path)
+  end
   @output_path = @output_root_path
 
   # Remove the existing test results. Need to control when this is done as multiple test scripts could be
@@ -67,12 +76,14 @@ module NRCMeasureTestHelper
       # Append the calling method name and re-validate (need to jump back two methods)
       path = @output_root_path + "/" + caller_locations(1, 2)[1].label.split.last
 	  puts "Appending path to test output folder: #{path}"
+      sleep(10)
       validateOutputFolder(path)
     elsif File.exist?(path)
       # Create a numbered subfolder. First check if there is a numbered folder.
       path = path.split(/--/).first
       count = Dir.glob("#{path}*").count
       path = path + "--#{count}"
+      sleep(10)
       validateOutputFolder(path)
     else
       @output_path = path

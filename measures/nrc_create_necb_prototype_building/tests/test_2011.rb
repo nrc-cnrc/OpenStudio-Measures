@@ -7,8 +7,11 @@ class NrcCreateNECBPrototypeBuilding_Test
   remove_old_test_results
 
   def test_2011()
-    #NRCMeasureTestHelper.removeOldOutputs
+
+    # Set the version of NECB to use in this test.
     template = "NECB2011"
+    puts "Testing  model creation for #{template}".blue
+
     building_types = ['Warehouse',
                       'PrimarySchool',
                       'SecondarySchool',

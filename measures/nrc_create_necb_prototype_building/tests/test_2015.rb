@@ -8,10 +8,10 @@ class NrcCreateNECBPrototypeBuilding_Test
 
   def test_2015()
 
-    # Delay the start of this test so that the 2011 case can initialise the output folder.
-    sleep(20)
-
+    # Set the version of NECB to use in this test
     template = "NECB2015"
+    puts "Testing  model creation for #{template}".blue
+
     building_types = ['Warehouse',
                       'LargeOffice',
                       'RetailStripmall',

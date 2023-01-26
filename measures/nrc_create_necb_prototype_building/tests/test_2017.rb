@@ -8,7 +8,10 @@ class NrcCreateNECBPrototypeBuilding_Test
 
   def test_2017()
 
+    # Set the version of NECB to use in this test
     template = "NECB2017"
+    puts "Testing  model creation for #{template}".blue
+
     weather_file_types = ["TDY"]
     locations = ["Corner.Brook", "Halifax", "Moncton-Greater"]
     building_types = ['Warehouse',

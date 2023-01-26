@@ -13,7 +13,7 @@ class NrcCreateGeometry_Test
     puts "Testing  model creation for #{template}".blue
 
     # Options. Limit to 16 cases to keep run time down.
-    building_types = ["PrimarySchool", "MediumOffice", "LargeOffice"]
+    building_types = ["PrimarySchool", "MediumOffice"]
     locations = ['Toronto.Pearson', 'Halifax', 'Vancouver']
     building_shapes = ["U-Shape"]
     total_floor_area = [20000.0, 10000.0]
