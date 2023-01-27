@@ -15,9 +15,23 @@ require 'fileutils'
 module TestCommon
 
   class NrcReportSeveralOutputVariables_Test < Minitest::Test
-    include(NRCReportingMeasureTestHelper)
 
-    def setup()
+  # Brings in helper methods to simplify argument testing of json and standard argument methods
+  # and set standard output folder.
+  include(NRCReportingMeasureTestHelper)
+  NRCReportingMeasureTestHelper.setOutputFolder("#{self.name}")
+
+  # Check to see if an overall start time was passed (it should be if using one of the test scripts in the test folder). 
+  #  If so then use it to determine what old results are (if not use now).
+  if ENV['OS_MEASURES_TEST_TIME'] != ""
+    start_time=Time.at(ENV['OS_MEASURES_TEST_TIME'].to_i)
+  else
+    start_time=Time.now
+  end
+  NRCReportingMeasureTestHelper.removeOldOutputs(before: start_time)
+
+
+  def setup()
       @use_json_package = false
       @use_string_double = true
       @measure_interface_detailed = [
