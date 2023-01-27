@@ -57,6 +57,7 @@ module NRCReportingMeasureTestHelper
   #  accessing the same path.
   # Must call this in the test script.
   def self.removeOldOutputs(before: Time.now)
+    puts "#{Dir.entries(@output_path)}".red
     existing_folders = Dir.entries(@output_path) - ['.', '..'] # Remove current folder above from list before deleting!
     existing_folders.each do |entry|
       folder_to_remove = File.expand_path("#{@output_path}/#{entry}")
@@ -146,7 +147,7 @@ module NRCReportingMeasureTestHelper
   # Custom way to run a reporting measure in the test. Overwrites run_measure definition in BTAPMeasureTestHelper.
   def run_measure(input_arguments, model)
   
-    # Provide feedback as to what is being done to teh terminal.
+    # Provide feedback as to what is being done to the terminal.
     puts "Running measure".green
     puts "  with input arguments".green + " #{input_arguments}".light_blue
     puts "  on model with".green + " #{model.modelObjects.count}".light_blue + " objects".green
