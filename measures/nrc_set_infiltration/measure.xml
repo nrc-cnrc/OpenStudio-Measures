@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_set_infiltration</name>
   <uid>68ad385a-22cd-4c01-a4a4-11c2c30026fb</uid>
-  <version_id>76e82715-ec42-44a7-9575-683629df1668</version_id>
-  <version_modified>20230126T165659Z</version_modified>
+  <version_id>1fabaed7-eb1e-45e1-bb74-81e73a608ac0</version_id>
+  <version_modified>20230127T151540Z</version_modified>
   <xml_checksum>2AF3A68E</xml_checksum>
   <class_name>NrcSetInfiltration</class_name>
   <display_name>Set Infiltration Rate</display_name>
@@ -136,13 +136,13 @@
       <filename>NRCMeasureHelper.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>EF2FCBFD</checksum>
+      <checksum>89894A9B</checksum>
     </file>
     <file>
       <filename>test.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
-      <checksum>CC0AFB97</checksum>
+      <checksum>E62248FE</checksum>
     </file>
   </files>
 </measure>

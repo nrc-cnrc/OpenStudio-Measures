@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_drain_water_heat_recovery</name>
   <uid>7d8dcf98-5a54-4d84-97f8-02488fd9faaf</uid>
-  <version_id>4e6b000f-fb42-488d-a0a0-5435e8eee03e</version_id>
-  <version_modified>20220325T195640Z</version_modified>
+  <version_id>11208b02-ba1a-4020-9209-afefdf8b09a3</version_id>
+  <version_modified>20230127T151505Z</version_modified>
   <xml_checksum>15CB40A3</xml_checksum>
   <class_name>NrcDrainWaterHeatRecovery</class_name>
   <display_name>Drain Water Heat Recovery</display_name>
@@ -71,22 +71,22 @@
       <checksum>50BE7F0F</checksum>
     </file>
     <file>
-      <filename>test.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>test</usage_type>
-      <checksum>CD6E1200</checksum>
-    </file>
-    <file>
       <filename>BTAPMeasureHelper.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
       <checksum>AE38D9B8</checksum>
     </file>
     <file>
+      <filename>test.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>84D2D0F8</checksum>
+    </file>
+    <file>
       <filename>NRCMeasureHelper.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>EF2FCBFD</checksum>
+      <checksum>89894A9B</checksum>
     </file>
   </files>
 </measure>

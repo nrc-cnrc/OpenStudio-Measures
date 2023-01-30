@@ -12,7 +12,7 @@ This test was expected to generate an error and it did.
 | ------------- | ---------- |
 | boiler_eff |2.0 |
  
-## 2 - test argument ranges--1
+## 2 - test argument ranges--2
  
 This test was expected to generate an error and it did.
  
@@ -20,7 +20,7 @@ This test was expected to generate an error and it did.
 | ------------- | ---------- |
 | boiler_eff |-1.0 |
  
-## 3 - test argument ranges--2
+## 3 - test argument ranges--3
  
 This test was expected to generate an error and it did.
  
@@ -28,7 +28,7 @@ This test was expected to generate an error and it did.
 | ------------- | ---------- |
 | boiler_eff |2.0 |
  
-## 4 - test argument ranges--3
+## 4 - test argument ranges--4
  
 This test was expected to generate an error and it did.
  
@@ -36,7 +36,7 @@ This test was expected to generate an error and it did.
 | ------------- | ---------- |
 | boiler_eff |-1.0 |
  
-## 5 - test argument ranges--4
+## 5 - test argument ranges--5
  
 This test was expected to generate an error and it did.
  
@@ -44,35 +44,11 @@ This test was expected to generate an error and it did.
 | ------------- | ---------- |
 | boiler_eff |2.0 |
  
-## 6 - test argument ranges--5
+## 6 - test argument ranges--6
  
 This test was expected to generate an error and it did.
  
 | Test Argument | Test Value |
 | ------------- | ---------- |
 | boiler_eff |-1.0 |
- 
-## 7 - test argument ranges--6
- 
-This test was expected to generate an error and it did.
- 
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| boiler_eff |2.0 |
- 
-## 8 - test argument ranges--7
- 
-This test was expected to generate an error and it did.
- 
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| boiler_eff |-1.0 |
- 
-## 9 - Good Thermal Efficiency Test
- 
-This test was expected to pass and it did.
- 
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| boiler_eff |0.93 |
  

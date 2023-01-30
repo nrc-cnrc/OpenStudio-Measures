@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_set_boiler_efficiency</name>
   <uid>3cce913f-31d5-423b-b8ac-ddea73ffedad</uid>
-  <version_id>c17206ef-6913-4ec8-b845-dd21765ec7e5</version_id>
-  <version_modified>20230126T165658Z</version_modified>
+  <version_id>6333194c-1145-4e2c-a149-7e751d9af8d0</version_id>
+  <version_modified>20230127T151537Z</version_modified>
   <xml_checksum>2AF3A68E</xml_checksum>
   <class_name>NrcSetBoilerEfficiency</class_name>
   <display_name>Set Boiler Thermal Efficiency</display_name>
@@ -78,12 +78,6 @@
       <checksum>5BE79EDB</checksum>
     </file>
     <file>
-      <filename>test.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>test</usage_type>
-      <checksum>AF38573E</checksum>
-    </file>
-    <file>
       <filename>README.md</filename>
       <filetype>md</filetype>
       <usage_type>readme</usage_type>
@@ -96,10 +90,16 @@
       <checksum>AE38D9B8</checksum>
     </file>
     <file>
+      <filename>test.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>098A94E8</checksum>
+    </file>
+    <file>
       <filename>NRCMeasureHelper.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>EF2FCBFD</checksum>
+      <checksum>89894A9B</checksum>
     </file>
   </files>
 </measure>

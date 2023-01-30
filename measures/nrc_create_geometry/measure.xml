@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_create_geometry</name>
   <uid>d21e6b27-1826-4c33-9cdc-abc1154ff2f5</uid>
-  <version_id>c9bc7cba-94dd-4d92-a5bb-199617185bcd</version_id>
-  <version_modified>20230126T165644Z</version_modified>
+  <version_id>ec499f56-c85d-4320-ad6b-0e8eecde7ed1</version_id>
+  <version_modified>20230127T151513Z</version_modified>
   <xml_checksum>2609226D</xml_checksum>
   <class_name>NrcCreateGeometry</class_name>
   <display_name>NrcCreateGeometry</display_name>
@@ -456,22 +456,10 @@
       <checksum>D52EE3BB</checksum>
     </file>
     <file>
-      <filename>common.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>test</usage_type>
-      <checksum>9B85B5E3</checksum>
-    </file>
-    <file>
       <filename>test_2011.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
       <checksum>5994CBD3</checksum>
-    </file>
-    <file>
-      <filename>NRCMeasureHelper.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>62F545DA</checksum>
     </file>
     <file>
       <filename>test_2015.rb</filename>
@@ -490,6 +478,18 @@
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
       <checksum>B7B3A953</checksum>
+    </file>
+    <file>
+      <filename>common.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>D4C8C687</checksum>
+    </file>
+    <file>
+      <filename>NRCMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>89894A9B</checksum>
     </file>
   </files>
 </measure>

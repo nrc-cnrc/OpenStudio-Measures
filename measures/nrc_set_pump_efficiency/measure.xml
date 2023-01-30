@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_set_pump_efficiency</name>
   <uid>2ae95346-3038-4237-b90b-44028ca3e6d1</uid>
-  <version_id>e9335edb-304b-4aff-bf9b-617819169b00</version_id>
-  <version_modified>20230126T165700Z</version_modified>
+  <version_id>065f066c-8657-46f9-a909-f5ceb9ff9d7b</version_id>
+  <version_modified>20230127T151541Z</version_modified>
   <xml_checksum>2AF3A68E</xml_checksum>
   <class_name>NrcSetPumpEfficiency</class_name>
   <display_name>Set Pump Efficiency </display_name>
@@ -99,13 +99,13 @@
       <filename>NRCMeasureHelper.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>EF2FCBFD</checksum>
+      <checksum>89894A9B</checksum>
     </file>
     <file>
       <filename>test.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
-      <checksum>96DBA9FD</checksum>
+      <checksum>992F97A9</checksum>
     </file>
   </files>
 </measure>

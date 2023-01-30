@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_create_necb_prototype_building</name>
   <uid>3e9acd53-8602-4749-a655-7cbbe48e8b30</uid>
-  <version_id>65fd519a-9d58-4870-884a-efbc4ace5378</version_id>
-  <version_modified>20230126T165654Z</version_modified>
+  <version_id>ba88170a-2961-4996-93a0-cca402817cba</version_id>
+  <version_modified>20230127T151515Z</version_modified>
   <xml_checksum>2C38F48B</xml_checksum>
   <class_name>NrcCreateNECBPrototypeBuilding</class_name>
   <display_name>NrcCreateNECBPrototypeBuilding</display_name>
@@ -350,12 +350,6 @@
       <checksum>8270864D</checksum>
     </file>
     <file>
-      <filename>common.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>test</usage_type>
-      <checksum>959473D7</checksum>
-    </file>
-    <file>
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>2.4.1</identifier>
@@ -365,12 +359,6 @@
       <filetype>rb</filetype>
       <usage_type>script</usage_type>
       <checksum>55022CD9</checksum>
-    </file>
-    <file>
-      <filename>NRCMeasureHelper.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>62F545DA</checksum>
     </file>
     <file>
       <filename>test_2015.rb</filename>
@@ -395,6 +383,18 @@
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
       <checksum>E34D3CA5</checksum>
+    </file>
+    <file>
+      <filename>common.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>8DB1AD4D</checksum>
+    </file>
+    <file>
+      <filename>NRCMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>89894A9B</checksum>
     </file>
   </files>
 </measure>

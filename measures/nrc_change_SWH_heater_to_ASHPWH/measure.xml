@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_change_sw_hto_ashpwh</name>
   <uid>5262638c-2001-4f76-8f1d-3b2492078b35</uid>
-  <version_id>180792f9-d080-489e-9eff-6c2e8835b966</version_id>
-  <version_modified>20230126T165631Z</version_modified>
+  <version_id>fee9045c-93f8-4778-a1a3-eeba66b0dd52</version_id>
+  <version_modified>20230127T151509Z</version_modified>
   <xml_checksum>A05EBCA5</xml_checksum>
   <class_name>NrcChangeSWHtoASHPWH</class_name>
   <display_name>NRC Change SWH Heater to Heat Pump</display_name>
@@ -72,22 +72,22 @@
       <checksum>8E202AA4</checksum>
     </file>
     <file>
-      <filename>test.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>test</usage_type>
-      <checksum>BB2E2EDB</checksum>
-    </file>
-    <file>
       <filename>BTAPMeasureHelper.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
       <checksum>AE38D9B8</checksum>
     </file>
     <file>
+      <filename>test.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>9E530C68</checksum>
+    </file>
+    <file>
       <filename>NRCMeasureHelper.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>EF2FCBFD</checksum>
+      <checksum>89894A9B</checksum>
     </file>
   </files>
 </measure>

@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_create_from_existing_osm_file</name>
   <uid>9cd66007-71b8-4f28-b41f-d70c7844aaaa</uid>
-  <version_id>81aa4c73-6850-4d93-b37a-4dda580974e8</version_id>
-  <version_modified>20230126T165633Z</version_modified>
+  <version_id>1504c3b6-4475-4491-934d-1e2622666559</version_id>
+  <version_modified>20230127T151513Z</version_modified>
   <xml_checksum>FC9586A7</xml_checksum>
   <class_name>NrcCreateFromExistingOsmFile</class_name>
   <display_name>NRC Create From Existing Osm File</display_name>
@@ -110,24 +110,6 @@
       <checksum>F1C26127</checksum>
     </file>
     <file>
-      <filename>BTAPMeasureHelper.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>4F234BCA</checksum>
-    </file>
-    <file>
-      <filename>NRCMeasureHelper.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>A5221895</checksum>
-    </file>
-    <file>
-      <filename>test.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>test</usage_type>
-      <checksum>556FDFE4</checksum>
-    </file>
-    <file>
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>3.2.1</identifier>
@@ -143,6 +125,24 @@
       <filetype>md</filetype>
       <usage_type>readme</usage_type>
       <checksum>132E6972</checksum>
+    </file>
+    <file>
+      <filename>BTAPMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>AE38D9B8</checksum>
+    </file>
+    <file>
+      <filename>NRCMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>89894A9B</checksum>
+    </file>
+    <file>
+      <filename>test.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>D3913F2E</checksum>
     </file>
   </files>
 </measure>

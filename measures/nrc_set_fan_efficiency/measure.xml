@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_set_fan_efficiency</name>
   <uid>306a7623-dfbc-4faa-a855-7cfa9523935d</uid>
-  <version_id>a312adaf-e2eb-4886-9fb6-ce3f92bd432d</version_id>
-  <version_modified>20230126T165658Z</version_modified>
+  <version_id>8cfdee59-a3c9-42fc-83a6-6c43e2dbcd5c</version_id>
+  <version_modified>20230127T151537Z</version_modified>
   <xml_checksum>2AF3A68E</xml_checksum>
   <class_name>NrcSetFanEfficiency</class_name>
   <display_name>Set Fan Efficiency</display_name>
@@ -78,12 +78,6 @@
       <checksum>71642B5F</checksum>
     </file>
     <file>
-      <filename>NRCMeasureHelper.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>EF2FCBFD</checksum>
-    </file>
-    <file>
       <filename>README.md</filename>
       <filetype>md</filetype>
       <usage_type>readme</usage_type>
@@ -96,10 +90,16 @@
       <checksum>AE38D9B8</checksum>
     </file>
     <file>
+      <filename>NRCMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>89894A9B</checksum>
+    </file>
+    <file>
       <filename>test.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
-      <checksum>E01E24C9</checksum>
+      <checksum>ACCFAC70</checksum>
     </file>
   </files>
 </measure>
