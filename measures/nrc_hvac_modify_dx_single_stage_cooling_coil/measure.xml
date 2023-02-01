@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<measure>
+  <schema_version>3.0</schema_version>
+  <name>nrc_hvac_modify_dx_single_stage_cooling</name>
+  <uid>0f2c50cf-5491-483c-a6b3-c99eff40b57d</uid>
+  <version_id>d32fd84b-3114-471c-bf76-ec5238cd361b</version_id>
+  <version_modified>20230120T215916Z</version_modified>
+  <xml_checksum>8CBDDA1B</xml_checksum>
+  <class_name>NrcHvacModifyDxSingleStageCooling</class_name>
+  <display_name>Modify HVAC Air Loop DX cooling coil COP</display_name>
+  <description>This measure modifies the selected air loop DX cooling coil rated COP.</description>
+  <modeler_description>This measure modifies the selected air loop DX cooling coil rated COP.</modeler_description>
+  <arguments>
+    <argument>
+      <name>air_loop</name>
+      <display_name>Air loop to apply change to (currently all is only option)</display_name>
+      <type>String</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>All</default_value>
+    </argument>
+    <argument>
+      <name>cop</name>
+      <display_name>Rated COP (-)</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>3</default_value>
+    </argument>
+  </arguments>
+  <outputs />
+  <provenances />
+  <tags>
+    <tag>HVAC.Cooling</tag>
+  </tags>
+  <attributes>
+    <attribute>
+      <name>Measure Type</name>
+      <value>ModelMeasure</value>
+      <datatype>string</datatype>
+    </attribute>
+  </attributes>
+  <files>
+    <file>
+      <version>
+        <software_program>OpenStudio</software_program>
+        <identifier>3.1.0</identifier>
+        <min_compatible>3.1.0</min_compatible>
+      </version>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>script</usage_type>
+      <checksum>951304AE</checksum>
+    </file>
+    <file>
+      <filename>README.md.erb</filename>
+      <filetype>erb</filetype>
+      <usage_type>readmeerb</usage_type>
+      <checksum>A1A5426B</checksum>
+    </file>
+    <file>
+      <filename>README.md</filename>
+      <filetype>md</filetype>
+      <usage_type>readme</usage_type>
+      <checksum>BB363B05</checksum>
+    </file>
+    <file>
+      <filename>test.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>45F17AD3</checksum>
+    </file>
+    <file>
+      <filename>BTAPMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>AE38D9B8</checksum>
+    </file>
+    <file>
+      <filename>NRCMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>EF2FCBFD</checksum>
+    </file>
+  </files>
+</measure>
