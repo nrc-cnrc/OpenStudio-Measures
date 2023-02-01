@@ -1,0 +1,1422 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>NRC Reporting Measure</title>
+<link href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet">
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/d3/3.3.9/d3.min.js"></script>
+  <script type="text/javascript">
+      // BTAP data
+      var btap_data = {
+  "bc_step_code_meui_kwh_per_m_sq": 110.27083587646484,
+  "bc_step_code_tedi_kwh_per_m_sq": 33.74999816894531,
+  "bldg_conditioned_floor_area_m_sq": 400.0,
+  "bldg_exterior_area_m_sq": 729.3333333333313,
+  "bldg_fdwr": 40.0,
+  "bldg_name": "SmallOffice_Rectangular_NECB2017",
+  "bldg_nominal_floor_to_ceiling_height": null,
+  "bldg_nominal_floor_to_floor_height": null,
+  "bldg_srr": 2.0,
+  "bldg_standards_building_type": "SmallOffice",
+  "bldg_standards_number_of_above_ground_stories": 1,
+  "bldg_standards_number_of_living_units": null,
+  "bldg_standards_number_of_stories": 1,
+  "bldg_standards_template": "NECB2017",
+  "bldg_surface_to_volume_ratio": 0.4798245614035095,
+  "bldg_volume_m_cu": 1519.9999999999936,
+  "cooling_peak_w_per_m_sq": 20.5920751953125,
+  "cost_utility_ghg_electricity_kg_per_m_sq": 2.773609567683076,
+  "cost_utility_ghg_natural gas_kg_per_m_sq": 0.0,
+  "cost_utility_ghg_oil_kg_per_m_sq": 0.0,
+  "cost_utility_ghg_total_kg_per_m_sq": 2.773609567683076,
+  "cost_utility_neb_electricity_cost_per_m_sq": 27.69721,
+  "cost_utility_neb_natural gas_cost_per_m_sq": 0.0,
+  "cost_utility_neb_oil_cost_per_m_sq": 0.0,
+  "cost_utility_neb_total_cost_per_m_sq": 27.69721,
+  "energy_eui_additional_fuel_gj_per_m_sq": 0.0,
+  "energy_eui_cooling_gj_per_m_sq": 0.08012499999999999,
+  "energy_eui_district_cooling_gj_per_m_sq": 0.0,
+  "energy_eui_district_heating_gj_per_m_sq": 0.0,
+  "energy_eui_electricity_gj_per_m_sq": 0.9787250000000001,
+  "energy_eui_exterior lighting_gj_per_m_sq": 0.39197499999999996,
+  "energy_eui_fans_gj_per_m_sq": 0.15895,
+  "energy_eui_heating_gj_per_m_sq": 0.1215,
+  "energy_eui_interior equipment_gj_per_m_sq": 0.1,
+  "energy_eui_interior lighting_gj_per_m_sq": 0.089775,
+  "energy_eui_natural_gas_gj_per_m_sq": 0.0,
+  "energy_eui_pumps_gj_per_m_sq": 0.0,
+  "energy_eui_total_gj_per_m_sq": 0.9787250000000001,
+  "energy_eui_water systems_gj_per_m_sq": 0.0364,
+  "energy_peak_electric_w_per_m_sq": 86.8184,
+  "energy_peak_natural_gas_w_per_m_sq": 0.0,
+  "energy_principal_heating_source": "Electricity",
+  "env_fdwr": 40.0,
+  "env_ground_floors_average_conductance-w_per_m_sq_k": 0.757,
+  "env_ground_roofs_average_conductance-w_per_m_sq_k": null,
+  "env_ground_walls_average_conductance-w_per_m_sq_k": null,
+  "env_outdoor_doors_average_conductance-w_per_m_sq_k": null,
+  "env_outdoor_floors_average_conductance-w_per_m_sq_k": null,
+  "env_outdoor_overhead_doors_average_conductance-w_per_m_sq_k": null,
+  "env_outdoor_roofs_average_conductance-w_per_m_sq_k": 0.193,
+  "env_outdoor_walls_average_conductance-w_per_m_sq_k": 0.315,
+  "env_outdoor_windows_average_conductance-w_per_m_sq_k": 2.1,
+  "env_rotation": 0.0,
+  "env_skylights_average_conductance-w_per_m_sq_k": 2.1,
+  "env_srr": 2.0,
+  "env_x_scale": 1.0,
+  "env_y_scale": 1.0,
+  "env_z_scale": 1.0,
+  "envelope_exterior_surface_table": [
+    {
+      "name": "SURFACE 30_SKYLIGHT",
+      "construction": "BTAP-EXT-SKYLIGHTS:U=0.210 SHGC=0.600",
+      "glass_area_m2": 5.61,
+      "area_of_one_opening_m2": 5.61,
+      "area_of_multiplied_openings_m2": 5.61,
+      "glass_u-factor_W/m2-K": 2.101,
+      "glass_shgc": 0.601,
+      "glass_visible_transmittance": 0.211,
+      "shade_control": "No",
+      "parent_surface": "SURFACE 30",
+      "os_type": "Skylight",
+      "boundary_condition": "Outdoors",
+      "space_name": "Story 1 Core Space"
+    },
+    {
+      "name": "SURFACE 20_FIXEDWINDOW",
+      "construction": "BTAP-EXT-FIXEDWINDOW:U=0.210 SHGC=0.600",
+      "glass_area_m2": 45.6,
+      "area_of_one_opening_m2": 45.6,
+      "area_of_multiplied_openings_m2": 45.6,
+      "glass_u-factor_W/m2-K": 2.101,
+      "glass_shgc": 0.601,
+      "glass_visible_transmittance": 0.211,
+      "shade_control": "No",
+      "parent_surface": "SURFACE 20",
+      "azimuth_deg": 180.0,
+      "tilt_deg": 90.0,
+      "cardinal_direction": "S",
+      "os_type": "FixedWindow",
+      "boundary_condition": "Outdoors",
+      "space_name": "Story 1 South Perimeter Space"
+    },
+    {
+      "name": "SURFACE 24_SKYLIGHT",
+      "construction": "BTAP-EXT-SKYLIGHTS:U=0.210 SHGC=0.600",
+      "glass_area_m2": 0.84,
+      "area_of_one_opening_m2": 0.84,
+      "area_of_multiplied_openings_m2": 0.84,
+      "glass_u-factor_W/m2-K": 2.101,
+      "glass_shgc": 0.601,
+      "glass_visible_transmittance": 0.211,
+      "shade_control": "No",
+      "parent_surface": "SURFACE 24",
+      "azimuth_deg": 315.0,
+      "os_type": "Skylight",
+      "boundary_condition": "Outdoors",
+      "space_name": "Story 1 South Perimeter Space"
+    },
+    {
+      "name": "SURFACE 14_FIXEDWINDOW",
+      "construction": "BTAP-EXT-FIXEDWINDOW:U=0.210 SHGC=0.600",
+      "glass_area_m2": 20.27,
+      "area_of_one_opening_m2": 20.27,
+      "area_of_multiplied_openings_m2": 20.27,
+      "glass_u-factor_W/m2-K": 2.101,
+      "glass_shgc": 0.601,
+      "glass_visible_transmittance": 0.211,
+      "shade_control": "No",
+      "parent_surface": "SURFACE 14",
+      "azimuth_deg": 90.0,
+      "tilt_deg": 90.0,
+      "cardinal_direction": "E",
+      "os_type": "FixedWindow",
+      "boundary_condition": "Outdoors",
+      "space_name": "Story 1 East Perimeter Space"
+    },
+    {
+      "name": "SURFACE 18_SKYLIGHT_0",
+      "construction": "BTAP-EXT-SKYLIGHTS:U=0.210 SHGC=0.600",
+      "glass_area_m2": 0.02,
+      "area_of_one_opening_m2": 0.02,
+      "area_of_multiplied_openings_m2": 0.02,
+      "glass_u-factor_W/m2-K": 2.101,
+      "glass_shgc": 0.601,
+      "glass_visible_transmittance": 0.211,
+      "shade_control": "No",
+      "parent_surface": "SURFACE 18",
+      "azimuth_deg": 225.0,
+      "os_type": "Skylight",
+      "boundary_condition": "Outdoors",
+      "space_name": "Story 1 East Perimeter Space"
+    },
+    {
+      "name": "SURFACE 18_SKYLIGHT_1",
+      "construction": "BTAP-EXT-SKYLIGHTS:U=0.210 SHGC=0.600",
+      "glass_area_m2": 0.31,
+      "area_of_one_opening_m2": 0.31,
+      "area_of_multiplied_openings_m2": 0.31,
+      "glass_u-factor_W/m2-K": 2.101,
+      "glass_shgc": 0.601,
+      "glass_visible_transmittance": 0.211,
+      "shade_control": "No",
+      "parent_surface": "SURFACE 18",
+      "azimuth_deg": 270.0,
+      "os_type": "Skylight",
+      "boundary_condition": "Outdoors",
+      "space_name": "Story 1 East Perimeter Space"
+    },
+    {
+      "name": "SURFACE 18_SKYLIGHT_2",
+      "construction": "BTAP-EXT-SKYLIGHTS:U=0.210 SHGC=0.600",
+      "glass_area_m2": 0.02,
+      "area_of_one_opening_m2": 0.02,
+      "area_of_multiplied_openings_m2": 0.02,
+      "glass_u-factor_W/m2-K": 2.101,
+      "glass_shgc": 0.601,
+      "glass_visible_transmittance": 0.211,
+      "shade_control": "No",
+      "parent_surface": "SURFACE 18",
+      "azimuth_deg": 180.0,
+      "os_type": "Skylight",
+      "boundary_condition": "Outdoors",
+      "space_name": "Story 1 East Perimeter Space"
+    },
+    {
+      "name": "SURFACE 2_FIXEDWINDOW",
+      "construction": "BTAP-EXT-FIXEDWINDOW:U=0.210 SHGC=0.600",
+      "glass_area_m2": 20.27,
+      "area_of_one_opening_m2": 20.27,
+      "area_of_multiplied_openings_m2": 20.27,
+      "glass_u-factor_W/m2-K": 2.101,
+      "glass_shgc": 0.601,
+      "glass_visible_transmittance": 0.211,
+      "shade_control": "No",
+      "parent_surface": "SURFACE 2",
+      "azimuth_deg": 270.0,
+      "tilt_deg": 90.0,
+      "cardinal_direction": "W",
+      "os_type": "FixedWindow",
+      "boundary_condition": "Outdoors",
+      "space_name": "Story 1 West Perimeter Space"
+    },
+    {
+      "name": "SURFACE 6_SKYLIGHT_0",
+      "construction": "BTAP-EXT-SKYLIGHTS:U=0.210 SHGC=0.600",
+      "glass_area_m2": 0.31,
+      "area_of_one_opening_m2": 0.31,
+      "area_of_multiplied_openings_m2": 0.31,
+      "glass_u-factor_W/m2-K": 2.101,
+      "glass_shgc": 0.601,
+      "glass_visible_transmittance": 0.211,
+      "shade_control": "No",
+      "parent_surface": "SURFACE 6",
+      "azimuth_deg": 270.0,
+      "os_type": "Skylight",
+      "boundary_condition": "Outdoors",
+      "space_name": "Story 1 West Perimeter Space"
+    },
+    {
+      "name": "SURFACE 6_SKYLIGHT_1",
+      "construction": "BTAP-EXT-SKYLIGHTS:U=0.210 SHGC=0.600",
+      "glass_area_m2": 0.02,
+      "area_of_one_opening_m2": 0.02,
+      "area_of_multiplied_openings_m2": 0.02,
+      "glass_u-factor_W/m2-K": 2.101,
+      "glass_shgc": 0.601,
+      "glass_visible_transmittance": 0.211,
+      "shade_control": "No",
+      "parent_surface": "SURFACE 6",
+      "azimuth_deg": 180.0,
+      "os_type": "Skylight",
+      "boundary_condition": "Outdoors",
+      "space_name": "Story 1 West Perimeter Space"
+    },
+    {
+      "name": "SURFACE 6_SKYLIGHT_2",
+      "construction": "BTAP-EXT-SKYLIGHTS:U=0.210 SHGC=0.600",
+      "glass_area_m2": 0.02,
+      "area_of_one_opening_m2": 0.02,
+      "area_of_multiplied_openings_m2": 0.02,
+      "glass_u-factor_W/m2-K": 2.101,
+      "glass_shgc": 0.601,
+      "glass_visible_transmittance": 0.211,
+      "shade_control": "No",
+      "parent_surface": "SURFACE 6",
+      "azimuth_deg": 270.0,
+      "os_type": "Skylight",
+      "boundary_condition": "Outdoors",
+      "space_name": "Story 1 West Perimeter Space"
+    },
+    {
+      "name": "SURFACE 8_FIXEDWINDOW",
+      "construction": "BTAP-EXT-FIXEDWINDOW:U=0.210 SHGC=0.600",
+      "glass_area_m2": 45.6,
+      "area_of_one_opening_m2": 45.6,
+      "area_of_multiplied_openings_m2": 45.6,
+      "glass_u-factor_W/m2-K": 2.101,
+      "glass_shgc": 0.601,
+      "glass_visible_transmittance": 0.211,
+      "shade_control": "No",
+      "parent_surface": "SURFACE 8",
+      "tilt_deg": 90.0,
+      "cardinal_direction": "N",
+      "os_type": "FixedWindow",
+      "boundary_condition": "Outdoors",
+      "space_name": "Story 1 North Perimeter Space"
+    },
+    {
+      "name": "SURFACE 12_SKYLIGHT",
+      "construction": "BTAP-EXT-SKYLIGHTS:U=0.210 SHGC=0.600",
+      "glass_area_m2": 0.84,
+      "area_of_one_opening_m2": 0.84,
+      "area_of_multiplied_openings_m2": 0.84,
+      "glass_u-factor_W/m2-K": 2.101,
+      "glass_shgc": 0.601,
+      "glass_visible_transmittance": 0.211,
+      "shade_control": "No",
+      "parent_surface": "SURFACE 12",
+      "azimuth_deg": 135.0,
+      "os_type": "Skylight",
+      "boundary_condition": "Outdoors",
+      "space_name": "Story 1 North Perimeter Space"
+    },
+    {
+      "name": "SURFACE 25",
+      "construction": "BTAP-GRND-FLOOR-MASS:U-0.757",
+      "reflectance": 0.3,
+      "u-factor_with_film_W/m2-K": 0.674,
+      "u-factor_no_film_W/m2-K": 0.757,
+      "gross_area_m2": 280.38,
+      "net_area_m2": 280.38,
+      "azimuth_deg": 180.0,
+      "tilt_deg": 180.0,
+      "os_type": "Floor",
+      "boundary_condition": "Ground",
+      "space_name": "Story 1 Core Space"
+    },
+    {
+      "name": "SURFACE 30",
+      "construction": "BTAP-EXT-ROOF-METAL:U-0.193",
+      "reflectance": 0.3,
+      "u-factor_with_film_W/m2-K": 0.188,
+      "u-factor_no_film_W/m2-K": 0.193,
+      "gross_area_m2": 280.38,
+      "net_area_m2": 274.78,
+      "os_type": "RoofCeiling",
+      "boundary_condition": "Outdoors",
+      "space_name": "Story 1 Core Space"
+    },
+    {
+      "name": "SURFACE 20",
+      "construction": "BTAP-EXT-WALL-MASS:U-0.315",
+      "reflectance": 0.3,
+      "u-factor_with_film_W/m2-K": 0.301,
+      "u-factor_no_film_W/m2-K": 0.315,
+      "gross_area_m2": 114.0,
+      "net_area_m2": 68.4,
+      "azimuth_deg": 180.0,
+      "tilt_deg": 90.0,
+      "cardinal_direction": "S",
+      "os_type": "Wall",
+      "boundary_condition": "Outdoors",
+      "space_name": "Story 1 South Perimeter Space"
+    },
+    {
+      "name": "SURFACE 19",
+      "construction": "BTAP-GRND-FLOOR-MASS:U-0.757",
+      "reflectance": 0.3,
+      "u-factor_with_film_W/m2-K": 0.674,
+      "u-factor_no_film_W/m2-K": 0.757,
+      "gross_area_m2": 42.25,
+      "net_area_m2": 42.25,
+      "azimuth_deg": 135.0,
+      "tilt_deg": 180.0,
+      "os_type": "Floor",
+      "boundary_condition": "Ground",
+      "space_name": "Story 1 South Perimeter Space"
+    },
+    {
+      "name": "SURFACE 24",
+      "construction": "BTAP-EXT-ROOF-METAL:U-0.193",
+      "reflectance": 0.3,
+      "u-factor_with_film_W/m2-K": 0.188,
+      "u-factor_no_film_W/m2-K": 0.193,
+      "gross_area_m2": 42.25,
+      "net_area_m2": 41.4,
+      "azimuth_deg": 315.0,
+      "os_type": "RoofCeiling",
+      "boundary_condition": "Outdoors",
+      "space_name": "Story 1 South Perimeter Space"
+    },
+    {
+      "name": "SURFACE 14",
+      "construction": "BTAP-EXT-WALL-MASS:U-0.315",
+      "reflectance": 0.3,
+      "u-factor_with_film_W/m2-K": 0.301,
+      "u-factor_no_film_W/m2-K": 0.315,
+      "gross_area_m2": 50.67,
+      "net_area_m2": 30.4,
+      "azimuth_deg": 90.0,
+      "tilt_deg": 90.0,
+      "cardinal_direction": "E",
+      "os_type": "Wall",
+      "boundary_condition": "Outdoors",
+      "space_name": "Story 1 East Perimeter Space"
+    },
+    {
+      "name": "SURFACE 13",
+      "construction": "BTAP-GRND-FLOOR-MASS:U-0.757",
+      "reflectance": 0.3,
+      "u-factor_with_film_W/m2-K": 0.674,
+      "u-factor_no_film_W/m2-K": 0.757,
+      "gross_area_m2": 17.56,
+      "net_area_m2": 17.56,
+      "azimuth_deg": 45.0,
+      "tilt_deg": 180.0,
+      "os_type": "Floor",
+      "boundary_condition": "Ground",
+      "space_name": "Story 1 East Perimeter Space"
+    },
+    {
+      "name": "SURFACE 18",
+      "construction": "BTAP-EXT-ROOF-METAL:U-0.193",
+      "reflectance": 0.3,
+      "u-factor_with_film_W/m2-K": 0.188,
+      "u-factor_no_film_W/m2-K": 0.193,
+      "gross_area_m2": 17.56,
+      "net_area_m2": 17.21,
+      "azimuth_deg": 225.0,
+      "os_type": "RoofCeiling",
+      "boundary_condition": "Outdoors",
+      "space_name": "Story 1 East Perimeter Space"
+    },
+    {
+      "name": "SURFACE 2",
+      "construction": "BTAP-EXT-WALL-MASS:U-0.315",
+      "reflectance": 0.3,
+      "u-factor_with_film_W/m2-K": 0.301,
+      "u-factor_no_film_W/m2-K": 0.315,
+      "gross_area_m2": 50.67,
+      "net_area_m2": 30.4,
+      "azimuth_deg": 270.0,
+      "tilt_deg": 90.0,
+      "cardinal_direction": "W",
+      "os_type": "Wall",
+      "boundary_condition": "Outdoors",
+      "space_name": "Story 1 West Perimeter Space"
+    },
+    {
+      "name": "SURFACE 1",
+      "construction": "BTAP-GRND-FLOOR-MASS:U-0.757",
+      "reflectance": 0.3,
+      "u-factor_with_film_W/m2-K": 0.674,
+      "u-factor_no_film_W/m2-K": 0.757,
+      "gross_area_m2": 17.56,
+      "net_area_m2": 17.56,
+      "azimuth_deg": 225.0,
+      "tilt_deg": 180.0,
+      "os_type": "Floor",
+      "boundary_condition": "Ground",
+      "space_name": "Story 1 West Perimeter Space"
+    },
+    {
+      "name": "SURFACE 6",
+      "construction": "BTAP-EXT-ROOF-METAL:U-0.193",
+      "reflectance": 0.3,
+      "u-factor_with_film_W/m2-K": 0.188,
+      "u-factor_no_film_W/m2-K": 0.193,
+      "gross_area_m2": 17.56,
+      "net_area_m2": 17.21,
+      "azimuth_deg": 45.0,
+      "os_type": "RoofCeiling",
+      "boundary_condition": "Outdoors",
+      "space_name": "Story 1 West Perimeter Space"
+    },
+    {
+      "name": "SURFACE 8",
+      "construction": "BTAP-EXT-WALL-MASS:U-0.315",
+      "reflectance": 0.3,
+      "u-factor_with_film_W/m2-K": 0.301,
+      "u-factor_no_film_W/m2-K": 0.315,
+      "gross_area_m2": 114.0,
+      "net_area_m2": 68.4,
+      "tilt_deg": 90.0,
+      "cardinal_direction": "N",
+      "os_type": "Wall",
+      "boundary_condition": "Outdoors",
+      "space_name": "Story 1 North Perimeter Space"
+    },
+    {
+      "name": "SURFACE 7",
+      "construction": "BTAP-GRND-FLOOR-MASS:U-0.757",
+      "reflectance": 0.3,
+      "u-factor_with_film_W/m2-K": 0.674,
+      "u-factor_no_film_W/m2-K": 0.757,
+      "gross_area_m2": 42.25,
+      "net_area_m2": 42.25,
+      "azimuth_deg": 315.0,
+      "tilt_deg": 180.0,
+      "os_type": "Floor",
+      "boundary_condition": "Ground",
+      "space_name": "Story 1 North Perimeter Space"
+    },
+    {
+      "name": "SURFACE 12",
+      "construction": "BTAP-EXT-ROOF-METAL:U-0.193",
+      "reflectance": 0.3,
+      "u-factor_with_film_W/m2-K": 0.188,
+      "u-factor_no_film_W/m2-K": 0.193,
+      "gross_area_m2": 42.25,
+      "net_area_m2": 41.4,
+      "azimuth_deg": 135.0,
+      "os_type": "RoofCeiling",
+      "boundary_condition": "Outdoors",
+      "space_name": "Story 1 North Perimeter Space"
+    }
+  ],
+  "eplusout_err_table": [
+    {
+      "error_type": "warning",
+      "message": "ProcessScheduleInput: Schedule:Day:Interval=\"ECONOMIZER MAX OA FRACTION 100 PCT DEFAULT\", Blank Schedule Type Limits Name input -- will not be validated."
+    },
+    {
+      "error_type": "warning",
+      "message": "ProcessScheduleInput: Schedule:Day:Interval=\"SCHEDULE DAY 1\", Blank Schedule Type Limits Name input -- will not be validated."
+    },
+    {
+      "error_type": "warning",
+      "message": "ProcessScheduleInput: Schedule:Day:Interval=\"SCHEDULE DAY 10\", Blank Schedule Type Limits Name input -- will not be validated."
+    },
+    {
+      "error_type": "warning",
+      "message": "ProcessScheduleInput: Schedule:Day:Interval=\"SCHEDULE DAY 11\", Blank Schedule Type Limits Name input -- will not be validated."
+    },
+    {
+      "error_type": "warning",
+      "message": "ProcessScheduleInput: Schedule:Day:Interval=\"SCHEDULE DAY 12\", Blank Schedule Type Limits Name input -- will not be validated."
+    },
+    {
+      "error_type": "warning",
+      "message": "ProcessScheduleInput: Schedule:Day:Interval=\"SCHEDULE DAY 13\", Blank Schedule Type Limits Name input -- will not be validated."
+    },
+    {
+      "error_type": "warning",
+      "message": "ProcessScheduleInput: Schedule:Day:Interval=\"SCHEDULE DAY 14\", Blank Schedule Type Limits Name input -- will not be validated."
+    },
+    {
+      "error_type": "warning",
+      "message": "ProcessScheduleInput: Schedule:Day:Interval=\"SCHEDULE DAY 15\", Blank Schedule Type Limits Name input -- will not be validated."
+    },
+    {
+      "error_type": "warning",
+      "message": "ProcessScheduleInput: Schedule:Day:Interval=\"SCHEDULE DAY 16\", Blank Schedule Type Limits Name input -- will not be validated."
+    },
+    {
+      "error_type": "warning",
+      "message": "ProcessScheduleInput: Schedule:Day:Interval=\"SCHEDULE DAY 17\", Blank Schedule Type Limits Name input -- will not be validated."
+    },
+    {
+      "error_type": "warning",
+      "message": "ProcessScheduleInput: Schedule:Day:Interval=\"SCHEDULE DAY 18\", Blank Schedule Type Limits Name input -- will not be validated."
+    },
+    {
+      "error_type": "warning",
+      "message": "ProcessScheduleInput: Schedule:Day:Interval=\"SCHEDULE DAY 19\", Blank Schedule Type Limits Name input -- will not be validated."
+    },
+    {
+      "error_type": "warning",
+      "message": "ProcessScheduleInput: Schedule:Day:Interval=\"SCHEDULE DAY 20\", Blank Schedule Type Limits Name input -- will not be validated."
+    },
+    {
+      "error_type": "warning",
+      "message": "ProcessScheduleInput: Schedule:Day:Interval=\"SCHEDULE DAY 21\", Blank Schedule Type Limits Name input -- will not be validated."
+    },
+    {
+      "error_type": "warning",
+      "message": "ProcessScheduleInput: Schedule:Day:Interval=\"SCHEDULE DAY 22\", Blank Schedule Type Limits Name input -- will not be validated."
+    },
+    {
+      "error_type": "warning",
+      "message": "ProcessScheduleInput: Schedule:Day:Interval=\"SCHEDULE DAY 23\", Blank Schedule Type Limits Name input -- will not be validated."
+    },
+    {
+      "error_type": "warning",
+      "message": "ProcessScheduleInput: Schedule:Day:Interval=\"SCHEDULE DAY 24\", Blank Schedule Type Limits Name input -- will not be validated."
+    },
+    {
+      "error_type": "warning",
+      "message": "ProcessScheduleInput: Schedule:Day:Interval=\"SCHEDULE DAY 25\", Blank Schedule Type Limits Name input -- will not be validated."
+    },
+    {
+      "error_type": "warning",
+      "message": "ProcessScheduleInput: Schedule:Day:Interval=\"SCHEDULE DAY 26\", Blank Schedule Type Limits Name input -- will not be validated."
+    },
+    {
+      "error_type": "warning",
+      "message": "ProcessScheduleInput: Schedule:Day:Interval=\"SCHEDULE DAY 27\", Blank Schedule Type Limits Name input -- will not be validated."
+    },
+    {
+      "error_type": "warning",
+      "message": "ProcessScheduleInput: Schedule:Day:Interval=\"SCHEDULE DAY 28\", Blank Schedule Type Limits Name input -- will not be validated."
+    },
+    {
+      "error_type": "warning",
+      "message": "ProcessScheduleInput: Schedule:Day:Interval=\"SCHEDULE DAY 29\", Blank Schedule Type Limits Name input -- will not be validated."
+    },
+    {
+      "error_type": "warning",
+      "message": "ProcessScheduleInput: Schedule:Day:Interval=\"SCHEDULE DAY 3\", Blank Schedule Type Limits Name input -- will not be validated."
+    },
+    {
+      "error_type": "warning",
+      "message": "ProcessScheduleInput: Schedule:Day:Interval=\"SCHEDULE DAY 30\", Blank Schedule Type Limits Name input -- will not be validated."
+    },
+    {
+      "error_type": "warning",
+      "message": "ProcessScheduleInput: Schedule:Day:Interval=\"SCHEDULE DAY 31\", Blank Schedule Type Limits Name input -- will not be validated."
+    },
+    {
+      "error_type": "warning",
+      "message": "ProcessScheduleInput: Schedule:Day:Interval=\"SCHEDULE DAY 32\", Blank Schedule Type Limits Name input -- will not be validated."
+    },
+    {
+      "error_type": "warning",
+      "message": "ProcessScheduleInput: Schedule:Day:Interval=\"SCHEDULE DAY 4\", Blank Schedule Type Limits Name input -- will not be validated."
+    },
+    {
+      "error_type": "warning",
+      "message": "ProcessScheduleInput: Schedule:Day:Interval=\"SCHEDULE DAY 5\", Blank Schedule Type Limits Name input -- will not be validated."
+    },
+    {
+      "error_type": "warning",
+      "message": "ProcessScheduleInput: Schedule:Day:Interval=\"SCHEDULE DAY 8\", Blank Schedule Type Limits Name input -- will not be validated."
+    },
+    {
+      "error_type": "warning",
+      "message": "ProcessScheduleInput: Schedule:Day:Interval=\"SCHEDULE DAY 9\", Blank Schedule Type Limits Name input -- will not be validated."
+    },
+    {
+      "error_type": "warning",
+      "message": "ProcessScheduleInput: Schedule:Year=\"ECONOMIZER MAX OA FRACTION 100 PCT\", Blank Schedule Type Limits Name input -- will not be validated."
+    },
+    {
+      "error_type": "warning",
+      "message": "ProcessScheduleInput: Schedule:Year=\"SCHEDULE RULESET 10\", Blank Schedule Type Limits Name input -- will not be validated."
+    },
+    {
+      "error_type": "warning",
+      "message": "ProcessScheduleInput: Schedule:Year=\"SCHEDULE RULESET 11\", Blank Schedule Type Limits Name input -- will not be validated."
+    },
+    {
+      "error_type": "warning",
+      "message": "ProcessScheduleInput: Schedule:Year=\"SCHEDULE RULESET 12\", Blank Schedule Type Limits Name input -- will not be validated."
+    },
+    {
+      "error_type": "warning",
+      "message": "ProcessScheduleInput: Schedule:Year=\"SCHEDULE RULESET 13\", Blank Schedule Type Limits Name input -- will not be validated."
+    },
+    {
+      "error_type": "warning",
+      "message": "ProcessScheduleInput: Schedule:Year=\"SCHEDULE RULESET 14\", Blank Schedule Type Limits Name input -- will not be validated."
+    },
+    {
+      "error_type": "warning",
+      "message": "ProcessScheduleInput: Schedule:Year=\"SCHEDULE RULESET 15\", Blank Schedule Type Limits Name input -- will not be validated."
+    },
+    {
+      "error_type": "warning",
+      "message": "ProcessScheduleInput: Schedule:Year=\"SCHEDULE RULESET 16\", Blank Schedule Type Limits Name input -- will not be validated."
+    },
+    {
+      "error_type": "warning",
+      "message": "ProcessScheduleInput: Schedule:Year=\"SCHEDULE RULESET 17\", Blank Schedule Type Limits Name input -- will not be validated."
+    },
+    {
+      "error_type": "warning",
+      "message": "ProcessScheduleInput: Schedule:Year=\"SCHEDULE RULESET 3\", Blank Schedule Type Limits Name input -- will not be validated."
+    },
+    {
+      "error_type": "warning",
+      "message": "ProcessScheduleInput: Schedule:Year=\"SCHEDULE RULESET 4\", Blank Schedule Type Limits Name input -- will not be validated."
+    },
+    {
+      "error_type": "warning",
+      "message": "ProcessScheduleInput: Schedule:Year=\"SCHEDULE RULESET 5\", Blank Schedule Type Limits Name input -- will not be validated."
+    },
+    {
+      "error_type": "warning",
+      "message": "ProcessScheduleInput: Schedule:Year=\"SCHEDULE RULESET 6\", Blank Schedule Type Limits Name input -- will not be validated."
+    },
+    {
+      "error_type": "warning",
+      "message": "ProcessScheduleInput: Schedule:Year=\"SCHEDULE RULESET 7\", Blank Schedule Type Limits Name input -- will not be validated."
+    },
+    {
+      "error_type": "warning",
+      "message": "ProcessScheduleInput: Schedule:Year=\"SCHEDULE RULESET 8\", Blank Schedule Type Limits Name input -- will not be validated."
+    },
+    {
+      "error_type": "warning",
+      "message": "ProcessScheduleInput: Schedule:Year=\"SCHEDULE RULESET 9\", Blank Schedule Type Limits Name input -- will not be validated."
+    },
+    {
+      "error_type": "warning",
+      "message": "ProcessScheduleInput: Schedule:Constant=\"ALWAYS OFF DISCRETE\", Blank Schedule Type Limits Name input -- will not be validated."
+    },
+    {
+      "error_type": "warning",
+      "message": "ProcessScheduleInput: Schedule:Constant=\"ALWAYS ON CONTINUOUS\", Blank Schedule Type Limits Name input -- will not be validated."
+    },
+    {
+      "error_type": "warning",
+      "message": "CheckUsedConstructions: There are 30 nominally unused constructions in input.  For explicit details on each unused construction, use Output:Diagnostics,DisplayExtraWarnings;"
+    },
+    {
+      "error_type": "warning",
+      "message": "GetInternalHeatGains: People=\"OFFICE WHOLEBUILDING PEOPLE\" has comfort related schedules but no thermal comfort model selected.  If schedules are specified for air velocity, clothing insulation, and/or work efficiency but no thermal comfort  thermal comfort model is selected, the schedules will be listed as unused schedules in the .err file.  To avoid these errors, select a valid thermal comfort model or eliminate these schedules in the PEOPLE input."
+    },
+    {
+      "error_type": "warning",
+      "message": "GetInternalHeatGains: People=\"OFFICE WHOLEBUILDING PEOPLE\" has comfort related schedules but no thermal comfort model selected.  If schedules are specified for air velocity, clothing insulation, and/or work efficiency but no thermal comfort  thermal comfort model is selected, the schedules will be listed as unused schedules in the .err file.  To avoid these errors, select a valid thermal comfort model or eliminate these schedules in the PEOPLE input."
+    },
+    {
+      "error_type": "warning",
+      "message": "GetInternalHeatGains: People=\"OFFICE WHOLEBUILDING PEOPLE\" has comfort related schedules but no thermal comfort model selected.  If schedules are specified for air velocity, clothing insulation, and/or work efficiency but no thermal comfort  thermal comfort model is selected, the schedules will be listed as unused schedules in the .err file.  To avoid these errors, select a valid thermal comfort model or eliminate these schedules in the PEOPLE input."
+    },
+    {
+      "error_type": "warning",
+      "message": "GetInternalHeatGains: People=\"OFFICE WHOLEBUILDING PEOPLE\" has comfort related schedules but no thermal comfort model selected.  If schedules are specified for air velocity, clothing insulation, and/or work efficiency but no thermal comfort  thermal comfort model is selected, the schedules will be listed as unused schedules in the .err file.  To avoid these errors, select a valid thermal comfort model or eliminate these schedules in the PEOPLE input."
+    },
+    {
+      "error_type": "warning",
+      "message": "GetInternalHeatGains: People=\"OFFICE WHOLEBUILDING PEOPLE\" has comfort related schedules but no thermal comfort model selected.  If schedules are specified for air velocity, clothing insulation, and/or work efficiency but no thermal comfort  thermal comfort model is selected, the schedules will be listed as unused schedules in the .err file.  To avoid these errors, select a valid thermal comfort model or eliminate these schedules in the PEOPLE input."
+    },
+    {
+      "error_type": "warning",
+      "message": "GetOAControllerInputs: Controller:MechanicalVentilation=\"CONTROLLER MECHANICAL VENTILATION 1  Cannot locate a matching DesignSpecification:ZoneAirDistribution object for Zone=\"ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A\".  Using default zone air distribution effectiveness of 1.0 for heating and cooling."
+    },
+    {
+      "error_type": "warning",
+      "message": "GetOAControllerInputs: Controller:MechanicalVentilation=\"CONTROLLER MECHANICAL VENTILATION 2  Cannot locate a matching DesignSpecification:ZoneAirDistribution object for Zone=\"ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 1\".  Using default zone air distribution effectiveness of 1.0 for heating and cooling."
+    },
+    {
+      "error_type": "warning",
+      "message": "GetOAControllerInputs: Controller:MechanicalVentilation=\"CONTROLLER MECHANICAL VENTILATION 3  Cannot locate a matching DesignSpecification:ZoneAirDistribution object for Zone=\"ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 2\".  Using default zone air distribution effectiveness of 1.0 for heating and cooling."
+    },
+    {
+      "error_type": "warning",
+      "message": "GetOAControllerInputs: Controller:MechanicalVentilation=\"CONTROLLER MECHANICAL VENTILATION 4  Cannot locate a matching DesignSpecification:ZoneAirDistribution object for Zone=\"ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 3\".  Using default zone air distribution effectiveness of 1.0 for heating and cooling."
+    },
+    {
+      "error_type": "warning",
+      "message": "GetOAControllerInputs: Controller:MechanicalVentilation=\"CONTROLLER MECHANICAL VENTILATION 5  Cannot locate a matching DesignSpecification:ZoneAirDistribution object for Zone=\"ALL_ST=WHOLEBUILDING_FL=STORY 1_SCH=A 4\".  Using default zone air distribution effectiveness of 1.0 for heating and cooling."
+    },
+    {
+      "error_type": "warning",
+      "message": "GetDXCoils: Coil:Cooling:DX:SingleSpeed=\"COILCOOLINGDXSINGLESPEED_DX 48KBTU/HR 14.0SEER\", invalid  ...Part Load Fraction Correlation Curve Name = DXCOOL-NECB2011-REF-COOLPLFFPLR has out of range value.  ...Curve maximum must be <= 1.0, curve max at PLR = 0.99 is 1.015  ...Setting curve maximum to 1.0 and simulation continues."
+    },
+    {
+      "error_type": "warning",
+      "message": "The Standard Ratings is calculated for Coil:Cooling:DX:SingleSpeed = COILCOOLINGDXSINGLESPEED_DX 48KBTU/HR 14.0SEER but not at the AHRI test condition due to curve out of bound.   Review the Standard Ratings calculations in the Engineering Reference for this coil type. Also, use Output:Diagnostics, DisplayExtraWarnings for further guidance."
+    },
+    {
+      "error_type": "warning",
+      "message": "The Standard Ratings is calculated for Coil:Cooling:DX:SingleSpeed = COILCOOLINGDXSINGLESPEED_DX 1 49KBTU/HR 14.0SEER but not at the AHRI test condition due to curve out of bound.   Review the Standard Ratings calculations in the Engineering Reference for this coil type. Also, use Output:Diagnostics, DisplayExtraWarnings for further guidance."
+    },
+    {
+      "error_type": "warning",
+      "message": "The Standard Ratings is calculated for Coil:Cooling:DX:SingleSpeed = COILCOOLINGDXSINGLESPEED_DX 2 31KBTU/HR 14.0SEER but not at the AHRI test condition due to curve out of bound.   Review the Standard Ratings calculations in the Engineering Reference for this coil type. Also, use Output:Diagnostics, DisplayExtraWarnings for further guidance."
+    },
+    {
+      "error_type": "warning",
+      "message": "The Standard Ratings is calculated for Coil:Cooling:DX:SingleSpeed = COILCOOLINGDXSINGLESPEED_DX 3 34KBTU/HR 14.0SEER but not at the AHRI test condition due to curve out of bound.   Review the Standard Ratings calculations in the Engineering Reference for this coil type. Also, use Output:Diagnostics, DisplayExtraWarnings for further guidance."
+    },
+    {
+      "error_type": "warning",
+      "message": "The Standard Ratings is calculated for Coil:Cooling:DX:SingleSpeed = COILCOOLINGDXSINGLESPEED_DX 4 16KBTU/HR 14.0SEER but not at the AHRI test condition due to curve out of bound.   Review the Standard Ratings calculations in the Engineering Reference for this coil type. Also, use Output:Diagnostics, DisplayExtraWarnings for further guidance."
+    },
+    {
+      "error_type": "warning",
+      "message": "Output:Meter: invalid Key Name=\"NATURALGAS:FACILITY\" - not found."
+    },
+    {
+      "error_type": "warning",
+      "message": "Output:Meter: invalid Key Name=\"NATURALGAS:FACILITY\" - not found."
+    },
+    {
+      "error_type": "warning",
+      "message": "Output:Meter: invalid Key Name=\"NATURALGAS:FACILITY\" - not found."
+    },
+    {
+      "error_type": "warning",
+      "message": "Output:Meter: invalid Key Name=\"DISTRICTCOOLING:FACILITY\" - not found."
+    },
+    {
+      "error_type": "warning",
+      "message": "Output:Meter: invalid Key Name=\"DISTRICTHEATING:FACILITY\" - not found."
+    },
+    {
+      "error_type": "warning",
+      "message": "Output:Meter:MeterFileOnly: invalid Key Name=\"NATURALGAS:FACILITY\" - not found."
+    },
+    {
+      "error_type": "warning",
+      "message": "Output:Meter:MeterFileOnly requested for \"Electricity:Facility\" (TimeStep), already on \"Output:Meter\". Will report to both eplusout.eso and eplusout.mtr"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - ELECTRICITY' invalid Variable or Meter Name 'EXTERIOREQUIPMENT:ELECTRICITY'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - ELECTRICITY' invalid Variable or Meter Name 'HEATREJECTION:ELECTRICITY'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - ELECTRICITY' invalid Variable or Meter Name 'HUMIDIFIER:ELECTRICITY'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - ELECTRICITY' invalid Variable or Meter Name 'HEATRECOVERY:ELECTRICITY'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - ELECTRICITY' invalid Variable or Meter Name 'COGENERATION:ELECTRICITY'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - ELECTRICITY' invalid Variable or Meter Name 'REFRIGERATION:ELECTRICITY'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - NATURAL GAS' invalid Variable or Meter Name 'INTERIOREQUIPMENT:NATURALGAS'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - NATURAL GAS' invalid Variable or Meter Name 'EXTERIOREQUIPMENT:NATURALGAS'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - NATURAL GAS' invalid Variable or Meter Name 'HEATING:NATURALGAS'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - NATURAL GAS' invalid Variable or Meter Name 'COOLING:NATURALGAS'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - NATURAL GAS' invalid Variable or Meter Name 'WATERSYSTEMS:NATURALGAS'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - NATURAL GAS' invalid Variable or Meter Name 'COGENERATION:NATURALGAS'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - DISTRICT HEATING' invalid Variable or Meter Name 'INTERIORLIGHTS:DISTRICTHEATING'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - DISTRICT HEATING' invalid Variable or Meter Name 'EXTERIORLIGHTS:DISTRICTHEATING'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - DISTRICT HEATING' invalid Variable or Meter Name 'INTERIOREQUIPMENT:DISTRICTHEATING'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - DISTRICT HEATING' invalid Variable or Meter Name 'EXTERIOREQUIPMENT:DISTRICTHEATING'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - DISTRICT HEATING' invalid Variable or Meter Name 'FANS:DISTRICTHEATING'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - DISTRICT HEATING' invalid Variable or Meter Name 'PUMPS:DISTRICTHEATING'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - DISTRICT HEATING' invalid Variable or Meter Name 'HEATING:DISTRICTHEATING'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - DISTRICT HEATING' invalid Variable or Meter Name 'COOLING:DISTRICTHEATING'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - DISTRICT HEATING' invalid Variable or Meter Name 'HEATREJECTION:DISTRICTHEATING'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - DISTRICT HEATING' invalid Variable or Meter Name 'HUMIDIFIER:DISTRICTHEATING'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - DISTRICT HEATING' invalid Variable or Meter Name 'HEATRECOVERY:DISTRICTHEATING'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - DISTRICT HEATING' invalid Variable or Meter Name 'WATERSYSTEMS:DISTRICTHEATING'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - DISTRICT HEATING' invalid Variable or Meter Name 'COGENERATION:DISTRICTHEATING'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - DISTRICT COOLING' invalid Variable or Meter Name 'INTERIORLIGHTS:DISTRICTCOOLING'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - DISTRICT COOLING' invalid Variable or Meter Name 'EXTERIORLIGHTS:DISTRICTCOOLING'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - DISTRICT COOLING' invalid Variable or Meter Name 'INTERIOREQUIPMENT:DISTRICTCOOLING'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - DISTRICT COOLING' invalid Variable or Meter Name 'EXTERIOREQUIPMENT:DISTRICTCOOLING'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - DISTRICT COOLING' invalid Variable or Meter Name 'FANS:DISTRICTCOOLING'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - DISTRICT COOLING' invalid Variable or Meter Name 'PUMPS:DISTRICTCOOLING'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - DISTRICT COOLING' invalid Variable or Meter Name 'HEATING:DISTRICTCOOLING'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - DISTRICT COOLING' invalid Variable or Meter Name 'COOLING:DISTRICTCOOLING'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - DISTRICT COOLING' invalid Variable or Meter Name 'HEATREJECTION:DISTRICTCOOLING'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - DISTRICT COOLING' invalid Variable or Meter Name 'HUMIDIFIER:DISTRICTCOOLING'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - DISTRICT COOLING' invalid Variable or Meter Name 'HEATRECOVERY:DISTRICTCOOLING'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - DISTRICT COOLING' invalid Variable or Meter Name 'WATERSYSTEMS:DISTRICTCOOLING'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - DISTRICT COOLING' invalid Variable or Meter Name 'COGENERATION:DISTRICTCOOLING'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - ELECTRICITY PEAK DEMAND' invalid Variable or Meter Name 'EXTERIOREQUIPMENT:ELECTRICITY'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - ELECTRICITY PEAK DEMAND' invalid Variable or Meter Name 'HEATREJECTION:ELECTRICITY'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - ELECTRICITY PEAK DEMAND' invalid Variable or Meter Name 'HUMIDIFIER:ELECTRICITY'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - ELECTRICITY PEAK DEMAND' invalid Variable or Meter Name 'HEATRECOVERY:ELECTRICITY'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - ELECTRICITY PEAK DEMAND' invalid Variable or Meter Name 'COGENERATION:ELECTRICITY'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - NATURAL GAS PEAK DEMAND' invalid Variable or Meter Name 'NATURALGAS:FACILITY'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - NATURAL GAS PEAK DEMAND' invalid Variable or Meter Name 'INTERIOREQUIPMENT:NATURALGAS'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - NATURAL GAS PEAK DEMAND' invalid Variable or Meter Name 'EXTERIOREQUIPMENT:NATURALGAS'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - NATURAL GAS PEAK DEMAND' invalid Variable or Meter Name 'HEATING:NATURALGAS'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - NATURAL GAS PEAK DEMAND' invalid Variable or Meter Name 'COOLING:NATURALGAS'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - NATURAL GAS PEAK DEMAND' invalid Variable or Meter Name 'WATERSYSTEMS:NATURALGAS'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - NATURAL GAS PEAK DEMAND' invalid Variable or Meter Name 'COGENERATION:NATURALGAS'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - DISTRICT HEATING PEAK DEMAND' invalid Variable or Meter Name 'DISTRICTHEATING:FACILITY'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - DISTRICT HEATING PEAK DEMAND' invalid Variable or Meter Name 'INTERIORLIGHTS:DISTRICTHEATING'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - DISTRICT HEATING PEAK DEMAND' invalid Variable or Meter Name 'EXTERIORLIGHTS:DISTRICTHEATING'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - DISTRICT HEATING PEAK DEMAND' invalid Variable or Meter Name 'INTERIOREQUIPMENT:DISTRICTHEATING'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - DISTRICT HEATING PEAK DEMAND' invalid Variable or Meter Name 'EXTERIOREQUIPMENT:DISTRICTHEATING'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - DISTRICT HEATING PEAK DEMAND' invalid Variable or Meter Name 'FANS:DISTRICTHEATING'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - DISTRICT HEATING PEAK DEMAND' invalid Variable or Meter Name 'PUMPS:DISTRICTHEATING'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - DISTRICT HEATING PEAK DEMAND' invalid Variable or Meter Name 'HEATING:DISTRICTHEATING'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - DISTRICT HEATING PEAK DEMAND' invalid Variable or Meter Name 'COOLING:DISTRICTHEATING'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - DISTRICT HEATING PEAK DEMAND' invalid Variable or Meter Name 'HEATREJECTION:DISTRICTHEATING'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - DISTRICT HEATING PEAK DEMAND' invalid Variable or Meter Name 'HUMIDIFIER:DISTRICTHEATING'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - DISTRICT HEATING PEAK DEMAND' invalid Variable or Meter Name 'HEATRECOVERY:DISTRICTHEATING'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - DISTRICT HEATING PEAK DEMAND' invalid Variable or Meter Name 'WATERSYSTEMS:DISTRICTHEATING'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - DISTRICT HEATING PEAK DEMAND' invalid Variable or Meter Name 'COGENERATION:DISTRICTHEATING'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - DISTRICT COOLING PEAK DEMAND' invalid Variable or Meter Name 'DISTRICTCOOLING:FACILITY'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - DISTRICT COOLING PEAK DEMAND' invalid Variable or Meter Name 'INTERIORLIGHTS:DISTRICTCOOLING'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - DISTRICT COOLING PEAK DEMAND' invalid Variable or Meter Name 'EXTERIORLIGHTS:DISTRICTCOOLING'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - DISTRICT COOLING PEAK DEMAND' invalid Variable or Meter Name 'INTERIOREQUIPMENT:DISTRICTCOOLING'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - DISTRICT COOLING PEAK DEMAND' invalid Variable or Meter Name 'EXTERIOREQUIPMENT:DISTRICTCOOLING'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - DISTRICT COOLING PEAK DEMAND' invalid Variable or Meter Name 'FANS:DISTRICTCOOLING'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - DISTRICT COOLING PEAK DEMAND' invalid Variable or Meter Name 'PUMPS:DISTRICTCOOLING'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - DISTRICT COOLING PEAK DEMAND' invalid Variable or Meter Name 'HEATING:DISTRICTCOOLING'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - DISTRICT COOLING PEAK DEMAND' invalid Variable or Meter Name 'COOLING:DISTRICTCOOLING'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - DISTRICT COOLING PEAK DEMAND' invalid Variable or Meter Name 'HEATREJECTION:DISTRICTCOOLING'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - DISTRICT COOLING PEAK DEMAND' invalid Variable or Meter Name 'HUMIDIFIER:DISTRICTCOOLING'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - DISTRICT COOLING PEAK DEMAND' invalid Variable or Meter Name 'HEATRECOVERY:DISTRICTCOOLING'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - DISTRICT COOLING PEAK DEMAND' invalid Variable or Meter Name 'WATERSYSTEMS:DISTRICTCOOLING'"
+    },
+    {
+      "error_type": "warning",
+      "message": "In Output:Table:Monthly 'BUILDING ENERGY PERFORMANCE - DISTRICT COOLING PEAK DEMAND' invalid Variable or Meter Name 'COGENERATION:DISTRICTCOOLING'"
+    },
+    {
+      "error_type": "warning",
+      "message": "Processing Monthly Tabular Reports: Variable names not valid for this simulation  ...use Output:Diagnostics,DisplayExtraWarnings; to show more details on individual variables."
+    },
+    {
+      "error_type": "warning",
+      "message": "CalcDoe2DXCoil: Coil:Cooling:DX:SingleSpeed \"COILCOOLINGDXSINGLESPEED_DX 1 49KBTU/HR 14.0SEER\" - Air-cooled condenser inlet dry-bulb temperature below 0 C. Outdoor dry-bulb temperature = -0.47   ... Occurrence info = RUN PERIOD 1, 01/01 16:30 - 16:31  ... Operation at low ambient temperatures may require special performance curves."
+    },
+    {
+      "error_type": "warning",
+      "message": "CalcDoe2DXCoil: Coil:Cooling:DX:SingleSpeed \"COILCOOLINGDXSINGLESPEED_DX 4 16KBTU/HR 14.0SEER\" - Air-cooled condenser inlet dry-bulb temperature below 0 C. Outdoor dry-bulb temperature = -3.70   ... Occurrence info = RUN PERIOD 1, 01/02 06:02 - 06:03  ... Operation at low ambient temperatures may require special performance curves."
+    },
+    {
+      "error_type": "warning",
+      "message": "CalcDoe2DXCoil: Coil:Cooling:DX:SingleSpeed \"COILCOOLINGDXSINGLESPEED_DX 48KBTU/HR 14.0SEER\" - Air-cooled condenser inlet dry-bulb temperature below 0 C. Outdoor dry-bulb temperature = -3.70   ... Occurrence info = RUN PERIOD 1, 01/02 06:03 - 06:05  ... Operation at low ambient temperatures may require special performance curves."
+    },
+    {
+      "error_type": "warning",
+      "message": "CalcDoe2DXCoil: Coil:Cooling:DX:SingleSpeed \"COILCOOLINGDXSINGLESPEED_DX 2 31KBTU/HR 14.0SEER\" - Air-cooled condenser inlet dry-bulb temperature below 0 C. Outdoor dry-bulb temperature = -2.60   ... Occurrence info = RUN PERIOD 1, 01/02 08:55 - 09:00  ... Operation at low ambient temperatures may require special performance curves."
+    },
+    {
+      "error_type": "warning",
+      "message": "CalcDoe2DXCoil: Coil:Cooling:DX:SingleSpeed \"COILCOOLINGDXSINGLESPEED_DX 3 34KBTU/HR 14.0SEER\" - Air-cooled condenser inlet dry-bulb temperature below 0 C. Outdoor dry-bulb temperature = -0.17   ... Occurrence info = RUN PERIOD 1, 01/02 10:10 - 10:20  ... Operation at low ambient temperatures may require special performance curves."
+    },
+    {
+      "error_type": "warning",
+      "message": "CalcDoe2DXCoil: Coil:Cooling:DX:SingleSpeed=\"COILCOOLINGDXSINGLESPEED_DX 3 34KBTU/HR 14.0SEER\" - Air volume flow rate per watt of rated total cooling capacity is out of range at 6.728E-005 m3/s/W.   Environment=RUN PERIOD 1, at Simulation time=05/27 17:00 - 17:10  Expected range for VolumeFlowPerRatedTotalCapacity=[2.684E-005--6.713E-005]  Possible causes include inconsistent air flow rates in system components,  or variable air volume [VAV] system using incorrect coil type."
+    },
+    {
+      "error_type": "warning",
+      "message": "CalcDoe2DXCoil: Coil:Cooling:DX:SingleSpeed=\"COILCOOLINGDXSINGLESPEED_DX 1 49KBTU/HR 14.0SEER\" - Air volume flow rate per watt of rated total cooling capacity is out of range at 6.738E-005 m3/s/W.   Environment=RUN PERIOD 1, at Simulation time=09/23 12:40 - 12:50  Expected range for VolumeFlowPerRatedTotalCapacity=[2.684E-005--6.713E-005]  Possible causes include inconsistent air flow rates in system components,  or variable air volume [VAV] system using incorrect coil type."
+    },
+    {
+      "error_type": "warning",
+      "message": "The resource referenced by LifeCycleCost:UsePriceEscalation= \"U.S. AVG  COMMERCIAL-ELECTRICITY\" has no energy cost.   ... It is likely that the wrong resource is used. The resource should match the meter used in Utility:Tariff."
+    },
+    {
+      "error_type": "warning",
+      "message": "The resource referenced by LifeCycleCost:UsePriceEscalation= \"U.S. AVG  COMMERCIAL-DISTILLATE OIL\" has no energy cost.   ... It is likely that the wrong resource is used. The resource should match the meter used in Utility:Tariff."
+    },
+    {
+      "error_type": "warning",
+      "message": "The resource referenced by LifeCycleCost:UsePriceEscalation= \"U.S. AVG  COMMERCIAL-RESIDUAL OIL\" has no energy cost.   ... It is likely that the wrong resource is used. The resource should match the meter used in Utility:Tariff."
+    },
+    {
+      "error_type": "warning",
+      "message": "The resource referenced by LifeCycleCost:UsePriceEscalation= \"U.S. AVG  COMMERCIAL-NATURAL GAS\" has no energy cost.   ... It is likely that the wrong resource is used. The resource should match the meter used in Utility:Tariff."
+    },
+    {
+      "error_type": "warning",
+      "message": "The resource referenced by LifeCycleCost:UsePriceEscalation= \"U.S. AVG  COMMERCIAL-COAL\" has no energy cost.   ... It is likely that the wrong resource is used. The resource should match the meter used in Utility:Tariff."
+    }
+  ],
+  "heating_peak_w_per_m_sq": 48.3583740234375,
+  "location_city": "Victoria Intl AP",
+  "location_country": "CAN",
+  "location_epw_cdd": 27.0,
+  "location_epw_hdd": 2901.0,
+  "location_latitude": 48.647,
+  "location_longitude": -123.426,
+  "location_necb_climate_zone": "4",
+  "location_necb_hdd": 2850.0,
+  "location_state_province_region": "BC",
+  "location_weather_file": "CAN_BC_Victoria.Intl.AP.717990_CWEC2016.epw",
+  "measures_data_table": [
+    {
+      "measure_name": "nrc_create_geometry",
+      "arg_name": "building_shape",
+      "value": "Rectangular",
+      "units": null,
+      "type": 3
+    },
+    {
+      "measure_name": "nrc_create_geometry",
+      "arg_name": "template",
+      "value": "NECB2017",
+      "units": null,
+      "type": 3
+    },
+    {
+      "measure_name": "nrc_create_geometry",
+      "arg_name": "building_type",
+      "value": "SmallOffice",
+      "units": null,
+      "type": 3
+    },
+    {
+      "measure_name": "nrc_create_geometry",
+      "arg_name": "epw_file",
+      "value": "CAN_BC_Victoria.Intl.AP.717990_CWEC2016.epw",
+      "units": null,
+      "type": 3
+    },
+    {
+      "measure_name": "nrc_create_geometry",
+      "arg_name": "total_floor_area",
+      "value": 400.0,
+      "units": null,
+      "type": 2
+    },
+    {
+      "measure_name": "nrc_create_geometry",
+      "arg_name": "aspect_ratio",
+      "value": 1.5,
+      "units": null,
+      "type": 1
+    },
+    {
+      "measure_name": "nrc_create_geometry",
+      "arg_name": "rotation",
+      "value": 0.0,
+      "units": null,
+      "type": 2
+    },
+    {
+      "measure_name": "nrc_create_geometry",
+      "arg_name": "above_grade_floors",
+      "value": 1.0,
+      "units": null,
+      "type": 2
+    },
+    {
+      "measure_name": "nrc_create_geometry",
+      "arg_name": "floor_to_floor_height",
+      "value": 3.8,
+      "units": null,
+      "type": 1
+    },
+    {
+      "measure_name": "nrc_create_geometry",
+      "arg_name": "plenum_height",
+      "value": 1.0,
+      "units": null,
+      "type": 2
+    },
+    {
+      "measure_name": "nrc_set_fdwr",
+      "arg_name": "fdwr_options",
+      "value": "Don't change windows",
+      "units": null,
+      "type": 3
+    },
+    {
+      "measure_name": "nrc_set_fdwr",
+      "arg_name": "fdwr",
+      "value": 0.15,
+      "units": null,
+      "type": 1
+    }
+  ],
+  "net_site_eui_gj_per_m_sq": 0.9787100219726562,
+  "peak_cooling_load_w_per_m_sq_necb": 20.5920751953125,
+  "peak_heating_load_w_per_m_sq_necb": 48.3583740234375,
+  "phius_annual_cooling_demand_kwh_per_m_sq": 4.084593065859641,
+  "phius_annual_heating_demand_kwh_per_m_sq": 18.137851705112475,
+  "phius_necb_meet_cooling_demand": "False",
+  "phius_necb_meet_cooling_peak_load": "False",
+  "phius_necb_meet_heating_demand": "False",
+  "phius_necb_meet_heating_peak_load": "False",
+  "phius_peak_cooling_load_w_per_m_sq": 8.724674908260459,
+  "phius_peak_heating_load_w_per_m_sq": 6.337460381779976,
+  "shw_additional_fuel_per_year": -1,
+  "shw_electricity_per_day": 0.0398358413132695,
+  "shw_electricity_per_day_per_occupant": 0.0024887441860465113,
+  "shw_electricity_per_year": 14.56,
+  "shw_natural_gas_per_year": 0.0,
+  "shw_total_nominal_occupancy": 16.006402561024412,
+  "shw_water_m_cu_per_day": 0.18675786593707253,
+  "shw_water_m_cu_per_day_per_occupant": 0.011667697674418604,
+  "shw_water_m_cu_per_year": 68.26,
+  "simulation_btap_data_version": "0.1",
+  "simulation_date": "2022-02-04 22:23:31 +0000",
+  "simulation_os_standards_revision": "888d20920",
+  "simulation_os_standards_version": "0.2.15",
+  "space_table": [
+    {
+      "thermal_zone_name": "ALL_ST=WholeBuilding_FL=Story 1_SCH=A",
+      "space_name": "Story 1 Core Space",
+      "multiplier": 1,
+      "volume": 1065.4595336076836,
+      "exterior_wall_area": 0.0,
+      "space_type_name": "Office WholeBuilding",
+      "breathing_zone_outdoor_airflow_vbz": -1,
+      "infiltration_flow_per_m_sq": 0.00025,
+      "floor_area_m2": 280.3840877914957,
+      "building_type": "Office",
+      "is_conditioned": "Yes",
+      "shw_peak_flow_rate_m_cu_per_s": 5.36106573209926e-06,
+      "shw_peak_flow_rate_per_floor_area_m_cu_per_s_per_m_sq": 1.912043502299586e-08,
+      "shw_watts_per_person": 88.89492491018211
+    },
+    {
+      "thermal_zone_name": "ALL_ST=WholeBuilding_FL=Story 1_SCH=A 1",
+      "space_name": "Story 1 South Perimeter Space",
+      "multiplier": 1,
+      "volume": 160.54869684499292,
+      "exterior_wall_area": 114.0,
+      "space_type_name": "Office WholeBuilding",
+      "breathing_zone_outdoor_airflow_vbz": -1,
+      "infiltration_flow_per_m_sq": 0.00025,
+      "floor_area_m2": 42.249657064471826,
+      "building_type": "Office",
+      "is_conditioned": "Yes",
+      "shw_peak_flow_rate_m_cu_per_s": 8.07831822645092e-07,
+      "shw_peak_flow_rate_per_floor_area_m_cu_per_s_per_m_sq": 1.912043502299587e-08,
+      "shw_watts_per_person": 88.89492491018216
+    },
+    {
+      "thermal_zone_name": "ALL_ST=WholeBuilding_FL=Story 1_SCH=A 2",
+      "space_name": "Story 1 East Perimeter Space",
+      "multiplier": 1,
+      "volume": 66.72153635116665,
+      "exterior_wall_area": 50.66666666666646,
+      "space_type_name": "Office WholeBuilding",
+      "breathing_zone_outdoor_airflow_vbz": -1,
+      "infiltration_flow_per_m_sq": 0.00025,
+      "floor_area_m2": 17.5582990397807,
+      "building_type": "Office",
+      "is_conditioned": "Yes",
+      "shw_peak_flow_rate_m_cu_per_s": 3.35722315904458e-07,
+      "shw_peak_flow_rate_per_floor_area_m_cu_per_s_per_m_sq": 1.912043502299589e-08,
+      "shw_watts_per_person": 88.89492491018225
+    },
+    {
+      "thermal_zone_name": "ALL_ST=WholeBuilding_FL=Story 1_SCH=A 3",
+      "space_name": "Story 1 West Perimeter Space",
+      "multiplier": 1,
+      "volume": 66.72153635116595,
+      "exterior_wall_area": 50.666666666666536,
+      "space_type_name": "Office WholeBuilding",
+      "breathing_zone_outdoor_airflow_vbz": -1,
+      "infiltration_flow_per_m_sq": 0.00025,
+      "floor_area_m2": 17.558299039780515,
+      "building_type": "Office",
+      "is_conditioned": "Yes",
+      "shw_peak_flow_rate_m_cu_per_s": 3.35722315904454e-07,
+      "shw_peak_flow_rate_per_floor_area_m_cu_per_s_per_m_sq": 1.9120435022995864e-08,
+      "shw_watts_per_person": 88.89492491018211
+    },
+    {
+      "thermal_zone_name": "ALL_ST=WholeBuilding_FL=Story 1_SCH=A 4",
+      "space_name": "Story 1 North Perimeter Space",
+      "multiplier": 1,
+      "volume": 160.5486968449846,
+      "exterior_wall_area": 113.99999999999993,
+      "space_type_name": "Office WholeBuilding",
+      "breathing_zone_outdoor_airflow_vbz": -1,
+      "infiltration_flow_per_m_sq": 0.00025,
+      "floor_area_m2": 42.24965706446963,
+      "building_type": "Office",
+      "is_conditioned": "Yes",
+      "shw_peak_flow_rate_m_cu_per_s": 8.0783182264505e-07,
+      "shw_peak_flow_rate_per_floor_area_m_cu_per_s_per_m_sq": 1.912043502299587e-08,
+      "shw_watts_per_person": 88.89492491018216
+    }
+  ],
+  "space_type_table": [
+    {
+      "name": "Office WholeBuilding",
+      "floor_m_sq": 399.99999999999835,
+      "percent_area": 100.0,
+      "occ_per_m_sq": 0.0400145368650919,
+      "occ_schedule": "NECB-A-Occupancy",
+      "lighting_w_per_m_sq": 8.49992637485275,
+      "electric_w_per_m_sq": 7.50272566220473,
+      "gas_w_per_m_sq": 0.0
+    }
+  ],
+  "total_site_eui_gj_per_m_sq": 0.9787250000000001,
+  "unmet_hours_cooling": 243.67,
+  "unmet_hours_cooling_during_occupied": 108.66999816894531,
+  "unmet_hours_heating": 14.67,
+  "unmet_hours_heating_during_occupied": 14.670000076293945,
+  "zone_equip_table": [
+    {
+      "air_loop_name": "None",
+      "thermal_zone_name": "ALL_ST=WholeBuilding_FL=Story 1_SCH=A",
+      "zone_equipment_name": "Air Terminal Single Duct Constant Volume No Reheat 1",
+      "type": "OpenStudio::Model::AirTerminalSingleDuctConstantVolumeNoReheat"
+    },
+    {
+      "air_loop_name": "None",
+      "thermal_zone_name": "ALL_ST=WholeBuilding_FL=Story 1_SCH=A",
+      "zone_equipment_name": "Zone HVAC Baseboard Convective Electric 1",
+      "type": "OpenStudio::Model::ZoneHVACBaseboardConvectiveElectric"
+    },
+    {
+      "air_loop_name": "None",
+      "thermal_zone_name": "ALL_ST=WholeBuilding_FL=Story 1_SCH=A 1",
+      "zone_equipment_name": "Air Terminal Single Duct Constant Volume No Reheat 2",
+      "type": "OpenStudio::Model::AirTerminalSingleDuctConstantVolumeNoReheat"
+    },
+    {
+      "air_loop_name": "None",
+      "thermal_zone_name": "ALL_ST=WholeBuilding_FL=Story 1_SCH=A 1",
+      "zone_equipment_name": "Zone HVAC Baseboard Convective Electric 2",
+      "type": "OpenStudio::Model::ZoneHVACBaseboardConvectiveElectric"
+    },
+    {
+      "air_loop_name": "None",
+      "thermal_zone_name": "ALL_ST=WholeBuilding_FL=Story 1_SCH=A 2",
+      "zone_equipment_name": "Air Terminal Single Duct Constant Volume No Reheat 3",
+      "type": "OpenStudio::Model::AirTerminalSingleDuctConstantVolumeNoReheat"
+    },
+    {
+      "air_loop_name": "None",
+      "thermal_zone_name": "ALL_ST=WholeBuilding_FL=Story 1_SCH=A 2",
+      "zone_equipment_name": "Zone HVAC Baseboard Convective Electric 3",
+      "type": "OpenStudio::Model::ZoneHVACBaseboardConvectiveElectric"
+    },
+    {
+      "air_loop_name": "None",
+      "thermal_zone_name": "ALL_ST=WholeBuilding_FL=Story 1_SCH=A 3",
+      "zone_equipment_name": "Air Terminal Single Duct Constant Volume No Reheat 4",
+      "type": "OpenStudio::Model::AirTerminalSingleDuctConstantVolumeNoReheat"
+    },
+    {
+      "air_loop_name": "None",
+      "thermal_zone_name": "ALL_ST=WholeBuilding_FL=Story 1_SCH=A 3",
+      "zone_equipment_name": "Zone HVAC Baseboard Convective Electric 4",
+      "type": "OpenStudio::Model::ZoneHVACBaseboardConvectiveElectric"
+    },
+    {
+      "air_loop_name": "sys_3|mixed|shr>none|sc>dx|sh>c-e|ssf>cv|zh>b-e|zc>none|srf>none| 4",
+      "thermal_zone_name": "ALL_ST=WholeBuilding_FL=Story 1_SCH=A 4",
+      "zone_equipment_name": "Air Terminal Single Duct Constant Volume No Reheat 5",
+      "type": "OpenStudio::Model::AirTerminalSingleDuctConstantVolumeNoReheat"
+    },
+    {
+      "air_loop_name": "sys_3|mixed|shr>none|sc>dx|sh>c-e|ssf>cv|zh>b-e|zc>none|srf>none| 4",
+      "thermal_zone_name": "ALL_ST=WholeBuilding_FL=Story 1_SCH=A 4",
+      "zone_equipment_name": "Zone HVAC Baseboard Convective Electric 5",
+      "type": "OpenStudio::Model::ZoneHVACBaseboardConvectiveElectric"
+    }
+  ]
+};
+  </script>
+</head>
+<body>
+
+
+</body>
+</html>

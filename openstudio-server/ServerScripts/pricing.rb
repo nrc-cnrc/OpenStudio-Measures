@@ -10,78 +10,48 @@ require 'colored'
 
 # Gather the required files from each zip file on the server for an analysis
 #
-# @param aid [:string] analysis uuid to retrieve files for
-def gather_output_results(aid)
+# @param required_analysis_id [:string] analysis uuid to retrieve files for
+def gather_output_results(required_analysis_id)
 
   puts "Gathering output results".cyan
   
-  # Ensure required directories exist and create if appropriate
+  # Ensure required directories exist and create if appropriate.
   basepath = '/mnt/openstudio/server/assets/data_points'
   unless Dir.exists? basepath
     fail "ERROR: Unable to find base data point path #{basepath}".red
   end
-  resultspath = "/mnt/openstudio/server/assets/results/#{aid}/osw_files/" ## DO NOT MODIFY THIS PATH OR FILENAME
-  outputpath = "/mnt/openstudio/server/assets/results/#{aid}/"            ## DO NOT MODIFY THIS PATH OR FILENAME
-
-  simulations_json_folder = outputpath
-
-  FileUtils.mkdir_p(outputpath)
-  osw_folder = "#{outputpath}/osw_files"
-  FileUtils.mkdir_p(osw_folder)
-  output_folder = "#{outputpath}/output"
-  FileUtils.mkdir_p(output_folder)
-  File.open("#{outputpath}/missing_files.log", 'wb') { |f| f.write("") }
-  File.open("#{outputpath}/missing_files.log", 'w') {|f| f.write("") }
-  File.open("#{simulations_json_folder}/simulations.json", 'w'){}
-
-  puts "creating results folder #{resultspath}"
-  unless Dir.exists? resultspath
-    FileUtils.mkdir_p resultspath
-  end
-
-  # Determine all data points to download from the REST API
-  astat = JSON.parse RestClient.get("http://web:80/analyses/#{aid}/status.json", headers={})
-  dps = astat['analysis']['data_points'].map { |dp| dp['id'] }
-  #puts "#{astat}".yellow
-  #puts "#{dps}".green
   
-  variables = JSON.parse(RestClient.get("http://web:80/analyses/#{aid}/variables.json", headers={}))
-  puts "#{variables}".yellow
-  variables.each do |var|
-    puts "#{var['perturbable']}"
-	if var['perturbable'] then
-	  puts "#{var['display_name']}".green
-	end
+  # Define and create folders where files will be placed.
+  outputpath = "/mnt/openstudio/server/assets/results/#{required_analysis_id}/pricing_files/" 
+  puts "Creating output folder for osm files: #{outputpath}".green
+  unless Dir.exists? outputpath
+    FileUtils.mkdir_p outputpath
   end
   
-  datapoints = JSON.parse(RestClient.get("http://web:80/analyses/#{aid}/data_points.json", headers={}))
+  # This returns all the datapoints on the server.
+  datapoints = JSON.parse(RestClient.get("http://web:80/data_points.json", headers={}))
   
   # Ensure there are datapoints to work with
   if datapoints.nil? || datapoints.empty?
-    fail "ERROR: No datapoints found. Analysis #{aid} completed with no datapoints".red
+    fail "ERROR: No datapoints found.".red
   end
   
-  # Figure out a unique name for each case based on the variable values.
+  # Loop through the data points and find the ones associated with the specified analysis.
   datapoints.each do |dp|
 	id = dp['_id']
-	variables = dp['set_variable_values']
-	name = ""
-	variables.each_value {|value| name << value}
-	puts "#{name}".yellow
-	puts "#{dp['name']}".green
-	
-	# Update the case name in the DB.
-	puts "#{dp}".cyan
-	dp.merge!({'name' => name})
-	#puts "http://web:80/data_points/#{id}.json".green
-	# This works (saving the new datapoint name to the db.
-	#puts "#{dp.to_json}".green
-	RestClient.put "http://web:80/data_points/#{id}.json", dp.to_json, {content_type: :json, accept: :json}
+	analysis_id = dp['analysis_id']
+	#puts "Data point ID #{id}".red
+	#puts "Analysis ID #{analysis_id}".yellow
+	#puts "            #{required_analysis_id}".green
+	next if analysis_id != required_analysis_id # Skip if data point is not one from the required analysis.
 	
 	# Try and find a pricing template csv. This should add it to the datapoint results.
-	puts "#{id}".red
-	# The files we want are in the datapoint.zip file. Grab this.
+	puts "Datapoint ID #{id}".green
+
+	# Get the datapoint name (to use as the output file name).
+	name = dp['name']
 	
+	# The files we want are in the datapoint.zip file. Grab this.
 	dpZipRaw = RestClient.get("http://web:80/data_points/#{id}/download_result_file", {params: {filename: 'data_point.zip'}})
 	#puts "#{dpZipRaw.class}".yellow
 	#puts "#{dpZipRaw.body.class}".red
@@ -89,22 +59,23 @@ def gather_output_results(aid)
 	#puts "#{dpZip.class}".cyan
 	pricing_template_file = ""
 	pricing_warnings_file = ""
+	puts "Scanning zip file for pricing outputs...".green
 	dpZip.each do |entry|
-	  puts "#{entry.name}".green
+	  #puts "#{entry.name}".green
 	  if entry.name.include? "pricing_template.csv"
 	    pricing_template_file = entry.name
-	    puts "#{entry.name}".yellow
+	    puts "Found #{entry.name}".green
 	  elsif entry.name.include? "pricing_warnings.txt"
 	    pricing_warnings_file = entry.name
-	    puts "#{entry.name}".yellow
+	    puts "Found #{entry.name}".green
 	  end
 	end
-	
+	  
 	# Pricing templates.
 	if !pricing_template_file.empty?
 	  pricing_template = dpZip.find_entry(pricing_template_file)
-	  puts "#{pricing_template.class}".cyan
-	  puts "#{pricing_template.name}".yellow
+	  #puts "#{pricing_template.class}".cyan
+	  #puts "#{pricing_template.name}".yellow
 	
       f_path = File.join(outputpath, "pricing_template-#{name}.csv")
       FileUtils.mkdir_p(File.dirname(f_path))
@@ -114,8 +85,8 @@ def gather_output_results(aid)
 	# Missing components files.
 	if !pricing_warnings_file.empty?
 	  pricing_template = dpZip.find_entry(pricing_warnings_file)
-	  puts "#{pricing_template.class}".cyan
-	  puts "#{pricing_template.name}".yellow
+	  #puts "#{pricing_template.class}".cyan
+	  #puts "#{pricing_template.name}".yellow
 	
       f_path = File.join(outputpath, "pricing_warnings-#{name}.txt")
       FileUtils.mkdir_p(File.dirname(f_path))

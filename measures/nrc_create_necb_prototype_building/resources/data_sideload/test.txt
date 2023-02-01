@@ -1,0 +1,4 @@
+This folder contains json files for sideloading.
+
+To use this facility copy a json file from openstudio-standards and edit the data. For exampels see:
+https://github.com/NREL/openstudio-standards/tree/nrcan/lib/openstudio-standards/standards/necb/NECB2011/data

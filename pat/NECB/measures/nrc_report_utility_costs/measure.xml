@@ -1,0 +1,177 @@
+<?xml version="1.0"?>
+<measure>
+  <schema_version>3.0</schema_version>
+  <name>nrc_report_utility_costs</name>
+  <uid>224561f4-8ccc-4f60-8118-34b85359d6f1</uid>
+  <version_id>019106ec-57d5-42f4-a4de-f35e119cb92d</version_id>
+  <version_modified>20221114T200335Z</version_modified>
+  <xml_checksum>9BF1E6AC</xml_checksum>
+  <class_name>NrcReportUtilityCosts</class_name>
+  <display_name>Report Utility Costs</display_name>
+  <description>This measure calculates utility costs for Canadian locations. By default a simple $/kWh tarrif can be applied but for 
+	    several locations more complex rules are enabled.
+		Peak values are reported averaged over the hour (the default LEED table produced by E+ reports the PEAK timestep value).</description>
+  <modeler_description>The measure creates a simple csv file and html output. The annual costs are available as output metrics for PAT.</modeler_description>
+  <arguments>
+    <argument>
+      <name>calc_choice</name>
+      <display_name>Utility cost choice</display_name>
+      <type>Choice</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>Use rates below</default_value>
+      <choices>
+        <choice>
+          <value>Use rates below</value>
+          <display_name>Use rates below</display_name>
+        </choice>
+        <choice>
+          <value>Nova Scotia rates 2021</value>
+          <display_name>Nova Scotia rates 2021</display_name>
+        </choice>
+      </choices>
+    </argument>
+    <argument>
+      <name>electricity_cost</name>
+      <display_name>Electricity rate ($/kWh)</display_name>
+      <type>Double</type>
+      <required>false</required>
+      <model_dependent>false</model_dependent>
+      <default_value>0.1</default_value>
+    </argument>
+    <argument>
+      <name>gas_cost</name>
+      <display_name>Natural gas rate ($/m3)</display_name>
+      <type>Double</type>
+      <required>false</required>
+      <model_dependent>false</model_dependent>
+      <default_value>0.2</default_value>
+    </argument>
+  </arguments>
+  <outputs>
+    <output>
+      <name>total_site_energy</name>
+      <display_name>total_site_energy</display_name>
+      <short_name>total_site_energy</short_name>
+      <type>Double</type>
+      <model_dependent>false</model_dependent>
+    </output>
+    <output>
+      <name>total_site_energy_normalized</name>
+      <display_name>total_site_energy_normalized</display_name>
+      <short_name>total_site_energy_normalized</short_name>
+      <type>Double</type>
+      <model_dependent>false</model_dependent>
+    </output>
+    <output>
+      <name>annual_electricity_use</name>
+      <display_name>annual_electricity_use</display_name>
+      <short_name>annual_electricity_use</short_name>
+      <type>Double</type>
+      <model_dependent>false</model_dependent>
+    </output>
+    <output>
+      <name>annual_natural_gas_use</name>
+      <display_name>annual_natural_gas_use</display_name>
+      <short_name>annual_natural_gas_use</short_name>
+      <type>Double</type>
+      <model_dependent>false</model_dependent>
+    </output>
+    <output>
+      <name>annual_electricity_cost</name>
+      <display_name>annual_electricity_cost</display_name>
+      <short_name>annual_electricity_cost</short_name>
+      <type>Double</type>
+      <model_dependent>false</model_dependent>
+    </output>
+    <output>
+      <name>annual_natural_gas_cost</name>
+      <display_name>annual_natural_gas_cost</display_name>
+      <short_name>annual_natural_gas_cost</short_name>
+      <type>Double</type>
+      <model_dependent>false</model_dependent>
+    </output>
+  </outputs>
+  <provenances />
+  <tags>
+    <tag>Reporting.QAQC</tag>
+  </tags>
+  <attributes>
+    <attribute>
+      <name>Measure Type</name>
+      <value>ReportingMeasure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Software Tool</name>
+      <value>OpenStudio Application</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Software Tool</name>
+      <value>Parametric Analysis Tool</value>
+      <datatype>string</datatype>
+    </attribute>
+  </attributes>
+  <files>
+    <file>
+      <filename>BTAPMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>B69DF022</checksum>
+    </file>
+    <file>
+      <filename>SmallOffice.osm</filename>
+      <filetype>osm</filetype>
+      <usage_type>test</usage_type>
+      <checksum>6674950F</checksum>
+    </file>
+    <file>
+      <filename>report.html.in</filename>
+      <filetype>in</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>B5F2F0E0</checksum>
+    </file>
+    <file>
+      <filename>README.md.erb</filename>
+      <filetype>erb</filetype>
+      <usage_type>readmeerb</usage_type>
+      <checksum>877DD729</checksum>
+    </file>
+    <file>
+      <version>
+        <software_program>OpenStudio</software_program>
+        <identifier>2.3.0</identifier>
+        <min_compatible>2.3.0</min_compatible>
+      </version>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>script</usage_type>
+      <checksum>5B6FB62E</checksum>
+    </file>
+    <file>
+      <filename>README.md</filename>
+      <filetype>md</filetype>
+      <usage_type>readme</usage_type>
+      <checksum>AB69F949</checksum>
+    </file>
+    <file>
+      <filename>test.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>77AA96B5</checksum>
+    </file>
+    <file>
+      <filename>NRCReportingMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>279B6AAB</checksum>
+    </file>
+    <file>
+      <filename>weather_files/CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw</filename>
+      <filetype>epw</filetype>
+      <usage_type>test</usage_type>
+      <checksum>E21FC0AC</checksum>
+    </file>
+  </files>
+</measure>

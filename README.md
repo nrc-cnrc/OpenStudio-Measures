@@ -1,15 +1,15 @@
 ([Français](#openstudio-measures))
 
-This repository is a collection of OpenStudio measures [https://www.openstudio.net/], testing and simulation environment. The measures are used by 
+This repository is a collection of [OpenStudio measures](https://www.openstudio.net/), testing and simulation environment. The measures are used by 
 NRC research staff in various activities and are shared in the hope that they will prove to be useful for others in Canada and potentially further 
 afield. By sharing these measures we hope to increase transparency in the work we are conducting to support Canadian industry and accelerate the 
 use of building simulation across the country.
 
-Note: the measures *may* work in the default OpenStudio and PAT apps from NREL [https://www.openstudio.net/downloads], however some functionality 
+Note: the measures *may* work in the default [OpenStudio and PAT apps](https://www.openstudio.net/downloads) from NREL, however some functionality 
 will require the specific version of openstudio-server created by the ‘server’ scripts in this repository.
 
-The primary project supporting the development of these measures is our support for decision makers in the National Energy Code for 
-Buildings [https://nrc.canada.ca/en/certifications-evaluations-standards/codes-canada/codes-canada-publications]. We encourage those wanting to 
+The primary project supporting the development of these measures is our support for decision makers in the [National Energy Code for 
+Buildings](https://nrc.canada.ca/en/certifications-evaluations-standards/codes-canada/codes-canada-publications). We encourage those wanting to 
 evaluate potential changes to the code to use and modify these measures, apply them to their models, etc to increase the evidence available for 
 decision makers. 
 
@@ -18,8 +18,8 @@ that the repository creates. This way users can be sure that the measures will w
 
 ### Background and linkages to related projects
 This repository builds on the functionality built into OpenStudio. This functionality has been expanded by other groups via various collections 
-of ‘measures’, for example as contained in the Building Component Library [https://bcl.nrel.gov/] and the BTAP initiative from 
-NRCan [https://github.com/canmet-energy/btap]. This repository contains measures from various sources:
+of ‘measures’, for example as contained in the [Building Component Library](https://bcl.nrel.gov/) and the [BTAP](https://github.com/canmet-energy/btap) initiative from 
+NRCan. This repository contains measures from various sources:
 -	Copied from the BCL. These copies are contained here for ease of use as PAT only refers to a single folder when searching for measures. 
 Their names are prefixed with ‘bcl_’. The standard BCL license is contained in the measure folder.
 -	Copied from BTAP. These copies are contained here for ease of use as PAT only refers to a single folder when searching for measures. 
@@ -27,7 +27,7 @@ Their names are prefixed with ‘btap_’. The standard BTAP license is containe
 -	Derived from BCL/BTAP. These measures have been modified from original versions to work with the version of openstudio-server or to provide 
 specific functionality. Additionally the measures have been modified to use the functionality of the template measure – this provides more 
 consistent and robust testing than is otherwise present in many BCL measures. Their names are prefixed with ‘nrc_’ and the original measure 
-in referenced in the ‘modeller info’ section of the measure. 
+is referenced in the ‘modeller info’ section of the measure. 
 -	Original content. These measures were created by NRC using the template measure. Their names are prefixed with ‘nrc_’.
 
 The overall intent is to complement existing work in this area and provide additional support to industry and transparency in our work. To this 
@@ -36,27 +36,30 @@ original licensing for derived content. Specific restrictions relate to the use 
 openstudio-standards and BTAP measures which are licensed under GPLv2; in general BCL measures have a non-restrictive license although many have 
 no specific license).
 
-In addition the library makes use of the openstudio-standards repository [https://github.com/NREL/openstudio-standards]. The ‘Canadian content’ 
+In addition the library makes use of the [openstudio-standards](https://github.com/NREL/openstudio-standards) repository. The ‘Canadian content’ 
 in openstudio-standards is maintained by NRCan with contributions from NRC and others. Specifically we use the nrcan_nrc branch in this repository 
-which is branched off the nrcan branch. This allows us to test changes to the nrcan branch before updating the nrcan_nrc branch to ensure that the 
+which is branched off the nrcan branch. This allows us to test changes nade to the nrcan branch before updating the nrcan_nrc branch to ensure that the 
 measures in this repository still function as intended. The changes added to the nrcan branch are eventually merged into the master branch of 
-openstudio standards (again NRCan conduct significant testing before updating their branch and committing changes to their branch).
+openstudio-standards (again NRCan conduct significant testing before updating their branch and committing changes to their branch).
 
 ### Requirements
 We use tortoise git to install the git functionality and then use the git bash shell to interact with this repository – we recommend that you do 
 the same. We also work on Windows 10 operating system (we have older scripts that worked on Win7 but no longer maintain these). 
-The testing and simulation environment is built on Docker containers (you will need to download Docker Desktop [https://www.docker.com/] ). The 
+The testing and simulation environment is built on Docker containers (you will need to download [Docker Desktop](https://www.docker.com/) ). The 
 scripts in the testing and server folders should be executed in a git bash shell. They will download and set up the necessary containers and 
-execute the necessary applications – follow the instructions in each folder to [configure/run the tests](test/README.md)/server.
+execute the necessary applications – follow the instructions in each folder to configure to [run the tests](test/README.md) or [the server](openstudio-server/README.md).
 
 ### Usage
-The measures are designed and maintained to be used with the OpenStudio tool PAT [https://www.openstudio.net/downloads] using the specific 
+The measures are designed and maintained to be used with the [OpenStudio tool PAT](https://www.openstudio.net/downloads) using the specific 
 version of openstudio-server created by the scripts in the server folder.
+
+### Install Docker and WSL2
+Follow the instructions [here](./install_Docker_WSL2.md)
 
 ### Support
 There is no explicit support for use of this repository. However, if you plan on using the repository please contact us and we will endeavour to 
 clarify/fix area of confusion.
-If you find a bug or a measure is not working pleas complete an issue and submit via this website.
+If you find a bug or a measure is not working please create an issue and submit via this website.
 
 ### How to Contribute
 
@@ -80,6 +83,9 @@ ______________________
 - Comment ça marche?
 - Qui utilisera ce projet?
 - Quel est le but de ce projet?
+
+### Installer Docker et WSL2
+Suivez les instructions [ici](./install_Docker_WSL2.md)
 
 ### Comment contribuer
 

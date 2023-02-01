@@ -16,9 +16,10 @@ echo -e "${YELLOW}This will apply to all docker containers - not just the openst
 docker volume prune #-f
 echo -e "...${GREEN}done${NC}."
 echo -e "${GREEN}Stopping and removing all openstudio server containers${NC}..."
-docker-compose down --remove-orphans
+docker compose down --remove-orphans
 echo -e "...${GREEN}done${NC}."
 echo -e "${GREEN}Removing openstudio volumes${NC}..."
 docker volume rm ${PWD##*/}"_dbdata"
 docker volume rm ${PWD##*/}"_osdata"
+docker volume rm ${PWD##*/}"_osgems"
 echo -e "...${GREEN}DONE${NC}."
