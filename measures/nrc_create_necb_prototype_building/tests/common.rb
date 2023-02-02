@@ -14,7 +14,7 @@ require 'fileutils'
 # Core functionality for the tests. Individual test files speed up the testing.
 module TestCommon
 
-  def remove_old_test_results()
+  def self.remove_old_test_results()
 
     # Check to see if an overall start time was passed (it should be if using one of the test scripts in the test folder). 
     #  If so then use it to determine what old results are (if not use now).
@@ -28,10 +28,12 @@ module TestCommon
 
   class NrcCreateNECBPrototypeBuilding_Test < Minitest::Test
 
-  # Brings in helper methods to simplify argument testing of json and standard argument methods
-  # and set standard output folder.
-  include(NRCMeasureTestHelper)
-  NRCMeasureTestHelper.setOutputFolder("#{self.name}")
+    # Brings in helper methods to simplify argument testing of json and standard argument methods
+    # and set standard output folder.
+    include(NRCMeasureTestHelper)
+    folder = "#{self.name}"
+    folder.slice!("TestCommon::")
+    NRCMeasureTestHelper.setOutputFolder("#{folder}")
 
 
     def setup()
@@ -140,13 +142,14 @@ module TestCommon
       }
 
       # Define specific output folder for this test.
-      model_name = "#{building_type_in}-#{necb_template}-#{location_in}_#{weather_file_type_in}_#{global_warming_in.to_i}"
-      output_file_path = NRCMeasureTestHelper.appendOutputFolder("#{necb_template}/#{model_name}")
+      model_name = "#{necb_template}-#{building_type_in}-#{location_in}_#{weather_file_type_in}_#{global_warming_in.to_i}"
+      output_file_path = NRCMeasureTestHelper.appendOutputFolder("#{model_name}", input_arguments)
       puts "Output folder ".green + "#{output_file_path}".light_blue
 
-      # Run the measure and check output.
+      # Run the measure and check output. Model saved to file 'test_output.osm'
       runner = run_measure(input_arguments, model)
       assert(runner.result.value.valueName == 'Success')
+      File.rename("#{output_file_path}/test_output.osm", "#{output_file_path}/#{model_name}.osm")
 
       begin
         diffs = []
@@ -181,16 +184,15 @@ module TestCommon
 
       # Write out diff or error message (make sure an old file does not exist).
       diff_file = "#{output_file_path}/#{model_name}_diffs.json"
+      puts "diff file #{diff_file}".red
       FileUtils.rm(diff_file) if File.exists?(diff_file)
       if diffs.size > 0
-        $num_failed += 1
         File.write(diff_file, JSON.pretty_generate(diffs))
+        puts "There were #{diffs.size} differences/errors in #{building_type_in} #{necb_template} #{location_in} #{weather_file_type_in} #{global_warming_in}".red
       end
 
       # Check for no errors.
-      puts "There were #{diffs.size} differences/errors in #{building_type_in} #{necb_template} #{location_in} #{weather_file_type_in} #{global_warming_in}".yellow
-
-      return true
+      assert_equal(diffs.size, 0, 'Differences detected fo model #{model_name}')
     end
   end
 end

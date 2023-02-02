@@ -14,7 +14,7 @@ require 'fileutils'
 # Core functionality for the tests. Individual test files speed up the testing.
 module TestCommon
 
-  def remove_old_test_results()
+  def self.remove_old_test_results()
 
     # Check to see if an overall start time was passed (it should be if using one of the test scripts in the test folder). 
     #  If so then use it to determine what old results are (if not use now).
@@ -297,7 +297,7 @@ module TestCommon
       assert_includes(model.getBuilding.standardsBuildingType.to_s, input_arguments['building_type'].to_s, 'building type')
       assert(runner.result.value.valueName == 'Success')
 
-      # save the model to test output directory
+      # Save the model to test output directory.
       output_file = "#{output_file_path}/#{model_name}.osm"
       model.save(output_file, true)
     end

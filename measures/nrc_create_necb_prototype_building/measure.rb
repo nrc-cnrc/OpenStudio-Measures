@@ -248,12 +248,16 @@ class NrcCreateNECBPrototypeBuilding < OpenStudio::Measure::ModelMeasure
     end
 
     # Create prototype model and update to follow standard rules (plus any sideload).
+    sizing_folder = NRCMeasureTestHelper.outputFolder(arguments)
+    puts "sizing run folder: #{sizing_folder}".yellow
     new_model = standard.model_create_prototype_model(template: template,
                                                       building_type: building_type,
                                                       epw_file: epw_file,
-                                                      sizing_run_dir: NRCMeasureTestHelper.outputFolder)
+                                                      sizing_run_dir: sizing_folder)
     standard.model_replace_model(model, new_model)
-    log_msgs
+    
+    # Commented out as fails for testing in parallel (its an openstudio issue).
+    #log_msgs
     return true
   end
 
