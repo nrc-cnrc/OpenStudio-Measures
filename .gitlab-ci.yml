@@ -13,6 +13,7 @@ cache:
 
 README:
   stage: build
+  image: nrel/openstudio-server:3.2.1
   tags:
   - linux
   - docker
