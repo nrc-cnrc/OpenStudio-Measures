@@ -1,5 +1,4 @@
 
-
 variables:
   GIT_CLONE_PATH: $CI_BUILDS_DIR/$CI_CONCURRENT_ID/os-measures
 
@@ -13,7 +12,7 @@ cache:
 
 README:
   stage: build
-  image: nrel/openstudio-server:3.2.1
+  image: alpine
   tags:
   - linux
   - docker
