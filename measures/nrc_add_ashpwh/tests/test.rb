@@ -53,24 +53,19 @@ class NrcAddASHPWH_Test < Minitest::Test
     assert((not model.empty?))
     model = model.get
 
-    # get arguments
-    arguments = measure.arguments(model)
+    # Set arguments.
     input_arguments = {
         "frac_oa" => 1.0
     }
 
     # Define the output folder for this test (optional - default is the method name).
-    output_file_path = NRCMeasureTestHelper.appendOutputFolder("OutputTestFolder")
+    output_file_path = NRCMeasureTestHelper.appendOutputFolder("OutputTestFolder", input_arguments)
 
     # Run the measure and check output
     runner = run_measure(input_arguments, model)
     result = runner.result
     show_output(result)
     assert(result.value.valueName == 'Success')
-
-    # test if the measure would grab the correct number and value of input argument.
-    assert_equal(1, arguments.size)
-    assert_equal(1.0, arguments[0].defaultValueAsDouble)
 
     # check if a HPWH was added
     ashpwhs = model.getWaterHeaterHeatPumps

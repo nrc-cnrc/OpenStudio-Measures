@@ -84,18 +84,11 @@ class NrcAddOverhangsByProjectionFactor_Test < Minitest::Test
   def test_NrcAddOverhangsByProjectionFactor
     puts "Testing Add Overhangs By Projection Factor".green
 
-    # Define the output folder for this test (optional - default is the method name).
-    output_file_path = NRCMeasureTestHelper.appendOutputFolder("test_AddOverhangsByProjectionFactor")
-
     # Create an instance of the measure
     measure = NrcAddOverhangsByProjectionFactor.new
 
     # Make an empty model
     model = OpenStudio::Model::Model.new
-
-    # Get arguments and test that they are what we are expecting
-    arguments = measure.arguments(model)
-    assert_equal(3, arguments.size)
 
     # Load the test model
     translator = OpenStudio::OSVersion::VersionTranslator.new
@@ -111,6 +104,9 @@ class NrcAddOverhangsByProjectionFactor_Test < Minitest::Test
     }
     facade = input_arguments['facade']
     projection_factor = input_arguments['projection_factor']
+
+    # Define the output folder for this test (optional - default is the method name).
+    output_file_path = NRCMeasureTestHelper.appendOutputFolder("test_AddOverhangsByProjectionFactor", input_arguments)
 
     # Run the measure
     runner = run_measure(input_arguments, model)

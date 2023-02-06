@@ -67,17 +67,15 @@ class NrcCreateFromExistingOsmFile_Test < Minitest::Test
   end
 
   def test_model_upload
-    # Define the output folder for this test.
-    output_file_path = NRCMeasureTestHelper.appendOutputFolder("test_uploaded_model")
     model = OpenStudio::Model::Model.new
     # create an instance of the measure
     measure = NrcCreateFromExistingOsmFile.new
 
-    # get arguments and test that they are what we are expecting
-    arguments = measure.arguments(model)
-    assert_equal(3, arguments.size)
-
+    # Set arguments.
     input_arguments = @good_input_arguments
+
+    # Define the output folder for this test.
+    output_file_path = NRCMeasureTestHelper.appendOutputFolder("test_uploaded_model", input_arguments)
 
     upload_osm_file = input_arguments['upload_osm_file']
     update_code_version = input_arguments['update_code_version']

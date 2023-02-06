@@ -44,23 +44,20 @@ class NrcUpdateWaterHeater_Test < Minitest::Test
 
   def test_argument_values
 
+    # Set arguments.
+    input_arguments = {
+        "update_waterheater_pcf2020" => true
+    }
+
+    # Define the output folder for this test (optional - default is the method name).
+    output_file_path = NRCMeasureTestHelper.appendOutputFolder("OutputTestFolder", input_arguments)
+
     # Load the test model.
     translator = OpenStudio::OSVersion::VersionTranslator.new
     path = OpenStudio::Path.new(File.dirname(__FILE__) + "/in.osm")
     model = translator.loadModel(path)
     assert((not model.empty?))
     model = model.get
-
-    # get arguments
-    arguments = measure.arguments(model)
-
-    input_arguments = {
-        "update_waterheater_pcf2020" => true
-    }
-
-    # test if the measure would grab the correct number and value of input argument.
-    assert_equal(1, arguments.size)
-    assert_equal(true, arguments[0].defaultValueAsBool)
 
     #get water heater performance before applying measure
     offCycleLossCoefficienttoAmbientTemperature = 1
@@ -72,16 +69,13 @@ class NrcUpdateWaterHeater_Test < Minitest::Test
       heaterThermalEfficiency = water_heater_mixed.heaterThermalEfficiency.get
     end
 
-    # Define the output folder for this test (optional - default is the method name).
-    output_file_path = NRCMeasureTestHelper.appendOutputFolder("OutputTestFolder")
-
     # Run the measure and check output
     runner = run_measure(input_arguments, model)
     result = runner.result
     show_output(result)
     assert(result.value.valueName == 'Success')
 
-    #check if water heater efficiency was changed correctly
+    # Check if water heater efficiency was changed correctly
     model.getWaterHeaterMixeds.each do |water_heater_mixed|
       new_offCycleLossCoefficienttoAmbientTemperature = water_heater_mixed.offCycleLossCoefficienttoAmbientTemperature.get
       new_OnCycleLossCoefficienttoAmbientTemperature = water_heater_mixed.onCycleLossCoefficienttoAmbientTemperature.get

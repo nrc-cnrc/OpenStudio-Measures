@@ -52,8 +52,12 @@ class NrcReportingMeasureStandard_Test < Minitest::Test
   def test_report()
     puts "Testing report on small Office model".blue
 	
+    # Set input args. In this case the std matches the one used to create the test model.
+    input_arguments = {
+    }
+
     # Define the output folder for this test (optional - default is the method name). 
-    NRCReportingMeasureTestHelper.appendOutputFolder("smallOffice")
+    output_folder = NRCReportingMeasureTestHelper.appendOutputFolder("smallOffice", input_arguments)
 	
     # Load osm file
     translator = OpenStudio::OSVersion::VersionTranslator.new
@@ -67,30 +71,30 @@ class NrcReportingMeasureStandard_Test < Minitest::Test
 	epw_path = File.expand_path("#{File.dirname(__FILE__)}/weather_files/CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw")
     epw = OpenStudio::EpwFile.new(epw_path)
     OpenStudio::Model::WeatherFile::setWeatherFile(model, epw)
-	
-    # Set input args. In this case the std matches the one used to create the test model.
-    input_arguments = {
-    }
-    
+
     # Create an instance of the measure
 	runner = run_measure(input_arguments, model)
 	
 	# Rename output file.
     #output_file = "report_no_diffs.html"
-    #File.rename("#{NRCReportingMeasureTestHelper.outputFolder}/report.html", "#{NRCReportingMeasureTestHelper.outputFolder}/#{output_file}")
+    #File.rename("#{output_folder}/report.html", "#{output_folder}/#{output_file}")
 
     # Check for differences between the current output and the regression report. Need to write regression file without CRTF endiings.
 	#regression_file = IO.read("#{File.dirname(__FILE__)}/regression_reports/#{output_file}").gsub(/\r\n?/,"\n")
-	#IO.write("#{NRCReportingMeasureTestHelper.outputFolder}/#{output_file}.reg", regression_file)
-	#diffs = FileUtils.compare_file("#{NRCReportingMeasureTestHelper.outputFolder}/#{output_file}","#{NRCReportingMeasureTestHelper.outputFolder}/#{output_file}.reg")
+	#IO.write("#{output_folder}/#{output_file}.reg", regression_file)
+	#diffs = FileUtils.compare_file("#{output_folder}/#{output_file}","#{output_folder}/#{output_file}.reg")
 	#assert(diffs, "There were differences to the regression files:\n")
   end
 
   def test_report_warehouse_prototype()
     puts "Testing report on small Office model".blue
 	
+    # Set input args. In this case the std matches the one used to create the test model.
+    input_arguments = {
+    }
+
     # Define the output folder for this test (optional - default is the method name). 
-    NRCReportingMeasureTestHelper.appendOutputFolder("warehouse")
+    NRCReportingMeasureTestHelper.appendOutputFolder("warehouse", input_arguments)
 	
     # Set standard to use.
     standard = Standard.build("NECB2017")
@@ -99,11 +103,8 @@ class NrcReportingMeasureStandard_Test < Minitest::Test
     model = standard.model_create_prototype_model(template: "NECB2017",
                                                   building_type: "Warehouse",
                                                   epw_file: "CAN_AB_Banff.CS.711220_CWEC2016.epw",
-                                                  sizing_run_dir: NRCReportingMeasureTestHelper.appendOutputFolder("Sizing"))
+                                                  sizing_run_dir: output_folder)
 
-    # Set input args. In this case the std matches the one used to create the test model.
-    input_arguments = {
-    }
     
     # Create an instance of the measure
 	runner = run_measure(input_arguments, model)
@@ -114,16 +115,20 @@ class NrcReportingMeasureStandard_Test < Minitest::Test
 
     # Check for differences between the current output and the regression report. Need to write regression file without CRTF endiings.
 	#regression_file = IO.read("#{File.dirname(__FILE__)}/regression_reports/#{output_file}").gsub(/\r\n?/,"\n")
-	#IO.write("#{NRCReportingMeasureTestHelper.outputFolder}/#{output_file}.reg", regression_file)
-	#diffs = FileUtils.compare_file("#{NRCReportingMeasureTestHelper.outputFolder}/#{output_file}","#{NRCReportingMeasureTestHelper.outputFolder}/#{output_file}.reg")
+	#IO.write("#{output_folder}/#{output_file}.reg", regression_file)
+	#diffs = FileUtils.compare_file("#{output_folder}/#{output_file}","#{output_folder}/#{output_file}.reg")
 	#assert(diffs, "There were differences to the regression files:\n")
   end
 
   def test_report_warehouse_geom()
     puts "Testing report on small Office model".blue
 	
+    # Set input args. In this case the std matches the one used to create the test model.
+    input_arguments = {
+    }
+
     # Define the output folder for this test (optional - default is the method name). 
-    NRCReportingMeasureTestHelper.appendOutputFolder("WarehouseGeom")
+    output_folder = NRCReportingMeasureTestHelper.appendOutputFolder("WarehouseGeom", input_arguments)
 	
     # Set standard to use.
     standard = Standard.build("NECB2017")
@@ -182,23 +187,19 @@ class NrcReportingMeasureStandard_Test < Minitest::Test
     # Apply standards ruleset to model (note this does a sizing run)
     standard.model_apply_standard(model: model,
                                   epw_file: "CAN_AB_Banff.CS.711220_CWEC2016.epw",
-                                  sizing_run_dir: NRCReportingMeasureTestHelper.appendOutputFolder("Sizing"))
-
-    # Set input args. In this case the std matches the one used to create the test model.
-    input_arguments = {
-    }
+                                  sizing_run_dir: output_folder)
     
     # Create an instance of the measure
 	runner = run_measure(input_arguments, model)
 	
 	# Rename output file.
     #output_file = "report_no_diffs.html"
-    #File.rename("#{NRCReportingMeasureTestHelper.outputFolder}/report.html", "#{NRCReportingMeasureTestHelper.outputFolder}/#{output_file}")
+    #File.rename("#{output_folder}/report.html", "#{output_folder}/#{output_file}")
 
     # Check for differences between the current output and the regression report. Need to write regression file without CRTF endiings.
 	#regression_file = IO.read("#{File.dirname(__FILE__)}/regression_reports/#{output_file}").gsub(/\r\n?/,"\n")
-	#IO.write("#{NRCReportingMeasureTestHelper.outputFolder}/#{output_file}.reg", regression_file)
-	#diffs = FileUtils.compare_file("#{NRCReportingMeasureTestHelper.outputFolder}/#{output_file}","#{NRCReportingMeasureTestHelper.outputFolder}/#{output_file}.reg")
+	#IO.write("#{output_folder}/#{output_file}.reg", regression_file)
+	#diffs = FileUtils.compare_file("#{output_folder}/#{output_file}","#{output_folder}/#{output_file}.reg")
 	#assert(diffs, "There were differences to the regression files:\n")
   end
 end

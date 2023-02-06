@@ -97,14 +97,14 @@ class NrcSetInfiltration_Test < Minitest::Test
   def test_warehouse
     puts "Testing NECB default value".green
 
+    # Get arguments.
+    input_arguments = @good_input_arguments
+
     # Define the output folder for this test (optional - default is the method name).
-    output_file_path = NRCMeasureTestHelper.appendOutputFolder("Warehouse Good")
+    output_file_path = NRCMeasureTestHelper.appendOutputFolder("Warehouse Good", input_arguments)
 
     # Load osm file.
     model = load_test_osm("#{File.dirname(__FILE__)}/Warehouse-NECB2017-ON_Ottawa.osm")
-
-    # Get arguments.
-    input_arguments = @good_input_arguments
 
     # Run the measure. This saves the updated model to "#{output_file_path}/test_output.osm".
     runner = run_measure(input_arguments, model)
@@ -126,14 +126,14 @@ class NrcSetInfiltration_Test < Minitest::Test
   def test_warehouse_no_change
     puts "Testing no change values".green
 
+    # Get arguments.
+    input_arguments = @no_change_input_arguments
+
     # Define the output folder for this test (optional - default is the method name).
-    output_file_path = NRCMeasureTestHelper.appendOutputFolder("WarehouseNoChange")
+    output_file_path = NRCMeasureTestHelper.appendOutputFolder("WarehouseNoChange", input_arguments)
 
     # Load osm file.
     model = load_test_osm("#{File.dirname(__FILE__)}/Warehouse-NECB2017-ON_Ottawa.osm")
-
-    # Get arguments.
-    input_arguments = @no_change_input_arguments
 
     # Run the measure and check output.
     runner = run_measure(input_arguments, model)

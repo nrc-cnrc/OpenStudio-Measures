@@ -57,9 +57,9 @@ class NrcSetBoilerEfficiency_Test < Minitest::Test
     boiler_eff = input_arguments['boiler_eff']
 
     # Define the output folder for this test (optional - default is the method name).
-    output_file_path = NRCMeasureTestHelper.appendOutputFolder("Good Thermal Efficiency Test")
+    output_file_path = NRCMeasureTestHelper.appendOutputFolder("Good Thermal Efficiency Test", input_arguments)
 
-    # Run the measure and check output
+    # Run the measure and check output.
     runner = run_measure(input_arguments, model)
     result = runner.result
     assert(result.value.valueName == 'Success')

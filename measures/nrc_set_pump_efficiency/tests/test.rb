@@ -49,15 +49,15 @@ class NrcSetPumpEfficiency_Test < Minitest::Test
 
   def test_argument_values
 
-    # Load osm file.
-    model = load_test_osm("#{File.dirname(__FILE__)}/warehouse_2017.osm")
-
     # Get arguments.
     input_arguments = @good_input_arguments
     pump_eff = input_arguments['pump_eff']
 
     # Define the output folder for this test (optional - default is the method name).
-    output_file_path = NRCMeasureTestHelper.appendOutputFolder("Good Pump Motor Efficiency Test")
+    output_file_path = NRCMeasureTestHelper.appendOutputFolder("Good Pump Motor Efficiency Test", input_arguments)
+
+    # Load osm file.
+    model = load_test_osm("#{File.dirname(__FILE__)}/warehouse_2017.osm")
 
     # Run the measure. This saves the updated model to "#{output_file_path}/test_output.osm".
     runner = run_measure(input_arguments, model)

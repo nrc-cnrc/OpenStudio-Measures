@@ -87,7 +87,7 @@ class NrcSetSrr_Test < Minitest::Test
       test_name = "#{srr_options_noSpaces}"
 
       # Define the output folder for this test (optional - default is the method name).
-      output_file_path = NRCMeasureTestHelper.appendOutputFolder("#{test_name}")
+      output_file_path = NRCMeasureTestHelper.appendOutputFolder("#{test_name}", input_arguments)
 
       # Set argument values to good values and run the measure on model with spaces.
       runner = run_measure(input_arguments, model)

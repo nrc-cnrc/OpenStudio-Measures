@@ -52,7 +52,7 @@ class NrcRenameSurfaces_Test < Minitest::Test
     puts "Testing surfaces renaming".green
 
     # Define the output folder for this test (optional - default is the method name).
-    output_file_path = NRCMeasureTestHelper.appendOutputFolder("test_renameSurfaces")
+    output_file_path = NRCMeasureTestHelper.appendOutputFolder("test_renameSurfaces", @good_input_arguments)
 
     # create an instance of the measure
     measure = NrcRenameSurfaces.new
@@ -60,20 +60,15 @@ class NrcRenameSurfaces_Test < Minitest::Test
     # make an empty model
     model = OpenStudio::Model::Model.new
 
-    # get arguments and test that they are what we are expecting
-    arguments = measure.arguments(model)
-    assert_equal(1, arguments.size)
-
     # load the test model
     translator = OpenStudio::OSVersion::VersionTranslator.new
     path = OpenStudio::Path.new(File.dirname(__FILE__) + "/warehouse_2017.osm")
     model = translator.loadModel(path)
     assert((not model.empty?))
     model = model.get
-    input_arguments = @good_input_arguments
 
     puts "Test if the surfaces were renamed as expected"
-    runner = run_measure(input_arguments, model)
+    runner = run_measure(@good_input_arguments, model)
     model.getSurfaces.each do |surface|
       new_name = (surface.name).to_s
       outsideBoundaryCondition = surface.outsideBoundaryCondition

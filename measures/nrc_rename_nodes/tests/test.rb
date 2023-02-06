@@ -50,7 +50,7 @@ class NrcRenameNodes_Test < Minitest::Test
     puts "Testing HVAC nodes renaming".green
 
     # Define the output folder for this test (optional - default is the method name).
-    output_file_path = NRCMeasureTestHelper.appendOutputFolder("test_rename_nodes")
+    output_file_path = NRCMeasureTestHelper.appendOutputFolder("test_rename_nodes", @good_input_arguments)
 
     # load the test model
     translator = OpenStudio::OSVersion::VersionTranslator.new
@@ -62,13 +62,8 @@ class NrcRenameNodes_Test < Minitest::Test
     # create an instance of the measure
     measure = NrcRenameNodes.new
 
-    # get arguments and test that they are what we are expecting
-    arguments = measure.arguments(model)
-    assert_equal(1, arguments.size)
-
-    input_arguments = @good_input_arguments
     # Run the measure and check if the nodes were renamed as expected
-    runner = run_measure(input_arguments, model)
+    runner = run_measure(@good_input_arguments, model)
 
     puts "Checking whether the names of nodes of the supply side in plant loops have been changed correctly".green
     model.getPlantLoops.sort.each do |plant_loop|

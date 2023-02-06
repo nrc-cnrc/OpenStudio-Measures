@@ -60,8 +60,11 @@ class NrcAddHvacAvailabilityManager_Test < Minitest::Test
   def test_availabilityManager()
     puts "Testing  cooling availability manager".green
 
+    # Set up your argument list to test.
+    input_arguments = @good_input_arguments
+
     # Define the output folder for this test (optional - default is the method name).
-    output_file_path = NRCMeasureTestHelper.appendOutputFolder("OutputTestFolder")
+    output_file_path = NRCMeasureTestHelper.appendOutputFolder("OutputTestFolder", input_arguments)
 
     # Set standard to use.
     standard = Standard.build("NECB2017")
@@ -72,8 +75,6 @@ class NrcAddHvacAvailabilityManager_Test < Minitest::Test
                                                   epw_file: "CAN_AB_Banff.CS.711220_CWEC2016.epw",
                                                   sizing_run_dir: output_file_path)
 
-    # Set up your argument list to test.
-   input_arguments = @good_input_arguments
 
     # Create an instance of the measure
     runner = run_measure(input_arguments, model)

@@ -94,15 +94,15 @@ class NrcDrainWaterHeatRecovery_Test < Minitest::Test
 
   def test_drainwater()
 
-    # Define the output folder for this test (optional - default is the method name).
-    output_file_path = NRCMeasureTestHelper.appendOutputFolder("OutputTestFolder")
-
     # Load the test workspace
     idf_file = File.dirname(__FILE__) + '/in.idf'
     assert(File.exists?(idf_file))
     workspace = OpenStudio::Workspace::load(OpenStudio::Path.new(idf_file))
     assert((not workspace.empty?))
     workspace = workspace.get
+
+    # Define the output folder for this test (optional - default is the method name).
+    output_file_path = NRCMeasureTestHelper.appendOutputFolder("OutputTestFolder", @good_input_arguments)
 
     # Create an instance of the measure
     runner = run_measure(@good_input_arguments, workspace)

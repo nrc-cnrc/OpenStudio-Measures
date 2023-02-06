@@ -52,14 +52,13 @@ class NrcChangeCAVToVAV_Test < Minitest::Test
     assert((not model.empty?))
     model = model.get
 
-    # get arguments
-    arguments = measure.arguments(model)
+    # Set arguments.
     input_arguments = {
         "airLoopSelected" => "All Air Loops"
     }
 
     # Define the output folder for this test (optional - default is the method name).
-    output_file_path = NRCMeasureTestHelper.appendOutputFolder("OutputTestFolder")
+    output_file_path = NRCMeasureTestHelper.appendOutputFolder("OutputTestFolder", input_arguments)
 
     # Run the measure and check output
     runner = run_measure(input_arguments, model)
@@ -67,11 +66,7 @@ class NrcChangeCAVToVAV_Test < Minitest::Test
     show_output(result)
     assert(result.value.valueName == 'Success')
 
-    # test if the measure would grab the correct number and value of input argument.
-    assert_equal(1, arguments.size)
-    assert_equal("All Air Loops", arguments[0].defaultValueAsString)
-
-    #check setpoint manager, fan, and terminal
+    # Check setpoint manager, fan, and terminal
     model.getAirLoopHVACs.each do |air_loop|
       air_loop.supplyComponents.each do |supply_component|
         if supply_component.to_FanVariableVolume.is_initialized

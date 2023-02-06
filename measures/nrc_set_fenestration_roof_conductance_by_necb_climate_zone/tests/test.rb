@@ -137,7 +137,7 @@ class NrcSetFenestrationRoofConductanceByNecbClimateZone_Test < Minitest::Test
   def test_Zone4_conductance
 
     # Define the output folder for this test (optional - default is the method name).
-    output_file_path = NRCMeasureTestHelper.appendOutputFolder("OutputTestFolder_zone4")
+    output_file_path = NRCMeasureTestHelper.appendOutputFolder("OutputTestFolder_zone4", @good_input_arguments)
 
     # Create a default model.
     standard = Standard.build("NECB2017")
@@ -161,7 +161,7 @@ class NrcSetFenestrationRoofConductanceByNecbClimateZone_Test < Minitest::Test
   def test_Zone5_conductance
 
     # Define the output folder for this test (optional - default is the method name).
-    output_file_path = NRCMeasureTestHelper.appendOutputFolder("OutputTestFolder_zone5")
+    output_file_path = NRCMeasureTestHelper.appendOutputFolder("OutputTestFolder_zone5", @good_input_arguments)
 
     # Create a default model.
     standard = Standard.build("NECB2017")
@@ -185,7 +185,7 @@ class NrcSetFenestrationRoofConductanceByNecbClimateZone_Test < Minitest::Test
   def test_Zone6_conductance
 
     # Define the output folder for this test (optional - default is the method name).
-    output_file_path = NRCMeasureTestHelper.appendOutputFolder("OutputTestFolder_zone6")
+    output_file_path = NRCMeasureTestHelper.appendOutputFolder("OutputTestFolder_zone6", @good_input_arguments)
 
     # Create a default model.
     standard = Standard.build("NECB2017")
@@ -209,7 +209,7 @@ class NrcSetFenestrationRoofConductanceByNecbClimateZone_Test < Minitest::Test
   def test_Zone7a_conductance
 
     # Define the output folder for this test (optional - default is the method name).
-    output_file_path = NRCMeasureTestHelper.appendOutputFolder("OutputTestFolder_zone7a")
+    output_file_path = NRCMeasureTestHelper.appendOutputFolder("OutputTestFolder_zone7a", @good_input_arguments)
 
     # Create a default model.
     standard = Standard.build("NECB2017")
@@ -233,7 +233,7 @@ class NrcSetFenestrationRoofConductanceByNecbClimateZone_Test < Minitest::Test
   def test_Zone7b_conductance
 
     # Define the output folder for this test (optional - default is the method name).
-    output_file_path = NRCMeasureTestHelper.appendOutputFolder("OutputTestFolder_zone7b")
+    output_file_path = NRCMeasureTestHelper.appendOutputFolder("OutputTestFolder_zone7b", @good_input_arguments)
 
     # Create a default model.
     standard = Standard.build("NECB2017")
@@ -257,7 +257,7 @@ class NrcSetFenestrationRoofConductanceByNecbClimateZone_Test < Minitest::Test
   def test_Zone8_conductance
 
     # Define the output folder for this test (optional - default is the method name).
-    output_file_path = NRCMeasureTestHelper.appendOutputFolder("OutputTestFolder_Zone8")
+    output_file_path = NRCMeasureTestHelper.appendOutputFolder("OutputTestFolder_Zone8", @good_input_arguments)
 
     # Create a default model.
     standard = Standard.build("NECB2015")

@@ -52,7 +52,7 @@ class NrcPricingMeasure_Test < Minitest::Test
     puts "Testing report on warehouse model".blue
 	
     # Define the output folder for this test. 
-    output_file_path = NRCReportingMeasureTestHelper.appendOutputFolder("Warehouse")
+    output_file_path = NRCReportingMeasureTestHelper.appendOutputFolder("Warehouse", @good_input_arguments)
 	
     # Set standard to use.
     standard = Standard.build("NECB2017")
@@ -61,23 +61,22 @@ class NrcPricingMeasure_Test < Minitest::Test
     model = standard.model_create_prototype_model(template: "NECB2017",
                                                       building_type: "Warehouse",
                                                       epw_file: "CAN_AB_Banff.CS.711220_CWEC2016.epw",
-													  sizing_run_dir: NRCReportingMeasureTestHelper.outputFolder)
+													  sizing_run_dir: output_file_path)
 	
     # Set input args. In this case the std matches the one used to create the test model.
-    input_arguments = {
-    }
+    input_arguments = @good_input_arguments
 	
     # Create an instance of the measure.
 	runner = run_measure(input_arguments, model)
 	
 	# Rename output file.
     #output_file = "report_no_diffs.html"
-    #File.rename("#{NRCReportingMeasureTestHelper.outputFolder}/report.html", "#{NRCReportingMeasureTestHelper.outputFolder}/#{output_file}")
+    #File.rename("#{output_file_path}/report.html", "#{output_file_path}/#{output_file}")
 
     # Check for differences between the current output and the regression report. Need to write regression file without CRTF endiings.
 	#regression_file = IO.read("#{File.dirname(__FILE__)}/regression_reports/#{output_file}").gsub(/\r\n?/,"\n")
-	#IO.write("#{NRCReportingMeasureTestHelper.outputFolder}/#{output_file}.reg", regression_file)
-	#diffs = FileUtils.compare_file("#{NRCReportingMeasureTestHelper.outputFolder}/#{output_file}","#{NRCReportingMeasureTestHelper.outputFolder}/#{output_file}.reg")
+	#IO.write("#{output_file_path}/#{output_file}.reg", regression_file)
+	#diffs = FileUtils.compare_file("#{output_file_path}/#{output_file}","#{output_file_path}/#{output_file}.reg")
 	#assert(diffs, "There were differences to the regression files:\n")
   end
 end

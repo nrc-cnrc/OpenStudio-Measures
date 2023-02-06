@@ -90,7 +90,7 @@ class NrcSetFdwr_Test < Minitest::Test
       hdd = standard.get_necb_hdd18(model)
 
       # Define the output folder for this test (optional - default is the method name).
-      output_file_path = NRCMeasureTestHelper.appendOutputFolder("#{fdwr_options_noSpaces}")
+      output_file_path = NRCMeasureTestHelper.appendOutputFolder("#{fdwr_options_noSpaces}", input_arguments)
 
       # Run the measure. This saves the updated model to "#{output_file_path}/test_output.osm".
       runner = run_measure(input_arguments, model)

@@ -76,20 +76,11 @@ module TestCommon
 
     def test_report(building_type:)
       puts "Testing  model creation for".green + " #{building_type}".light_blue
-      # Define the output folder for this test (optional - default is the method name).
-      test_dir = NRCReportingMeasureTestHelper.appendOutputFolder("test_report/#{building_type}")
       puts "Testing directory: ".green + " #{test_dir}".light_blue
       # create an instance of the measure
       measure = NrcReport.new
       # create an instance of a runner
       runner = OpenStudio::Measure::OSRunner.new(OpenStudio::WorkflowJSON.new)
-
-      # get arguments
-      arguments = measure.arguments()
-      argument_map = OpenStudio::Measure.convertOSArgumentVectorToMap(arguments)
-
-      report_depth = arguments[0].clone
-      argument_map['report_depth'] = report_depth
 
       template = "NECB2017"
       prototype_creator = Standard.build(template)
@@ -104,6 +95,9 @@ module TestCommon
       input_arguments = {
         "report_depth" => "Summary"
       }
+
+      # Define the output folder for this test (optional - default is the method name).
+      test_dir = NRCReportingMeasureTestHelper.appendOutputFolder("test_report/#{building_type}", input_arguments)
 
       # Create an instance of the measure
       run_measure(input_arguments, model)

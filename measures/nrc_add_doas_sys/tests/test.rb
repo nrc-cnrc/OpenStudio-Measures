@@ -53,18 +53,13 @@ class NrcAddDOASSys_Test < Minitest::Test
     assert((not model.empty?))
     model = model.get
 
-    # get arguments
-    arguments = measure.arguments(model)
-
+    # Set arguments.
     input_arguments = {
         "zonesselected" => "All Zones"
     }
 
-    # test if the measure would grab the correct number and value of input argument.
-    assert_equal(1, arguments.size)
-
     # Define the output folder for this test (optional - default is the method name).
-    output_file_path = NRCMeasureTestHelper.appendOutputFolder("OutputTestFolder")
+    output_file_path = NRCMeasureTestHelper.appendOutputFolder("OutputTestFolder", input_arguments)
 
     # Run the measure and check output
     runner = run_measure(input_arguments, model)

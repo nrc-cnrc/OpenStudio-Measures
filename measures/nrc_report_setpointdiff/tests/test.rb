@@ -72,24 +72,20 @@ class NrcReportSetPointDiff_Test < Minitest::Test
   def test_report()
     puts "Testing report on warehouse model".green
 
+    # Set input args. In this case the std matches the one used to create the test model.
+    input_arguments = {
+      "timeStep" => "Hourly",
+      "detail" => "No"
+    }
+
     # Define the output folder for this test (optional - default is the method name).
-    test_dir = NRCReportingMeasureTestHelper.appendOutputFolder("test_report")
+    test_dir = NRCReportingMeasureTestHelper.appendOutputFolder("test_report", input_arguments)
 
     # create an instance of the measure
     measure = NrcReportSetPointDiff.new
 
     # create an instance of a runner
     runner = OpenStudio::Measure::OSRunner.new(OpenStudio::WorkflowJSON.new)
-
-    # get arguments
-    arguments = measure.arguments()
-    argument_map = OpenStudio::Measure.convertOSArgumentVectorToMap(arguments)
-
-    timeStep = arguments[0].clone
-    argument_map['timeStep'] = timeStep
-
-    detail = arguments[1].clone
-    argument_map['detail'] = detail
 
     ################### Create warehouse
     template = 'NECB2017'
@@ -101,12 +97,6 @@ class NrcReportSetPointDiff_Test < Minitest::Test
       sizing_run_dir: test_dir,
       debug: @debug,
       building_type: 'Warehouse')
-
-    # Set input args. In this case the std matches the one used to create the test model.
-    input_arguments = {
-      "timeStep" => "Hourly",
-      "detail" => "No"
-    }
 
     # Create an instance of the measure
     run_measure(input_arguments, model)

@@ -120,20 +120,7 @@ class NrcResizeExistingWindowsToMatchAGivenWWR_Test < Minitest::Test
   def test_argument_values
     puts "Testing window resizing".green
 
-    # Define the output folder for this test (optional - default is the method name).
-    output_file_path = NRCMeasureTestHelper.appendOutputFolder("test_windowResizing")
-
-    measure = NrcResizeExistingWindowsToMatchAGivenWWR.new
-
-    # load the test model
-    translator = OpenStudio::OSVersion::VersionTranslator.new
-    path = OpenStudio::Path.new(File.dirname(__FILE__) + "/Warehouse-NECB2017-ON_Ottawa.osm")
-    model = translator.loadModel(path)
-    assert((not model.empty?))
-    model = model.get
-
-    # get arguments
-    arguments = measure.arguments(model)
+    # Set arguments.
     input_arguments = {
       "remove_skylight" => false,
       "cz_4_fdwr" => 0.2,
@@ -147,8 +134,16 @@ class NrcResizeExistingWindowsToMatchAGivenWWR_Test < Minitest::Test
       "check_sunexposed" => true
     }
 
-    # test if the measure would grab the correct number and value of input argument.
-    assert_equal(10, arguments.size)
+    # Define the output folder for this test (optional - default is the method name).
+    output_file_path = NRCMeasureTestHelper.appendOutputFolder("test_windowResizing", input_arguments)
+
+    # load the test model
+    translator = OpenStudio::OSVersion::VersionTranslator.new
+    path = OpenStudio::Path.new(File.dirname(__FILE__) + "/Warehouse-NECB2017-ON_Ottawa.osm")
+    model = translator.loadModel(path)
+    assert((not model.empty?))
+    model = model.get
+
     # Run the measure and check output
     runner = run_measure(input_arguments, model)
 

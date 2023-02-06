@@ -70,18 +70,22 @@ module TestCommon
           end
 
           puts "Testing  model creation for".green + " #{building_type} and #{city} ".light_blue
+
+          # Set input args. In this case the std matches the one used to create the test model.
+          input_arguments = {
+            "reporting_frequency" => "Hourly",
+            "output_variables" => "System Node Standard Density Volume Flow Rate:Node 5, System Node Standard Density Volume Flow Rate:Node 21, Water Heater Heating Rate:*, Water Heater Water Volume Flow Rate:*"
+          }
+
           # Define the output folder for this test (optional - default is the method name).
-          test_dir = NRCReportingMeasureTestHelper.appendOutputFolder("test_report/#{city}_#{building_type}")
+          test_dir = NRCReportingMeasureTestHelper.appendOutputFolder("test_report/#{city}_#{building_type}", input_arguments)
           puts "Testing directory: ".green + " #{test_dir}".light_blue
+
           # create an instance of the measure
           measure = NrcReportSeveralOutputVariables.new
+
           # create an instance of a runner
           runner = OpenStudio::Measure::OSRunner.new(OpenStudio::WorkflowJSON.new)
-
-          # get arguments
-          arguments = measure.arguments()
-
-          argument_map = OpenStudio::Measure.convertOSArgumentVectorToMap(arguments)
 
           template = "NECB2017"
           prototype_creator = Standard.build(template)
@@ -89,14 +93,7 @@ module TestCommon
             template: template,
             epw_file: epw_file,
             sizing_run_dir: test_dir,
-            debug: @debug,
             building_type: building_type)
-
-          # Set input args. In this case the std matches the one used to create the test model.
-          input_arguments = {
-            "reporting_frequency" => "Hourly",
-            "output_variables" => "System Node Standard Density Volume Flow Rate:Node 5, System Node Standard Density Volume Flow Rate:Node 21, Water Heater Heating Rate:*, Water Heater Water Volume Flow Rate:*"
-          }
 
           # Create an instance of the measure
           run_measure(input_arguments, model)

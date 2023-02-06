@@ -52,8 +52,11 @@ class NrcChangeSWHtoASHPWH_Test < Minitest::Test
     building_types.each { |building_type|
       puts "Test swapping mixed water heater for heat pump water heater in #{building_type} model".green
 
+      # Set up your argument list to test.
+      input_arguments = @good_input_arguments
+
       # Define the output folder for this test (optional - default is the method name).
-      output_file_path = NRCMeasureTestHelper.appendOutputFolder("test_#{building_type}")
+      output_file_path = NRCMeasureTestHelper.appendOutputFolder("test_#{building_type}", input_arguments)
 
       # Set standard to use.
       standard = Standard.build("NECB2017")
@@ -64,8 +67,6 @@ class NrcChangeSWHtoASHPWH_Test < Minitest::Test
                                                     epw_file: "CAN_SK_Saskatoon.Intl.AP.718660_CWEC2016.epw",
                                                     sizing_run_dir: output_file_path)
 
-      # Set up your argument list to test.
-      input_arguments = @good_input_arguments
 
       # Create an instance of the measure
       runner = run_measure(input_arguments, model)

@@ -99,8 +99,7 @@ class NrcChangeEnergyRecoveryEfficiency_Test < Minitest::Test
     assert((not model.empty?))
     model = model.get
 
-    # get arguments
-    arguments = measure.arguments(model)
+    # Set arguments.
     input_arguments = {
         "sensible_eff_at_100_heating" => 0.76,
         "latent_eff_at_100_heating" => 0.68,
@@ -124,19 +123,8 @@ class NrcChangeEnergyRecoveryEfficiency_Test < Minitest::Test
     sensible_eff_at_75_cooling = input_arguments["sensible_eff_at_75_cooling"]
     latent_eff_at_75_cooling = input_arguments["latent_eff_at_75_cooling"]
 
-    # test if the measure would grab the correct number and value of input argument.
-    assert_equal(8, arguments.size)
-    assert_equal('sensible_eff_at_100_heating', arguments[0].name)
-    assert_equal('latent_eff_at_100_heating', arguments[1].name)
-    assert_equal('sensible_eff_at_75_heating', arguments[2].name)
-    assert_equal('latent_eff_at_75_heating', arguments[3].name)
-    assert_equal('sensible_eff_at_100_cooling', arguments[4].name)
-    assert_equal('latent_eff_at_100_cooling', arguments[5].name)
-    assert_equal('sensible_eff_at_75_cooling', arguments[6].name)
-    assert_equal('latent_eff_at_75_cooling', arguments[7].name)
-
     # Define the output folder for this test (optional - default is the method name).
-    output_file_path = NRCMeasureTestHelper.appendOutputFolder("OutputTestFolder")
+    output_file_path = NRCMeasureTestHelper.appendOutputFolder("OutputTestFolder", input_arguments)
 
     # Run the measure and check output
     runner = run_measure(input_arguments, model)

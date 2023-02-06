@@ -72,8 +72,11 @@ class NrcReportUtilityCosts_Test < Minitest::Test
   def test_report()
     puts "Testing report on small Office model".blue
 	
+    # Set input args. In this case the std matches the one used to create the test model.
+    input_arguments = @good_input_arguments
+
     # Define the output folder for this test. 
-    NRCReportingMeasureTestHelper.appendOutputFolder("smallOffice")
+    NRCReportingMeasureTestHelper.appendOutputFolder("smallOffice", input_arguments)
 	
     # Load osm file
     translator = OpenStudio::OSVersion::VersionTranslator.new
@@ -87,12 +90,7 @@ class NrcReportUtilityCosts_Test < Minitest::Test
 	epw_path = File.expand_path("#{File.dirname(__FILE__)}/weather_files/CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw")
     epw = OpenStudio::EpwFile.new(epw_path)
     OpenStudio::Model::WeatherFile::setWeatherFile(model, epw)
-	
-    # Set input args. In this case the std matches the one used to create the test model.
-    input_arguments = @good_input_arguments
-	#{
-    #}
-    
+
     # Create an instance of the measure
 	runner = run_measure(input_arguments, model)
 	

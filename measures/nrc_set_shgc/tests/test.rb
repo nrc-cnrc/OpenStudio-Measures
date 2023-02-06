@@ -46,14 +46,14 @@ class NrcSetSHGC_Test < Minitest::Test
 
   def test_argument_values
 
+    # Get arguments.
+    input_arguments = @good_input_arguments
+
     # Define the output folder for this test (optional - default is the method name).
-    output_file_path = NRCMeasureTestHelper.appendOutputFolder("Set SHGC test")
+    output_file_path = NRCMeasureTestHelper.appendOutputFolder("Set SHGC test", input_arguments)
 	
     # Load the test model.
 	model = load_test_osm(File.dirname(__FILE__) + "/warehouse_2017.osm")
-
-    # Get arguments.
-    input_arguments = @good_input_arguments
 
     # Run the measure. This saves the updated model to "#{output_file_path}/test_output.osm".
     runner = run_measure(input_arguments, model)

@@ -92,23 +92,11 @@ require 'fileutils'
 
     def test_report(building_type: "Warehouse")
       puts "Testing  model creation for".green + " #{building_type}".light_blue
-      # Define the output folder for this test (optional - default is the method name).
-      test_dir = NRCReportingMeasureTestHelper.appendOutputFolder("test_report/#{building_type}")
       puts "Testing directory: ".green + " #{test_dir}".light_blue
       # create an instance of the measure
       measure = NrcReportCarbonEmissions.new
       # create an instance of a runner
       runner = OpenStudio::Measure::OSRunner.new(OpenStudio::WorkflowJSON.new)
-
-      # get arguments
-      arguments = measure.arguments()
-      argument_map = OpenStudio::Measure.convertOSArgumentVectorToMap(arguments)
-
-      location = arguments[0].clone
-      argument_map['location'] = location
-
-      year = arguments[1].clone
-      argument_map['year'] = year
 
       template = "NECB2017"
       prototype_creator = Standard.build(template)
@@ -126,6 +114,9 @@ require 'fileutils'
         "end_year" => "2025",
         "nir_report_year" => "2019"
       }
+
+      # Define the output folder for this test (optional - default is the method name).
+      test_dir = NRCReportingMeasureTestHelper.appendOutputFolder("test_report/#{building_type}", input_arguments)
 
       # Create an instance of the measure
       run_measure(input_arguments, model)

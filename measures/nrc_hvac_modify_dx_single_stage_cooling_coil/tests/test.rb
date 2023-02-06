@@ -64,7 +64,7 @@ class NrcHvacModifyDxSingleStageCooling_Test < Minitest::Test
 	
     ####### Create a test model ######
     # Define the output folder for this test (optional - default is the method name).
-    output_file_path = NRCMeasureTestHelper.appendOutputFolder("OutputTestFolder")
+    output_file_path = NRCMeasureTestHelper.appendOutputFolder("OutputTestFolder", @good_input_arguments)
 
     # Set standard to use.
     standard = Standard.build("NECB2017")

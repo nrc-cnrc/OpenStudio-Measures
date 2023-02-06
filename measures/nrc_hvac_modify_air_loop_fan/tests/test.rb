@@ -80,7 +80,7 @@ class NrcHvacModifyAirLoopFan_Test < Minitest::Test
     puts "Testing modification of fan".green
 
     # Define the output folder for this test (optional - default is the method name).
-    output_file_path = NRCMeasureTestHelper.appendOutputFolder("test_modify_fan")
+    output_file_path = NRCMeasureTestHelper.appendOutputFolder("test_modify_fan", @good_input_arguments)
 
     # Set standard to use.
     standard = Standard.build("NECB2017")
