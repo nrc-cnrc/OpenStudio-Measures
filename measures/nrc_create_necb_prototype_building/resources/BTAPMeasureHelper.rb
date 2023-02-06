@@ -228,7 +228,6 @@ module BTAPMeasureTestHelper
               input_arguments[argument['name']] = over_max_value
               puts "Testing argument ".green + " #{argument['name']}".light_blue + " max limit of ".green + " #{argument['max_integer_value']}".light_blue
               input_arguments = {'json_input' => JSON.pretty_generate(input_arguments)} if @use_json_package
-              run_measure(input_arguments, model)
               runner = run_measure(input_arguments, model)
               assert(runner.result.value.valueName != 'Success', "Checks did not stop a lower than limit value of #{over_max_value} for #{argument['name']}")
               puts "Success: Testing argument ".green + " #{argument['name']}".light_blue + " max limit of".green + " #{argument['max_integer_value']}".light_blue

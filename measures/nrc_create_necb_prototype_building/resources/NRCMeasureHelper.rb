@@ -118,10 +118,16 @@ module NRCMeasureTestHelper
     if arguments == nil
       return ""
     end
-	#puts "Recovering outputFolder from: #{@@method_testing_paths}".pink
-	#puts "  for: #{arguments}".blue
+	puts "Recovering outputFolder from: #{@@method_testing_paths}".pink
+	puts "  for: #{arguments}".blue
     folder = @@method_testing_paths[arguments]
-	puts "Recovering outputFolder: #{folder}".yellow
+	puts "Recovering outputFolder: #{folder}".green
+    if folder == nil
+
+      # No folder found. Likely froom the test_argument_ranges but just in case grab the calling method name.
+      folder = appendOutputFolder(caller_locations(1, 2)[1].label.split.last, arguments)
+	  puts "Created missing outputFolder: #{folder}".yellow
+    end
     return folder
   end
 
