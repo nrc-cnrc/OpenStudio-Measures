@@ -149,7 +149,7 @@ module TestCommon
       # Run the measure and check output. Model saved to file 'test_output.osm'
       runner = run_measure(input_arguments, model)
       assert(runner.result.value.valueName == 'Success')
-      File.rename("#{output_file_path}/test_output.osm", "#{output_file_path}/#{model_name}.osm")
+      File.rename("#{output_file_path}/test_output.osm", "#{output_file_path}.osm")
 
       begin
         diffs = []
@@ -183,7 +183,7 @@ module TestCommon
       end
 
       # Write out diff or error message (make sure an old file does not exist).
-      diff_file = "#{output_file_path}/#{model_name}_diffs.json"
+      diff_file = "#{output_file_path}_diffs.json"
       puts "diff file #{diff_file}".red
       FileUtils.rm(diff_file) if File.exists?(diff_file)
       if diffs.size > 0

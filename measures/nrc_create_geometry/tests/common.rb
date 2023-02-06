@@ -28,10 +28,12 @@ module TestCommon
 
   class NrcCreateGeometry_Test < Minitest::Test
 
-  # Brings in helper methods to simplify argument testing of json and standard argument methods
-  # and set standard output folder.
-  include(NRCMeasureTestHelper)
-  NRCMeasureTestHelper.setOutputFolder("#{self.name}")
+    # Brings in helper methods to simplify argument testing of json and standard argument methods
+    # and set standard output folder.
+    include(NRCMeasureTestHelper)
+    folder = "#{self.name}"
+    folder.slice!("TestCommon::")
+    NRCMeasureTestHelper.setOutputFolder("#{folder}")
 
 
     def setup()
@@ -284,8 +286,7 @@ module TestCommon
 
       # Define specific output folder for this test. In this case use the tempalet and the model name as this combination is unique.
       model_name = "#{building_shape}-#{building_type}-#{template}-#{rotation.to_int}-#{above_grade_floors}-#{total_floor_area.to_int}-#{aspect_ratio}_#{location}_#{weather_file_type}_#{global_warming.to_i}"
-      output_file_path = NRCMeasureTestHelper.appendOutputFolder("#{template}/#{model_name}")
-
+      output_file_path = NRCMeasureTestHelper.appendOutputFolder("#{model_name}", input_arguments)
       puts "Output folder ".green + "#{output_file_path}".light_blue
 
       # Create an instance of the measure with good values
@@ -298,7 +299,7 @@ module TestCommon
       assert(runner.result.value.valueName == 'Success')
 
       # Save the model to test output directory.
-      output_file = "#{output_file_path}/#{model_name}.osm"
+      output_file = "#{output_file_path}.osm"
       model.save(output_file, true)
     end
   end
