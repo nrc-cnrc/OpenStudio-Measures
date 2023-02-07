@@ -287,10 +287,9 @@ module NRCReportingMeasureTestHelper
     ensure
       Dir.chdir(start_dir)
     end
-    result = runner.result.value.valueName
 
-	# Check it ran successfully.
-    assert(result == 'Success')
+    # Get the result of the measure. Cannot check for success here as some tests designed to fail!
+    result = runner.result.value.valueName
 
     # Add summary of test to README file.
     measure_name = measure.name.gsub("_", " ").upcase

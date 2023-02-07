@@ -230,8 +230,6 @@ module NRCMeasureTestHelper
     # Get the result of the measure. Cannot check for success here as some tests designed to fail!
     resultValue = runner.result.value.valueName
     #puts "resultValue : #{resultValue} for #{output_folder}".pink
-	# Check it ran successfully.
-    assert(resultValue == 'Success')
 
     # Add summary of test to README file.
     measure_name = measure.name.gsub("_", " ").upcase
