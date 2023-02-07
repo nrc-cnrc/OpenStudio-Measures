@@ -186,7 +186,6 @@ module NRCReportingMeasureTestHelper
     puts "  from method".green + " #{caller_locations(1,1)[0].label.split.last}".light_blue
 
     # Set the output folder. This should be unique (check done in validateOutputFolder). Create if does not exist.
-    output_folder = NRCReportingMeasureTestHelper.outputFolder
     output_folder = NRCReportingMeasureTestHelper.validateOutputFolder(output_folder)
     FileUtils.mkdir_p(output_folder) unless Dir.exists?(output_folder)
   
