@@ -76,7 +76,7 @@ class NrcSetSrr_Test < Minitest::Test
     all_srr_options.each do |srr_options|
       puts "################# Testing".green + " #{srr_options}".light_blue + " #################".green
 
-      # get arguments
+      # Set arguments.
       input_arguments = {
         "srr_options" => srr_options,
         "srr" => 0.0
@@ -124,9 +124,6 @@ class NrcSetSrr_Test < Minitest::Test
       assert_equal(srr_calculated.round(3), expected_srr.round(3), "Skylights did not change correctly")
       puts "SRR".green + " #{srr_calculated.round(3)}".light_blue + "; expected SRR ".green + "#{expected_srr.round(3)}".light_blue
       
-	  # Test if the measure would grab the correct number and value of input argument.
-      assert_equal(2, input_arguments.size)
-
       # Save the model to test output directory.
       output_path = "#{output_file_path}/test_output.osm"
       model.save(output_path, true)
@@ -172,9 +169,8 @@ class NrcSetSrr_Test < Minitest::Test
       srr_options_noSpaces = srr_options.gsub(/[[:space:]]/, '_') # Replace spaces by '_'
       test_name = "#{srr_options_noSpaces}"
 
-
       # Define the output folder for this test (optional - default is the method name).
-      output_file_path = NRCMeasureTestHelper.appendOutputFolder("#{test_name}")
+      output_file_path = NRCMeasureTestHelper.appendOutputFolder("#{test_name}", input_arguments)
 
       # Set argument values to good values and run the measure on model with spaces.
       runner = run_measure(input_arguments, model)
@@ -195,9 +191,6 @@ class NrcSetSrr_Test < Minitest::Test
       assert_equal(srr_calculated.round(3), srr.round(3), "Skylights did not change correctly")
       puts "SRR".green + " #{srr_calculated.round(3)}".light_blue + "; expected SRR ".green + "#{srr.round(3)}".light_blue
       
-	  # Test if the measure would grab the correct number and value of input argument.
-      assert_equal(2, input_arguments.size)
-
       # Save the model to test output directory
       output_path = "#{output_file_path}/test_output.osm"
       model.save(output_path, true)

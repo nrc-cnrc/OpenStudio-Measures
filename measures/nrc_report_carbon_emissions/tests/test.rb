@@ -92,20 +92,6 @@ require 'fileutils'
 
     def test_report(building_type: "Warehouse")
       puts "Testing  model creation for".green + " #{building_type}".light_blue
-      puts "Testing directory: ".green + " #{test_dir}".light_blue
-      # create an instance of the measure
-      measure = NrcReportCarbonEmissions.new
-      # create an instance of a runner
-      runner = OpenStudio::Measure::OSRunner.new(OpenStudio::WorkflowJSON.new)
-
-      template = "NECB2017"
-      prototype_creator = Standard.build(template)
-      model = prototype_creator.model_create_prototype_model(
-        template: template,
-        epw_file: 'CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_ECY-3.0.epw',
-        sizing_run_dir: test_dir,
-        debug: @debug,
-        building_type: building_type)
 
       # Set input args. In this case the std matches the one used to create the test model.
       input_arguments = {
@@ -117,8 +103,20 @@ require 'fileutils'
 
       # Define the output folder for this test (optional - default is the method name).
       test_dir = NRCReportingMeasureTestHelper.appendOutputFolder("test_report/#{building_type}", input_arguments)
+      puts "Testing directory: ".green + " #{test_dir}".light_blue
 
-      # Create an instance of the measure
+      # Create an instance of a runner.
+      runner = OpenStudio::Measure::OSRunner.new(OpenStudio::WorkflowJSON.new)
+
+      template = "NECB2017"
+      prototype_creator = Standard.build(template)
+      model = prototype_creator.model_create_prototype_model(
+        template: template,
+        epw_file: 'CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_ECY-3.0.epw',
+        sizing_run_dir: test_dir,
+        building_type: building_type)
+
+      # Create an instance of the measure.
       run_measure(input_arguments, model)
     end
   end
