@@ -73,7 +73,7 @@ class NrcHvacModifyPlantLoopPump_Test < Minitest::Test
     model = standard.model_create_prototype_model(template: "NECB2017",
                                                       building_type: "Warehouse",
                                                       epw_file: "CAN_AB_Banff.CS.711220_CWEC2016.epw",
-													  sizing_run_dir: NRCMeasureTestHelper.outputFolder)
+													  sizing_run_dir: output_file_path)
 
     # Create an instance of the measure
     runner = run_measure(@good_input_arguments, model)

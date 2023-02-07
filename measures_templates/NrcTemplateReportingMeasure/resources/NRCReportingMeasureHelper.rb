@@ -92,10 +92,18 @@ module NRCReportingMeasureTestHelper
   def self.appendOutputFolder(method_name, arguments)
 	puts "Appending path to test output folder: #{method_name}".red
 
+    local_args = arguments
+
+    # No arguments in measure. Use calling method name.
+    if local_args == nil
+      local_args = caller_locations(1, 2)[1].label.split.last
+	  puts "Created dummy argument: #{local_args}".yellow
+    end
+
     # Append name and validate if specified by the user
     path = @output_root_path + "/" + method_name
     path = validateOutputFolder(path)
-    @@method_testing_paths[arguments] = path
+    @@method_testing_paths[local_args] = path
     return path
   end
 
@@ -116,17 +124,22 @@ module NRCReportingMeasureTestHelper
   end
 
   def self.outputFolder(arguments)
-    if arguments == nil
-      return ""
+    local_args = arguments
+
+    # No arguments in measure. Use calling method name.
+    if local_args == nil
+      local_args = caller_locations(1, 2)[1].label.split.last
+	  puts "Using dummy argument: #{local_args}".yellow
     end
+
 	puts "Recovering outputFolder from: #{@@method_testing_paths}".pink
-	puts "  for: #{arguments}".blue
-    folder = @@method_testing_paths[arguments]
+	puts "  for: #{local_args}".blue
+    folder = @@method_testing_paths[local_args]
 	puts "Recovering outputFolder: #{folder}".green
     if folder == nil
 
-      # No folder found. Likely froom the test_argument_ranges but just in case grab the calling method name.
-      folder = appendOutputFolder(caller_locations(1, 2)[1].label.split.last, arguments)
+      # No folder found. Likely from the test_argument_ranges but just in case grab the calling method name.
+      folder = appendOutputFolder(caller_locations(1, 2)[1].label.split.last, local_args)
 	  puts "Created missing outputFolder: #{folder}".yellow
     end
     return folder
