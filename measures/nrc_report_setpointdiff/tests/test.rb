@@ -78,13 +78,10 @@ class NrcReportSetPointDiff_Test < Minitest::Test
       "detail" => "No"
     }
 
-    # Define the output folder for this test (optional - default is the method name).
+    # Define the output folder for this test.
     test_dir = NRCReportingMeasureTestHelper.appendOutputFolder("test_report", input_arguments)
 
-    # create an instance of the measure
-    measure = NrcReportSetPointDiff.new
-
-    # create an instance of a runner
+    # Create an instance of a runner.
     runner = OpenStudio::Measure::OSRunner.new(OpenStudio::WorkflowJSON.new)
 
     ################### Create warehouse
@@ -95,10 +92,9 @@ class NrcReportSetPointDiff_Test < Minitest::Test
       template: 'NECB2017',
       epw_file: 'CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw',
       sizing_run_dir: test_dir,
-      debug: @debug,
       building_type: 'Warehouse')
 
-    # Create an instance of the measure
+    # Create an instance of the measure.
     run_measure(input_arguments, model)
   end
 end
