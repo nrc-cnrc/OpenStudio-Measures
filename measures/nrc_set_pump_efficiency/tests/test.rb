@@ -62,10 +62,7 @@ class NrcSetPumpEfficiency_Test < Minitest::Test
     # Run the measure. This saves the updated model to "#{output_file_path}/test_output.osm".
     runner = run_measure(input_arguments, model)
 
-    # Check that it ran successfully.
-    assert(runner.result.value.valueName == 'Success', "Error in running measure.")
-
-    #check if pump efficiency was changed correctly
+    #check if pump efficiency was changed correctly.
     model.getPumpConstantSpeeds.each do |pump|
       assert_in_delta(pump_eff, pump.motorEfficiency, 0.005, "Error in constant speed pump motor efficiency.")
     end

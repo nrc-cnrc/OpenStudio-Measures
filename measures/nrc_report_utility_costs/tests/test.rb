@@ -78,24 +78,16 @@ class NrcReportUtilityCosts_Test < Minitest::Test
     # Define the output folder for this test. 
     NRCReportingMeasureTestHelper.appendOutputFolder("smallOffice", input_arguments)
 	
-    # Load osm file
-    translator = OpenStudio::OSVersion::VersionTranslator.new
-    model_file = "#{File.dirname(__FILE__)}/SmallOffice.osm"
-    model = translator.loadModel(model_file)
-    msg = "Loading model: #{model_file}"
-    assert(!model.empty?, msg)
-    model = model.get
+    # Load osm file.
+    model = load_test_osm("#{File.dirname(__FILE__)}/SmallOffice.osm")
 
     # Assign the local weather file (have to provide a full path to EpwFile).
 	epw_path = File.expand_path("#{File.dirname(__FILE__)}/weather_files/CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw")
     epw = OpenStudio::EpwFile.new(epw_path)
     OpenStudio::Model::WeatherFile::setWeatherFile(model, epw)
 
-    # Create an instance of the measure
+    # Create an instance of the measure, run the measure and check for success.
 	runner = run_measure(input_arguments, model)
-	
-	# Check it ran successfully.
-    assert(runner.result.value.valueName == 'Success')
 	
 	# Check output values.
 	outputs = runner.result.stepValues

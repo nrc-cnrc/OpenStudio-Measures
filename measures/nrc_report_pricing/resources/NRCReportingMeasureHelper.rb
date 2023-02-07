@@ -185,8 +185,8 @@ module NRCReportingMeasureTestHelper
     puts "  on model with".green + " #{model.modelObjects.count}".light_blue + " objects".green
     puts "  from method".green + " #{caller_locations(1,1)[0].label.split.last}".light_blue
 
-    # Set the output folder. This should be unique (check done in validateOutputFolder). Create if does not exist.
-    output_folder = NRCReportingMeasureTestHelper.validateOutputFolder(output_folder)
+    # Set the output folder. Create if does not exist.
+    output_folder = NRCReportingMeasureTestHelper.outputFolder(input_arguments)
     FileUtils.mkdir_p(output_folder) unless Dir.exists?(output_folder)
   
     # This will create a instance of the measure you wish to test. It does this based on the test class name.
@@ -288,9 +288,9 @@ module NRCReportingMeasureTestHelper
       Dir.chdir(start_dir)
     end
     result = runner.result.value.valueName
-  
-    # Reset the output path to the root folder.
-    NRCReportingMeasureTestHelper.resetOutputFolder
+
+	# Check it ran successfully.
+    assert(result == 'Success')
 
     # Add summary of test to README file.
     measure_name = measure.name.gsub("_", " ").upcase
