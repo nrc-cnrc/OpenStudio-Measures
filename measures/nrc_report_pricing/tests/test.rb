@@ -51,8 +51,11 @@ class NrcPricingMeasure_Test < Minitest::Test
   def test_report()
     puts "Testing report on warehouse model".blue
 	
+    # Set input args. In this case the std matches the one used to create the test model.
+    input_arguments = @good_input_arguments
+
     # Define the output folder for this test. 
-    output_file_path = NRCReportingMeasureTestHelper.appendOutputFolder("Warehouse", @good_input_arguments)
+    output_file_path = NRCReportingMeasureTestHelper.appendOutputFolder("Warehouse", input_arguments)
 	
     # Set standard to use.
     standard = Standard.build("NECB2017")
@@ -62,10 +65,7 @@ class NrcPricingMeasure_Test < Minitest::Test
                                                       building_type: "Warehouse",
                                                       epw_file: "CAN_AB_Banff.CS.711220_CWEC2016.epw",
 													  sizing_run_dir: output_file_path)
-	
-    # Set input args. In this case the std matches the one used to create the test model.
-    input_arguments = @good_input_arguments
-	
+
     # Create an instance of the measure.
 	runner = run_measure(input_arguments, model)
 	

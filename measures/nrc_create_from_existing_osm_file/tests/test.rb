@@ -107,20 +107,21 @@ class NrcCreateFromExistingOsmFile_Test < Minitest::Test
     initial_template = initial_model.getBuilding.standardsTemplate
     model = translator.loadModel(osm_file_path.to_s).get
 
-    # Create an instance of the measure
-    measure = NrcCreateFromExistingOsmFile.new
-
     all_templates.each do |template|
       puts "Comparing".green + " #{initial_template}".light_blue + " and".green + " #{template}"
-      # Get arguments
-      arguments = measure.arguments(model)
+
+      # Set arguments.
       input_arguments = {
         "upload_osm_file" => "smallOffice_Victoria.osm",
         "update_code_version" => true,
         "template" => template
       }
 
-      # Create an instance of the measure with good values
+      # Define the output folder for this test
+      outputFolder = "diff_templates_#{initial_template}_#{template}"
+      output_file_path = NRCMeasureTestHelper.appendOutputFolder(outputFolder, input_arguments)
+
+      # Create an instance of the measure with good values.
       runner = run_measure(input_arguments, model)
 
       # Compare the two models.
@@ -135,11 +136,7 @@ class NrcCreateFromExistingOsmFile_Test < Minitest::Test
         diffs << ": Error \n#{error}"
       end
 
-      # Define the output folder for this test
-      outputFolder = "diff_templates_#{initial_template}_#{template}"
-      output_file_path = NRCMeasureTestHelper.appendOutputFolder(outputFolder)
-
-      #Write out diff or error message
+      # Write out diff or error message.
       diff_file = "#{output_file_path}_diffs.json"
       FileUtils.rm(diff_file) if File.exists?(diff_file)
 
