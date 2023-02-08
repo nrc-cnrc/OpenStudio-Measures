@@ -98,7 +98,12 @@ require 'fileutils'
         "location" => "Yukon",
         "start_year" => "2015",
         "end_year" => "2025",
-        "nir_report_year" => "2019"
+        "nir_report_year" => "2019",
+        "ghg_NIR_summary_section" => true,
+        "ghg_energyStar_summary_section" => true,
+        "model_summary_section" => true,
+        "emissionFactors_summary_section" => true,
+        "nir_emissionFactors_summary_section" => true
       }
 
       # Define the output folder for this test (optional - default is the method name).

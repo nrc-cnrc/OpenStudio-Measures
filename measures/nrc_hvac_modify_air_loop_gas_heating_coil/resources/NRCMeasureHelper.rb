@@ -136,10 +136,10 @@ module NRCMeasureTestHelper
     folder = @@method_testing_paths[local_args]
 	puts "Recovering outputFolder: #{folder}".green
 
-    # No folder found. Likely from the test_argument_ranges but just in case grab the calling method name.
+    # No folder found. Just set to Dir.pwd.
     if folder == nil
-      folder = appendOutputFolder(caller_locations(1, 2)[1].label.split.last, local_args)
-	  puts "Created missing outputFolder: #{folder}".yellow
+      folder = Dir.pwd
+	  puts "Missing outputFolder. Setting to: #{folder}".yellow
     end
     return folder
   end
