@@ -53,7 +53,7 @@ module NRCMeasureTestHelper
         @output_root_path = File.expand_path("#{File.expand_path(__dir__)}/../tests/output")
       end
     else
-      @output_root_path = File.expand_path("#{File.expand_path(__dir__)}/../tests/output")
+      @output_root_path = File.expand_path("#{File.expand_path(__dir__)}/../output")
     end
 
     # Make the folder. Try again if there is a failure (likely from an operating system collision).
