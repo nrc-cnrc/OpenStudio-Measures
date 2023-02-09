@@ -118,7 +118,7 @@ class NrcReportingMeasure_Test < Minitest::Test
 
     # Create an instance of the measure and run it. Check tha it ran successfully.
     runner = run_measure(input_arguments, model)
-    assert(result.value.valueName == 'Success')
+    assert(runner.result.value.valueName == 'Success')
 	
 	# Rename output file.
     #output_file = "report_no_diffs.html"

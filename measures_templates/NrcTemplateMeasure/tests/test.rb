@@ -214,7 +214,6 @@ class NrcModelMeasure_Test < Minitest::Test
     # Compare the models and print to screen. Use colour coding to differentiate from other outputs on screen (green=good, yellow=warning, red=error)
     puts "#{BTAP::FileIO.compare_osm_files(before_measure_model, model)}".yellow
 
-
     # Run the measure. This saves the updated model to "#{output_file_path}/test_output.osm".
     runner = run_measure(input_arguments, model)
 
