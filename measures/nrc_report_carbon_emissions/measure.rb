@@ -367,10 +367,7 @@ class NrcReportCarbonEmissions < OpenStudio::Measure::ReportingMeasure
 
     # configure template with variable values
     renderer = ERB.new(html_in)
-    puts "renderer #{renderer.class}".yellow
-    puts "html_in_path #{html_in_path}".yellow
     html_out = renderer.result(binding)
-    puts "past binding".red
 
     # write html file
     html_out_path = "./#{@test_dir}/report.html"
