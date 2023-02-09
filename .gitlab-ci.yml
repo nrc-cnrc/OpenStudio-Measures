@@ -12,9 +12,6 @@ cache:
 
 README:
   stage: build
-  image: 
-    name: alpine
-    pull_policy: if-not-present
   tags:
   - linux
   - docker
