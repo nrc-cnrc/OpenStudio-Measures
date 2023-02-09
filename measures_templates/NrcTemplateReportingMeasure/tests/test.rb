@@ -116,8 +116,9 @@ class NrcReportingMeasure_Test < Minitest::Test
     epw = OpenStudio::EpwFile.new("#{File.dirname(__FILE__)}/weather_files/CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw")
     OpenStudio::Model::WeatherFile::setWeatherFile(model, epw)
 
-    # Create an instance of the measure
-	runner = run_measure(input_arguments, model)
+    # Create an instance of the measure and run it. Check tha it ran successfully.
+    runner = run_measure(input_arguments, model)
+    assert(result.value.valueName == 'Success')
 	
 	# Rename output file.
     #output_file = "report_no_diffs.html"
