@@ -208,7 +208,7 @@ class NrcReportingMeasureStandard < OpenStudio::Measure::ReportingMeasure
     output << EnvelopeSummary.new(btap_data: btap_data, qaqc_data: qaqc_data, standard: @standard)
     output << InfiltrationSummary.new(btap_data: btap_data, standard: @standard)
     output << VentilationSummary.new(btap_data: btap_data, standard: @standard, sqlFile: sql_file, model:model)
-	output << LightingSummary.new(btap_data: btap_data, standard: @standard)
+	output << LightingSummary.new(btap_data: btap_data, standard: @standard, model:model)
 
 
     output.each { |section| puts section.class }

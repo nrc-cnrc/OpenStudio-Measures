@@ -57,7 +57,7 @@ class NrcReportingMeasureStandard_Test < Minitest::Test
     }
 
     # Define the output folder for this test (optional - default is the method name). 
-    output_folder = NRCReportingMeasureTestHelper.appendOutputFolder("smallOffice", input_arguments)
+    output_folder = NRCReportingMeasureTestHelper.appendOutputFolder("SmallOffice", input_arguments)
 	
     # Load osm file
     translator = OpenStudio::OSVersion::VersionTranslator.new
@@ -72,8 +72,11 @@ class NrcReportingMeasureStandard_Test < Minitest::Test
     epw = OpenStudio::EpwFile.new(epw_path)
     OpenStudio::Model::WeatherFile::setWeatherFile(model, epw)
 
-    # Create an instance of the measure
-	runner = run_measure(input_arguments, model)
+    # Run the measure. This saves the updated model to "#{output_file_path}/test_output.osm".
+    runner = run_measure(input_arguments, model)
+
+    # Check that it ran successfully.
+    assert(runner.result.value.valueName == 'Success', "Error in running measure.")
 	
 	# Rename output file.
     #output_file = "report_no_diffs.html"
@@ -87,14 +90,14 @@ class NrcReportingMeasureStandard_Test < Minitest::Test
   end
 
   def test_report_warehouse_prototype()
-    puts "Testing report on small Office model".blue
+    puts "Testing report on prototype warehouse model".blue
 	
     # Set input args. In this case the std matches the one used to create the test model.
     input_arguments = {
     }
 
     # Define the output folder for this test (optional - default is the method name). 
-    NRCReportingMeasureTestHelper.appendOutputFolder("warehouse", input_arguments)
+    output_folder = NRCReportingMeasureTestHelper.appendOutputFolder("Warehouse", input_arguments)
 	
     # Set standard to use.
     standard = Standard.build("NECB2017")
@@ -105,9 +108,11 @@ class NrcReportingMeasureStandard_Test < Minitest::Test
                                                   epw_file: "CAN_AB_Banff.CS.711220_CWEC2016.epw",
                                                   sizing_run_dir: output_folder)
 
-    
-    # Create an instance of the measure
-	runner = run_measure(input_arguments, model)
+    # Run the measure. This saves the updated model to "#{output_file_path}/test_output.osm".
+    runner = run_measure(input_arguments, model)
+
+    # Check that it ran successfully.
+    assert(runner.result.value.valueName == 'Success', "Error in running measure.")
 	
 	# Rename output file.
     #output_file = "report_no_diffs.html"
@@ -121,7 +126,7 @@ class NrcReportingMeasureStandard_Test < Minitest::Test
   end
 
   def test_report_warehouse_geom()
-    puts "Testing report on small Office model".blue
+    puts "Testing report on custom warehousee model".blue
 	
     # Set input args. In this case the std matches the one used to create the test model.
     input_arguments = {
@@ -189,8 +194,11 @@ class NrcReportingMeasureStandard_Test < Minitest::Test
                                   epw_file: "CAN_AB_Banff.CS.711220_CWEC2016.epw",
                                   sizing_run_dir: output_folder)
     
-    # Create an instance of the measure
-	runner = run_measure(input_arguments, model)
+    # Run the measure. This saves the updated model to "#{output_file_path}/test_output.osm".
+    runner = run_measure(input_arguments, model)
+
+    # Check that it ran successfully.
+    assert(runner.result.value.valueName == 'Success', "Error in running measure.")
 	
 	# Rename output file.
     #output_file = "report_no_diffs.html"
