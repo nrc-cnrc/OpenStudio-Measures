@@ -42,6 +42,7 @@ def rename_datapoint(required_analysis_id)
 	variables = dp['set_variable_values']
 	name = ""
 	variables.each_value {|value| name << "#{value}:"}
+    name=name.gsub(/\:$/, '')
 	puts "Name: #{name}".yellow
 	puts "Datapoint[name]: #{dp['name']}".green
 	
