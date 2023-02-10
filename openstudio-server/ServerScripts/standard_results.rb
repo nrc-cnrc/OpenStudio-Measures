@@ -86,9 +86,9 @@ def gather_output_results(required_analysis_id)
 	
 	# Create a lambda to save the files.
 	write_file = lambda do |f_name|	
-	  file = dpZip.find_entry(f_name)
-	  f_name = "#{f_name.split('/')[1]}"
-      f_path = File.join(outputpath, "#{f_name.split('.')[0]}-#{dp_name}.#{f_name.split('.')[1]}")
+	  file = dpZip.find_entry(f_name) # Grab file from zip
+	  f_name = "#{f_name.split('/')[1]}" # Extract the file name (strip off the 'nrc_report_standard' part)
+      f_path = File.join(outputpath, "#{f_name.split('.')[0]}-#{dp_name.gsub(/\:/, '_')}.#{f_name.split('.')[1]}") # New name: path/file_type-model_name.extension
       FileUtils.mkdir_p(File.dirname(f_path))
       dpZip.extract(file.name, f_path) unless File.exist?(f_path) # No overwrite
 	end

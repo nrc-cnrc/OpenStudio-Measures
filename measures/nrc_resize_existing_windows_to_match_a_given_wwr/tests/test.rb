@@ -12,17 +12,21 @@ require_relative '../resources/NRCMeasureHelper.rb'
 require 'fileutils'
 
 class NrcResizeExistingWindowsToMatchAGivenWWR_Test < Minitest::Test
+
+  # Brings in helper methods to simplify argument testing of json and standard argument methods
+  # and set standard output folder.
   include(NRCMeasureTestHelper)
+  NRCMeasureTestHelper.setOutputFolder("#{self.name}")
 
   # Check to see if an overall start time was passed (it should be if using one of the test scripts in the test folder). 
   #  If so then use it to determine what old results are (if not use now).
-  start_time=Time.now
-  if ARGV.length == 1
-
-    # We have a time. It will be in seconds since the epoch. Update our start_time.
-    start_time=Time.at(ARGV[0].to_i)
+  if ENV['OS_MEASURES_TEST_TIME'] != ""
+    start_time=Time.at(ENV['OS_MEASURES_TEST_TIME'].to_i)
+  else
+    start_time=Time.now
   end
   NRCMeasureTestHelper.removeOldOutputs(before: start_time)
+
 
   def setup()
     @use_json_package = false
@@ -116,20 +120,7 @@ class NrcResizeExistingWindowsToMatchAGivenWWR_Test < Minitest::Test
   def test_argument_values
     puts "Testing window resizing".green
 
-    # Define the output folder for this test (optional - default is the method name).
-    output_file_path = NRCMeasureTestHelper.appendOutputFolder("test_windowResizing")
-
-    measure = NrcResizeExistingWindowsToMatchAGivenWWR.new
-
-    # load the test model
-    translator = OpenStudio::OSVersion::VersionTranslator.new
-    path = OpenStudio::Path.new(File.dirname(__FILE__) + "/Warehouse-NECB2017-ON_Ottawa.osm")
-    model = translator.loadModel(path)
-    assert((not model.empty?))
-    model = model.get
-
-    # get arguments
-    arguments = measure.arguments(model)
+    # Set arguments.
     input_arguments = {
       "remove_skylight" => false,
       "cz_4_fdwr" => 0.2,
@@ -143,8 +134,16 @@ class NrcResizeExistingWindowsToMatchAGivenWWR_Test < Minitest::Test
       "check_sunexposed" => true
     }
 
-    # test if the measure would grab the correct number and value of input argument.
-    assert_equal(10, arguments.size)
+    # Define the output folder for this test (optional - default is the method name).
+    output_file_path = NRCMeasureTestHelper.appendOutputFolder("test_windowResizing", input_arguments)
+
+    # load the test model
+    translator = OpenStudio::OSVersion::VersionTranslator.new
+    path = OpenStudio::Path.new(File.dirname(__FILE__) + "/Warehouse-NECB2017-ON_Ottawa.osm")
+    model = translator.loadModel(path)
+    assert((not model.empty?))
+    model = model.get
+
     # Run the measure and check output
     runner = run_measure(input_arguments, model)
 

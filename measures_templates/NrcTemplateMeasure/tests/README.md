@@ -15,7 +15,7 @@ This test was expected to pass and it did.
 | a_string_double_argument |75.3 |
 | a_choice_argument |choice_1 |
  
-## 2 - test sample 2--1
+## 2 - Test Model Creation B
  
 This test was expected to pass and it did.
  
@@ -26,7 +26,7 @@ This test was expected to pass and it did.
 | a_string_double_argument |75.3 |
 | a_choice_argument |choice_1 |
  
-## 3 - Test Model Creation C--1
+## 3 - Test Model Creation C
  
 This test was expected to pass and it did.
  
@@ -37,7 +37,7 @@ This test was expected to pass and it did.
 | a_string_double_argument |75.3 |
 | a_choice_argument |choice_1 |
  
-## 4 - test argument ranges
+## 4 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -49,7 +49,7 @@ This test was expected to generate an error and it did.
 | a_choice_argument |choice_1 |
 | a_bool_argument |true |
  
-## 5 - test argument ranges--1
+## 5 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -61,7 +61,7 @@ This test was expected to generate an error and it did.
 | a_choice_argument |choice_1 |
 | a_bool_argument |true |
  
-## 6 - test argument ranges--2
+## 6 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -73,7 +73,7 @@ This test was expected to generate an error and it did.
 | a_choice_argument |choice_1 |
 | a_bool_argument |true |
  
-## 7 - test argument ranges--3
+## 7 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -85,7 +85,7 @@ This test was expected to generate an error and it did.
 | a_choice_argument |choice_1 |
 | a_bool_argument |true |
  
-## 8 - test argument ranges--4
+## 8 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -93,11 +93,11 @@ This test was expected to generate an error and it did.
 | ------------- | ---------- |
 | a_string_argument |MyString |
 | a_double_argument |50.0 |
-| a_string_double_argument |1e01598e-5331-4146-8e3a-e9b051e805e0 |
+| a_string_double_argument |18730297-5e44-4ff8-a7b1-7b4be00a03b6 |
 | a_choice_argument |choice_1 |
 | a_bool_argument |true |
  
-## 9 - test argument ranges--5
+## 9 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -109,7 +109,7 @@ This test was expected to generate an error and it did.
 | a_choice_argument |choice_1 |
 | a_bool_argument |true |
  
-## 10 - test argument ranges--6
+## 10 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -121,7 +121,7 @@ This test was expected to generate an error and it did.
 | a_choice_argument |choice_1 |
 | a_bool_argument |true |
  
-## 11 - test argument ranges--7
+## 11 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -133,7 +133,7 @@ This test was expected to generate an error and it did.
 | a_choice_argument |choice_1 |
 | a_bool_argument |true |
  
-## 12 - test argument ranges--8
+## 12 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -145,7 +145,7 @@ This test was expected to generate an error and it did.
 | a_choice_argument |choice_1 |
 | a_bool_argument |true |
  
-## 13 - test argument ranges--9
+## 13 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -157,7 +157,7 @@ This test was expected to generate an error and it did.
 | a_choice_argument |choice_1 |
 | a_bool_argument |true |
  
-## 14 - test argument ranges--10
+## 14 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -169,7 +169,7 @@ This test was expected to generate an error and it did.
 | a_choice_argument |choice_1 |
 | a_bool_argument |true |
  
-## 15 - test argument ranges--11
+## 15 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -181,7 +181,7 @@ This test was expected to generate an error and it did.
 | a_choice_argument |choice_1 |
 | a_bool_argument |true |
  
-## 16 - test argument ranges--12
+## 16 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -193,7 +193,7 @@ This test was expected to generate an error and it did.
 | a_choice_argument |choice_1 |
 | a_bool_argument |true |
  
-## 17 - test argument ranges--13
+## 17 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -201,11 +201,11 @@ This test was expected to generate an error and it did.
 | ------------- | ---------- |
 | a_string_argument |MyString |
 | a_double_argument |50.0 |
-| a_string_double_argument |8b03119a-419b-4100-acc5-56c747c7c798 |
+| a_string_double_argument |c786032f-bbe7-4667-a7fb-b1080fc57fd5 |
 | a_choice_argument |choice_1 |
 | a_bool_argument |true |
  
-## 18 - test argument ranges--14
+## 18 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -217,7 +217,7 @@ This test was expected to generate an error and it did.
 | a_choice_argument |choice_1 |
 | a_bool_argument |true |
  
-## 19 - test argument ranges--15
+## 19 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -229,7 +229,7 @@ This test was expected to generate an error and it did.
 | a_choice_argument |choice_1 |
 | a_bool_argument |true |
  
-## 20 - test argument ranges--16
+## 20 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -241,7 +241,7 @@ This test was expected to generate an error and it did.
 | a_choice_argument |choice_1 |
 | a_bool_argument |true |
  
-## 21 - test argument ranges--17
+## 21 - oscli
  
 This test was expected to generate an error and it did.
  

@@ -79,7 +79,7 @@ def gather_osm_files(required_analysis_id)
 	  	
 	  # Get the datapoint name (to use as the osm file name).
 	  name = dp['name']
-      f_path = File.join(outputpath, "#{name}.osm")
+      f_path = File.join(outputpath, "#{name.gsub(/\:/, '_')}.osm")
       dpZip.extract(osm_file.name, f_path){true} # Overwrite if existing file.
 	  
 	  # Now scan the extracted osm file for the weather file. Need to use a temporary file.

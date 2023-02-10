@@ -4,7 +4,7 @@ The following describe the parameter tests that are conducted on the measure. No
 tests are designed to return a fail and some a success. The report below contains all the tests that 
 have the correct response. For example the argument range limit tests are expected to fail. 
  
-## 1 - test argument ranges
+## 1 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -12,7 +12,7 @@ This test was expected to generate an error and it did.
 | ------------- | ---------- |
 | skip |10000.0 |
  
-## 2 - test argument ranges--1
+## 2 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -20,7 +20,7 @@ This test was expected to generate an error and it did.
 | ------------- | ---------- |
 | skip |-1.0 |
  
-## 3 - test argument ranges--2
+## 3 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -28,7 +28,7 @@ This test was expected to generate an error and it did.
 | ------------- | ---------- |
 | skip |10000.0 |
  
-## 4 - test argument ranges--3
+## 4 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -36,7 +36,7 @@ This test was expected to generate an error and it did.
 | ------------- | ---------- |
 | skip |-1.0 |
  
-## 5 - test argument ranges--4
+## 5 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -44,7 +44,7 @@ This test was expected to generate an error and it did.
 | ------------- | ---------- |
 | skip |10000.0 |
  
-## 6 - test argument ranges--5
+## 6 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -52,7 +52,7 @@ This test was expected to generate an error and it did.
 | ------------- | ---------- |
 | skip |-1.0 |
  
-## 7 - test argument ranges--6
+## 7 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -60,7 +60,7 @@ This test was expected to generate an error and it did.
 | ------------- | ---------- |
 | skip |10000.0 |
  
-## 8 - test argument ranges--7
+## 8 - oscli
  
 This test was expected to generate an error and it did.
  

@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_update_water_heater</name>
   <uid>2f81b690-4343-49fe-9c2a-803e531ac6c8</uid>
-  <version_id>6d414d02-56e5-457b-95dc-b2bba084c979</version_id>
-  <version_modified>20221122T201152Z</version_modified>
+  <version_id>ac2ced71-26a7-4f11-a6c5-4fb34a13f808</version_id>
+  <version_modified>20230208T164137Z</version_modified>
   <xml_checksum>E88CCCA7</xml_checksum>
   <class_name>NrcUpdateWaterHeater</class_name>
   <display_name>NrcUpdateWaterHeater</display_name>
@@ -103,19 +103,19 @@
       <filename>BTAPMeasureHelper.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>AE38D9B8</checksum>
-    </file>
-    <file>
-      <filename>NRCMeasureHelper.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>EF2FCBFD</checksum>
+      <checksum>12494ED3</checksum>
     </file>
     <file>
       <filename>test.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
-      <checksum>A1E2E55E</checksum>
+      <checksum>1C69F37E</checksum>
+    </file>
+    <file>
+      <filename>NRCMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>30C86D53</checksum>
     </file>
   </files>
 </measure>

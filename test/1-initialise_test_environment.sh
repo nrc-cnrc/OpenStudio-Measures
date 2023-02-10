@@ -24,9 +24,9 @@ done
 # Tell user what we're doing. If the image is already present and up to date then this will be quick.
 if [ -z $local_image ] 
 then
-  echo -e "${GREEN}Pulling base openstudio image from docker hub${NC}..."
-  docker pull nrel/${os_image}
-  test_image=nrel/${os_image}
+  echo -e "${GREEN}Pulling base openstudio-server image from docker hub${NC}..."
+  docker pull nrel/${server_image}
+  test_image=nrel/${server_image}
   echo -e "...${GREEN}done${NC}."
 else
   echo -e "${YELLOW}Using specified local image name ${BLUE}${local_image}${NC}."

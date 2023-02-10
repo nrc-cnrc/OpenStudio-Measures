@@ -23,8 +23,8 @@ os_image=openstudio:$os_version
 nrc_os_image="openstudio:latest"
 
 # OpenStudio server and supporting gems (these need to be kept in sync when updating os_version).
-server_image=nrel/openstudio-server:$os_version
-rserve_image=nrel/openstudio-rserve:$os_version
+server_image=openstudio-server:$os_version
+rserve_image=openstudio-rserve:$os_version
 # Format is (repo name, gem name, version). If a tag is provided instead of a branch name in the version string 
 #  it will download the tag in 'detached' state and still work.
 server_gems=() 

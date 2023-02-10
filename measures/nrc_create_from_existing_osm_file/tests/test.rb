@@ -12,18 +12,21 @@ require_relative '../resources/NRCMeasureHelper.rb'
 require 'fileutils'
 
 class NrcCreateFromExistingOsmFile_Test < Minitest::Test
-  # Brings in helper methods to simplify argument testing of json and standard argument methods.
+
+  # Brings in helper methods to simplify argument testing of json and standard argument methods
+  # and set standard output folder.
   include(NRCMeasureTestHelper)
+  NRCMeasureTestHelper.setOutputFolder("#{self.name}")
 
-  # Check to see if an overall start time was passed (it should be if using one of the test scripts in the test folder).
+  # Check to see if an overall start time was passed (it should be if using one of the test scripts in the test folder). 
   #  If so then use it to determine what old results are (if not use now).
-  start_time = Time.now
-  if ARGV.length == 1
-
-    # We have a time. It will be in seconds since the epoch. Update our start_time.
-    start_time = Time.at(ARGV[0].to_i)
+  if ENV['OS_MEASURES_TEST_TIME'] != ""
+    start_time=Time.at(ENV['OS_MEASURES_TEST_TIME'].to_i)
+  else
+    start_time=Time.now
   end
   NRCMeasureTestHelper.removeOldOutputs(before: start_time)
+
 
   def setup()
     # Copied from measure.
@@ -64,17 +67,15 @@ class NrcCreateFromExistingOsmFile_Test < Minitest::Test
   end
 
   def test_model_upload
-    # Define the output folder for this test.
-    output_file_path = NRCMeasureTestHelper.appendOutputFolder("test_uploaded_model")
     model = OpenStudio::Model::Model.new
     # create an instance of the measure
     measure = NrcCreateFromExistingOsmFile.new
 
-    # get arguments and test that they are what we are expecting
-    arguments = measure.arguments(model)
-    assert_equal(3, arguments.size)
-
+    # Set arguments.
     input_arguments = @good_input_arguments
+
+    # Define the output folder for this test.
+    output_file_path = NRCMeasureTestHelper.appendOutputFolder("test_uploaded_model", input_arguments)
 
     upload_osm_file = input_arguments['upload_osm_file']
     update_code_version = input_arguments['update_code_version']
@@ -106,20 +107,21 @@ class NrcCreateFromExistingOsmFile_Test < Minitest::Test
     initial_template = initial_model.getBuilding.standardsTemplate
     model = translator.loadModel(osm_file_path.to_s).get
 
-    # Create an instance of the measure
-    measure = NrcCreateFromExistingOsmFile.new
-
     all_templates.each do |template|
       puts "Comparing".green + " #{initial_template}".light_blue + " and".green + " #{template}"
-      # Get arguments
-      arguments = measure.arguments(model)
+
+      # Set arguments.
       input_arguments = {
         "upload_osm_file" => "smallOffice_Victoria.osm",
         "update_code_version" => true,
         "template" => template
       }
 
-      # Create an instance of the measure with good values
+      # Define the output folder for this test
+      outputFolder = "diff_templates_#{initial_template}_#{template}"
+      output_file_path = NRCMeasureTestHelper.appendOutputFolder(outputFolder, input_arguments)
+
+      # Create an instance of the measure with good values.
       runner = run_measure(input_arguments, model)
 
       # Compare the two models.
@@ -134,11 +136,7 @@ class NrcCreateFromExistingOsmFile_Test < Minitest::Test
         diffs << ": Error \n#{error}"
       end
 
-      # Define the output folder for this test
-      outputFolder = "diff_templates_#{initial_template}_#{template}"
-      output_file_path = NRCMeasureTestHelper.appendOutputFolder(outputFolder)
-
-      #Write out diff or error message
+      # Write out diff or error message.
       diff_file = "#{output_file_path}_diffs.json"
       FileUtils.rm(diff_file) if File.exists?(diff_file)
 

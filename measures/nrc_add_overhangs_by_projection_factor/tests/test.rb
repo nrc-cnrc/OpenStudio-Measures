@@ -12,17 +12,21 @@ require_relative '../resources/NRCMeasureHelper.rb'
 require 'fileutils'
 
 class NrcAddOverhangsByProjectionFactor_Test < Minitest::Test
+
+  # Brings in helper methods to simplify argument testing of json and standard argument methods
+  # and set standard output folder.
   include(NRCMeasureTestHelper)
+  NRCMeasureTestHelper.setOutputFolder("#{self.name}")
 
   # Check to see if an overall start time was passed (it should be if using one of the test scripts in the test folder). 
   #  If so then use it to determine what old results are (if not use now).
-  start_time=Time.now
-  if ARGV.length == 1
-
-    # We have a time. It will be in seconds since the epoch. Update our start_time.
-    start_time=Time.at(ARGV[0].to_i)
+  if ENV['OS_MEASURES_TEST_TIME'] != ""
+    start_time=Time.at(ENV['OS_MEASURES_TEST_TIME'].to_i)
+  else
+    start_time=Time.now
   end
   NRCMeasureTestHelper.removeOldOutputs(before: start_time)
+
 
   def setup()
     @use_json_package = false
@@ -80,18 +84,11 @@ class NrcAddOverhangsByProjectionFactor_Test < Minitest::Test
   def test_NrcAddOverhangsByProjectionFactor
     puts "Testing Add Overhangs By Projection Factor".green
 
-    # Define the output folder for this test (optional - default is the method name).
-    output_file_path = NRCMeasureTestHelper.appendOutputFolder("test_AddOverhangsByProjectionFactor")
-
     # Create an instance of the measure
     measure = NrcAddOverhangsByProjectionFactor.new
 
     # Make an empty model
     model = OpenStudio::Model::Model.new
-
-    # Get arguments and test that they are what we are expecting
-    arguments = measure.arguments(model)
-    assert_equal(3, arguments.size)
 
     # Load the test model
     translator = OpenStudio::OSVersion::VersionTranslator.new
@@ -107,6 +104,9 @@ class NrcAddOverhangsByProjectionFactor_Test < Minitest::Test
     }
     facade = input_arguments['facade']
     projection_factor = input_arguments['projection_factor']
+
+    # Define the output folder for this test (optional - default is the method name).
+    output_file_path = NRCMeasureTestHelper.appendOutputFolder("test_AddOverhangsByProjectionFactor", input_arguments)
 
     # Run the measure
     runner = run_measure(input_arguments, model)

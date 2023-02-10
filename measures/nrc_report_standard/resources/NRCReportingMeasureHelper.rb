@@ -23,18 +23,60 @@ end
 module NRCReportingMeasureTestHelper
   include BTAPMeasureTestHelper
 
+  # Save the paths that we're using at the module level. Required for running tests in parallel.
+  @@method_testing_paths = {}
+
+  # Method to recover existing path being used by a method (or create one if it has not been instantiated).
+  def self.get_output_path(path)
+    path = nil
+    if @@method_testing_paths.any? {|std| std.template == template}
+      standard = @@method_testing_paths.select{|std| std.template == template}.first
+      puts standard.class
+    else
+      standard = Standard.build(template)
+      puts standard.class
+      @@method_testing_paths << standard
+    end
+    return standard
+  end
+
   # Define the output path. Set defaults and remove any existing outputs.
-  @output_root_path = File.expand_path("#{File.expand_path(__dir__)}/../tests/output")
-  Dir.mkdir @output_root_path unless Dir.exists?(@output_root_path) 
-  @output_path = @output_root_path
+  # If the output root has been defined in the env variable then use that otherwise default to the
+  # measures test folder.
+  def self.setOutputFolder(measure_test_name)
+    output_folder=ENV['OS_MEASURES_TEST_DIR']
+    puts "Output folder: #{output_folder}".pink
+    puts "Measure test name: #{measure_test_name}".pink
+    if output_folder != ""
+      if Dir.exist?("/#{output_folder}")
+        @output_root_path = File.expand_path("/#{output_folder}/output/#{measure_test_name}")
+      else
+        @output_root_path = File.expand_path("#{File.expand_path(__dir__)}/../tests/output")
+      end
+    else
+      @output_root_path = File.expand_path("#{File.expand_path(__dir__)}/../output")
+    end
+
+    # Make the folder. Try again if there is a failure (likely from an operating system collision).
+    begin
+      FileUtils.mkdir_p @output_root_path unless Dir.exists?(@output_root_path)
+    rescue
+      sleep(10)
+      FileUtils.mkdir_p @output_root_path unless Dir.exists?(@output_root_path)
+    ensure
+      sleep(10)
+      FileUtils.mkdir_p @output_root_path unless Dir.exists?(@output_root_path)
+    end
+    puts "Test output folder: #{@output_root_path}".green
+  end
 
   # Remove the existing test results. Need to control when this is done as multiple test scripts could be
   #  accessing the same path.
   # Must call this in the test script.
   def self.removeOldOutputs(before: Time.now)
-    existing_folders = Dir.entries(@output_path) - ['.', '..'] # Remove current folder above from list before deleting!
+    existing_folders = Dir.entries(@output_root_path) - ['.', '..'] # Remove current folder above from list before deleting!
     existing_folders.each do |entry|
-      folder_to_remove = File.expand_path("#{@output_path}/#{entry}")
+      folder_to_remove = File.expand_path("#{@output_root_path}/#{entry}")
 	  if (Dir.exist?(folder_to_remove)) # Double check it exists (incase another process has removed it as is the case with multiple test files).
         puts "Checking existing output folder: #{before}; #{File.mtime(folder_to_remove)}; #{folder_to_remove}".green
         if File.mtime(folder_to_remove) < before
@@ -46,43 +88,61 @@ module NRCReportingMeasureTestHelper
       end
     end
   end
-  
-  #
-  # Define methods to manage output folders.
-  def self.resetOutputFolder
-    @output_path = @output_root_path
-  end
 
-  def self.appendOutputFolder(folder)
+  def self.appendOutputFolder(method_name, arguments)
+	puts "Appending path to test output folder: #{method_name}".red
+
+    local_args = arguments
+
+    # No arguments in measure. Use calling method name.
+    if local_args == nil
+      local_args = caller_locations(1, 2)[1].label.split.last
+	  puts "Created dummy argument: #{local_args}".yellow
+    end
+
     # Append name and validate if specified by the user
-    path = @output_path + "/" + folder
-  validateOutputFolder(path)
+    path = @output_root_path + "/" + method_name
+    path = validateOutputFolder(path)
+    @@method_testing_paths[local_args] = path
+    return path
   end
 
   def self.validateOutputFolder(path)
-    # This should not be the root_folder.
-    # Also check if it exists.
-    # By default use the test method name.
+	puts "Validating path: #{path}".blue
+
+    # Check if paths exists - if it does add a number and re-check.
     path = File.expand_path(path)
-    if path == @output_root_path 
-      # Append the calling method name and re-validate (need to jump back two methods)
-      path = @output_root_path + "/" + caller_locations(1,2)[1].label.split.last
-	  puts "Appending path to test output folder: #{path}"
-      validateOutputFolder(path)
-    elsif File.exist?(path)
+    if File.exist?(path)
       # Create a numbered subfolder. First check if there is a numbered folder.
       path = path.split(/--/).first
       count = Dir.glob("#{path}*").count
       path = path + "--#{count}"
+      sleep(10)
       validateOutputFolder(path)
-    else
-      @output_path = path
     end
-    @output_path.to_s
+    path.to_s
   end
 
-  def self.outputFolder
-    @output_path.to_s
+  def self.outputFolder(arguments)
+    local_args = arguments
+
+    # No arguments in measure. Use calling method name.
+    if local_args == nil
+      local_args = caller_locations(1, 2)[1].label.split.last
+	  puts "Using dummy argument: #{local_args}".yellow
+    end
+
+	puts "Recovering outputFolder from: #{@@method_testing_paths}".pink
+	puts "  for: #{local_args}".blue
+    folder = @@method_testing_paths[local_args]
+	puts "Recovering outputFolder: #{folder}".green
+
+    # No folder found. Just set to Dir.pwd.
+    if folder == nil
+      folder = Dir.pwd
+	  puts "Missing outputFolder. Setting to: #{folder}".yellow
+    end
+    return folder
   end
 
   #
@@ -119,15 +179,14 @@ module NRCReportingMeasureTestHelper
   # Custom way to run a reporting measure in the test. Overwrites run_measure definition in BTAPMeasureTestHelper.
   def run_measure(input_arguments, model)
   
-    # Provide feedback as to what is being done to teh terminal.
+    # Provide feedback as to what is being done to the terminal.
     puts "Running measure".green
     puts "  with input arguments".green + " #{input_arguments}".light_blue
     puts "  on model with".green + " #{model.modelObjects.count}".light_blue + " objects".green
     puts "  from method".green + " #{caller_locations(1,1)[0].label.split.last}".light_blue
 
-    # Set the output folder. This should be unique (check done in validateOutputFolder). Create if does not exist.
-    output_folder = NRCReportingMeasureTestHelper.outputFolder
-    output_folder = NRCReportingMeasureTestHelper.validateOutputFolder(output_folder)
+    # Set the output folder. Create if does not exist.
+    output_folder = NRCReportingMeasureTestHelper.outputFolder(input_arguments)
     FileUtils.mkdir_p(output_folder) unless Dir.exists?(output_folder)
   
     # This will create a instance of the measure you wish to test. It does this based on the test class name.
@@ -228,10 +287,9 @@ module NRCReportingMeasureTestHelper
     ensure
       Dir.chdir(start_dir)
     end
+
+    # Get the result of the measure. Cannot check for success here as some tests designed to fail!
     result = runner.result.value.valueName
-  
-    # Reset the output path to the root folder.
-    NRCReportingMeasureTestHelper.resetOutputFolder
 
     # Add summary of test to README file.
     measure_name = measure.name.gsub("_", " ").upcase
