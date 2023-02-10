@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_create_from_existing_osm_file</name>
   <uid>9cd66007-71b8-4f28-b41f-d70c7844aaaa</uid>
-  <version_id>1504c3b6-4475-4491-934d-1e2622666559</version_id>
-  <version_modified>20230127T151513Z</version_modified>
+  <version_id>2249782e-e510-468b-b505-c05a5ca2632e</version_id>
+  <version_modified>20230208T164121Z</version_modified>
   <xml_checksum>FC9586A7</xml_checksum>
   <class_name>NrcCreateFromExistingOsmFile</class_name>
   <display_name>NRC Create From Existing Osm File</display_name>
@@ -130,19 +130,25 @@
       <filename>BTAPMeasureHelper.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>AE38D9B8</checksum>
-    </file>
-    <file>
-      <filename>NRCMeasureHelper.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>89894A9B</checksum>
+      <checksum>12494ED3</checksum>
     </file>
     <file>
       <filename>test.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
-      <checksum>D3913F2E</checksum>
+      <checksum>53A79A59</checksum>
+    </file>
+    <file>
+      <filename>test-output.json</filename>
+      <filetype>json</filetype>
+      <usage_type>test</usage_type>
+      <checksum>564D7F07</checksum>
+    </file>
+    <file>
+      <filename>NRCMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>30C86D53</checksum>
     </file>
   </files>
 </measure>

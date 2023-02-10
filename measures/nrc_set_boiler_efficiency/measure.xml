@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_set_boiler_efficiency</name>
   <uid>3cce913f-31d5-423b-b8ac-ddea73ffedad</uid>
-  <version_id>6333194c-1145-4e2c-a149-7e751d9af8d0</version_id>
-  <version_modified>20230127T151537Z</version_modified>
+  <version_id>c6c71828-ec10-4f92-8de9-3fac4885f9ce</version_id>
+  <version_modified>20230209T214323Z</version_modified>
   <xml_checksum>2AF3A68E</xml_checksum>
   <class_name>NrcSetBoilerEfficiency</class_name>
   <display_name>Set Boiler Thermal Efficiency</display_name>
@@ -87,19 +87,19 @@
       <filename>BTAPMeasureHelper.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>AE38D9B8</checksum>
+      <checksum>12494ED3</checksum>
     </file>
     <file>
       <filename>test.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
-      <checksum>098A94E8</checksum>
+      <checksum>4030CCC0</checksum>
     </file>
     <file>
       <filename>NRCMeasureHelper.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>89894A9B</checksum>
+      <checksum>30C86D53</checksum>
     </file>
   </files>
 </measure>

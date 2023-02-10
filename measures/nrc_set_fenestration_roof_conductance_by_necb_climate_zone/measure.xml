@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_set_fenestration_roof_conductance_by_necb_climate_zone</name>
   <uid>ed475991-f1ea-4c98-968d-fdf5d56facb3</uid>
-  <version_id>800c6af3-7307-4cca-b00e-04bcf36efbb5</version_id>
-  <version_modified>20230127T151539Z</version_modified>
+  <version_id>b48c9454-6b9b-41c0-8524-71fbffc76150</version_id>
+  <version_modified>20230208T164134Z</version_modified>
   <xml_checksum>7308DE72</xml_checksum>
   <class_name>NrcSetFenestrationRoofConductanceByNecbClimateZone</class_name>
   <display_name>Set Fenestration (Roof) Conductance By Necb Climate Zone</display_name>
@@ -137,19 +137,19 @@
       <filename>BTAPMeasureHelper.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>AE38D9B8</checksum>
+      <checksum>12494ED3</checksum>
     </file>
     <file>
       <filename>test.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
-      <checksum>3B342AA4</checksum>
+      <checksum>F0B09396</checksum>
     </file>
     <file>
       <filename>NRCMeasureHelper.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>89894A9B</checksum>
+      <checksum>30C86D53</checksum>
     </file>
   </files>
 </measure>

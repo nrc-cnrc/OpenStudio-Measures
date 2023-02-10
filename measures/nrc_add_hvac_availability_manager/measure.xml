@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_add_hvac_availability_manager</name>
   <uid>7e2d8cb0-7ec5-494a-9e1f-bbfbd00d003d</uid>
-  <version_id>6e02ee38-8ce4-4e79-8f48-d08a7a80dbdc</version_id>
-  <version_modified>20230127T151506Z</version_modified>
+  <version_id>da29796b-7476-4333-83fa-cd2e5a9bc1bc</version_id>
+  <version_modified>20230208T164120Z</version_modified>
   <xml_checksum>BF5240D4</xml_checksum>
   <class_name>NrcAddHvacAvailabilityManager</class_name>
   <display_name>Add HVAC Availability Manager</display_name>
@@ -80,19 +80,19 @@
       <filename>BTAPMeasureHelper.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>AE38D9B8</checksum>
+      <checksum>12494ED3</checksum>
     </file>
     <file>
       <filename>test.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
-      <checksum>4B1A714E</checksum>
+      <checksum>987F974E</checksum>
     </file>
     <file>
       <filename>NRCMeasureHelper.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>89894A9B</checksum>
+      <checksum>30C86D53</checksum>
     </file>
   </files>
 </measure>

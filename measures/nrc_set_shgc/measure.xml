@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_set_shgc</name>
   <uid>9d86e04c-8e2c-4a42-a0dc-037a20881320</uid>
-  <version_id>bbf858e2-3227-4680-a4c6-b56d83b6cc84</version_id>
-  <version_modified>20230127T151543Z</version_modified>
+  <version_id>5e34b8ff-6f9f-4e05-9a6f-1060b985c39e</version_id>
+  <version_modified>20230209T214334Z</version_modified>
   <xml_checksum>9C8A26EB</xml_checksum>
   <class_name>NrcSetSHGC</class_name>
   <display_name>Set SHGC</display_name>
@@ -61,12 +61,6 @@
       <checksum>A1A5426B</checksum>
     </file>
     <file>
-      <filename>BTAPMeasureHelper.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>AE38D9B8</checksum>
-    </file>
-    <file>
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>2.3.0</identifier>
@@ -84,16 +78,22 @@
       <checksum>B2435154</checksum>
     </file>
     <file>
-      <filename>NRCMeasureHelper.rb</filename>
+      <filename>BTAPMeasureHelper.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>89894A9B</checksum>
+      <checksum>12494ED3</checksum>
     </file>
     <file>
       <filename>test.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
-      <checksum>70759180</checksum>
+      <checksum>71A8E113</checksum>
+    </file>
+    <file>
+      <filename>NRCMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>30C86D53</checksum>
     </file>
   </files>
 </measure>

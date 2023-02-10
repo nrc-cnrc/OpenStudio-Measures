@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_doasvrf</name>
   <uid>b48dc234-3f04-4153-b380-28de7b0c7a8f</uid>
-  <version_id>8b589a0d-0c93-4ac3-b454-afea94c6f921</version_id>
-  <version_modified>20230127T151515Z</version_modified>
+  <version_id>a940eb10-e02b-4795-9c3e-873b0caf18da</version_id>
+  <version_modified>20230209T214241Z</version_modified>
   <xml_checksum>C49A7DAB</xml_checksum>
   <class_name>NrcDOASVRF</class_name>
   <display_name>NrcDOASVRF</display_name>
@@ -81,19 +81,19 @@
       <filename>BTAPMeasureHelper.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>AE38D9B8</checksum>
+      <checksum>12494ED3</checksum>
     </file>
     <file>
       <filename>test.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
-      <checksum>EB3690BF</checksum>
+      <checksum>F83ED5F0</checksum>
     </file>
     <file>
       <filename>NRCMeasureHelper.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>89894A9B</checksum>
+      <checksum>30C86D53</checksum>
     </file>
   </files>
 </measure>

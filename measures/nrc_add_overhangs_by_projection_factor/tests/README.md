@@ -14,7 +14,7 @@ This test was expected to pass and it did.
 | projection_factor |0.5 |
 | remove_ext_space_shading |false |
  
-## 2 - test argument ranges
+## 2 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -24,7 +24,7 @@ This test was expected to generate an error and it did.
 | projection_factor |2.0 |
 | remove_ext_space_shading |false |
  
-## 3 - test argument ranges--2
+## 3 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -34,7 +34,7 @@ This test was expected to generate an error and it did.
 | projection_factor |-1.0 |
 | remove_ext_space_shading |false |
  
-## 4 - test argument ranges--3
+## 4 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -44,7 +44,7 @@ This test was expected to generate an error and it did.
 | projection_factor |2.0 |
 | remove_ext_space_shading |false |
  
-## 5 - test argument ranges--4
+## 5 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -54,7 +54,7 @@ This test was expected to generate an error and it did.
 | projection_factor |-1.0 |
 | remove_ext_space_shading |false |
  
-## 6 - test argument ranges--5
+## 6 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -64,7 +64,27 @@ This test was expected to generate an error and it did.
 | projection_factor |2.0 |
 | remove_ext_space_shading |false |
  
-## 7 - test argument ranges--6
+## 7 - oscli
+ 
+This test was expected to generate an error and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| facade |South |
+| projection_factor |-1.0 |
+| remove_ext_space_shading |false |
+ 
+## 8 - oscli
+ 
+This test was expected to generate an error and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| facade |South |
+| projection_factor |2.0 |
+| remove_ext_space_shading |false |
+ 
+## 9 - oscli
  
 This test was expected to generate an error and it did.
  

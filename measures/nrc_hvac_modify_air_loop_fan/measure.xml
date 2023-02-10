@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_hvac_modify_air_loop_fan</name>
   <uid>e33a8f1a-f69c-4c4b-90c9-629859a89e80</uid>
-  <version_id>94528bac-b26a-4591-9442-ab3fa8fcbff1</version_id>
-  <version_modified>20230127T151516Z</version_modified>
+  <version_id>6b084adb-ad3f-469f-b401-cdd82829b56e</version_id>
+  <version_modified>20230208T164128Z</version_modified>
   <xml_checksum>ED6112BA</xml_checksum>
   <class_name>NrcHvacModifyAirLoopFan</class_name>
   <display_name>Modify HVAC Air Loop Fan Parameters</display_name>
@@ -84,19 +84,19 @@
       <filename>BTAPMeasureHelper.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>AE38D9B8</checksum>
+      <checksum>12494ED3</checksum>
     </file>
     <file>
       <filename>test.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
-      <checksum>F0AF09DD</checksum>
+      <checksum>C9C6622E</checksum>
     </file>
     <file>
       <filename>NRCMeasureHelper.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>89894A9B</checksum>
+      <checksum>30C86D53</checksum>
     </file>
   </files>
 </measure>

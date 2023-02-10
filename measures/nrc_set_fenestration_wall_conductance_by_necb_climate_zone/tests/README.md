@@ -1,62 +1,6 @@
-## 30 - test argument ranges--28
+## 2 - OutputTestFolder zone4
  
-This test was expected to generate an error and it did.
- 
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| necb_template |NECB2017 |
-| zone4_u_value |1.9 |
-| zone5_u_value |1.8 |
-| zone6_u_value |6.0 |
-| zone7A_u_value |1.5 |
-| zone7B_u_value |1.4 |
-| zone8_u_value |1.3 |
- 
-## 31 - test argument ranges
- 
-This test was expected to generate an error and it did.
- 
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| necb_template |NECB2017 |
-| zone4_u_value |1.9 |
-| zone5_u_value |1.8 |
-| zone6_u_value |-1.0 |
-| zone7A_u_value |1.5 |
-| zone7B_u_value |1.4 |
-| zone8_u_value |1.3 |
- 
-## 32 - test argument ranges--29
- 
-This test was expected to generate an error and it did.
- 
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| necb_template |NECB2017 |
-| zone4_u_value |1.9 |
-| zone5_u_value |1.8 |
-| zone6_u_value |1.7 |
-| zone7A_u_value |6.0 |
-| zone7B_u_value |1.4 |
-| zone8_u_value |1.3 |
- 
-## 33 - test argument ranges--30
- 
-This test was expected to generate an error and it did.
- 
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| necb_template |NECB2017 |
-| zone4_u_value |1.9 |
-| zone5_u_value |1.8 |
-| zone6_u_value |1.7 |
-| zone7A_u_value |-1.0 |
-| zone7B_u_value |1.4 |
-| zone8_u_value |1.3 |
- 
-## 34 - test argument ranges--31
- 
-This test was expected to generate an error and it did.
+This test was expected to pass and it did.
  
 | Test Argument | Test Value |
 | ------------- | ---------- |
@@ -65,21 +9,7 @@ This test was expected to generate an error and it did.
 | zone5_u_value |1.8 |
 | zone6_u_value |1.7 |
 | zone7A_u_value |1.5 |
-| zone7B_u_value |6.0 |
-| zone8_u_value |1.3 |
- 
-## 35 - test argument ranges--32
- 
-This test was expected to generate an error and it did.
- 
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| necb_template |NECB2017 |
-| zone4_u_value |1.9 |
-| zone5_u_value |1.8 |
-| zone6_u_value |1.7 |
-| zone7A_u_value |1.5 |
-| zone7B_u_value |-1.0 |
+| zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
 # Summary Of Test Cases for 'SET FENESTRATION (WALL) CONDUCTANCE BY NECB CLIMATE ZONE' Measure
@@ -88,7 +18,7 @@ The following describe the parameter tests that are conducted on the measure. No
 tests are designed to return a fail and some a success. The report below contains all the tests that 
 have the correct response. For example the argument range limit tests are expected to fail. 
  
-## 1 - OutputTestFolder zone7b--1
+## 1 - OutputTestFolder zone4--1
  
 This test was expected to pass and it did.
  
@@ -102,23 +32,9 @@ This test was expected to pass and it did.
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 36 - test argument ranges--33
+## 3 - OutputTestFolder zone5
  
-This test was expected to generate an error and it did.
- 
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| necb_template |NECB2017 |
-| zone4_u_value |1.9 |
-| zone5_u_value |1.8 |
-| zone6_u_value |1.7 |
-| zone7A_u_value |1.5 |
-| zone7B_u_value |1.4 |
-| zone8_u_value |6.0 |
- 
-## 37 - test argument ranges--34
- 
-This test was expected to generate an error and it did.
+This test was expected to pass and it did.
  
 | Test Argument | Test Value |
 | ------------- | ---------- |
@@ -128,9 +44,37 @@ This test was expected to generate an error and it did.
 | zone6_u_value |1.7 |
 | zone7A_u_value |1.5 |
 | zone7B_u_value |1.4 |
-| zone8_u_value |-1.0 |
+| zone8_u_value |1.3 |
  
-## 38 - test argument ranges--35
+## 2 - OutputTestFolder zone6
+ 
+This test was expected to pass and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| necb_template |NECB2017 |
+| zone4_u_value |1.9 |
+| zone5_u_value |1.8 |
+| zone6_u_value |1.7 |
+| zone7A_u_value |1.5 |
+| zone7B_u_value |1.4 |
+| zone8_u_value |1.3 |
+ 
+## 4 - OutputTestFolder zone8
+ 
+This test was expected to pass and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| necb_template |NECB2017 |
+| zone4_u_value |1.9 |
+| zone5_u_value |1.8 |
+| zone6_u_value |1.7 |
+| zone7A_u_value |1.5 |
+| zone7B_u_value |1.4 |
+| zone8_u_value |1.3 |
+ 
+## 5 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -144,7 +88,7 @@ This test was expected to generate an error and it did.
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 39 - test argument ranges--36
+## 6 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -158,7 +102,7 @@ This test was expected to generate an error and it did.
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 40 - test argument ranges--37
+## 7 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -172,21 +116,7 @@ This test was expected to generate an error and it did.
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 2 - OutputTestFolder zone8--1
- 
-This test was expected to pass and it did.
- 
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| necb_template |NECB2017 |
-| zone4_u_value |1.9 |
-| zone5_u_value |1.8 |
-| zone6_u_value |1.7 |
-| zone7A_u_value |1.5 |
-| zone7B_u_value |1.4 |
-| zone8_u_value |1.3 |
- 
-## 41 - test argument ranges--38
+## 8 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -200,7 +130,7 @@ This test was expected to generate an error and it did.
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 42 - test argument ranges--39
+## 9 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -214,7 +144,7 @@ This test was expected to generate an error and it did.
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 43 - test argument ranges--40
+## 10 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -228,21 +158,7 @@ This test was expected to generate an error and it did.
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 3 - OutputTestFolder zone4--1
- 
-This test was expected to pass and it did.
- 
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| necb_template |NECB2017 |
-| zone4_u_value |1.9 |
-| zone5_u_value |1.8 |
-| zone6_u_value |1.7 |
-| zone7A_u_value |1.5 |
-| zone7B_u_value |1.4 |
-| zone8_u_value |1.3 |
- 
-## 44 - test argument ranges--41
+## 11 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -256,7 +172,7 @@ This test was expected to generate an error and it did.
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 45 - test argument ranges--42
+## 12 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -270,7 +186,7 @@ This test was expected to generate an error and it did.
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 46 - test argument ranges--43
+## 13 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -284,7 +200,7 @@ This test was expected to generate an error and it did.
 | zone7B_u_value |6.0 |
 | zone8_u_value |1.3 |
  
-## 47 - test argument ranges--44
+## 14 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -298,21 +214,7 @@ This test was expected to generate an error and it did.
 | zone7B_u_value |-1.0 |
 | zone8_u_value |1.3 |
  
-## 4 - OutputTestFolder zone6--1
- 
-This test was expected to pass and it did.
- 
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| necb_template |NECB2017 |
-| zone4_u_value |1.9 |
-| zone5_u_value |1.8 |
-| zone6_u_value |1.7 |
-| zone7A_u_value |1.5 |
-| zone7B_u_value |1.4 |
-| zone8_u_value |1.3 |
- 
-## 48 - test argument ranges--45
+## 15 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -326,7 +228,7 @@ This test was expected to generate an error and it did.
 | zone7B_u_value |1.4 |
 | zone8_u_value |6.0 |
  
-## 49 - test argument ranges--46
+## 16 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -340,21 +242,7 @@ This test was expected to generate an error and it did.
 | zone7B_u_value |1.4 |
 | zone8_u_value |-1.0 |
  
-## 5 - OutputTestFolder zone7a--1
- 
-This test was expected to pass and it did.
- 
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| necb_template |NECB2017 |
-| zone4_u_value |1.9 |
-| zone5_u_value |1.8 |
-| zone6_u_value |1.7 |
-| zone7A_u_value |1.5 |
-| zone7B_u_value |1.4 |
-| zone8_u_value |1.3 |
- 
-## 6 - test argument ranges--47
+## 17 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -368,7 +256,7 @@ This test was expected to generate an error and it did.
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 7 - test argument ranges--48
+## 18 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -382,21 +270,7 @@ This test was expected to generate an error and it did.
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 50 - OutputTestFolder zone7b--3
- 
-This test was expected to pass and it did.
- 
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| necb_template |NECB2017 |
-| zone4_u_value |1.9 |
-| zone5_u_value |1.8 |
-| zone6_u_value |1.7 |
-| zone7A_u_value |1.5 |
-| zone7B_u_value |1.4 |
-| zone8_u_value |1.3 |
- 
-## 8 - test argument ranges--49
+## 19 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -410,7 +284,7 @@ This test was expected to generate an error and it did.
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 9 - test argument ranges--50
+## 20 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -424,7 +298,7 @@ This test was expected to generate an error and it did.
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 10 - test argument ranges--51
+## 21 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -438,7 +312,7 @@ This test was expected to generate an error and it did.
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 11 - test argument ranges--52
+## 22 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -452,21 +326,7 @@ This test was expected to generate an error and it did.
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 51 - OutputTestFolder zone8--3
- 
-This test was expected to pass and it did.
- 
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| necb_template |NECB2017 |
-| zone4_u_value |1.9 |
-| zone5_u_value |1.8 |
-| zone6_u_value |1.7 |
-| zone7A_u_value |1.5 |
-| zone7B_u_value |1.4 |
-| zone8_u_value |1.3 |
- 
-## 12 - test argument ranges--53
+## 23 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -480,7 +340,7 @@ This test was expected to generate an error and it did.
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 13 - test argument ranges--54
+## 24 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -494,7 +354,7 @@ This test was expected to generate an error and it did.
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 14 - test argument ranges--55
+## 25 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -508,7 +368,7 @@ This test was expected to generate an error and it did.
 | zone7B_u_value |6.0 |
 | zone8_u_value |1.3 |
  
-## 15 - test argument ranges--56
+## 26 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -522,21 +382,7 @@ This test was expected to generate an error and it did.
 | zone7B_u_value |-1.0 |
 | zone8_u_value |1.3 |
  
-## 52 - OutputTestFolder zone6--3
- 
-This test was expected to pass and it did.
- 
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| necb_template |NECB2017 |
-| zone4_u_value |1.9 |
-| zone5_u_value |1.8 |
-| zone6_u_value |1.7 |
-| zone7A_u_value |1.5 |
-| zone7B_u_value |1.4 |
-| zone8_u_value |1.3 |
- 
-## 16 - test argument ranges--57
+## 27 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -550,7 +396,7 @@ This test was expected to generate an error and it did.
 | zone7B_u_value |1.4 |
 | zone8_u_value |6.0 |
  
-## 17 - test argument ranges--58
+## 28 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -564,7 +410,7 @@ This test was expected to generate an error and it did.
 | zone7B_u_value |1.4 |
 | zone8_u_value |-1.0 |
  
-## 18 - test argument ranges--59
+## 29 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -578,7 +424,7 @@ This test was expected to generate an error and it did.
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 19 - test argument ranges--60
+## 30 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -592,21 +438,7 @@ This test was expected to generate an error and it did.
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 53 - OutputTestFolder zone4--3
- 
-This test was expected to pass and it did.
- 
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| necb_template |NECB2017 |
-| zone4_u_value |1.9 |
-| zone5_u_value |1.8 |
-| zone6_u_value |1.7 |
-| zone7A_u_value |1.5 |
-| zone7B_u_value |1.4 |
-| zone8_u_value |1.3 |
- 
-## 20 - test argument ranges--61
+## 31 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -620,7 +452,7 @@ This test was expected to generate an error and it did.
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 21 - test argument ranges--62
+## 32 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -634,7 +466,7 @@ This test was expected to generate an error and it did.
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 22 - test argument ranges--63
+## 33 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -648,7 +480,7 @@ This test was expected to generate an error and it did.
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 23 - test argument ranges--64
+## 34 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -662,7 +494,7 @@ This test was expected to generate an error and it did.
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 24 - test argument ranges--65
+## 35 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -676,21 +508,7 @@ This test was expected to generate an error and it did.
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 54 - OutputTestFolder zone7a--3
- 
-This test was expected to pass and it did.
- 
-| Test Argument | Test Value |
-| ------------- | ---------- |
-| necb_template |NECB2017 |
-| zone4_u_value |1.9 |
-| zone5_u_value |1.8 |
-| zone6_u_value |1.7 |
-| zone7A_u_value |1.5 |
-| zone7B_u_value |1.4 |
-| zone8_u_value |1.3 |
- 
-## 25 - test argument ranges--66
+## 36 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -704,7 +522,7 @@ This test was expected to generate an error and it did.
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 26 - test argument ranges--67
+## 37 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -718,7 +536,7 @@ This test was expected to generate an error and it did.
 | zone7B_u_value |6.0 |
 | zone8_u_value |1.3 |
  
-## 27 - test argument ranges--68
+## 38 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -732,7 +550,7 @@ This test was expected to generate an error and it did.
 | zone7B_u_value |-1.0 |
 | zone8_u_value |1.3 |
  
-## 28 - test argument ranges--69
+## 39 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -746,7 +564,7 @@ This test was expected to generate an error and it did.
 | zone7B_u_value |1.4 |
 | zone8_u_value |6.0 |
  
-## 29 - test argument ranges--70
+## 40 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -760,7 +578,7 @@ This test was expected to generate an error and it did.
 | zone7B_u_value |1.4 |
 | zone8_u_value |-1.0 |
  
-## 30 - test argument ranges--71
+## 41 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -774,7 +592,7 @@ This test was expected to generate an error and it did.
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 31 - test argument ranges--72
+## 42 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -788,7 +606,7 @@ This test was expected to generate an error and it did.
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 32 - test argument ranges--73
+## 43 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -802,7 +620,7 @@ This test was expected to generate an error and it did.
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 33 - test argument ranges--74
+## 44 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -816,7 +634,7 @@ This test was expected to generate an error and it did.
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 34 - test argument ranges--75
+## 45 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -830,7 +648,7 @@ This test was expected to generate an error and it did.
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 35 - test argument ranges--76
+## 46 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -844,7 +662,7 @@ This test was expected to generate an error and it did.
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 36 - test argument ranges--77
+## 47 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -858,7 +676,7 @@ This test was expected to generate an error and it did.
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 37 - test argument ranges--78
+## 48 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -872,7 +690,7 @@ This test was expected to generate an error and it did.
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 38 - test argument ranges--79
+## 49 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -886,7 +704,7 @@ This test was expected to generate an error and it did.
 | zone7B_u_value |6.0 |
 | zone8_u_value |1.3 |
  
-## 39 - test argument ranges--80
+## 50 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -900,7 +718,7 @@ This test was expected to generate an error and it did.
 | zone7B_u_value |-1.0 |
 | zone8_u_value |1.3 |
  
-## 40 - test argument ranges--81
+## 51 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -914,7 +732,7 @@ This test was expected to generate an error and it did.
 | zone7B_u_value |1.4 |
 | zone8_u_value |6.0 |
  
-## 41 - test argument ranges--82
+## 52 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -928,7 +746,91 @@ This test was expected to generate an error and it did.
 | zone7B_u_value |1.4 |
 | zone8_u_value |-1.0 |
  
-## 42 - test argument ranges--83
+## 3 - OutputTestFolder zone7a
+ 
+This test was expected to pass and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| necb_template |NECB2017 |
+| zone4_u_value |1.9 |
+| zone5_u_value |1.8 |
+| zone6_u_value |1.7 |
+| zone7A_u_value |1.5 |
+| zone7B_u_value |1.4 |
+| zone8_u_value |1.3 |
+ 
+## 53 - OutputTestFolder zone7a--1
+ 
+This test was expected to pass and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| necb_template |NECB2017 |
+| zone4_u_value |1.9 |
+| zone5_u_value |1.8 |
+| zone6_u_value |1.7 |
+| zone7A_u_value |1.5 |
+| zone7B_u_value |1.4 |
+| zone8_u_value |1.3 |
+ 
+## 4 - OutputTestFolder zone8--1
+ 
+This test was expected to pass and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| necb_template |NECB2017 |
+| zone4_u_value |1.9 |
+| zone5_u_value |1.8 |
+| zone6_u_value |1.7 |
+| zone7A_u_value |1.5 |
+| zone7B_u_value |1.4 |
+| zone8_u_value |1.3 |
+ 
+## 54 - OutputTestFolder zone6--1
+ 
+This test was expected to pass and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| necb_template |NECB2017 |
+| zone4_u_value |1.9 |
+| zone5_u_value |1.8 |
+| zone6_u_value |1.7 |
+| zone7A_u_value |1.5 |
+| zone7B_u_value |1.4 |
+| zone8_u_value |1.3 |
+ 
+## 5 - OutputTestFolder zone7b
+ 
+This test was expected to pass and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| necb_template |NECB2017 |
+| zone4_u_value |1.9 |
+| zone5_u_value |1.8 |
+| zone6_u_value |1.7 |
+| zone7A_u_value |1.5 |
+| zone7B_u_value |1.4 |
+| zone8_u_value |1.3 |
+ 
+## 6 - OutputTestFolder zone5--1
+ 
+This test was expected to pass and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| necb_template |NECB2017 |
+| zone4_u_value |1.9 |
+| zone5_u_value |1.8 |
+| zone6_u_value |1.7 |
+| zone7A_u_value |1.5 |
+| zone7B_u_value |1.4 |
+| zone8_u_value |1.3 |
+ 
+## 7 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -942,7 +844,7 @@ This test was expected to generate an error and it did.
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 43 - test argument ranges--84
+## 8 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -956,7 +858,7 @@ This test was expected to generate an error and it did.
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 44 - test argument ranges--85
+## 9 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -970,7 +872,7 @@ This test was expected to generate an error and it did.
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 45 - test argument ranges--86
+## 10 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -984,7 +886,7 @@ This test was expected to generate an error and it did.
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 46 - test argument ranges--87
+## 11 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -998,7 +900,7 @@ This test was expected to generate an error and it did.
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 47 - test argument ranges--88
+## 12 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -1012,7 +914,7 @@ This test was expected to generate an error and it did.
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 48 - test argument ranges--89
+## 13 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -1026,7 +928,7 @@ This test was expected to generate an error and it did.
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 49 - test argument ranges--90
+## 14 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -1040,7 +942,7 @@ This test was expected to generate an error and it did.
 | zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
  
-## 50 - test argument ranges--91
+## 15 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -1054,7 +956,7 @@ This test was expected to generate an error and it did.
 | zone7B_u_value |6.0 |
 | zone8_u_value |1.3 |
  
-## 51 - test argument ranges--92
+## 16 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -1068,7 +970,7 @@ This test was expected to generate an error and it did.
 | zone7B_u_value |-1.0 |
 | zone8_u_value |1.3 |
  
-## 52 - test argument ranges--93
+## 17 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -1082,7 +984,7 @@ This test was expected to generate an error and it did.
 | zone7B_u_value |1.4 |
 | zone8_u_value |6.0 |
  
-## 53 - test argument ranges--94
+## 18 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -1096,9 +998,149 @@ This test was expected to generate an error and it did.
 | zone7B_u_value |1.4 |
 | zone8_u_value |-1.0 |
  
-## 54 - OutputTestFolder zone5--1
+## 19 - oscli
  
-This test was expected to pass and it did.
+This test was expected to generate an error and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| necb_template |NECB2017 |
+| zone4_u_value |6.0 |
+| zone5_u_value |1.8 |
+| zone6_u_value |1.7 |
+| zone7A_u_value |1.5 |
+| zone7B_u_value |1.4 |
+| zone8_u_value |1.3 |
+ 
+## 20 - oscli
+ 
+This test was expected to generate an error and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| necb_template |NECB2017 |
+| zone4_u_value |-1.0 |
+| zone5_u_value |1.8 |
+| zone6_u_value |1.7 |
+| zone7A_u_value |1.5 |
+| zone7B_u_value |1.4 |
+| zone8_u_value |1.3 |
+ 
+## 21 - oscli
+ 
+This test was expected to generate an error and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| necb_template |NECB2017 |
+| zone4_u_value |1.9 |
+| zone5_u_value |6.0 |
+| zone6_u_value |1.7 |
+| zone7A_u_value |1.5 |
+| zone7B_u_value |1.4 |
+| zone8_u_value |1.3 |
+ 
+## 22 - oscli
+ 
+This test was expected to generate an error and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| necb_template |NECB2017 |
+| zone4_u_value |1.9 |
+| zone5_u_value |-1.0 |
+| zone6_u_value |1.7 |
+| zone7A_u_value |1.5 |
+| zone7B_u_value |1.4 |
+| zone8_u_value |1.3 |
+ 
+## 23 - oscli
+ 
+This test was expected to generate an error and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| necb_template |NECB2017 |
+| zone4_u_value |1.9 |
+| zone5_u_value |1.8 |
+| zone6_u_value |6.0 |
+| zone7A_u_value |1.5 |
+| zone7B_u_value |1.4 |
+| zone8_u_value |1.3 |
+ 
+## 24 - oscli
+ 
+This test was expected to generate an error and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| necb_template |NECB2017 |
+| zone4_u_value |1.9 |
+| zone5_u_value |1.8 |
+| zone6_u_value |-1.0 |
+| zone7A_u_value |1.5 |
+| zone7B_u_value |1.4 |
+| zone8_u_value |1.3 |
+ 
+## 25 - oscli
+ 
+This test was expected to generate an error and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| necb_template |NECB2017 |
+| zone4_u_value |1.9 |
+| zone5_u_value |1.8 |
+| zone6_u_value |1.7 |
+| zone7A_u_value |6.0 |
+| zone7B_u_value |1.4 |
+| zone8_u_value |1.3 |
+ 
+## 26 - oscli
+ 
+This test was expected to generate an error and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| necb_template |NECB2017 |
+| zone4_u_value |1.9 |
+| zone5_u_value |1.8 |
+| zone6_u_value |1.7 |
+| zone7A_u_value |-1.0 |
+| zone7B_u_value |1.4 |
+| zone8_u_value |1.3 |
+ 
+## 27 - oscli
+ 
+This test was expected to generate an error and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| necb_template |NECB2017 |
+| zone4_u_value |1.9 |
+| zone5_u_value |1.8 |
+| zone6_u_value |1.7 |
+| zone7A_u_value |1.5 |
+| zone7B_u_value |6.0 |
+| zone8_u_value |1.3 |
+ 
+## 28 - oscli
+ 
+This test was expected to generate an error and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| necb_template |NECB2017 |
+| zone4_u_value |1.9 |
+| zone5_u_value |1.8 |
+| zone6_u_value |1.7 |
+| zone7A_u_value |1.5 |
+| zone7B_u_value |-1.0 |
+| zone8_u_value |1.3 |
+ 
+## 29 - oscli
+ 
+This test was expected to generate an error and it did.
  
 | Test Argument | Test Value |
 | ------------- | ---------- |
@@ -1108,5 +1150,355 @@ This test was expected to pass and it did.
 | zone6_u_value |1.7 |
 | zone7A_u_value |1.5 |
 | zone7B_u_value |1.4 |
+| zone8_u_value |6.0 |
+ 
+## 30 - oscli
+ 
+This test was expected to generate an error and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| necb_template |NECB2017 |
+| zone4_u_value |1.9 |
+| zone5_u_value |1.8 |
+| zone6_u_value |1.7 |
+| zone7A_u_value |1.5 |
+| zone7B_u_value |1.4 |
+| zone8_u_value |-1.0 |
+ 
+## 31 - oscli
+ 
+This test was expected to generate an error and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| necb_template |NECB2017 |
+| zone4_u_value |6.0 |
+| zone5_u_value |1.8 |
+| zone6_u_value |1.7 |
+| zone7A_u_value |1.5 |
+| zone7B_u_value |1.4 |
 | zone8_u_value |1.3 |
+ 
+## 32 - oscli
+ 
+This test was expected to generate an error and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| necb_template |NECB2017 |
+| zone4_u_value |-1.0 |
+| zone5_u_value |1.8 |
+| zone6_u_value |1.7 |
+| zone7A_u_value |1.5 |
+| zone7B_u_value |1.4 |
+| zone8_u_value |1.3 |
+ 
+## 33 - oscli
+ 
+This test was expected to generate an error and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| necb_template |NECB2017 |
+| zone4_u_value |1.9 |
+| zone5_u_value |6.0 |
+| zone6_u_value |1.7 |
+| zone7A_u_value |1.5 |
+| zone7B_u_value |1.4 |
+| zone8_u_value |1.3 |
+ 
+## 34 - oscli
+ 
+This test was expected to generate an error and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| necb_template |NECB2017 |
+| zone4_u_value |1.9 |
+| zone5_u_value |-1.0 |
+| zone6_u_value |1.7 |
+| zone7A_u_value |1.5 |
+| zone7B_u_value |1.4 |
+| zone8_u_value |1.3 |
+ 
+## 35 - oscli
+ 
+This test was expected to generate an error and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| necb_template |NECB2017 |
+| zone4_u_value |1.9 |
+| zone5_u_value |1.8 |
+| zone6_u_value |6.0 |
+| zone7A_u_value |1.5 |
+| zone7B_u_value |1.4 |
+| zone8_u_value |1.3 |
+ 
+## 36 - oscli
+ 
+This test was expected to generate an error and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| necb_template |NECB2017 |
+| zone4_u_value |1.9 |
+| zone5_u_value |1.8 |
+| zone6_u_value |-1.0 |
+| zone7A_u_value |1.5 |
+| zone7B_u_value |1.4 |
+| zone8_u_value |1.3 |
+ 
+## 37 - oscli
+ 
+This test was expected to generate an error and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| necb_template |NECB2017 |
+| zone4_u_value |1.9 |
+| zone5_u_value |1.8 |
+| zone6_u_value |1.7 |
+| zone7A_u_value |6.0 |
+| zone7B_u_value |1.4 |
+| zone8_u_value |1.3 |
+ 
+## 38 - oscli
+ 
+This test was expected to generate an error and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| necb_template |NECB2017 |
+| zone4_u_value |1.9 |
+| zone5_u_value |1.8 |
+| zone6_u_value |1.7 |
+| zone7A_u_value |-1.0 |
+| zone7B_u_value |1.4 |
+| zone8_u_value |1.3 |
+ 
+## 39 - oscli
+ 
+This test was expected to generate an error and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| necb_template |NECB2017 |
+| zone4_u_value |1.9 |
+| zone5_u_value |1.8 |
+| zone6_u_value |1.7 |
+| zone7A_u_value |1.5 |
+| zone7B_u_value |6.0 |
+| zone8_u_value |1.3 |
+ 
+## 40 - oscli
+ 
+This test was expected to generate an error and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| necb_template |NECB2017 |
+| zone4_u_value |1.9 |
+| zone5_u_value |1.8 |
+| zone6_u_value |1.7 |
+| zone7A_u_value |1.5 |
+| zone7B_u_value |-1.0 |
+| zone8_u_value |1.3 |
+ 
+## 41 - oscli
+ 
+This test was expected to generate an error and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| necb_template |NECB2017 |
+| zone4_u_value |1.9 |
+| zone5_u_value |1.8 |
+| zone6_u_value |1.7 |
+| zone7A_u_value |1.5 |
+| zone7B_u_value |1.4 |
+| zone8_u_value |6.0 |
+ 
+## 42 - oscli
+ 
+This test was expected to generate an error and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| necb_template |NECB2017 |
+| zone4_u_value |1.9 |
+| zone5_u_value |1.8 |
+| zone6_u_value |1.7 |
+| zone7A_u_value |1.5 |
+| zone7B_u_value |1.4 |
+| zone8_u_value |-1.0 |
+ 
+## 43 - oscli
+ 
+This test was expected to generate an error and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| necb_template |NECB2017 |
+| zone4_u_value |6.0 |
+| zone5_u_value |1.8 |
+| zone6_u_value |1.7 |
+| zone7A_u_value |1.5 |
+| zone7B_u_value |1.4 |
+| zone8_u_value |1.3 |
+ 
+## 44 - oscli
+ 
+This test was expected to generate an error and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| necb_template |NECB2017 |
+| zone4_u_value |-1.0 |
+| zone5_u_value |1.8 |
+| zone6_u_value |1.7 |
+| zone7A_u_value |1.5 |
+| zone7B_u_value |1.4 |
+| zone8_u_value |1.3 |
+ 
+## 45 - oscli
+ 
+This test was expected to generate an error and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| necb_template |NECB2017 |
+| zone4_u_value |1.9 |
+| zone5_u_value |6.0 |
+| zone6_u_value |1.7 |
+| zone7A_u_value |1.5 |
+| zone7B_u_value |1.4 |
+| zone8_u_value |1.3 |
+ 
+## 46 - oscli
+ 
+This test was expected to generate an error and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| necb_template |NECB2017 |
+| zone4_u_value |1.9 |
+| zone5_u_value |-1.0 |
+| zone6_u_value |1.7 |
+| zone7A_u_value |1.5 |
+| zone7B_u_value |1.4 |
+| zone8_u_value |1.3 |
+ 
+## 47 - oscli
+ 
+This test was expected to generate an error and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| necb_template |NECB2017 |
+| zone4_u_value |1.9 |
+| zone5_u_value |1.8 |
+| zone6_u_value |6.0 |
+| zone7A_u_value |1.5 |
+| zone7B_u_value |1.4 |
+| zone8_u_value |1.3 |
+ 
+## 48 - oscli
+ 
+This test was expected to generate an error and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| necb_template |NECB2017 |
+| zone4_u_value |1.9 |
+| zone5_u_value |1.8 |
+| zone6_u_value |-1.0 |
+| zone7A_u_value |1.5 |
+| zone7B_u_value |1.4 |
+| zone8_u_value |1.3 |
+ 
+## 49 - oscli
+ 
+This test was expected to generate an error and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| necb_template |NECB2017 |
+| zone4_u_value |1.9 |
+| zone5_u_value |1.8 |
+| zone6_u_value |1.7 |
+| zone7A_u_value |6.0 |
+| zone7B_u_value |1.4 |
+| zone8_u_value |1.3 |
+ 
+## 50 - oscli
+ 
+This test was expected to generate an error and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| necb_template |NECB2017 |
+| zone4_u_value |1.9 |
+| zone5_u_value |1.8 |
+| zone6_u_value |1.7 |
+| zone7A_u_value |-1.0 |
+| zone7B_u_value |1.4 |
+| zone8_u_value |1.3 |
+ 
+## 51 - oscli
+ 
+This test was expected to generate an error and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| necb_template |NECB2017 |
+| zone4_u_value |1.9 |
+| zone5_u_value |1.8 |
+| zone6_u_value |1.7 |
+| zone7A_u_value |1.5 |
+| zone7B_u_value |6.0 |
+| zone8_u_value |1.3 |
+ 
+## 52 - oscli
+ 
+This test was expected to generate an error and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| necb_template |NECB2017 |
+| zone4_u_value |1.9 |
+| zone5_u_value |1.8 |
+| zone6_u_value |1.7 |
+| zone7A_u_value |1.5 |
+| zone7B_u_value |-1.0 |
+| zone8_u_value |1.3 |
+ 
+## 53 - oscli
+ 
+This test was expected to generate an error and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| necb_template |NECB2017 |
+| zone4_u_value |1.9 |
+| zone5_u_value |1.8 |
+| zone6_u_value |1.7 |
+| zone7A_u_value |1.5 |
+| zone7B_u_value |1.4 |
+| zone8_u_value |6.0 |
+ 
+## 54 - oscli
+ 
+This test was expected to generate an error and it did.
+ 
+| Test Argument | Test Value |
+| ------------- | ---------- |
+| necb_template |NECB2017 |
+| zone4_u_value |1.9 |
+| zone5_u_value |1.8 |
+| zone6_u_value |1.7 |
+| zone7A_u_value |1.5 |
+| zone7B_u_value |1.4 |
+| zone8_u_value |-1.0 |
  

@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_resize_existing_windows_to_match_a_given_wwr</name>
   <uid>b1c8aae7-db36-4461-88f8-d6ac57ec11d5</uid>
-  <version_id>da81040e-d0ba-4d81-9081-d1dfd44b2082</version_id>
-  <version_modified>20230127T151536Z</version_modified>
+  <version_id>8be78c00-f5ef-44f7-8709-d0f373e6e485</version_id>
+  <version_modified>20230209T214321Z</version_modified>
   <xml_checksum>A8B8B5E3</xml_checksum>
   <class_name>NrcResizeExistingWindowsToMatchAGivenWWR</class_name>
   <display_name>Nrc Resize Existing Windows To Match A Given WWR</display_name>
@@ -218,19 +218,19 @@ This will compute the WWR by taking into account all of the surfaces that have a
       <filename>BTAPMeasureHelper.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>AE38D9B8</checksum>
+      <checksum>12494ED3</checksum>
     </file>
     <file>
       <filename>test.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
-      <checksum>66AB5406</checksum>
+      <checksum>C9035E34</checksum>
     </file>
     <file>
       <filename>NRCMeasureHelper.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>89894A9B</checksum>
+      <checksum>30C86D53</checksum>
     </file>
   </files>
 </measure>

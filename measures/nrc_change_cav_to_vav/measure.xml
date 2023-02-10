@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_change_cav_to_vav</name>
   <uid>f544d84f-d7c6-426b-b3a4-aecfc6d2523b</uid>
-  <version_id>004ffac4-a4e6-44fa-bfa3-cdb2ddd5302d</version_id>
-  <version_modified>20230127T151508Z</version_modified>
+  <version_id>d068ed04-23da-4485-a733-7007725ce739</version_id>
+  <version_modified>20230209T214201Z</version_modified>
   <xml_checksum>772B7164</xml_checksum>
   <class_name>NrcChangeCAVToVAV</class_name>
   <display_name>NrcChangeCAVToVAV</display_name>
@@ -81,19 +81,19 @@
       <filename>BTAPMeasureHelper.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>AE38D9B8</checksum>
+      <checksum>12494ED3</checksum>
     </file>
     <file>
       <filename>test.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
-      <checksum>FF1033E7</checksum>
+      <checksum>790722AE</checksum>
     </file>
     <file>
       <filename>NRCMeasureHelper.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>89894A9B</checksum>
+      <checksum>30C86D53</checksum>
     </file>
   </files>
 </measure>
