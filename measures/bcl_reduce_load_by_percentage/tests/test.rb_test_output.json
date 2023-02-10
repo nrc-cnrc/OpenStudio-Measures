@@ -1,0 +1,13 @@
+{
+  "test": "/btap/measures/reduce_load_by_percentage/tests/test.rb",
+  "test_result": false,
+  "output": {
+    "status": "pid 142 exit 1",
+    "std_out": [
+
+    ],
+    "std_err": [
+      "ruby: No such file or directory -- /btap/measures/reduce_load_by_percentage/tests/test.rb (LoadError)"
+    ]
+  }
+}

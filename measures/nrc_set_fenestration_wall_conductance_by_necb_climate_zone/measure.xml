@@ -1,0 +1,155 @@
+<?xml version="1.0"?>
+<measure>
+  <schema_version>3.0</schema_version>
+  <name>nrc_set_fenestration_wall_conductance_by_necb_climate_zone</name>
+  <uid>ed475991-f1ea-4c98-968d-fdf5d56faab3</uid>
+  <version_id>015f3b1b-a172-43d0-b92b-33164146c4ff</version_id>
+  <version_modified>20230120T215934Z</version_modified>
+  <xml_checksum>7308DE72</xml_checksum>
+  <class_name>NrcSetFenestrationWallConductanceByNecbClimateZone</class_name>
+  <display_name>Set Fenestration (Wall) Conductance By Necb Climate Zone</display_name>
+  <description>Modifies fenestration (located in walls) conductances by NECB climate zone.</description>
+  <modeler_description>Modifies fenestration conductances by NECB climate zone. Applies to fixed and operable windows. Minimum OpenStudio 2.8.1.</modeler_description>
+  <arguments>
+    <argument>
+      <name>necb_template</name>
+      <display_name>Template</display_name>
+      <type>Choice</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>NECB2017</default_value>
+      <choices>
+        <choice>
+          <value>NECB2011</value>
+          <display_name>NECB2011</display_name>
+        </choice>
+        <choice>
+          <value>NECB2015</value>
+          <display_name>NECB2015</display_name>
+        </choice>
+        <choice>
+          <value>NECB2017</value>
+          <display_name>NECB2017</display_name>
+        </choice>
+      </choices>
+    </argument>
+    <argument>
+      <name>zone4_u_value</name>
+      <display_name>NECB Zone4 Fenestration Insulation U-value (W/m^2 K).</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>1.9</default_value>
+    </argument>
+    <argument>
+      <name>zone5_u_value</name>
+      <display_name>NECB Zone5 Fenestration Insulation U-value (W/m^2 K).</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>1.8</default_value>
+    </argument>
+    <argument>
+      <name>zone6_u_value</name>
+      <display_name>NECB Zone6 Fenestration Insulation U-value (W/m^2 K).</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>1.7</default_value>
+    </argument>
+    <argument>
+      <name>zone7A_u_value</name>
+      <display_name>NECB Zone7A Fenestration Insulation U-value (W/m^2 K).</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>1.5</default_value>
+    </argument>
+    <argument>
+      <name>zone7B_u_value</name>
+      <display_name>NECB Zone7B Fenestration Insulation U-value (W/m^2 K).</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>1.4</default_value>
+    </argument>
+    <argument>
+      <name>zone8_u_value</name>
+      <display_name>NECB Zone8 Fenestration Insulation U-value (W/m^2 K).</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>1.3</default_value>
+    </argument>
+  </arguments>
+  <outputs />
+  <provenances />
+  <tags>
+    <tag>Envelope.Fenestration</tag>
+  </tags>
+  <attributes>
+    <attribute>
+      <name>Measure Function</name>
+      <value>Measure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Requires EnergyPlus Results</name>
+      <value>false</value>
+      <datatype>boolean</datatype>
+    </attribute>
+    <attribute>
+      <name>Uses SketchUp API</name>
+      <value>false</value>
+      <datatype>boolean</datatype>
+    </attribute>
+    <attribute>
+      <name>Measure Type</name>
+      <value>ModelMeasure</value>
+      <datatype>string</datatype>
+    </attribute>
+  </attributes>
+  <files>
+    <file>
+      <filename>README.md.erb</filename>
+      <filetype>erb</filetype>
+      <usage_type>readmeerb</usage_type>
+      <checksum>A1A5426B</checksum>
+    </file>
+    <file>
+      <version>
+        <software_program>OpenStudio</software_program>
+        <identifier>0.11.5</identifier>
+        <min_compatible>1.8.0</min_compatible>
+      </version>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>script</usage_type>
+      <checksum>2C4FDA60</checksum>
+    </file>
+    <file>
+      <filename>README.md</filename>
+      <filetype>md</filetype>
+      <usage_type>readme</usage_type>
+      <checksum>91E7ADD7</checksum>
+    </file>
+    <file>
+      <filename>test.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>F6E1D64D</checksum>
+    </file>
+    <file>
+      <filename>BTAPMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>AE38D9B8</checksum>
+    </file>
+    <file>
+      <filename>NRCMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>EF2FCBFD</checksum>
+    </file>
+  </files>
+</measure>
