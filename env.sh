@@ -23,8 +23,8 @@ os_image=openstudio:$os_version
 nrc_os_image="openstudio:latest"
 
 # OpenStudio server and supporting gems (these need to be kept in sync when updating os_version).
-server_image=nrel/openstudio-server:$os_version
-rserve_image=nrel/openstudio-rserve:$os_version
+server_image=openstudio-server:$os_version
+rserve_image=openstudio-rserve:$os_version
 # Format is (repo name, gem name, version). If a tag is provided instead of a branch name in the version string 
 #  it will download the tag in 'detached' state and still work.
 server_gems=() 
@@ -57,6 +57,10 @@ then
 else
   workers=$ncpuA
 fi
+if [ $workers -lt 1 ]
+  then
+  workers=2
+fi
 
 # Shared folder (this is the folder on the windows box that will be linked to the windows-host in the 
 # docker container). The hard drive that this folder is on has to be shared via the docker dashboard.
@@ -75,7 +79,7 @@ export SECRET_KEY_BASE=c4ab6d293e4bf52ee92e8dda6e16dc9b5448d0c5f7908ee40c66736d5
 
 # Create a .env file so that docker-compose up will work:
 echo "OS_SERVER_WORKERS=$workers" > .env
-echo "OS_SERVER_PAT_SHARED_FOLDER=${PAT_shared_win_folder}" >> .env
+echo "OS_SERVER_PAT_SHARED_FOLDER=${docker_win_root}" >> .env
 echo "OS_SERVER_IMAGE=${server_image}" >> .env
 echo "REDIS_PASSWORD=openstudio" >> .env
 echo "REDIS_URL=redis://:openstudio@queue:6379" >> .env

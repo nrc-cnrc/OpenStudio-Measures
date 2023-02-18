@@ -12,18 +12,21 @@ require_relative '../resources/NRCMeasureHelper.rb'
 require 'fileutils'
 
 class NrcSetPumpEfficiency_Test < Minitest::Test
-  # Brings in helper methods to simplify argument testing of json and standard argument methods.
+
+  # Brings in helper methods to simplify argument testing of json and standard argument methods
+  # and set standard output folder.
   include(NRCMeasureTestHelper)
+  NRCMeasureTestHelper.setOutputFolder("#{self.name}")
 
   # Check to see if an overall start time was passed (it should be if using one of the test scripts in the test folder). 
   #  If so then use it to determine what old results are (if not use now).
-  start_time=Time.now
-  if ARGV.length == 1
-
-    # We have a time. It will be in seconds since the epoch. Update our start_time.
-    start_time=Time.at(ARGV[0].to_i)
+  if ENV['OS_MEASURES_TEST_TIME'] != ""
+    start_time=Time.at(ENV['OS_MEASURES_TEST_TIME'].to_i)
+  else
+    start_time=Time.now
   end
   NRCMeasureTestHelper.removeOldOutputs(before: start_time)
+
 
   def setup()
     @measure_interface_detailed = [
@@ -46,23 +49,20 @@ class NrcSetPumpEfficiency_Test < Minitest::Test
 
   def test_argument_values
 
-    # Load osm file.
-    model = load_test_osm("#{File.dirname(__FILE__)}/warehouse_2017.osm")
-
     # Get arguments.
     input_arguments = @good_input_arguments
     pump_eff = input_arguments['pump_eff']
 
     # Define the output folder for this test (optional - default is the method name).
-    output_file_path = NRCMeasureTestHelper.appendOutputFolder("Good Pump Motor Efficiency Test")
+    output_file_path = NRCMeasureTestHelper.appendOutputFolder("Good Pump Motor Efficiency Test", input_arguments)
+
+    # Load osm file.
+    model = load_test_osm("#{File.dirname(__FILE__)}/warehouse_2017.osm")
 
     # Run the measure. This saves the updated model to "#{output_file_path}/test_output.osm".
     runner = run_measure(input_arguments, model)
 
-    # Check that it ran successfully.
-    assert(runner.result.value.valueName == 'Success', "Error in running measure.")
-
-    #check if pump efficiency was changed correctly
+    #check if pump efficiency was changed correctly.
     model.getPumpConstantSpeeds.each do |pump|
       assert_in_delta(pump_eff, pump.motorEfficiency, 0.005, "Error in constant speed pump motor efficiency.")
     end

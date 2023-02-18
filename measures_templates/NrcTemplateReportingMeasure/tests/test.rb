@@ -13,19 +13,21 @@ require 'fileutils'
 
 class NrcReportingMeasure_Test < Minitest::Test
 
-  # Brings in helper methods to simplify argument testing of json and standard argument methods.
+  # Brings in helper methods to simplify argument testing of json and standard argument methods
+  # and set standard output folder.
   include(NRCReportingMeasureTestHelper)
+  NRCReportingMeasureTestHelper.setOutputFolder("#{self.name}")
 
   # Check to see if an overall start time was passed (it should be if using one of the test scripts in the test folder). 
   #  If so then use it to determine what old results are (if not use now).
-  start_time=Time.now
-  if ARGV.length == 1
-
-    # We have a time. It will be in seconds since the epoch. Update our start_time.
-    start_time=Time.at(ARGV[0].to_i)
+  if ENV['OS_MEASURES_TEST_TIME'] != ""
+    start_time=Time.at(ENV['OS_MEASURES_TEST_TIME'].to_i)
+  else
+    start_time=Time.now
   end
   NRCReportingMeasureTestHelper.removeOldOutputs(before: start_time)
-  
+
+
   def setup()
 
     @use_json_package = false
@@ -100,31 +102,32 @@ class NrcReportingMeasure_Test < Minitest::Test
   def test_report()
     puts "Testing report on small Office model".blue
 	
-    # Define the output folder for this test (optional - default is the method name). 
-    NRCReportingMeasureTestHelper.appendOutputFolder("smallOffice")
+    # Set input args. In this case the std matches the one used to create the test model.
+    input_arguments = {
+    }
+
+    # Define the output folder for this test. Set a local var for use later.
+    output_folder = NRCReportingMeasureTestHelper.appendOutputFolder("smallOffice", input_arguments)
 	
-    # Load osm file
+    # Load osm file.
     model = load_test_osm("#{File.dirname(__FILE__)}/SmallOffice.osm")
 
     # Assign the local weather file (have to provide a full path to EpwFile).
     epw = OpenStudio::EpwFile.new("#{File.dirname(__FILE__)}/weather_files/CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw")
     OpenStudio::Model::WeatherFile::setWeatherFile(model, epw)
-	
-    # Set input args. In this case the std matches the one used to create the test model.
-    input_arguments = {
-    }
-    
-    # Create an instance of the measure
-	runner = run_measure(input_arguments, model)
+
+    # Create an instance of the measure and run it. Check tha it ran successfully.
+    runner = run_measure(input_arguments, model)
+    assert(runner.result.value.valueName == 'Success')
 	
 	# Rename output file.
     #output_file = "report_no_diffs.html"
-    #File.rename("#{NRCReportingMeasureTestHelper.outputFolder}/report.html", "#{NRCReportingMeasureTestHelper.outputFolder}/#{output_file}")
+    #File.rename("#{output_folder}/report.html", "#{output_folder}/#{output_file}")
 
     # Check for differences between the current output and the regression report. Need to write regression file without CRTF endiings.
 	#regression_file = IO.read("#{File.dirname(__FILE__)}/regression_reports/#{output_file}").gsub(/\r\n?/,"\n")
-	#IO.write("#{NRCReportingMeasureTestHelper.outputFolder}/#{output_file}.reg", regression_file)
-	#diffs = FileUtils.compare_file("#{NRCReportingMeasureTestHelper.outputFolder}/#{output_file}","#{NRCReportingMeasureTestHelper.outputFolder}/#{output_file}.reg")
+	#IO.write("#{output_folder}/#{output_file}.reg", regression_file)
+	#diffs = FileUtils.compare_file("#{output_folder}/#{output_file}","#{output_folder}/#{output_file}.reg")
 	#assert(diffs, "There were differences to the regression files:\n")
   end
 end

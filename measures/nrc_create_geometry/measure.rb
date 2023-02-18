@@ -495,9 +495,11 @@ class NrcCreateGeometry < OpenStudio::Measure::ModelMeasure
     model.setDayofWeekforStartDay("Sunday")
 
     # Apply standards ruleset to model (note this does a sizing run)
+    sizing_folder = NRCMeasureTestHelper.outputFolder(arguments)
+    puts "sizing run folder: #{sizing_folder}".yellow
     standard.model_apply_standard(model: model,
                                   epw_file: epw_file,
-                                  sizing_run_dir: NRCMeasureTestHelper.outputFolder)
+                                  sizing_run_dir: sizing_folder)
 
     facility = model.getFacility
     exterior_lights = facility.exteriorLights

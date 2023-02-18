@@ -13,20 +13,21 @@ require 'fileutils'
 
 class NrcModelMeasure_Test < Minitest::Test
 
-  # Brings in helper methods to simplify argument testing of json and standard argument methods.
+  # Brings in helper methods to simplify argument testing of json and standard argument methods
+  # and set standard output folder.
   include(NRCMeasureTestHelper)
+  NRCMeasureTestHelper.setOutputFolder("#{self.name}")
 
   # Check to see if an overall start time was passed (it should be if using one of the test scripts in the test folder). 
   #  If so then use it to determine what old results are (if not use now).
-  start_time=Time.now
-  if ARGV.length == 1
-
-    # We have a time. It will be in seconds since the epoch. Update our start_time.
-    start_time=Time.at(ARGV[0].to_i)
+  if ENV['OS_MEASURES_TEST_TIME'] != ""
+    start_time=Time.at(ENV['OS_MEASURES_TEST_TIME'].to_i)
+  else
+    start_time=Time.now
   end
   NRCMeasureTestHelper.removeOldOutputs(before: start_time)
 
-  # Start of the test methods.
+
   def setup()
 
     # These three variables should match the definitions in the measure itself (unfortunately it has to be copied and
@@ -92,17 +93,6 @@ class NrcModelMeasure_Test < Minitest::Test
   def test_sample_A()
     puts "Testing model creation - example A".green
 
-    # Define the output folder for this test. Thi sis used as the folder name and in the test README.md file as the
-    #  section name. (Optional - default is the method name but better to use a meaningful name here).
-    output_file_path = NRCMeasureTestHelper.appendOutputFolder("Test Model Creation A")
-
-    # Load osm file.
-    model = load_test_osm("#{File.dirname(__FILE__)}/SmallOffice.osm")
-
-    # Assign the local weather file (have to provide a full path to EpwFile).
-    epw = OpenStudio::EpwFile.new("#{File.dirname(__FILE__)}/weather_files/CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw")
-    OpenStudio::Model::WeatherFile::setWeatherFile(model, epw)
-
     # Set up your argument list to test. Or use @good_input_arguments
     input_arguments = {
       "a_string_argument" => "MyString",
@@ -110,6 +100,17 @@ class NrcModelMeasure_Test < Minitest::Test
       "a_string_double_argument" => 75.3,
       "a_choice_argument" => "choice_1"
     }
+
+    # Define the output folder for this test. This is used as the folder name and in the test README.md file as the
+    #  section name. The arguments are used to store the path in a hash for when we have multiple test methods in a class.
+    output_file_path = NRCMeasureTestHelper.appendOutputFolder("Test Model Creation A", input_arguments)
+
+    # Load osm file.
+    model = load_test_osm("#{File.dirname(__FILE__)}/SmallOffice.osm")
+
+    # Assign the local weather file (have to provide a full path to EpwFile).
+    epw = OpenStudio::EpwFile.new("#{File.dirname(__FILE__)}/weather_files/CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw")
+    OpenStudio::Model::WeatherFile::setWeatherFile(model, epw)
 
     # Run the measure. This saves the updated model to "#{output_file_path}/test_output.osm".
     runner = run_measure(input_arguments, model)
@@ -129,9 +130,17 @@ class NrcModelMeasure_Test < Minitest::Test
   def test_sample_B()
     puts "Testing model creation - example B".green
 
-    # Define the output folder for this test. Thi sis used as the folder name and in the test README.md file as the
-    #  section name. (Optional - default is the method name but better to use a meaningful name here).
-    NRCMeasureTestHelper.appendOutputFolder("Test Model Creation B")
+    # Set up your argument list to test. Or use @good_input_arguments
+    input_arguments = {
+      "a_string_argument" => "MyString",
+      "a_double_argument" => 10.0,
+      "a_string_double_argument" => 75.3,
+      "a_choice_argument" => "choice_1"
+    }
+
+    # Define the output folder for this test. This is used as the folder name and in the test README.md file as the
+    #  section name. The arguments are used to store the path in a hash for when we have multiple test methods in a class.
+    output_file_path = NRCMeasureTestHelper.appendOutputFolder("Test Model Creation B", input_arguments)
 
     # Set standard to use.
     standard = Standard.build("NECB2017")
@@ -140,15 +149,8 @@ class NrcModelMeasure_Test < Minitest::Test
     model = standard.model_create_prototype_model(template: "NECB2017",
                                                   building_type: "SmallOffice",
                                                   epw_file: "CAN_AB_Banff.CS.711220_CWEC2016.epw",
-                                                  sizing_run_dir: NRCMeasureTestHelper.appendOutputFolder("test_sample_2"))
+                                                  sizing_run_dir: output_file_path)
 
-    # Set up your argument list to test. Or use @good_input_arguments
-    input_arguments = {
-      "a_string_argument" => "MyString",
-      "a_double_argument" => 10.0,
-      "a_string_double_argument" => 75.3,
-      "a_choice_argument" => "choice_1"
-    }
 
     # Run the measure. This saves the updated model to "#{output_file_path}/test_output.osm".
     runner = run_measure(input_arguments, model)
@@ -168,9 +170,17 @@ class NrcModelMeasure_Test < Minitest::Test
   def test_sample_C()
     puts "Testing model creation - example C".green
 
-    # Define the output folder for this test. Thi sis used as the folder name and in the test README.md file as the
+    # Set up your argument list to test. Or use @good_input_arguments
+    input_arguments = {
+      "a_string_argument" => "MyString",
+      "a_double_argument" => 10.0,
+      "a_string_double_argument" => 75.3,
+      "a_choice_argument" => "choice_1"
+    }
+
+    # Define the output folder for this test. This is used as the folder name and in the test README.md file as the
     #  section name. (Optional - default is the method name but better to use a meaningful name here).
-    output_file_path = NRCMeasureTestHelper.appendOutputFolder("Test Model Creation C")
+    output_file_path = NRCMeasureTestHelper.appendOutputFolder("Test Model Creation C", input_arguments)
 
     # You'll need a seed model to test against. 
     # Create an empty model and add surface geometry to the it using the BTAP wizard.
@@ -203,14 +213,6 @@ class NrcModelMeasure_Test < Minitest::Test
 
     # Compare the models and print to screen. Use colour coding to differentiate from other outputs on screen (green=good, yellow=warning, red=error)
     puts "#{BTAP::FileIO.compare_osm_files(before_measure_model, model)}".yellow
-
-    # Set up your argument list to test. Or use @good_input_arguments
-    input_arguments = {
-      "a_string_argument" => "MyString",
-      "a_double_argument" => 10.0,
-      "a_string_double_argument" => 75.3,
-      "a_choice_argument" => "choice_1"
-    }
 
     # Run the measure. This saves the updated model to "#{output_file_path}/test_output.osm".
     runner = run_measure(input_arguments, model)

@@ -77,7 +77,7 @@ def gather_output_results(required_analysis_id)
 	  #puts "#{pricing_template.class}".cyan
 	  #puts "#{pricing_template.name}".yellow
 	
-      f_path = File.join(outputpath, "pricing_template-#{name}.csv")
+      f_path = File.join(outputpath, "pricing_template-#{name.gsub(/\:/, '_')}.csv")
       FileUtils.mkdir_p(File.dirname(f_path))
       dpZip.extract(pricing_template.name, f_path) unless File.exist?(f_path) # No overwrite
 	end
@@ -88,7 +88,7 @@ def gather_output_results(required_analysis_id)
 	  #puts "#{pricing_template.class}".cyan
 	  #puts "#{pricing_template.name}".yellow
 	
-      f_path = File.join(outputpath, "pricing_warnings-#{name}.txt")
+      f_path = File.join(outputpath, "pricing_warnings-#{name.gsub(/\:/, '_')}.txt")
       FileUtils.mkdir_p(File.dirname(f_path))
       dpZip.extract(pricing_template.name, f_path) unless File.exist?(f_path) # No overwrite
 	end

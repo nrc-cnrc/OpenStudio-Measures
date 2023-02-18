@@ -4,7 +4,7 @@ The following describe the parameter tests that are conducted on the measure. No
 tests are designed to return a fail and some a success. The report below contains all the tests that 
 have the correct response. For example the argument range limit tests are expected to fail. 
  
-## 1 - OutputTestFolder--1
+## 1 - OutputTestFolder
  
 This test was expected to pass and it did.
  
@@ -13,7 +13,7 @@ This test was expected to pass and it did.
 | heatcool |cooling |
 | setPoint |12.0 |
  
-## 2 - test argument ranges
+## 2 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -22,7 +22,7 @@ This test was expected to generate an error and it did.
 | heatcool |cooling |
 | setPoint |51.0 |
  
-## 3 - test argument ranges--1
+## 3 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -31,7 +31,7 @@ This test was expected to generate an error and it did.
 | heatcool |cooling |
 | setPoint |-1.0 |
  
-## 4 - test argument ranges--2
+## 4 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -40,7 +40,7 @@ This test was expected to generate an error and it did.
 | heatcool |cooling |
 | setPoint |51.0 |
  
-## 5 - test argument ranges--3
+## 5 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -49,7 +49,7 @@ This test was expected to generate an error and it did.
 | heatcool |cooling |
 | setPoint |-1.0 |
  
-## 6 - test argument ranges--4
+## 6 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -58,7 +58,7 @@ This test was expected to generate an error and it did.
 | heatcool |cooling |
 | setPoint |51.0 |
  
-## 7 - test argument ranges--5
+## 7 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -67,7 +67,7 @@ This test was expected to generate an error and it did.
 | heatcool |cooling |
 | setPoint |-1.0 |
  
-## 8 - test argument ranges--6
+## 8 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -76,7 +76,7 @@ This test was expected to generate an error and it did.
 | heatcool |cooling |
 | setPoint |51.0 |
  
-## 9 - test argument ranges--7
+## 9 - oscli
  
 This test was expected to generate an error and it did.
  

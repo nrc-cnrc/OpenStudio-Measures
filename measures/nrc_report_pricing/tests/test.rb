@@ -13,19 +13,21 @@ require 'fileutils'
 
 class NrcPricingMeasure_Test < Minitest::Test
 
-  # Brings in helper methods to simplify argument testing of json and standard argument methods.
+  # Brings in helper methods to simplify argument testing of json and standard argument methods
+  # and set standard output folder.
   include(NRCReportingMeasureTestHelper)
+  NRCReportingMeasureTestHelper.setOutputFolder("#{self.name}")
 
   # Check to see if an overall start time was passed (it should be if using one of the test scripts in the test folder). 
   #  If so then use it to determine what old results are (if not use now).
-  start_time=Time.now
-  if ARGV.length == 1
-
-    # We have a time. It will be in seconds since the epoch. Update our start_time.
-    start_time=Time.at(ARGV[0].to_i)
+  if ENV['OS_MEASURES_TEST_TIME'] != ""
+    start_time=Time.at(ENV['OS_MEASURES_TEST_TIME'].to_i)
+  else
+    start_time=Time.now
   end
   NRCReportingMeasureTestHelper.removeOldOutputs(before: start_time)
-    
+
+
   def setup()
 
     @use_json_package = false
@@ -49,8 +51,11 @@ class NrcPricingMeasure_Test < Minitest::Test
   def test_report()
     puts "Testing report on warehouse model".blue
 	
+    # Set input args. In this case the std matches the one used to create the test model.
+    input_arguments = @good_input_arguments
+
     # Define the output folder for this test. 
-    output_file_path = NRCReportingMeasureTestHelper.appendOutputFolder("Warehouse")
+    output_file_path = NRCReportingMeasureTestHelper.appendOutputFolder("Warehouse", input_arguments)
 	
     # Set standard to use.
     standard = Standard.build("NECB2017")
@@ -59,23 +64,19 @@ class NrcPricingMeasure_Test < Minitest::Test
     model = standard.model_create_prototype_model(template: "NECB2017",
                                                       building_type: "Warehouse",
                                                       epw_file: "CAN_AB_Banff.CS.711220_CWEC2016.epw",
-													  sizing_run_dir: NRCReportingMeasureTestHelper.outputFolder)
-	
-    # Set input args. In this case the std matches the one used to create the test model.
-    input_arguments = {
-    }
-	
+													  sizing_run_dir: output_file_path)
+
     # Create an instance of the measure.
 	runner = run_measure(input_arguments, model)
 	
 	# Rename output file.
     #output_file = "report_no_diffs.html"
-    #File.rename("#{NRCReportingMeasureTestHelper.outputFolder}/report.html", "#{NRCReportingMeasureTestHelper.outputFolder}/#{output_file}")
+    #File.rename("#{output_file_path}/report.html", "#{output_file_path}/#{output_file}")
 
     # Check for differences between the current output and the regression report. Need to write regression file without CRTF endiings.
 	#regression_file = IO.read("#{File.dirname(__FILE__)}/regression_reports/#{output_file}").gsub(/\r\n?/,"\n")
-	#IO.write("#{NRCReportingMeasureTestHelper.outputFolder}/#{output_file}.reg", regression_file)
-	#diffs = FileUtils.compare_file("#{NRCReportingMeasureTestHelper.outputFolder}/#{output_file}","#{NRCReportingMeasureTestHelper.outputFolder}/#{output_file}.reg")
+	#IO.write("#{output_file_path}/#{output_file}.reg", regression_file)
+	#diffs = FileUtils.compare_file("#{output_file_path}/#{output_file}","#{output_file_path}/#{output_file}.reg")
 	#assert(diffs, "There were differences to the regression files:\n")
   end
 end

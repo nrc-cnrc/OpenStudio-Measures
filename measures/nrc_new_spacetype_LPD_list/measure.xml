@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_new_spacetype_lpd_list</name>
   <uid>fe83dee3-2233-4744-abb1-3cbb1777fbae</uid>
-  <version_id>e6d339a1-842a-4299-a0dc-0d2ae418de72</version_id>
-  <version_modified>20230120T215918Z</version_modified>
+  <version_id>367b24ef-65ce-4485-8755-150064a3f47a</version_id>
+  <version_modified>20230209T214246Z</version_modified>
   <xml_checksum>2609226D</xml_checksum>
   <class_name>NrcNewSpacetypeLPDList</class_name>
   <display_name>NrcNewSpacetypeLPDList</display_name>
@@ -84,22 +84,22 @@
       <checksum>17F94475</checksum>
     </file>
     <file>
-      <filename>test.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>test</usage_type>
-      <checksum>65FE3DC4</checksum>
-    </file>
-    <file>
       <filename>BTAPMeasureHelper.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>AE38D9B8</checksum>
+      <checksum>12494ED3</checksum>
+    </file>
+    <file>
+      <filename>test.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>78EB2B2D</checksum>
     </file>
     <file>
       <filename>NRCMeasureHelper.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>EF2FCBFD</checksum>
+      <checksum>30C86D53</checksum>
     </file>
   </files>
 </measure>

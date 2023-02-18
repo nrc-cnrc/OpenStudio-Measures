@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_hvac_modify_plant_loop_pump</name>
   <uid>07cab10c-e949-4209-9ddc-752d96461586</uid>
-  <version_id>62820d9d-d741-4d96-a586-e6a7408fe964</version_id>
-  <version_modified>20230120T215916Z</version_modified>
+  <version_id>1d572347-d912-4398-814a-2ca085c9f80c</version_id>
+  <version_modified>20230209T214244Z</version_modified>
   <xml_checksum>5ED01E75</xml_checksum>
   <class_name>NrcHvacModifyPlantLoopPump</class_name>
   <display_name>Modify HVAC Plant Loop Pump Parameters</display_name>
@@ -65,22 +65,22 @@
       <checksum>13C2C071</checksum>
     </file>
     <file>
-      <filename>test.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>test</usage_type>
-      <checksum>8DDC418B</checksum>
-    </file>
-    <file>
       <filename>BTAPMeasureHelper.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>AE38D9B8</checksum>
+      <checksum>12494ED3</checksum>
+    </file>
+    <file>
+      <filename>test.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>77B2BE93</checksum>
     </file>
     <file>
       <filename>NRCMeasureHelper.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>EF2FCBFD</checksum>
+      <checksum>30C86D53</checksum>
     </file>
   </files>
 </measure>

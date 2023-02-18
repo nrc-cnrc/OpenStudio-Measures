@@ -1,5 +1,4 @@
 
-
 variables:
   GIT_CLONE_PATH: $CI_BUILDS_DIR/$CI_CONCURRENT_ID/os-measures
 
@@ -26,35 +25,9 @@ README:
     echo '  The test_using_nrel_server_image image is used by PAT. The modifications in'
     echo '    this test should be identical to those in the NRC server configuration scripts.'
 
-test_using_nrel_image:
-  stage: test 
-  image: nrel/openstudio:3.2.1
-
-  tags:
-  - linux
-  - docker
-  - const-ibp
-  
-  before_script:
-  - echo 'Configuring test environment using NREL openstudio'
-  - echo '  This image can be used in testing'
-  - bundle config set --local path 'vendor/ruby'
-  - cd test
-  - source ../env.sh && download_gems
-  - echo 'Copying gems to standard location for our containers'
-  - mkdir -p /var/gems
-  - cp -r ../.gems/* /var/gems
-  - echo 'Copying additional data to openstudio-standards'
-  - cp -fr ../openstudio-server/ServerData/weather /var/gems/openstudio-standards/data
-  - bundle install
-
-  script:
-  - echo 'Starting tests'
-  - bundle exec ruby test_measures.rb
-
 test_using_nrc_image:
   stage: test
-  image: localhost:5000/openstudio
+  image: localhost:5000/openstudio-server
 
   tags:
   - linux
@@ -62,7 +35,7 @@ test_using_nrc_image:
   - const-ibp
   
   before_script:
-  - echo 'Configuring test environment using NRC specific openstudio'
+  - echo 'Configuring test environment using NRC specific openstudio-server image'
   - echo '  This image can be used in testing'
   - bundle config set --local path 'vendor/ruby'
   - cd test

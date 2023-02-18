@@ -12,18 +12,21 @@ require_relative '../resources/NRCMeasureHelper.rb'
 require 'fileutils'
 
 class NrcSetSrr_Test < Minitest::Test
-  # Brings in helper methods to simplify argument testing of json and standard argument methods.
+
+  # Brings in helper methods to simplify argument testing of json and standard argument methods
+  # and set standard output folder.
   include(NRCMeasureTestHelper)
+  NRCMeasureTestHelper.setOutputFolder("#{self.name}")
 
   # Check to see if an overall start time was passed (it should be if using one of the test scripts in the test folder). 
   #  If so then use it to determine what old results are (if not use now).
-  start_time=Time.now
-  if ARGV.length == 1
-
-    # We have a time. It will be in seconds since the epoch. Update our start_time.
-    start_time=Time.at(ARGV[0].to_i)
+  if ENV['OS_MEASURES_TEST_TIME'] != ""
+    start_time=Time.at(ENV['OS_MEASURES_TEST_TIME'].to_i)
+  else
+    start_time=Time.now
   end
   NRCMeasureTestHelper.removeOldOutputs(before: start_time)
+
 
   def setup()
     @use_json_package = false
@@ -73,7 +76,7 @@ class NrcSetSrr_Test < Minitest::Test
     all_srr_options.each do |srr_options|
       puts "################# Testing".green + " #{srr_options}".light_blue + " #################".green
 
-      # get arguments
+      # Set arguments.
       input_arguments = {
         "srr_options" => srr_options,
         "srr" => 0.0
@@ -84,7 +87,7 @@ class NrcSetSrr_Test < Minitest::Test
       test_name = "#{srr_options_noSpaces}"
 
       # Define the output folder for this test (optional - default is the method name).
-      output_file_path = NRCMeasureTestHelper.appendOutputFolder("#{test_name}")
+      output_file_path = NRCMeasureTestHelper.appendOutputFolder("#{test_name}", input_arguments)
 
       # Set argument values to good values and run the measure on model with spaces.
       runner = run_measure(input_arguments, model)
@@ -121,9 +124,6 @@ class NrcSetSrr_Test < Minitest::Test
       assert_equal(srr_calculated.round(3), expected_srr.round(3), "Skylights did not change correctly")
       puts "SRR".green + " #{srr_calculated.round(3)}".light_blue + "; expected SRR ".green + "#{expected_srr.round(3)}".light_blue
       
-	  # Test if the measure would grab the correct number and value of input argument.
-      assert_equal(2, input_arguments.size)
-
       # Save the model to test output directory.
       output_path = "#{output_file_path}/test_output.osm"
       model.save(output_path, true)
@@ -169,9 +169,8 @@ class NrcSetSrr_Test < Minitest::Test
       srr_options_noSpaces = srr_options.gsub(/[[:space:]]/, '_') # Replace spaces by '_'
       test_name = "#{srr_options_noSpaces}"
 
-
       # Define the output folder for this test (optional - default is the method name).
-      output_file_path = NRCMeasureTestHelper.appendOutputFolder("#{test_name}")
+      output_file_path = NRCMeasureTestHelper.appendOutputFolder("#{test_name}", input_arguments)
 
       # Set argument values to good values and run the measure on model with spaces.
       runner = run_measure(input_arguments, model)
@@ -192,9 +191,6 @@ class NrcSetSrr_Test < Minitest::Test
       assert_equal(srr_calculated.round(3), srr.round(3), "Skylights did not change correctly")
       puts "SRR".green + " #{srr_calculated.round(3)}".light_blue + "; expected SRR ".green + "#{srr.round(3)}".light_blue
       
-	  # Test if the measure would grab the correct number and value of input argument.
-      assert_equal(2, input_arguments.size)
-
       # Save the model to test output directory
       output_path = "#{output_file_path}/test_output.osm"
       model.save(output_path, true)

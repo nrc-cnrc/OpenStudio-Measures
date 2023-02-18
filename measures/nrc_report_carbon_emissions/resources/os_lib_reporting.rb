@@ -287,7 +287,7 @@ module OsLib_Reporting
     # Create a csv file
     # Create if does not exist. Different logic from other testing as there are multiple test scripts writing
     # to this folder so it cannot be deleted.
-    @test_dir = NRCReportingMeasureTestHelper.appendOutputFolder("EmissionReport")
+    @test_dir = NRCReportingMeasureTestHelper.appendOutputFolder("EmissionReport", nil)
     if !Dir.exists?(@test_dir)
       Dir.mkdir(@test_dir)
     end

@@ -76,7 +76,7 @@ echo -e "${GREEN}done${NC}."
 if [ $server_running -eq "1" ]
 then 
   # Fix simulation.rb so it works on PAT.
-  sed -i 's/#FileUtils.touch/FileUtils.touch/' ../.gems/openstudio-standards/lib/openstudio-standards/utilities/simulation.rb
+  sed -i 's/# FileUtils.touch/FileUtils.touch/' ../.gems/openstudio-standards/lib/openstudio-standards/utilities/simulation.rb
 
   # Now install the gems
   install_gems $container

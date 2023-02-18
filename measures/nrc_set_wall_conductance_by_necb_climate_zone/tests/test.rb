@@ -12,19 +12,23 @@ require_relative '../resources/NRCMeasureHelper.rb'
 require 'fileutils'
 
 class NrcSetWallConductanceByNecbClimateZone_Test  < Minitest::Test
+
+  # Brings in helper methods to simplify argument testing of json and standard argument methods
+  # and set standard output folder.
   include(NRCMeasureTestHelper)
+  NRCMeasureTestHelper.setOutputFolder("#{self.name}")
 
   # Check to see if an overall start time was passed (it should be if using one of the test scripts in the test folder). 
   #  If so then use it to determine what old results are (if not use now).
-  start_time=Time.now
-  if ARGV.length == 1
-
-    # We have a time. It will be in seconds since the epoch. Update our start_time.
-    start_time=Time.at(ARGV[0].to_i)
+  if ENV['OS_MEASURES_TEST_TIME'] != ""
+    start_time=Time.at(ENV['OS_MEASURES_TEST_TIME'].to_i)
+  else
+    start_time=Time.now
   end
   NRCMeasureTestHelper.removeOldOutputs(before: start_time)
-  
-   def setup()
+
+
+  def setup()
     #Set to true if you want to package the arguments as json.
     @use_json_package = false
     #Set to true if you want to want to allow strings and doubles in stringdouble types. Set to false to force to use doubles. The latter is used for certain
@@ -132,7 +136,7 @@ class NrcSetWallConductanceByNecbClimateZone_Test  < Minitest::Test
   def test_Zone4_conductance
 
     # Define the output folder for this test (optional - default is the method name).
-    output_file_path = NRCMeasureTestHelper.appendOutputFolder("OutputTestFolder_zone4")
+    output_file_path = NRCMeasureTestHelper.appendOutputFolder("OutputTestFolder_zone4", @good_input_arguments)
 
 	
     # Create a default model.
@@ -154,7 +158,7 @@ class NrcSetWallConductanceByNecbClimateZone_Test  < Minitest::Test
   def test_Zone5_conductance
 
     # Define the output folder for this test (optional - default is the method name).
-    output_file_path = NRCMeasureTestHelper.appendOutputFolder("OutputTestFolder_zone5")
+    output_file_path = NRCMeasureTestHelper.appendOutputFolder("OutputTestFolder_zone5", @good_input_arguments)
 
     # Create a default model.
     standard = Standard.build("NECB2017")
@@ -176,7 +180,7 @@ class NrcSetWallConductanceByNecbClimateZone_Test  < Minitest::Test
   def test_Zone6_conductance
 
     # Define the output folder for this test (optional - default is the method name).
-    output_file_path = NRCMeasureTestHelper.appendOutputFolder("OutputTestFolder_zone6")
+    output_file_path = NRCMeasureTestHelper.appendOutputFolder("OutputTestFolder_zone6", @good_input_arguments)
 
     # Create a default model.
     standard = Standard.build("NECB2017")
@@ -198,7 +202,7 @@ class NrcSetWallConductanceByNecbClimateZone_Test  < Minitest::Test
   def test_Zone7a_conductance
 
     # Define the output folder for this test (optional - default is the method name).
-    output_file_path = NRCMeasureTestHelper.appendOutputFolder("OutputTestFolder_zone7a")
+    output_file_path = NRCMeasureTestHelper.appendOutputFolder("OutputTestFolder_zone7a", @good_input_arguments)
 
     # Create a default model.
     standard = Standard.build("NECB2017")
@@ -219,7 +223,7 @@ class NrcSetWallConductanceByNecbClimateZone_Test  < Minitest::Test
   def test_Zone7b_conductance
 
     # Define the output folder for this test (optional - default is the method name).
-    output_file_path = NRCMeasureTestHelper.appendOutputFolder("OutputTestFolder_zone7b")
+    output_file_path = NRCMeasureTestHelper.appendOutputFolder("OutputTestFolder_zone7b", @good_input_arguments)
 
     # Create a default model.
     standard = Standard.build("NECB2017")
@@ -241,7 +245,7 @@ class NrcSetWallConductanceByNecbClimateZone_Test  < Minitest::Test
   def test_Zone8_conductance
 
     # Define the output folder for this test (optional - default is the method name).
-    output_file_path = NRCMeasureTestHelper.appendOutputFolder("OutputTestFolder")
+    output_file_path = NRCMeasureTestHelper.appendOutputFolder("OutputTestFolder_zone8", @good_input_arguments)
 
     # Create a default model.
     standard = Standard.build("NECB2017")

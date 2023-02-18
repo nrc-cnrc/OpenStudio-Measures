@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_set_fenestration_wall_conductance_by_necb_climate_zone</name>
   <uid>ed475991-f1ea-4c98-968d-fdf5d56faab3</uid>
-  <version_id>015f3b1b-a172-43d0-b92b-33164146c4ff</version_id>
-  <version_modified>20230120T215934Z</version_modified>
+  <version_id>306f5807-ec2a-4272-a5b6-d85d3bb3f768</version_id>
+  <version_modified>20230208T164135Z</version_modified>
   <xml_checksum>7308DE72</xml_checksum>
   <class_name>NrcSetFenestrationWallConductanceByNecbClimateZone</class_name>
   <display_name>Set Fenestration (Wall) Conductance By Necb Climate Zone</display_name>
@@ -134,22 +134,22 @@
       <checksum>91E7ADD7</checksum>
     </file>
     <file>
-      <filename>test.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>test</usage_type>
-      <checksum>F6E1D64D</checksum>
-    </file>
-    <file>
       <filename>BTAPMeasureHelper.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>AE38D9B8</checksum>
+      <checksum>12494ED3</checksum>
+    </file>
+    <file>
+      <filename>test.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>FF474461</checksum>
     </file>
     <file>
       <filename>NRCMeasureHelper.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>EF2FCBFD</checksum>
+      <checksum>30C86D53</checksum>
     </file>
   </files>
 </measure>

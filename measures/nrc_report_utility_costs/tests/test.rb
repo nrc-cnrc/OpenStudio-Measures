@@ -13,19 +13,21 @@ require 'fileutils'
 
 class NrcReportUtilityCosts_Test < Minitest::Test
 
-  # Brings in helper methods to simplify argument testing of json and standard argument methods.
+  # Brings in helper methods to simplify argument testing of json and standard argument methods
+  # and set standard output folder.
   include(NRCReportingMeasureTestHelper)
+  NRCReportingMeasureTestHelper.setOutputFolder("#{self.name}")
 
   # Check to see if an overall start time was passed (it should be if using one of the test scripts in the test folder). 
   #  If so then use it to determine what old results are (if not use now).
-  start_time=Time.now
-  if ARGV.length == 1
-
-    # We have a time. It will be in seconds since the epoch. Update our start_time.
-    start_time=Time.at(ARGV[0].to_i)
+  if ENV['OS_MEASURES_TEST_TIME'] != ""
+    start_time=Time.at(ENV['OS_MEASURES_TEST_TIME'].to_i)
+  else
+    start_time=Time.now
   end
   NRCReportingMeasureTestHelper.removeOldOutputs(before: start_time)
-    
+
+
   def setup()
 
     @use_json_package = false
@@ -70,32 +72,22 @@ class NrcReportUtilityCosts_Test < Minitest::Test
   def test_report()
     puts "Testing report on small Office model".blue
 	
+    # Set input args. In this case the std matches the one used to create the test model.
+    input_arguments = @good_input_arguments
+
     # Define the output folder for this test. 
-    NRCReportingMeasureTestHelper.appendOutputFolder("smallOffice")
+    NRCReportingMeasureTestHelper.appendOutputFolder("smallOffice", input_arguments)
 	
-    # Load osm file
-    translator = OpenStudio::OSVersion::VersionTranslator.new
-    model_file = "#{File.dirname(__FILE__)}/SmallOffice.osm"
-    model = translator.loadModel(model_file)
-    msg = "Loading model: #{model_file}"
-    assert(!model.empty?, msg)
-    model = model.get
+    # Load osm file.
+    model = load_test_osm("#{File.dirname(__FILE__)}/SmallOffice.osm")
 
     # Assign the local weather file (have to provide a full path to EpwFile).
 	epw_path = File.expand_path("#{File.dirname(__FILE__)}/weather_files/CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw")
     epw = OpenStudio::EpwFile.new(epw_path)
     OpenStudio::Model::WeatherFile::setWeatherFile(model, epw)
-	
-    # Set input args. In this case the std matches the one used to create the test model.
-    input_arguments = @good_input_arguments
-	#{
-    #}
-    
-    # Create an instance of the measure
+
+    # Create an instance of the measure, run the measure and check for success.
 	runner = run_measure(input_arguments, model)
-	
-	# Check it ran successfully.
-    assert(runner.result.value.valueName == 'Success')
 	
 	# Check output values.
 	outputs = runner.result.stepValues
