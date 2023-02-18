@@ -53,9 +53,9 @@ ncpuA=$(( $ncpu - 5 ))
 ncpuB=$(( $ncpu / 2 ))
 if (( $ncpuA > $ncpuB ))
 then 
-  workers=$ncpuB
-else
   workers=$ncpuA
+else
+  workers=$ncpuB
 fi
 
 # Shared folder (this is the folder on the windows box that will be linked to the windows-host in the 
@@ -75,7 +75,7 @@ export SECRET_KEY_BASE=c4ab6d293e4bf52ee92e8dda6e16dc9b5448d0c5f7908ee40c66736d5
 
 # Create a .env file so that docker-compose up will work:
 echo "OS_SERVER_WORKERS=$workers" > .env
-echo "OS_SERVER_PAT_SHARED_FOLDER=${PAT_shared_win_folder}" >> .env
+echo "OS_SERVER_PAT_SHARED_FOLDER=${docker_win_root}" >> .env
 echo "OS_SERVER_IMAGE=${server_image}" >> .env
 echo "REDIS_PASSWORD=openstudio" >> .env
 echo "REDIS_URL=redis://:openstudio@queue:6379" >> .env
