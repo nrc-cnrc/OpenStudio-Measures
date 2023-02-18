@@ -53,9 +53,13 @@ ncpuA=$(( $ncpu - 5 ))
 ncpuB=$(( $ncpu / 2 ))
 if (( $ncpuA > $ncpuB ))
 then 
-  workers=$ncpuA
-else
   workers=$ncpuB
+else
+  workers=$ncpuA
+fi
+if [ $workers -lt 1 ]
+  then
+  workers=2
 fi
 
 # Shared folder (this is the folder on the windows box that will be linked to the windows-host in the 
