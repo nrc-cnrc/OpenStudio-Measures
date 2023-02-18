@@ -85,7 +85,6 @@ class NrcReportingMeasureStandard < OpenStudio::Measure::ReportingMeasure
       #       simulation_energyplus_version: qaqc_data[:energyplus_version]
     #}
   # Gather the data required for the setpoint summary and return in a hash. 
-  # Called from the main measure.
   def additional_btap_data(model)
     numSetPointManagers = model.getSetpointManagers.size + 1 # If none then return an empty hash?
 

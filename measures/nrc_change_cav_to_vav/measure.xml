@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_change_cav_to_vav</name>
   <uid>f544d84f-d7c6-426b-b3a4-aecfc6d2523b</uid>
-  <version_id>db5e1bb6-27e8-414b-851e-a38ce88c6173</version_id>
-  <version_modified>20221202T175004Z</version_modified>
+  <version_id>d068ed04-23da-4485-a733-7007725ce739</version_id>
+  <version_modified>20230209T214201Z</version_modified>
   <xml_checksum>772B7164</xml_checksum>
   <class_name>NrcChangeCAVToVAV</class_name>
   <display_name>NrcChangeCAVToVAV</display_name>
@@ -78,28 +78,22 @@
       <checksum>06A90B28</checksum>
     </file>
     <file>
-      <filename>test.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>test</usage_type>
-      <checksum>27E317E5</checksum>
-    </file>
-    <file>
       <filename>BTAPMeasureHelper.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>AE38D9B8</checksum>
+      <checksum>12494ED3</checksum>
+    </file>
+    <file>
+      <filename>test.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>790722AE</checksum>
     </file>
     <file>
       <filename>NRCMeasureHelper.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>EF2FCBFD</checksum>
-    </file>
-    <file>
-      <filename>README.md</filename>
-      <filetype>md</filetype>
-      <usage_type>test</usage_type>
-      <checksum>7F43102E</checksum>
+      <checksum>30C86D53</checksum>
     </file>
   </files>
 </measure>

@@ -4,12 +4,17 @@
   <name>nrc_report_carbon_emissions</name>
   <uid>11a12238-d360-4ad9-8d85-58b56c67cf83</uid>
 <<<<<<< HEAD
+<<<<<<< HEAD
   <version_id>322faa68-1e8a-4e4d-bd9c-d209cb6557ea</version_id>
   <version_modified>20221116T170906Z</version_modified>
 =======
   <version_id>372699a1-ee27-45fe-9a49-a92986aadf52</version_id>
   <version_modified>20221124T142506Z</version_modified>
 >>>>>>> devel
+=======
+  <version_id>d11954f6-210f-4feb-babd-c35dd5bc8ae9</version_id>
+  <version_modified>20230209T214312Z</version_modified>
+>>>>>>> origin/devel
   <xml_checksum>9BF1E6AC</xml_checksum>
   <class_name>NrcReportCarbonEmissions</class_name>
   <display_name>NrcReportCarbonEmissions</display_name>
@@ -633,6 +638,7 @@
       <checksum>86297DE7</checksum>
     </file>
     <file>
+<<<<<<< HEAD
       <filename>NRCReportingMeasureHelper.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
@@ -657,6 +663,8 @@
       <checksum>BF08CD37</checksum>
     </file>
     <file>
+=======
+>>>>>>> origin/devel
       <filename>NG_EFs.json</filename>
       <filetype>json</filetype>
       <usage_type>resource</usage_type>
@@ -669,18 +677,22 @@
       <checksum>0108350E</checksum>
     </file>
     <file>
+<<<<<<< HEAD
       <filename>test_gr1.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
       <checksum>D40757A8</checksum>
     </file>
     <file>
+=======
+>>>>>>> origin/devel
       <filename>all_nir_reports.json</filename>
       <filetype>json</filetype>
       <usage_type>resource</usage_type>
       <checksum>3E79C61D</checksum>
     </file>
     <file>
+<<<<<<< HEAD
       <filename>test.rb</filename>
       <filetype>rb</filetype>
       <usage_type>test</usage_type>
@@ -704,6 +716,8 @@
       <checksum>CE82A6E7</checksum>
     </file>
     <file>
+=======
+>>>>>>> origin/devel
       <filename>natural_gas_emission_factors_nir2022.json</filename>
       <filetype>json</filetype>
       <usage_type>resource</usage_type>
@@ -717,24 +731,37 @@
     </file>
     <file>
 <<<<<<< HEAD
+<<<<<<< HEAD
       <filename>docs/br4_final_en.pdf</filename>
+=======
+      <filename>br4_final_en.pdf</filename>
+>>>>>>> origin/devel
       <filetype>pdf</filetype>
       <usage_type>resource</usage_type>
       <checksum>186743AE</checksum>
     </file>
     <file>
+<<<<<<< HEAD
       <filename>docs/GGS_LifeCycleCostCalculator.xlsx</filename>
+=======
+      <filename>GGS_LifeCycleCostCalculator.xlsx</filename>
+>>>>>>> origin/devel
       <filetype>xlsx</filetype>
       <usage_type>resource</usage_type>
       <checksum>9EFBCADB</checksum>
     </file>
     <file>
+<<<<<<< HEAD
       <filename>docs/GHG_EF.xlsx</filename>
+=======
+      <filename>GHG_EF.xlsx</filename>
+>>>>>>> origin/devel
       <filetype>xlsx</filetype>
       <usage_type>resource</usage_type>
       <checksum>030E5D8A</checksum>
     </file>
     <file>
+<<<<<<< HEAD
       <filename>docs/NIR2019-Part3.pdf</filename>
       <filetype>pdf</filetype>
       <usage_type>resource</usage_type>
@@ -758,11 +785,51 @@
       <usage_type>test</usage_type>
       <checksum>E1D670F5</checksum>
 =======
+=======
+      <filename>NRCReportingMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>E51CF48C</checksum>
+    </file>
+    <file>
+      <filename>BTAPMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>B69DF022</checksum>
+    </file>
+    <file>
+      <filename>test.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>C09F61DD</checksum>
+    </file>
+    <file>
+      <version>
+        <software_program>OpenStudio</software_program>
+        <identifier>3.1.0</identifier>
+        <min_compatible>3.1.0</min_compatible>
+      </version>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>script</usage_type>
+      <checksum>C9568D2A</checksum>
+    </file>
+    <file>
+      <filename>os_lib_reporting.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>3C02C6C8</checksum>
+    </file>
+    <file>
+>>>>>>> origin/devel
       <filename>README.md</filename>
       <filetype>md</filetype>
       <usage_type>readme</usage_type>
       <checksum>661FDC89</checksum>
+<<<<<<< HEAD
 >>>>>>> devel
+=======
+>>>>>>> origin/devel
     </file>
   </files>
 </measure>

@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_create_from_existing_osm_file</name>
   <uid>9cd66007-71b8-4f28-b41f-d70c7844aaaa</uid>
-  <version_id>ffd752ec-8a2b-4b22-95a6-e80f8abf2122</version_id>
-  <version_modified>20230120T215857Z</version_modified>
+  <version_id>2249782e-e510-468b-b505-c05a5ca2632e</version_id>
+  <version_modified>20230208T164121Z</version_modified>
   <xml_checksum>FC9586A7</xml_checksum>
   <class_name>NrcCreateFromExistingOsmFile</class_name>
   <display_name>NRC Create From Existing Osm File</display_name>
@@ -110,24 +110,6 @@
       <checksum>F1C26127</checksum>
     </file>
     <file>
-      <filename>BTAPMeasureHelper.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>4F234BCA</checksum>
-    </file>
-    <file>
-      <filename>NRCMeasureHelper.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>A5221895</checksum>
-    </file>
-    <file>
-      <filename>test.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>test</usage_type>
-      <checksum>556FDFE4</checksum>
-    </file>
-    <file>
       <version>
         <software_program>OpenStudio</software_program>
         <identifier>3.2.1</identifier>
@@ -143,6 +125,30 @@
       <filetype>md</filetype>
       <usage_type>readme</usage_type>
       <checksum>132E6972</checksum>
+    </file>
+    <file>
+      <filename>BTAPMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>12494ED3</checksum>
+    </file>
+    <file>
+      <filename>test.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>53A79A59</checksum>
+    </file>
+    <file>
+      <filename>test-output.json</filename>
+      <filetype>json</filetype>
+      <usage_type>test</usage_type>
+      <checksum>564D7F07</checksum>
+    </file>
+    <file>
+      <filename>NRCMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>30C86D53</checksum>
     </file>
   </files>
 </measure>

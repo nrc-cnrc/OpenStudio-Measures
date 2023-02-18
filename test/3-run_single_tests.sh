@@ -104,9 +104,14 @@ then
   mintty -s 144,32 -t "Measure update info" -h always /bin/bash -c \
     "docker exec $container sh -c \"openstudio --bundle /var/oscli/Gemfile --bundle_path /var/oscli --bundle_without native_ext measure -u /os_test/measures/${measure}; echo DONE. Press enter to close.\""
 fi
+
+# Define env variables used in the test scripts. Note the path is defined for the docker container (not windows), a;lso note the missing / at the beginning so that docker does 
+#  not mess the path up on import.
+export OS_MEASURES_TEST_TIME="`date -u +%s`"
+export OS_MEASURES_TEST_DIR="os_test/test"
+
 echo -e "${GREEN}Running tests${NC}..."
-start_time=`date -u +%s` # Pass the start time in seconds since the epoch. Used for removing old test results.
-docker exec ${container} sh -c "cd /var/oscli; bundle exec ruby /os_test/measures/${measure}/tests/${test} $start_time"
+docker exec -e OS_MEASURES_TEST_TIME -e OS_MEASURES_TEST_DIR ${container} sh -c "cd /var/oscli; bundle exec ruby /os_test/measures/${measure}/tests/${test}"
 
 # Stop the container.
 if [ -z ${fast} ]

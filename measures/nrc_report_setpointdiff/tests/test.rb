@@ -12,18 +12,21 @@ require_relative '../resources/NRCReportingMeasureHelper.rb'
 require 'fileutils'
 
 class NrcReportSetPointDiff_Test < Minitest::Test
-  # Brings in helper methods to simplify argument testing of json and standard argument methods.
+
+  # Brings in helper methods to simplify argument testing of json and standard argument methods
+  # and set standard output folder.
   include(NRCReportingMeasureTestHelper)
+  NRCReportingMeasureTestHelper.setOutputFolder("#{self.name}")
 
   # Check to see if an overall start time was passed (it should be if using one of the test scripts in the test folder). 
   #  If so then use it to determine what old results are (if not use now).
-  start_time=Time.now
-  if ARGV.length == 1
-
-    # We have a time. It will be in seconds since the epoch. Update our start_time.
-    start_time=Time.at(ARGV[0].to_i)
+  if ENV['OS_MEASURES_TEST_TIME'] != ""
+    start_time=Time.at(ENV['OS_MEASURES_TEST_TIME'].to_i)
+  else
+    start_time=Time.now
   end
   NRCReportingMeasureTestHelper.removeOldOutputs(before: start_time)
+
 
   def setup()
     @use_json_package = false
@@ -69,26 +72,16 @@ class NrcReportSetPointDiff_Test < Minitest::Test
   def test_report()
     puts "Testing report on warehouse model".green
 
-    # Define the output folder for this test (optional - default is the method name).
-    test_dir = NRCReportingMeasureTestHelper.appendOutputFolder("test_report")
+    # Set input args. In this case the std matches the one used to create the test model.
+    input_arguments = {
+      "timeStep" => "Hourly",
+      "detail" => "No"
+    }
 
-    # create an instance of the measure
-    measure = NrcReportSetPointDiff.new
+    # Define the output folder for this test.
+    test_dir = NRCReportingMeasureTestHelper.appendOutputFolder("test_report", input_arguments)
 
-    # create an instance of a runner
-    runner = OpenStudio::Measure::OSRunner.new(OpenStudio::WorkflowJSON.new)
-
-    # get arguments
-    arguments = measure.arguments()
-    argument_map = OpenStudio::Measure.convertOSArgumentVectorToMap(arguments)
-
-    timeStep = arguments[0].clone
-    argument_map['timeStep'] = timeStep
-
-    detail = arguments[1].clone
-    argument_map['detail'] = detail
-
-    ################### Create warehouse
+    # Create warehouse.
     template = 'NECB2017'
     prototype_creator = Standard.build(template)
 
@@ -96,16 +89,11 @@ class NrcReportSetPointDiff_Test < Minitest::Test
       template: 'NECB2017',
       epw_file: 'CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.epw',
       sizing_run_dir: test_dir,
-      debug: @debug,
       building_type: 'Warehouse')
 
-    # Set input args. In this case the std matches the one used to create the test model.
-    input_arguments = {
-      "timeStep" => "Hourly",
-      "detail" => "No"
-    }
-
-    # Create an instance of the measure
-    run_measure(input_arguments, model)
+    # Create an instance of the measure, run the measure and check for success.
+	runner = run_measure(input_arguments, model)
+	
+	# Check output values.
   end
 end

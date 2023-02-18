@@ -3,8 +3,8 @@
   <schema_version>3.0</schema_version>
   <name>nrc_set_srr</name>
   <uid>5b955a02-309e-406a-93d7-ff4ce5540e08</uid>
-  <version_id>c884ed2e-65fd-457e-9fe2-e4b8cc450ef1</version_id>
-  <version_modified>20230120T215937Z</version_modified>
+  <version_id>d4fab7dc-6d8b-47a1-86c5-cfc4f6225907</version_id>
+  <version_modified>20230209T214339Z</version_modified>
   <xml_checksum>FC9586A7</xml_checksum>
   <class_name>NrcSetSrr</class_name>
   <display_name>nrc_set_srr</display_name>
@@ -112,22 +112,16 @@
       <checksum>417865DA</checksum>
     </file>
     <file>
-      <filename>test.rb</filename>
-      <filetype>rb</filetype>
-      <usage_type>test</usage_type>
-      <checksum>DEE90F66</checksum>
-    </file>
-    <file>
       <filename>BTAPMeasureHelper.rb</filename>
       <filetype>rb</filetype>
       <usage_type>resource</usage_type>
-      <checksum>AE38D9B8</checksum>
+      <checksum>12494ED3</checksum>
     </file>
     <file>
-      <filename>NRCMeasureHelper.rb</filename>
+      <filename>test.rb</filename>
       <filetype>rb</filetype>
-      <usage_type>resource</usage_type>
-      <checksum>EF2FCBFD</checksum>
+      <usage_type>test</usage_type>
+      <checksum>E3EC8A31</checksum>
     </file>
     <file>
       <filename>CAN_ON_Ottawa-Macdonald-Cartier.Intl.AP.716280_CWEC2016.ddy</filename>
@@ -152,6 +146,12 @@
       <filetype>osm</filetype>
       <usage_type>test</usage_type>
       <checksum>C55B436A</checksum>
+    </file>
+    <file>
+      <filename>NRCMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>30C86D53</checksum>
     </file>
   </files>
 </measure>

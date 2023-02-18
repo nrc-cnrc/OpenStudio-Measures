@@ -101,11 +101,12 @@ def write_results(result, test_file)
     puts "--------------- Full traceback ---------------"
     puts output.to_s.pink
     puts "--------------- Error text (from above) ---------------"
-    error_messages = result[0].split(/\r?\n/).select{|e| e.include?("RuntimeError") || e.include?("Errno")}.to_s
-    puts error_messages.red
+    error_messages = result[0].split(/\r?\n/) + result[1].split(/\r?\n/)
+    error_messages.select!{ |e| e.include? "Err"}
+    puts error_messages.to_s.red
     puts "---------------"
 	Summary_output[test_file.to_s]['result'] = "FAILED"
-	Summary_output[test_file.to_s]['errors'] = error_messages
+	Summary_output[test_file.to_s]['errors'] = error_messages.to_s
     return false
   end
 end
@@ -133,7 +134,7 @@ class ParallelTests
 	  
 	  # Pass the overall start time to the test scripts for identifying old test output (really important where there are
 	  #  multiple test scripts for one measure (e.g. create grometry).
-      test_passed = write_results(Open3.capture3('bundle', 'exec', 'ruby', "#{test_file.strip}", "#{overall_start_time.to_i}"), test_file)
+      test_passed = write_results(Open3.capture3('bundle', 'exec', 'ruby', "#{test_file.strip}"), test_file)
 	  fail_count = fail_count + 1 unless test_passed
       puts "FINISHED:: Worker: #{Parallel.worker_number}, Time: #{Time.now.strftime("%k:%M:%S")}, Duration: #{(Time.now - t_start).to_i} s, File: #{test_file.strip}".light_blue
       Summary_output[test_file.to_s]['end'] = Time.now.to_i

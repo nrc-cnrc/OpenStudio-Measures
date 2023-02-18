@@ -17,7 +17,7 @@ services:
       - "6379:6379"
     command: "redis-server --requirepass ${REDIS_PASSWORD}"
   web:
-    image: ${OS_SERVER_IMAGE}
+    image: nrel/${OS_SERVER_IMAGE}
     environment:
       - OS_SERVER_NUMBER_OF_WORKERS=${OS_SERVER_WORKERS}
       - QUEUES=analysis_wrappers
@@ -36,7 +36,7 @@ services:
       - ${OS_SERVER_WIN_ROOT}/PAT:/mnt/openstudio/server/assets/
     command: /usr/local/bin/start-server
   web-background:
-    image: ${OS_SERVER_IMAGE}
+    image: nrel/${OS_SERVER_IMAGE}
     environment:
       - OS_SERVER_NUMBER_OF_WORKERS=${OS_SERVER_WORKERS}
       - QUEUES=background,analyses
@@ -52,7 +52,7 @@ services:
       - openstudio-server-osdata:/mnt/openstudio
     command: /usr/local/bin/start-web-background
   worker:
-    image: ${OS_SERVER_IMAGE}
+    image: nrel/${OS_SERVER_IMAGE}
     environment:
       - OS_SERVER_NUMBER_OF_WORKERS=${OS_SERVER_WORKERS}
       - QUEUES=simulations
@@ -70,7 +70,7 @@ services:
       - openstudio-server-osgems:/var/gems
     command: /usr/local/bin/start-workers
   rserve:
-    image: ${OS_RSERVE_IMAGE}
+    image: nrel/${OS_RSERVE_IMAGE}
     environment:
       - OS_SERVER_NUMBER_OF_WORKERS=${OS_SERVER_WORKERS}
       - REDIS_URL=${REDIS_URL}

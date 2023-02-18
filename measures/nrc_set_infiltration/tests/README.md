@@ -16,7 +16,7 @@ This test was expected to pass and it did.
 | total_surface_area |100.0 |
 | above_grade_wall_surface_area |100.0 |
  
-## 2 - test argument ranges
+## 2 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -28,7 +28,7 @@ This test was expected to generate an error and it did.
 | total_surface_area |0.0 |
 | above_grade_wall_surface_area |0.0 |
  
-## 3 - test argument ranges--1
+## 3 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -40,7 +40,7 @@ This test was expected to generate an error and it did.
 | total_surface_area |0.0 |
 | above_grade_wall_surface_area |0.0 |
  
-## 4 - test argument ranges--2
+## 4 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -52,7 +52,7 @@ This test was expected to generate an error and it did.
 | total_surface_area |0.0 |
 | above_grade_wall_surface_area |0.0 |
  
-## 5 - test argument ranges--3
+## 5 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -64,7 +64,7 @@ This test was expected to generate an error and it did.
 | total_surface_area |0.0 |
 | above_grade_wall_surface_area |0.0 |
  
-## 6 - test argument ranges--4
+## 6 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -76,7 +76,7 @@ This test was expected to generate an error and it did.
 | total_surface_area |0.0 |
 | above_grade_wall_surface_area |0.0 |
  
-## 7 - test argument ranges--5
+## 7 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -88,7 +88,7 @@ This test was expected to generate an error and it did.
 | total_surface_area |0.0 |
 | above_grade_wall_surface_area |0.0 |
  
-## 8 - test argument ranges--6
+## 8 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -100,7 +100,7 @@ This test was expected to generate an error and it did.
 | total_surface_area |10000001.0 |
 | above_grade_wall_surface_area |0.0 |
  
-## 9 - test argument ranges--7
+## 9 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -112,7 +112,7 @@ This test was expected to generate an error and it did.
 | total_surface_area |-1.0 |
 | above_grade_wall_surface_area |0.0 |
  
-## 10 - test argument ranges--8
+## 10 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -124,7 +124,7 @@ This test was expected to generate an error and it did.
 | total_surface_area |0.0 |
 | above_grade_wall_surface_area |10000001.0 |
  
-## 11 - test argument ranges--9
+## 11 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -136,7 +136,7 @@ This test was expected to generate an error and it did.
 | total_surface_area |0.0 |
 | above_grade_wall_surface_area |-1.0 |
  
-## 12 - test argument ranges--10
+## 12 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -148,7 +148,7 @@ This test was expected to generate an error and it did.
 | total_surface_area |0.0 |
 | above_grade_wall_surface_area |0.0 |
  
-## 13 - test argument ranges--11
+## 13 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -160,7 +160,7 @@ This test was expected to generate an error and it did.
 | total_surface_area |0.0 |
 | above_grade_wall_surface_area |0.0 |
  
-## 14 - test argument ranges--12
+## 14 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -172,7 +172,7 @@ This test was expected to generate an error and it did.
 | total_surface_area |0.0 |
 | above_grade_wall_surface_area |0.0 |
  
-## 15 - test argument ranges--13
+## 15 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -184,7 +184,7 @@ This test was expected to generate an error and it did.
 | total_surface_area |0.0 |
 | above_grade_wall_surface_area |0.0 |
  
-## 16 - test argument ranges--14
+## 16 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -196,7 +196,7 @@ This test was expected to generate an error and it did.
 | total_surface_area |0.0 |
 | above_grade_wall_surface_area |0.0 |
  
-## 17 - test argument ranges--15
+## 17 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -208,7 +208,7 @@ This test was expected to generate an error and it did.
 | total_surface_area |0.0 |
 | above_grade_wall_surface_area |0.0 |
  
-## 18 - test argument ranges--16
+## 18 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -220,7 +220,7 @@ This test was expected to generate an error and it did.
 | total_surface_area |10000001.0 |
 | above_grade_wall_surface_area |0.0 |
  
-## 19 - test argument ranges--17
+## 19 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -232,7 +232,7 @@ This test was expected to generate an error and it did.
 | total_surface_area |-1.0 |
 | above_grade_wall_surface_area |0.0 |
  
-## 20 - test argument ranges--18
+## 20 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -244,7 +244,7 @@ This test was expected to generate an error and it did.
 | total_surface_area |0.0 |
 | above_grade_wall_surface_area |10000001.0 |
  
-## 21 - test argument ranges--19
+## 21 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -256,7 +256,7 @@ This test was expected to generate an error and it did.
 | total_surface_area |0.0 |
 | above_grade_wall_surface_area |-1.0 |
  
-## 22 - test argument ranges--20
+## 22 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -268,7 +268,7 @@ This test was expected to generate an error and it did.
 | total_surface_area |0.0 |
 | above_grade_wall_surface_area |0.0 |
  
-## 23 - test argument ranges--21
+## 23 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -280,7 +280,7 @@ This test was expected to generate an error and it did.
 | total_surface_area |0.0 |
 | above_grade_wall_surface_area |0.0 |
  
-## 24 - test argument ranges--22
+## 24 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -292,7 +292,7 @@ This test was expected to generate an error and it did.
 | total_surface_area |0.0 |
 | above_grade_wall_surface_area |0.0 |
  
-## 25 - test argument ranges--23
+## 25 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -304,7 +304,7 @@ This test was expected to generate an error and it did.
 | total_surface_area |0.0 |
 | above_grade_wall_surface_area |0.0 |
  
-## 26 - test argument ranges--24
+## 26 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -316,7 +316,7 @@ This test was expected to generate an error and it did.
 | total_surface_area |0.0 |
 | above_grade_wall_surface_area |0.0 |
  
-## 27 - test argument ranges--25
+## 27 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -328,7 +328,7 @@ This test was expected to generate an error and it did.
 | total_surface_area |0.0 |
 | above_grade_wall_surface_area |0.0 |
  
-## 28 - test argument ranges--26
+## 28 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -340,7 +340,7 @@ This test was expected to generate an error and it did.
 | total_surface_area |10000001.0 |
 | above_grade_wall_surface_area |0.0 |
  
-## 29 - test argument ranges--27
+## 29 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -352,7 +352,7 @@ This test was expected to generate an error and it did.
 | total_surface_area |-1.0 |
 | above_grade_wall_surface_area |0.0 |
  
-## 30 - test argument ranges--28
+## 30 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -364,7 +364,7 @@ This test was expected to generate an error and it did.
 | total_surface_area |0.0 |
 | above_grade_wall_surface_area |10000001.0 |
  
-## 31 - test argument ranges--29
+## 31 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -376,7 +376,7 @@ This test was expected to generate an error and it did.
 | total_surface_area |0.0 |
 | above_grade_wall_surface_area |-1.0 |
  
-## 32 - test argument ranges--30
+## 32 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -388,7 +388,7 @@ This test was expected to generate an error and it did.
 | total_surface_area |0.0 |
 | above_grade_wall_surface_area |0.0 |
  
-## 33 - test argument ranges--31
+## 33 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -400,7 +400,7 @@ This test was expected to generate an error and it did.
 | total_surface_area |0.0 |
 | above_grade_wall_surface_area |0.0 |
  
-## 34 - test argument ranges--32
+## 34 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -412,7 +412,7 @@ This test was expected to generate an error and it did.
 | total_surface_area |0.0 |
 | above_grade_wall_surface_area |0.0 |
  
-## 35 - test argument ranges--33
+## 35 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -424,7 +424,7 @@ This test was expected to generate an error and it did.
 | total_surface_area |0.0 |
 | above_grade_wall_surface_area |0.0 |
  
-## 36 - test argument ranges--34
+## 36 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -436,7 +436,7 @@ This test was expected to generate an error and it did.
 | total_surface_area |0.0 |
 | above_grade_wall_surface_area |0.0 |
  
-## 37 - test argument ranges--35
+## 37 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -448,7 +448,7 @@ This test was expected to generate an error and it did.
 | total_surface_area |0.0 |
 | above_grade_wall_surface_area |0.0 |
  
-## 38 - test argument ranges--36
+## 38 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -460,7 +460,7 @@ This test was expected to generate an error and it did.
 | total_surface_area |10000001.0 |
 | above_grade_wall_surface_area |0.0 |
  
-## 39 - test argument ranges--37
+## 39 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -472,7 +472,7 @@ This test was expected to generate an error and it did.
 | total_surface_area |-1.0 |
 | above_grade_wall_surface_area |0.0 |
  
-## 40 - test argument ranges--38
+## 40 - oscli
  
 This test was expected to generate an error and it did.
  
@@ -484,7 +484,7 @@ This test was expected to generate an error and it did.
 | total_surface_area |0.0 |
 | above_grade_wall_surface_area |10000001.0 |
  
-## 41 - test argument ranges--39
+## 41 - oscli
  
 This test was expected to generate an error and it did.
  
