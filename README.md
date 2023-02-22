@@ -78,7 +78,7 @@ by the National Research Council of Canada, 2020
 ### License
 
 The source code in this project is distributed under the [LGPLv3 License](LICENSE),
-which is an extension of the [GPLv3 License](LICENSE-GPL3)
+which is an extension of the [GPLv3 License](https://www.gnu.org/licenses/gpl-3.0.html)
 
 ______________________
 
