@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<measure>
+  <schema_version>3.0</schema_version>
+  <name>nrc_hvac_modify_air_loop_gas_heating_coil</name>
+  <uid>1448dc9c-e13e-4ef1-b2f6-495781a9744e</uid>
+  <version_id>106b40ae-875b-4858-a5ec-ba7c68b5e598</version_id>
+  <version_modified>20230303T214424Z</version_modified>
+  <xml_checksum>1F3D2430</xml_checksum>
+  <class_name>NrcHvacModifyAirLoopGasHeatingCoil</class_name>
+  <display_name>Modify HVAC Air Loop Gas Heating Coil Parameters</display_name>
+  <description>This measure modifies the selected air loop gas heating coil efficiency.</description>
+  <modeler_description>This measure modifies the selected air loop gas heating coil efficiency.</modeler_description>
+  <arguments>
+    <argument>
+      <name>air_loop</name>
+      <display_name>Air loop to apply change to (currently all is only option)</display_name>
+      <type>String</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>All</default_value>
+    </argument>
+    <argument>
+      <name>burner_efficiency</name>
+      <display_name>Burner efficiency (%)</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>82</default_value>
+    </argument>
+  </arguments>
+  <outputs />
+  <provenances />
+  <tags>
+    <tag>HVAC.Heating</tag>
+  </tags>
+  <attributes>
+    <attribute>
+      <name>Measure Type</name>
+      <value>ModelMeasure</value>
+      <datatype>string</datatype>
+    </attribute>
+  </attributes>
+  <files>
+    <file>
+      <version>
+        <software_program>OpenStudio</software_program>
+        <identifier>3.1.0</identifier>
+        <min_compatible>3.1.0</min_compatible>
+      </version>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>script</usage_type>
+      <checksum>936635C9</checksum>
+    </file>
+    <file>
+      <filename>README.md.erb</filename>
+      <filetype>erb</filetype>
+      <usage_type>readmeerb</usage_type>
+      <checksum>A1A5426B</checksum>
+    </file>
+    <file>
+      <filename>README.md</filename>
+      <filetype>md</filetype>
+      <usage_type>readme</usage_type>
+      <checksum>82965234</checksum>
+    </file>
+    <file>
+      <filename>BTAPMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>29C68DB2</checksum>
+    </file>
+    <file>
+      <filename>test.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>1A15D46E</checksum>
+    </file>
+    <file>
+      <filename>NRCMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>C9D48FFE</checksum>
+    </file>
+    <file>
+      <filename>README.md</filename>
+      <filetype>md</filetype>
+      <usage_type>test</usage_type>
+      <checksum>A7D5C6A9</checksum>
+    </file>
+  </files>
+</measure>

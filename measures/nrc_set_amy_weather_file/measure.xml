@@ -1,0 +1,130 @@
+<?xml version="1.0"?>
+<measure>
+  <schema_version>3.0</schema_version>
+  <name>nrc_set_amy_weather_file</name>
+  <uid>08c05bf8-55d6-4ac5-9a35-42e8565ac027</uid>
+  <version_id>495c093a-78b5-461d-af29-71d6105bbe6a</version_id>
+  <version_modified>20230303T154147Z</version_modified>
+  <xml_checksum>FC9586A7</xml_checksum>
+  <class_name>NrcSetAmyWeatherFile</class_name>
+  <display_name>Nrc Set AMY Weather File</display_name>
+  <description>The measure sets an AMY weather file to a model and updates its calendar year.</description>
+  <modeler_description>The measure sets one of 3 hourly weather file locations. Locations options are: Ottawa, Toronto, and Windsor.
+            Also sets the calendar year to the years related to the available hourly weather files (2016, 2017 and 2018). </modeler_description>
+  <arguments>
+    <argument>
+      <name>location</name>
+      <display_name>Location</display_name>
+      <type>Choice</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>ON_Toronto</default_value>
+      <choices>
+        <choice>
+          <value>ON_Ottawa</value>
+          <display_name>ON_Ottawa</display_name>
+        </choice>
+        <choice>
+          <value>ON_Toronto</value>
+          <display_name>ON_Toronto</display_name>
+        </choice>
+        <choice>
+          <value>ON_Windsor</value>
+          <display_name>ON_Windsor</display_name>
+        </choice>
+      </choices>
+    </argument>
+    <argument>
+      <name>year</name>
+      <display_name>Location</display_name>
+      <type>Choice</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>2016</default_value>
+      <choices>
+        <choice>
+          <value>2016</value>
+          <display_name>2016</display_name>
+        </choice>
+        <choice>
+          <value>2017</value>
+          <display_name>2017</display_name>
+        </choice>
+        <choice>
+          <value>2018</value>
+          <display_name>2018</display_name>
+        </choice>
+      </choices>
+    </argument>
+  </arguments>
+  <outputs />
+  <provenances />
+  <tags>
+    <tag>Whole Building.Whole Building Schedules</tag>
+  </tags>
+  <attributes>
+    <attribute>
+      <name>Measure Type</name>
+      <value>ModelMeasure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Software Tool</name>
+      <value>Apply Measure Now</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Software Tool</name>
+      <value>OpenStudio Application</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Software Tool</name>
+      <value>Parametric Analysis Tool</value>
+      <datatype>string</datatype>
+    </attribute>
+  </attributes>
+  <files>
+    <file>
+      <filename>README.md.erb</filename>
+      <filetype>erb</filetype>
+      <usage_type>readmeerb</usage_type>
+      <checksum>F1C26127</checksum>
+    </file>
+    <file>
+      <version>
+        <software_program>OpenStudio</software_program>
+        <identifier>3.2.1</identifier>
+        <min_compatible>3.2.1</min_compatible>
+      </version>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>script</usage_type>
+      <checksum>B16C3B13</checksum>
+    </file>
+    <file>
+      <filename>README.md</filename>
+      <filetype>md</filetype>
+      <usage_type>readme</usage_type>
+      <checksum>894DA277</checksum>
+    </file>
+    <file>
+      <filename>BTAPMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>29C68DB2</checksum>
+    </file>
+    <file>
+      <filename>test.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>E21D8C70</checksum>
+    </file>
+    <file>
+      <filename>NRCMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>C9D48FFE</checksum>
+    </file>
+  </files>
+</measure>

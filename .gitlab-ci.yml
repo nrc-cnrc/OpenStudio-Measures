@@ -1,0 +1,58 @@
+variables:
+  GIT_CLONE_PATH: $CI_BUILDS_DIR/$CI_CONCURRENT_ID/os-measures
+  SET_TEST_START_TIME: 'export OS_MEASURES_TEST_TIME="`date -u +%s`"'
+
+default:
+  cache:
+    key: gems-$CI_JOB_NAME
+    paths:
+      - .gems
+      - vendor/ruby
+
+stages:
+  - test_nrel
+  - test_nrc
+
+test_using_nrc_image:
+  stage: test_nrc
+  image: localhost:5000/openstudio-server
+
+  tags:
+  - linux
+  - docker
+  - const-ibp
+  
+  before_script:
+  - echo 'Configuring test environment using NRC specific openstudio-server image'
+  - echo '  This image can be used in testing'
+  - bundle config set --local path 'vendor/ruby'
+  - source env.sh && download_gems && customize_standards
+  - bundle install -j $(nproc)
+
+  script:
+  - echo 'Starting tests'
+  - 'eval "$SET_TEST_START_TIME"'
+  - cd test
+  - bundle exec ruby test_measures.rb
+
+test_using_nrel_server_image:
+  stage: test_nrel
+  image: nrel/openstudio-server:3.2.1
+
+  tags:
+  - linux
+  - docker
+  - const-ibp
+  
+  before_script:
+  - echo 'Configuring test environment using openstudio-server'
+  - echo '  This is the image used by PAT'
+  - bundle config set --local path 'vendor/ruby'
+  - source env.sh && download_gems && customize_standards
+  - bundle install -j $(nproc)
+
+  script:
+  - echo 'Starting tests'
+  - 'eval "$SET_TEST_START_TIME"'
+  - cd test
+  - bundle exec ruby test_measures.rb

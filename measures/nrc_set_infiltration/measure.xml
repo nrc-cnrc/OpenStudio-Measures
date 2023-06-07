@@ -1,0 +1,154 @@
+<?xml version="1.0"?>
+<measure>
+  <schema_version>3.0</schema_version>
+  <name>nrc_set_infiltration</name>
+  <uid>68ad385a-22cd-4c01-a4a4-11c2c30026fb</uid>
+  <version_id>0b3078fa-f4c8-4405-af9e-d700cec40423</version_id>
+  <version_modified>20230303T214427Z</version_modified>
+  <xml_checksum>2AF3A68E</xml_checksum>
+  <class_name>NrcSetInfiltration</class_name>
+  <display_name>Set Infiltration Rate</display_name>
+  <description>This measures allows setting the infiltration to a specific value at a given reference pressure. The flow rate is 
+       converted to the flow at 5 Pa for above grade surfaces as per the assumption in the NECB.</description>
+  <modeler_description>The measure sets space infiltration according to PCF 1414, section 8.4.2.9(2), page 7
+            Infiltration_5Pa = C × I_75Pa × (S/A)
+            Infiltration_5Pa : Air leakage rate of the building envelope at 5 Pa, in L/(s·m2)
+            C = (5 Pa / 75 Pa)n , where n = flow exponent
+            I_75Pa : Normalized air leakage rate at 75 Pa, in L/(s·m2)
+            S = total area of the building envelope (the lowest floor area + below-ground and above-ground walls area + roof area (including
+                vertical fenestration and skylights) , in m2
+            A = total area of above-grade walls, in m2
+            To neglect the surface area adjustment enter two identical numers for above grage and total surface area.</modeler_description>
+  <arguments>
+    <argument>
+      <name>flow_rate</name>
+      <display_name>Space Infiltration Flow per Exterior Envelope Surface Area L/s/m2 at reference pressure</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>4.2</default_value>
+    </argument>
+    <argument>
+      <name>reference_pressure</name>
+      <display_name>Reference pressure</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>75</default_value>
+    </argument>
+    <argument>
+      <name>flow_exponent</name>
+      <display_name>Flow exponent</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>0.6</default_value>
+    </argument>
+    <argument>
+      <name>total_surface_area</name>
+      <display_name>Total surface area (m2), please type 0.0 to use value from model</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>0</default_value>
+    </argument>
+    <argument>
+      <name>above_grade_wall_surface_area</name>
+      <display_name>Above grade wall surface area (m2), please type 0.0 to use value from model</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>0</default_value>
+    </argument>
+  </arguments>
+  <outputs>
+    <output>
+      <name>calculated_infiltration_rate</name>
+      <display_name>calculated_infiltration_rate</display_name>
+      <short_name>calculated_infiltration_rate</short_name>
+      <type>Double</type>
+      <model_dependent>false</model_dependent>
+    </output>
+  </outputs>
+  <provenances />
+  <tags>
+    <tag>Envelope.Form</tag>
+  </tags>
+  <attributes>
+    <attribute>
+      <name>Measure Type</name>
+      <value>ModelMeasure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Software Tool</name>
+      <value>Apply Measure Now</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Software Tool</name>
+      <value>OpenStudio Application</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Software Tool</name>
+      <value>Parametric Analysis Tool</value>
+      <datatype>string</datatype>
+    </attribute>
+  </attributes>
+  <files>
+    <file>
+      <filename>README.md.erb</filename>
+      <filetype>erb</filetype>
+      <usage_type>readmeerb</usage_type>
+      <checksum>A1A5426B</checksum>
+    </file>
+    <file>
+      <filename>Warehouse-NECB2017-ON_Ottawa.osm</filename>
+      <filetype>osm</filetype>
+      <usage_type>test</usage_type>
+      <checksum>C55B436A</checksum>
+    </file>
+    <file>
+      <filename>README.md</filename>
+      <filetype>md</filetype>
+      <usage_type>readme</usage_type>
+      <checksum>69688FFC</checksum>
+    </file>
+    <file>
+      <version>
+        <software_program>OpenStudio</software_program>
+        <identifier>2.8.1</identifier>
+        <min_compatible>2.8.1</min_compatible>
+      </version>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>script</usage_type>
+      <checksum>B80CEAB3</checksum>
+    </file>
+    <file>
+      <filename>BTAPMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>29C68DB2</checksum>
+    </file>
+    <file>
+      <filename>test.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>76393859</checksum>
+    </file>
+    <file>
+      <filename>NRCMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>C9D48FFE</checksum>
+    </file>
+    <file>
+      <filename>README.md</filename>
+      <filetype>md</filetype>
+      <usage_type>test</usage_type>
+      <checksum>13650D2B</checksum>
+    </file>
+  </files>
+</measure>

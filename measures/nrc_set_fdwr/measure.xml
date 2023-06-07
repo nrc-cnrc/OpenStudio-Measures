@@ -1,0 +1,131 @@
+<?xml version="1.0"?>
+<measure>
+  <schema_version>3.0</schema_version>
+  <name>nrc_set_fdwr</name>
+  <uid>5b955a02-309e-406a-93d7-ff4ce5540e08</uid>
+  <version_id>1b39db62-788a-48b6-9318-1e336bece6d4</version_id>
+  <version_modified>20230323T202738Z</version_modified>
+  <xml_checksum>FC9586A7</xml_checksum>
+  <class_name>NrcSetFdwr</class_name>
+  <display_name>Set FDWR</display_name>
+  <description>This measure sets the FDWR according to the selected rule.</description>
+  <modeler_description>The measure has a dropdown list to select specific pre-defined options. The options are :
+    •	Remove the windows
+    •	Set windows to match max FDWR from NECB
+    •	Don't change windows
+    •	Reduce existing window size to meet maximum NECB FDWR limit
+    •	Set specific FDWR
+    Specific FDWR is only used if the 'Set specific FDWR' option is selected.
+    The measure will select the standards template from the model, but in case it was undefined a default value of 'NECB2017' will be used.
+    The measure sets the FDWR according to NECB section 3.2.1.4 (2017 version)</modeler_description>
+  <arguments>
+    <argument>
+      <name>fdwr_options</name>
+      <display_name>Select an option for FDWR</display_name>
+      <type>Choice</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>Set specific FDWR</default_value>
+      <choices>
+        <choice>
+          <value>Remove the windows</value>
+          <display_name>Remove the windows</display_name>
+        </choice>
+        <choice>
+          <value>Set windows to match max FDWR from NECB</value>
+          <display_name>Set windows to match max FDWR from NECB</display_name>
+        </choice>
+        <choice>
+          <value>Don't change windows</value>
+          <display_name>Don't change windows</display_name>
+        </choice>
+        <choice>
+          <value>Reduce existing window size to meet maximum NECB FDWR limit</value>
+          <display_name>Reduce existing window size to meet maximum NECB FDWR limit</display_name>
+        </choice>
+        <choice>
+          <value>Set specific FDWR</value>
+          <display_name>Set specific FDWR</display_name>
+        </choice>
+      </choices>
+    </argument>
+    <argument>
+      <name>fdwr</name>
+      <display_name>Set specific FDWR (if option is selected above). Please enter a number greater than or equal to 0.0 and less than 1.0</display_name>
+      <type>Double</type>
+      <required>false</required>
+      <model_dependent>false</model_dependent>
+      <default_value>0.4</default_value>
+    </argument>
+  </arguments>
+  <outputs />
+  <provenances />
+  <tags>
+    <tag>Whole Building.Whole Building Schedules</tag>
+  </tags>
+  <attributes>
+    <attribute>
+      <name>Measure Type</name>
+      <value>ModelMeasure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Software Tool</name>
+      <value>Apply Measure Now</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Software Tool</name>
+      <value>OpenStudio Application</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Software Tool</name>
+      <value>Parametric Analysis Tool</value>
+      <datatype>string</datatype>
+    </attribute>
+  </attributes>
+  <files>
+    <file>
+      <filename>README.md.erb</filename>
+      <filetype>erb</filetype>
+      <usage_type>readmeerb</usage_type>
+      <checksum>A1A5426B</checksum>
+    </file>
+    <file>
+      <filename>README.md</filename>
+      <filetype>md</filetype>
+      <usage_type>readme</usage_type>
+      <checksum>AEF893A5</checksum>
+    </file>
+    <file>
+      <version>
+        <software_program>OpenStudio</software_program>
+        <identifier>3.1.0</identifier>
+        <min_compatible>3.1.0</min_compatible>
+      </version>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>script</usage_type>
+      <checksum>9FBE1A25</checksum>
+    </file>
+    <file>
+      <filename>BTAPMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>29C68DB2</checksum>
+    </file>
+    <file>
+      <filename>test.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>2A2E8FA4</checksum>
+    </file>
+    <file>
+      <filename>NRCMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>6A54FE00</checksum>
+    </file>
+  </files>
+</measure>

@@ -1,0 +1,27 @@
+# Files to ignore
+
+# Standard ruby files created by our scripts.
+Gemfile.lock
+
+# Patterns to ignore.
+measures*/*/tests/output/
+measures*/*/tests/test*-output.json
+measures/nrc_report_carbon_emissions/resources/[~][$]*
+pat/*/[~][$]*.xlsx
+
+# Files and folders used in setting up the server. These are created by the scripts so no need to save.
+openstudio-server/.env
+openstudio-server/.gemfile
+
+# Files and folders from setting up tests.
+test/.env
+test/additional_scripts/.env
+test/.script.sed
+test/.docker/Dockerfile
+test/*.tar.gz
+test/.gemfile
+test/measures_to_test-all.txt
+test/output
+
+# Local copies of downloaded gems
+.gems

@@ -1,0 +1,137 @@
+<?xml version="1.0"?>
+<measure>
+  <schema_version>3.0</schema_version>
+  <name>nrc_change_cav_to_vav</name>
+  <uid>f544d84f-d7c6-426b-b3a4-aecfc6d2523b</uid>
+  <version_id>4c6ba51b-5e57-4f62-a609-2dcf6556ee6d</version_id>
+  <version_modified>20230303T214419Z</version_modified>
+  <xml_checksum>772B7164</xml_checksum>
+  <class_name>NrcChangeCAVToVAV</class_name>
+  <display_name>NrcChangeCAVToVAV</display_name>
+  <description>This measure turns constant air volume (CAV) to variable air volume (VAV) systems. This measure will automatically skip air loops
+            that already contain a VAV fan.</description>
+  <modeler_description>This measure loops through every AirLoopHVAC object and replaces the CAV fan with a VAV fan (OS default efficiency), and sets a new setpoint:warmest
+             if the original air loop uses a scheduled or SingleZoneReheat setpoint manager (or other managers as selected by the user)</modeler_description>
+  <arguments>
+    <argument>
+      <name>airLoopSelected</name>
+      <display_name>Enter name of air loops (separated in commas) to switch from CAV to VAV, 'AllAirLoops', or 'SkipAllAirLoops'</display_name>
+      <type>String</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>AllAirLoops</default_value>
+    </argument>
+    <argument>
+      <name>user_defined_spm</name>
+      <display_name>Enter a sepoint manager to be used</display_name>
+      <type>Choice</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>Default</default_value>
+      <choices>
+        <choice>
+          <value>SPM_multizone_cooling_average</value>
+          <display_name>SPM_multizone_cooling_average</display_name>
+        </choice>
+        <choice>
+          <value>SPM_multizone_heating_average</value>
+          <display_name>SPM_multizone_heating_average</display_name>
+        </choice>
+        <choice>
+          <value>SPM_warmest</value>
+          <display_name>SPM_warmest</display_name>
+        </choice>
+        <choice>
+          <value>SPM_coldest</value>
+          <display_name>SPM_coldest</display_name>
+        </choice>
+        <choice>
+          <value>Default</value>
+          <display_name>Default</display_name>
+        </choice>
+      </choices>
+    </argument>
+  </arguments>
+  <outputs />
+  <provenances />
+  <tags>
+    <tag>HVAC.Distribution</tag>
+  </tags>
+  <attributes>
+    <attribute>
+      <name>Measure Type</name>
+      <value>ModelMeasure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Software Tool</name>
+      <value>Apply Measure Now</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Software Tool</name>
+      <value>OpenStudio Application</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Software Tool</name>
+      <value>Parametric Analysis Tool</value>
+      <datatype>string</datatype>
+    </attribute>
+  </attributes>
+  <files>
+    <file>
+      <filename>warehouse_2017.osm</filename>
+      <filetype>osm</filetype>
+      <usage_type>test</usage_type>
+      <checksum>D3EA641F</checksum>
+    </file>
+    <file>
+      <filename>README.md.erb</filename>
+      <filetype>erb</filetype>
+      <usage_type>readmeerb</usage_type>
+      <checksum>A1A5426B</checksum>
+    </file>
+    <file>
+      <filename>BTAPMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>29C68DB2</checksum>
+    </file>
+    <file>
+      <filename>NRCMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>C9D48FFE</checksum>
+    </file>
+    <file>
+      <version>
+        <software_program>OpenStudio</software_program>
+        <identifier>2.3.0</identifier>
+        <min_compatible>2.3.0</min_compatible>
+      </version>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>script</usage_type>
+      <checksum>2325FBFB</checksum>
+    </file>
+    <file>
+      <filename>test.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>66E94503</checksum>
+    </file>
+    <file>
+      <filename>README.md</filename>
+      <filetype>md</filetype>
+      <usage_type>readme</usage_type>
+      <checksum>2B596443</checksum>
+    </file>
+    <file>
+      <filename>README.md</filename>
+      <filetype>md</filetype>
+      <usage_type>test</usage_type>
+      <checksum>7057ABBD</checksum>
+    </file>
+  </files>
+</measure>

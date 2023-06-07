@@ -1,0 +1,500 @@
+{
+  "analysis": {
+    "display_name": "NECB parametric run",
+    "name": "NECB parametric run",
+    "output_variables": [
+      {
+        "units": "",
+        "objective_function": false,
+        "objective_function_index": null,
+        "objective_function_target": null,
+        "objective_function_group": null,
+        "scaling_factor": null,
+        "display_name": "total_site_energy",
+        "display_name_short": "total_site_energy",
+        "metadata_id": null,
+        "name": "nrc_reporting_measure_standard.total_site_energy",
+        "visualize": true,
+        "export": true,
+        "variable_type": "double"
+      },
+      {
+        "units": "",
+        "objective_function": false,
+        "objective_function_index": null,
+        "objective_function_target": null,
+        "objective_function_group": null,
+        "scaling_factor": null,
+        "display_name": "total_site_energy_normalized",
+        "display_name_short": "total_site_energy_normalized",
+        "metadata_id": null,
+        "name": "nrc_reporting_measure_standard.total_site_energy_normalized",
+        "visualize": true,
+        "export": true,
+        "variable_type": "double"
+      },
+      {
+        "units": "",
+        "objective_function": false,
+        "objective_function_index": null,
+        "objective_function_target": null,
+        "objective_function_group": null,
+        "scaling_factor": null,
+        "display_name": "annual_electricity_use",
+        "display_name_short": "annual_electricity_use",
+        "metadata_id": null,
+        "name": "nrc_reporting_measure_standard.annual_electricity_use",
+        "visualize": true,
+        "export": true,
+        "variable_type": "double"
+      },
+      {
+        "units": "",
+        "objective_function": false,
+        "objective_function_index": null,
+        "objective_function_target": null,
+        "objective_function_group": null,
+        "scaling_factor": null,
+        "display_name": "annual_natural_gas_use",
+        "display_name_short": "annual_natural_gas_use",
+        "metadata_id": null,
+        "name": "nrc_reporting_measure_standard.annual_natural_gas_use",
+        "visualize": true,
+        "export": true,
+        "variable_type": "double"
+      }
+    ],
+    "problem": {
+      "workflow": [
+        {
+          "name": "nrc_create_necb_prototype_building",
+          "display_name": "NrcCreateNECBPrototypeBuilding",
+          "measure_type": "RubyMeasure",
+          "measure_definition_class_name": "NrcCreateNECBPrototypeBuilding",
+          "measure_definition_directory": "./measures/nrc_create_necb_prototype_building",
+          "measure_definition_directory_local": "D:/devel/openstudio-measures/measures/nrc_create_necb_prototype_building",
+          "measure_definition_display_name": "NrcCreateNECBPrototypeBuilding",
+          "measure_definition_name": "nrc_create_necb_prototype_building",
+          "measure_definition_name_xml": null,
+          "measure_definition_uuid": "3e9acd53-8602-4749-a655-7cbbe48e8b30",
+          "measure_definition_version_uuid": "80aa83f3-a39f-4041-9ebc-901f8efb1871",
+          "uuid": "3e9acd53-8602-4749-a655-7cbbe48e8b30",
+          "version_uuid": "80aa83f3-a39f-4041-9ebc-901f8efb1871",
+          "description": "This measure creates an NECB prototype building from scratch and uses it as the base for an analysis.",
+          "taxonomy": "Whole Building.Space Types",
+          "arguments": [
+            {
+              "display_name": "Weather file type",
+              "display_name_short": "weather_file_type",
+              "name": "weather_file_type",
+              "value_type": "string",
+              "default_value": "CWEC2020",
+              "value": "CWEC2016"
+            },
+            {
+              "display_name": "Degree of global warming (for TMY/TRY options)",
+              "display_name_short": "global_warming",
+              "name": "global_warming",
+              "value_type": "string",
+              "default_value": "0.0",
+              "value": "0.0"
+            },
+            {
+              "display_name": "Check for sideload files (to overwrite standards info)?",
+              "display_name_short": "sideload",
+              "name": "sideload",
+              "value_type": "boolean",
+              "default_value": false,
+              "value": false
+            }
+          ],
+          "variables": [
+            {
+              "argument": {
+                "display_name": "Template",
+                "display_name_short": "template",
+                "name": "template",
+                "value_type": "string",
+                "default_value": "NECB2017",
+                "value": "NECB2011",
+                "choice_display_names": [
+                  "NECB2011",
+                  "NECB2015",
+                  "NECB2017",
+                  "NECB2020"
+                ]
+              },
+              "display_name": "Template",
+              "display_name_short": "template",
+              "variable_type": "variable",
+              "minimum": "NECB2017",
+              "maximum": "NECB2017",
+              "static_value": "NECB2011",
+              "uuid": "",
+              "version_uuid": "",
+              "variable": true,
+              "uncertainty_description": {
+                "type": "discrete",
+                "attributes": [
+                  {
+                    "name": "discrete",
+                    "values_and_weights": [
+                      {
+                        "value": "NECB2011",
+                        "weight": 0.25
+                      },
+                      {
+                        "value": "NECB2015",
+                        "weight": 0.25
+                      },
+                      {
+                        "value": "NECB2017",
+                        "weight": 0.25
+                      },
+                      {
+                        "value": "NECB2020",
+                        "weight": 0.25
+                      }
+                    ]
+                  },
+                  {
+                    "name": "lower_bounds",
+                    "value": "NECB2017"
+                  },
+                  {
+                    "name": "upper_bounds",
+                    "value": "NECB2017"
+                  },
+                  {
+                    "name": "modes",
+                    "value": "NECB2017"
+                  },
+                  {
+                    "name": "delta_x",
+                    "value": "NECB2017"
+                  },
+                  {
+                    "name": "stddev",
+                    "value": "NECB2017"
+                  }
+                ]
+              },
+              "workflow_index": 0
+            },
+            {
+              "argument": {
+                "display_name": "Building Type",
+                "display_name_short": "building_type",
+                "name": "building_type",
+                "value_type": "string",
+                "default_value": "Warehouse",
+                "value": "Warehouse",
+                "choice_display_names": [
+                  "SecondarySchool",
+                  "PrimarySchool",
+                  "SmallOffice",
+                  "MediumOffice",
+                  "LargeOffice",
+                  "SmallHotel",
+                  "LargeHotel",
+                  "Warehouse",
+                  "RetailStandalone",
+                  "RetailStripmall",
+                  "QuickServiceRestaurant",
+                  "FullServiceRestaurant",
+                  "MidriseApartment",
+                  "HighriseApartment",
+                  "Hospital",
+                  "Outpatient"
+                ]
+              },
+              "display_name": "Building Type",
+              "display_name_short": "building_type",
+              "variable_type": "variable",
+              "minimum": "Warehouse",
+              "maximum": "Warehouse",
+              "static_value": "Warehouse",
+              "uuid": "",
+              "version_uuid": "",
+              "variable": true,
+              "uncertainty_description": {
+                "type": "discrete",
+                "attributes": [
+                  {
+                    "name": "discrete",
+                    "values_and_weights": [
+                      {
+                        "value": "Warehouse",
+                        "weight": 0.1111111111111111
+                      },
+                      {
+                        "value": "SmallOffice",
+                        "weight": 0.1111111111111111
+                      },
+                      {
+                        "value": "RetailStandalone",
+                        "weight": 0.1111111111111111
+                      },
+                      {
+                        "value": "MediumOffice",
+                        "weight": 0.1111111111111111
+                      },
+                      {
+                        "value": "RetailStripmall",
+                        "weight": 0.1111111111111111
+                      },
+                      {
+                        "value": "FullServiceRestaurant",
+                        "weight": 0.1111111111111111
+                      },
+                      {
+                        "value": "MidriseApartment",
+                        "weight": 0.1111111111111111
+                      },
+                      {
+                        "value": "QuickServiceRestaurant",
+                        "weight": 0.1111111111111111
+                      },
+                      {
+                        "value": "LargeOffice",
+                        "weight": 0.1111111111111111
+                      }
+                    ]
+                  },
+                  {
+                    "name": "lower_bounds",
+                    "value": "Warehouse"
+                  },
+                  {
+                    "name": "upper_bounds",
+                    "value": "Warehouse"
+                  },
+                  {
+                    "name": "modes",
+                    "value": "Warehouse"
+                  },
+                  {
+                    "name": "delta_x",
+                    "value": "Warehouse"
+                  },
+                  {
+                    "name": "stddev",
+                    "value": "Warehouse"
+                  }
+                ]
+              },
+              "workflow_index": 1
+            },
+            {
+              "argument": {
+                "display_name": "Location",
+                "display_name_short": "location",
+                "name": "location",
+                "value_type": "string",
+                "default_value": "AB_Calgary",
+                "value": "AB_Calgary",
+                "choice_display_names": [
+                  "AB_Calgary",
+                  "AB_Edmonton",
+                  "AB_Fort.McMurray",
+                  "BC_Kelowna",
+                  "BC_Vancouver",
+                  "BC_Victoria",
+                  "MB_Thompson",
+                  "MB_Winnipeg",
+                  "NB_Moncton",
+                  "NB_Saint.John",
+                  "NL_Corner.Brook",
+                  "NL_St.Johns",
+                  "NS_Halifax.Dockyard",
+                  "NS_Sydney",
+                  "NT_Inuvik",
+                  "NT_Yellowknife",
+                  "NU_Cambridge.Bay",
+                  "NU_Iqaluit",
+                  "NU_Rankin.Inlet",
+                  "ON_Ottawa",
+                  "ON_Sudbury",
+                  "ON_Toronto",
+                  "ON_Windsor",
+                  "PE_Charlottetown",
+                  "QC_Jonquiere",
+                  "QC_Montreal",
+                  "QC_Quebec",
+                  "SK_Prince.Albert",
+                  "SK_Regina",
+                  "SK_Saskatoon",
+                  "YT_Dawson.City",
+                  "YT_Whitehorse"
+                ]
+              },
+              "display_name": "Location",
+              "display_name_short": "location",
+              "variable_type": "variable",
+              "minimum": "AB_Calgary",
+              "maximum": "AB_Calgary",
+              "static_value": "AB_Calgary",
+              "uuid": "",
+              "version_uuid": "",
+              "variable": true,
+              "uncertainty_description": {
+                "type": "discrete",
+                "attributes": [
+                  {
+                    "name": "discrete",
+                    "values_and_weights": [
+                      {
+                        "value": "AB_Calgary",
+                        "weight": 0.0625
+                      },
+                      {
+                        "value": "AB_Edmonton",
+                        "weight": 0.0625
+                      },
+                      {
+                        "value": "AB_Fort.McMurray",
+                        "weight": 0.0625
+                      },
+                      {
+                        "value": "BC_Vancouver",
+                        "weight": 0.0625
+                      },
+                      {
+                        "value": "BC_Victoria",
+                        "weight": 0.0625
+                      },
+                      {
+                        "value": "MB_Winnipeg",
+                        "weight": 0.0625
+                      },
+                      {
+                        "value": "NL_St.Johns",
+                        "weight": 0.0625
+                      },
+                      {
+                        "value": "NS_Halifax.Dockyard",
+                        "weight": 0.0625
+                      },
+                      {
+                        "value": "NS_Sydney",
+                        "weight": 0.0625
+                      },
+                      {
+                        "value": "NT_Yellowknife",
+                        "weight": 0.0625
+                      },
+                      {
+                        "value": "ON_Toronto",
+                        "weight": 0.0625
+                      },
+                      {
+                        "value": "QC_Montreal",
+                        "weight": 0.0625
+                      },
+                      {
+                        "value": "QC_Quebec",
+                        "weight": 0.0625
+                      },
+                      {
+                        "value": "ON_Windsor",
+                        "weight": 0.0625
+                      },
+                      {
+                        "value": "SK_Saskatoon",
+                        "weight": 0.0625
+                      },
+                      {
+                        "value": "YT_Whitehorse",
+                        "weight": 0.0625
+                      }
+                    ]
+                  },
+                  {
+                    "name": "lower_bounds",
+                    "value": "AB_Calgary"
+                  },
+                  {
+                    "name": "upper_bounds",
+                    "value": "AB_Calgary"
+                  },
+                  {
+                    "name": "modes",
+                    "value": "Calgary"
+                  },
+                  {
+                    "name": "delta_x",
+                    "value": "Calgary"
+                  },
+                  {
+                    "name": "stddev",
+                    "value": "Calgary"
+                  }
+                ]
+              },
+              "workflow_index": 2
+            }
+          ],
+          "workflow_index": 0
+        },
+        {
+          "name": "nrc_reporting_measure_standard",
+          "display_name": "NRC Standard Report",
+          "measure_type": "ReportingMeasure",
+          "measure_definition_class_name": "NrcReportingMeasureStandard",
+          "measure_definition_directory": "./measures/nrc_report_standard",
+          "measure_definition_directory_local": "D:\\devel\\openstudio-measures\\pat\\NECB\\measures\\nrc_report_standard",
+          "measure_definition_display_name": "NRC Standard Report",
+          "measure_definition_name": "nrc_reporting_measure_standard",
+          "measure_definition_name_xml": null,
+          "measure_definition_uuid": "224561f4-8ccc-4f20-8118-34b85359d3f1",
+          "measure_definition_version_uuid": "77485402-4365-4587-8c15-af92b875e630",
+          "uuid": "224561f4-8ccc-4f20-8118-34b85359d3f1",
+          "version_uuid": "77485402-4365-4587-8c15-af92b875e630",
+          "description": "This reporting measure uses and extends the standard QAQC reporting from openstudio-standards.",
+          "taxonomy": "Reporting.QAQC",
+          "arguments": [
+            {
+              "display_name": "A Choice String Argument ",
+              "display_name_short": "a_choice_argument",
+              "name": "a_choice_argument",
+              "value_type": "string",
+              "default_value": "choice_1",
+              "value": "choice_1"
+            }
+          ],
+          "variables": [],
+          "workflow_index": 1
+        }
+      ],
+      "algorithm": {
+        "in_measure_combinations": "true",
+        "include_baseline_in_combinations": "true",
+        "seed": null,
+        "objective_functions": []
+      },
+      "analysis_type": "baseline_perturbation"
+    },
+    "seed": {
+      "file_type": "OSM",
+      "path": "./seeds/EmptyModel.osm"
+    },
+    "weather_file": {
+      "file_type": "EPW",
+      "path": "./weather/SeedWeather.epw"
+    },
+    "file_format_version": 1,
+    "cli_debug": "",
+    "cli_verbose": "",
+    "download_reports": true,
+    "download_osw": true,
+    "download_osm": true,
+    "download_zip": true,
+    "run_workflow_timeout": 28800,
+    "upload_results_timeout": 28800,
+    "initialize_worker_timeout": 28800,
+    "server_scripts": {
+      "server_finalization": "./scripts/server_finalization/finalize.sh",
+      "worker_initialization": "./scripts/worker_initialization/initialize.sh"
+    }
+  }
+}

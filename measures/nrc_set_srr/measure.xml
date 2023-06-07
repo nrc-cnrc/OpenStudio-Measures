@@ -1,0 +1,133 @@
+<?xml version="1.0"?>
+<measure>
+  <schema_version>3.0</schema_version>
+  <name>nrc_set_srr</name>
+  <uid>5b955a02-309e-406a-93d7-ff4ce5540e08</uid>
+  <version_id>fe5c4602-011b-427e-b495-053ff07361f7</version_id>
+  <version_modified>20230323T203458Z</version_modified>
+  <xml_checksum>FC9586A7</xml_checksum>
+  <class_name>NrcSetSrr</class_name>
+  <display_name>nrc_set_srr</display_name>
+  <description>This measure sets the Skylight to Roof Ratio (SRR) according to the selected action.</description>
+  <modeler_description>The measure has a dropdown list to select specific pre-defined options. The options are :
+    •	Remove the skylights
+    •	Set skylights to match max SRR from NECB
+    •	Don't change skylights
+    •	Reduce existing skylight size to meet maximum NECB SRR limit
+    •	Set specific SRR
+    The Specific SRR argument is only used if the 'Set specific SRR' option is selected.
+	
+    This measure sets the SRR according to the NECB rules.
+	
+    The measure will detect the version of NECB automatically (default is NECB 2017).</modeler_description>
+  <arguments>
+    <argument>
+      <name>srr_options</name>
+      <display_name>Select an option for SRR</display_name>
+      <type>Choice</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>Set specific SRR</default_value>
+      <choices>
+        <choice>
+          <value>Remove the skylights</value>
+          <display_name>Remove the skylights</display_name>
+        </choice>
+        <choice>
+          <value>Set skylights to match max SRR from NECB</value>
+          <display_name>Set skylights to match max SRR from NECB</display_name>
+        </choice>
+        <choice>
+          <value>Don't change skylights</value>
+          <display_name>Don't change skylights</display_name>
+        </choice>
+        <choice>
+          <value>Reduce existing skylight size to meet maximum NECB SRR limit</value>
+          <display_name>Reduce existing skylight size to meet maximum NECB SRR limit</display_name>
+        </choice>
+        <choice>
+          <value>Set specific SRR</value>
+          <display_name>Set specific SRR</display_name>
+        </choice>
+      </choices>
+    </argument>
+    <argument>
+      <name>srr</name>
+      <display_name>Set specific SRR (if option is selected above). Please enter a number greater than or equal to 0.0 and less than or equal to 1.0</display_name>
+      <type>Double</type>
+      <required>false</required>
+      <model_dependent>false</model_dependent>
+      <default_value>0.4</default_value>
+    </argument>
+  </arguments>
+  <outputs />
+  <provenances />
+  <tags>
+    <tag>Whole Building.Whole Building Schedules</tag>
+  </tags>
+  <attributes>
+    <attribute>
+      <name>Measure Type</name>
+      <value>ModelMeasure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Software Tool</name>
+      <value>Apply Measure Now</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Software Tool</name>
+      <value>OpenStudio Application</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Software Tool</name>
+      <value>Parametric Analysis Tool</value>
+      <datatype>string</datatype>
+    </attribute>
+  </attributes>
+  <files>
+    <file>
+      <filename>README.md</filename>
+      <filetype>md</filetype>
+      <usage_type>readme</usage_type>
+      <checksum>37908868</checksum>
+    </file>
+    <file>
+      <filename>README.md.erb</filename>
+      <filetype>erb</filetype>
+      <usage_type>readmeerb</usage_type>
+      <checksum>877DD729</checksum>
+    </file>
+    <file>
+      <version>
+        <software_program>OpenStudio</software_program>
+        <identifier>3.1.0</identifier>
+        <min_compatible>3.1.0</min_compatible>
+      </version>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>script</usage_type>
+      <checksum>417865DA</checksum>
+    </file>
+    <file>
+      <filename>BTAPMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>29C68DB2</checksum>
+    </file>
+    <file>
+      <filename>test.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>8F945051</checksum>
+    </file>
+    <file>
+      <filename>NRCMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>6A54FE00</checksum>
+    </file>
+  </files>
+</measure>

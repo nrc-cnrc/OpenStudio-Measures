@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<measure>
+  <schema_version>3.0</schema_version>
+  <name>nrc_drain_water_heat_recovery</name>
+  <uid>7d8dcf98-5a54-4d84-97f8-02488fd9faaf</uid>
+  <version_id>1152ed3c-0d02-4cc1-9933-850dabc41b8c</version_id>
+  <version_modified>20230302T184325Z</version_modified>
+  <xml_checksum>15CB40A3</xml_checksum>
+  <class_name>NrcDrainWaterHeatRecovery</class_name>
+  <display_name>Drain Water Heat Recovery</display_name>
+  <description>E+ measure to add dragin water heat recovery</description>
+  <modeler_description>E+ measure to add dragin water heat recovery (V3.2 will have this in openstudio but need to use E+ measure for now)</modeler_description>
+  <arguments>
+    <argument>
+      <name>plant_loop</name>
+      <display_name>Plant loop to apply change to (currently all is only option)</display_name>
+      <type>String</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>All</default_value>
+    </argument>
+    <argument>
+      <name>ua</name>
+      <display_name>UA value of heat exchanger (W/mK)</display_name>
+      <type>Double</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+      <default_value>3000</default_value>
+    </argument>
+  </arguments>
+  <outputs />
+  <provenances />
+  <tags>
+    <tag>Service Water Heating.Water Heating</tag>
+  </tags>
+  <attributes>
+    <attribute>
+      <name>Measure Type</name>
+      <value>EnergyPlusMeasure</value>
+      <datatype>string</datatype>
+    </attribute>
+  </attributes>
+  <files>
+    <file>
+      <filename>in.idf</filename>
+      <filetype>idf</filetype>
+      <usage_type>test</usage_type>
+      <checksum>721ADC31</checksum>
+    </file>
+    <file>
+      <version>
+        <software_program>OpenStudio</software_program>
+        <identifier>3.1.0</identifier>
+        <min_compatible>3.1.0</min_compatible>
+      </version>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>script</usage_type>
+      <checksum>20C5F626</checksum>
+    </file>
+    <file>
+      <filename>README.md.erb</filename>
+      <filetype>erb</filetype>
+      <usage_type>readmeerb</usage_type>
+      <checksum>A1A5426B</checksum>
+    </file>
+    <file>
+      <filename>README.md</filename>
+      <filetype>md</filetype>
+      <usage_type>readme</usage_type>
+      <checksum>50BE7F0F</checksum>
+    </file>
+    <file>
+      <filename>BTAPMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>29C68DB2</checksum>
+    </file>
+    <file>
+      <filename>test.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>4D081358</checksum>
+    </file>
+    <file>
+      <filename>NRCMeasureHelper.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>C9D48FFE</checksum>
+    </file>
+  </files>
+</measure>

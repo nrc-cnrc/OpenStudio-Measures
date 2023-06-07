@@ -1,0 +1,11 @@
+# Files to ignore when archiving to repo
+
+# Results folders
+localResults/*-*-*-*-*
+
+# zip files
+*.zip
+
+# If using nrc measures then there may be test output in the copied over measures.
+measures/*/tests/output/
+measures/*/tests/test*-output.json
